@@ -1,6 +1,6 @@
 theme: jekyll-theme-slate
-title: Pages of Multi-robot Systems (MRS) group at Czech Technical University in Prague
-description: this page references to documentation of our repositories
+title: Pages of Multi-robot Systems group at Czech Technical University in Prague
+#description: this page references to documentation of our repositories
 show_downloads: false
 
 github:
