@@ -1,23 +1,22 @@
 ---
 layout: default
-title: UAV ROS interface
+title: UAV-ROS interface
 parent: Introduction
 nav_order: 3
 ---
 
-# UAV - ROS interface
+# UAV-ROS interface
 
-The UAV can be interacted with mainly through the following **managers**.
+The UAV can be given commands via the following [managers](https://github.com/ctu-mrs/mrs_uav_managers) and the [state estimator](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-).
 
 ## ControlManager
 
-The ControlManager takes care of running the **trackers** and **controllers** and maintains one of each as an **active**.
+The [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers#ControlManager) takes care of running the [trackers](https://github.com/ctu-mrs/mrs_uav_trackers#mrs-uav-trackers-) and [controllers](https://github.com/ctu-mrs/mrs_uav_controllers#mrs-uav-controllers-) and maintains one of each as an **active**.
 The controllers handle a feedback loop for stabilization and control of the UAV.
 The trackers are the reference generators for the controllers.
-Although the "hard work" during the flight is done by the tracker and the controllers, users do not interact with them directly.
-Most of the interface is hidden behind the ControlManager.
+The high-level navigation does not interact with them directly, most of the interface is hidden behind the ControlManager.
 
-The ControlManager is subscribed to a source of Odometry, and it hands it to the trackers and controllers.
+The ControManager is subscribed to a source of [odometry](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-), and it hands it to the trackers and controllers.
 With each update of the state estimate, the currently active tracker produces a new reference, and the currently active controller produces a new control command.
 The controllers and trackers can be switched in mid-flight.
 Users supply the desired references to the ControlManager, which forwards them to the currently active tracker and controller.
@@ -28,14 +27,14 @@ Press `[TAB]` after typing in the desired service to see the corresponding argum
 
 Use those services to interact with the done from the terminal:
 
-| **service**                      | **description**                                   | **service type** | **args**      |
-|----------------------------------|---------------------------------------------------|------------------|---------------|
-| control_manager/goto             | fly to given coordinates                          | `mrs_msgs/Vec4`  | `[x,y,z,hdg]` |
-| control_manager/goto_fcu         | fly to giv en coordinates in the drone's frame    | `mrs_msgs/Vec4`  | `[x,y,z,hdg]` |
-| control_manager/goto_relative    | fly to relative coordinates in the world frame    | `mrs_msgs/Vec4`  | `[x,y,z,hdg]` |
-| control_manager/goto_altitude    | fly to a given height/altitude (the z coordinate) | `mrs_msgs/Vec1`  | `[z]`         |
-| control_manager/set_yaw          | set just the yaw (heading)                        | `mrs_msgs/Vec1`  | `[hdg]`       |
-| control_manager/set_yaw_relative | set a relative yaw (heading)                      | `mrs_msgs/Vec1`  | `[hdg]`       |
+| **service**                          | **description**                                   | **service type** | **args**      |
+|--------------------------------------|---------------------------------------------------|------------------|---------------|
+| control_manager/goto                 | fly to given coordinates                          | `mrs_msgs/Vec4`  | `[x,y,z,hdg]` |
+| control_manager/goto_fcu             | fly to giv en coordinates in the drone's frame    | `mrs_msgs/Vec4`  | `[x,y,z,hdg]` |
+| control_manager/goto_relative        | fly to relative coordinates in the world frame    | `mrs_msgs/Vec4`  | `[x,y,z,hdg]` |
+| control_manager/goto_altitude        | fly to a given height/altitude (the z coordinate) | `mrs_msgs/Vec1`  | `[z]`         |
+| control_manager/set_heading          | set just the heading                              | `mrs_msgs/Vec1`  | `[hdg]`       |
+| control_manager/set_heading_relative | set a relative heading                            | `mrs_msgs/Vec1`  | `[hdg]`       |
 
 However, these services should not be used from within a program, since they lack the *Header* which usually contains the frame of reference name and the timestamp.
 
@@ -76,7 +75,7 @@ Safety and higher-level flight control:
 
 ## UavManager
 
-The UavManager handles higher-level routines such as takeoff and landing.
+The [UavManager](https://github.com/ctu-mrs/mrs_uav_managers#UavManager) handles higher-level routines such as takeoff and landing.
 It also carries some non-essential safety routines.
 
 Provided services:
@@ -89,10 +88,10 @@ Provided services:
 
 ## ConstraintManager
 
-The ConstraintManager handles the definition and switching of dynamics constraints.
-The constraints are mutual for all the **trackers** and supplied to them by the **ControlManager**.
+The [ConstraintManager](https://github.com/ctu-mrs/mrs_uav_managers#ConstraintManager) handles the definition and switching of dynamics constraints.
+The constraints are mutual for all the trackers and supplied to them by the ControlManager.
 However, to simplify the system structure, the ConstraintManager was created to load user-defined constraints from parameter files.
-The ConstraintManager maintains feasible constraints active during the flight based on the currently active odometry source and allows to change them by ROS service.
+The ConstraintManager maintains feasible constraints active during the flight based on the currently active [odometry source](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-) and allows to change them by ROS service.
 
 Provided services:
 
@@ -102,8 +101,8 @@ Provided services:
 
 ## GainManager
 
-The GainManager handles the definition and switching of controller gains for the **So3Controller**.
-The **So3Controller**, one of our controllers, is highly tunable.
+The [GainManager](https://github.com/ctu-mrs/mrs_uav_managers#GainManager) handles the definition and switching of controller gains for the [So3Controller](https://github.com/ctu-mrs/mrs_uav_controllers#available-controllers).
+The So3Controller should be tuned for a particular UAV model, desired dynamics and the [Odometry](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-) under which it is going to fly.
 A proper set of gains needs to be set based on the flight conditions and odometry source.
 
 Provided services:
@@ -111,3 +110,7 @@ Provided services:
 | **service**            | **description**            | **service type**  |
 |------------------------|----------------------------|-------------------|
 | gain_manager/set_gains | activate the desired gains | `mrs_msgs/String` |
+
+## MRS Odometry
+
+TODO: [mrs_uav_odometry](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-)

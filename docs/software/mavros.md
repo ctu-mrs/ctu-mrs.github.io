@@ -1,11 +1,15 @@
 ---
 layout: default
-title: Repositories structure
-parent: Introduction
-nav_order: 99
+title: Mavros
+parent: Software
+nav_order: 97
 ---
 
-# MAVROS topics and services
+# Mavros
+
+[Mavros](https://github.com/mavlink/mavros) provides an interface between the [uav_core](https://github.com/ctu-mrs/uav_core) and the [Pixhawk](https://pixhawk.org/) flight controller.
+
+# Used topics and services
 
 Following topics and services are used by the [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system) to interact with [Mavros](https://github.com/mavlink/mavros).
 
