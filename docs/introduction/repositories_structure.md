@@ -2,6 +2,7 @@
 layout: default
 title: Repositories structure
 parent: Introduction
+nav_order: 99
 ---
 
 # Suggested reading

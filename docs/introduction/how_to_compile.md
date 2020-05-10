@@ -2,6 +2,7 @@
 layout: default
 title: How to compile
 parent: Introduction
+nav_order: 99
 ---
 
 # How to compile

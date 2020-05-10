@@ -2,6 +2,7 @@
 layout: default
 title: UAV ROS interface
 parent: Introduction
+nav_order: 3
 ---
 
 # UAV - ROS interface

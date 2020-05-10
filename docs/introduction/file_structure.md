@@ -2,6 +2,7 @@
 layout: default
 title: File structure
 parent: Introduction
+nav_order: 99
 ---
 
 # File structure
