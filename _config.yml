@@ -1,8 +1,8 @@
-remote_theme: "benbalter/jekyll-remote-theme"
+remote_theme: pmarsceill/just-the-docs
 
-title: Pages of Multi-robot Systems group at Czech Technical University in Prague
+title: "Pages of Multi-robot Systems group at Czech Technical University in Prague"
 show_downloads: false
 
 github:
-  repository_url: https://github.com/ctu-mrs
-  repository_name: Multi-robot Systems (MRS) group
+  repository_url: "https://github.com/ctu-mrs"
+  repository_name: "Multi-robot Systems (MRS) group"
