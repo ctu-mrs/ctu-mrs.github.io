@@ -5,58 +5,44 @@ parent: Introduction
 nav_order: 99
 ---
 
-# How to compile
-
-As you have already learned in the [file structure](file_structure) page, the environment consists technically of three ROS workspaces.
-I wrote __technically__, because one of them ([qudrotor_control_binaries](qudrotor_control_binaries)) is non-compillable and contains just pre-compilled binaries.
-The other two (~/mrs_workspace and ~/workspace) are kept separate to split our packages from yours.
-The main advantage of splitting them to two compilation spaces is the compile time.
-Because ~/workspace **extends** ~/mrs_workspace, you can still use everything produced by ~/mrs_workspace, but you do not have to compile our packages everytime you want to compile (or clean/recompile) yours.
-In the same sense, ~/mrs_workspace extends [qudrotor_control_binaries](qudrotor_control_binaries).
-
-For this reason, **make sure** you have the ~/mrs_workspace compiled (hopefully without errors) before you try to compile your code in ~/workspace.
-
-## How to compile a workspace?
-
-Following text applies to any workspace, but the examples are shown on the ~/mrs_workspace.
-
-To compile everything, first got to the workspace's root
+We use [catkin tools](https://catkin-tools.readthedocs.io/en/latest/) to manage our ROS workspaces.
+Make sure you are located within the workspace when issuing the following commands.
+If your workspace is source, you can `cd` to the workspace by:
 ```bash
-cd ~/mrs_workspace
+roscd
 ```
-and run general compilation command.
+
+## Compiling a workspace
+
+To compile everything in `~/mrs_workspace`:
 ```bash
 catkin build
 ```
-It can also be run from any subdirectory of the workspace.
-
-If you encounter a *compilation error*, which looks similar to this: `c++: internal compiler error: Killed (program cc1plus)`, your computer just ran out of RAM (which might happen if you have > 4 CPU cores but only <= 8 GB of RAM).
-Please compile the _mavros_ packages first by `catkin build mavros` and then proceed to compile the whole workspace by `catkin build` again.
 
 ## Compiling a specific package
 
-To compile a specific package only, run
+To compile a particular `<package>`:
 ```bash
-catkin build <package_name>
+catkin build <package>
 ```
-from anywhere in the workspace.
 
-If you happen to be editing your code with **vim**, issue command
+If you use Tomas's [linux-setup](https://github.com/klaxalk/linux-setup), you can use the key binding `<leader>m` or call
 ```
 :make
 ``` 
-to compile the particular package, you are editing.
+to compile the file you are editting.
 
-## Cleaning the workspace (for a fresh compilation)
+## Cleaning the workspace
 
-Sometimes, a cleaning can help with e.g. corrupted binaries (which can happen on a drone, which is not usually powered-off properly).
-To clean the whole workspace, run
+Sometimes, a cleaning can help with, e.g., corrupted binaries (which can happen on a drone, which is not usually poweroffed properly).
+Cleaning might also help when dependencies changed too much.
+
+Cleaning the whole workspace:
 ```bash
-cd ~/mrs_workspace
 catkin clean
 ```
-To clean a single package, run
+
+Cleaning a particular `<package>`:
 ```bash
-cd ~/mrs_workspace
-catkin clean <package_name>
+catkin clean <package>
 ```

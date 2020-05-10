@@ -76,19 +76,23 @@ log com1 gpgga ontime 0.05
 log com1 gpgsv ontime 1
 ```
 
-Now, run position averaging for basestation in Tersus GNSS Center. Select number of samples - more samples ~ better absolute position. Then clic start and wait. After the averaging is finished, coordinates should appear in the window. Do not close the window for now, type into the console:
-
+Now, run position averaging for basestation in Tersus GNSS Center.
+Select number of samples - more samples ~ better absolute position.
+Then clic start and wait.
+After the averaging is finished, coordinates should appear in the window.
+Do not close the window for now, type into the console:
 ```
 unlogall com1
 ```
 
-Now, in the averaging window, click on fix position. This should send the fix command with appropriate coordinates. Make sure that the basestation replies with OK in the terminal. The basestation will only provide rtcm correction messages when the position is fixed. After the position is fixed, make sure to saveconfig:
-
+Now, in the averaging window, click on fix position.
+This should send the fix command with appropriate coordinates.
+Make sure that the basestation replies with OK in the terminal.
+The basestation will only provide rtcm correction messages when the position is fixed.
+After the position is fixed, make sure to saveconfig:
 ```
 saveconfig
 ```
-
-
 
 **UAV:**
 
@@ -113,14 +117,11 @@ interfacemode com2 automatic automatic on
 ```
 
 Turn on position output:
-
 ```
 log com1 gpgga ontime 0.05
 ```
 
 And save:
-
-
 ```
 saveconfig
 ```
