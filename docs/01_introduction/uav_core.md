@@ -1,3 +1,9 @@
+---
+layout: default
+title: Buttons
+parent: Introduction
+---
+
 # uav_core repository
 
 [uav_core](uav_core) contains "the core" of our packages, literally.

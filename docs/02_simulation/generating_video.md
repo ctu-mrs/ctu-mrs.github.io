@@ -1,3 +1,9 @@
+---
+layout: default
+title: Buttons
+parent: Simulation
+---
+
 # How to generate video from Gazebo
 
 Videos from Gazebo simulator can be recorded directly with the functionality of Gazebo GUI or by any screen-capturing software. However, these approaches do not produce videos of sufficient quality, so we provide a description of an alternative approach which enables to produce high-resolution videos. 

@@ -1,5 +1,13 @@
+---
+layout: default
+title: Buttons
+parent: Hardware
+---
+
 # Discovered problems of PixHawk firmware  
+
 ## The drone falls down after aggressive maneuvers
+
 ### The issue:
 
 Newer DJI ESCs introduced the active braking feature that supposedly improves the dynamics of the UAV. The ESCs actively brake the motors when minimal-width PWM pulse is received. The PX4 controller does not cope well with the braked motors, so the drone tips over and falls down. This happens mostly during aggressive changes of roll or pitch.

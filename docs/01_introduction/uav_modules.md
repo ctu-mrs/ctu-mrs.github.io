@@ -1,3 +1,9 @@
+---
+layout: default
+title: Buttons
+parent: Introduction
+---
+
 # uav_modules repository
 
 uav_modules repository contains optional ROS packages.

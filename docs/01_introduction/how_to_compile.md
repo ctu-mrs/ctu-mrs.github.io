@@ -1,3 +1,9 @@
+---
+layout: default
+title: Buttons
+parent: Introduction
+---
+
 # How to compile
 
 As you have already learned in the [file structure](file_structure) page, the environment consists technically of three ROS workspaces.

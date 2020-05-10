@@ -1,3 +1,9 @@
+---
+layout: default
+title: Buttons
+parent: Introduction
+---
+
 # Mandatory readings for newcomers
 
 Nowadays, doing science is not just about the math and occasional code writing.

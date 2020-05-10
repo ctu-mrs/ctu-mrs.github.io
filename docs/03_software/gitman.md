@@ -1,3 +1,9 @@
+---
+layout: default
+title: Buttons
+parent: Software
+---
+
 # Gitman
 
 Gitman, a git project manager, is a program for resolving dependency between multiple git repositories.

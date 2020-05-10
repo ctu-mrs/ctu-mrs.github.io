@@ -1,3 +1,9 @@
+---
+layout: default
+title: Buttons
+parent: Simulation
+---
+
 # How to start simulation
 
 If you have everything [compiled](how_to_compiled), the next step is to test it in the simulation.

@@ -1,7 +1,12 @@
+---
+layout: default
+title: Buttons
+parent: Hardware
+---
+
 # Hardware guide 
 
 This text will describe the hardware of the MRS autonomous drones, all the used sensors and their interfaces, and can serve as a drone-building guide.
-
 
 # Basics - how a drone flies
 Drones do not have any wings or aerodynamic control surfaces, all the control is done only by varying the speed of the individual propellers. If the speed of the front facing propellers is reduced, and the speed of the back propellers is increased, the drone pitches forward and starts accelerating forward. Similarly, by varying the speed of the left and right propellers, the drone can roll left and right. By increasing/reducing the speed of all the propellers, the drone can ascend/descend. Changing the yaw angle works on a slightly different principle. Each propeller on a drone spins in the opposite direction to its neighbors, so half the propellers spins in one direction, and the other half spins in the other direction. If we increase the speed of all the props spinning in one direction, and decrease the speed of the ones spinning in the other direction, the drone yaws. The yawing moment is caused by the greater air resistance experienced by the faster spinning propellers.

@@ -1,3 +1,11 @@
+---
+layout: default
+title: Buttons
+parent: Hardware
+---
+
+# Tersus RTK GNSS setup
+
 **Basestation:**
 
 Connect the com1 port to your computer, then turn on TersusGNSScenter.
@@ -13,7 +21,6 @@ Remove any previous fixed location:
 ```
 fix none
 ```
-
 
 Turn on COM1 and COM2 output:
 ```

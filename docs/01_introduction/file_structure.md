@@ -1,3 +1,9 @@
+---
+layout: default
+title: Buttons
+parent: Introduction
+---
+
 # File structure
 
 After the installation (see [uav_core/README.md](https://mrs.felk.cvut.cz/gitlab/uav/uav_core)), several directories are created in your **home** folder. Our main repositories were cloned to **~/git**

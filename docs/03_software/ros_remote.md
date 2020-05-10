@@ -1,3 +1,9 @@
+---
+layout: default
+title: Buttons
+parent: Software
+---
+
 # Connecting to ROS core remotely
 
 ROS allows multiple computers to communicate and share topics and services via a local network.

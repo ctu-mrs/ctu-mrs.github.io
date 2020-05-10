@@ -1,4 +1,10 @@
-#### Commanding the drone
+---
+layout: default
+title: Buttons
+parent: Introduction
+---
+
+# Commanding the drone
 
 The UAV can be interacted with mainly through the following **managers**.
 

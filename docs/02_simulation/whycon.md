@@ -1,3 +1,11 @@
+---
+layout: default
+title: Buttons
+parent: Simulation
+---
+
+# Whycon localization in simulation
+
 First off, make sure all you repos are up to date, especially git/simulation, to update:
 
 `cd ~/git/simulation

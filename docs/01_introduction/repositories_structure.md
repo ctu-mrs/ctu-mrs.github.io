@@ -1,3 +1,9 @@
+---
+layout: default
+title: Buttons
+parent: Introduction
+---
+
 # Suggested reading
 
  * Baca, IROS 2018, MPC tracker: [http://mrs.felk.cvut.cz/data/papers/iros_2018_mpc.pdf](http://mrs.felk.cvut.cz/data/papers/iros_2018_mpc.pdf)
