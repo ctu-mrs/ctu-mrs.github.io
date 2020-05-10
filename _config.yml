@@ -1,8 +1,17 @@
 remote_theme: pmarsceill/just-the-docs
 
-# title: "Pages of Multi-robot Systems group at Czech Technical University in Prague"
-# show_downloads: false
+logo: "fig/mrs_logo.png"
 
-# github:
-#   repository_url: "https://github.com/ctu-mrs"
-#   repository_name: "Multi-robot Systems (MRS) group"
+title: "Multi-robot Systems Group UAV System"
+
+url: "https://ctu-mrs.github.io"
+
+aux_links:
+  "MRS website":
+    - "//mrs.felk.cvut.cz"
+  "MRS Github":
+    - "//github.com/ctu-mrs"
+  "MRS UAV System":
+    - "//github.com/ctu-mrs/mrs_uav_systtem"
+
+color_scheme: "dark"
