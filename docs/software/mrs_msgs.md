@@ -1,0 +1,1 @@
+/home/klaxalk/git/ctu-mrs.github.io/docs/software/mrs_lib.md
