@@ -2,7 +2,7 @@
 layout: default
 title: Suggested reading for newcomers
 parent: Introduction
-nav_oder: 1
+nav_oder: 0
 ---
 
 # Mandatory readings for newcomers
