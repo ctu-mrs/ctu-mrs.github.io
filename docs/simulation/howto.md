@@ -4,7 +4,7 @@ title: How to simulate
 parent: Simulation
 ---
 
-# How to start simulation
+# How to start the simulation
 
 If you have everything installed and compiled, the next step is to test it in the simulation.
 The running simulation consists of several steps, which are usually **automated** using a **tmuxinator** script.
@@ -13,8 +13,8 @@ Here we will describe each step required to make the drone fly.
 ## Attention please
 
 **Following commands are not meant to be issued manually.**
-Normally, we automate all of it; please follow to the end of this page for more info.
-People usually miss this information, what should we do to attract you attention here?
+Typically, we automate all of it; please follow to the end of this page for more info.
+People usually miss this information, what should we do to attract your attention here?
 
 ## 1. running the Gazebo simulator
 
@@ -35,16 +35,16 @@ The command
 waitForSimulation; rosrun mrs_simulation spawn 1 --run --delete --enable-rangefinder
 
 ```
-will wait for the simulation, then it will spawn a UAV with ID 1 (named uav1) and at enables a down-looking rangefinder sensor.
+will wait for the simulation, then it will spawn a UAV with ID 1 (named uav1), and it enables a down-looking rangefinder sensor.
 After it is spawned, you can already see its ROS interface by looking at ROS topics, e.g., by running
 ```bash
 rostopic list
 ```
-The UAV should be also visible in the simulator itself.
+The UAV should also be visible in the simulator itself.
 
 ## 3. run the control core
 
-The control [core](http://github.com/ctu-mrs/uav_core) have to be run for each drone seperately.
+The control [core](http://github.com/ctu-mrs/uav_core) has to be run for each drone separately.
 The name of the drone is specified by command
 ```bash
 export UAV_NAME=uav*
@@ -57,8 +57,7 @@ export UAV_NAME=uav1; waitForOdometry; roslaunch mrs_uav_general core.launch
 
 ## 4. the launch sequence
 
-To the drone take off, several commands have to be issued in a following sequence:
-
+To the drone take off, several commands have to be issued in the following sequence:
 ```bash
 rosservice call /uav1/control_manager/motors 1
 rosservice call /uav1/mavros/cmd/arming 1
@@ -74,7 +73,7 @@ Continue to [how to command the drone](commanding_the_drone) page to learn more,
 
 ## 6. automating it using tmux
 
-* ! this still not the final solution for simulation. But it is important to know about.
+* ! this still not the final solution for simulation. But it is essential to know about it.
 
 The commands we described are not meant to be issued manually every time you want to test your software.
 That would be tedious and also very impractical.
@@ -87,16 +86,16 @@ This *bare tmux* script is typically used only on real UAV.
 ## 7. automating it using tmuxinator
 
 The script, showcased in the previous section, is not very user-friendly.
-Although there is a better solution (as described bellow), we still use it for a real UAV, since it allows to automated logging of terminals to separate text files (if you are interested, see scripts `~/git/uav_core/tmux_scripts/template.sh` which contains the additional logging part).
+Although there is a better solution (as described below), we still use it for a real UAV, since it allows to automated logging of terminals to separate text files (if you are interested, see scripts `~/git/uav_core/tmux_scripts/template.sh` which contains the additional logging part).
 We still present the script in this bare form, because it might be useful in some situations.
-For example, it allows nesting tmux sessions since the script is written in a way, that just "adds the windows" to an existing tmux session if you start it being within an existing tmux session.
+For example, it allows nesting tmux sessions since the script is written in a way, that "adds the windows" to an existing tmux session if you start it being within an existing tmux session.
 
-But much cleaner solution for simulations is to use [Tmuxinator](https://github.com/tmuxinator/tmuxinator).
+But a much cleaner solution for simulations is to use [Tmuxinator](https://github.com/tmuxinator/tmuxinator).
 Tmuxinaotr is a utility designed specifically for defining tmux sessions.
 Tmux session is defined using a single `yml` file with much cleaner syntax.
-We suggest to read tmuxinator tutorial and play with its template.
-Command `tmuxinator new test_session` will create new session **test_session** and fills in the template.
+We suggest reading the tmuxinator tutorial and play with its template.
+Command `tmuxinator new test_session` will create a new session **test_session** and fills in the template.
 
 Examples of tmuxinator files can be found in subfolders of [simulation/example_tmux_scripts](https://github.com/ctu-mrs/simulation/tree/master/example_tmux_scripts), e.g., [one_drone_gps](https://github.com/ctu-mrs/simulation/blob/master/example_tmux_scripts/one_drone_gps/session.yml).
-New session can be launched using the bash script **start.sh** located along the **session.yml** in the subfolders.
+A new session can be launched using the bash script **start.sh** located along the **session.yml** in the subfolders.
 Since [tmuxinator](https://github.com/tmuxinator/tmuxinator) normally stores its sessions in **~/.tmuxinator**, we launch them using start.sh from the local location to be still able to version them using git.
