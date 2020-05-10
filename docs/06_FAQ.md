@@ -8,7 +8,7 @@ has_toc: true
 
 # Frequently Asked Questions
 
-## How do I SSH to the robot?
+## How do you SSH to the robot?
 
 ```bash
 ssh mrs@<hostname>
