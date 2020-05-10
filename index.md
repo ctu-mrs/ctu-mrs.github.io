@@ -1,7 +1,8 @@
 ---
 layout: default
-title: MRS UAV System
-nav_exclude: true
+title: Intruduction
+has_children: true
+nav_order: 1
 --- 
 
 # Welcome to the MRS UAV system Github pages
