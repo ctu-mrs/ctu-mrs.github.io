@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Buttons
+title: ROS remote
 parent: Software
 ---
 

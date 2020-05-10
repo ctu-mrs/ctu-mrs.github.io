@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Buttons
+title: How to compile
 parent: Introduction
 ---
 

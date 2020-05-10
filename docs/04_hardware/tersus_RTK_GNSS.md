@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Buttons
+title: Tersus RTK GNSS
 parent: Hardware
 ---
 

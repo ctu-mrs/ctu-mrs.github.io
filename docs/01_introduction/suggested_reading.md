@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Buttons
+title: Suggested reading for newcomers
 parent: Introduction
 ---
 

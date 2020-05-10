@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Buttons
+title: PX4 issues
 parent: Hardware
 ---
 
-# Discovered problems of PixHawk firmware  
+# Discovered issues of PX4 firmware  
 
 ## The drone falls down after aggressive maneuvers
 

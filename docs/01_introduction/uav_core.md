@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Buttons
+title: UAV core
 parent: Introduction
 ---
 

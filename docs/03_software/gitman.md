@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Buttons
+title: Gitman
 parent: Software
 ---
 
-# Gitman
+# Gitman "submodule" manager
 
 Gitman, a git project manager, is a program for resolving dependency between multiple git repositories.
 It substitutes git's built-in submodule mechanism and provides more user-friendly experience and some additional features:

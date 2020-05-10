@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Buttons
+title: Videos from Gazebo
 parent: Simulation
 ---
 

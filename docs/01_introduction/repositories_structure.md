@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Buttons
+title: Repositories structure
 parent: Introduction
 ---
 

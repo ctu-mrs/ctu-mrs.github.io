@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Buttons
+title: UAV ROS interface
 parent: Introduction
 ---
 
-# Commanding the drone
+# UAV - ROS interface
 
 The UAV can be interacted with mainly through the following **managers**.
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Buttons
+title: Whycon in simulation
 parent: Simulation
 ---
 

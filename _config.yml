@@ -13,5 +13,3 @@ aux_links:
     - "//github.com/ctu-mrs"
   "MRS UAV System":
     - "//github.com/ctu-mrs/mrs_uav_systtem"
-
-color_scheme: "dark"
