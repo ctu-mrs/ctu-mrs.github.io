@@ -2,7 +2,6 @@
 layout: default
 title: UAV core
 parent: Introduction
-nav_oder: 99
 ---
 
 # uav_core repository

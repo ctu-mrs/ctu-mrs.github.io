@@ -2,7 +2,6 @@
 layout: default
 title: How to compile
 parent: Introduction
-nav_oder: 99
 ---
 
 # How to compile
