@@ -1,4 +1,5 @@
-remote_theme: pmarsceill/just-the-docs
+# remote_theme: pmarsceill/just-the-docs
+remote_theme: carlosperate/jekyll-theme-rtd
 
 logo: "fig/mrs_logo.png"
 
