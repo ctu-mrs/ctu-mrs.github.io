@@ -1,7 +1,8 @@
 #theme: jekyll-theme-hacker
 
 # remote_theme: sphinx_rtd_theme
-remote_theme: tomjoht/documentation-theme-jekyll
+# remote_theme: tomjoht/documentation-theme-jekyll
+remote_theme: benbalter/jekyll-remote-theme
 
 title: Pages of Multi-robot Systems group at Czech Technical University in Prague
 show_downloads: false
