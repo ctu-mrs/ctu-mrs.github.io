@@ -1,8 +1,8 @@
 ---
 layout: default
-title: mrs_msgs
+title: mrs_lib
 parent: Software
-nav_order: 98
+nav_order: 99
 ---
 
-[MRS msgs documentation](https://ctu-mrs.github.io/mrs_msgs/){: .btn .btn-blue }
+[MRS lib documentation](https://ctu-mrs.github.io/mrs_lib/){: .btn .btn-blue }
