@@ -1,3 +1,9 @@
+---
+layout: default
+title: MRS UAV System
+nav_exclude: true
+--- 
+
 # Welcome to the MRS UAV system Github pages
 
 ## First steps (Beginner user)
