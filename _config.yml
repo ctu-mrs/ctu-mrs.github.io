@@ -12,5 +12,5 @@ aux_links:
     - "//mrs.felk.cvut.cz"
   "MRS Github":
     - "//github.com/ctu-mrs"
-  "MRS UAV System":
-    - "//github.com/ctu-mrs/mrs_uav_systtem"
+  "MRS internal Gitlab":
+    - "//mrs.felk.cvut/gitlab"
