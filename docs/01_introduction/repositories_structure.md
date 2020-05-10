@@ -2,7 +2,6 @@
 layout: default
 title: Repositories structure
 parent: Introduction
-grand_parent: Introduction
 ---
 
 # Suggested reading
