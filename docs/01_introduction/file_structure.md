@@ -2,6 +2,7 @@
 layout: default
 title: File structure
 parent: Introduction
+grand_parent: Introduction
 ---
 
 # File structure

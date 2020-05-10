@@ -2,6 +2,7 @@
 layout: default
 title: UAV ROS interface
 parent: Introduction
+grand_parent: Introduction
 ---
 
 # UAV - ROS interface

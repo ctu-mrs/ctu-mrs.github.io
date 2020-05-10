@@ -2,6 +2,7 @@
 layout: default
 title: How to compile
 parent: Introduction
+grand_parent: Introduction
 ---
 
 # How to compile

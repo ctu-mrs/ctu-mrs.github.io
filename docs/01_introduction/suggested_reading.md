@@ -3,6 +3,7 @@ layout: default
 title: Suggested reading for newcomers
 parent: Introduction
 nav_oder: 1
+grand_parent: Introduction
 ---
 
 # Mandatory readings for newcomers
