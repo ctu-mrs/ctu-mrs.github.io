@@ -7,7 +7,7 @@ nav_order: 99
 
 We use [catkin tools](https://catkin-tools.readthedocs.io/en/latest/) to manage our ROS workspaces.
 Make sure you are located within the workspace when issuing the following commands.
-If your workspace is source, you can `cd` to the workspace by:
+If your workspace is sourced, you can `cd` to the workspace by:
 ```bash
 roscd
 ```
@@ -26,15 +26,15 @@ To compile a particular `<package>`:
 catkin build <package>
 ```
 
-If you use Tomas's [linux-setup](https://github.com/klaxalk/linux-setup), you can use the key binding `<leader>m` or call
+If you use Tomas's [linux-setup](https://github.com/klaxalk/linux-setup), you can use the key-binding `<leader>m` or call
 ```
 :make
-``` 
-to compile the file you are editting.
+```
+to compile the file you are editing.
 
 ## Cleaning the workspace
 
-Sometimes, a cleaning can help with, e.g., corrupted binaries (which can happen on a drone, which is not usually poweroffed properly).
+Sometimes, cleaning the workspace can help with, e.g., corrupted binaries (which can happen on a drone, which is not usually shut down properly).
 Cleaning might also help when dependencies changed too much.
 
 Cleaning the whole workspace:
