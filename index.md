@@ -1,6 +1,6 @@
 ### Welcome to out GitHub pages
 
-test
+test 2
 
 See documentations of:
 
