@@ -30,7 +30,7 @@ Most of the time, when you work in the terminal, you use bash to run programs, f
   * Skills needed:
     * moving through a file system
     * writing and running simple shell scripts
-    * grep, using |, output redirection, echo, ssh, scp, rsync, cat, mounting devices (lsblk, mount, sync, umount)
+    * grep, using shell pipe (\|), output redirection, echo, ssh, scp, rsync, cat, mounting devices (lsblk, mount, sync, umount)
 
 ### ROS - Robot Operating System
 
@@ -42,7 +42,7 @@ A lot of robotic stuff has been already programmed in ROS, including sensor driv
 Getting into ROS is simple, just follow tutorials on their webpage and don't be afraid to experiment. You can't break the drone in simulation :-).
 Prior to trying the tutorials, please install our simulation software.
 
-  * Tutorials: http://wiki.ros.org/ROS/Tutorials
+  * Tutorials: [http://wiki.ros.org/ROS/Tutorials](http://wiki.ros.org/ROS/Tutorials)
     * It is not as important to know how to create repositories; we have already prepared the structure for you. But skimming through all the tutorials is recommended.
     * Suggested tutorials: 2, 5, and further.
   * Required skills: The more, the better, most of it will come as your start working on your project.
@@ -52,9 +52,9 @@ Prior to trying the tutorials, please install our simulation software.
 GIT is a powerful versioning system.
 All our code is stored and versioned using GIT.
 It allows collaborative work between many people and can be managed completely from the terminal.
-Our repositories are hosted on http://mrs.felk.cvut.cz/gitlab or http://github.com.
+Our repositories are hosted at [http://github.com/ctu-mrs](http://github.com/ctu-mrs)
 
-  * Tutorials: https://try.github.io/levels/1/challenges/1 https://git-scm.com/docs/gittutorial
+  * Tutorials: [https://try.github.io/levels/1/challenges/1](https://try.github.io/levels/1/challenges/1), [https://git-scm.com/docs/gittutorial](https://git-scm.com/docs/gittutorial)
   * Skills needed:
     * cloning repositories
     * committing changes
@@ -70,9 +70,9 @@ It is similar to e.g. Terminator, but runs completely in the command line.
 Thus it can be used over ssh.
 It is scriptable, which makes it ideal for automating simulations, where multiple programs are running in parallel.
 
-  * https://github.com/tmux/tmux
+  * [https://github.com/tmux/tmux](https://github.com/tmux/tmux)
   * We compile tmux 2.2 from sources while installing our development environment.
-  * List of basic key bindings for our particular setup can be found here: https://github.com/klaxalk/linux-setup/wiki/tmux 
+  * List of basic key bindings for our particular setup can be found here: [https://github.com/klaxalk/linux-setup/wiki/tmux](https://github.com/klaxalk/linux-setup/wiki/tmux)
   * The key bindings should be familiar to those using vim.
 
 ### Tmuxinator - automating tmux
@@ -81,7 +81,7 @@ Tmux itself is very powerful, tmuxinator is just adding some cream on it.
 Tmuxinator uses .xml files containing the description of a tmux session.
 It allows to define and automate complex multi-terminal setups for e.g. development (one session per program) and simulations.
 
-  * https://github.com/tmuxinator/tmuxinator
+  * [https://github.com/tmuxinator/tmuxinator](https://github.com/tmuxinator/tmuxinator)
 
 ### Vim (~~recommended~~ mandatory)
 
@@ -98,6 +98,6 @@ Without a mouse, you will become much more productive, and your carpal tunnels w
   * Our programming and simulation environment is distributed with Vim already containing a lot of useful features including but not limited to **fully functional code completion** working with ROS, code snippets, ROS integration, Tmux integration, Latex development, etc.
   * Don't be afraid to ask about Vim, we will gladly help.
   * Give it a chance, have a look at following videos: 
-    * https://www.youtube.com/watch?v=_NUO4JEtkDw
-    * https://www.youtube.com/watch?v=5r6yzFEXajQ
-  * A list of particular features and key bindings used in our setup can be found here: http://github.com/klaxalk/linux-setup/wiki
+    * [https://www.youtube.com/watch?v=_NUO4JEtkDw](https://www.youtube.com/watch?v=_NUO4JEtkDw)
+    * [https://www.youtube.com/watch?v=5r6yzFEXajQ](https://www.youtube.com/watch?v=5r6yzFEXajQ)
+  * A list of particular features and key bindings used in our setup can be found here: [http://github.com/klaxalk/linux-setup/wiki](http://github.com/klaxalk/linux-setup/wiki)
