@@ -6,7 +6,7 @@ has_children: true
 ---
 # The MRS UAV system core [![Build Status](https://travis-ci.com/ctu-mrs/uav_core.svg?branch=master)](https://travis-ci.com/ctu-mrs/uav_core)
 
-![](.fig/thumbnail.jpg)
+![](fig/thumbnail.jpg)
 
 | ROS Package                                                             | Ubuntu | Status                                                                                                                                      |
 |-------------------------------------------------------------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------|
@@ -61,7 +61,7 @@ export STANDALONE="false" # disables the core nodelete manager
 export SWAP_GARMINS="false" # swap up/down garmins
 export PIXGARM="false" # true if Garmin lidar is connected throught Pixhawk
 export SENSORS="" # {garmin_down, garmin_up, rplidar, realsense_front, teraranger, bluefox_optflow, realsense_brick, bluefox_brick}
-export WORLD_NAME="simulation" # e.g.: "simulation" <= mrs_general/config/world_simulation.yaml
+export WORLD_NAME="simulation" # e.g.: "simulation" <= mrs_general/cofig/world_simulation.yaml
 export MRS_STATUS="readme" # {readme, dynamics, balloon, avoidance, control_error, gripper}
 export LOGGER_DEBUG="false" # sets the ros console output level to debug
 ```
@@ -70,9 +70,9 @@ Our shell additions
 ```source $HOME/git/uav_core/miscellaneous/shell_additions/shell_additions.sh```
 provide some useful command line aliases (git, catkin, cd) and some neccessary shell functions (wait\* commands for simulation).
 
-All the environment variables define a particular configuration of a UAV (through launch files).
+All the environment variables define a particular cofiguration of a UAV (through launch files).
 The variables apply mostly to real hardware.
-They allow us to make the **core** universal without the need of hardcoding configurations for a particular UAV, but only for a UAV type.
+They allow us to make the **core** universal without the need of hardcoding cofigurations for a particular UAV, but only for a UAV type.
 In a simulation, they are mostly *overloaded* in each tmuxinator session.
 
 ## The `cd` alias
