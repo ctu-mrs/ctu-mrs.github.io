@@ -8,7 +8,7 @@ parent: Tutorials
 
 ## Motivation
 
-If you want to change any parameters of the MAV control pipeline such as the speed constraints of a tracker, turn off collision avoidance etc., you shouldn't modify the default values in `mrs_controllers`, `mrs_trackers` etc.
+If you want to change any parameters of the MAV control pipeline such as the speed constraints of a tracker, turn off collision avoidance etc., you shouldn't modify the default values in `mrs_uav_controllers`, `mrs_uav_trackers` etc.
 Modifying the values directly in the core packages is a bad idea, because it makes your setup hard to maintain and deploy without conflicts with other people's setups.
 The correct way to go about this is to use **custom configuration files** by leveraging the `config_*` argument of the `core.launch` launchfile.
 This argument facilitates loading of a `.yaml` file for the various packages in the MAV control pipeline, which overrides the default settings from the respective package configuration files.
@@ -25,11 +25,11 @@ takeoff:
 ```
 and launch the MAV control pipeline using the command (note that it has to be called from the parent folder of the `custom_configs` subfolder)
 ```
-roslaunch mrs_general core.launch config_uav_manager:=./custom_configs/uav_manager.yaml
+roslaunch mrs_uav_general core.launch config_uav_manager:=./custom_configs/uav_manager.yaml
 ```
 This will load your custom configuration file and override the default parameters of the `uav_manager` package.
 
-Note that in the standard use-case scenario, you should use either tmuxinator or a tmux script (see e.g. [the simulation tutorial](howto) for an explanation) to start your MAV setup.
+Note that in the standard use-case scenario, you should use either tmuxinator or a tmux script (see, e.g., [the simulation tutorial](simulation/howto) for an explanation) to start your MAV setup.
 In that case, you should put the `custom_configs` subfolder in the same path as the tmuxinator/tmux script.
 This way, you can prepare a self-contained folder in the repository of your project to start your setup.
 Then all is required to transfer and test your setup on an MAV in a real-world experiment is to clone your repository, compile your stuff and start the script.
@@ -53,11 +53,11 @@ The process is simple:
 **2.** Finding out which package actually takes care of the functionality you want to modify may be a bit more tricky.
 You can follow these general guidelines:
 
-* The `mrs_controllers` package contains gains of the MPC, SO(3) etc. controllers.
-* The `mrs_odometry` package contains constants for filtering data from the rangefinder for measuring height of the MAV and other self-localization related sensors, and lists the available estimators.
+* The `mrs_uav_controllers` package contains gains of the MPC, SO(3) etc. controllers.
+* The `mrs_uav_odometry` package contains constants for filtering data from the rangefinder for measuring height of the MAV and other self-localization related sensors, and lists the available estimators.
 * The `mrs_optic_flow` package contains constants the optical flow self-localization algorithm (you'd know if you were using it).
-* The `mrs_trackers` package contains parameters for the various trackers. This is where you'll find the **collision avoidance** parameters (in the `mpc_tracker.yaml` file)!
-* The `mrs_uav_manager` package contains various general parameters, such as safety thresholds, lists of available trackers and controllers and so on, but also the **speed/acceleration/jerk/snap constraints** of the trackers.
+* The `mrs_uav_trackers` package contains parameters for the various trackers. This is where you'll find the **collision avoidance** parameters (in the `mpc_tracker.yaml` file)!
+* The `mrs_uav_managers` package contains various general parameters, such as safety thresholds, lists of available trackers and controllers and so on, but also the **speed/acceleration/jerk/snap constraints** of the trackers.
 
 If you don't find what you're looking for in this short list, you can just go through the packages and look through the files yourself.
 You can find the packages in `~/git/uav_core/ros_packages`.
