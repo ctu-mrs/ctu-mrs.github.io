@@ -14,7 +14,7 @@ for module in ~/uav_core/ros_packages/* ; do
         if [[ -f "$README_FILE" ]]; then
             echo "processing module $module"
             module_name=`basename $module`
-            echo -e "---\nlayout: default\ntitle: $module_name\nparent: Software\n---" > "$module_name.md"
+            echo -e "---\nlayout: default\ntitle: $module_name\nparent: uav_core\ngrand_parent: Software\n---" > "$module_name.md"
             cat $README_FILE >> "$module_name.md"
             #ls
         else
