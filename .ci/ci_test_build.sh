@@ -12,7 +12,7 @@ module_name="uav_core"
 echo "$README_FILE"
 if [[ -f "$README_FILE" ]]; then
     echo "processing uav_core"
-    echo -e "---\nlayout: default\ntitle: $module_name\nparent: Software\n---" > index.md
+    echo -e "---\nlayout: default\ntitle: $module_name\nparent: Software\nhas_children: true\n---" > index.md
     cat $README_FILE >> index.md
 else
     echo "readme file $README_FILE does not exists"
