@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 
+title: uav_core
 parent: Software
 ---
 # The MRS UAV system core [![Build Status](https://travis-ci.com/ctu-mrs/uav_core.svg?branch=master)](https://travis-ci.com/ctu-mrs/uav_core)
