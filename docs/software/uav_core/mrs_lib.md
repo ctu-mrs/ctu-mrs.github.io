@@ -1,7 +1,8 @@
 ---
 layout: default
 title: mrs_lib
-parent: Software
+parent: uav_core
+grand_parent: Software
 ---
 # MRS libraries [![Build Status](https://travis-ci.com/ctu-mrs/mrs_lib.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_lib)
 

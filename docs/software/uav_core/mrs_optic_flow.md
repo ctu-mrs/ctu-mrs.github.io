@@ -1,7 +1,8 @@
 ---
 layout: default
 title: mrs_optic_flow
-parent: Software
+parent: uav_core
+grand_parent: Software
 ---
 # Optical Flow Odometry [![Build Status](https://travis-ci.com/ctu-mrs/mrs_optic_flow.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_optic_flow)
 
