@@ -38,6 +38,7 @@ for module in ~/uav_core/ros_packages/* ; do
             fi
             ##### fig part end
 
+            mkdir mkdir -p $module_name/
             echo -e "---\nlayout: default\ntitle: $module_name\nparent: uav_core\ngrand_parent: Software\n---" > "$module_name/index.md"
             cat $README_FILE >> "$module_name/index.md"
             
