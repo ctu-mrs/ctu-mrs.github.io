@@ -11,7 +11,7 @@ commit_git() {
   # Current month and year, e.g: Apr 2018
   dateAndMonth=`date "+%b %Y"`
   # Stage the modified files in docs/software/uav_core
-  git add -f docs/software/uav_core/*.md
+  git add -f docs/software/uav_core/*
   # Create a new commit with a custom build message
   # with "[skip ci]" to avoid a build loop
   # and Travis build number for reference
