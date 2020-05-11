@@ -31,8 +31,8 @@ for module in ~/uav_core/ros_packages/* ; do
             FIG_FOLDER="$module/.fig"
             if [ -d "$FIG_FOLDER" ]; then
                 echo "copy figs from $FIG_FOLDER to $module_name/.fig/"
-                mkdir mkdir -p $module_name/.fig/
-                cp -r $FIG_FOLDER/* $module_name/.fig/
+                mkdir mkdir -p $module_name/fig/
+                cp -r $FIG_FOLDER/* $module_name/fig/
             else
                 echo "FIG_FOLDER $FIG_FOLDER does not exists"
             fi
@@ -41,6 +41,8 @@ for module in ~/uav_core/ros_packages/* ; do
             mkdir mkdir -p $module_name/
             echo -e "---\nlayout: default\ntitle: $module_name\nparent: uav_core\ngrand_parent: Software\n---" > "$module_name/index.md"
             cat $README_FILE >> "$module_name/index.md"
+            sed -i 's/.fig/fig/g' "$module_name/index.md"
+
             
         else
             echo "readme file $README_FILE does not exists"
