@@ -7,7 +7,7 @@ cd $TRAVIS_BUILD_DIR/docs/software/
 mkdir mkdir -p uav_core
 cd uav_core
 
-README_FILE="~/uav_core/README.md"
+README_FILE="$TRAVIS_BUILD_DIR/uav_core/README.md"
 echo "$README_FILE"
 if [[ -f "$README_FILE" ]]; then
     echo "processing uav_core"
