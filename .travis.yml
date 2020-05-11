@@ -9,10 +9,8 @@ jobs:
   include:
   - stage: build
     before_install:
-    - "./.ci/ci_before_install.sh"
+    - ./.ci/ci_before_install.sh
     before_script: 
     script:
-    - "./.ci/ci_test_build.sh"
-before_install:
-- openssl aes-256-cbc -K $encrypted_f2b1af48ae35_key -iv $encrypted_f2b1af48ae35_iv
-  -in deploy_key_github.enc -out ~\/.ssh/temp_move/deploy_key_github -d
+    - ./.ci/ci_test_build.sh
+    - ./.ci/travis-push.sh
