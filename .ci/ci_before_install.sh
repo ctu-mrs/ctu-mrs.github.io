@@ -22,6 +22,7 @@ gitman install
 echo "clone simulation"
 cd 
 git clone git@github.com:ctu-mrs/simulation.git 
+cd simulation
 gitman install
 
 echo "install part ended"
