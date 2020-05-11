@@ -22,7 +22,7 @@ upload_files() {
   # Remove existing "origin"
   git remote rm origin
   # Add new "origin" with access token in the git URL for authentication
-  git remote add origin git@github.com:ctu-mrs/ctu-mrs.github.io.git > /dev/null 2>&1
+  git remote add origin https://penickar:${GH_TOKEN}@github.com/ctu-mrs/ctu-mrs.github.io.git > /dev/null 2>&1
   git push origin master --quiet
 }
 
