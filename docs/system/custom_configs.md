@@ -1,7 +1,7 @@
 ---
 layout: default
-title: How to use custom config files
-parent: Tutorials
+title: Custom config files
+parent: System
 ---
 
 # How to use custom config files
