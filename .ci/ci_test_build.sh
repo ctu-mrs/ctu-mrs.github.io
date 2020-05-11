@@ -8,6 +8,7 @@ mkdir mkdir -p uav_core
 cd uav_core
 
 README_FILE=~/uav_core/README.md
+module_name="uav_core"
 echo "$README_FILE"
 if [[ -f "$README_FILE" ]]; then
     echo "processing uav_core"
