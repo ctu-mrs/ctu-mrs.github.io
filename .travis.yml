@@ -14,4 +14,4 @@ jobs:
     script:
     - ./.ci/ci_test_build.sh
     after_success:
-    ./.ci/travis-push.sh
+    - ./.ci/travis-push.sh
