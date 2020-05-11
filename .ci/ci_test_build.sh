@@ -14,9 +14,9 @@ for module in ~/uav_core/ros_packages/* ; do
         if [[ -f "$README_FILE" ]]; then
             echo "processing module $module"
             module_name=`basename $module`
-            echo -e "---\nlayout: default\ntitle: $module_name\nparent: Software\n---" >> "$module_name.md"
+            echo -e "---\nlayout: default\ntitle: $module_name\nparent: Software\n---" > "$module_name.md"
             cat $README_FILE >> "$module_name.md"
-            ls
+            #ls
         else
             echo "readme file $README_FILE does not exists"
         fi
@@ -24,6 +24,8 @@ for module in ~/uav_core/ros_packages/* ; do
 done
 
 ls
+git status
+
 
 
 echo "Ended"
