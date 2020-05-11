@@ -27,5 +27,4 @@ ls
 git status
 
 
-
 echo "Ended"
