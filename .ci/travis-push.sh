@@ -34,8 +34,8 @@ commit_git
 
 # Attempt to commit to git only if "git commit" succeeded
 if [ $? -eq 0 ]; then
-  echo "A new commit with changed country JSON files exists. Uploading to GitHub"
+  echo "A new commit with changed md files exists. Uploading to GitHub"
   upload_files
 else
-  echo "No changes in country JSON files. Nothing to do"
+  echo "No changes in md files. Nothing to do"
 fi
