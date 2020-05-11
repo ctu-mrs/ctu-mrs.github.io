@@ -15,7 +15,7 @@ if [[ -f "$README_FILE" ]]; then
     cat $README_FILE >> index.md
 else
     echo "readme file $README_FILE does not exists"
-done
+fi
 
 for module in ~/uav_core/ros_packages/* ; do
     if [ -d "$module" ]; then
