@@ -6,7 +6,7 @@ grand_parent: Software
 ---
 # MRS UAV Managers [![Build Status](https://travis-ci.com/ctu-mrs/mrs_uav_managers.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_uav_managers)
 
-![](.fig/thumbnail.jpg)
+![](fig/thumbnail.jpg)
 
 This package contains *high-level* flight managers.
 
@@ -54,7 +54,7 @@ This package contains *high-level* flight managers.
 * provides an **obstacle bumper** feature
   * has priority over user-provided references
   * for slow-flight only
-* **default config file**: [control_manager.yaml](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/config/default/control_manager.yaml)
+* **default cofig file**: [control_manager.yaml](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/cofig/default/control_manager.yaml)
 * **launch file**: [control_manager.launch](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/launch/control_manager.launch)
 
 ## UavManager
@@ -79,7 +79,7 @@ This package contains *high-level* flight managers.
   * triggers a landing if it exceeds a limit
 * provides a **flight timer**
   * triggers a landing if it exceeds a limit
-* **default config file**: [uav_manager.yaml](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/config/default/uav_manager.yaml)
+* **default cofig file**: [uav_manager.yaml](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/cofig/default/uav_manager.yaml)
 * **launch file**: [uav_manager.launch](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/launch/uav_manager.launch)
 
 ## ConstraintManager
@@ -89,7 +89,7 @@ This package contains *high-level* flight managers.
 * automatically switches to a fallback set of constraints if the current ones are not allowed
 * provides a service for switching to a desired set of constraints
 * only works when [mrs_uav_odometry](https://github.com/ctu-mrs/mrs_uav_odometry) is used
-* **default config files**: [constraints.yaml](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/config/default/constraint_manager/constraints.yaml), [constraint_manager.yaml](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/config/default/constraint_manager/constraint_manager.yaml)
+* **default cofig files**: [constraints.yaml](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/cofig/default/constraint_manager/constraints.yaml), [constraint_manager.yaml](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/cofig/default/constraint_manager/constraint_manager.yaml)
 * **launch file**: [constraint_manager.launch](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/launch/constraint_manager.launch)
 
 ## GainManager
@@ -98,5 +98,5 @@ This package contains *high-level* flight managers.
 * automatically switches to a fallback set of gains if the current ones are not allowed
 * provides a service for switching to a desired set of gains
 * only works when [mrs_uav_odometry](https://github.com/ctu-mrs/mrs_uav_odometry) is used
-* **default config files**: [gains.yaml](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/config/default/gain_manager/gains.yaml), [gain_manager.yaml](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/config/default/gain_manager/gain_manager.yaml)
+* **default cofig files**: [gains.yaml](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/cofig/default/gain_manager/gains.yaml), [gain_manager.yaml](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/cofig/default/gain_manager/gain_manager.yaml)
 * **launch file**: [gain_manager.launch](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/launch/gain_manager.launch)

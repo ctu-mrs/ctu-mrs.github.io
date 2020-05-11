@@ -6,7 +6,7 @@ grand_parent: Software
 ---
 # Optical Flow Odometry [![Build Status](https://travis-ci.com/ctu-mrs/mrs_optic_flow.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_optic_flow)
 
-![](.fig/thumbnail.jpg)
+![](fig/thumbnail.jpg)
 
 ## Description
 
@@ -71,7 +71,7 @@ For generations in between, either may or may not work, try it starting with NEO
 
 Make sure that lightdm is the default login manager. Choose option "lightdm" while running:
 ```bash
-sudo dpkg-reconfigure lightdm
+sudo dpkg-recofigure lightdm
 ```
 
 The lightdm has to be started for the GPU to show as a OpenCL device.

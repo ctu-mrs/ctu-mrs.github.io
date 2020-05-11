@@ -6,11 +6,11 @@ grand_parent: Software
 ---
 # MRS UAV general [![Build Status](https://travis-ci.com/ctu-mrs/mrs_uav_general.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_uav_general)
 
-![](.fig/thumbnail.jpg)
+![](fig/thumbnail.jpg)
 
 ## Overview
 
-This package contains configuration files, launch files, and utilities that are over-arching the packages in the [core](https://github.com/ctu-mrs/uav_core).
+This package contains cofiguration files, launch files, and utilities that are over-arching the packages in the [core](https://github.com/ctu-mrs/uav_core).
 
 * **sensors.launch** - launches sensor drivers and produces static TFs based on the environment variables in the `.bashrc` (applies only for real UAVs)
 * **core.launch** - launches the control pipeline, consisting of

@@ -6,7 +6,7 @@ grand_parent: Software
 ---
 # MRS UAV Testing [![Build Status](https://travis-ci.com/ctu-mrs/mrs_uav_testing.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_uav_testing)
 
-![](.fig/mrs_testing.jpg)
+![](fig/mrs_testing.jpg)
 
 ## Automated simulation tests of the [uav_core](https://github.com/ctu-mrs/uav_core)
 

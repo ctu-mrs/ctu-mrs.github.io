@@ -6,7 +6,7 @@ grand_parent: Software
 ---
 # MRS UAV Odometry [![Build Status](https://travis-ci.com/ctu-mrs/mrs_uav_odometry.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_uav_odometry)
 
-![](.fig/thumbnail.jpg)
+![](fig/thumbnail.jpg)
 
 This package provides state estimation of the UAV dynamics based on sensor fusion of onboard sensors.
 The estimated states are:
