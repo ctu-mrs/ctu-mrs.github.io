@@ -1,7 +1,8 @@
 ---
 layout: default
 title: mrs_uav_controllers
-parent: Software
+parent: uav_core
+grand_parent: Software
 ---
 # MRS UAV Controllers [![Build Status](https://travis-ci.com/ctu-mrs/mrs_uav_controllers.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_uav_controllers)
 

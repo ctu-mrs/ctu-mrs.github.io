@@ -1,7 +1,8 @@
 ---
 layout: default
 title: mrs_uav_status
-parent: Software
+parent: uav_core
+grand_parent: Software
 ---
 # MRS UAV Status [![Build Status](https://travis-ci.com/ctu-mrs/mrs_uav_status.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_uav_status)
 

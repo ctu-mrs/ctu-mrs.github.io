@@ -1,7 +1,8 @@
 ---
 layout: default
 title: mrs_mavros_interface
-parent: Software
+parent: uav_core
+grand_parent: Software
 ---
 # MRS Mavros Interface [![Build Status](https://travis-ci.com/ctu-mrs/mrs_mavros_interface.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_mavros_interface)
 

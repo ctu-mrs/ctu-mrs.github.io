@@ -1,7 +1,8 @@
 ---
 layout: default
 title: mrs_bumper
-parent: Software
+parent: uav_core
+grand_parent: Software
 ---
 # MRS Bumper [![Build Status](https://travis-ci.com/ctu-mrs/mrs_bumper.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_bumper)
 # ![](.fig/bumper.jpg)

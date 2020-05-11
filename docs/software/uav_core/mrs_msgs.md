@@ -1,7 +1,8 @@
 ---
 layout: default
 title: mrs_msgs
-parent: Software
+parent: uav_core
+grand_parent: Software
 ---
 # MRS ROS messages [![Build Status](https://travis-ci.com/ctu-mrs/mrs_msgs.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_msgs)
 

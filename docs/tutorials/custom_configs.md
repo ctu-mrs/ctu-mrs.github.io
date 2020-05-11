@@ -43,14 +43,14 @@ Well I'm not going to write a how-to for every single parameter in the MAV pipel
 
 The process is simple:
 
-1) decide which parameter you want to change,
-2) find out in which package to change it,
-3) create a config file with your updated value,
-4) update the `core.launch` line in your start script with the new file.
+1. decide which parameter you want to change,
+2. find out in which package to change it,
+3. create a config file with your updated value,
+4. update the `core.launch` line in your start script with the new file.
 
-**1)** Deciding which parameter to change depends on your specific need and you should probably know it the best, but in case you are unsure, you can consult some senior student from the lab.
+**1.** Deciding which parameter to change depends on your specific need and you should probably know it the best, but in case you are unsure, you can consult some senior student from the lab.
 
-**2)** Finding out which package actually takes care of the functionality you want to modify may be a bit more tricky.
+**2.** Finding out which package actually takes care of the functionality you want to modify may be a bit more tricky.
 You can follow these general guidelines:
 
 * The `mrs_controllers` package contains gains of the MPC, SO(3) etc. controllers.
@@ -62,11 +62,11 @@ You can follow these general guidelines:
 If you don't find what you're looking for in this short list, you can just go through the packages and look through the files yourself.
 You can find the packages in `~/git/uav_core/ros_packages`.
 
-**3)** Create the config file as explained above.
+**3.** Create the config file as explained above.
 Make sure to keep the same structure of the parameter naming as in the default config file
 The namespace nesting in the `yaml` format can be a bit unclear sometimes, but it's important to get it right, otherwise the parameter will not be overriden and the default value will be used!
 You should also name the config file the same as was the name of the original file, containing the default value.
 
-**4)** Update your start script as explained above.
+**4.** Update your start script as explained above.
 Note that you have to change the part of the `config_*` argument of the `core.launch` launchfile after the underscore to the name of the respective config file (without the `.yaml` appendix).
 For example if you were to change a parameter, which you've found in the `mpc_tracker.yaml` file, use `config_mpc_tracker:=./custom_configs/mpc_tracker.yaml`.
