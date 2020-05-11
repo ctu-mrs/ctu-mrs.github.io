@@ -21,15 +21,26 @@ fi
 for module in ~/uav_core/ros_packages/* ; do
     if [ -d "$module" ]; then
         README_FILE="$module/README.md"
-        FIG_FOLDER="$module/fig"
+        
         echo "$README_FILE"
         if [[ -f "$README_FILE" ]]; then
             echo "processing module $module"
             module_name=`basename $module`
-            mkdir mkdir -p $module_name/fig
+
+            ##### fig part begin
+            FIG_FOLDER="$module/.fig"
+            if [ -d "$FIG_FOLDER" ]; then
+                echo "copy figs from $FIG_FOLDER to $module_name/.fig/"
+                mkdir mkdir -p $module_name/.fig/
+                cp -r $FIG_FOLDER/* $module_name/.fig/
+            else
+                echo "FIG_FOLDER $FIG_FOLDER does not exists"
+            fi
+            ##### fig part end
+
             echo -e "---\nlayout: default\ntitle: $module_name\nparent: uav_core\ngrand_parent: Software\n---" > "$module_name/index.md"
             cat $README_FILE >> "$module_name.md"
-            cp -r $FIG_FOLDER $module_name
+            
         else
             echo "readme file $README_FILE does not exists"
         fi
