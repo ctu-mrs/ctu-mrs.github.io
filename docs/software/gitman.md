@@ -37,7 +37,7 @@ Each sub-repository is described by the following section:
 ```
 Such section is located twice in the file, first for the **testing** configuration and second for the *locked* **stable** configuration of the sub-repository.
 
-## *stable* vs. *testing* configuration
+## *stable* vs. *testing* loadout
 
 Gitman remembers two checkout versions of each package. The **stable** one is a particular *locked* commit (specific SHA) of the sub-repository.
 All sub-repositories can be set to the **stable** commit by issuing:
@@ -59,21 +59,3 @@ Then issue
 gitman lock
 ```
 to set the commit SHA as the **stable** and commit the *.gitman.yml* files.
-
-## creating new ROS package version
-
-1. update the **CHANGELOG.rst** file by
-  ```bash
-  catkin_generate_changelog
-  ```
-2. edit the changelog and remove unwanted commit messages (like "update"):
-  ```bash
-  vim CHANGELOG.rst
-  ```
-3. in the case that you update **CHANGELOG.rst** file, commit changes.
-4. generate new release. This will automatically increment the version in *package.xml* and create new git tag:
-  ```bash
-  catkin_prepare_release
-  ```
-5. push the changes
-
