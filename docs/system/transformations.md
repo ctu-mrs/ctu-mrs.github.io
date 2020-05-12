@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Transformations
-parent: The UAV System
+parent: The UAV system
 ---
 
 # Transformations
