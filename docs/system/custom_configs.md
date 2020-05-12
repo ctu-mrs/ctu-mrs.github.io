@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Custom config files
-parent: System
+parent: The UAV System
 ---
 
 # How to use custom config files

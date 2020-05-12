@@ -1,8 +1,8 @@
 ---
 layout: default
-title: System
+title: The UAV system
 nav_order: 3
 has_children: true
 ---
 
-# System
+# The UAV System

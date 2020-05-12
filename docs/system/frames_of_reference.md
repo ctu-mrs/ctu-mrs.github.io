@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Frames of reference
-parent: System
+parent: The UAV System
 ---
 
 # Frames of Reference
