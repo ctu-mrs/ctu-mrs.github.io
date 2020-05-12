@@ -4,69 +4,70 @@ title: Custom config files
 parent: The UAV system
 ---
 
-# How to use custom config files
+# How to use custom config files for uav_core modules
 
 ## Motivation
 
-If you want to change any parameters of the MAV control pipeline such as the speed constraints of a tracker, turn off collision avoidance etc., you shouldn't modify the default values in `mrs_uav_controllers`, `mrs_uav_trackers` etc.
-Modifying the values directly in the core packages is a bad idea, because it makes your setup hard to maintain and deploy without conflicts with other people's setups.
-The correct way to go about this is to use **custom configuration files** by leveraging the `config_*` argument of the `core.launch` launchfile.
-This argument facilitates loading of a `.yaml` file for the various packages in the MAV control pipeline, which overrides the default settings from the respective package configuration files.
+There are many configuration files in the [uav_core](https://github.com/ctu-mrs/uav_core).
+They contain many options to modify the behavior of the control and estimation pipeline.
+Since everyone needs to change some values for his experiments, the uav_core modules contain only a *general defaults* for each supported UAV type.
+In this tutorial, we provide an efficient way ho customize the configuration **without the need to change** any files in the uav_core repository.
+It is done by creating a custom configuration files which contain only the option you would like to change from the default values.
+Those **custom configs** can be loaded over the defaults without the need to change the uav_core itself.
+
+## The config file hierarchy
+
+The ROS launch files in the **uav_core** load three levels of configuration files.
+1. A topmost general configuration, typically stored in a **default** subfolder of the packages.
+2. A UAV-type specific configuration, which is already divided into two groups: for **simulation** and the real **uav**. The particular files are automatically selected using the environment variables `$UAV_TYPE` and `$RUN_TYPE`.
+3. A user-defined **custom config** file provided through the launch file argument, which is the subject of this manual.
 
 ## Activating a custom config file
 
-The simplest example of how to use this technique is to create a `.yaml` file with your value of the parameter that you want to change and point the respective argument of `core.launch` to its filepath.
-Let's say that you want to change the controller, which will be used after takeoff, to SO(3) (the default is MPC).
-Create a file `uav_manager.yaml` in a subfolder `custom_configs` and fill it with the following lines:
+We assume you already have a custom *tmuxinator* session, as suggested by this [manual](https://ctu-mrs.github.io/docs/simulation/howto.html).
+Let's say that you want to change the controller, which will be used after takeoff.
+This option is originally defined in [uav_manager.yaml](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/config/default/control_manager.yaml), in the [mrs_uav_manager](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/config/default/uav_manager.yaml) package.
+An example of how to use this technique is to create a `.yaml` file with the value of the parameter that you want to change.
+The file is then passed to the [core.launch](https://github.com/ctu-mrs/mrs_uav_general/blob/master/launch/core.launch) launchfile.
+Create a file `uav_manager.yaml` in a subfolder `custom_configs` within your tmuxinator session folder and fill it with the following lines:
 ```
 takeoff:
   after_takeoff:
     controller: "So3Controller"
 ```
-and launch the MAV control pipeline using the command (note that it has to be called from the parent folder of the `custom_configs` subfolder)
+Then add an optional argument to the [core.launch](https://github.com/ctu-mrs/mrs_uav_general/blob/master/launch/core.launch) line in your tmuxinator session:
 ```
 roslaunch mrs_uav_general core.launch config_uav_manager:=./custom_configs/uav_manager.yaml
 ```
-This will load your custom configuration file and override the default parameters of the `uav_manager` package.
+This will load your custom configuration file and it will override the default parameters from the [mrs_uav_managers](https://github.com/ctu-mrs/mrs_uav_managers) package.
 
-Note that in the standard use-case scenario, you should use either tmuxinator or a tmux script (see, e.g., [the simulation tutorial](simulation/howto) for an explanation) to start your MAV setup.
-In that case, you should put the `custom_configs` subfolder in the same path as the tmuxinator/tmux script.
-This way, you can prepare a self-contained folder in the repository of your project to start your setup.
-Then all is required to transfer and test your setup on an MAV in a real-world experiment is to clone your repository, compile your stuff and start the script.
-No need to run around in panic, wondering why collision avoidance is turned on, trying to manually edit the correct file in the respective package to disable it only to have this change overriden the moment someone does a `git pull` in `uav_core` (we've all been there :)!
+We strongly suggest using [tmuxinator](https://github.com/ctu-mrs/simulation/tree/master/example_tmux_scripts) (for simulation) or a [tmux](https://github.com/ctu-mrs/uav_core/tree/master/tmux_scripts) (for a real UAV) scripts for starting the simulation.
+In both cases, we usually create a subfolder `custom_configs` in the same path as the tmuxinator/tmux script.
+This way, you can prepare a self-contained folder in your own repository, which you can save, version it with git and change independently on the uav_core.
 
-## Deducing what parameter to change in which file
+**The lesson** from this should be:
 
-OK, so you know how to change the after-takeoff controller, but what about the collision avoidance parameters?
-What if you want to change the speed constraints of the used tracker?
-Well I'm not going to write a how-to for every single parameter in the MAV pipeline - you should learn how to find these and change them yourself.
+* never edit config files directly in somewhere in [uav_core],
+* always keep the **custom config** files at your tmux/tmuxinator session.
 
-The process is simple:
+## Which parameters should I change?
 
-1. decide which parameter you want to change,
-2. find out in which package to change it,
-3. create a config file with your updated value,
-4. update the `core.launch` line in your start script with the new file.
+Deducing which parameters you want to change depends on your particular scenario.
+We recommend to go through the description of all our packages ([link](https://ctu-mrs.github.io/docs/software/uav_core)) and familiarize yourself with their functions.
+Their config files are typically contained within the `config/default` subfolder of each repository.
 
-**1.** Deciding which parameter to change depends on your specific need and you should probably know it the best, but in case you are unsure, you can consult some senior student from the lab.
+## How should I name the *core.launch* argument?
 
-**2.** Finding out which package actually takes care of the functionality you want to modify may be a bit more tricky.
-You can follow these general guidelines:
+Each program in each package the `[core.launch](https://github.com/ctu-mrs/mrs_uav_general/blob/master/launch/core.launch)` has an argument dedicated to the program's custom config file.
+The simplest way how to find the argument is to look into the launch file.
+However, generally, the argument name has a pattern `config_node_name`.
+E.g., `config_control_manager`, `config_odometry` or `config_mpc_controller`.
 
-* The `mrs_uav_controllers` package contains gains of the MPC, SO(3) etc. controllers.
-* The `mrs_uav_odometry` package contains constants for filtering data from the rangefinder for measuring height of the MAV and other self-localization related sensors, and lists the available estimators.
-* The `mrs_optic_flow` package contains constants the optical flow self-localization algorithm (you'd know if you were using it).
-* The `mrs_uav_trackers` package contains parameters for the various trackers. This is where you'll find the **collision avoidance** parameters (in the `mpc_tracker.yaml` file)!
-* The `mrs_uav_managers` package contains various general parameters, such as safety thresholds, lists of available trackers and controllers and so on, but also the **speed/acceleration/jerk/snap constraints** of the trackers.
+## Complete examples
 
-If you don't find what you're looking for in this short list, you can just go through the packages and look through the files yourself.
-You can find the packages in `~/git/uav_core/ros_packages`.
+An example dedicated to **custom configs** is located within our tmux session examples:
+[https://github.com/ctu-mrs/simulation/tree/master/example_tmux_scripts](https://github.com/ctu-mrs/simulation/tree/master/example_tmux_scripts)
+under the name `one_drone_tmuxinator_custom_configs`.
 
-**3.** Create the config file as explained above.
-Make sure to keep the same structure of the parameter naming as in the default config file
-The namespace nesting in the `yaml` format can be a bit unclear sometimes, but it's important to get it right, otherwise the parameter will not be overriden and the default value will be used!
-You should also name the config file the same as was the name of the original file, containing the default value.
-
-**4.** Update your start script as explained above.
-Note that you have to change the part of the `config_*` argument of the `core.launch` launchfile after the underscore to the name of the respective config file (without the `.yaml` appendix).
-For example if you were to change a parameter, which you've found in the `mpc_tracker.yaml` file, use `config_mpc_tracker:=./custom_configs/mpc_tracker.yaml`.
+Also, the [mrs_uav_testing](https://github.com/ctu-mrs/mrs_uav_testing) package has its test sessions customized this way.
+See [https://github.com/ctu-mrs/mrs_uav_testing/tree/master/tmux](https://github.com/ctu-mrs/mrs_uav_testing/tree/master/tmux).
