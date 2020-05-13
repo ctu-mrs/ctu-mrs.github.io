@@ -14,3 +14,6 @@ aux_links:
     - "//github.com/ctu-mrs"
   "MRS internal Gitlab":
     - "//mrs.felk.cvut.cz/gitlab"
+
+plugins:
+  - jemoji
