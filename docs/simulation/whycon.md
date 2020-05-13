@@ -86,8 +86,8 @@ Parameter "targets" sets how many targets will whycon try to track, if you set i
 Now, we need to add cameras into the simulation, and targets on the drones that we want to track. Go to your simulation-launching script and find the spawn commands. You can add cameras and whycon targets like this:
 
 ```
-- sleep 5; spawn 1 --run --delete --enable-rangefinder --enable-ground-truth --enable-mobius-camera-front
-- sleep 5; spawn 2 --run --delete --enable-rangefinder --enable-ground-truth --enable-whycon-box
+- sleep 5; spawn_uav 1 --run --delete --enable-rangefinder --enable-ground-truth --enable-mobius-camera-front
+- sleep 5; spawn_uav 2 --run --delete --enable-rangefinder --enable-ground-truth --enable-whycon-box
 ```
 
 ```

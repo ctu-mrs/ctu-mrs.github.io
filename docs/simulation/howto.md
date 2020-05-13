@@ -1,4 +1,4 @@
----
+= --- =
 layout: default
 title: How to simulate
 parent: Simulation
@@ -12,9 +12,9 @@ Here we will describe each step required to make the drone fly.
 
 ## Attention please
 
-**Following commands are not meant to be issued manually.**
-Typically, we automate all of it; please follow to the end of this page for more info.
-People usually miss this information, what should we do to attract your attention here?
+> :warning: **Following commands are not meant to be issued manually.**
+>
+> Typically, we automate all of it; please follow to the end of this page for more info.
 
 ## 1. running the Gazebo simulator
 
@@ -25,22 +25,35 @@ roslaunch mrs_simulation simulation.launch gui:=true
 
 ## 2. spawn a drone (drones)
 
+> :information_source: **If you are not using simulation together with the [mrs_uav_core](https://github.com/ctu-mrs/uav_core) repository**:
+>
+> * Alias `spawn_uav=rosrun mrs_simulation spawn` doesn't exist for you and then you have to write the whole command!
+> * The autocompletion will not be available for you either.
+
 A drone is added to the running simulation dynamically by running
 ```bash
-rosrun mrs_simulation spawn
+spawn_uav
 ```
 It has its help (--help), so we will examine just one of many uses.
+
 The command
 ```bash
-waitForSimulation; rosrun mrs_simulation spawn 1 --run --delete --enable-rangefinder
+waitForSimulation; spawn_uav 1 --run --delete --enable-rangefinder
 
 ```
-will wait for the simulation, then it will spawn a UAV with ID 1 (named uav1), and it enables a down-looking rangefinder sensor.
+will wait for the simulation, then it will spawn a UAV with frame DJI F550 (default type) with ID 1 (named uav1), and it enables a down-looking rangefinder sensor.
 After it is spawned, you can already see its ROS interface by looking at ROS topics, e.g., by running
 ```bash
 rostopic list
 ```
 The UAV should also be visible in the simulator itself.
+
+Not all sensors have to be available for selected type of UAV. Please check possible settings for
+the selected type of UAV by calling command:
+
+```bash
+spawn_uav --$UAV_TYPE --available-sensors
+```
 
 ## 3. run the control core
 
