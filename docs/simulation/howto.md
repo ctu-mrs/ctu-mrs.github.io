@@ -10,11 +10,9 @@ If you have everything installed and compiled, the next step is to test it in th
 The running simulation consists of several steps, which are usually **automated** using a **tmuxinator** script.
 Here we will describe each step required to make the drone fly.
 
-## Attention please
+:warning: **Attention please: Following commands are not meant to be issued manually.**
 
-> :warning: **Following commands are not meant to be issued manually.**
->
-> Typically, we automate all of it; please follow to the end of this page for more info.
+* Typically, we automate all of it; please follow to the end of this page for more info.
 
 ## 1. running the Gazebo simulator
 
@@ -25,10 +23,10 @@ roslaunch mrs_simulation simulation.launch gui:=true
 
 ## 2. spawn a drone (drones)
 
-> :information_source: **If you are not using simulation together with the [mrs_uav_core](https://github.com/ctu-mrs/uav_core) repository**:
->
-> * Alias `spawn_uav=rosrun mrs_simulation spawn` doesn't exist for you and then you have to write the whole command!
-> * The autocompletion will not be available for you either.
+:information_source: **If you are not using simulation together with the [mrs_uav_core](https://github.com/ctu-mrs/uav_core) repository**:
+
+* Alias `spawn_uav=rosrun mrs_simulation spawn` doesn't exist for you and then you have to write the whole command!
+* The autocompletion will not be available for you either.
 
 A drone is added to the running simulation dynamically by running
 ```bash
