@@ -10,9 +10,9 @@ If you have everything installed and compiled, the next step is to test it in th
 The running simulation consists of several steps, which are usually **automated** using a **tmuxinator** script.
 Here we will describe each step required to make the drone fly.
 
-| :warning: **Attention please: Following commands are not meant to be issued manually.**       |
-| --------------------------------------------------------------------------------------------- |
-| -- Typically, we automate all of it; please follow to the end of this page for more info.     |
+| :warning: **Attention please: Following commands are not meant to be issued manually.**        |
+| :--------------------------------------------------------------------------------------------- |
+| -- Typically, we automate all of it; please follow to the end of this page for more info.      |
 
 ## 1. running the Gazebo simulator
 
