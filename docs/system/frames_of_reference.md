@@ -8,7 +8,7 @@ parent: The UAV system
 
 ![](fig/tf_rviz.png)
 
-As described in "Transformations", the MRS control system enables to send commands to a UAV in all coordinate frames for which a transformation to the control frame exists. The coordinate frames that are used within MRS system are listed below. 
+As described in [Transformations](transformations.md), the MRS control system enables to send commands to a UAV in all coordinate frames for which a transformation to the control frame exists. The coordinate frames that are used within MRS system are listed below. 
 
 The graphical illustration of relations among particular frames can be displayed with rqt utility tf_tree by executing command 
 ```bash
@@ -29,6 +29,7 @@ The most important frames, that are used in MRS system and are automatically cre
   * coordinate frame used for stable odometry
 * "gps_origin"
   * coordinate frame representing the GPS frame
+  * enables commanding multiple UAVs in a common coordinate frame
 
 ## Sensor frames
 In addition to elementary frames, that are automatically created for each UAV, coordinate frames of sensors are created according to configuration of particular UAVs specified in a spawn command. The sensor frames includes
