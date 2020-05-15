@@ -24,7 +24,7 @@ grand_parent: Software
   * based on a unique *realtime simulated Model Predictive Control* approach
   * originally published in: `Baca, et al., "Model Predictive Trajectory Tracking and Collision Avoidance for Reliable Outdoor Deployment of Unmanned Aerial Vehicles", IROS 2018`, [link](http://mrs.felk.cvut.cz/data/papers/baca-mpc-tracker.pdf)
   * produces feasible reference which is smooth up to snap and satisfies given state constraints.
-  * can smoothly track trajectories
+  * can smoothly can trajectories
   * can efficiently stop a UAV from any previous motion
   * can be activated in mid-flight while in motion
 * "Line tracker"
@@ -69,7 +69,7 @@ MpcTracker:
 ```
 creates an instance of a tracker; in this case, `mrs_uav_trackers/MpcTracker` is loaded under the *alias* `MpcTracker`.
 Multiple instances are allowed and are used to introduce the same tracker with various cofigurations that can be switched in mid-flight.
-Once the controller alias is defined within `trackers.yaml`, it needs to be part of the *trackers* list within `control_manager.yaml` ([example](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/cofig/default/control_manager.yaml)) config:
+Once the controller alias is defined within `trackers.yaml`, it needs to be part of the *trackers* list within `control_manager.yaml` ([example](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/cofig/default/control_manager.yaml)) cofig:
 ```yaml
 # - list of names of dynamically loaded trackers
 trackers : [
