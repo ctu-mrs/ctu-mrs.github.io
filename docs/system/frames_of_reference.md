@@ -11,9 +11,13 @@ parent: The UAV system
 As described in the [Transformations](transformations.md) manual, the MRS control system enables to send commands to a UAV in all coordinate frames for which a transformation to the control frame exists.
 The coordinate frames that are used within MRS system are listed below. 
 
-The graphical illustration of relations among particular frames can be displayed with rqt utility tf_tree by executing command 
+The graphical illustration of relations among particular frames can be displayed with rqt utility `tf_tree` by executing command:
 ```bash
 rosrun rqt_tf_tree rqt_tf_tree
+```
+or using the main RQT application:
+```bash
+rqt
 ```
 
 ## Multi-frame Localization Problem
@@ -28,12 +32,12 @@ The most important frames, that are used in MRS system and are automatically cre
   * Flight Controller Unit coordinate frame, a.k.a., the **body frame** of the UAV
   * x-axis is parrallel to the thrust force produced by the propellers
 * **\<uav_name\>/fcu_untilted**
-  * coordinate frame with coincident center and orientation with "fcu", but xy-plane parallel to xy-plane of gps_origin frame 
-  * enables commanding UAV in "fcu" frame without affection by actual tilt
+  * coordinate frame with coincident center and orientation with the `<uav_name>/fcu` frame, but xy-plane parallel to xy-plane of of the world.
+  * enables commanding UAV in the `<uav_name>/fcu` frame without being affected by the UAV tilt
 * **\<uav_name\>/local_origin**
   * coordinate frame with center and orientation cooincident with the starting point and orientation of the UAV 
 * **\<uav_name\>/stable_origin**
-  * coordinate frame used for stable odometry
+  * coordinate frame used for stable odometry, which does not jump when a state estimator is switched
 * **\<uav_name\>/gps_origin**
   * coordinate frame representing the GPS frame
   * enables commanding multiple UAVs in a common coordinate frame
