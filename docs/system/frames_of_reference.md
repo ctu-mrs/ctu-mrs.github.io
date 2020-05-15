@@ -16,13 +16,17 @@ The graphical illustration of relations among particular frames can be displayed
 rosrun rqt_tf_tree rqt_tf_tree
 ```
 
+## Multi-frame Localization Problem
+
+TODO: Explain why our *world* frames are *children* of the body frame of the UAV, not the other way around.
+
 ## Elementary frames
 
 The most important frames, that are used in MRS system and are automatically created for each UAV, are:
 
 * **\<uav_name\>/fcu**
-  * flight control unit coordinate frame, which is used as a base frame of the UAV 
-  * x-axis is parrallel
+  * Flight Controller Unit coordinate frame, a.k.a., the **body frame** of the UAV
+  * x-axis is parrallel to the thrust force produced by the propellers
 * **\<uav_name\>/fcu_untilted**
   * coordinate frame with coincident center and orientation with "fcu", but xy-plane parallel to xy-plane of gps_origin frame 
   * enables commanding UAV in "fcu" frame without affection by actual tilt
