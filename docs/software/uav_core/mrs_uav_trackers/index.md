@@ -36,10 +36,11 @@ grand_parent: Software
   * can stop a UAV from the previous motion
   * can be activated in mid-flight while in motion
 * "Speed tracker"
-  * subscribes a custom message containing a desired speed/acceleration, height, and heading
+  * subscribes a [custom message](https://ctu-mrs.github.io/mrs_msgs/msg/SpeedTrackerCommand.html) containing a desired speed/acceleration, height, and heading
   * forwards the commands to the controllers unchanged
   * can not follow trajectories or react to references
   * should be activated only in hover
+  * check the [tutorial](https://ctu-mrs.github.io/docs/system/speed_tracker.html)
 * "Landoff tracker"
   * particular variant of *Line Tracker* used only for landing and takeoff
   * can not fly to the desired reference nor follow a trajectory
@@ -78,10 +79,11 @@ trackers : [
   "LandoffTracker",
   "JoyTracker",
   "NullTracker",
+  "SpeedTracker",
 ]
 ```
 Only the trackers within this list are actually loaded.
 Switching to a tracker with the alias *MpcTracker* is done by calling a service:
 ```bash
-rosservice call /uav1/control_manager/switch_tracker MpcTracker
+rosservice call /uav1/control_manager/switch_tracker SpeedTracker
 ```
