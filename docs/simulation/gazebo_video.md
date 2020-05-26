@@ -2,7 +2,7 @@
 layout: default
 title: Videos from Gazebo
 parent: Simulation
-order: 3
+nav_order: 3
 ---
 
 # How to generate video from Gazebo
