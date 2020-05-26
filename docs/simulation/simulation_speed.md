@@ -21,7 +21,7 @@ To run at half real-time:
 export PX4_SIM_SPEED_FACTOR=0.5
 ```
 
-#### Example of `session.yml` with PX4_SIM_SPEED_FACTOR=2
+### Example of `session.yml` with PX4_SIM_SPEED_FACTOR=2
 ```xml
 name: simulation
 root: ./
