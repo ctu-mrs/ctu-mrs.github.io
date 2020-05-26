@@ -15,6 +15,7 @@ has_children: true
 | [mrs_mavros_interface](https://github.com/ctu-mrs/mrs_mavros_interface) | Bionic | [![Build Status](https://travis-ci.com/ctu-mrs/mrs_mavros_interface.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_mavros_interface) |
 | [mrs_msgs](https://github.com/ctu-mrs/mrs_msgs)                         | Bionic | [![Build Status](https://travis-ci.com/ctu-mrs/mrs_msgs.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_msgs)                         |
 | [mrs_optic_flow](https://github.com/ctu-mrs/mrs_optic_flow)             | Bionic | [![Build Status](https://travis-ci.com/ctu-mrs/mrs_optic_flow.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_optic_flow)             |
+| [mrs_rviz_plugins](https://github.com/ctu-mrs/mrs_rviz_plugins)         | Bionic | [![Build Status](https://travis-ci.com/ctu-mrs/mrs_rviz_plugins.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_rviz_plugins)         |
 | [mrs_uav_controllers](https://github.com/ctu-mrs/mrs_uav_controllers)   | Bionic | [![Build Status](https://travis-ci.com/ctu-mrs/mrs_uav_controllers.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_uav_controllers)   |
 | [mrs_uav_general](https://github.com/ctu-mrs/mrs_uav_general)           | Bionic | [![Build Status](https://travis-ci.com/ctu-mrs/mrs_uav_general.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_uav_general)           |
 | [mrs_uav_managers](https://github.com/ctu-mrs/mrs_uav_managers)         | Bionic | [![Build Status](https://travis-ci.com/ctu-mrs/mrs_uav_managers.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_uav_managers)         |
@@ -71,8 +72,7 @@ Our shell additions
 provide some useful command line aliases (git, catkin, cd) and some neccessary shell functions (wait\* commands for simulation).
 
 All the environment variables define a particular cofiguration of a UAV (through launch files).
-The variables apply mostly to real hardware.
-They allow us to make the **core** universal without the need of hardcoding cofigurations for a particular UAV, but only for a UAV type.
+The variables apply mostly to real hardware. They allow us to make the **core** universal without the need of hardcoding cofigurations for a particular UAV, but only for a UAV type.
 In a simulation, they are mostly *overloaded* in each tmuxinator session.
 
 ## The `cd` alias
