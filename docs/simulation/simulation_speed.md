@@ -9,7 +9,7 @@ parent: Simulation
 Simulation In The Loop (SITL) can be run faster or slower than real-time.
 
 The speed factor is set using the environment variable PX4_SIM_SPEED_FACTOR.
-For example, to run the simulation at 2 times the real-time speed put the following command to your `session.yml` into `pre_window:` part:
+For example, to run the simulation at 2 times the real-time speed put the following command to your `session.yml` into `pre_window` part:
 
 ```bash
 export PX4_SIM_SPEED_FACTOR=2
@@ -22,7 +22,7 @@ export PX4_SIM_SPEED_FACTOR=0.5
 ```
 
 ### Example of `session.yml` with PX4_SIM_SPEED_FACTOR=2
-```xml
+```yml
 name: simulation
 root: ./
 startup_window: status
