@@ -13,8 +13,7 @@ This feature is useful for remote testing and simulations, where different ROS n
 
 Add following lines to **.bashrc**:
 ```bash
-export ROS_MASTER_URI=http://<server-hostname>:11311
-export ROS_IP=<server-ip>
+export ROS_MASTER_URI=http://localhost:11311
 ```
 
 ## Client computer, a.k.a., "the notebook"

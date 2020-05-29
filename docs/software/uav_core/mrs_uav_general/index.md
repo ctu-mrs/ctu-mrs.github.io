@@ -26,4 +26,6 @@ This package contains cofiguration files, launch files, and utilities that are o
 * **worlds** - definition of the safety areas and local gps system placement, used by [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers) and [Odometry](https://github.com/ctu-mrs/mrs_uav_odometry)
 * **automatic start** utility - triggers automatic takeoff after the uav is **arm** and successfully in **offboard**
   * disarms the UAV when pre-conditions are not met
-* **record.sh** script - generates and launces a launch file for recording rosbag (its simpler to add exclusions to this script)
+  * can check for messages being published on topics specified in the [cofig file](https://github.com/ctu-mrs/mrs_uav_general/blob/master/cofig/automatic_start.yaml)
+  * can trigger *user nodes* after takeoff via its `automatic_start/start` service (of type *std_srvs/Trigger*)
+* **record.sh** script - generates and launches a launch file for recording rosbag (its simpler to add exclusions to this script)
