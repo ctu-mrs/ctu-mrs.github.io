@@ -30,7 +30,7 @@ The most important frames, that are used in MRS system and are automatically cre
 
 * **\<uav_name\>/fcu**
   * Flight Controller Unit coordinate frame, a.k.a., the **body frame** of the UAV
-  * x-axis is parrallel to the thrust force produced by the propellers
+  * z-axis is parallel to the thrust force produced by the propellers
 * **\<uav_name\>/fcu_untilted**
   * coordinate frame with coincident center and orientation with the `<uav_name>/fcu` frame, but xy-plane parallel to xy-plane of of the world.
   * enables commanding UAV in the `<uav_name>/fcu` frame without being affected by the UAV tilt
