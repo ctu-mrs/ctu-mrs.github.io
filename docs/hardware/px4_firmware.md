@@ -49,3 +49,11 @@ mavlink stream -d /dev/ttyS2 -s DISTANCE_SENSOR -r 100
 2. Set parameter `SENS_EN_LL40LS` to i2c
 
 More info: [https://dev.px4.io/master/en/middleware/modules_driver_distance_sensor.html](https://dev.px4.io/master/en/middleware/modules_driver_distance_sensor.html)
+
+# Configuration
+
+## Disabling/Enabling internal magnetometer
+
+Disable: `EKF2_MAG_TYPE := None`
+
+Enable: `EKF2_MAG_TYPE := Automatic`
