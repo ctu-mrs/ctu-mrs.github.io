@@ -6,6 +6,8 @@ nav_order: 1
 
 # Welcome to the MRS UAV system
 
+The most important information: these pages have a **search bar**!
+
 ## Github repositories
 
 [MRS UAV system](http://github.com/ctu-mrs/mrs_uav_system){: .btn .btn-blue }
