@@ -11,6 +11,12 @@ It was designed to provide 2D localization within a forest, but it performs well
 
 ## Getting Hector SLAM
 
+### As an internal member of the CTU lab
+
+The Hector SLAM can be installed as a part of the [uav_modules](https://mrs.felk.cvut.cz/gitlab/uav/uav_modules) repository from within our [gitlab](http://mrs.felk.cvut.cz/gitlab).
+
+### As a standalone package
+
 Clone the Hector SLAM
 ```bash
 git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam.git
