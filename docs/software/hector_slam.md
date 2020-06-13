@@ -16,6 +16,10 @@ Clone the Hector SLAM
 git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam.git
 ```
 and place it within your workspace.
+Checkout out the **melodic-devel** branch:
+```bash
+git checkout melodic-devel
+```
 Compile it *as it is*.
 
 ## Launching the SLAM
