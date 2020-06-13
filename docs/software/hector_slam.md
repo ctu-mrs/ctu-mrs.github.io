@@ -6,4 +6,25 @@ parent: Software
 
 # Hector SLAM
 
-TODO
+Hector slam ([github.com/tu-darmstadt-ros-pkg/hector_slam](http://github.com/tu-darmstadt-ros-pkg/hector_slam)) is a 2D LIDAR SLAM.
+It was designed to provide 2D localization within a forest, but it performs well within an indoor building environment.
+
+## Getting Hector SLAM
+
+Clone the Hector SLAM
+```bash
+git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam.git
+```
+and place it within your workspace.
+Compile it *as it is*.
+
+## Launching the SLAM
+
+We provide our custom [launch file](https://github.com/ctu-mrs/mrs_uav_general/blob/master/launch/hector_slam.launch) within the [mrs_uav_general](https://github.com/ctu-mrs/mrs_uav_general) package.
+It relies on the *rplidar* sensor, both on a real UAV and in the simulation.
+
+## Examples of use
+
+1. An example simulation tmuxinator session: [one_drone_hector_slam](https://github.com/ctu-mrs/simulation/tree/master/example_tmux_scripts/one_drone_hector_slam)
+2. A control test dedicated to Hector SLAM: [test_control_hector](https://github.com/ctu-mrs/mrs_uav_testing/tree/master/tmux/test_control_hector)
+3. Basic real-UAV tmux scripts: [just_flying_hector.sh](https://github.com/ctu-mrs/uav_core/blob/master/tmux_scripts/just_flying_hector.sh), [just_flying_hector_optflow](https://github.com/ctu-mrs/uav_core/tree/master/tmux_scripts/just_flying_hector_opflow)
