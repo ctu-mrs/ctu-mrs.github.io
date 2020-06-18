@@ -37,6 +37,11 @@ However, a *frame* following the order `frame -> <uav_name>/fcu` is stored as a 
 
 ![](fig/multi_frame_localization_problem.png)
 
+## Multi-UAV TF Tree
+`TFConnectorDummy` node within the `mrs_uav_odometry` package connects TF trees of multiple UAVs by connecting them through a new **root** node.
+How to use: see [example launch file](https://github.com/ctu-mrs/mrs_uav_odometry/blob/master/launch/tf_connector_dummy.launch) and [example config file](https://github.com/ctu-mrs/mrs_uav_odometry/blob/master/config/tf_connector_dummy.yaml).
+Remark that the `TFConnectorDummy` node can connect only trees containing a common (equal) frame --- e.g., coordination frame of GPS `<uav_name>/gps_origin`.
+
 ## Elementary frames
 
 The most important frames, that are used in MRS system and are automatically created for each UAV, are:
