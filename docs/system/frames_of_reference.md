@@ -22,7 +22,20 @@ rqt
 
 ## Multi-frame Localization Problem
 
-TODO: Explain why our *world* frames are *children* of the body frame of the UAV, not the other way around.
+Coordinate systems for mobile robots follow hierarchical convention (check coordinate frames convention [REP-105](https://www.ros.org/reps/rep-0105.html) used with ROS):
+```bash
+world -> map -> odometry -> fcu -> sensors
+```
+The [transformations](https://ctu-mrs.github.io/docs/system/transformations.html) (`->`) among coordination frames are maintained by [tf2 ROS library](http://wiki.ros.org/tf2).
+The `tf2` library requires the mutual transformations to be stored in a **tree structure**, where each node has a single *parent* and there exists only a single **root** node with no *parent*.
+
+But, maintaining the **tree structure** is impossible for multiple *world*/*map*/*odometry* coordinate frames.
+
+The MRS system solves this by having the `<uav_name>/fcu` coordinate frame as the **root** node.
+A *frame* following the hierarchical order `<uav_name>/fcu -> frame` is kept untouched.
+However, a *frame* following the order `frame -> <uav_name>/fcu` is stored as a *children* of `<uav_name>/fcu` by inverting the order and the transformation.
+
+![](fig/multi_frame_localization_problem.png)
 
 ## Elementary frames
 
