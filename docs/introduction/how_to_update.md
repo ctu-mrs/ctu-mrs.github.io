@@ -99,7 +99,7 @@ git pull
 Is *\<package_name\>* within a catkin workspace and is the workspace built?
 If yes, check that your `~/.bashrc` contains
 ```bash
-source /home/mrs/mrs_workspace/devel/setup.zsh
+source /home/mrs/mrs_workspace/devel/setup.bash
 ```
 
 ### Missing dependencies
