@@ -2,6 +2,7 @@
 layout: default
 title: Speed Tracker
 parent: The UAV system
+nav_order: 5
 ---
 
 # Flying with the Speed Tracker

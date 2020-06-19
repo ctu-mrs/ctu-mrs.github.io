@@ -1,4 +1,4 @@
----
+# ---
 layout: default
 title: UAV-ROS interface
 parent: The UAV system
@@ -24,20 +24,47 @@ With each update of the state estimate, the currently active tracker produces a 
 The controllers and trackers can be switched in mid-flight to accommodate for mission different scenarios.
 Users supply the desired references to the ControlManager, which forwards them to the currently active tracker and controller.
 
+### Provided topics
+
+Please refere to [control_manager.launch](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/launch/control_manager.launch) for a complete list of topics.
+Notable topics:
+
+General topics reporting on the current state of the ControlManager:
+
+| **topic**                           | **description**                           | **topic type**                                                                                              |
+|-------------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| control_manager/diagnostics         | status of the ControlManager              | [mrs_msgs/ControlManagerDiagnostics](https://ctu-mrs.github.io/mrs_msgs/msg/ControlManagerDiagnostics.html) |
+| control_manager/position_cmd        | control reference from the active tracker | [mrs_msgs/PositionCommand](https://ctu-mrs.github.io/mrs_msgs/msg/PositionCommand.html)                     |
+| control_manager/attitude_cmd        | output from the active controller         | [mrs_msgs/AttitudeCommand](https://ctu-mrs.github.io/mrs_msgs/msg/AttitudeCommand.html)                     |
+| control_manager/mass_estimate       | total estimated mass                      | `std_msgs/Float64`                                                                                          |
+| control_manager/current_constraints | current values of the dynamic constraints | [mrs_msgs::TrackerConstraints](https://ctu-mrs.github.io/mrs_msgs/msg/TrackerConstraints.html)              |
+| control_manager/heading             | current heading                           | [mrs_msgs::Float64Stamped](https://ctu-mrs.github.io/mrs_msgs/msg/Float64Stamped.html)                      |
+
+Topics dedicated to Rviz vizualization:
+
+| **topic**                                   | **description**                                         | **topic type**                    |
+|---------------------------------------------|---------------------------------------------------------|-----------------------------------|
+| control_manager/cmd_odom                    | control reference from the active tracker (Rviz-able)   | `nav_msgs/Odometry`               |
+| control_manager/safety_area_markers         | Rviz markers showing the safety area                    | `visualization_msgs::MarkerArray` |
+| control_manager/safety_area_coordinates     | Rviz markers showing the coordinates of the safety area | `visualization_msgs::MarkerArray` |
+| control_manager/disturbance_markers         | Rviz markers showing the estimated distrubances         | `visualization_msgs::MarkerArray` |
+| control_manager/trajectory_original/poses   | pose array re-publishing the original set trajectory    | `geometry_msgs::PoseArray`        |
+| control_manager/trajectory_original/markers | Rviz markers re-publishing the original set trajectory  | `visualization_msgs::MarkerArray` |
+
 ### Selected services for human-to-machine interaction:
 
 Press `<tab>` after typing in the desired service to auto-complete the default arguments.
 
 Use those services to interact with the done from the terminal:
 
-| **service**                          | **description**                                   | **service type** | **args**      |
-|--------------------------------------|---------------------------------------------------|------------------|---------------|
-| control_manager/goto                 | fly to given coordinates                          | `mrs_msgs/Vec4`  | `[x,y,z,hdg]` |
-| control_manager/goto_fcu             | fly to giv en coordinates in the drone's frame    | `mrs_msgs/Vec4`  | `[x,y,z,hdg]` |
-| control_manager/goto_relative        | fly to relative coordinates in the world frame    | `mrs_msgs/Vec4`  | `[x,y,z,hdg]` |
-| control_manager/goto_altitude        | fly to a given height/altitude (the z coordinate) | `mrs_msgs/Vec1`  | `[z]`         |
-| control_manager/set_heading          | set the heading                                   | `mrs_msgs/Vec1`  | `[hdg]`       |
-| control_manager/set_heading_relative | set a relative heading                            | `mrs_msgs/Vec1`  | `[hdg]`       |
+| **service**                          | **description**                                   | **service type**                                                  | **args**      |
+|--------------------------------------|---------------------------------------------------|-------------------------------------------------------------------|---------------|
+| control_manager/goto                 | fly to given coordinates                          | [mrs_msgs/Vec4](https://ctu-mrs.github.io/mrs_msgs/srv/Vec4.html) | `[x,y,z,hdg]` |
+| control_manager/goto_fcu             | fly to giv en coordinates in the drone's frame    | [mrs_msgs/Vec4](https://ctu-mrs.github.io/mrs_msgs/srv/Vec4.html) | `[x,y,z,hdg]` |
+| control_manager/goto_relative        | fly to relative coordinates in the world frame    | [mrs_msgs/Vec4](https://ctu-mrs.github.io/mrs_msgs/srv/Vec4.html) | `[x,y,z,hdg]` |
+| control_manager/goto_altitude        | fly to a given height/altitude (the z coordinate) | [mrs_msgs/Vec1](https://ctu-mrs.github.io/mrs_msgs/srv/Vec1.html) | `[z]`         |
+| control_manager/set_heading          | set the heading                                   | [mrs_msgs/Vec1](https://ctu-mrs.github.io/mrs_msgs/srv/Vec1.html) | `[hdg]`       |
+| control_manager/set_heading_relative | set a relative heading                            | [mrs_msgs/Vec1](https://ctu-mrs.github.io/mrs_msgs/srv/Vec1.html) | `[hdg]`       |
 
 However, these services should not be used from within a program, since they lack the *Header*.
 The message *header* contains the frame of reference name and the timestamp.
@@ -46,10 +73,10 @@ The message *header* contains the frame of reference name and the timestamp.
 
 Setting references:
 
-| **service**                          | **description**                           | **service type**                  |
-|--------------------------------------|-------------------------------------------|-----------------------------------|
-| control_manager/reference            | fly to given coordinates in a given frame | `mrs_msgs/ReferenceStampedSrv`    |
-| control_manager/trajectory_reference | fly along a given trajectory              | `mrs_msgs/TrajectoryReferenceSrv` |
+| **service**                          | **description**                           | **service type**                                                                                      |
+|--------------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| control_manager/reference            | fly to given coordinates in a given frame | [mrs_msgs/ReferenceSrv](https://ctu-mrs.github.io/mrs_msgs/srv/ReferenceSrv.html)                     |
+| control_manager/trajectory_reference | fly along a given trajectory              | [mrs_msgs/TrajectoryReferenceSrv](https://ctu-mrs.github.io/mrs_msgs/srv/TrajectoryReferenceSrv.html) |
 
 Control of trajectory tracking:
 
@@ -62,10 +89,10 @@ Control of trajectory tracking:
 
 Control of trackers and controllers:
 
-| **service**                       | **description**     | **service type**  |
-|-----------------------------------|---------------------|-------------------|
-| control_manager/switch_tracker    | switch a tracker    | `mrs_msgs/String` |
-| control_manager/switch_controller | switch a controller | `mrs_msgs/String` |
+| **service**                       | **description**     | **service type**                                                      |
+|-----------------------------------|---------------------|-----------------------------------------------------------------------|
+| control_manager/switch_tracker    | switch a tracker    | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
+| control_manager/switch_controller | switch a controller | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
 
 Safety and higher-level flight control:
 
@@ -82,13 +109,14 @@ Safety and higher-level flight control:
 The [UavManager](https://github.com/ctu-mrs/mrs_uav_managers#UavManager) handles higher-level routines such as takeoff and landing.
 It also carries some non-essential safety routines.
 
-Provided services:
+### Provided services
 
-| **service**           | **description**                            | **service type**   |
-|-----------------------|--------------------------------------------|--------------------|
-| uav_manager/takeoff   | take off                                   | `std_srvs/Trigger` |
-| uav_manager/land      | land                                       | `std_srvs/Trigger` |
-| uav_manager/land_home | return to the takeoff coordinates and land | `std_srvs/Trigger` |
+| **service**            | **description**                            | **service type**                                                                          |
+|------------------------|--------------------------------------------|-------------------------------------------------------------------------------------------|
+| uav_manager/takeoff    | take off                                   | `std_srvs/Trigger`                                                                        |
+| uav_manager/land       | land                                       | `std_srvs/Trigger`                                                                        |
+| uav_manager/land_home  | return to the takeoff coordinates and land | `std_srvs/Trigger`                                                                        |
+| uav_manager/land_there | land on a particular place                 | [mrs_msgs/ReferenceStamped](https://ctu-mrs.github.io/mrs_msgs/msg/ReferenceStamped.html) |
 
 ## ConstraintManager
 
@@ -97,11 +125,17 @@ The constraints are supplied to all the loaded trackers by the ControlManager.
 To simplify the system structure, the ConstraintManager was created to load user-defined constraints from parameter files.
 The ConstraintManager maintains feasible constraints active during the flight based on the currently active [odometry source](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-) and allows users to change them by ROS service.
 
-Provided services:
+### Provided topics
 
-| **service**                        | **description**                  | **service type**  |
-|------------------------------------|----------------------------------|-------------------|
-| constraint_manager/set_constraints | activate the desired constraints | `mrs_msgs/String` |
+| **topic**                      | **description**                 | **topic type**                                                                                                    |
+|--------------------------------|---------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| constraint_manager/diagnostics | status of the ConstraintManager | [mrs_msgs/ConstraintManagerDiagnostics](https://ctu-mrs.github.io/mrs_msgs/msg/ConstraintManagerDiagnostics.html) |
+
+### Provided services
+
+| **service**                        | **description**                  | **service type**                                                      |
+|------------------------------------|----------------------------------|-----------------------------------------------------------------------|
+| constraint_manager/set_constraints | activate the desired constraints | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
 
 ## GainManager
 
@@ -109,11 +143,17 @@ The [GainManager](https://github.com/ctu-mrs/mrs_uav_managers#GainManager) handl
 The So3Controller should be tuned for a particular UAV model, desired dynamics, and the [Odometry](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-) under which it is going to fly.
 A proper set of gains needs to be provided based on the flight conditions and odometry source.
 
-Provided services:
+### Provided topics
 
-| **service**            | **description**            | **service type**  |
-|------------------------|----------------------------|-------------------|
-| gain_manager/set_gains | activate the desired gains | `mrs_msgs/String` |
+| **topic**                | **description**           | **topic type**                                                                                        |
+|--------------------------|---------------------------|-------------------------------------------------------------------------------------------------------|
+| gain_manager/diagnostics | status of the GainManager | [mrs_msgs/GainManagerDiagnostics](https://ctu-mrs.github.io/mrs_msgs/msg/GainManagerDiagnostics.html) |
+
+### Provided services
+
+| **service**            | **description**            | **service type**                                                      |
+|------------------------|----------------------------|-----------------------------------------------------------------------|
+| gain_manager/set_gains | activate the desired gains | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
 
 ## MRS Odometry
 
