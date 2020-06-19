@@ -2,6 +2,7 @@
 layout: default
 title: Flying without mrs_uav_odometry
 parent: The UAV system
+nav_order: 99
 ---
 
 # Flying without mrs_uav_odometry
