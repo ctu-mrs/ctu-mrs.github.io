@@ -26,7 +26,7 @@ Users supply the desired references to the ControlManager, which forwards them t
 
 ### Provided topics
 
-Please refere to [control_manager.launch](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/launch/control_manager.launch) for a complete list of topics.
+Please refer to [control_manager.launch](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/launch/control_manager.launch) for a complete list of topics.
 Notable topics:
 
 General topics reporting on the current state of the ControlManager:
@@ -55,12 +55,12 @@ Topics dedicated to Rviz vizualization:
 
 Press `<tab>` after typing in the desired service to auto-complete the default arguments.
 
-Use those services to interact with the done from the terminal:
+Use those services to interact with the drone from the terminal:
 
 | **service**                          | **description**                                   | **service type**                                                  | **args**      |
 |--------------------------------------|---------------------------------------------------|-------------------------------------------------------------------|---------------|
 | control_manager/goto                 | fly to given coordinates                          | [mrs_msgs/Vec4](https://ctu-mrs.github.io/mrs_msgs/srv/Vec4.html) | `[x,y,z,hdg]` |
-| control_manager/goto_fcu             | fly to giv en coordinates in the drone's frame    | [mrs_msgs/Vec4](https://ctu-mrs.github.io/mrs_msgs/srv/Vec4.html) | `[x,y,z,hdg]` |
+| control_manager/goto_fcu             | fly to given coordinates in the drone's frame    | [mrs_msgs/Vec4](https://ctu-mrs.github.io/mrs_msgs/srv/Vec4.html) | `[x,y,z,hdg]` |
 | control_manager/goto_relative        | fly to relative coordinates in the world frame    | [mrs_msgs/Vec4](https://ctu-mrs.github.io/mrs_msgs/srv/Vec4.html) | `[x,y,z,hdg]` |
 | control_manager/goto_altitude        | fly to a given height/altitude (the z coordinate) | [mrs_msgs/Vec1](https://ctu-mrs.github.io/mrs_msgs/srv/Vec1.html) | `[z]`         |
 | control_manager/set_heading          | set the heading                                   | [mrs_msgs/Vec1](https://ctu-mrs.github.io/mrs_msgs/srv/Vec1.html) | `[hdg]`       |
@@ -157,9 +157,9 @@ A proper set of gains needs to be provided based on the flight conditions and od
 
 ## MRS Odometry
 
-
 The [mrs_uav_odometry](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-) handles the fusion of various measurements of the UAV state variables (position, velocity, acceleration, heading, heading rate) and publishes odometry messages for the [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers#ControlManager).
 The estimation of UAV odometry is seperated into lateral, altitude and heading estimation based on sets of three-state Linear Kalman Filters to keep the models simple and modular.
+Each filter has a specific sets of fused measurements (GPS, Optic Flow, Visual Odometry, etc.) and it is possible to switch between these filters mid-flight, which allows the UAV to condinue flying even in the case of failure of the primary localization technique.
 
 ### Provided topics
 
@@ -170,11 +170,11 @@ Notable topics:
 | **topic**               | **description**                                                                       | **topic type**                                                            |
 |-------------------------|---------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
 | odometry/uav_state      | UAV state msg used for control                                                        | [mrs_msgs/UavState](https://ctu-mrs.github.io/mrs_msgs/msg/UavState.html) |
-| odometry/odom_main      | Odometry msg used for control                                                         | `nav_msgs/Odometry`                                                       |
-| odometry/slow_odom      | Odometry msg published at lower rate (2 Hz default)                                   | `nav_msgs/Odometry`                                                       |
-| odometry/odom_local     | Odometry msg with origin in the takeoff position                                      | `nav_msgs/Odometry`                                                       |
-| odometry/odom_stable    | Odometry msg without discontinuities caused by estimator switches                     | `nav_msgs/Odometry`                                                       |
-| odometry/rtk_local_odom | Unfiltered RTK odometry msg. Unsuitable for control, but can be used as ground truth. | `nav_msgs/Odometry`                                                       |
+| odometry/odom_main      | odometry msg used for control                                                         | `nav_msgs/Odometry`                                                       |
+| odometry/slow_odom      | odometry msg published at lower rate (2 Hz default)                                   | `nav_msgs/Odometry`                                                       |
+| odometry/odom_local     | odometry msg with origin in the takeoff position                                      | `nav_msgs/Odometry`                                                       |
+| odometry/odom_stable    | odometry msg without discontinuities caused by estimator switches                     | `nav_msgs/Odometry`                                                       |
+| odometry/rtk_local_odom | unfiltered RTK odometry msg. Unsuitable for control, but can be used as ground truth. | `nav_msgs/Odometry`                                                       |
 
 ### Provided services
 
