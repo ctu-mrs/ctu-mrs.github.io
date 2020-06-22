@@ -157,4 +157,32 @@ A proper set of gains needs to be provided based on the flight conditions and od
 
 ## MRS Odometry
 
-TODO: [mrs_uav_odometry](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-)
+
+The [mrs_uav_odometry](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-) handles the fusion of various measurements of the UAV state variables (position, velocity, acceleration, heading, heading rate) and publishes odometry messages for the [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers#ControlManager).
+The estimation of UAV odometry is seperated into lateral, altitude and heading estimation based on sets of three-state Linear Kalman Filters to keep the models simple and modular.
+
+### Provided topics
+
+Please refer to [odometry.launch](https://github.com/ctu-mrs/mrs_uav_odometry/blob/master/launch/odometry.launch) for a complete list of topics.
+
+Notable topics:
+
+| **topic**               | **description**                                                                       | **topic type**                                                            |
+|-------------------------|---------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| odometry/uav_state      | UAV state msg used for control                                                        | [mrs_msgs/UavState](https://ctu-mrs.github.io/mrs_msgs/msg/UavState.html) |
+| odometry/odom_main      | Odometry msg used for control                                                         | `nav_msgs/Odometry`                                                       |
+| odometry/slow_odom      | Odometry msg published at lower rate (2 Hz default)                                   | `nav_msgs/Odometry`                                                       |
+| odometry/odom_local     | Odometry msg with origin in the takeoff position                                      | `nav_msgs/Odometry`                                                       |
+| odometry/odom_stable    | Odometry msg without discontinuities caused by estimator switches                     | `nav_msgs/Odometry`                                                       |
+| odometry/rtk_local_odom | Unfiltered RTK odometry msg. Unsuitable for control, but can be used as ground truth. | `nav_msgs/Odometry`                                                       |
+
+### Provided services
+
+| **service**                               | **description**                                         | **service type**                                                      |
+|-------------------------------------------|---------------------------------------------------------|-----------------------------------------------------------------------|
+| odometry/toggle_garmin                    | turns Garmin rangefinder correction on/off              | `std_srvs::SetBool`                                                   |
+| odometry/change_odometry_source           | start using the requested odometry source for control   | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
+| odometry/change_estimator_type_string     | start using the requested lateral estimator for control | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
+| odometry/change_alt_estimator_type_string | start using the requested altitude source for control   | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
+| odometry/change_hdg_estimator_type_string | start using the requested heading source for control    | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
+
