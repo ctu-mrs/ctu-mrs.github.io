@@ -33,8 +33,8 @@ grand_parent: Software
 * "Failsafe controller"
   * feedforward controller for landing without a state estimator
   * relies on the Pixhawk's attitude controller for leveling
-  * is triggers in case of emergency
-  * gradually decreeses thrust while keeping the UAV leveled
+  * is triggered in case of emergency
+  * gradually decreases thrust while keeping the UAV leveled
 
 ## Controller interface
 

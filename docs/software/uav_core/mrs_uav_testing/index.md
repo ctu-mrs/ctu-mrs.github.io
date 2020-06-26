@@ -15,6 +15,7 @@ grand_parent: Software
 * **bumper test** - random walk in a simulated forest, test the bumper feature of the [control manager](https://github.com/ctu-mrs/mrs_uav_managers) and [MRS bumper](https://github.com/ctu-mrs/mrs_bumper)
 * **collision avoidance test** - tests the mutual collision avoidance feature of the [MPC tracker](https://github.com/ctu-mrs/mrs_uav_trackers)
 * **safety area test** - tests the safety area feature of the [control manager](https://github.com/ctu-mrs/mrs_uav_managers)
+* **circle flier** - control and tracking stress test
 
 ## How to
 
