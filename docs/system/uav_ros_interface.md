@@ -139,8 +139,8 @@ The ConstraintManager maintains feasible constraints active during the flight ba
 
 ## GainManager
 
-The [GainManager](https://github.com/ctu-mrs/mrs_uav_managers#GainManager) handles the definition and switching of controller gains for the [So3Controller](https://github.com/ctu-mrs/mrs_uav_controllers#available-controllers).
-The So3Controller should be tuned for a particular UAV model, desired dynamics, and the [Odometry](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-) under which it is going to fly.
+The [GainManager](https://github.com/ctu-mrs/mrs_uav_managers#GainManager) handles the definition and switching of controller gains for the [Se3Controller](https://github.com/ctu-mrs/mrs_uav_controllers#available-controllers).
+The Se3Controller should be tuned for a particular UAV model, desired dynamics, and the [Odometry](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-) under which it is going to fly.
 A proper set of gains needs to be provided based on the flight conditions and odometry source.
 
 ### Provided topics

@@ -34,7 +34,7 @@ Create a file `uav_manager.yaml` in a subfolder `custom_configs` within your tmu
 ```
 takeoff:
   after_takeoff:
-    controller: "So3Controller"
+    controller: "Se3Controller"
 ```
 Then add an optional argument to the [core.launch](https://github.com/ctu-mrs/mrs_uav_general/blob/master/launch/core.launch) line in your tmuxinator session:
 ```
