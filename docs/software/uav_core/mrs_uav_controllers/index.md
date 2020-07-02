@@ -15,7 +15,7 @@ grand_parent: Software
 
 ## Available controllers
 
-* "SE(3) controller"
+* "SO(3) controller"
   * geometric state feedback in SE(3) capable of precise reference tracking and fast maneuvers
   * **pros**: precise control, fast response, fast convergence
   * **cons**: sensitive to measurement noise, requires feasible and smooth reference, needs to be tuned
@@ -47,27 +47,27 @@ Loaded controllers can be switched by the [control manager](https://github.com/c
 Controllers are defined in `controller.yaml` ([example](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/cofig/default/controllers.yaml)).
 Each entry such as
 ```yaml
-Se3Controller:
-  address: "mrs_uav_controllers/Se3Controller"
-  namespace: "se3_controller"
+So3Controller:
+  address: "mrs_uav_controllers/So3Controller"
+  namespace: "so3_controller"
   eland_threshold: 1.5 # [m], position error triggering eland
   failsafe_threshold: 2.5 # [m], position error triggering failsafe land
   odometry_innovation_threshold: 1.5 # [m], position odometry innovation threshold
 ```
-creates an instance of a controller, in this case `mrs_uav_controllers/Se3Controller` is loaded under the *alias* `Se3Controller`.
+creates an instance of a controller, in this case `mrs_uav_controllers/So3Controller` is loaded under the *alias* `So3Controller`.
 Multiple instances are allowed and are used to introduce the same controller with various cofigurations that can be switched in mid-flight.
 Once the controller alias is defined within `controllers.yaml`, it needs to be part of the *controllers* list within `control_manager.yaml` ([example](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/cofig/default/control_manager.yaml)) cofig:
 ```yaml
 # - list of names of dynamically loaded controllers
 controllers : [
-  "Se3Controller",
+  "So3Controller",
   "MpcController",
   "FailsafeController",
   "EmergencyController",
 ]
 ```
 Only the controllers within this list are actually loaded.
-Switching to a controller with the alias *Se3Controller* is done by calling a service:
+Switching to a controller with the alias *So3Controller* is done by calling a service:
 ```bash
-rosservice call /uav1/control_manager/switch_controller Se3Controller
+rosservice call /uav1/control_manager/switch_controller So3Controller
 ```
