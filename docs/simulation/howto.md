@@ -9,7 +9,7 @@ nav_order: 1
 
 If you have everything installed and compiled, the next step is to test it in the simulation.
 The running simulation consists of several steps, which are usually **automated** using a **tmuxinator** script.
-Here we will describe each step required to make the drone fly.
+[[Here]] we will describe each step required to make the drone fly.
 
 | :warning: **Attention please: Following commands are not meant to be issued manually.**    |
 | :---                                                                                       |
@@ -21,6 +21,8 @@ To start the simulator, we use ROS launch file
 ```bash
 roslaunch mrs_simulation simulation.launch gui:=true
 ```
+| :information_source: Note: The above command will launch default [grass plane world](https://github.com/ctu-mrs/mrs_gazebo_common_resources/blob/master/worlds/grass_plane.world). See the [custom world](https://ctu-mrs.github.io/docs/simulation/custom_world.html) wiki page for more information about world customization. |
+| :---                                                                                                                                                                                                                                                                                                                             |
 
 ## 2. spawn a drone (drones)
 
