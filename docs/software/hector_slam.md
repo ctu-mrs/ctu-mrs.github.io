@@ -13,13 +13,17 @@ It was designed to provide 2D localization within a forest, but it performs well
 
 ### As an internal member of the CTU lab
 
-The Hector SLAM can be installed as a part of the [uav_modules](https://mrs.felk.cvut.cz/gitlab/uav/uav_modules) repository from within our [gitlab](http://mrs.felk.cvut.cz/gitlab).
+The [MRS fork of Hector SLAM](http://github.com/ctu-mrs/hector_slam) can be installed as a part of the [uav_modules](https://mrs.felk.cvut.cz/gitlab/uav/uav_modules) repository from within our [gitlab](http://mrs.felk.cvut.cz/gitlab).
 
 ### As a standalone package
 
-Clone the Hector SLAM
+Clone the original (vanilla) Hector SLAM
 ```bash
 git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam.git
+```
+or our fork
+```bash
+git clone https://github.com/ctu-mrs/hector_slam.git
 ```
 and place it within your workspace.
 Checkout out the **melodic-devel** branch:
@@ -30,7 +34,7 @@ Compile it *as it is*.
 
 ## Launching the SLAM
 
-We provide our custom [launch file](https://github.com/ctu-mrs/mrs_uav_general/blob/master/launch/hector_slam.launch) within the [mrs_uav_general](https://github.com/ctu-mrs/mrs_uav_general) package.
+We provide our custom launch file ([fork](https://github.com/ctu-mrs/mrs_uav_general/blob/master/launch/hector_slam.launch), [vanilla](https://github.com/ctu-mrs/mrs_uav_general/blob/master/launch/hector_slam_vanilla.launch)) within the [mrs_uav_general](https://github.com/ctu-mrs/mrs_uav_general) package.
 It relies on the *rplidar* sensor, both on a real UAV and in the simulation.
 
 ## Examples of use
