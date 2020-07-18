@@ -37,7 +37,7 @@ General topics reporting on the current state of the ControlManager:
 | control_manager/position_cmd        | control reference from the active tracker | [mrs_msgs/PositionCommand](https://ctu-mrs.github.io/mrs_msgs/msg/PositionCommand.html)                     |
 | control_manager/attitude_cmd        | output from the active controller         | [mrs_msgs/AttitudeCommand](https://ctu-mrs.github.io/mrs_msgs/msg/AttitudeCommand.html)                     |
 | control_manager/mass_estimate       | total estimated mass                      | `std_msgs/Float64`                                                                                          |
-| control_manager/current_constraints | current values of the dynamic constraints | [mrs_msgs::TrackerConstraints](https://ctu-mrs.github.io/mrs_msgs/msg/TrackerConstraints.html)              |
+| control_manager/current_constraints | current values of the dynamic constraints | [mrs_msgs::DynamicsConstraints](https://ctu-mrs.github.io/mrs_msgs/msg/DynamicsConstraints.html)            |
 | control_manager/heading             | current heading                           | [mrs_msgs::Float64Stamped](https://ctu-mrs.github.io/mrs_msgs/msg/Float64Stamped.html)                      |
 
 Topics dedicated to Rviz vizualization:
