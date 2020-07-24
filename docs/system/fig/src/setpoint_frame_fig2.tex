@@ -94,6 +94,8 @@
     \node [align=center] at ($ (mo1) + (0, 0.3) $) {odometry};
     \node [green!60!black, align=center] at ($ (mc1) + (0, 0.4) $) {prev.\\command};
     \node [align=center, green!60!black] at ($ (mn1) + (0, 0.3) $) {new command};
+
+    \draw [blue, dashed, very thick, ->] (0.5, 1.7) -- ++(3, 0) node [blue, above] {intended trajectory};
   \end{scope}
   
   %%}
@@ -133,6 +135,9 @@
     \node [align=center] at ($ (mo1) + (0, 0.3) $) {odometry};
     \node [green!60!black, align=center] at ($ (mc1) + (0, 0.4) $) {prev.\\command};
     \node [align=center, green!60!black] at ($ (mn1) + (0, 0.3) $) {new command};
+
+    \draw [blue, dashed, very thick, ->] (0.5, 1.7) -- ++(3, 0) node [blue, above] {intended trajectory};
+    \draw [red, dashed, very thick, ->] (0.5, 1) -- (1.2, 0.3) node [red, midway, sloped, above, align=center, xshift=-0.8cm] {actual\\trajectory};
   \end{scope}
   
   %%}

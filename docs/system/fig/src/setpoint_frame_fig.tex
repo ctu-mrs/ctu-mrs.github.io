@@ -122,11 +122,11 @@
     \drawDrone{(mc2)}{0.1}{thick, dotted, draw=green!60!black}
     \draw [red, very thick, ->] (mc2) -- (mo2) node [midway, red, yshift=-0.3cm, sloped] {disturbance};
 
-    % \drawDrone{(3.6, 1.4)}{0.1}{thick, dotted, draw=green!60!black}
+    \drawDrone{(3.6, 1.4)}{0.1}{thick, dashed, draw=blue}
 
     \node [align=center] at ($ (mo2) + (0, 0.5) $) {odometry\\\textbf{=}\\new command};
     \node [green!60!black, align=center] at ($ (mc2) + (0, 0.4) $) {prev.\\command};
-    % \node [green!60!black, align=center] at (3.6, 1.8) {orig.\\command};
+    \node [blue, align=center] at (3.6, 1.8) {intended\\position};
   \end{scope}
   
   %%}
