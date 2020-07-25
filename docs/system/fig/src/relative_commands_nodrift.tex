@@ -50,7 +50,7 @@
 
 %start tikz picture, and use the tdplot_main_coords style to implement the display 
 %coordinate transformation provided by 3dplot
-\begin{tikzpicture}[scale=3, tdplot_main_coords,
+\begin{tikzpicture}[scale=3,
     grid/.style={line width=0, gray!60}
   ]
 
@@ -83,19 +83,19 @@
 
     \coordinate (mo1) at (0.5, 1);
     \coordinate (mc1) at ($ (mo1) + (0.8, 0.7) $);
-    \coordinate (mn1) at ($ (mo1) + (1.5, 0) $);
+    \coordinate (mn1) at ($ (mc1) + (1.0, 0) $);
     
     \drawDrone{(mo1)}{0.1}{thin}
     \drawDrone{(mc1)}{0.1}{thick, dotted, draw=green!60!black}
     \drawDrone{(mn1)}{0.1}{draw=green!60!black}
     \draw [red, very thick, ->] (mc1) -- (mo1) node [midway, red, yshift=-0.3cm, sloped] {disturbance};
-    \draw [blue, very thick, ->] (mo1) -- (mn1) node [midway, blue, yshift=-0.3cm, sloped] {des. velocity};
+    \draw [blue, very thick, ->] (mc1) -- (mn1) node [midway, blue, yshift=-0.5cm, sloped, align=center] {des.\\velocity};
 
     \node [align=center] at ($ (mo1) + (0, 0.3) $) {odometry};
     \node [green!60!black, align=center] at ($ (mc1) + (0, 0.4) $) {prev.\\command};
     \node [align=center, green!60!black] at ($ (mn1) + (0, 0.3) $) {new command};
 
-    \draw [blue, dashed, very thick, ->] (0.5, 1.7) -- ++(3, 0) node [blue, above] {intended trajectory};
+    \draw [blue, dashed, very thick, ->] (0.5, 1.7) -- ++(3, 0) node [blue, above, align=center] {intended\\trajectory};
   \end{scope}
   
   %%}
@@ -122,22 +122,22 @@
     \draw[mark=*, mark size=1.0, black, mark options={fill=white}] plot coordinates { (0, 0, 0) };
     \draw[mark=*, mark size=0.2, black] plot coordinates { (0, 0, 0) }  node[anchor=east]{$\vec{e}_z$};
 
-    \coordinate (mo1) at (1.2, 0.3);
+    \coordinate (mo1) at (1.5, 1);
     \coordinate (mc1) at ($ (mo1) + (0.8, 0.7) $);
-    \coordinate (mn1) at ($ (mo1) + (1.5, 0) $);
+    \coordinate (mn1) at (3.5, 1.7);
     
     \drawDrone{(mo1)}{0.1}{thin}
     \drawDrone{(mc1)}{0.1}{thick, dotted, draw=green!60!black}
     \drawDrone{(mn1)}{0.1}{draw=green!60!black}
     \draw [red, very thick, ->] (mc1) -- (mo1) node [midway, red, yshift=-0.3cm, sloped] {disturbance};
-    \draw [blue, very thick, ->] (mo1) -- (mn1) node [midway, blue, yshift=-0.3cm, sloped] {des. velocity};
+    \draw [blue, very thick, ->] (mc1) -- (mn1) node [midway, blue, yshift=-0.5cm, sloped, align=center] {des.\\velocity};
 
     \node [align=center] at ($ (mo1) + (0, 0.3) $) {odometry};
     \node [green!60!black, align=center] at ($ (mc1) + (0, 0.4) $) {prev.\\command};
     \node [align=center, green!60!black] at ($ (mn1) + (0, 0.3) $) {new command};
 
-    \draw [blue, dashed, very thick, ->] (0.5, 1.7) -- ++(3, 0) node [blue, above] {intended trajectory};
-    \draw [red, dashed, very thick, ->] (0.5, 1) -- (1.2, 0.3) node [red, midway, sloped, above, align=center, xshift=-0.8cm] {actual\\trajectory};
+    \draw [blue, dashed, very thick, ->] (0.5, 1.7)  node [blue, above, xshift=1cm, align=center] {intended\\trajectory} -- ++(3, 0);
+    \draw [red, dashed, very thick, ->] (0.5, 1) -- (mo1) node [red, midway, sloped, above, align=center, xshift=-0.8cm] {actual\\trajectory};
   \end{scope}
   
   %%}
