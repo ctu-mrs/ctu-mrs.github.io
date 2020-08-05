@@ -24,7 +24,7 @@ This guide is written for Pixhawk 4, because it is used on most of the MRS aeria
 4. Connect cables to both power outputs labeled as `PWR1` and `PWR2`.
 5. Connect a cable for the ESC signals to the `IO-PWM-in` port (if you soldered the ESC signal cables) or the `FMU-PWM-in` port (if you used the servo connectors).
 
-![](fig/PB_no_cables.jpg "Power board without cables") | ![](fig/PB_with_cables.jpg "Power board with cables attached")
+[![](fig/PB_no_cables.jpg "Power board without cables")](fig/PB_no_cables.jpg) | [![](fig/PB_with_cables.jpg "Power board with cables attached")](fig/PB_with_cables.jpg)
 
 6. Install Pixhawk into the drone frame and connect the power cables from the distribution board to the `POWER1` and `POWER2` slots.
 7. Connect the ESC signal cable to the `I/O PWM OUT` port.
@@ -32,7 +32,7 @@ This guide is written for Pixhawk 4, because it is used on most of the MRS aeria
 9. Connect the onboard computer to the `TELEM2` port. This is a UART port which ensures communication between the Pixhawk and the onboard computer. We use an FTDI serial to USB converter to connect the Pixhawk with the onboard computer.
 10. Optionally, you can connect other sensors, like a GPS module, rangefinder, etc. Note that the arming button and the buzzer are integrated into the GPS receiver, so if you want to use them either connect the GPS receiver or your own arming button and buzzer to the `GPS MODULE` port. The arming button has to be disabled in SW if it is not used (this is unsafe).
 
-![](fig/Pixhawk_no_cables.jpg "Pixhawk without cables") | ![](fig/Pixhawk_with_cables.jpg "Pixhawk with cables attached")
+[![](fig/Pixhawk_no_cables.jpg "Pixhawk without cables")](fig/Pixhawk_no_cables.jpg) | [![](fig/Pixhawk_with_cables.jpg "Pixhawk with cables attached")](fig/Pixhawk_with_cables.jpg)
 
 # SD card setup
 Pixawk has an SD card for flight logs and for additional configuration.
@@ -47,10 +47,10 @@ Install the SD card back into the Pixhawk.
 4. Set the airframe type according to your drone (most common options are Generic Quadcopter, Generic Hexarotor and Genereic Octocopter)
 5. Calibrate all the sensors according to the instructions in QGroundControl. Pixhawk has to be installed in the drone frame during calibration.
 
-![](fig/Qground1.png "QGroundControl frame selection") | ![](fig/Qground2.png "QGroundControl sensor calibration")
+[![](fig/Qground1.png "QGroundControl frame selection")](fig/Qground1.png) | [![](fig/Qground2.png "QGroundControl sensor calibration")](fig/Qground2.png)
 
 6. Setup your radio. Pair your RC transmitter and your receiver and connect the receiver to Pixhawk.
-7. Setup the channels on your Transmitter. Proper channel setup is important for some functionality of the MRS system. We use 8 RC channels:
+7. Setup the channels on your Transmitter. Proper channel setup is important for the functionality of the MRS UAV system. 8 RC channels are used:
   1. hadsf
   2. adsf
   3. adsf
