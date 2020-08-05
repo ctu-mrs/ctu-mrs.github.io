@@ -17,7 +17,7 @@ This guide is written for Pixhawk 4, as we use it on most of our platforms. But 
 1. Pixhawk 4 comes with a power distribution/supply board. This board provides power distribution for motors (ESCs), connections for ESC signals, current and voltage monitoring and two redundant 5V power supplies for Pixhawk.
 
 | ![](fig/power_board.jpg "title-1") | ![](fig/pixhawk4.jpg "title-1") |
-| -                                  | -                               |
+|------------------------------------|---------------------------------|
 
 1. Install the board into the frame, solder the motor connections and connect the ESC signal cables.
 2. You can either solder the ESC signal cables to the M1-M8 ports, or connect them with standard servo cable connectors (we recommend the servo cable solution).
@@ -25,7 +25,7 @@ This guide is written for Pixhawk 4, as we use it on most of our platforms. But 
 4. Connect a cable for the ESC signals to the FMU port (if you soldered the ESC signal cables) or the IO port (if you used the standard servo cables).
 
 | ![](fig/PB_no_cables.jpg "title-1") | ![](fig/PB_with_cables.jpg "title-1") |
-| -                                   | -                                     |
+|-------------------------------------|---------------------------------------|
 
 5. Install Pixhawk into the drone frame and connect the power cables from the distribution board to the "POWER1" and "POWER2" slots.
 6. Connect the ESC signal cable to the "I/O PWM OUT" port.
