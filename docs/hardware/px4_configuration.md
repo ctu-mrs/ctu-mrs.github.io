@@ -16,8 +16,8 @@ Follow this guide to setup a new drone with pixhawk for the MRS UAV system.
 This guide is written for Pixhawk 4, because it is used on most of the MRS aerial platforms. But it is applicable for other versions of Pixhawk, with minor differences.
 
 1. Pixhawk 4 comes with a power distribution/supply board. This board provides power distribution for motors (ESCs), connections for ESC signals, two redundant 5V power supplies for Pixhawk and current and voltage monitoring .
-
-![](fig/power_board.jpg "Pixhawk power board") | ![](fig/pixhawk4.jpg "Pixhawk 4")
+ 
+[![](fig/power_board.jpg "Pixhawk power board")](fig/power_board.jpg) | [![](fig/pixhawk4.jpg "Pixhawk 4")](fig/pixhawk4.jpg)
 
 2. Install the power board into the frame, solder the motor connections and connect the ESC signal cables.
 3. You can either solder the ESC signal cables to the M1-M8 ports, or connect them with standard servo cable connectors (servo cable solution is recommended by MRS).
