@@ -16,10 +16,7 @@ This guide is written for Pixhawk 4, because it is used on most of the MRS aeria
 
 1. Pixhawk 4 comes with a power distribution/supply board. This board provides power distribution for motors (ESCs), connections for ESC signals, two redundant 5V power supplies for Pixhawk and current and voltage monitoring .
 
-![](fig/power_board.jpg "title-1")
-{: .float-left }
-![](fig/pixhawk4.jpg "title-1")
-{: .float-right }
+![](fig/power_board.jpg "title-1") | ![](fig/pixhawk4.jpg "title-1")
 
 
 
