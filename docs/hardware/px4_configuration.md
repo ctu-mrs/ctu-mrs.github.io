@@ -1,4 +1,4 @@
----
+= --- =
 layout: default
 title: PX4 Configuration
 parent: Hardware
@@ -16,7 +16,7 @@ Follow this guide to setup a new drone with pixhawk for the MRS UAV system.
 This guide is written for Pixhawk 4, because it is used on most of the MRS aerial platforms. But it is applicable for other versions of Pixhawk, with minor differences.
 
 1. Pixhawk 4 comes with a power distribution/supply board. This board provides power distribution for motors (ESCs), connections for ESC signals, two redundant 5V power supplies for Pixhawk and current and voltage monitoring .
- 
+
 [![](fig/power_board.jpg "Pixhawk power board")](fig/power_board.jpg) | [![](fig/pixhawk4.jpg "Pixhawk 4")](fig/pixhawk4.jpg)
 
 2. Install the power board into the frame, solder the motor connections and connect the ESC signal cables.
@@ -62,11 +62,22 @@ Install the SD card back into the Pixhawk.
 | 6           | Flight mode switch   | Changes the PX4 flight mode when you fly manually                                                          |
 | 7           | MRS system switch    | Switch used to trigger some functionality of the MRS UAV system, like the "remote" mode                    |
 | 8           | MRS emergency switch | Triggers an emergency behaviour (e-hover, e-land, failsafe land) according to MRS UAV system configuration |
- 
+
 9. Calibrate your transmitter with the `Calibrate` button in QGroundControl and follow the instruction.
-10. Setup the flight modes. Select Channel 5 as Offboard switch channel and channel 6 as Position Control switch channel. Set Flight Mode 1 as Manual, Flight Mode 4 as Altitude and Flight Mode 6 as position (3 position switch is used at channel 6 to switch between those three modes).
- 
+10. Setup the flight modes. Select Channel 5 as Offboard switch channel and channel 6 as Position Control switch channel and Mode Channel. Set Flight Mode 1 as Manual, Flight Mode 4 as Altitude and Flight Mode 6 as position (3 position switch is used at channel 6 to switch between those three modes).
+
 [![](fig/Qground3.png "QGroundControl radio setup")](fig/Qground3.png) | [![](fig/Qground4.png "QGroundControl flight modes setup")](fig/Qground4.png)
+
+11. Calibrate your ESCs in the `Power` section. You can also configure your battery here (not needed for the MRS UAV system). Note that the `Power` icon may stay red, you can ignore this.
+12. In the `Safety` section, configure failsafe actions. Standard MRS configuration is Warning for Low Battery Failsafe Trigger, Land mode for RC Loss Failsafe Trigger and Land imediately in the Return To Launch Settings. No other triggers are activated (Object detection, data link loss etc.).
+13. Setup the RC loss failsafe. This failsafe is activated when the drone is flying manually (not in offboard mode) and the RC signal is lost. The RC receiver on the drone is configured to output abnormally low throttle signal when RC is lost, which is detected by Pixhawk. This guide is for the Hitec Optima receivers, if you are using a different receiver the configuration steps may be different. To configure RC loss failsafe, follow these steps:
+  * Turn on your RC transmitter and receiver.
+  * Push you RC transmitter's throttle stick to the lowest level, then trim the throttle channel all the way down and use sub-trims to trim it even lower (we want to achieve the lowest possible value at the throttle CH2 channel).
+  * Do not move the other sticks, leave them in centered positions.
+  * Press the button on the RC receiver until the red LED turns off. Then release the button. The red and blue LEDs will start flashing for a while. This saves the current RC configuration as the output which the RC receiver produces when RC signal is lost.
+  * In QGroundControl go to the `Parameters` section and set parameter `RC_MAP_FAILSAFE` to `Channel 2` and `RC_FAILS_THR` to `950 us`.
+  * Restart Pixhawk.
+  * Now when you turn off your RC transmitter, QGroundControl should report `manual control lost` and when you turn your RC back on, it should report `manual control regained`.
 
 # ROS setup
 
