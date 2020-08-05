@@ -10,9 +10,10 @@ parent: Hardware
 ## UNDER CONSTRUCTION
 
 # Pixhawk setup on a new drone
+Follow this guide to setup a new drone with pixhawk for the MRS UAV system.
 
 ## HW setup
-This guide is written for Pixhawk 4, because it is used on most of the MRS aerial platforms. But it is applicable for other versions of Pixhawk, with minor modifications.
+This guide is written for Pixhawk 4, because it is used on most of the MRS aerial platforms. But it is applicable for other versions of Pixhawk, with minor differences.
 
 1. Pixhawk 4 comes with a power distribution/supply board. This board provides power distribution for motors (ESCs), connections for ESC signals, two redundant 5V power supplies for Pixhawk and current and voltage monitoring .
 
@@ -23,7 +24,7 @@ This guide is written for Pixhawk 4, because it is used on most of the MRS aeria
 4. Connect cables to both power outputs labeled as `PWR1` and `PWR2`.
 5. Connect a cable for the ESC signals to the `IO-PWM-in` port (if you soldered the ESC signal cables) or the `FMU-PWM-in` port (if you used the servo connectors).
 
-![](fig/PB_no_cables.jpg "Power board without cables") ![](fig/PB_with_cables.jpg "Power board with cables attached")
+![](fig/PB_no_cables.jpg "Power board without cables") | ![](fig/PB_with_cables.jpg "Power board with cables attached")
 
 5. Install Pixhawk into the drone frame and connect the power cables from the distribution board to the `POWER1` and `POWER2` slots.
 6. Connect the ESC signal cable to the `I/O PWM OUT` port.
@@ -31,7 +32,7 @@ This guide is written for Pixhawk 4, because it is used on most of the MRS aeria
 8. Connect the onboard computer to the `TELEM2` port. This is a UART port which ensures communication between the Pixhawk and the onboard computer. We use an FTDI serial to USB converter to connect the Pixhawk with the onboard computer.
 9. Optionally, you can connect other sensors, like a GPS module, rangefinder, etc. Note that the arming button and the buzzer are integrated into the GPS receiver, so if you want to use them either connect the GPS receiver or your own arming button and buzzer to the `GPS MODULE` port. The arming button has to be disabled in SW if it is not used (this is unsafe).
 
-![](fig/Pixhawk_no_cables.jpg "Pixhawk without cables") ![](fig/Pixhawk_with_cables.jpg "Pixhawk with cables attached")
+![](fig/Pixhawk_no_cables.jpg "Pixhawk without cables") | ![](fig/Pixhawk_with_cables.jpg "Pixhawk with cables attached")
 
 # SD card setup
 Pixawk has an SD card for flight logs and for additional configuration.
