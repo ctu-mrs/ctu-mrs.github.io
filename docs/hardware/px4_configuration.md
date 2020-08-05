@@ -49,13 +49,32 @@ Install the SD card back into the Pixhawk.
 
 [![](fig/Qground1.png "QGroundControl frame selection")](fig/Qground1.png) | [![](fig/Qground2.png "QGroundControl sensor calibration")](fig/Qground2.png)
 
-6. Setup your radio. Pair your RC transmitter and your receiver and connect the receiver to Pixhawk.
-7. Setup the channels on your Transmitter. Proper channel setup is important for the functionality of the MRS UAV system. 8 RC channels are used:
-  1. hadsf
-  2. adsf
-  3. adsf
-  4. adf
-  5.
+1. Setup your radio. Pair your RC transmitter and your receiver and connect the receiver to Pixhawk.
+2. Setup the channels on your Transmitter. Proper channel setup is critical for the functionality of the MRS UAV system. 8 RC channels are used:
+
+<style>
+table th:first-of-type {
+    width: 10%;
+}
+table th:nth-of-type(2) {
+    width: 20%;
+}
+table th:nth-of-type(3) {
+    width: 70%;
+}
+</style>
+
+| Channel     | Function             | Description                                                                                                |
+| :---------- | :----------          | :------                                                                                                    |
+| 1           | Roll                 | manual control input                                                                                       |
+| 2           | Throttle             | manual control input                                                                                       |
+| 3           | Pitch                | manual control input                                                                                       |
+| 4           | Yaw                  | manual control input                                                                                       |
+| 5           | Offboard switch      | Used to switch the drone in and out of Offboard mode                                                       |
+| 6           | Flight mode switch   | Changes the PX4 flight mode when you fly manually                                                          |
+| 7           | MRS system switch    | Switch used to trigger some functionality of the MRS UAV system, like the "remote" mode                    |
+| 8           | MRS emergency switch | Triggers an emergency behaviour (e-hover, e-land, failsafe land) according to MRS UAV system configuration |
+ 
 8. You should see the RC channel values in QGroundControl. If you do not see the RC channels, check the connection of the receiver.
 9. Calibrate your transmitter with the `Calibrate` button in QGroundControl and follow the instruction.
 
