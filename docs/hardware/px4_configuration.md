@@ -49,20 +49,8 @@ Install the SD card back into the Pixhawk.
 
 [![](fig/Qground1.png "QGroundControl frame selection")](fig/Qground1.png) | [![](fig/Qground2.png "QGroundControl sensor calibration")](fig/Qground2.png)
 
-1. Setup your radio. Pair your RC transmitter and your receiver and connect the receiver to Pixhawk.
-2. Setup the channels on your Transmitter. Proper channel setup is critical for the functionality of the MRS UAV system. 8 RC channels are used:
-
-<style>
-table th:first-of-type {
-    width: 10%;
-}
-table th:nth-of-type(2) {
-    width: 20%;
-}
-table th:nth-of-type(3) {
-    width: 70%;
-}
-</style>
+6. Setup your radio. Pair your RC transmitter and your receiver and connect the receiver to Pixhawk. You should see the RC channel values in QGroundControl. If you do not see the RC channels, check the connection of the receiver.
+8. Setup the channels on your Transmitter. Proper channel setup is critical for the functionality of the MRS UAV system. 8 RC channels are used:
 
 | Channel     | Function             | Description                                                                                                |
 | :---------- | :----------          | :------                                                                                                    |
@@ -75,8 +63,10 @@ table th:nth-of-type(3) {
 | 7           | MRS system switch    | Switch used to trigger some functionality of the MRS UAV system, like the "remote" mode                    |
 | 8           | MRS emergency switch | Triggers an emergency behaviour (e-hover, e-land, failsafe land) according to MRS UAV system configuration |
  
-8. You should see the RC channel values in QGroundControl. If you do not see the RC channels, check the connection of the receiver.
 9. Calibrate your transmitter with the `Calibrate` button in QGroundControl and follow the instruction.
+10. Setup the flight modes. Select Channel 5 as Offboard switch channel and channel 6 as Position Control switch channel. Set Flight Mode 1 as Manual, Flight Mode 4 as Altitude and Flight Mode 6 as position (3 position switch is used at channel 6 to switch between those three modes).
+ 
+[![](fig/Qground3.png "QGroundControl radio setup")](fig/Qground3.png) | [![](fig/Qground4.png "QGroundControl flight modes setup")](fig/Qground4.png)
 
 # ROS setup
 
