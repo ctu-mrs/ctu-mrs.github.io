@@ -1,4 +1,4 @@
-= --- =
+---
 layout: default
 title: PX4 Configuration
 parent: Hardware
