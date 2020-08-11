@@ -44,6 +44,7 @@ Install the SD card back into the Pixhawk.
 [![](fig/Qground1.png "QGroundControl frame selection")](fig/Qground1.png) | [![](fig/Qground2.png "QGroundControl sensor calibration")](fig/Qground2.png)
 6. Setup your radio. Pair your RC transmitter and your receiver and connect the receiver to Pixhawk. You should see the RC channel values in QGroundControl. If you do not see the RC channels, check the connection of the receiver.
 8. Setup the channels on your Transmitter. Proper channel setup is critical for the functionality of the MRS UAV system. 8 RC channels are used:
+
 | Channel     | Function             | Description                                                                                                |
 | :---------- | :----------          | :------                                                                                                    |
 | 1           | Roll                 | manual control input                                                                                       |
