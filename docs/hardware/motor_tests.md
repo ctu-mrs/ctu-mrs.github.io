@@ -6,7 +6,7 @@ parent: Hardware
 
 # Motor tests (under construction)
 
-| Throttle (%) | Thrust (g) | RPM  | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
+| Thr (%) | Thr (g) | RPM  | Vol (V) | Cur (A) | Pow (w) | Eff (g/W) |
 | :---:        | :---:      | :---:| :---:       | :---:       | :---:     | :---:            |
 | 5            | 0          | 500  | 11.15       | 0.08        | 0.89      | 0.00             |
 | 10           | 0          | 1014 | 11.15       | 0.11        | 1.23      | 0.00             |
