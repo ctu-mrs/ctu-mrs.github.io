@@ -13,13 +13,15 @@ parent: Hardware
 
 
 
-| Channel     | Function             | Description                                                                                                |
-| :- | :-          | :-                                                                                                    |
-| 1           | Roll                 | manual control input                                                                                       |
-| 2           | Throttle             | manual control input                                                                                       |
-| 3        | Pitch                | manual control input                                                                                       |
-| 4          | Yaw                  | manual control input                                                                                       |
-| 5         | Offboard switch      | Used to switch the drone in and out of Offboard mode                                                       |
-| 6         | Flight mode switch   | Changes the PX4 flight mode when you fly manually                                                          |
-| 7          | MRS system switch    | Switch used to trigger some functionality of the MRS UAV system, like the "remote" mode                    |
-| 8         | MRS emergency switch | Triggers an emergency behaviour (e-hover, e-land, failsafe land) according to MRS UAV system configuration |
+| Throttle (%) | Thrust (g) | RPM | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 5 | 0 | 485 | 11.15 | 0.08 | 0.89 | 0.00 |
+| 10 | 0 | 1014 | 11.15 | 0.10 | 1.12 | 0.00 |
+| 15 | 176 | 1514 | 11.15 | 0.14 | 1.56 | 112.75 |
+| 20 | 222 | 2014 | 11.16 | 0.17 | 1.90 | 117.01 |
+| 25 | 1 | 2514 | 11.14 | 0.18 | 2.01 | 0.50 |
+| 30 | 0 | 3028 | 11.14 | 0.20 | 2.23 | 0.00 |
+| 35 | 0 | 3485 | 11.14 | 0.23 | 2.56 | 0.00 |
+| 40 | 0 | 3971 | 11.15 | 0.28 | 3.12 | 0.00 |
+| 45 | 0 | 4457 | 11.14 | 0.31 | 3.45 | 0.00 |
+| 50 | 1 | 4928 | 11.13 | 0.34 | 3.78 | 0.26 |
