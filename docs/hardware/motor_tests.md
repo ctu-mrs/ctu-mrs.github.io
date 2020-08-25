@@ -1,4 +1,4 @@
-= --- =
+---
 layout: default
 title: Motor tests
 parent: Hardware
