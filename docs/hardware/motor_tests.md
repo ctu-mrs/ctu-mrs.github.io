@@ -4,35 +4,9 @@ title: Motor tests
 parent: Hardware
 ---
 
-# Motor tests (under construction)
- 
+# Motor tests
+All motor tests are done with a Turnigy MultiStar BLheli_32 51A ESC, with the 32.7 BLheli firmware. ESC config can be found here - https://github.com/ctu-mrs/uav_core/blob/master/miscellaneous/blheli32_esc_config/T650/T650_M1.ini
+Current and voltage measurements are done by the ESC and thrust is measured with a 5 kg load cell, coupled with HX711 amplifier.
+Tests are done with fully charged lithium batteries, as we do not have a powerful enough adjustable power supply.
+
 ## Plastic 9545 self-tightening propeller
-
-| Throttle (%)           | Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
-| :---:                  | :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
-| 50                     | 391        | 5768  | 16.75       | 3.11        | 52.09     | 7.51             |
-| 55                     | 436        | 6156  | 16.72       | 3.93        | 65.71     | 6.64             |
-| 60                     | 509        | 6579  | 16.69       | 4.82        | 80.45     | 6.33             |
-| 65                     | 586        | 6925  | 16.66       | 5.80        | 96.63     | 6.06             |
-| 70                     | 656        | 7222  | 16.63       | 6.83        | 113.58    | 5.78             |
-| 75                     | 707        | 7685  | 16.59       | 7.86        | 130.40    | 5.42             |
-| 80                     | 769        | 7982  | 16.56       | 9.03        | 149.54    | 5.14             |
-| 85                     | 834        | 8242  | 16.52       | 10.31       | 170.32    | 4.90             |
-| 90                     | 892        | 8839  | 16.48       | 11.58       | 190.84    | 4.67             |
-| 95                     | 968        | 8859  | 16.43       | 12.94       | 212.60    | 4.55             |
-| 100                    | 1017       | 9097  | 16.39       | 14.33       | 234.87    | 4.33             |
-
-
-
-| Throttle (%) | Thrust (g) | RPM | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 5 | 0 | 485 | 11.15 | 0.08 | 0.89 | 0.00 |
-| 10 | 0 | 1014 | 11.15 | 0.10 | 1.12 | 0.00 |
-| 15 | 176 | 1514 | 11.15 | 0.14 | 1.56 | 112.75 |
-| 20 | 222 | 2014 | 11.16 | 0.17 | 1.90 | 117.01 |
-| 25 | 1 | 2514 | 11.14 | 0.18 | 2.01 | 0.50 |
-| 30 | 0 | 3028 | 11.14 | 0.20 | 2.23 | 0.00 |
-| 35 | 0 | 3485 | 11.14 | 0.23 | 2.56 | 0.00 |
-| 40 | 0 | 3971 | 11.15 | 0.28 | 3.12 | 0.00 |
-| 45 | 0 | 4457 | 11.14 | 0.31 | 3.45 | 0.00 |
-| 50 | 1 | 4928 | 11.13 | 0.34 | 3.78 | 0.26 |
