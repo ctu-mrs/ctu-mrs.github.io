@@ -5,8 +5,9 @@ parent: Hardware
 ---
 
 # Motor tests (under construction)
-| Plastic 9454 propeller |
-| :---:                  |
+ 
+## Plastic 9545 self-tightening propeller
+
 | Throttle (%)           | Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
 | :---:                  | :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
 | 50                     | 391        | 5768  | 16.75       | 3.11        | 52.09     | 7.51             |
