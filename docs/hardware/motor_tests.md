@@ -13,7 +13,9 @@ Tables starts at 50% throttle and continue to 100% throttle in 10% increments.
 
 ## Motor: Readytosky 2312 920KV
 
-### Propeller: DJI plastic 9545 self-tightening propeller
+### Propeller: DJI plastic 9450 self-tightening propeller
+
+[![](fig/motor_tests/9450DJI.jpg "DJI 9450 propeller")](fig/motor_tests/9450DJI.jpg)
 
 | Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
 | :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
@@ -24,8 +26,10 @@ Tables starts at 50% throttle and continue to 100% throttle in 10% increments.
 | 911        | 8608  | 16.40       | 11.48       | 188.27    | 4.84             |
 | 1024       | 9068  | 16.32       | 14.26       | 232.72    | 4.40             |
 
-### Propeller: Aliexpress plastic 9545 self-tightening propeller
+### Propeller: Aliexpress plastic 9450 self-tightening propeller
 This is a copy of the DJI propeller, it is much more flexible
+
+[![](fig/motor_tests/9450Fake.jpg "Copy of a DJI 9450 propeller")](fig/motor_tests/9450Fake.jpg)
 
 | Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
 | :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
@@ -36,7 +40,9 @@ This is a copy of the DJI propeller, it is much more flexible
 | 893        | 8525  | 16.49       | 11.58       | 190.95    | 4.68             |
 | 997        | 8956  | 16.41       | 14.37       | 235.81    | 4.23             |
 
-### Propeller: Carbon fiber 9545 self-tightening propeller
+### Propeller: Carbon fiber 9450 self-tightening propeller
+
+[![](fig/motor_tests/9450CF.jpg "Carbon fiber 9450 propeller")](fig/motor_tests/9450CF.jpg)
 
 | Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
 | :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
@@ -48,6 +54,8 @@ This is a copy of the DJI propeller, it is much more flexible
 | 989        | 9708  | 16.35       | 13.19       | 215.66    | 4.59             |
 
 ### Propeller: Plastic 8045 propeller
+
+[![](fig/motor_tests/8045VIO.jpg "8045 plastic propeller")](fig/motor_tests/8045VIO.jpg)
 
 | Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
 | :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
