@@ -12,6 +12,9 @@ Tables starts at 50% throttle and continue to 100% throttle in 10% increments.
 
 
 ## Motor: Readytosky 2312 920KV
+Cheap chinese motor, clone of the original DJI motors for F450/F550 and Phantom drones.
+
+[![](fig/motor_tests/2312_920KV_readytosky.jpg "Readytosky 2312 920KV motor")](fig/motor_tests/2312_920KV_readytosky.jpg)
 
 ### Propeller: DJI plastic 9450 self-tightening propeller
 
