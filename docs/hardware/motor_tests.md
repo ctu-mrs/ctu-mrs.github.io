@@ -11,7 +11,21 @@ Tests are done with fully charged lithium batteries, as we do not have a powerfu
 
 ## Plastic 9545 self-tightening propeller
 
-{: .fw-500 }
+<style>
+table th:first-of-type {
+    width: 10%;
+}
+table th:nth-of-type(2) {
+    width: 10%;
+}
+table th:nth-of-type(3) {
+    width: 50%;
+}
+table th:nth-of-type(4) {
+    width: 30%;
+}
+</style>
+
 | Throttle (%) | Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
 | :---:        | :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
 | 50           | 401        | 5688  | 16.66       | 3.09        | 51.48     | 7.79             |
@@ -25,116 +39,3 @@ Tests are done with fully charged lithium batteries, as we do not have a powerfu
 | 90           | 911        | 8608  | 16.40       | 11.48       | 188.27    | 4.84             |
 | 95           | 971        | 8870  | 16.36       | 12.81       | 209.57    | 4.63             |
 | 100          | 1024       | 9068  | 16.32       | 14.26       | 232.72    | 4.40             |
-{: .fw-700 }
-
-
-<table>
-    <tr>
-        <td>Throttle (%)</td>
-        <td>Thrust (g)</td>
-        <td>RPM</td>
-        <td>Voltage (V)</td>
-        <td>Current (A)</td>
-        <td>Power (w)</td>
-        <td>Efficiency (g/W)</td>
-    </tr>
-    <tr>
-        <td>50</td>
-        <td>401</td>
-        <td>5688</td>
-        <td>16.66</td>
-        <td>3.09</td>
-        <td> 51.48</td>
-        <td>7.79</td>
-    </tr>
-    <tr>
-        <td>55</td>
-        <td>464</td>
-        <td>6154</td>
-        <td>16.64</td>
-        <td>3.92</td>
-        <td> 65.23</td>
-        <td>7.11</td>
-    </tr>
-    <tr>
-        <td>60</td>
-        <td>529</td>
-        <td>6508</td>
-        <td>16.61</td>
-        <td>4.80</td>
-        <td> 79.73</td>
-        <td>6.64</td>
-    </tr>
-    <tr>
-        <td>65</td>
-        <td>596</td>
-        <td>6911</td>
-        <td>16.58</td>
-        <td>5.73</td>
-        <td> 95.00</td>
-        <td>6.27</td>
-    </tr>
-    <tr>
-        <td>70</td>
-        <td>656</td>
-        <td>7213</td>
-        <td>16.54</td>
-        <td>6.72</td>
-        <td> 111.15</td>
-        <td>5.90</td>
-    </tr>
-    <tr>
-        <td>75</td>
-        <td>713</td>
-        <td>7665</td>
-        <td>16.51</td>
-        <td>7.78</td>
-        <td> 128.45</td>
-        <td>5.55</td>
-    </tr>
-    <tr>
-        <td>80</td>
-        <td>787</td>
-        <td>7788</td>
-        <td>16.48</td>
-        <td>9.05</td>
-        <td> 149.14</td>
-        <td>5.28</td>
-    </tr>
-    <tr>
-        <td>85</td>
-        <td>855</td>
-        <td>8122</td>
-        <td>16.44</td>
-        <td>10.24</td>
-        <td> 168.35</td>
-        <td>5.08</td>
-    </tr>
-    <tr>
-        <td>90</td>
-        <td>911</td>
-        <td>8608</td>
-        <td>16.40</td>
-        <td>11.48</td>
-        <td> 188.27</td>
-        <td>4.84</td>
-    </tr>
-    <tr>
-        <td>95</td>
-        <td>971</td>
-        <td>8870</td>
-        <td>16.36</td>
-        <td>12.81</td>
-        <td> 209.57</td>
-        <td>4.63</td>
-    </tr>
-    <tr>
-        <td>100</td>
-        <td>1024</td>
-        <td>9068</td>
-        <td>16.32</td>
-        <td>14.26</td>
-        <td> 232.72</td>
-        <td>4.40</td>
-    </tr>
-</table>
