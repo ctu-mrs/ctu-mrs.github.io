@@ -76,7 +76,28 @@ Install the SD card back into the Pixhawk.
 
 # ROS setup
 
-## Additional Pixhawk configuration
+Once Pixhawk is connected to the computer via the serial to USB, it will show up as `/dev/ttyUSB0` (or something similar).
+Run this command: (replace /dev/ttuUSB0 with your device path)
+
+```bash
+udevadm info -p  $(udevadm info -q path -n /dev/ttyUSB0) | grep 'SERIAL_SHORT\|VENDOR_ID\|MODEL_ID'
+
+You should get something like this:
+
+```bash
+E: ID_MODEL_ID=6001
+E: ID_SERIAL_SHORT=A50285BI
+E: ID_VENDOR_ID=0403
+
+Create a new file in `/etc/udev/rules.d/` (you will need sudo privileges) and call it `99-usb-serial.rules`. Paste this line into the file:
+
+```bash
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A50285BI", SYMLINK+="pixhawk",OWNER="mrs",MODE="0666"
+
+Replace idVendor, idProduct and serial with you values, and change the OWNER name to your user name. Now, if you disconnect and reconnect pixhawk, it should show up as `/dev/pixhawk`. Now you should be able to run mavros:
+
+```bash
+roslaunch mrs_uav_general mavros_uav.launch
 
 # Garmin rangefinder throught Pixhawk
 
