@@ -69,3 +69,34 @@ This is a copy of the DJI propeller, it is much more flexible
 | 781        | 9076  | 16.45       | 10.50       | 172.73    | 4.52             |
 | 891        | 9722  | 16.37       | 13.27       | 217.23    | 4.10             |
 
+## Motor: Tarot 4114 320KV
+
+[![](fig/motor_tests/4114Tarot.jpg "Tarot 4114 320KV motor")](fig/motor_tests/4114Tarot.jpg)
+
+### Propeller: Tarot 1555 carbon fiber propeller
+
+[![](fig/motor_tests/1555Tarot.jpg "Tarot 1555 CF propeller")](fig/motor_tests/1555Tarot.jpg)
+
+| Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (W) | Efficiency (g/W) |
+| :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
+| 791        | 3448  | 25.12       | 3.60        | 90.43     | 8.75             |
+| 1077       | 4013  | 25.03       | 5.77        | 144.42    | 7.46             |
+| 1420       | 4528  | 24.92       | 8.53        | 212.57    | 6.68             |
+| 1773       | 4975  | 24.78       | 12.23       | 303.06    | 5.85             |
+| 2116       | 5468  | 24.60       | 16.67       | 410.08    | 5.16             |
+| 2545       | 5832  | 24.41       | 21.62       | 527.74    | 4.82             |
+
+### Propeller: Tarot 1575 carbon fiber propeller
+
+[![](fig/motor_tests/1575Tarot.jpg "Tarot 1575 CF propeller")](fig/motor_tests/1575Tarot.jpg)
+
+| Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (W) | Efficiency (g/W) |
+| :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
+| 614        | 3624  | 25.08       | 2.42        | 60.69     | 10.12            |
+| 867        | 4277  | 25.01       | 3.88        | 97.04     | 8.93             |
+| 1217       | 4836  | 24.93       | 5.78        | 144.10    | 8.45             |
+| 1568       | 5346  | 24.82       | 8.35        | 207.25    | 7.57             |
+| 1996       | 5957  | 24.69       | 11.73       | 289.61    | 6.89             |
+| 2373       | 6376  | 24.52       | 15.49       | 379.81    | 6.25             |
+
+
