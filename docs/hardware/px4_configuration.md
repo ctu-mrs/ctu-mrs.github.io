@@ -59,13 +59,13 @@ Install the SD card back into the Pixhawk.
 | 8           | MRS emergency switch | Triggers an emergency behaviour (e-hover, e-land, failsafe land) according to MRS UAV system configuration |
 
 - Calibrate your transmitter with the `Calibrate` button in QGroundControl and follow the instruction.
--. Setup the flight modes. Select Channel 5 as Offboard switch channel and channel 6 as Position Control switch channel and Mode Channel. Set Flight Mode 1 as Manual, Flight Mode 4 as Altitude and Flight Mode 6 as position (3 position switch is used at channel 6 to switch between those three modes).
+- Setup the flight modes. Select Channel 5 as Offboard switch channel and channel 6 as Position Control switch channel and Mode Channel. Set Flight Mode 1 as Manual, Flight Mode 4 as Altitude and Flight Mode 6 as position (3 position switch is used at channel 6 to switch between those three modes).
 
 [![](fig/Qground3.png "QGroundControl radio setup")](fig/Qground3.png) | [![](fig/Qground4.png "QGroundControl flight modes setup")](fig/Qground4.png)
 
--. Calibrate your ESCs in the `Power` section. You can also configure your battery here (not needed for the MRS UAV system). Note that the `Power` icon may stay red, you can ignore this.
--. In the `Safety` section, configure failsafe actions. Standard MRS configuration is Warning for Low Battery Failsafe Trigger, Land mode for RC Loss Failsafe Trigger and Land imediately in the Return To Launch Settings. No other triggers are activated (Object detection, data link loss etc.).
--. Setup the RC loss failsafe. This failsafe is activated when the drone is flying manually (not in offboard mode) and the RC signal is lost. The RC receiver on the drone is configured to output abnormally low throttle signal when RC is lost, which is detected by Pixhawk. This guide is for the Hitec Optima receivers, if you are using a different receiver the configuration steps may be different. To configure RC loss failsafe, follow these steps:
+- Calibrate your ESCs in the `Power` section. You can also configure your battery here (not needed for the MRS UAV system). Note that the `Power` icon may stay red, you can ignore this.
+- In the `Safety` section, configure failsafe actions. Standard MRS configuration is Warning for Low Battery Failsafe Trigger, Land mode for RC Loss Failsafe Trigger and Land imediately in the Return To Launch Settings. No other triggers are activated (Object detection, data link loss etc.).
+- Setup the RC loss failsafe. This failsafe is activated when the drone is flying manually (not in offboard mode) and the RC signal is lost. The RC receiver on the drone is configured to output abnormally low throttle signal when RC is lost, which is detected by Pixhawk. This guide is for the Hitec Optima receivers, if you are using a different receiver the configuration steps may be different. To configure RC loss failsafe, follow these steps:
   * Turn on your RC transmitter and receiver.
   * Push you RC transmitter's throttle stick to the lowest level, then trim the throttle channel all the way down and use sub-trims to trim it even lower (we want to achieve the lowest possible value at the throttle CH2 channel).
   * Do not move the other sticks, leave them in centered positions.
