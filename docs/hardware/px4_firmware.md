@@ -52,8 +52,21 @@ More info: [https://dev.px4.io/master/en/middleware/modules_driver_distance_sens
 
 # Configuration
 
+## General configuration
+
+Garmin rangefinder over i2c: `SENS_ENLL40LS := i2c`
+Throttle failsafe: `RC_FAILS_THR := 950 us`
+
+## Enabling dshot
+
+Dshot: `DSHOT_CONFIG := dshot_150`
+Sys io: `SYS_USE_IO := 0` disables the safety button, TODO fix this
+
+restart px4
+
+Dshot: `DSHOT_MIN := 0.02`
+
 ## Disabling/Enabling internal magnetometer
 
 Disable: `EKF2_MAG_TYPE := None`
-
 Enable: `EKF2_MAG_TYPE := Automatic`
