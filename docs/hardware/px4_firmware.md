@@ -39,34 +39,3 @@ and install its dependencies according to the [manual](https://dev.px4.io/master
 
 The firmware file with the extension `.px4` can be found in the build subfolder.
 Upload it using the [Qgroundcontrol](http://qgroundcontrol.com/) utility.
-
-# Garmin rangefinder throught Pixhawk
-
-1. The Pixhawk's sd-card config should contain:
-```
-mavlink stream -d /dev/ttyS2 -s DISTANCE_SENSOR -r 100
-```
-2. Set parameter `SENS_EN_LL40LS` to i2c
-
-More info: [https://dev.px4.io/master/en/middleware/modules_driver_distance_sensor.html](https://dev.px4.io/master/en/middleware/modules_driver_distance_sensor.html)
-
-# Configuration
-
-## General configuration
-
-Garmin rangefinder over i2c: `SENS_ENLL40LS := i2c`
-Throttle failsafe: `RC_FAILS_THR := 950 us`
-
-## Enabling dshot
-
-Dshot: `DSHOT_CONFIG := dshot_150`
-Sys io: `SYS_USE_IO := 0` disables the safety button, TODO fix this
-
-restart px4
-
-Dshot: `DSHOT_MIN := 0.02`
-
-## Disabling/Enabling internal magnetometer
-
-Disable: `EKF2_MAG_TYPE := None`
-Enable: `EKF2_MAG_TYPE := Automatic`

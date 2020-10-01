@@ -34,9 +34,10 @@ This package contains *high-level* flight managers.
   * **emergency landing** - switches to emergency controller and tracker and lands as fast as possible
   * **failsafe landing** - feedforward landing, only effective in small heights and low speeds
   * **escalating failsafe** - the measures escalate when calling it repeatedly
-    1. emergency landing
-    2. failsafe landing
-    2. disarm
+    1. emergency hover
+    2. emergency landing
+    3. failsafe landing
+    4. disarm
   * transforming references and vectors between frames
   * verifying that references are inside of the allowed safety area
 * provides safety routines for checking
@@ -50,7 +51,7 @@ This package contains *high-level* flight managers.
 * allows controlling the UAV using the **RC controller** through our pipeline
   * the RC channels are picked up from [Mavros](http://wiki.ros.org/mavros)
   * a relative reference is generated for the active tracker
-  * **emergency landing** can be triggered by a dedicated switch
+  * **escalating failsafe** can be triggered by a dedicated switch
 * provides an **obstacle bumper** feature
   * has priority over user-provided references
   * for slow-flight only
@@ -93,6 +94,7 @@ This package contains *high-level* flight managers.
 * **launch file**: [constraint_manager.launch](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/launch/constraint_manager.launch)
 
 ## GainManager
+
 * stores and provides sets of gains for the [Se3Controller](https://github.com/ctu-mrs/mrs_uav_controllers)
 * allows mapping each set of gains to only some state estimators of [mrs_uav_odometry](https://github.com/ctu-mrs/mrs_uav_odometry)
 * automatically switches to a fallback set of gains if the current ones are not allowed
