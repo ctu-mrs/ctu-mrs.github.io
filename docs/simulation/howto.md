@@ -84,7 +84,7 @@ However, we also use an *AutomaticStart* program which detects the *armed* state
 ## 5. commanding the drone
 
 Now, the drone should be in the air and ready to take your commands.
-Continue to [how to command the drone](commanding_the_drone) page to learn more, but first, continue to read, how to start the simulation using a tmuxinator script.
+Continue to [UAV-ROS interface](https://ctu-mrs.github.io/docs/system/uav_ros_interface.html) page to learn more, but first, continue to read, how to start the simulation using a tmuxinator script.
 
 ## 6. automating it using tmux
 
