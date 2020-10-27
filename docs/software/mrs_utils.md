@@ -7,7 +7,7 @@ nav_order: 99
 
 # MRS Utilities
 
-MRS Utilities contains various useful tools for developement and testing.
+MRS Utilities contains various useful tools for development and testing.
 
 [MRS utils repository](https://github.com/ctu-mrs/mrs_utils){: .btn .btn-blue }
 
@@ -20,6 +20,6 @@ Tf_reconfigure makes this process much easier, it will allow you to construct th
 
 ### running tf_reconfigure
 
-Navigate to the start folder and run the tf_reconfigure.sh script. This will start a new tmux session, run rviz and rqt_reconfigure. You can see your current transformation in rviz, and adjust the values for up to three chained simple transformations in the rqt_reconfigure window. At first only the first chained transformation is visible, other will appear once you modify their values. Once you have configured your transformation, you can read out the final transformation in the terminal. Tf_reconfigure will output the final translation, quaternion and angles for Gazebo and ros tfs.
+Navigate to the start folder and run the tf_reconfigure.sh script. This will start a new tmux session, run rviz, and rqt_reconfigure. You can see your current transformation in rviz, and adjust the values for up to three chained simple transformations in the rqt_reconfigure window. At first, only the first chained transformation is visible, others will appear once you modify their values. Once you have configured your transformation, you can read out the final transformation in the terminal. Tf_reconfigure will output the final translation, quaternion, and angles for Gazebo and ros tfs.
 
-![tf_reconfigure](fig/tf_reconfigure.png)
+[![](fig/tf_reconfigure.png "tf reconfigure")](fig/tf_reconfigure.png) 
