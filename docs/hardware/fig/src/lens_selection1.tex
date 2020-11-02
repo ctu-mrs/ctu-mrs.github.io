@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage{tikz}   %TikZ is required for this to work.  Make sure this exists before the next line
+% \usepackage{tikz-3dplot} %requires 3dplot.sty to be in same directory, or in your LaTeX installation
+
+\usetikzlibrary{calc}
+
+\usepackage[active,tightpage]{preview}  %generates a tightly fitting border around the work
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{2mm}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.shapes}
+\usetikzlibrary{calc,intersections,through,backgrounds}
+
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+
+\usepackage{bm}  % bold italized fonts (for vectors)
+\renewcommand\vec{\bm}
+% \tdplotsetmaincoords{43}{13}{0}
+
+\begin{document}
+
+%%{ 
+
+\newcommand{\drawDrone}[3]% x, y, z, size
+{
+  \coordinate (c) at #1;
+  \pgfmathsetmacro{\armL}{1.5*#2}
+
+  \path (c) ++(45:\armL) coordinate (r1);
+  \path (c) ++(45+90:\armL) coordinate (r2);
+  \path (c) ++(45+180:\armL) coordinate (r3);
+  \path (c) ++(45+270:\armL) coordinate (r4);
+
+  \draw [fill=white, draw=none] (r1) rectangle (r3);
+  \draw [#3] (r1) -- (r3);
+  \draw [#3] (r2) -- (r4);
+  \draw [fill=white, #3] (r1) circle (#2);
+  \draw [fill=white, #3] (r2) circle (#2);
+  \draw [fill=white, #3] (r3) circle (#2);
+  \draw [fill=white, #3] (r4) circle (#2);
+}
+
+%%}
+
+\pgfmathsetmacro{\s}{1}
+\pgfmathsetmacro{\f}{1.5}
+
+\pgfmathsetmacro{\so}{3}
+\pgfmathsetmacro{\d}{10}
+\pgfmathsetmacro{\do}{(\d-\f)}
+
+%start tikz picture, and use the tdplot_main_coords style to implement the display 
+%coordinate transformation provided by 3dplot
+\begin{tikzpicture}[scale=1,
+    grid/.style={line width=0, gray!20}
+  ]
+
+  %%{ draw figure contents
+  
+  \begin{scope}
+    \coordinate (O) at (0, 0);
+
+    \coordinate (sA) at (-\f, \s);
+    \coordinate (sB) at (-\f, -\s);
+
+    \coordinate (soA) at (\do, \so);
+    \coordinate (soB) at (\do, -\so);
+
+    \coordinate (spA) at (intersection of soA--O and sA--sB);
+    \coordinate (spB) at (intersection of soB--O and sA--sB);
+
+    \draw[dashed] (-2*\f, 0) -- (\do+\f, 0);
+    \draw[dashed] (0, 1.2*\so) -- (0, -1.2*\so);
+
+    % sensor
+    \draw[thick, <->] (sB) -- (sA) node [anchor=east] {$s$};
+    % focal distance
+    \draw[<->] (sB) ++(0, -0.15) -- node [midway, anchor=north] {$f$} ++(\f, 0);
+
+    % object
+    \draw[thick, <->] (soB) -- (soA) node [anchor=west] {$s_o$};
+    % object distance
+    \draw[<->] (sB) ++(0, -0.75) -- node [midway, anchor=north] {$d$} ++(\d, 0);
+
+    % object projection
+    \draw[thin] (soA) -- (spA);
+    \draw[thin] (soB) -- (spB);
+    \draw[<->] ($ (spA) + (-0.15, 0) $) -- node [midway, anchor=south east] {$s_o'$} ($ (spB) + (-0.15, 0) $);
+
+  \end{scope}
+  
+  %%}
+
+\end{tikzpicture}
+
+\end{document}
+
+
+
