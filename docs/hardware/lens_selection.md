@@ -23,7 +23,7 @@ Two useful conversion equations are:
 
  1) <img src="https://render.githubusercontent.com/render/math?math=r_o=\frac{rs_of}{s(d-f)}">,
 
-where <img src="https://render.githubusercontent.com/render/math?math=r_o"> is pixel size of an object with size <img src="https://render.githubusercontent.com/render/math?math=s_o"> at distance <img src="https://render.githubusercontent.com/render/math?math=d">, <img src="https://render.githubusercontent.com/render/math?math=s"> is size of the sensor, and <img src="https://render.githubusercontent.com/render/math?math=f"> is focal distance of the camera.
+where <img src="https://render.githubusercontent.com/render/math?math=r_o"> is pixel size of an object with physical size <img src="https://render.githubusercontent.com/render/math?math=s_o"> which is at distance <img src="https://render.githubusercontent.com/render/math?math=d"> from the sensor, <img src="https://render.githubusercontent.com/render/math?math=r"> is resolution of the sensor, <img src="https://render.githubusercontent.com/render/math?math=s"> is size of the sensor, and <img src="https://render.githubusercontent.com/render/math?math=f"> is focal length of the camera.
 
  2) <img src="https://render.githubusercontent.com/render/math?math=FOV=2\mathrm{atan}\left(\frac{s}{2f}\right)">,
 
@@ -38,7 +38,7 @@ Derivation of these equations from the geometrical layout of the optical imaging
 
 Typically, the first step is selecting the camera you'll be using and then you select the lens accordingly.
 
-## Camera selection
+### Camera selection
 
 The camera selection is usually primarily dictated by the desired image resolution, frame rate and connection option.
 Other parameters to pay attention to when selecting a camera are:
@@ -66,7 +66,7 @@ For the actual selection of a specific camera, I recommend using a camera select
 Note that different physical camera configurations are usually available with the same sensor model.
 Since the sensor dictates most of the important parameters of the camera (resolution, RGB/monotone, noise and sensitivity parameters etc.), you can oftentimes select a camera with the same parameters, but eg. different connection or lens mount options. 
 
-## Lens selection
+### Lens selection
 
 After you've selected the camera you want to use, it's time for the last step - select the appropriate lens for it.
 The selected camera dictates the following parameters to which attention has to be paid when selecting the lens:
