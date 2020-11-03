@@ -52,6 +52,10 @@
 \pgfmathsetmacro{\d}{10}
 \pgfmathsetmacro{\do}{(\d-\f)}
 
+\pgfmathsetmacro{\ras}{0.2}
+\pgfmathsetmacro{\ang}{atan(\so/(\d-\f))}
+\pgfmathsetmacro{\ans}{0.65}
+
 %start tikz picture, and use the tdplot_main_coords style to implement the display 
 %coordinate transformation provided by 3dplot
 \begin{tikzpicture}[scale=1,
@@ -76,23 +80,40 @@
     \draw[dashed] (0, 1.2*\so) -- (0, -1.2*\so);
 
     % sensor
-    \draw[thick, <->] (sB) -- (sA) node [anchor=east] {$s$};
+    \draw (-\f, 0) rectangle ++(\ras, \ras); % right angle mark
+    \draw[line width=3, blue] (sB) -- (sA) node [anchor=west] {sensor};
+    \draw[<->] ($ (sB) + (-0.15, 0) $) -- ($ (sA) + (-0.15, 0) $) node [anchor=east] {$s$};
     % focal distance
     \draw[<->] (sB) ++(0, -0.15) -- node [midway, anchor=north] {$f$} ++(\f, 0);
 
     % object
-    \draw[thick, <->] (soB) -- (soA) node [anchor=west] {$s_o$};
+    \draw (\d-\f, 0) rectangle ++(-\ras, \ras); % right angle mark
+    \draw[line width=3, red] (soB) -- (soA) node [anchor=south east] {object};
+    \draw[<->] ($ (soB) + (0.15, 0) $) -- ($ (soA) + (0.15, 0) $) node [anchor=west] {$s_o$};
     % object distance
     \draw[<->] (sB) ++(0, -0.75) -- node [midway, anchor=north] {$d$} ++(\d, 0);
 
     % object projection
     \draw[thin] (soA) -- (spA);
     \draw[thin] (soB) -- (spB);
+    \draw[line width=1, orange] (spB) -- (spA) node [anchor=west, yshift=-2] {object projection};
     \draw[<->] ($ (spA) + (-0.15, 0) $) -- node [midway, anchor=south east] {$s_o'$} ($ (spB) + (-0.15, 0) $);
+
+    % angles
+    \draw (\ans, 0) arc (0 : \ang : \ans) node [midway, anchor=west, yshift=1] {$\alpha$};
+    \draw (-\ans, 0) arc (180 : 180+\ang : \ans) node [midway, anchor=east, yshift=-1] {$\alpha$};
+
+    % focal point
+    \draw[<-, green!60!black] (O) -- ++(0.75, 3) node [anchor=west] {focal point};
 
   \end{scope}
   
   %%}
+
+  \node at (-\f, 2*\f) {\footnotesize $\begin{aligned}
+    \tan(\alpha) &= \frac{s_o}{2(d - f)} \\
+    r_o &= \frac{r}{s}s_o'
+  \end{aligned}$};
 
 \end{tikzpicture}
 
