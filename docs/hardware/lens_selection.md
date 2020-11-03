@@ -103,6 +103,6 @@ However, it does practically never perfectly correspond to the projection of rea
 This means that additional computation has to be performed anyway and any gains one has from exploiting the math of the pinhole-based perspective projection are rendered pretty much moot.
 I (ViktorWalter) therefore recommend that you consider using a different model than the popular pinhole for better precision in 3D position estimation.
 Definitely do so for wide FoV optics, but also consider doing this for narrower lenses.
-There are numerous options of software - one oxample is the [OCamCalib](https://sites.google.com/site/scarabotix/ocamcalib-toolbox) system.
+There are numerous options of software - one example is the [OCamCalib](https://sites.google.com/site/scarabotix/ocamcalib-toolbox) system.
 
 When selecting a fisheye lens, refer to [this](https://en.wikipedia.org/wiki/Fisheye_lens#Mapping_function) - the mapping function implemented in the optics defines which properties of objects are preserved when they move in the image and which are not. For example, the Equidistant projection preserves angular distances, making it suitable for bearing-based systems.
