@@ -7,7 +7,7 @@ parent: Hardware
 # A quickstart guide to camera and lens selection for computer vision
 
 This guide will shortly explain how to select a camera + lens for a computer vision application.
-*This guide assumes that the optical system may be modelled as a [pinhole camera](https://en.wikipedia.org/wiki/Pinhole_camera_model) and the process and the equations get a tad more complicated if this model cannot be used* (ie. when you intend to use special wide-FOV/fisheye/omnidirectional optics).
+*This guide assumes that the optical system may be modelled as a [pinhole camera](https://en.wikipedia.org/wiki/Pinhole_camera_model) and the process and the equations get a tad more complicated if this model cannot be used* (ie. when you intend to use special wide-FOV/fisheye/omnidirectional optics - more on this in a later section).
 Still, it should give you a good overview of the problem.
 
 ## Preliminaries
@@ -23,7 +23,7 @@ Two useful conversion equations are:
 
  1) <img src="https://render.githubusercontent.com/render/math?math=r_o=\frac{rs_of}{s(d-f)}">,
 
-where <img src="https://render.githubusercontent.com/render/math?math=r_o"> is pixel size of an object with physical size <img src="https://render.githubusercontent.com/render/math?math=s_o"> which is at distance <img src="https://render.githubusercontent.com/render/math?math=d"> from the sensor, <img src="https://render.githubusercontent.com/render/math?math=r"> is resolution of the sensor, <img src="https://render.githubusercontent.com/render/math?math=s"> is size of the sensor, and <img src="https://render.githubusercontent.com/render/math?math=f"> is focal length of the camera.
+where <img src="https://render.githubusercontent.com/render/math?math=r_o"> is pixel size of an object with size <img src="https://render.githubusercontent.com/render/math?math=s_o"> at distance <img src="https://render.githubusercontent.com/render/math?math=d">, <img src="https://render.githubusercontent.com/render/math?math=s"> is size of the sensor, and <img src="https://render.githubusercontent.com/render/math?math=f"> is focal distance of the camera.
 
  2) <img src="https://render.githubusercontent.com/render/math?math=FOV=2\mathrm{atan}\left(\frac{s}{2f}\right)">,
 
@@ -38,7 +38,7 @@ How these equations are obtained from the geometrical layout of the optical imag
 
 Typically, the first step is selecting the camera you'll be using and then you select the lens accordingly.
 
-### Camera sensor selection
+## Camera sensor selection
 
 The camera sensor selection is usually primarily dictated by the desired image resolution, frame rate and connection option.
 Other parameters to pay attention to when selecting a camera are:
@@ -67,7 +67,7 @@ For the actual selection of a specific camera, I recommend using a camera select
 Note that different physical camera configurations are usually available with the same sensor model.
 Since the sensor dictates most of the important parameters of the camera (resolution, RGB/monotone, noise and sensitivity parameters etc.), you can oftentimes select a camera with the same parameters, but eg. different connection or lens mount options. 
 
-### Lens selection
+## Lens selection
 
 After you've selected the camera you want to use, it's time for the last step - select the appropriate lens for it.
 The selected camera dictates the following parameters to which attention has to be paid when selecting the lens:
@@ -89,3 +89,19 @@ The selected camera dictates the following parameters to which attention has to 
    It's possible to use a lens intended for a larger or smaller sensor and get away with it, but this will result in cropping of the image or not all of the projected light being used, and the listed parameters of the lens will have to be recalculated accordingly.
    Manufacturers sometimes show in their datasheets what portion of what size of sensor will the image cover.
 
+## On wide FoV and other "non-pinhole-like" setups
+*Note: May contain contoversial information*
+Very often, especially for applications of vision onboard of UAVs, you will need cameras with wide FoV to get an overview of the surroundings without the need for actively rotating the camera or the whole UAV.
+There is now a wide selection of affordable lenses that accomplish this, including [fisheye lenses](https://en.wikipedia.org/wiki/Fisheye_lens) with more than 180 degrees FoV.
+Alternatively, such wide overview can be obtained by using a curved reflective surface in front of a camera sensor.
+For these cases, the pinhole camera model is not appropriate.
+
+The pinhole model of cameras is very popular due to its simplicity and presumed computational efficiency.
+It is used frequently in computer vision and in computer graphics this model is used almost exlusively.
+However, it does practically never perfectly correspond to the projection of real cameras that have lenses, because of which most calibration systems based on the pinhole model compute additional "lens distortion" parameters used to first correct the projection to better correspond to the calculated model.
+This means that additional computation has to be performed anyway and any gains one has from exploiting the math of the pinhole-based perspective projection are rendered pretty much moot.
+I (ViktorWalter) therefore recommend that you consider using a different model than the popular pinhole for better precision in 3D position estimation.
+Definitely do so for wide FoV optics, but also consider doing this for narrower lenses.
+There are numerous options of software - one oxample is the [OCamCalib](https://sites.google.com/site/scarabotix/ocamcalib-toolbox) system.
+
+When selecting a fisheye lens, reffer to [this](https://en.wikipedia.org/wiki/Fisheye_lens#Mapping_function) - the mapping function implemented in the optics defines which properties of objects are preserved when they move in the image and which are not. For example, the Equidistant projection preserves angular distances, making it suitable for bearing-based systems.
