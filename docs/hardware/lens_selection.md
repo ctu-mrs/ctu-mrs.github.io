@@ -91,6 +91,7 @@ The selected camera dictates the following parameters to which attention has to 
 
 ## On wide FoV and other "non-pinhole-like" setups
 *Note: May contain contoversial information*
+
 Very often, especially for applications of vision onboard of UAVs, you will need cameras with wide FoV to get an overview of the surroundings without the need for actively rotating the camera or the whole UAV.
 There is now a wide selection of affordable lenses that accomplish this, including [fisheye lenses](https://en.wikipedia.org/wiki/Fisheye_lens) with more than 180 degrees FoV.
 Alternatively, such wide overview can be obtained by using a curved reflective surface in front of a camera sensor.
@@ -104,4 +105,4 @@ I (ViktorWalter) therefore recommend that you consider using a different model t
 Definitely do so for wide FoV optics, but also consider doing this for narrower lenses.
 There are numerous options of software - one oxample is the [OCamCalib](https://sites.google.com/site/scarabotix/ocamcalib-toolbox) system.
 
-When selecting a fisheye lens, reffer to [this](https://en.wikipedia.org/wiki/Fisheye_lens#Mapping_function) - the mapping function implemented in the optics defines which properties of objects are preserved when they move in the image and which are not. For example, the Equidistant projection preserves angular distances, making it suitable for bearing-based systems.
+When selecting a fisheye lens, refer to [this](https://en.wikipedia.org/wiki/Fisheye_lens#Mapping_function) - the mapping function implemented in the optics defines which properties of objects are preserved when they move in the image and which are not. For example, the Equidistant projection preserves angular distances, making it suitable for bearing-based systems.
