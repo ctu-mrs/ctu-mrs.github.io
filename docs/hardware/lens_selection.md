@@ -14,9 +14,9 @@ Still, it should give you a good overview of the problem.
 
 In most cases, you want to select an optical imaging system (camera + lens in other words) to comply with one of the following combinations of parameters:
 
- A) image resolution, field of view (FOV),
- B) pixel size of an object with a defined size at a specific distance,
- C) image resolution, maximal distortion of the image (how far is the resulting optical system from an ideal pinhole camera).
+ * image resolution, field of view (FOV),
+ * pixel size of an object with a defined size at a specific distance,
+ * image resolution, maximal distortion of the image (how far is the resulting optical system from an ideal pinhole camera).
 
 Additionally, you usually want to ensure a minimal frame rate, the application dictates if an RGB or monochrome camera is preferred and sometimes a specific connection option is required (USB2, USB3, Ethernet etc.).
 Two useful conversion equations are:
