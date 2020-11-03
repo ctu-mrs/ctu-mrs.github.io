@@ -21,15 +21,15 @@ In most cases, you want to select an optical imaging system (camera + lens in ot
 Additionally, you usually want to ensure a minimal frame rate, the application dictates if an RGB or monochrome camera is preferred and sometimes a specific connection option is required (USB2, USB3, Ethernet etc.).
 Two useful conversion equations are:
 
- 1) <img src="https://render.githubusercontent.com/render/math?math=r_o=\frac{rs_of}{s(d-f)}">,
+ 1. <img src="https://render.githubusercontent.com/render/math?math=r_o=\frac{rs_of}{s(d-f)}">,
 
-where <img src="https://render.githubusercontent.com/render/math?math=r_o"> is pixel size of an object with size <img src="https://render.githubusercontent.com/render/math?math=s_o"> at distance <img src="https://render.githubusercontent.com/render/math?math=d">, <img src="https://render.githubusercontent.com/render/math?math=s"> is size of the sensor, and <img src="https://render.githubusercontent.com/render/math?math=f"> is focal distance of the camera.
+where <img src="https://render.githubusercontent.com/render/math?math=r_o"> is pixel size of an object with physical size <img src="https://render.githubusercontent.com/render/math?math=s_o"> which is at distance <img src="https://render.githubusercontent.com/render/math?math=d"> from the sensor, <img src="https://render.githubusercontent.com/render/math?math=r"> is resolution of the sensor, <img src="https://render.githubusercontent.com/render/math?math=s"> is size of the sensor, and <img src="https://render.githubusercontent.com/render/math?math=f"> is focal length of the camera.
 
- 2) <img src="https://render.githubusercontent.com/render/math?math=FOV=2\mathrm{atan}\left(\frac{s}{2f}\right)">,
+ 2. <img src="https://render.githubusercontent.com/render/math?math=FOV=2\mathrm{atan}\left(\frac{s}{2f}\right)">,
 
 where <img src="https://render.githubusercontent.com/render/math?math=FOV"> is an angular field of view of the optical imaging system.
 
-Equations 1) and 2) can be used to convert between cases A) and B).
+Equations 1. and 2. can be used to convert between the cases.
 How these equations are obtained from the geometrical layout of the optical imaging system is illustrated in the following image.
 
 ![Illustration of the optical imaging system geometry](fig/lens_selection1.svg)
@@ -38,7 +38,7 @@ How these equations are obtained from the geometrical layout of the optical imag
 
 Typically, the first step is selecting the camera you'll be using and then you select the lens accordingly.
 
-## Camera sensor selection
+### Camera sensor selection
 
 The camera sensor selection is usually primarily dictated by the desired image resolution, frame rate and connection option.
 Other parameters to pay attention to when selecting a camera are:
@@ -67,7 +67,7 @@ For the actual selection of a specific camera, I recommend using a camera select
 Note that different physical camera configurations are usually available with the same sensor model.
 Since the sensor dictates most of the important parameters of the camera (resolution, RGB/monotone, noise and sensitivity parameters etc.), you can oftentimes select a camera with the same parameters, but eg. different connection or lens mount options. 
 
-## Lens selection
+### Lens selection
 
 After you've selected the camera you want to use, it's time for the last step - select the appropriate lens for it.
 The selected camera dictates the following parameters to which attention has to be paid when selecting the lens:
@@ -76,9 +76,9 @@ The selected camera dictates the following parameters to which attention has to 
    Limits what lens may be mounted to the camera.
    There are three common types:
    
-    A) The **C** mount. A **C**-type lens can easily be used with a **CS**-type camera lens mount using a simple reduction ring.
-    B) The **CS** mount. **CS**-type lenses are only compatible with **CS**-type camera lens mounts and cannot be used with a camera that has a **C** or **M12** lens mount.
-    C) The **M12** mount. There are adapters to use a **M12** lens with a camera that has a **C** or **CS** lens mount, but this combination can cause problems and is better avoided.
+    * The **C** mount. A **C**-type lens can easily be used with a **CS**-type camera lens mount using a simple reduction ring.
+    * The **CS** mount. **CS**-type lenses are only compatible with **CS**-type camera lens mounts and cannot be used with a camera that has a **C** or **M12** lens mount.
+    * The **M12** mount. There are adapters to use a **M12** lens with a camera that has a **C** or **CS** lens mount, but this combination can cause problems and is better avoided.
  * Resolution:
    Quality of the lens should correspond with the sensor resolution.
    Using a lens, intended for a 1 mega pixel sensor with a 10 mega pixel sensor may result in blurring of the image in which case a lot of the information that your fancy 10 mega pixel camera could obtain will be useless.
