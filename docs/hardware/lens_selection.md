@@ -47,9 +47,11 @@ Other parameters to pay attention to when selecting a camera are:
    If the camera is intended to be used onboard an MAV or any other moving platform with a source of mechanical vibrations, choose global shutter whenever possible to avoid the [various distortions, caused by a rolling shutter](https://en.wikipedia.org/wiki/Rolling_shutter).
    However, global shutter cameras are more complex than "rolling shutter" cameras, which leads to them typically having lower resolution and other adverse properties.
    Note: "global reset" rolling shutter does not remove these problems.
- * RGB/monotone:
+ * RGB/monochrome:
    This is probably dictated by the intended application.
-   In general, monotone cameras have better noise properties than their RGB equivalents, but in many cases you need RGB image.
+   In general, monochrome (grayscale) cameras have better noise properties than their RGB equivalents.
+   Pixels of monochrome cameras are sensitive to all colors of the visible spectrum, making them more sensitive to light and thus better suited for low light conditions.
+   In many cases, however, you need RGB image
  * [Dynamic range](https://en.wikipedia.org/wiki/Dynamic_range):
    The larger the better will the camera be able to distinguish similar colors. 
    This parameter is dictated by the resolution of the camera's ADC and noise parameters.
@@ -65,7 +67,7 @@ For the actual selection of a specific camera, I recommend using a camera select
  * [Matrix-Vision camera selector](https://www.matrix-vision.com/camera-selector.html) (manufacturer of BlueFox cameras)
 
 Note that different physical camera configurations are usually available with the same sensor model.
-Since the sensor dictates most of the important parameters of the camera (resolution, RGB/monotone, noise and sensitivity parameters etc.), you can oftentimes select a camera with the same parameters, but eg. different connection or lens mount options. 
+Since the sensor dictates most of the important parameters of the camera (resolution, RGB/monochrome, noise and sensitivity parameters etc.), you can oftentimes select a camera with the same parameters, but eg. different connection or lens mount options. 
 
 ### Lens selection
 
