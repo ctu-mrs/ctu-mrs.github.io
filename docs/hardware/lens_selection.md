@@ -1,3 +1,9 @@
+---
+layout: default
+title: Camera and lens selection guide
+parent: Hardware
+---
+
 # A quickstart guide to camera and lens selection for computer vision
 
 This guide will shortly explain how to select a camera + lens for a computer vision application.
