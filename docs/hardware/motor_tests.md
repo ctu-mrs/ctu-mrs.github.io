@@ -130,4 +130,29 @@ This is a copy of the DJI propeller, it is much more flexible
 | 1345       | 8616  | 16.07       | 17.42       | 279.94    | 4.80             |
 | 1576       | 9168  | 15.91       | 22.97       | 365.45    | 4.31             |
 
+### Propeller: Quantum 1150 carbon fiber propeller
+
+[![](fig/motor_tests/1150QuantumCF.jpg"Quantum 1150 CF propeller")](fig/motor_tests/1150QuantumCF.jpg)
+
+| Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
+| :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
+| 543        | 5325  | 16.69       | 4.39        | 73.27     | 7.41             |
+| 732        | 6145  | 16.59       | 6.92        | 114.80    | 6.38             |
+| 903        | 7031  | 16.47       | 10.33       | 170.14    | 5.31             |
+| 1113       | 7691  | 16.35       | 13.93       | 227.76    | 4.89             |
+| 1357       | 8476  | 16.19       | 18.85       | 305.18    | 4.45             |
+| 1538       | 9159  | 16.02       | 23.53       | 376.95    | 4.08             |
+
+### Propeller: Multistar 1045 plastic propeller
+
+[![](fig/motor_tests/1045Multistar.jpg"Multistar 1045 plastic propeller")](fig/motor_tests/1045Multistar.jpg)
+
+| Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
+| :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
+| 482        | 5568  | 16.82       | 3.41        | 57.36     | 8.40             |
+| 669        | 6522  | 16.74       | 5.47        | 91.57     | 7.31             |
+| 871        | 7368  | 16.66       | 7.98        | 132.95    | 6.55             |
+| 1055       | 8345  | 16.55       | 11.37       | 188.17    | 5.61             |
+| 1321       | 9136  | 16.42       | 15.19       | 249.42    | 5.30             |
+| 1546       | 9836  | 16.26       | 19.88       | 323.25    | 4.78             |
 
