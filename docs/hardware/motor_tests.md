@@ -119,7 +119,7 @@ This is a copy of the DJI propeller, it is much more flexible
 
 ### Propeller: Tarot 1155 carbon fiber propeller
 
-[![](fig/motor_tests/1155Tarot.jpg"Tarot 1155 CF propeller")](fig/motor_tests/1155Tarot.jpg.jpg)
+[![](fig/motor_tests/1155Tarot.jpg"Tarot 1155 CF propeller")](fig/motor_tests/1155Tarot.jpg)
 
 | Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
 | :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
