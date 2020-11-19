@@ -102,11 +102,11 @@ This is a copy of the DJI propeller, it is much more flexible
 
 ## Motor: T-Motor 3110 780KV
 
-[![](fig/motor_tests/4114Tarot.jpg "Tarot 4114 320KV motor")](fig/motor_tests/4114Tarot.jpg)
+[![](fig/motor_tests/MN3110.jpg"T-Motor 3110 780KV motor")](fig/motor_tests/MN3110.jpg)
 
 ### Propeller: 1147 carbon fiber propeller
 
-[![](fig/motor_tests/1555Tarot.jpg "Tarot 1555 CF propeller")](fig/motor_tests/1555Tarot.jpg)
+[![](fig/motor_tests/1147CF.jpg "1147 CF propeller")](fig/motor_tests/1147CF.jpg)
 
 | Thrust (g) | RPM         | Voltage (V) | Current (A) | Power (w)        | Efficiency (g/W) |
 | :---:      | :---:       | :---:       | :---:       | :---:            | :---:            |
@@ -119,7 +119,7 @@ This is a copy of the DJI propeller, it is much more flexible
 
 ### Propeller: Tarot 1155 carbon fiber propeller
 
-[![](fig/motor_tests/1575Tarot.jpg "Tarot 1575 CF propeller")](fig/motor_tests/1575Tarot.jpg)
+[![](fig/motor_tests/1155Tarot.jpg"Tarot 1155 CF propeller")](fig/motor_tests/1155Tarot.jpg.jpg)
 
 | Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
 | :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
