@@ -102,7 +102,7 @@ This is a copy of the DJI propeller, it is much more flexible
 
 ## Motor: T-Motor 3110 780KV
 
-[![](fig/motor_tests/MN3110.jpg"T-Motor 3110 780KV motor")](fig/motor_tests/MN3110.jpg)
+[![](fig/motor_tests/MN3110.jpg "T-Motor 3110 780KV motor")](fig/motor_tests/MN3110.jpg)
 
 ### Propeller: 1147 carbon fiber propeller
 
@@ -119,7 +119,7 @@ This is a copy of the DJI propeller, it is much more flexible
 
 ### Propeller: Tarot 1155 carbon fiber propeller
 
-[![](fig/motor_tests/1155Tarot.jpg"Tarot 1155 CF propeller")](fig/motor_tests/1155Tarot.jpg)
+[![](fig/motor_tests/1155Tarot.jpg "Tarot 1155 CF propeller")](fig/motor_tests/1155Tarot.jpg)
 
 | Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
 | :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
@@ -132,7 +132,7 @@ This is a copy of the DJI propeller, it is much more flexible
 
 ### Propeller: Quantum 1150 carbon fiber propeller
 
-[![](fig/motor_tests/1150QuantumCF.jpg"Quantum 1150 CF propeller")](fig/motor_tests/1150QuantumCF.jpg)
+[![](fig/motor_tests/1150QuantumCF.jpg "Quantum 1150 CF propeller")](fig/motor_tests/1150QuantumCF.jpg)
 
 | Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
 | :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
@@ -145,7 +145,7 @@ This is a copy of the DJI propeller, it is much more flexible
 
 ### Propeller: Multistar 1045 plastic propeller
 
-[![](fig/motor_tests/1045Multistar.jpg"Multistar 1045 plastic propeller")](fig/motor_tests/1045Multistar.jpg)
+[![](fig/motor_tests/1045Multistar.jpg "Multistar 1045 plastic propeller")](fig/motor_tests/1045Multistar.jpg)
 
 | Thrust (g) | RPM   | Voltage (V) | Current (A) | Power (w) | Efficiency (g/W) |
 | :---:      | :---: | :---:       | :---:       | :---:     | :---:            |
