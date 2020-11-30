@@ -186,3 +186,19 @@ Notable topics:
 | odometry/change_alt_estimator_type_string | start using the requested altitude source for control   | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
 | odometry/change_hdg_estimator_type_string | start using the requested heading source for control    | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
 
+## Trajectory generation
+
+The [mrs_uav_trajectory_generation](https://github.com/ctu-mrs/mrs_uav_trajectory_generation) serves to genete a feasible time-parametrized trajecotry from a desired waypoint path.
+
+### Provided topics
+
+| **topic**                  | **description**     | **topic type**                                                    |
+|----------------------------|---------------------|-------------------------------------------------------------------|
+| trajectory_generation/path | desired path to fly | [mrs_msgs/Path](https://ctu-mrs.github.io/mrs_msgs/msg/Path.html) |
+
+### Provided services
+
+| **service**                | **description**                                                                                                    | **service type**                                                        |
+|----------------------------|--------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| trajectory_generation/path | desired path to fly                                                                                                | [mrs_msgs/PathSrv](https://ctu-mrs.github.io/mrs_msgs/srv/PathSrv.html) |
+| trajectory_generation/test | test using [example.yaml](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/blob/master/paths/example.yaml) | `std_srvs/Trigger`                                                      |
