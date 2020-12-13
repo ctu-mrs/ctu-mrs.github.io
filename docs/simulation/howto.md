@@ -26,36 +26,38 @@ roslaunch mrs_simulation simulation.launch gui:=true
 
 ## 2. spawn a drone (drones)
 
-| :information_source: **Note: If you are not using simulation together with the [mrs_uav_core](https://github.com/ctu-mrs/uav_core) repository.**                           |
-| :--- |
-| Alias `spawn_uav=rosrun mrs_simulation spawn` doesn't exist for you and then you have to write the whole command! The autocompletion will not be available for you either. |
+| :information_source: **Note: Starting Gazebo with `simulation.launch` will automatically start the `mrs_drone_spawner` node. If you use a custom launch file to start the simulation, you may need to start the `mrs_drone_spawner` manually:  ** |
+| :---                                                                                                                                                                                                                                                              |
+| ```bash
+roslaunch mrs_simulation mrs_drone_spawner.launch
+``` |
 
-
-
-A drone is added to the running simulation dynamically by running
+A drone is added to the running simulation dynamically by calling a service:
 ```bash
-spawn_uav
+rosservice call /mrs_drone_spawner/spawn "...parameters..."
 ```
-It has its help (--help), so we will examine just one of many uses.
+
+To display the manual (help page) containing a list of all available parameters, perform a dry-run of the script:
+
+```bash
+rosrun mrs_simulation mrs_drone_spawner.py
+```
+
+This will only display the help page. To start the `mrs_drone_spawner` node, pass the argument `no_help` to the script. Use the argument `verbose` to display all available parameters on node startup. The `mrs_drone_spawner.launch` uses `no_help` and `verbose` by default.
+
+The spawner parameters are also listed in the `mrs_simulation/config/spawner_params.yaml` file. Note that not all sensors are available for all the vehicle types. The config file stores the available configurations in the following format: `parameter: [default_value, help_description, [compatible_vehicles]]`
 
 The command
 ```bash
-waitForSimulation; spawn_uav 1 --run --delete --enable-rangefinder
+waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 --enable-rangefinder"
 
 ```
-will wait for the simulation, then it will spawn a UAV with frame DJI F550 (default type) with ID 1 (named uav1), and it enables a down-looking rangefinder sensor.
+will wait for the simulation, then it will spawn a UAV with frame Tarot T650 (default body type) with ID 1 (named uav1), and it enables a down-looking rangefinder sensor.
 After it is spawned, you can already see its ROS interface by looking at ROS topics, e.g., by running
 ```bash
 rostopic list
 ```
 The UAV should also be visible in the simulator itself.
-
-Not all sensors have to be available for selected type of UAV. Please check possible settings for
-the selected type of UAV by calling command:
-
-```bash
-spawn_uav --$UAV_TYPE --available-sensors
-```
 
 ## 3. run the control core
 
