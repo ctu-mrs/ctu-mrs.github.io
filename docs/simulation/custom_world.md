@@ -2,7 +2,7 @@
 layout: default
 title: Custom simulation world
 parent: Simulation
-nav_order: 2
+nav_order: 3
 ---
 
 # How to start the simulation with a custom world

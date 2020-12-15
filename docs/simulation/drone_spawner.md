@@ -2,7 +2,7 @@
 layout: default
 title: MRS Drone Spawner
 parent: Simulation
-nav_order: 1
+nav_order: 2
 ---
 
 # About
@@ -18,8 +18,8 @@ These three processes have to be started sequentially in this specific order. Di
 
 # Spawning a drone
 
-The `mrs_drone_spawner` is *started automatically* with the simulator when using `roslaunch mrs_simulation simulation.launch`.
-If you use a custom launch file to start Gazebo, you may need to start the spawner node *manually* by calling
+The `mrs_drone_spawner` is **started automatically** with the simulator when using `roslaunch mrs_simulation simulation.launch`.
+If you use a custom launch file to start Gazebo, you may need to start the spawner node **manually** by calling
 ```bash
 roslaunch mrs_simulation simulation.launch
 ```
@@ -37,13 +37,13 @@ rosrun mrs_simulation mrs_drone_spawner
 This will only list the available parameters and their description and exit the program. You can safely perform the dry-run even if an instance of the `mrs_drone_spawner` is already running.
 When passing multiple parameters to the node, the following structure is used:
 
-* 1 2 3 ... - integers ranging from 0 to 250 define ID of the vehicle. The model will be named as `uavID` in Gazebo. Use multiple numbers to spawn more than one vehicle at once
-* --f450 - change the type of vehicle to be spawned (default is t650)
-* --param-name - everything started with `--` is treated as a new parameter. If you follow it up with variables without the `--`, it will be assigned into child variables of this parameter. Parameters without additional variables set the value of the param-name to `True`
+* `1 2 3 ...` - integers ranging from 0 to 250 define ID of the vehicle. The model will be named as `uavID` in Gazebo. Use multiple numbers to spawn more than one vehicle at once
+* `--f450` - change the type of vehicle to be spawned (default is t650, available options are `--f450`, `--f550` and `--t650`)
+* `--param-name` - everything started with `--` is treated as a new parameter. If you follow it up with variables without the `--`, it will be assigned into child variables of this parameter. Parameters without additional variables set the value of the param-name to `True`
 
-*Note:* It is permitted to use *both* `-` and `_` as word separators in the input parameters.
+**Note:** It is permitted to use **both** `-` and `_` as word separators in the input parameters.
 
-*Example:* spawn two vehicles with IDs 1 and 7, change vehicle type to f450, add a laser rangefinder and an Ouster 3D LiDAR, specify the LiDAR type to OS1-32 and use GPU acceleration of the LiDAR ray-tracing. All vehicles spawned via this the command will have the same configuration.
+**Example:** spawn two vehicles with IDs 1 and 7, change vehicle type to f450, add a laser rangefinder and an Ouster 3D LiDAR, specify the LiDAR type to OS1-32 and use GPU acceleration of the LiDAR ray-tracing. All vehicles spawned via this the command will have the same configuration.
 
 ```bash
 rosservice call /mrs_drone_spawner/spawn "1 7 --f450 --enable-rangefinder --enable-ouster --ouster-model OS1-32 --use-gpu-ray
@@ -51,16 +51,16 @@ rosservice call /mrs_drone_spawner/spawn "1 7 --f450 --enable-rangefinder --enab
 
 ## Tips
 * Using a blank space instead of a number will assign the vehicle an ID from unused nubmers.
-* The spawner will *not* attempt to create a new vehicle, if the desired *ID is already in use*.
-* The service calls in Python are handled asynchronously. Please *wait* until the previous spawn command is dealt with *before issuing a new one*. Disrupting the spawn procedure may lead to Gazebo freezing or crashing.
+* The spawner will **not** attempt to create a new vehicle, if the desired **ID is already in use**.
+* The service calls in Python are handled asynchronously. Please **wait** until the previous spawn command is dealt with **before issuing a new one**. Disrupting the spawn procedure may lead to Gazebo freezing or crashing.
 
 # Advanced user zone
 
 ## Command line arguments
 
 When starting the spawner manually, you can use the following command-line arguments:
-* no_help - will *not* display the list of available parameters and instead *start the ROS node*
-* verbose - will display the list of available parameters after the node is started
+* `no_help` - will *not* display the list of available parameters and instead *start the ROS node*
+* `verbose` - will display the list of available parameters after the node is started
 The [`mrs_drone_spawner.launch`](https://github.com/ctu-mrs/mrs_simulation/blob/master/launch/mrs_drone_spawner.launch) uses both `no_help` and `verbose` by default.
 
 ## Parameter definitions, defining your own sensors
@@ -69,4 +69,4 @@ The available spawner parameters are defined in the [`spawner_params.yaml`](http
 The list of compatible vehicles and parameter names have to match the model definitions, which are contained in the [`.xacro`](https://github.com/ctu-mrs/mrs_simulation/tree/master/models/mrs_robots_description/urdf) files.
 All parameters passed into the `mrs_drone_spawner` may be accessed in the `.xacro` in a pythonic dictionary `optionals`. To access the value of a specific parameter in the `.xacro`, use `${optionals['param_name']}`.
 
-When *adding* a brand new sensor or vehicle configuration, it is *your responsibility* to edit the `.xacro` model description and put the corresponding parameters to the `spawner_params`.
+When **adding** a brand new sensor or vehicle configuration, it is **your responsibility** to edit the `.xacro` model description and put the corresponding parameters to the `spawner_params`.
