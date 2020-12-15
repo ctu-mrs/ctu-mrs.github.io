@@ -40,7 +40,7 @@ rosservice call /mrs_drone_spawner/spawn "...parameters..."
 To display the manual (help page) containing a list of all available parameters, perform a dry-run of the script:
 
 ```bash
-rosrun mrs_simulation mrs_drone_spawner.py
+rosrun mrs_simulation mrs_drone_spawner
 ```
 
 This will only display the help page. To start the `mrs_drone_spawner` node, pass the argument `no_help` to the script. Use the argument `verbose` to display all available parameters on node startup. The `mrs_drone_spawner.launch` uses `no_help` and `verbose` by default.
