@@ -44,6 +44,8 @@ When passing multiple parameters to the node, the following structure is used:
 * `1 2 3 ...` - integers ranging from 0 to 250 define ID of the vehicle. The model will be named as `uavID` in Gazebo. Use multiple numbers to spawn more than one vehicle at once
 * `--f450` - change the type of vehicle to be spawned (default is t650, available options are `--f450`, `--f550` and `--t650`)
 * `--param-name` - everything started with `--` is treated as a new parameter. If you follow it up with variables without the `--`, it will be assigned into child variables of this parameter. Parameters without children are treated as *booleans*, and set the value of the param-name to `True`. It is a good practise to name the *bool* parameters as `--enable-something` or `--use-something`.
+* `--pos x y z heading` - specify the spawn position of the vehicle. If multiple vehicles are spawned with one command, this position will be assigned to the first vehicle and the following vehicles will be placed in an array next to it (along x-axis, 2 meter spacing)
+* `--file path_to_file` - specify the spawn position in a `.yaml` or `.csv` file. The position file may define specific positions for many drones. **Absolute filepath** is required.
 
 **Note:** It is permitted to use **both** `-` and `_` as word separators in the input parameters (`--enable_rangefinder` and `--enable-rangefinder` are both valid).
 
@@ -65,7 +67,7 @@ rosservice call /mrs_drone_spawner/spawn "1 7 --f450 --enable-rangefinder --enab
 When starting the spawner manually, you can use the following command-line arguments:
 * `no_help` - will *not* display the list of available parameters and instead *start the ROS node*
 * `verbose` - will display the list of available parameters after the node is started
-The [`mrs_drone_spawner.launch`](https://github.com/ctu-mrs/mrs_simulation/blob/master/launch/mrs_drone_spawner.launch) uses both `no_help` and `verbose` by default.
+* The [`mrs_drone_spawner.launch`](https://github.com/ctu-mrs/mrs_simulation/blob/master/launch/mrs_drone_spawner.launch) uses both `no_help` and `verbose` by default.
 
 ## Parameter definitions, defining your own sensors
 
