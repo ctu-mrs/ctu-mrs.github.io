@@ -18,10 +18,14 @@ These three processes have to be started sequentially in this specific order. Di
 
 # Spawning a drone
 
-The `mrs_drone_spawner` is **started automatically** with the simulator when using `roslaunch mrs_simulation simulation.launch`.
-If you use a custom launch file to start Gazebo, you may need to start the spawner node **manually** by calling
+The `mrs_drone_spawner` is **started automatically** with the simulator when starting Gazebo with our launch file
 ```bash
 roslaunch mrs_simulation simulation.launch
+```
+
+If you use a custom launch file to start Gazebo, you may need to start the spawner node **manually** by calling
+```bash
+roslaunch mrs_simulation mrs_drone_spawner.launch
 ```
 
 To add a vehicle into the simulation, call a service provided by the drone spawner
@@ -29,7 +33,7 @@ To add a vehicle into the simulation, call a service provided by the drone spawn
 rosservice call /mrs_drone_spawner/spawn "1 --enable-rangefinder"
 ```
 
-The service takes a string as an argument. Use the string to pass arguments to the spawner and define the vehicle configuration.
+The service takes a **string** as an argument. Use the string to pass arguments to the spawner and define the vehicle configuration.
 The list of all available parameters can be displayed by dry-running the spawner script without arguments
 ```bash
 rosrun mrs_simulation mrs_drone_spawner
@@ -39,9 +43,9 @@ When passing multiple parameters to the node, the following structure is used:
 
 * `1 2 3 ...` - integers ranging from 0 to 250 define ID of the vehicle. The model will be named as `uavID` in Gazebo. Use multiple numbers to spawn more than one vehicle at once
 * `--f450` - change the type of vehicle to be spawned (default is t650, available options are `--f450`, `--f550` and `--t650`)
-* `--param-name` - everything started with `--` is treated as a new parameter. If you follow it up with variables without the `--`, it will be assigned into child variables of this parameter. Parameters without additional variables set the value of the param-name to `True`
+* `--param-name` - everything started with `--` is treated as a new parameter. If you follow it up with variables without the `--`, it will be assigned into child variables of this parameter. Parameters without children are treated as *booleans*, and set the value of the param-name to `True`. It is a good practise to name the *bool* parameters as `--enable-something` or `--use-something`.
 
-**Note:** It is permitted to use **both** `-` and `_` as word separators in the input parameters.
+**Note:** It is permitted to use **both** `-` and `_` as word separators in the input parameters (`--enable_rangefinder` and `--enable-rangefinder` are both valid).
 
 **Example:** spawn two vehicles with IDs 1 and 7, change vehicle type to f450, add a laser rangefinder and an Ouster 3D LiDAR, specify the LiDAR type to OS1-32 and use GPU acceleration of the LiDAR ray-tracing. All vehicles spawned via this the command will have the same configuration.
 
@@ -65,8 +69,11 @@ The [`mrs_drone_spawner.launch`](https://github.com/ctu-mrs/mrs_simulation/blob/
 
 ## Parameter definitions, defining your own sensors
 
-The available spawner parameters are defined in the [`spawner_params.yaml`](https://github.com/ctu-mrs/mrs_simulation/blob/master/config/spawner_params.yaml) file. Note that not all sensors are available for all the vehicle types. The config file stores the available configurations in the following format: `parameter: [default_value, help_description, [compatible_vehicles]]`
+The available spawner parameters are defined in the [`spawner_params.yaml`](https://github.com/ctu-mrs/mrs_simulation/blob/master/config/spawner_params.yaml) file.
+Note that not all sensors are available for all the vehicle types.
+The config file stores the available configurations in the following format: `parameter: [default_value, help_description, [compatible_vehicles]]`
 The list of compatible vehicles and parameter names have to match the model definitions, which are contained in the [`.xacro`](https://github.com/ctu-mrs/mrs_simulation/tree/master/models/mrs_robots_description/urdf) files.
-All parameters passed into the `mrs_drone_spawner` may be accessed in the `.xacro` in a pythonic dictionary `optionals`. To access the value of a specific parameter in the `.xacro`, use `${optionals['param_name']}`.
+All parameters passed into the `mrs_drone_spawner` may be accessed in the `.xacro` in a pythonic dictionary `optionals`.
+To access the value of a specific parameter inside the `.xacro`, use `${optionals['param_name']}`.
 
 When **adding** a brand new sensor or vehicle configuration, it is **your responsibility** to edit the `.xacro` model description and put the corresponding parameters to the `spawner_params`.
