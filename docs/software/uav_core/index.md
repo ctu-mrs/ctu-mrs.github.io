@@ -47,7 +47,7 @@ However, if you prefer to install only the *uav_core*, you can do the following:
 
 The `install.sh` script will add the following to your .bashrc:
 ```bash
-source /opt/ros/melodic/setup.bash
+source /opt/ros/melodic/setup.bash # melodic/noetic depending on your ROS version
 
 # source uav_core shell additions
 source $HOME/git/uav_core/miscellaneous/shell_additions/shell_additions.sh
@@ -63,7 +63,7 @@ export INITIAL_DISTURBANCE_Y="0.0" # [N], external disturbance in the body frame
 export STANDALONE="false" # disables the core nodelete manager
 export SWAP_GARMINS="false" # swap up/down garmins
 export PIXGARM="false" # true if Garmin lidar is connected throught Pixhawk
-export SENSORS="" # {garmin_down, garmin_up, rplidar, realsense_front, teraranger, bluefox_optflow, realsense_brick, bluefox_brick}
+export SENSORS="garmin_down" # {garmin_down, garmin_up, rplidar, realsense_front, teraranger, bluefox_optflow, realsense_brick, bluefox_brick}
 export WORLD_NAME="simulation" # e.g.: "simulation" <= mrs_general/cofig/world_simulation.yaml
 export MRS_STATUS="readme" # {readme, dynamics, balloon, avoidance, control_error, gripper}
 export LOGGER_DEBUG="false" # sets the ros console output level to debug

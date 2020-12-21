@@ -17,7 +17,7 @@ Please follow it thoroughly and enjoy the learning!
 
 ### Ubuntu
 
-All our software for drones runs on **Ubuntu 18.04 LTS, 64-bit**.
+All our software for drones runs on **Ubuntu 18.04/20.04 LTS, 64-bit**.
 Please install this particular version; a lot of other software depends explicitly on it.
 We strongly suggest installing a native system, not a virtual one.
 Do not use Virtual Box, although it works fine, the drop in performance is noticeable, especially when simulating a real-time flying drone.
