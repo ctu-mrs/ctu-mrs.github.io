@@ -29,14 +29,8 @@ sudo -H pip3 install gitman
 
 echo "clone uav_core"
 cd
-git clone git@github.com:ctu-mrs/uav_core.git
+git clone https://github.com/ctu-mrs/uav_core.git
 cd uav_core
 gitman install
-
-#echo "clone simulation"
-#cd
-#git clone git@github.com:ctu-mrs/simulation.git
-#cd simulation
-#gitman install
 
 echo "install part ended"
