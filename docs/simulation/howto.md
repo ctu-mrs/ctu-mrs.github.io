@@ -38,9 +38,7 @@ roslaunch mrs_simulation simulation.launch gui:=true
 
 | :information_source: **Note: Starting Gazebo with `simulation.launch` will automatically start the `mrs_drone_spawner` node. If you use a custom launch file to start the simulation, you may need to start the `mrs_drone_spawner` manually:  ** |
 | :---                                                                                                                                                                                                                                              |
-| ```bash                                                                                                                                                                                                                                           |
-| roslaunch mrs_simulation mrs_drone_spawner.launch                                                                                                                                                                                                 |
-| ```                                                                                                                                                                                                                                               |
+| ```bash roslaunch mrs_simulation mrs_drone_spawner.launch```                                                                                                                                                                                      |
 
 A drone is added to the running simulation dynamically by calling a service:
 ```bash
