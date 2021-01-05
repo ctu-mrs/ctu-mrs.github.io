@@ -33,7 +33,6 @@ roslaunch mrs_simulation simulation.launch gui:=true
 ```
 
 | :information_source: Note: The above command will launch default [grass plane world](https://github.com/ctu-mrs/mrs_gazebo_common_resources/blob/master/worlds/grass_plane.world). See the [custom world](https://ctu-mrs.github.io/docs/simulation/custom_world.html) wiki page for more information about world customization. |
-| :---                                                                                                                                                                                                                                                                                                                             |
 
 ## 2. spawn a drone (drones)
 
