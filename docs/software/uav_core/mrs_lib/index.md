@@ -4,9 +4,12 @@ title: mrs_lib
 parent: uav_core
 grand_parent: Software
 ---
-# MRS libraries [![Build Status](https://travis-ci.com/ctu-mrs/mrs_lib.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_lib)
+# MRS libraries
 
 ![](fig/thumbnail.jpg)
+
+| Build status | [![Build Status](https://github.com/ctu-mrs/mrs_lib/workflows/Melodic/badge.svg)](https://github.com/ctu-mrs/mrs_lib/actions) | [![Build Status](https://github.com/ctu-mrs/mrs_lib/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_lib/actions) | [![Build Status](https://github.com/ctu-mrs/mrs_lib/workflows/Docs/badge.svg)](https://github.com/ctu-mrs/mrs_lib/actions) |
+|--------------|-------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
 
 ## Overview
 

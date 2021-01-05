@@ -4,9 +4,12 @@ title: mrs_uav_general
 parent: uav_core
 grand_parent: Software
 ---
-# MRS UAV general [![Build Status](https://travis-ci.com/ctu-mrs/mrs_uav_general.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_uav_general)
+# MRS UAV general
 
 ![](fig/thumbnail.jpg)
+
+| Build status | [![Build Status](https://github.com/ctu-mrs/mrs_uav_general/workflows/Melodic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_general/actions) | [![Build Status](https://github.com/ctu-mrs/mrs_uav_general/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_general/actions) |
+|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 
 ## Overview
 
