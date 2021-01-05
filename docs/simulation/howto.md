@@ -6,9 +6,19 @@ nav_order: 1
 ---
 
 # How to start the simulation
-
 If you have everything installed and compiled, the next step is to test it in the simulation.
-The running simulation consists of several steps, which are usually **automated** using a **tmuxinator** script.
+Running the simulation consists of several steps, which are usually **automated** using a **tmuxinator** script.
+Examples of tmuxinator files can be found in subfolders of [simulation/example_tmux_scripts](https://github.com/ctu-mrs/simulation/tree/master/example_tmux_scripts), e.g., [one_drone_gps](https://github.com/ctu-mrs/simulation/blob/master/example_tmux_scripts/one_drone_gps/session.yml).
+
+Assuming the simulation was cloned to the **~/git** folder, you can launch an example simulation using the following code.
+```bash
+cd ~/git/simulation/example_tmux_scripts/one_drone_gps
+./start.sh
+```
+
+
+# Individual steps explanation
+
 [[Here]] we will describe each step required to make the drone fly.
 
 | :warning: **Attention please: Following commands are not meant to be issued manually.**    |
@@ -108,9 +118,9 @@ We still present the script in this bare form, because it might be useful in som
 For example, it allows nesting tmux sessions since the script is written in a way, that "adds the windows" to an existing tmux session if you start it being within an existing tmux session.
 
 But a much cleaner solution for simulations is to use [Tmuxinator](https://github.com/tmuxinator/tmuxinator).
-Tmuxinaotr is a utility designed specifically for defining tmux sessions.
+Tmuxinator is a utility designed specifically for defining tmux sessions.
 Tmux session is defined using a single `yml` file with much cleaner syntax.
-We suggest reading the tmuxinator tutorial and play with its template.
+We suggest reading the tmuxinator tutorial and playing with its template.
 Command `tmuxinator new test_session` will create a new session **test_session** and fills in the template.
 
 Examples of tmuxinator files can be found in subfolders of [simulation/example_tmux_scripts](https://github.com/ctu-mrs/simulation/tree/master/example_tmux_scripts), e.g., [one_drone_gps](https://github.com/ctu-mrs/simulation/blob/master/example_tmux_scripts/one_drone_gps/session.yml).
