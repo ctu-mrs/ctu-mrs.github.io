@@ -4,9 +4,12 @@ title: mrs_uav_trackers
 parent: uav_core
 grand_parent: Software
 ---
-# MRS UAV Trackers [![Build Status](https://travis-ci.com/ctu-mrs/mrs_uav_trackers.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_uav_trackers)
+# MRS UAV Trackers
 
 ![](fig/thumbnail.jpg)
+
+| Build status | [![Build Status](https://github.com/ctu-mrs/mrs_uav_trackers/workflows/Melodic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_trackers/actions) | [![Build Status](https://github.com/ctu-mrs/mrs_uav_trackers/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_trackers/actions) |
+|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 
 ## Purpose of a tracker within the MRS control pipeline
 

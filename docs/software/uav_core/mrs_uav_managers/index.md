@@ -4,9 +4,12 @@ title: mrs_uav_managers
 parent: uav_core
 grand_parent: Software
 ---
-# MRS UAV Managers [![Build Status](https://travis-ci.com/ctu-mrs/mrs_uav_managers.svg?branch=master)](https://travis-ci.com/ctu-mrs/mrs_uav_managers)
+# MRS UAV Managers
 
 ![](fig/thumbnail.jpg)
+
+| Build status | [![Build Status](https://github.com/ctu-mrs/mrs_uav_managers/workflows/Melodic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_managers/actions) | [![Build Status](https://github.com/ctu-mrs/mrs_uav_managers/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_managers/actions) |
+|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 
 This package contains *high-level* flight managers.
 
