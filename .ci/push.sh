@@ -26,10 +26,7 @@ upload_files() {
   git push origin master --quiet
 }
 
-cd $TRAVIS_BUILD_DIR
-
 setup_git
-
 commit_git
 
 # Attempt to commit to git only if "git commit" succeeded

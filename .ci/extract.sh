@@ -2,8 +2,8 @@
 # author: Robert Penicka
 set -e
 
-echo "Start getting readme of core things" 
-cd $TRAVIS_BUILD_DIR/docs/software/
+echo "Start getting readme of core things"
+cd `pwd`/docs/software/
 mkdir mkdir -p uav_core
 cd uav_core
 
@@ -43,7 +43,7 @@ fi
 for module in ~/uav_core/ros_packages/* ; do
     if [ -d "$module" ]; then
         README_FILE="$module/README.md"
-        
+
         echo "$README_FILE"
         if [[ -f "$README_FILE" ]]; then
             echo "processing module $module"
@@ -65,18 +65,18 @@ for module in ~/uav_core/ros_packages/* ; do
             cat $README_FILE >> "$module_name/index.md"
             sed -i 's/.fig/fig/g' "$module_name/index.md"
 
-            
+
         else
             echo "readme file $README_FILE does not exists"
         fi
     fi
 done
+
 ###########################
 #   UAV CORE modules end  #
 ###########################
 
 ls
 git status
-
 
 echo "Ended"
