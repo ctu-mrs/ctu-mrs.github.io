@@ -19,7 +19,7 @@ cd ~/git/simulation/example_tmux_scripts/one_drone_gps
 
 # Individual steps explanation
 
-[[Here]] we will describe each step required to make the drone fly.
+Here we will describe each step required to make the drone fly.
 
 | :warning: **Attention please: Following commands are not meant to be issued manually.**    |
 | :---                                                                                       |
@@ -38,10 +38,10 @@ roslaunch mrs_simulation simulation.launch gui:=true
 ## 2. spawn a drone (drones)
 
 | :information_source: **Note: Starting Gazebo with `simulation.launch` will automatically start the `mrs_drone_spawner` node. If you use a custom launch file to start the simulation, you may need to start the `mrs_drone_spawner` manually:  ** |
-| :---                                                                                                                                                                                                                                                              |
-| ```bash
-roslaunch mrs_simulation mrs_drone_spawner.launch
-``` |
+| :---                                                                                                                                                                                                                                              |
+| ```bash                                                                                                                                                                                                                                           |
+| roslaunch mrs_simulation mrs_drone_spawner.launch                                                                                                                                                                                                 |
+| ```                                                                                                                                                                                                                                               |
 
 A drone is added to the running simulation dynamically by calling a service:
 ```bash
