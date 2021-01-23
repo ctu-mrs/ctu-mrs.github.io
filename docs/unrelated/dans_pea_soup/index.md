@@ -27,26 +27,26 @@ These quantities are roughly for 3 servings, scale them up as needed..
 
 ## Preparation
 
-1. Dice the onions into fine pieces.
-2. Put some oil/butter into a pot and set it to high heat.
-3. Fry the onions on high heat for a few minutes until they turn glassy, they can even go a tiny bit brown.
+- Dice the onions into fine pieces.
+- Put some oil/butter into a pot and set it to high heat.
+- Fry the onions on high heat for a few minutes until they turn glassy, they can even go a tiny bit brown.
 
 [![](images/onion_diced.jpg "Diced onions")](images/onion_diced.jpg) | [![](images/onion_fry.jpg "Frying onions")](images/onion_fry.jpg)
 
-4. Add in all your peas.
-5. Add water until all the peas are submerged.
-6. Add salt, pepper, diced (or pressed) garlic and a bouillon cube.
-7. Add the marjoram, use a lot and cover the entire surface of the soup with it.
+- Add in all your peas.
+- Add water until all the peas are submerged.
+- Add salt, pepper, diced (or pressed) garlic and a bouillon cube.
+- Add the marjoram, use a lot and cover the entire surface of the soup with it.
 
 [![](images/added_peas.jpg "Adding peas")](images/added_peas.jpg) | [![](images/marjoram.jpg "Adding marjoram")](images/marjoram.jpg)
 
-8. Mix everything and keep the heat on high until the soup starts boiling.
-9. Turn the heat down, add a lid and boil for 15 minutes.
-10. Use a masher or a hand-held mixer and mash the peas to your prefered consistency.
-11. Dilute the soup. You can use water if you prefer a watery soup, but I would recommend using milk for a creamier result. You can even use cream for an extra creamy soup.
+- Mix everything and keep the heat on high until the soup starts boiling.
+- Turn the heat down, add a lid and boil for 15 minutes.
+- Use a masher or a hand-held mixer and mash the peas to your prefered consistency.
+- Dilute the soup. You can use water if you prefer a watery soup, but I would recommend using milk for a creamier result. You can even use cream for an extra creamy soup.
 
 [![](images/mash.jpg "Mashing")](images/mash.jpg) | [![](images/milk.jpg "Adding milk")](images/milk.jpg)
 
-12. Boil for additional 2 minutes after diluting.
-13. Enjoy!
+- Boil for additional 2 minutes after diluting.
+- Enjoy!
 
