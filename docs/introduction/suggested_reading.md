@@ -102,7 +102,7 @@ A lot of the time, you will find yourself in need of editing a code remotely (ov
 You might hear that Vim is "tough to learn" or "Vim is for crazy people," but in reality, it is not valid.
 Vim provides an efficient way to edit (explicitly written edit, because editing is what you mostly do while programming) which will pay itself off after you learn it.
 Learning Vim is about changing the paradigm of editing - it's more about controlling a machine (synthesizer) that edits text, rather than moving a cursor with a mouse and then typing.
-Working in the terminal, using, e.g., **tmux** and ** Vim** can also help you put away your mouse.
+Working in the terminal, using, e.g., **tmux** and **Vim** can also help you put away your mouse.
 Yes, a mouse is not an ideal tool for programming, though it has its use in gaming, 3D modeling, video editing, and so on.
 Without a mouse, you will become much more productive, and your carpal tunnels will thank you.
 
@@ -115,4 +115,15 @@ Without a mouse, you will become much more productive, and your carpal tunnels w
 
 Checkout out our [Cheatsheet](https://github.com/ctu-mrs/mrs_cheatsheet) for some useful tips.
 
-You make it down here! Great! Leave us a message on what we could improve about these recommendations
+### C++; the MRS language of choice
+
+All software that is intended to run onboard a UAV is preffered to be written in C++.
+Although ROS/ROS2 natively supports also Python, well-written C++ provides significantly better performance (computational resources are scarce onboard a UAV) and compile-time sanity checking (the code is much less likely to crash during runtime mid-flight).
+Therefore we recommend to learn C++ and get used to programming with it.
+
+* A C++ mini-tutorial (suggested for everyone): [https://ctu-mrs.github.io/docs/introduction/c_to_cpp.html](https://ctu-mrs.github.io/docs/introduction/c_to_cpp.html)
+* The C++ standard library already implements a lot of tools and classes: [https://en.cppreference.com/w/](https://en.cppreference.com/w/)
+* If you want to go much deeper into C++, I recommend the excellent [C++ Weekly by Jason Turner series](https://www.youtube.com/user/lefticus1)
+* For interesting in-depth videos about the development of the C++ language, see [CppCon presentations](https://www.youtube.com/user/CppCon)
+
+You made it down here! Great! Please leave us a message on what we could improve about these recommendations (e.g. through [the repository's Issues](https://github.com/ctu-mrs/ctu-mrs.github.io/issues/new) or via email to some of the authors).

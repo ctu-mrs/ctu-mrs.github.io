@@ -12,11 +12,36 @@ The guide is mainly targeted at people who are coming to C++ from C or who are s
 
 A list of the main tackled topics is:
 
+ * [Some useful C++ libraries.](#useful-libraries)
  * [Avoid raw pointers, `new`, `malloc`, etc. like the devil.](#dynamic-memory-management)
  * [Take function parameters by constant referece (or constant copy in case of primitive types).](#function-parameters)
  * [Use the native multithreading and thread synchronization tools.](#thread-synchronization)
  * [ROS-related coding practices.](#ros-related-coding-practices)
  * [Other tips and remarks.](#other-tips-and-remarks)
+
+## Useful libraries
+Before implementing basically anything, **first check that a suitable implementation doesn't already exist** (this goes for scientific research as well - do your research before you start reinventing the wheel 😀)!
+Typically, using an already existing and optimized implementation is not only easier and faster than implementing your own, but also the code will be faster and bug-free.
+A list of useful C++ libraries that you might need with links to their documentation pages follows:
+
+- **The standard C++ library:** Implements many useful algorithms, tools and utilities. Part of the C++ standard. Learn it and learn to use it!
+ - [https://en.cppreference.com/w/](https://en.cppreference.com/w/)
+- **roscpp:** The main ROS C++ API.
+ - [https://docs.ros.org/en/noetic/api/roscpp/html/](https://docs.ros.org/en/noetic/api/roscpp/html/)
+- **tf2_ros:** The ROS tf2 library API, implementing coordinate transformations and related stuff.
+ - [https://docs.ros.org/en/noetic/api/tf2_ros/html/c++/](https://docs.ros.org/en/noetic/api/tf2_ros/html/c++/)
+- **Eigen:** Linear algebra, basic geometry and other matrix-related stuff (ROS has compatible interfaces).
+ - [https://eigen.tuxfamily.org/dox/index.html](https://eigen.tuxfamily.org/dox/index.html)
+- **OpenCV:** Computer vision and image processing (ROS has compatible interfaces).
+ - [https://docs.opencv.org/4.2.0/](https://docs.opencv.org/4.2.0/)
+- **PCL:** Point cloud processing (ROS has compatible interfaces).
+ - [https://pointclouds.org/documentation/](https://pointclouds.org/documentation/)
+- **Boost:** General C++ library implementing *many* tools, algorithms and utilities (used internaly in ROS).
+ - [https://www.boost.org/doc/libs/1_71_0/](https://www.boost.org/doc/libs/1_71_0/)
+- **`mrs_lib`**: Our own MRS library implementing some algorithms (e.g. various Kalman filters), ROS wrappers (e.g. for parameter loading) and other utilities (e.g. a 3D geometry library).
+ - [https://ctu-mrs.github.io/mrs_lib/](https://ctu-mrs.github.io/mrs_lib/)
+
+Most of these libraries already come pre-installed with ROS or our UAV system and we use them, so we can help you in case you encounter any problems (don't be afraid to ask).
 
 ## Dynamic memory management
 
@@ -170,12 +195,6 @@ Namely, these helpers are good to use to improve code clarity and robustness:
    Do not guess what stuff does or how it's called.
    Find the documentation of whatever library you're working with, bookmark it, read it and use it.
    Also learn to use the search tool (the input field on the top-right) in Doxygen-generated pages.
-   Documentation pages of the most often used libraries are:
-   - roscpp: [https://docs.ros.org/en/noetic/api/roscpp/html/](https://docs.ros.org/en/noetic/api/roscpp/html/)
-   - tf2_ros: [https://docs.ros.org/en/noetic/api/tf2_ros/html/c++/](https://docs.ros.org/en/noetic/api/tf2_ros/html/c++/)
-   - OpenCV: [https://docs.opencv.org/4.2.0/](https://docs.opencv.org/4.2.0/)
-   - PCL: [https://pointclouds.org/documentation/](https://pointclouds.org/documentation/)
-   - `mrs_lib`: [https://ctu-mrs.github.io/mrs_lib/](https://ctu-mrs.github.io/mrs_lib/)
 
 ### Automatic type deduction
 C++ is a typed language, meaning that the type of any variable in the program has to be known at compilation.
