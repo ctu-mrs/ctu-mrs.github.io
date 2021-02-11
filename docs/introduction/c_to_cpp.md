@@ -24,22 +24,22 @@ Before implementing basically anything, **first check that a suitable implementa
 Typically, using an already existing and optimized implementation is not only easier and faster than implementing your own, but also the code will be faster and bug-free.
 A list of useful C++ libraries that you might need with links to their documentation pages follows:
 
-- **The standard C++ library:** Implements many useful algorithms, tools and utilities. Part of the C++ standard. Learn it and learn to use it!
- - [https://en.cppreference.com/w/](https://en.cppreference.com/w/)
-- **roscpp:** The main ROS C++ API.
- - [https://docs.ros.org/en/noetic/api/roscpp/html/](https://docs.ros.org/en/noetic/api/roscpp/html/)
-- **tf2_ros:** The ROS tf2 library API, implementing coordinate transformations and related stuff.
- - [https://docs.ros.org/en/noetic/api/tf2_ros/html/c++/](https://docs.ros.org/en/noetic/api/tf2_ros/html/c++/)
-- **Eigen:** Linear algebra, basic geometry and other matrix-related stuff (ROS has compatible interfaces).
- - [https://eigen.tuxfamily.org/dox/index.html](https://eigen.tuxfamily.org/dox/index.html)
-- **OpenCV:** Computer vision and image processing (ROS has compatible interfaces).
- - [https://docs.opencv.org/4.2.0/](https://docs.opencv.org/4.2.0/)
-- **PCL:** Point cloud processing (ROS has compatible interfaces).
- - [https://pointclouds.org/documentation/](https://pointclouds.org/documentation/)
-- **Boost:** General C++ library implementing *many* tools, algorithms and utilities (used internaly in ROS).
- - [https://www.boost.org/doc/libs/1_71_0/](https://www.boost.org/doc/libs/1_71_0/)
-- **`mrs_lib`**: Our own MRS library implementing some algorithms (e.g. various Kalman filters), ROS wrappers (e.g. for parameter loading) and other utilities (e.g. a 3D geometry library).
- - [https://ctu-mrs.github.io/mrs_lib/](https://ctu-mrs.github.io/mrs_lib/)
+* **The standard C++ library:** Implements many useful algorithms, tools and utilities. Part of the C++ standard. Learn it and learn to use it!
+  - [https://en.cppreference.com/w/](https://en.cppreference.com/w/)
+* **roscpp:** The main ROS C++ API.
+  - [https://docs.ros.org/en/noetic/api/roscpp/html/](https://docs.ros.org/en/noetic/api/roscpp/html/)
+* **tf2_ros:** The ROS tf2 library API, implementing coordinate transformations and related stuff.
+  - [https://docs.ros.org/en/noetic/api/tf2_ros/html/c++/](https://docs.ros.org/en/noetic/api/tf2_ros/html/c++/)
+* **Eigen:** Linear algebra, basic geometry and other matrix-related stuff (ROS has compatible interfaces).
+  - [https://eigen.tuxfamily.org/dox/index.html](https://eigen.tuxfamily.org/dox/index.html)
+* **OpenCV:** Computer vision and image processing (ROS has compatible interfaces).
+  - [https://docs.opencv.org/4.2.0/](https://docs.opencv.org/4.2.0/)
+* **PCL:** Point cloud processing (ROS has compatible interfaces).
+  - [https://pointclouds.org/documentation/](https://pointclouds.org/documentation/)
+* **Boost:** General C++ library implementing *many* tools, algorithms and utilities (used internaly in ROS).
+  - [https://www.boost.org/doc/libs/1_71_0/](https://www.boost.org/doc/libs/1_71_0/)
+* **`mrs_lib`**: Our own MRS library implementing some algorithms (e.g. various Kalman filters), ROS wrappers (e.g. for parameter loading) and other utilities (e.g. a 3D geometry library).
+  - [https://ctu-mrs.github.io/mrs_lib/](https://ctu-mrs.github.io/mrs_lib/)
 
 Most of these libraries already come pre-installed with ROS or our UAV system and we use them, so we can help you in case you encounter any problems (don't be afraid to ask).
 
@@ -77,17 +77,17 @@ There are three types of smart pointers:
    It is the sole and only owner of the memory it points to (hence the name).
    The memory is allocated on construction of the `std::unique_ptr` object and freed at its destruction, so the user doesn't have to worry about calling `new` nor `delete` (and definitely not `malloc()` nor `free()`).
    The unique pointer is the most safe and efficient one, but it's quite restrictive as it cannot be copied or copy-constructed (that would break the unique ownership of its data).
- * The [shared pointer](https://en.cppreference.com/w/cpp/memory/shared_ptr) is the most common smart pointer you will encounter.
+ * The [shared pointer](https://en.cppreference.com/w/cpp/memory/shared_ptr) is *the most common smart pointer you will encounter*.
    It works similarly as the unique pointer, but has a counter which is incremented at each copying of the pointer and decremented at each destructor call.
    This counter counts how many pointers point to the respective memory and when it reaches zero (the last `std::shared_ptr` pointing to this memory is destroyed), the memory is freed.
    The thread-safe incrementation/decrementation of the counter makes the `std::shared_ptr` a bit less efficient than the `std::unique_ptr`, but it can be freely copied, destroyed, shared between threads etc. (although synchronization is still required for accessing the data being pointed to!).
  * The [weak pointer](https://en.cppreference.com/w/cpp/memory/weak_ptr) is a non-owning pointer to a memory.
-   It neither allocates nor destroys memory and before the pointed-to memory may be used, it has to be *locked*, which temporarily converts it to a `std::shared_ptr`.
-   The memory it points to is owned and allocated/deallocated by a different shared pointer (see the [example at cppreference](https://en.cppreference.com/w/cpp/memory/weak_ptr#Example)).
+   It neither allocates nor destroys memory and before the pointed-to memory may be used, it has to be *locked*, which returns a new `std::shared_ptr`.
+   Otherwise, the memory it points to is owned and allocated/deallocated by a different shared pointer (see the [example at cppreference](https://en.cppreference.com/w/cpp/memory/weak_ptr#Example)).
 
 For most of our applications, you will utilize only the shared pointers.
 Note that ROS uses the [Boost implementation](https://www.boost.org/doc/libs/1_75_0/libs/smart_ptr/doc/html/smart_ptr.html#shared_ptr) (`boost::shared_ptr`) instead of the standard library implementation for legacy reasons (this is fixed in ROS2).
-Luckily, the Boost shared pointer works identically to the standard library.
+Luckily, the Boost shared pointer works identically to the standard library (although they cannot be converted to each other's type).
 
 When instantiating a `std::shared_ptr`, use the `std::make_shared<T>()` function, which takes the object `T`'s constructor parameters as arguments - e.g.:
 ```
@@ -163,19 +163,44 @@ The rules of thumb when defining function parameters is:
 
 ## Thread synchronization
 
-If you have a single primitive-type variable which you want to access and modify from multiple threads in a thread-safe manner (e.g. some counter or a flag that a thread is running), use `std::atomic<T>`.
+There are three types of synchronization mechanisms for multi-threading in C++:
 
-For thread synchronization where you want the thread to become inactive while waiting for another thread to release a resource, use `std::mutex` and `std::lock_guard`.
+ 1. **Atomic variable:**
+   If you have a single primitive-type variable which you want to access and modify from multiple threads in a thread-safe manner (e.g. some counter or a flag that a thread is running), use `std::atomic<T>`.
+   See also the [`mrs_lib::AtomicScopeFlag` helper class](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1AtomicScopeFlag.html) for automatic atomical setting and unsetting a flag (boolean variable).
 
-TODO: `std::condition_variable`
+ 2. **Mutex:**
+   For cases where multiple threads modify/read a common resource (e.g. an `std::vector` or other data), use [`std::mutex`](https://en.cppreference.com/w/cpp/thread/mutex) and [`std::lock_guard`](https://en.cppreference.com/w/cpp/thread/lock_guard) to synchronize the access and prevent data races.
+   See [an example on cppreference.com](https://en.cppreference.com/w/cpp/thread/lock_guard#Example).
 
-Do not use `volatile` (unless working with a microcontroller, where you really need it).
-Note that `volatile` does *NOT* ensure any kind of thread safety!
+ 3. **Condition variable:**
+   The `std::condition_variable` is useful in cases when a thread (or multiple threads) has to wait for another thread to generate a resource to be consumed by the waiting thread (threads).
+   In the context of ROS, this may be waiting until a message on some topic arrives for your thread to process (this is implemented in the `mrs_lib::SubscribeHandler`'s [`waitForNew()` method](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1SubscribeHandler.html#a4d2789e1f6172c5ff9e496af55aab5e1)).
+   See [an example on cppreference.com](https://en.cppreference.com/w/cpp/thread/condition_variable#Example).
+   
+Other remarks regarding multi-threading in C++:
 
-TODO: explain why
+ * In general, do **not** use `volatile` (unless working with a microcontroller where you really need it or other platform-specific cases, which generally don't concern us).
+   Note that `volatile` does [*NOT* ensure thread safety](https://en.cppreference.com/w/c/language/volatile#Uses_of_volatile) - for these cases, use `std::atomic<T>` (which also much better communicates your intention to the compiler as well as to any potential readers of the code)!
+
+ * The condition variable may sound very similar to mutex, but actually isn't.
+   A mutex is intended to keep two threads from using the same resource (i.e. a data race), whereas a condition variable is used to suspend a thread until a resource becomes available.
+   You may think of it this way:
+    - By default, a *mutex* is unlocked and any thread can lock it.
+      Any other thread then has to wait for the first one to release it again.
+    - By default, a *condition variable* is unavailable and no thread can use it.
+      Any thread may wait for the condition variable (and atomically lock it when it becomes available).
+      Any thread may notify a single or all threads waiting on the condition variable that it has become available (thus waking them).
 
 ## ROS-related coding practices
-Be sure to check out the available ROS helpers in our [`mrs_lib` C++ library](https://github.com/ctu-mrs/mrs_lib/).
+
+To get started with ROS, check out the [official *roscpp* tutorials](http://wiki.ros.org/roscpp/Tutorials) and our example ROS packages:
+ * [example_ros_uav](https://github.com/ctu-mrs/example_ros_uav) - general ROS package, demonstrating some basic concepts.
+ * [example_ros_vision](https://github.com/ctu-mrs/example_ros_vision) - a computer vision ROS package, demonstrating some basic CV stuff.
+Go through the code of these examples and try to understand it (you can skip the vision package if you won't be working on CV).
+**Read their README** - especially the [Coding style](https://github.com/ctu-mrs/example_ros_uav#coding-style) and [Coding practices](https://github.com/ctu-mrs/example_ros_vision#coding-practices) parts, which contain useful information related to using C++ in the context of ROS and the *roscpp* API.
+
+Also be sure to check out the available ROS helpers in our [`mrs_lib` C++ library](https://github.com/ctu-mrs/mrs_lib/).
 Namely, these helpers are good to use to improve code clarity and robustness:
  * [`ParamLoader`](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1ParamLoader.html): Loading of parameters from the `rosparam` server, checking of parameters being loaded correctly, automatic printing of the loaded values.
  * [`SubscribeHandler`](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1SubscribeHandler.html): Subscription to ROS topics with automatic printing when no messages were received for a specified timeout. Threadsafe blocking waiting (with timeout) for new messages or callbacks or flag-checking for new messages.
@@ -185,7 +210,7 @@ Namely, these helpers are good to use to improve code clarity and robustness:
 ## Other tips and remarks
 
  * Turn on `-Wall` and write your code to emit no warnings.
-   The warnings are there to tell you about potential code smell, so do not ignore them.
+   The warnings are there to tell you about potential code smell (not to annoy you), so do not ignore them.
  * Use `const` whenever possible.
    This way you will avoid accidentally modifying variables which are not supposed to be modified and enable the compiler to better optimize.
  * Shorten long typenames that you use repeatedly with the [`using` aliasing](https://en.cppreference.com/w/cpp/language/type_alias) to improve code readability.

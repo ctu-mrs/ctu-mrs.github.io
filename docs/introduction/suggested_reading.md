@@ -126,4 +126,4 @@ Therefore we recommend to learn C++ and get used to programming with it.
 * If you want to go much deeper into C++, I recommend the excellent [C++ Weekly by Jason Turner series](https://www.youtube.com/user/lefticus1)
 * For interesting in-depth videos about the development of the C++ language, see [CppCon presentations](https://www.youtube.com/user/CppCon)
 
-You made it down here! Great! Please leave us a message on what we could improve about these recommendations (e.g. through [the repository's Issues](https://github.com/ctu-mrs/ctu-mrs.github.io/issues/new) or via email to some of the authors).
+*You made it down here! Great! Please leave us a message on what we could improve about these recommendations (e.g. through [the repository's Issues](https://github.com/ctu-mrs/ctu-mrs.github.io/issues/new) or via email to some of the authors).*
