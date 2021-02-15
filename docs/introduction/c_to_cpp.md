@@ -18,6 +18,7 @@ A list of the main tackled topics is:
  * [Use the native multithreading and thread synchronization tools.](#thread-synchronization)
  * [ROS-related coding practices.](#ros-related-coding-practices)
  * [Other tips and remarks.](#other-tips-and-remarks)
+ * [Further reading.](#further-reading)
 
 ## Useful libraries
 Before implementing basically anything, **first check that a suitable implementation doesn't already exist** (this goes for scientific research as well - do your research before you start reinventing the wheel 😀)!
@@ -211,6 +212,9 @@ Namely, these helpers are good to use to improve code clarity and robustness:
 
  * Turn on `-Wall` and write your code to emit no warnings.
    The warnings are there to tell you about potential code smell (not to annoy you), so do not ignore them.
+ * Do not use the `NULL` macro, use the `nullptr` pointer literal.
+   `NULL` may be defined to be the integer literal `0` according to the standard, which makes some unexpected implicit conversions possible when using `NULL`.
+   `nullptr` can never be implicitly converted to `int`, making it safer.
  * Use `const` whenever possible.
    This way you will avoid accidentally modifying variables which are not supposed to be modified and enable the compiler to better optimize.
  * Shorten long typenames that you use repeatedly with the [`using` aliasing](https://en.cppreference.com/w/cpp/language/type_alias) to improve code readability.
@@ -285,3 +289,7 @@ I recommend using this syntax whenever applicable as it's more expressive and le
    // if you need to modify the elements, use std::begin() and std::end() instead
    for (auto it = std::cbegin(container); it != std::cend(container); it++)
    ```
+
+## Further reading
+
+ * The [C++ Best Practices site](http://cppbestpractices.com/) from Jason Turner are a good general overview of C++ programming.
