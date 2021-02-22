@@ -13,3 +13,7 @@ has_toc: true
 ```bash
 ssh mrs@<hostname>
 ```
+
+## How to stop the simulation?
+
+Press `CTRL + a` and then `k` in the terminal.
