@@ -9,6 +9,9 @@ nav_order: 3
 
 This guide will attempt to summarize good practices to use and bad practices to avoid when writing C++ code in the context of ROS, robotics and research.
 The guide is mainly targeted at people who are coming to C++ from C or who are still using old-style C++ (e.g. raw pointers).
+You don't have to read every last word as some of the sections deal with quite specific topics (e.g. multithreading).
+I *do* recommend at least skimming through the whole page to check for anything that's new or that might be useful for you.
+At the minimum, check out the sections related to [smart pointers](#dynamic-memory-management) and the [general tips](#other-tips-and-remarks).
 
 A list of the main tackled topics is:
 
@@ -19,6 +22,8 @@ A list of the main tackled topics is:
  * [ROS-related coding practices.](#ros-related-coding-practices)
  * [Other tips and remarks.](#other-tips-and-remarks)
  * [Further reading.](#further-reading)
+
+If you spot any errors, don't understand something or have ideas for improevments, feel free to contact me at `matous.vrba (at) fel.cvut.cz`.
 
 ## Useful libraries
 Before implementing basically anything, **first check that a suitable implementation doesn't already exist** (this goes for scientific research as well - do your research before you start reinventing the wheel 😀)!
@@ -196,6 +201,7 @@ Other remarks regarding multi-threading in C++:
 ## ROS-related coding practices
 
 To get started with ROS, check out the [official *roscpp* tutorials](http://wiki.ros.org/roscpp/Tutorials) and our example ROS packages:
+
  * [example_ros_uav](https://github.com/ctu-mrs/example_ros_uav) - general ROS package, demonstrating some basic concepts.
  * [example_ros_vision](https://github.com/ctu-mrs/example_ros_vision) - a computer vision ROS package, demonstrating some basic CV stuff.
 Go through the code of these examples and try to understand it (you can skip the vision package if you won't be working on CV).
@@ -203,6 +209,7 @@ Go through the code of these examples and try to understand it (you can skip the
 
 Also be sure to check out the available ROS helpers in our [`mrs_lib` C++ library](https://github.com/ctu-mrs/mrs_lib/).
 Namely, these helpers are good to use to improve code clarity and robustness:
+
  * [`ParamLoader`](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1ParamLoader.html): Loading of parameters from the `rosparam` server, checking of parameters being loaded correctly, automatic printing of the loaded values.
  * [`SubscribeHandler`](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1SubscribeHandler.html): Subscription to ROS topics with automatic printing when no messages were received for a specified timeout. Threadsafe blocking waiting (with timeout) for new messages or callbacks or flag-checking for new messages.
  * [`Transformer`](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1Transformer.html): ROS transformations wrapper for easier transformation lookup, one-time or repeated transformation of various types including handling of the special GPS UTM frame (specification of points in lat/lon coordinates).
@@ -217,6 +224,10 @@ Namely, these helpers are good to use to improve code clarity and robustness:
    `nullptr` can never be implicitly converted to `int`, making it safer.
  * Use `const` whenever possible.
    This way you will avoid accidentally modifying variables which are not supposed to be modified and enable the compiler to better optimize.
+ * Use `std::numeric_limits` instead of the `INT_MAX`, `DBL_MAX`, etc. macros.
+   In general, you should avoid macros whenever possible.
+   Watch out for [`std::numeric_limits<T>::min`](https://en.cppreference.com/w/cpp/types/numeric_limits/min) vs. [`std::numeric_limits<T>::lowest`](https://en.cppreference.com/w/cpp/types/numeric_limits/lowest)!
+   The `::min` function returns the *smallest positive value* (not the lowest - therefore negative - value, which is returned by `::lowest`) for floating types (this behavior is the same for the macros such as `FLT_MIN` by the way).
  * Shorten long typenames that you use repeatedly with the [`using` aliasing](https://en.cppreference.com/w/cpp/language/type_alias) to improve code readability.
  * Learn and use the `gdb` debugger (see our short [introduction](https://ctu-mrs.github.io/docs/software/gdb.html)).
  * Learn to use the [C++ reference documentation](https://en.cppreference.com/) and consult it whenever you use a new thing from the standard library.
