@@ -31,6 +31,8 @@ where <img src="https://render.githubusercontent.com/render/math?math=FOV"> is a
 
 Equations 1. and 2. can be used to convert between the cases.
 How these equations are obtained from the geometrical layout of the optical imaging system is illustrated in the following image.
+Note that these neglect the aperture size, which is only valid if the aperture is sufficiently small.
+You can use our [handy FoV calculator](https://docs.google.com/spreadsheets/d/1WR1ZzsEZVQ7q5Rsaxh-sDTdsqkY4QiFbyPYb-ywzcOM/edit?usp=sharing) (optionally including aperture size).
 
 ![Illustration of the optical imaging system geometry](fig/lens_selection1.svg)
 
