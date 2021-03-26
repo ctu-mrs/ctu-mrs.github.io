@@ -61,6 +61,11 @@ Other parameters to pay attention to when selecting a camera are:
  * [Quantum Efficiency](https://www.flir.com/discover/iis/machine-vision/how-to-evaluate-camera-sensitivity/):
    Determines how much of the light hitting the sensor gets converted to a useful electronic signal.
    This parameter is important if you intend to use the camera in low-light conditions.
+ * [Sensor format (size)](https://en.wikipedia.org/wiki/Image_sensor_format):
+   Typically, the `1/X"` sensor format is used in the datasheets.
+   To convert to a human-readable size of the sensor, use e.g. [this table](https://en.wikipedia.org/wiki/Image_sensor_format#Table_of_sensor_formats_and_sizes).
+   A larger sensor typically means a more sensitive sensor.
+   This parameter is important when selecting the lens.
 
 For the actual selection of a specific camera, I recommend using a camera selector such as:
 
@@ -88,9 +93,10 @@ The selected camera dictates the following parameters to which attention has to 
    Using a lens, intended for a 1 mega pixel sensor with a 10 mega pixel sensor may result in blurring of the image in which case a lot of the information that your fancy 10 mega pixel camera could obtain will be useless.
    The lens vendor should always indicate the intended maximal sensor resolution.
    Note, however, that this rating is about what the manufacturer guarantees - you may get lucky and get lower rated lens that works fine, but don't rely on this.
- * Sensor format (size):
+ * [Sensor format (size)](https://en.wikipedia.org/wiki/Image_sensor_format):
    It is easiest and usually best to simply select a lens, which is intended for the specific sensor format and be done with it.
-   It's possible to use a lens intended for a larger or smaller sensor and get away with it, but this will result in cropping of the image or not all of the projected light being used, and the listed parameters of the lens will have to be recalculated accordingly.
+   It's possible to use a lens intended for a smaller sensor and get away with it, but this will result in cropping of the image.
+   A lens intended for a larger sensor is usually fine, but not all of the projected light will be utilized, and the listed parameters of the lens typically have to be recalculated accordingly (you can use the FoV calculator linked above).
    Manufacturers sometimes show in their datasheets what portion of what size of sensor will the image cover.
 
 ## On wide FoV and other "non-pinhole-like" setups
