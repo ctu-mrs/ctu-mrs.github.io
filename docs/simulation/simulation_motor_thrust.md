@@ -33,10 +33,10 @@ nav_order: 6
   * A thrust [N] is generated from the signal (NOT the simulated rotor speed) by the function
     `thrust = motor_constant * signal^2`
   * the parameters are in the **.xacro** file 
+
   ```xml
-  ...
   <xacro:property name="rotor_velocity_slowdown_sim" value="0.0159236" />
   <xacro:property name="motor_constant" value="8.3" /> <!-- [kg.m/s^2] -->
-  ...
   ```
+  
   * *rotor_velocity_slowdown_sim* is set so the max velocity is 10 revolutions per second
