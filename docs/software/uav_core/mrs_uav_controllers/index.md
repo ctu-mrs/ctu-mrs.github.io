@@ -69,3 +69,53 @@ Switching to a controller with the alias *Se3Controller* is done by calling a se
 ```bash
 rosservice call /uav1/control_manager/switch_controller Se3Controller
 ```
+
+## Writing a new controller
+
+A controller needs to inherit from `mrs_uav_managers::Controller` and exported
+via pluginlib with the statement (be sure to replace the
+<TERMS_IN_ANGLED_BRACKETS> with actual values:
+
+```cpp
+PLUGINLIB_EXPORT_CLASS(<CONTROLLER_NAMESPACE>::<CONTROLLER_CLASS>, mrs_uav_managers::Controller)
+```
+
+Then, inside of of your `package.xml` file, you need to be sure that you have
+the following lines:
+
+```xml
+<build_depend>mrs_uav_managers</build_depend>
+<exec_depend>mrs_uav_managers</exec_depend>
+<export>
+	<mrs_uav_managers plugin="${prefix}/plugins.xml"/>
+</export>
+```
+
+Note that you are allowed to have **only one** `export` tag, so be sure to add
+any other export contents into this same tag.
+
+Next, you need to write the file `plugins.xml`:
+
+```xml
+<library path="lib/lib<LIBRARY_NAME>">
+	<class
+		name="<NAMESPACE>/<CONTROLLER NAME>"
+		type="<NAMESPACE>::<CONTROLLER NAME>"
+		base_class_type="mrs_uav_managers::Controller"
+	>
+		<description>This is Wonderwall.</description>
+	</class>
+</library>
+```
+
+Then, finally, you need to tell the control manager about your class by adding
+this into one of the yaml configuration files:
+
+```yaml
+<CONTROLLER_NAME>:
+  address:   "<NAMESPACE>/<CONTROLLER_NAME>"
+  namespace: "<NAMESPACE>"
+  eland_threshold: 3.0               # [m], position error triggering eland
+  failsafe_threshold: 4.0            # [m], position error triggering failsafe land
+  odometry_innovation_threshold: 3.0 # [m], position odometry innovation threshold
+```
