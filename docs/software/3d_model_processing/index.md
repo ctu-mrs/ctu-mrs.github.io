@@ -125,8 +125,8 @@ parent: Software
                 - *32768x32768* gives 1GB *.png* texture and takes ~ 1 hour
             - The **Max Dist Search** parameter does not change the quality of the mesh. Keep it default.
             - Check **Assing Texture** checkbox.
-            - Uncheck **Fill Texture** checkbox. If you leave it checked, the final size of the texture file will be slightly higher due to filling of the empty texture file space with color.
-              [![](src/fill.jpg "Checked Fill Texture checkbox")](src/fill.jpg) | [![](src/nofill.jpg "Unchecked Fill Texture checkbox result")](src/nofill.jpg)
+            - Uncheck **Fill Texture** checkbox. If you leave it checked, the final size of the texture file will be slightly higher due to filling of the empty texture file space with color as shown in the image below.
+              [![](src/fill.jpg "Checked Fill Texture checkbox")](src/fill.jpg) [![](src/nofill.jpg "Unchecked Fill Texture checkbox result")](src/nofill.jpg)
             - Click **Apply**
             - The process takes usually a lot of time. The cmd line will show some **QImage::pixel: coordinate (number,number) out of range** messages. It means it cannot fit the point from the pointcloud into the desired texture. However, this is not a problem. The texture from Blender is not predefined for specific dimension, hence arbitrary resolution will result in this message.
         - Save the final *.ply* file
