@@ -98,7 +98,7 @@ parent: Software
     * Go to **'Filters → Texture → Vertex Color to Texture'**. Specify the texture file name and resolution for the mesh. The resolution should give the **Texture dimension** parameter from the previous step, e.g. **Texture width * Texture height = Texture Dimension**. Then press 'Apply' to create it.
 2. **Good quality texture - SLOW BUT NICE**
     - Recommend to use low quality *.ply* file about 10MB ~ 250k faces. If double the amount of faces (500k) the Blender process time will be really long.
-    1. **[Blender](https://www.blender.org/)**
+    1. **Blender**
         - Import the *.ply* mesh file
         - Change default **Object mode** to **Edit mode**
         - Select all data with *a* key
@@ -108,7 +108,7 @@ parent: Software
         - Do something else. It takes a long time to process. Average an hour, depending on the model size. (250k faces ~ 1 hour 15 minutes, 500k faces ~ 3 hours)
         - When finished, split the screen and change the **Editor Type** to **UV Editor**. It shows the texture parametrization.
         - Exprot the file as *.ply*
-    2. **Meshlab**
+    3. **Meshlab**
         - Import the Blender processed *.ply* file 
         - Run **Convert PerVertex UV to PerWedge UV** to convert Blender parametrization into Meshlab convention
         - Import the original *.ply* pointcloud with coloured vertices.
@@ -126,11 +126,11 @@ parent: Software
             - The **Max Dist Search** parameter does not change the quality of the mesh. Keep it default.
             - Check **Assing Texture** checkbox.
             - Uncheck **Fill Texture** checkbox. If you leave it checked, the final size of the texture file will be slightly higher due to filling of the empty texture file space with color.
-              [![](src/fill.png "Checked Fill Texture checkbox")](src/fill.png) | [![](src/nofill.png "Unchecked Fill Texture checkbox result")](src/nofill.png)
+              [![](src/fill.jpg "Checked Fill Texture checkbox")](src/fill.jpg) | [![](src/nofill.jpg "Unchecked Fill Texture checkbox result")](src/nofill.jpg)
             - Click **Apply**
             - The process takes usually a lot of time. The cmd line will show some **QImage::pixel: coordinate (number,number) out of range** messages. It means it cannot fit the point from the pointcloud into the desired texture. However, this is not a problem. The texture from Blender is not predefined for specific dimension, hence arbitrary resolution will result in this message.
         - Save the final *.ply* file
-    3. **Texture simplification**
+    4. **Texture simplification**
         - Current texture is quite large and not that practicaly useful. Gazebo has its own [limitation](https://answers.gazebosim.org//question/1331/solved-jpeg-file-make-gazebo-die/) to load a large textures.
         - I recommend to convert it to *.jpg* with the [convert](https://linux.die.net/man/1/convert) tool: *convert input.png -quality 20 output.jpg*. The 20% quality is sufficient. The imagemagick tool might have some RAM/disk limitations set in default config */etc/ImageMagick-version/policy.xml*. Check it if you have errors.
         - For Gazebo use, you have to resize the image with *convert input -resample 16384x16384 output*. Otherwise, you will be unable to load the texture.
