@@ -75,7 +75,7 @@ Setting references:
 
 | **service**                          | **description**                           | **service type**                                                                                      |
 |--------------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| control_manager/reference            | fly to given coordinates in a given frame | [mrs_msgs/ReferenceSrv](https://ctu-mrs.github.io/mrs_msgs/srv/ReferenceSrv.html)                     |
+| control_manager/reference            | fly to given coordinates in a given frame | [mrs_msgs/ReferenceStampedSrv](https://ctu-mrs.github.io/mrs_msgs/srv/ReferenceStampedSrv.html)       |
 | control_manager/trajectory_reference | fly along a given trajectory              | [mrs_msgs/TrajectoryReferenceSrv](https://ctu-mrs.github.io/mrs_msgs/srv/TrajectoryReferenceSrv.html) |
 
 Control of trajectory tracking:
