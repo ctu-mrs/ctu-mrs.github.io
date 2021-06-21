@@ -188,7 +188,7 @@ Notable topics:
 
 ## Trajectory generation
 
-The [mrs_uav_trajectory_generation](https://github.com/ctu-mrs/mrs_uav_trajectory_generation) serves to genete a feasible time-parametrized trajecotry from a desired waypoint path.
+The [mrs_uav_trajectory_generation](https://github.com/ctu-mrs/mrs_uav_trajectory_generation) serves to generate a feasible time-parametrized trajectory from a desired waypoint path.
 
 ### Provided topics
 
