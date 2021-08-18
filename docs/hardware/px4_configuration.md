@@ -117,6 +117,6 @@ More info: [https://dev.px4.io/master/en/middleware/modules_driver_distance_sens
 
 ## Disabling/Enabling internal magnetometer
 
-Disable: `EKF2_MAG_TYPE := None`
+Disable: `EKF2_MAG_TYPE := None` and `SYS_HAS_MAG := 0`
 
-Enable: `EKF2_MAG_TYPE := Automatic`
+Enable: `EKF2_MAG_TYPE := Automatic` and `SYS_HAS_MAG := 1`
