@@ -16,6 +16,17 @@ Add following lines to **.bashrc**:
 export ROS_MASTER_URI=http://localhost:11311
 ```
 
+**Important** (skipping these steps may kill ROS on the robot if it disconnects from a wifi):
+
+- Do NOT export `ROS_IP` to **.bashrc**.
+- Remove the server's (the robot's) own hostname in `/etc/hosts` except of `127.0.1.1`.
+  The top of the `/etc/hosts` file of robot with hostname `dog` and IP `192.168.69.123` should look like below.
+  No other instances of `dog` nor `192.168.69.123` should be present in `/etc/hosts`.
+```bash
+127.0.0.1 localhost
+127.0.1.1 dog
+```
+
 ## Client computer, a.k.a., "the notebook"
 
 Add following lines to **.bashrc**:
