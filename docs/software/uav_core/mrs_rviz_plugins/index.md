@@ -21,6 +21,10 @@ grand_parent: Software
 
 Integrates seamlessly.
 
+#### mrs_msgs/TrackArrayStamped vizualization
+
+Integrates seamlessly.
+
 ## ROS Nodes - the ROS-Rviz interface
 
 #### RvizNavGoal
