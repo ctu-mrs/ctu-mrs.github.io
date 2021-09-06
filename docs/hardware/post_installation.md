@@ -68,3 +68,7 @@ TODO
 # NUC Power limits in BIOS
 
 TODO
+
+# Setup and validate .bashrc
+
+TODO
