@@ -48,9 +48,6 @@ The quatities are for a serving of two meals for one person or just one meal if 
 - Put some oil/butter into a non-stick pan and set it to medium heat.
 - After the oil is heated, add the cumin, cloves and curry leaves.
 - Fry them for 1 minute.
-
-![Fried cumin and cloves](images/fried_cumin.jpg)
-
 - Add the diced onions and fry until they look a little golden.
 - Add the peas and fry them until they are cooked.
 - Keep stirring the onions and peas to avoid over cooking.
@@ -65,7 +62,7 @@ The quatities are for a serving of two meals for one person or just one meal if 
 - Now, add the soaked poha and mix everything properly.
 - Keep mixing everything slowly after every 20-30 seconds to avoid over cooking and lumps.
 
-![Before finish](images/pre_final.jpg) | ![Finished](images/final.jpg)
+![Finished](images/final.jpg)
 
 - Turn the heat up or down at any stage if the process seems very slow.
 - When the flakes look a a little crisp, the poha is ready to serve.
