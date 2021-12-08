@@ -45,30 +45,30 @@ We use the [**catkin_tools**](https://catkin-tools.readthedocs.io/en/latest/) pa
 
 ### Creating a workspace
 
-1) create a directory for the workspace
+1. create a directory for the workspace
 ```bash
 mkdir -p ~/my_workspace/src
 ```
-2) move to the root of the workspace
+2. move to the root of the workspace
 ```bash
 cd ~/my_workspace
 ```
-3) call ```catkin_tools```'s init command
+3. call ```catkin_tools```'s init command
 ```bash
 catkin init
 ```
 
 ### Building a workspace
 
-1) put at least one ROS package somewhere into `~/my_workspace/src`
-2) call ```catkin_tools```'s build command
+1. put at least one ROS package somewhere into `~/my_workspace/src`
+2. call ```catkin_tools```'s build command
 ```bash
 catkin build
 ```
 
 ### Building a particular package
 
-1) if you are in a subdirectory of the package, do
+1. if you are in a subdirectory of the package, do
 ```bash
 catkin build --this
 ```
@@ -76,21 +76,21 @@ or using our alias
 ```bash
 catkin bt
 ```
-2) you can invoke build using the package name form anywhere form the workspace
+2. you can invoke build using the package name form anywhere form the workspace
 ```bash
-catkin build <my_package_name>
+catkin build <package_name>
 ```
 
 ### Cleaning the workspace
 
 Cleaning can be performed in two ways:
 
-1) manually, by deleting the generated folder
+1. manually, by deleting the generated folder
 ```bash
 cd ~/my_workspace
 rm -rf build devel logs
 ```
-2) automatically using the `catkin`'s clean command
+2. automatically using the `catkin`'s clean command
 ```bash
 cd ~/my_workspace
 catkin clean
@@ -98,13 +98,13 @@ catkin clean
 
 ### Sourcing the workspace
 
-Specify to `catkin` which workspace shall be loaded by sourcing the bottom-most workspace in your `~/.bashrc`:
+Specify to `catkin` which workspace shall be loaded by sourcing the bottom-most workspace in the hierarchy in your `~/.bashrc`:
 ```bash
-source $HOME/custom_workspace/devel/setup.bash
+source $HOME/my_workspace/devel/setup.bash
 ```
 or in `~/.zshrc`:
 ```bash
-source $HOME/custom_workspace/devel/setup.zsh
+source $HOME/my_workspace/devel/setup.zsh
 ```
 **BEWARE!** Unless you are 100% sure that your workspaces are correctly set and do not contain identical packages, do not source more than one workspace in your `.bashrc` or `.zshrc`.
 Source only the bottom-most workspace, extending hierarchy will handle the rest.
@@ -144,7 +144,7 @@ Should contain:
 
 Should extend `~/modules_workspace`:
 ```bash
-catkin config --exten ~/modules_workspace/devel
+catkin config --extend ~/modules_workspace/devel
 ```
 Should contain:
 
@@ -159,7 +159,7 @@ It should extend the bottom-most workspace in the hierarchy, e.g., the `modules_
 ```bash
 catkin config --extend ~/modules_workspace/devel
 ```
-Put your packages to `~/custom_workspace/src`, [build](https://ctu-mrs.github.io/docs/system/managing_ros_workspaces.html#building-a-workspace) the workspace and you are set.
+Put your packages to `~/my_workspace/src`, [build](https://ctu-mrs.github.io/docs/system/managing_ros_workspaces.html#building-a-workspace) the workspace and you are set.
 
 ## Build profiles
 
@@ -171,11 +171,11 @@ This is typically used to specify the workspace-wide optimization level.
 
 We create three build profiles that correspond to CMake build profiles:
 
-| name       |         | description                                   | optimization |
-|------------|---------|-----------------------------------------------|--------------|
-| debug      |         | corresponds to cmake's Debug profile          | -O0 -g       |
-| **reldeb** | default | corresponds to cmake's RelWithDebInfo profile | -O2 -g       |
-| release    |         | corresponds to cmake's Release profile        | -O3          |
+| name       |         | description                                     | optimization |
+|------------|---------|-------------------------------------------------|--------------|
+| debug      |         | corresponds to cmake's `Debug` profile          | -O0 -g       |
+| **reldeb** | default | corresponds to cmake's `RelWithDebInfo` profile | -O2 -g       |
+| release    |         | corresponds to cmake's `Release` profile        | -O3          |
 
 The profiles are automatically pre-configured while using our shell alias for [`catkin init`](https://github.com/ctu-mrs/uav_core/blob/master/miscellaneous/shell_additions/shell_additions.sh).
 The profiles can be switched by calling `catkin profile set <profile name>`.
@@ -186,9 +186,8 @@ See [GCC optimization](https://wiki.gentoo.org/wiki/GCC_optimization#-O) for inf
 
 A package can be exluded from the build by:
 
-1) creating the `CATKIN_IGNORE` file in the package root, or
-
-2) by blacklisting it in a workspace using `catkin config --blacklist <package_name>`.
+1. creating the `CATKIN_IGNORE` file in the package root, or
+2. by blacklisting it in a workspace using `catkin config --blacklist <package_name>`.
 
 ## Verifying the state of a workspace
 
