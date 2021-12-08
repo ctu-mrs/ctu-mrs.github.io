@@ -51,10 +51,12 @@ We use the **catkin tools** package ([link](https://catkin-tools.readthedocs.io/
 ```bash
 mkdir -p ~/my_workspace/src
 ```
+
 2. move to the root of the workspace
 ```bash
 cd ~/my_workspace
 ```
+
 3. call ```catkin tools```'s init command
 ```bash
 catkin init
@@ -78,6 +80,7 @@ or using our alias
 ```bash
 catkin bt
 ```
+
 2. you can invoke build using the package name form anywhere form the workspace
 ```bash
 catkin build <my_package_name>
@@ -92,6 +95,7 @@ Cleaning can be performed in two ways
 cd ~/my_workspace
 rm -rf build devel logs
 ```
+
 2. automatically using the `catkin`'s clean command
 ```bash
 cd ~/my_workspace
