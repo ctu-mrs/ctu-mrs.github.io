@@ -10,6 +10,14 @@ nav_order: 1
 This guide is an important and mandatory reading for all MRS members.
 Please, make a coffee and take your time to carefully study it, because it will make your (and Tomas's) life easier and it will help you avoid some compilation difficulties.
 
+## TL;RD & Tips
+
+* Do not place your software in the `mrs_workspace`, `modules_workspace` or other workspaces that contain MRS software.
+* Learn to configure the workspaces by hand, learn to setup and verify dependencies between the workspaces.
+* Do not `source` more than one workspace in your `.bashrc` or `.zshrc`, only source the bottom-most workspace.
+* Be mindful about the workspace hierarchy. It will allow you to work more efficiently.
+* It is possible to maintain multiple coppies of a workspace, each with a different build type or particular version of the software.
+
 ## What is a ROS Workspace?
 
 ROS workspace (_workspace_ from now on) is a dedicated build space for ROS packages.
@@ -78,6 +86,7 @@ catkin build <my_package_name>
 ### Cleaning the workspace
 
 Cleaning can be performed in two ways
+
 1. manually, bu deleting the generates folder
 ```bash
 cd ~/my_workspace
@@ -98,7 +107,9 @@ Linking of workspaces is an integral mechanism for separating logical package in
 
 ## Recommended workspace hierarchy
 
-Currently, we can recommend creating the following workspaces and popullating them with the following packages.
+We can recommend creating the following workspaces and popullating them with the following packages.
+![](./fig/ros_workspaces/recommended_hierarchy.png)
+Workspaces that contain MRS software should not contain any user software.
 
 ### ~/mrs_workspace
 
@@ -107,6 +118,7 @@ Should extend ROS:
 catkin config --extend /opt/ros/noetic
 ```
 Should contain:
+
 * [uav_core](http://github.com/ctu-mrs/uav_core)
 * [simulation](http://github.com/ctu-mrs/simulation)
 
@@ -121,20 +133,46 @@ catkin config --extend ~/mrs_workspace/devel
 
 * should extend modules_workspace:
 ```bash
-catkin config --extend ~/mrs_workspace/modules_workspace
+catkin config --extend ~/modules_workspace/devel
 ```
 
-### ~/user_workspace
+### a user_workspace
 
-* should extend octomap_workspace:
-```bash
-catkin config --extend ~/mrs_workspace/octomap_workspace
-```
+* can extend wichever from the existing workspaces based on its dependencies
 
-### Build profiles
+## Build profiles
 
-TODO
+Workspace can maintain a set of pre-configured build profiles.
+A build profile provides custom compilation flags to all packages.
+This is typically used to specify the workspace-wide optimization level.
 
-### Package blacklisting
+### MRS Build profiles
 
-TODO
+We create three build profiles that correspond to CMake build profiles:
+
+| name       |         | description                                   | optimization |
+|------------|---------|-----------------------------------------------|--------------|
+| debug      |         | corresponds to cmake's Debug profile          | -O0 -g       |
+| **reldeb** | default | corresponds to cmake's RelWithDebInfo profile | -O2 -g       |
+| release    |         | corresponds to cmake's Release profile        | -O2          |
+
+The profiles are automatically pre-configurer while using our shell alias for `catkin init` ([link](https://github.com/ctu-mrs/uav_core/blob/master/miscellaneous/shell_additions/shell_additions.sh)).
+The profiles can be switched by calling `catkin profile set <profile name>`.
+After the profile is switched, the whole workspace needs to be cleand and recompiled.
+
+## Package blacklisting
+
+A package can be exluded from the build by:
+
+1) creating the `.CATKIN_IGNORE` file in the package root, or
+2) by blacklisting it in a workspace using `catkin config --blacklist`.
+
+## Verifying the state of a workspace
+
+Use the command `catkin config` to obtain the current configuration for your workspace.
+The output for the **mrs_workpace** should contain the following:
+![](./fig/ros_workspaces/mrs_workpace_config.png)
+Notice the _explicit_ extending of `/opt/ros/noetic`, which should be find only in this workspace (since this is the top-level workspace).
+
+The output for the **modules_workspace** should be similar to the following:
+![](./fig/ros_workspaces/modules_workspace_config.png)
