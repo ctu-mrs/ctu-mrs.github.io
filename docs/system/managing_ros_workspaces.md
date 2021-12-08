@@ -160,7 +160,7 @@ We create three build profiles that correspond to CMake build profiles:
 |------------|---------|-----------------------------------------------|--------------|
 | debug      |         | corresponds to cmake's Debug profile          | -O0 -g       |
 | **reldeb** | default | corresponds to cmake's RelWithDebInfo profile | -O2 -g       |
-| release    |         | corresponds to cmake's Release profile        | -O2          |
+| release    |         | corresponds to cmake's Release profile        | -O3          |
 
 The profiles are automatically pre-configurer while using our shell alias for `catkin init` ([link](https://github.com/ctu-mrs/uav_core/blob/master/miscellaneous/shell_additions/shell_additions.sh)).
 The profiles can be switched by calling `catkin profile set <profile name>`.
