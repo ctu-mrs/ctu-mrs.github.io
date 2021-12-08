@@ -128,6 +128,9 @@ Should contain:
 ```bash
 catkin config --extend ~/mrs_workspace/devel
 ```
+Should contain:
+
+* [uav_modules](http://github.com/ctu-mrs/uav_modules)
 
 ### ~/octomap_workspace
 
@@ -135,6 +138,9 @@ catkin config --extend ~/mrs_workspace/devel
 ```bash
 catkin config --extend ~/modules_workspace/devel
 ```
+Should contain:
+
+* [octomap_mapping_planning](http://github.com/ctu-mrs/octomap_mapping_planning)
 
 ### a user_workspace
 
