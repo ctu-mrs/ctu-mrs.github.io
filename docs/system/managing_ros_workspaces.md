@@ -18,6 +18,7 @@ Please, make a coffee and take your time to carefully study it, because it will 
 * Be mindful about the [workspace hierarchy](https://ctu-mrs.github.io/docs/system/managing_ros_workspaces.html#recommended-workspace-hierarchy). It will allow you to work more efficiently.
 * It is possible to maintain multiple copies of a workspace, each with a different build type or particular version of the software.
 * Link packages from `~/git` to your workspaces, instead of directly cloning them into the `src` folder.
+* Do not modify `mrs_workspace` and `modules_workspace` on a real drone. Place your packages in a custom workspace.
 
 ## What is a ROS Workspace?
 
@@ -161,6 +162,13 @@ It should extend the bottom-most workspace in the hierarchy, e.g., the `modules_
 catkin config --extend ~/modules_workspace/devel
 ```
 Put your packages to `~/my_workspace/src`, [build](https://ctu-mrs.github.io/docs/system/managing_ros_workspaces.html#building-a-workspace) the workspace and you are set.
+
+## Workspaces on a real UAV
+
+The MRS workspaces on a real UAV are typically shared.
+Therefore, the `mrs_workspace` and `modules_workspace` should not be customized or modified for each particular experiment.
+On the other hand, a UAV user may expect that theese workspaces are _vanilla_ and can be therefore updated to the current version.
+When a user prepares for an experiment, he should place his packages into his own dedicated workspace (e.g., `john_workspace`).
 
 ## Build profiles
 
