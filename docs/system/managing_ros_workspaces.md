@@ -17,6 +17,7 @@ Please, make a coffee and take your time to carefully study it, because it will 
 * Do not `source` more than one workspace in your `~/.bashrc` or `~/.zshrc`, only [source the bottom-most workspace](https://ctu-mrs.github.io/docs/system/managing_ros_workspaces.html#sourcing-the-workspace).
 * Be mindful about the [workspace hierarchy](https://ctu-mrs.github.io/docs/system/managing_ros_workspaces.html#recommended-workspace-hierarchy). It will allow you to work more efficiently.
 * It is possible to maintain multiple copies of a workspace, each with a different build type or particular version of the software.
+* Link packages from `~/git` to your workspaces, instead of directly cloning them into the `src` folder.
 
 ## What is a ROS Workspace?
 
@@ -139,7 +140,7 @@ catkin config --extend ~/mrs_workspace/devel
 Should contain:
 
 * [uav_modules](http://github.com/ctu-mrs/uav_modules)
- 
+
 ### ~/octomap_workspace (optional)
 
 Should extend `~/modules_workspace`:
