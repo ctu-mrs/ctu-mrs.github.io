@@ -27,7 +27,7 @@ A workspace is supposed to cluster together related packages, for which it manag
 
 ### Workspace structure
 
-Each maintained ROS workspace should have two following top-level structure:
+Each maintained ROS workspace should have the following top-level structure:
 
 ```
 workspace
@@ -167,7 +167,7 @@ Put your packages to `~/my_workspace/src`, [build](https://ctu-mrs.github.io/doc
 
 The MRS workspaces on a real UAV are typically shared.
 Therefore, the `mrs_workspace` and `modules_workspace` should not be customized or modified for each particular experiment.
-On the other hand, a UAV user may expect that theese workspaces are _vanilla_ and can be therefore updated to the current version.
+On the other hand, a UAV user may expect that these workspaces are _vanilla_ and can be therefore updated to the current version.
 When a user prepares for an experiment, he should place his packages into his own dedicated workspace (e.g., `john_workspace`).
 
 ## Build profiles
@@ -193,7 +193,7 @@ See [GCC optimization](https://wiki.gentoo.org/wiki/GCC_optimization#-O) for inf
 
 ## Package blacklisting
 
-A package can be exluded from the build by:
+A package can be excluded from the build by:
 
 1. creating the `CATKIN_IGNORE` file in the package root, or
 2. by blacklisting it in a workspace using `catkin config --blacklist <package_name>`.
