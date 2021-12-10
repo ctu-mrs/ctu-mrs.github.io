@@ -182,7 +182,7 @@ We create three build profiles that correspond to CMake build profiles:
 
 | name       |         | description                                     | optimization |
 |------------|---------|-------------------------------------------------|--------------|
-| debug      |         | corresponds to cmake's `Debug` profile          | -O0 -g       |
+| debug      |         |                                                 | -Og          |
 | **reldeb** | default | corresponds to cmake's `RelWithDebInfo` profile | -O2 -g       |
 | release    |         | corresponds to cmake's `Release` profile        | -O3          |
 
