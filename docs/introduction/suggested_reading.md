@@ -54,6 +54,12 @@ It will install all the tools we usually use.
   * [Example ROS UAV](https://github.com/ctu-mrs/example_ros_uav) showcase most of our techniques.
   * [ROS example](https://github.com/ctu-mrs/example_ros_vision) is dedicated to online computer vision.
 
+### Catkin
+
+Catkin is the package and workspace manager used by ROS.
+You'll use it to build the ROS packages and manage their dependencies.
+Check out our [Catkin fundamentals tutorial](https://ctu-mrs.github.io/docs/software/catkin/managing_workspaces.html).
+
 ### GIT - code versioning system
 
 GIT is a file versioning system.

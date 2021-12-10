@@ -1,12 +1,10 @@
 ---
 layout: default
-title: Catkin
-parent: Software
+title: Updating the package version
+parent: catkin
 ---
 
-# Catkin
-
-## Creating new ROS package version
+# Updating the package version
 
 1. update the **CHANGELOG.rst** file by
   ```bash
