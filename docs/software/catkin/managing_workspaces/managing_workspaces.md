@@ -2,7 +2,7 @@
 layout: default
 title: Managing Workspaces
 parent: catkin
-nav_order: 1
+grand_parent: Software
 ---
 
 # Managing Workspaces

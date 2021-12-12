@@ -2,6 +2,7 @@
 layout: default
 title: Updating the package version
 parent: catkin
+grand_parent: Software
 ---
 
 # Updating the package version
