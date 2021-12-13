@@ -46,4 +46,4 @@ export ROS_WORKSPACES="~/modules_workspace ~/mrs_workspace ~/my_workspace"
 ```
 
 ### You have to prepare your own real-world tmux script.
-You should start with our [template tmux script] (https://github.com/ctu-mrs/uav_core/tree/master/tmux_scripts/swarming_template), copy it into your repository and modify it according to your needs. This tmux script should run all your nodes and it should contain panes for calling your services (if necessary). You should not run anything outside of this tmux script.
+You should start with our [template tmux script](https://github.com/ctu-mrs/uav_core/tree/master/tmux_scripts/swarming_template), copy it into your repository and modify it according to your needs. This tmux script should run all your nodes and it should contain panes for calling your services (if necessary). You should not run anything outside of this tmux script.
