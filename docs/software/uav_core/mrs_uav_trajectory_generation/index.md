@@ -15,7 +15,7 @@ grand_parent: Software
 
 This package provides a method for generation a time-parametrized [trajectory](https://ctu-mrs.github.io/mrs_msgs/msg/TrajectoryReference.html) out of a [path](https://ctu-mrs.github.io/mrs_msgs/msg/Path.html) (a sequence of waypoints).
 The resulting trajectory satisfies the current dynamics constraints of the UAV **and** completes the path in **minimum possible time**.
-The **maximum deviation** of the resulting trajectory from the supplied path is a user-cofigurable parameter.
+The **maximum deviation** of the resulting trajectory from the supplied path is a user-configurable parameter.
 
 ![](fig/animation.gif)
 
@@ -41,7 +41,7 @@ The main differences are:
 * Added dependency on [mrs_lib](https://github.com/ctu-mrs/mrs_lib) (just for convenience).
 * Added dependency on [mrs_msgs](https://github.com/ctu-mrs/mrs_msgs) (for compatibility with the [MRS UAV System](https://github.com/ctu-mrs/mrs_uav_system)).
 
-## Cofiguration and use
+## Configuration and use
 
 ### ROS interface
 
@@ -61,7 +61,7 @@ A waypoint that violates the condition relative to its predecesor will be remove
 
 The node allows to check and correct for the maximum allowed deviation from a segmented path supplied by the user.
 If enabled, the user-supplied segments will be subdivided to satisfy the maximum distance constraint.
-The [cofig](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/blob/master/cofig/default.yaml) file provides the options to enable/disable this feature, to set the maximum allowed deviations, and the number of iterations.
+The [config](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/blob/master/config/default.yaml) file provides the options to enable/disable this feature, to set the maximum allowed deviations, and the number of iterations.
 Each iteration allows the algorithm to subdivide any segments if the resulting trajectory violates the distance constraint within the segment.
 6 iterations is enough to fall within 0.1 m tolerance.
 The first segment can be optionally excluded from this constraint.

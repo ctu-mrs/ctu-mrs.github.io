@@ -35,7 +35,7 @@ has_children: true
 We compile a patched version of tf2 due to an excessive warning that is being printed on Noetic.
 It is not neccsary to compile it from source on Melodic, therefore, all Melodic users, please, delete it or blacklist the package by issuing the following command:
 ```bash
-catkin cofig --blacklist "geometry2 test_tf2 tf2 tf2_bullet tf2_eigen tf2_geometry_msgs tf2_kdl tf2_msgs tf2_py tf2_ros tf2_sensor_msgs tf2_tools"
+catkin config --blacklist "geometry2 test_tf2 tf2 tf2_bullet tf2_eigen tf2_geometry_msgs tf2_kdl tf2_msgs tf2_py tf2_ros tf2_sensor_msgs tf2_tools"
 ```
 The packages should be blacklisted automatically when using the installer in [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system).
 
@@ -77,7 +77,7 @@ export STANDALONE="false" # disables the core nodelete manager
 export SWAP_GARMINS="false" # swap up/down garmins
 export PIXGARM="false" # true if Garmin lidar is connected throught Pixhawk
 export SENSORS="" # {garmin_down, garmin_up, rplidar, realsense_front, teraranger, bluefox_optflow, realsense_brick, bluefox_brick}
-export WORLD_NAME="simulation" # e.g.: "simulation" <= mrs_general/cofig/world_simulation.yaml
+export WORLD_NAME="simulation" # e.g.: "simulation" <= mrs_general/config/world_simulation.yaml
 export MRS_STATUS="readme" # {readme, dynamics, balloon, avoidance, control_error, gripper}
 export LOGGER_DEBUG="false" # sets the ros console output level to debug
 ```
@@ -86,8 +86,8 @@ Our shell additions
 ```source $HOME/git/uav_core/miscellaneous/shell_additions/shell_additions.sh```
 provide some useful command line aliases (git, catkin, cd) and some neccessary shell functions (wait\* commands for simulation).
 
-All the environment variables define a particular cofiguration of a UAV (through launch files).
-The variables apply mostly to real hardware. They allow us to make the **core** universal without the need of hardcoding cofigurations for a particular UAV, but only for a UAV type.
+All the environment variables define a particular configuration of a UAV (through launch files).
+The variables apply mostly to real hardware. They allow us to make the **core** universal without the need of hardcoding configurations for a particular UAV, but only for a UAV type.
 In a simulation, they are mostly *overloaded* in each tmuxinator session.
 
 ## The `cd` alias

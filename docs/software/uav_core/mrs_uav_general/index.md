@@ -13,7 +13,7 @@ grand_parent: Software
 
 ## Overview
 
-This package contains cofiguration files, launch files, and utilities that are over-arching the packages in the [core](https://github.com/ctu-mrs/uav_core).
+This package contains configuration files, launch files, and utilities that are over-arching the packages in the [core](https://github.com/ctu-mrs/uav_core).
 
 * **sensors.launch** - launches sensor drivers and produces static TFs based on the environment variables in the `.bashrc` (applies only for real UAVs)
 * **core.launch** - launches the control pipeline, consisting of
@@ -29,6 +29,6 @@ This package contains cofiguration files, launch files, and utilities that are o
 * **worlds** - definition of the safety areas and local gps system placement, used by [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers) and [Odometry](https://github.com/ctu-mrs/mrs_uav_odometry)
 * **automatic start** utility - triggers automatic takeoff after the uav is **arm** and successfully in **offboard**
   * disarms the UAV when pre-conditions are not met
-  * can check for messages being published on topics specified in the [cofig file](https://github.com/ctu-mrs/mrs_uav_general/blob/master/cofig/automatic_start.yaml)
+  * can check for messages being published on topics specified in the [config file](https://github.com/ctu-mrs/mrs_uav_general/blob/master/config/automatic_start.yaml)
   * can trigger *user nodes* after takeoff via its `automatic_start/start` service (of type *std_srvs/Trigger*)
 * **record.sh** script - generates and launches a launch file for recording rosbag (its simpler to add exclusions to this script)

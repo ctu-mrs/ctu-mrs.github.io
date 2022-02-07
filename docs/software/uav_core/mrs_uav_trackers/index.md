@@ -66,15 +66,15 @@ Loaded trackers can be switched by the [control manager](https://github.com/ctu-
 
 ## Loading trackers to [control manager](https://github.com/ctu-mrs/mrs_uav_managers)
 
-Trackers are defined in `trackers.yaml` ([example](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/cofig/default/trackers.yaml)).
+Trackers are defined in `trackers.yaml` ([example](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/config/default/trackers.yaml)).
 Each entry such as
 ```yaml
 MpcTracker:
   address: "mrs_uav_trackers/MpcTracker"
 ```
 creates an instance of a tracker; in this case, `mrs_uav_trackers/MpcTracker` is loaded under the *alias* `MpcTracker`.
-Multiple instances are allowed and are used to introduce the same tracker with various cofigurations that can be switched in mid-flight.
-Once the controller alias is defined within `trackers.yaml`, it needs to be part of the *trackers* list within `control_manager.yaml` ([example](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/cofig/default/control_manager.yaml)) cofig:
+Multiple instances are allowed and are used to introduce the same tracker with various configurations that can be switched in mid-flight.
+Once the controller alias is defined within `trackers.yaml`, it needs to be part of the *trackers* list within `control_manager.yaml` ([example](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/config/default/control_manager.yaml)) config:
 ```yaml
 # - list of names of dynamically loaded trackers
 trackers : [

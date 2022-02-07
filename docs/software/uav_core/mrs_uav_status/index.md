@@ -73,8 +73,8 @@ MRS UAV Status can monitor rates of different ROS topics, and warn the user if t
 
 * Static tf
   * If a defined static tf is present, MRS UAV Status will monitor a coresponding topic.
-  * This is intended to automatically monitor different sensor cofigurations.
-  * To add more monitored static tfs, modify ```cofig/status.yaml``` file and add to the ```tf_static_list```
+  * This is intended to automatically monitor different sensor configurations.
+  * To add more monitored static tfs, modify ```config/status.yaml``` file and add to the ```tf_static_list```
   * Each list member consists of 4 entries separated by spaces:
     * Name of the static tf (```garmin```)
     * Name of the topic to be monitored (```garmin/range```)
@@ -83,7 +83,7 @@ MRS UAV Status can monitor rates of different ROS topics, and warn the user if t
 
 * Any topic
   * If you need to monitor a topic which is not bound to a static tf
-  * Add your topic to the want_hz list in ```cofig/status.yaml```
+  * Add your topic to the want_hz list in ```config/status.yaml```
   * Each list member consists of 3 entries separated by spaces:
     * Name of the topic to be monitored (```bluefox/camera_info```)
     * Name that will be displayed (```Bluefox Optflow```) - this name can contain additional spaces

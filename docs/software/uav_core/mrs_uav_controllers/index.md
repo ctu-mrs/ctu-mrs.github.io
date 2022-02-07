@@ -42,7 +42,7 @@ Loaded controllers can be switched by the [control manager](https://github.com/c
 
 ## Loading controllers to [control manager](https://github.com/ctu-mrs/mrs_uav_managers)
 
-Controllers are defined in `controller.yaml` ([example](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/cofig/default/controllers.yaml)).
+Controllers are defined in `controller.yaml` ([example](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/config/default/controllers.yaml)).
 Each entry such as
 ```yaml
 Se3Controller:
@@ -53,8 +53,8 @@ Se3Controller:
   odometry_innovation_threshold: 1.5 # [m], position odometry innovation threshold
 ```
 creates an instance of a controller, in this case `mrs_uav_controllers/Se3Controller` is loaded under the *alias* `Se3Controller`.
-Multiple instances are allowed and are used to introduce the same controller with various cofigurations that can be switched in mid-flight.
-Once the controller alias is defined within `controllers.yaml`, it needs to be part of the *controllers* list within `control_manager.yaml` ([example](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/cofig/default/control_manager.yaml)) cofig:
+Multiple instances are allowed and are used to introduce the same controller with various configurations that can be switched in mid-flight.
+Once the controller alias is defined within `controllers.yaml`, it needs to be part of the *controllers* list within `control_manager.yaml` ([example](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/config/default/control_manager.yaml)) config:
 ```yaml
 # - list of names of dynamically loaded controllers
 controllers : [
