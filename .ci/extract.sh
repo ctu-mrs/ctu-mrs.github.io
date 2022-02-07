@@ -4,7 +4,7 @@ set -e
 
 echo "Start getting readme of core things"
 cd `pwd`/docs/software/
-mkdir mkdir -p uav_core
+mkdir -p uav_core
 cd uav_core
 
 ##########################
@@ -27,7 +27,7 @@ if [[ -f "$README_FILE" ]]; then
     echo "processing uav_core"
     echo -e "---\nlayout: default\ntitle: $module_name\nparent: Software\nhas_children: true\n---" > index.md
     cat $README_FILE >> index.md
-    sed -i 's/.fig/fig/g' index.md
+    sed -i 's/\.fig/fig/g' index.md
 
 else
     echo "readme file $README_FILE does not exists"
@@ -63,8 +63,7 @@ for module in ~/uav_core/ros_packages/* ; do
             mkdir mkdir -p $module_name/
             echo -e "---\nlayout: default\ntitle: $module_name\nparent: uav_core\ngrand_parent: Software\n---" > "$module_name/index.md"
             cat $README_FILE >> "$module_name/index.md"
-            sed -i 's/.fig/fig/g' "$module_name/index.md"
-
+            sed -i 's/\.fig/fig/g' "$module_name/index.md"
 
         else
             echo "readme file $README_FILE does not exists"
