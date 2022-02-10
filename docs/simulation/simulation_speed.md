@@ -33,3 +33,15 @@ windows:
 ```
 
 For more detail description see [px4 website](https://dev.px4.io/v1.10/en/simulation/#simulation_speed).
+
+# Run Simulation SLOWER than Real-time
+
+Running simulation slower using the `PX4_SIM_SPEED_FACTOR` variable causes problems when simulating multiple UAVs.
+To slow down the simulation instead change the max real-time update rate of Gazebo some time after the start of the simulation, i.e., include this in your `session.yml` file to slow down the simulation to 0.5 real-time factor:
+```yml
+  - gz_rate:
+      layout: tiled
+      panes:
+        - waitForOdometry; sleep 5; gz physics -u 125
+```
+`gz physics -u 250` corresponds to real-time factor `1.0`, reduce the update rate accordingly to reach your desired real-time factor.
