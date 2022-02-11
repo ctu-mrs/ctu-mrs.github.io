@@ -54,6 +54,37 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 # udev rules
 
 TODO
+Similar to [PX4 ROS setup][https://ctu-mrs.github.io/docs/hardware/px4_configuration.html#ros-setup]
+
+```bash
+cd /etc/udev/rules.d
+```
+Create a new file (with sudo privileges) and call it `99-usb-serial.rules`. Paste this line into the file:
+
+```bash
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", SYMLINK+="YOUR_DEVICE_DESIGNATOR",OWNER="mrs",MODE="0666"
+```
+
+Replace idVendor, idProduct with you values, and change the OWNER name to your user name. You can use the following utility:
+
+```bash
+lsusb
+```
+
+Now, if you disconnect and reconnect the device, it should show up as `/dev/YOUR_DEVICE_DESIGNATOR`. Now you can try
+
+```bash
+cat /dev/YOUR_DEVICE_DESIGNATOR
+```
+
+and you should see some incoming messages.
+
+Our HW guys have already prepared `.rules` files for our most used distribution boards and they can be found in 
+
+```bash
+~/git/uav_core/miscellaneous/udev_rules/
+```
+so feel free to copy them to your `/etc/udev/rules.d` folder and (re)use them.
 
 ## FTDI
 
