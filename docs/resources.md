@@ -6,12 +6,14 @@ has_children: false
 has_toc: true
 ---
 
-Crossroad for all resources related to robotics and the research within the MRS group in general.
+Crossroad for all resources related to robotics and research in the MRS group.
 
 # General resources
 
-- [**Awesome Mobile Robotics**](https://github.com/mathiasmantelli/awesome-mobile-robotics): excellent crossroad for any roboticist (**check it out!**) with links to courses, books, datasets, softwars, research groups, and others
+- [**Awesome Mobile Robotics**](https://github.com/mathiasmantelli/awesome-mobile-robotics): excellent crossroad for any roboticist (**check it out!**) with links to courses, books, datasets, softwares, research groups, and others
 - [Robotics from UPenn](https://www.youtube.com/playlist?list=PLxQSlOe-wlgAlHUT_7jwhFfpnSS5upFYB): series of short lessons on general concepts of robotics from University of Pennsylvania.
+- [Robotki](https://robotki.github.io/index.html): resources for robotics such as tutorials, 3D models, simulators, and others
+- [Missing Semester](https://www.youtube.com/watch?v=Z56Jmr9Z34Q&list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J&index=4&ab_channel=MissingSemester): 11 hour-long lectures on what they did not teach you in the lectures (shell, vim, debugging, profiling, git, and others)
 
 # Blogs
 
