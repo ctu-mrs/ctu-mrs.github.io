@@ -36,24 +36,68 @@ GDB is a very powerful tool, and if you learn how to use it properly, it will sa
 A table of common useful GDB commands, which you'll probably need to debug your program, are listed below.
 For a more exhaustive list, see the GDB manpages (`man gdb`) or any online tutorial.
 
-| Command                  | Description                              | Comment                                  |
-|--------------------------|------------------------------------------|------------------------------------------|
-| b filename.cpp:310       | Breakpoint in `filename.cpp` at line 310 |                                          |
-| bt                       | BackTrace                                |                                          |
-| f #                      | change to Frame #                        | # = the number from bt                   |
-| s                        | Step in function                         |                                          |
-| n                        | step to the Next line                    |                                          |
-| fin                      | FINish function                          | in case you accidentaly step into        |
-| c                        | Continue                                 | resume program until breakpoint or crash |
-| p #                      | Print variable                           | # = variable name                        |
-| wh                       | open window with code (tui)              | actually sets Window Height              |
-| tui enable / tui disable | open / close window with code (TUI)      | the official way of wh                   |
-| focus cmd / focus src    | changes FOCUS in gdb tui                 | if you want to use arrows for cmd hist.  |
-| up / down                | jumps in the frames UP/DOWN              |                                          |
-| <Enter>                  | repeats the last command                 |                                          |
-| u #                      | continue Until line #                    | # = the line number in the current file  |
-| ref                      | REFresh the screen                       | in case of some visual problems          |
-| `~/.gdbinit` file        | put pre-start settings in here           | an example is in the file                |
+| Command                      | Description                              | Comment                                      |
+|------------------------------|------------------------------------------|----------------------------------------------|
+| `b filename.cpp:310`         | Breakpoint in `filename.cpp` at line 310 |                                              |
+| `bt`                         | BackTrace                                | use `bt full` for a more detailed `bt`       |
+| `f #`                        | change to Frame #                        | # = the number from `bt`                     |
+| `s`                          | Step in function                         |                                              |
+| `n`                          | step to the Next line                    |                                              |
+| `fin`                        | FINish function                          | in case you accidentaly step into a fun.     |
+| `c`                          | Continue                                 | resume program until breakpoint or crash     |
+| `p #`                        | Print variable                           | `#` = variable name                          |
+| `wh`                         | open window with code (TUI)              | actually sets Window Height                  |
+| `tui enable` / `tui disable` | open / close window with code (TUI)      | the official way of `wh`                     |
+| `focus cmd` / `focus src`    | changes FOCUS in gdb TUI                 | if you want to use arrows for cmd hist.      |
+| `up` / `down`                | jumps in the frames UP/DOWN              |                                              |
+| `<Enter>`                    | repeats the last command                 |                                              |
+| `u #`                        | continue Until line #                    | `#` = the line number in the current file    |
+| `ref`                        | REFresh the screen                       | in case of some visual problems              |
+| `~/.gdbinit` file            | put pre-start settings in here           | an example is in the file                    |
+
+## Attaching to a running process
+
+You can also debug an already running program.
+This may be useful if e.g. otherwise the program won't start correctly because of the slowdown caused by attaching a debugger or when you can't replicate the current state of the program after restarting it for any reason.
+To do this, first you need to know the PID (Program IDentifier) of the program that you want to attach GDB to.
+You can find that using `htop`, `pidof`, `pgrep` or any other command.
+For example, to find the PID of the process in which the `ControlManager` nodelet is running, you can use the command
+```
+pgrep -fia controlmanager
+```
+When you know the PID of the process you want to attach to, use the command
+```
+sudo gdb -p PID
+```
+to do that (it has to be done using superuser privileges - if a normal user could do this, that would be quite a security concern).
+The program will be paused by GDB after attaching - use the `continue` command (or `c` for short) to resume normal execution and use `sudo gdb -p PID -ex c` to issue the command automatically immediately after attaching if you want to avoid the pause.
+To detach gdb from the progra, use the `detach` command.
+
+## Debugging a program that crashed without GDB attached
+
+You can even debug a program that crashed and was not launched with an attached debugger.
+However, you have to make sure that coredumping is actually enabled by running
+```
+ulimit -a | grep core
+```
+If the configured core file size is zero, no coredump will be created.
+To enable coredump, run (*will change settings for the current terminal only!*)
+```
+ulimit -c unlimited
+```
+Now, when a program crashes, its core will be autmatically saved a file named `core` in the current path (this is the default behaviour).
+If you need to differentiate between coredumps from different programs, enable coredumping with PID:
+```
+echo 1 | sudo tee /proc/sys/kernel/core_uses_pid
+```
+Now, the coredump will be named `core.<PID>`, so a new crash will not overwrite an old coredump.
+
+Finally, after your program crashes, you can debug it using simply the command
+```
+gdb <path to the program> <path to the core>
+```
+Note that for ROS nodelets, `<path to the program>` should typically be something like `~/workspace/devel/lib/libYourNodelet.so` and `<path to the core>` is typically `~/.ros/core.<PID>`.
+Other possible locations of the coredump are the current path and `/var/crash`.
 
 ## Advanced debugging
 
