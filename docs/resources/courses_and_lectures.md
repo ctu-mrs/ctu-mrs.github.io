@@ -1,7 +1,7 @@
 ---
 layout: default
 parent: Resources
-title: Courses
+title: Courses and lectures
 nav_order: 2
 ---
 
