@@ -36,29 +36,32 @@ GDB is a very powerful tool, and if you learn how to use it properly, it will sa
 A table of common useful GDB commands, which you'll probably need to debug your program, are listed below.
 For a more exhaustive list, see the GDB manpages (`man gdb`) or any online tutorial.
 
-| Command                      | Description                              | Comment                                      |
-|------------------------------|------------------------------------------|----------------------------------------------|
-| `b filename.cpp:310`         | Breakpoint in `filename.cpp` at line 310 |                                              |
-| `bt`                         | BackTrace                                | use `bt full` for a more detailed `bt`       |
-| `f #`                        | change to Frame #                        | # = the number from `bt`                     |
-| `s`                          | Step in function                         |                                              |
-| `n`                          | step to the Next line                    |                                              |
-| `fin`                        | FINish function                          | in case you accidentaly step into a fun.     |
-| `c`                          | Continue                                 | resume program until breakpoint or crash     |
-| `p #`                        | Print variable                           | `#` = variable name                          |
-| `wh`                         | open window with code (TUI)              | actually sets Window Height                  |
-| `tui enable` / `tui disable` | open / close window with code (TUI)      | the official way of `wh`                     |
-| `focus cmd` / `focus src`    | changes FOCUS in gdb TUI                 | if you want to use arrows for cmd hist.      |
-| `up` / `down`                | jumps in the frames UP/DOWN              |                                              |
-| `<Enter>`                    | repeats the last command                 |                                              |
-| `u #`                        | continue Until line #                    | `#` = the line number in the current file    |
-| `ref`                        | REFresh the screen                       | in case of some visual problems              |
-| `~/.gdbinit` file            | put pre-start settings in here           | an example is in the file                    |
+| Command                      | Description                              | Comment                                                                                     |
+|------------------------------|------------------------------------------|---------------------------------------------------------------------------------------------|
+| `b filename.cpp:310`         | Breakpoint in `filename.cpp` at line 310 |                                                                                             |
+| `bt`                         | BackTrace                                | use `bt full` for a more detailed `bt`                                                      |
+| `f #`                        | change to Frame `#`                      | `#` = the number from `bt`                                                                  |
+| `s`                          | Step in function                         |                                                                                             |
+| `n`                          | step to the Next line                    |                                                                                             |
+| `fin`                        | FINish function                          | in case you accidentaly step into a fun.                                                    |
+| `c`                          | Continue                                 | resume program until breakpoint or crash                                                    |
+| `p #`                        | Print variable                           | `#` = variable name                                                                         |
+| `wh`                         | open window with code (TUI)              | actually sets Window Height                                                                 |
+| `tui enable` / `tui disable` | open / close window with code (TUI)      | the official way of `wh`                                                                    |
+| `focus cmd` / `focus src`    | changes FOCUS in gdb TUI                 | if you want to use arrows for cmd hist.                                                     |
+| `up` / `down`                | jumps in the frames UP/DOWN              |                                                                                             |
+| `<Enter>`                    | repeats the last command                 |                                                                                             |
+| `u #`                        | continue Until line `#`                  | `#` = the line number in the current file                                                   |
+| `ref`                        | REFresh the screen                       | in case of some visual problems                                                             |
+| `cv_imshow #`                | display an OpenCV image `#`              | requires [a plugin](https://github.com/renatoGarcia/gdb-imshow) (installed with `uav_core`) |
+| `~/.gdbinit` file            | put pre-start settings in here           | an example is in the file                                                                   |
 
-## Attaching to a running process
+## Advanced debugging
+
+### Attaching to a running process
 
 You can also debug an already running program.
-This may be useful if e.g. otherwise the program won't start correctly because of the slowdown caused by attaching a debugger or when you can't replicate the current state of the program after restarting it for any reason.
+Typically, this is useful when you encounter a deadlock in your program or another state that is hard to reproduce.
 To do this, first you need to know the PID (Program IDentifier) of the program that you want to attach GDB to.
 You can find that using `htop`, `pidof`, `pgrep` or any other command.
 For example, to find the PID of the process in which the `ControlManager` nodelet is running, you can use the command
@@ -71,9 +74,37 @@ sudo gdb -p PID
 ```
 to do that (it has to be done using superuser privileges - if a normal user could do this, that would be quite a security concern).
 The program will be paused by GDB after attaching - use the `continue` command (or `c` for short) to resume normal execution and use `sudo gdb -p PID -ex c` to issue the command automatically immediately after attaching if you want to avoid the pause.
-To detach gdb from the progra, use the `detach` command.
+To detach gdb from the program, use the `detach` command.
 
-## Debugging a program that crashed without GDB attached
+### Debugging a deadlocked program
+*Note: Inspired by [this blog post](https://codeistry.wordpress.com/2016/10/24/gdb-find-the-thread-which-has-locked-the-mutex/).*
+
+If the deadlock ocurred when no debugger is attached to the program, you can attach to a running program using the method described above.
+When you have gdb prompt available, a good way to start debugging the deadlock is to list all threads using
+```
+info threads
+```
+and finding threads that are waiting on a mutex.
+These will typically list their current callframe function as `__lll_lock_wait ()` or something similar.
+A command to list the complete backtrace of all threads that you may also find useful is
+```
+thread apply all bt
+```
+When you find a thread that is waiting on a mutex, switch to its context using
+```
+thread <thread number>
+```
+Then, you can print details of the mutex that the thread is waiting for (you may need to change the current callframe using the `up`, `down` or `frame` commands).
+Specifically, you're looking for the current owner of the mutex.
+Typically, you need to change the frame up until you hit the frame with the lock and then print the dereferenced mutex pointer using a command like
+```
+p *mutex
+```
+In the output, you should see several pieces of information, but most importantly the PID of the owning thread.
+When you know the PID of the owner, you can change context to the corresponding thread (thread PIDs are listed using the `info threads` command) and check why is that thread deadlocked (it will typically be also waiting on some mutex that is locked by something else).
+This way, you should be able to find the cause of the deadlock.
+
+### Debugging a program that crashed without GDB attached
 
 You can even debug a program that crashed and was not launched with an attached debugger.
 However, you have to make sure that coredumping is actually enabled by running
@@ -99,12 +130,14 @@ gdb <path to the program> <path to the core>
 Note that for ROS nodelets, `<path to the program>` should typically be something like `~/workspace/devel/lib/libYourNodelet.so` and `<path to the core>` is typically `~/.ros/core.<PID>`.
 Other possible locations of the coredump are the current path and `/var/crash`.
 
-## Advanced debugging
+## Further reading
 
-If you're not satisfied with the basic debugging options GDB offers, note that it is very easily extendable and scriptable.
+If you're not satisfied with the basic CLI/TUI debugging options GDB offers, note that it is very easily extendable and scriptable.
 You can write your own plugins or search through the web for existing ones.
 For example the [GDB dashboard](https://github.com/cyrus-and/gdb-dashboard) offers a better TUI for debugging (variable watching, breakpoint list, stack etc.).
 You can play around with the `~/.gdbinit` file and tweak a lot of the settings there to better suit your needs.
 
-[^1]: The `-O0` `gcc` flag disables optimizations, which makes debugging easier (although it potentially makes your program run slower). `-g` turns on generation of debugging symbols, which enables you to inspect code, print values of variables etc. during debugging.
-[^2]: The `debug_roslaunch` script is a utility script, which will create a tmux split to separate output/output of your node and GDB in order to make debugging clearer. You can obtain it by installing the `uav_core` repository in case you don't have it.
+**GOOD HUNTING!**
+
+[^1]: The `-O0` flag of `gcc`/`g++` disables optimizations, which makes debugging easier (although it potentially makes your program run slower). `-g` turns on generation of debugging symbols, which enables you to inspect code, print values of variables etc. during debugging.
+[^2]: The `debug_roslaunch` script is a utility script, which will create a tmux split to separate output/output of your node and GDB in order to make debugging clearer. You can find it in the `uav_core` repository in case you don't have it.
