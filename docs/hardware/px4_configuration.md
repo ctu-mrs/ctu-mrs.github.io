@@ -5,12 +5,12 @@ parent: Hardware
 ---
 
 # Pixhawk setup on a new drone
-Follow this guide to setup a new drone with pixhawk for the MRS UAV system.
+Follow this guide to setup a new drone with the Pixhawk autopilot for the MRS UAV system.
 
 ## HW setup
-This guide is written for Pixhawk 4, because it is used on most of the MRS aerial platforms. But it is applicable for other versions of Pixhawk, with minor differences.
+This guide is written for Pixhawk 4, because it is used on most of the MRS aerial platforms. But it is applicable for other versions of the Pixhawk, with minor differences.
 
-- Pixhawk 4 comes with a power distribution/supply board. This board provides power distribution for motors (ESCs), connections for ESC signals, two redundant 5V power supplies for Pixhawk and current and voltage monitoring .
+- The Pixhawk 4 comes with a power distribution/supply board. This board provides power distribution for motors (ESCs), connections for ESC signals, two redundant 5V power supplies for Pixhawk and current and voltage monitoring .
 
 [![](fig/power_board.jpg "Pixhawk power board")](fig/power_board.jpg) | [![](fig/pixhawk4.jpg "Pixhawk 4")](fig/pixhawk4.jpg)
 
@@ -21,7 +21,7 @@ This guide is written for Pixhawk 4, because it is used on most of the MRS aeria
 
 [![](fig/PB_no_cables.jpg "Power board without cables")](fig/PB_no_cables.jpg) | [![](fig/PB_with_cables.jpg "Power board with cables attached")](fig/PB_with_cables.jpg)
 
-- Install Pixhawk into the drone frame and connect the power cables from the distribution board to the `POWER1` and `POWER2` slots.
+- Install the Pixhawk into the drone frame and connect the power cables from the distribution board to the `POWER1` and `POWER2` slots.
 - Connect the ESC signal cable to the `I/O PWM OUT` port.
 - Connect the RC receiver. At MRS we use an OPTIMA SL reciver with SBUS output, so it is connected to the `DSM/SBUS RC` port.
 - Connect the onboard computer to the `TELEM2` port. This is a UART port which ensures communication between the Pixhawk and the onboard computer. We use an FTDI serial to USB converter to connect the Pixhawk with the onboard computer.
@@ -44,7 +44,7 @@ Install the SD card back into the Pixhawk.
 
 [![](fig/Qground1.png "QGroundControl frame selection")](fig/Qground1.png) | [![](fig/Qground2.png "QGroundControl sensor calibration")](fig/Qground2.png)
 
-- Setup your radio. Pair your RC transmitter and your receiver and connect the receiver to Pixhawk. You should see the RC channel values in QGroundControl. If you do not see the RC channels, check the connection of the receiver.
+- Setup your radio. Pair your RC transmitter and your receiver and connect the receiver to the Pixhawk. You should see the RC channel values in QGroundControl. If you do not see the RC channels, check the connection of the receiver.
 - Setup the channels on your Transmitter. Proper channel setup is critical for the functionality of the MRS UAV system. 8 RC channels are used:
 
 | Channel     | Function             | Description                                                                                                |
@@ -65,13 +65,13 @@ Install the SD card back into the Pixhawk.
 
 - Calibrate your ESCs in the `Power` section. You can also configure your battery here (not needed for the MRS UAV system). Note that the `Power` icon may stay red, you can ignore this.
 - In the `Safety` section, configure failsafe actions. Standard MRS configuration is Warning for Low Battery Failsafe Trigger, Land mode for RC Loss Failsafe Trigger and Land imediately in the Return To Launch Settings. No other triggers are activated (Object detection, data link loss etc.).
-- Setup the RC loss failsafe. This failsafe is activated when the drone is flying manually (not in offboard mode) and the RC signal is lost. The RC receiver on the drone is configured to output abnormally low throttle signal when RC is lost, which is detected by Pixhawk. This guide is for the Hitec Optima receivers, if you are using a different receiver the configuration steps may be different. To configure RC loss failsafe, follow these steps:
+- Setup the RC loss failsafe. This failsafe is activated when the drone is flying manually (not in offboard mode) and the RC signal is lost. The RC receiver on the drone is configured to output abnormally low throttle signal when RC is lost, which is detected by the Pixhawk. This guide is for the Hitec Optima receivers, if you are using a different receiver the configuration steps may be different. To configure RC loss failsafe, follow these steps:
   * Turn on your RC transmitter and receiver.
   * Push you RC transmitter's throttle stick to the lowest level, then trim the throttle channel all the way down and use sub-trims to trim it even lower (we want to achieve the lowest possible value at the throttle CH2 channel).
   * Do not move the other sticks, leave them in centered positions.
   * Press the button on the RC receiver until the red LED turns off. Then release the button. The red and blue LEDs will start flashing for a while. This saves the current RC configuration as the output which the RC receiver produces when RC signal is lost.
   * In QGroundControl go to the `Parameters` section and set parameter `RC_MAP_FAILSAFE` to `Channel 2` and `RC_FAILS_THR` to `950 us`.
-  * Restart Pixhawk.
+  * Restart the Pixhawk.
   * Now when you turn off your RC transmitter, QGroundControl should report `manual control lost` and when you turn your RC back on, it should report `manual control regained`.
 
 # ROS setup
@@ -97,7 +97,7 @@ Create a new file in `/etc/udev/rules.d/` (you will need sudo privileges) and ca
 SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A50285BI", SYMLINK+="pixhawk",OWNER="mrs",MODE="0666"
 ```
 
-Replace idVendor, idProduct and serial with you values, and change the OWNER name to your user name. Now, if you disconnect and reconnect pixhawk, it should show up as `/dev/pixhawk`. Now you should be able to run mavros:
+Replace idVendor, idProduct and serial with you values, and change the OWNER name to your user name. Now, if you disconnect and reconnect the Pixhawk, it should show up as `/dev/pixhawk`. Now you should be able to run mavros:
 
 ```bash
 roslaunch mrs_uav_general mavros_uav.launch
