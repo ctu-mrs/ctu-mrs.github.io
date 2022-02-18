@@ -8,6 +8,10 @@ has_toc: true
 
 # Frequently Asked Questions
 
+## Where do I find ... ??? How do I ... ???
+
+These pages have a search bar and it works well (I know !!!). Sorry for the reminder, but it's easy to forget (Don't ask me how I know...).
+
 ## How do you SSH to the robot?
 
 ```bash
