@@ -37,7 +37,7 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 TODO
 
-Check [http://github.com/ctu-mrs/uav_core/miscellaneous/network_settings/README.md][http://github.com/ctu-mrs/uav_core/miscellaneous/network_settings/README.md]
+Check [UAV core network settings](http://github.com/ctu-mrs/uav_core/miscellaneous/network_settings/README.md)
 
 # Disabling network manager
 
@@ -53,8 +53,7 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 # udev rules
 
-TODO
-Similar to [PX4 ROS setup][https://ctu-mrs.github.io/docs/hardware/px4_configuration.html#ros-setup]
+Similar to [PX4 ROS setup](https://ctu-mrs.github.io/docs/hardware/px4_configuration.html#ros-setup)
 
 ```bash
 cd /etc/udev/rules.d
@@ -85,6 +84,8 @@ Our HW guys have already prepared `.rules` files for our most used distribution 
 ~/git/uav_core/miscellaneous/udev_rules/
 ```
 so feel free to copy them to your `/etc/udev/rules.d` folder and (re)use them.
+
+Here are some devices you need to set rules for.
 
 ## FTDI
 
