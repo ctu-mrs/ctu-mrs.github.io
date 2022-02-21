@@ -37,7 +37,7 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 TODO
 
-Check [UAV core network settings](http://github.com/ctu-mrs/uav_core/miscellaneous/network_settings/README.md)
+Check [UAV core network settings](https://github.com/ctu-mrs/uav_core/tree/master/miscellaneous/network_settings)
 
 # Disabling network manager
 
