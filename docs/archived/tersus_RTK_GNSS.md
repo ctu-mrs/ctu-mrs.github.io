@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Tersus RTK GNSS
-parent: Hardware
+parent: Archive
 ---
 
 # Tersus RTK GNSS setup
