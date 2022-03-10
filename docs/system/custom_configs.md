@@ -2,7 +2,7 @@
 layout: default
 title: Custom config files
 parent: The UAV system
-nav_order: 5
+nav_order: 6
 ---
 
 # How to use custom config files for uav_core modules
