@@ -62,10 +62,12 @@ Install the SD card back into the Pixhawk.
 
 [![](fig/RC1.jpg "RC switch configuration")](fig/RC1.jpg) | [![](fig/RC2.jpg "RC switch configuration")](fig/RC2.jpg)
 
+- If you need to guickly remember what each switch is designated to, you can find it in the RC settings. The MRS team mostly uses Radiomaster TX16s RCs with OpenTX and as you can see from the following screenshot, the switches used are `SB`,`SC`,`SD` and `SH` respectively.
+[![](fig/rc_3_mixes.bmp "RC Mixes screenshot")](fig/rc_3_mixes.bmp)
+
 - Calibrate your transmitter with the `Calibrate` button in QGroundControl and follow the instruction.
 - Setup the flight modes. Select Channel 5 as Offboard switch channel and channel 6 as Position Control switch channel and Mode Channel. Set Flight Mode 1 as Manual, Flight Mode 4 as Altitude and Flight Mode 6 as position (3 position switch is used at channel 6 to switch between those three modes).
-- If you need to guickly remember what each switch is designated to, you can find it in the RC settings
-[![](fig/rc_3_mixes.bmp "RC Mixes screenshot")](fig/rc_3_mixes.bmp)
+
 
 [![](fig/Qground3.png "QGroundControl radio setup")](fig/Qground3.png) | [![](fig/Qground4.png "QGroundControl flight modes setup")](fig/Qground4.png)
 
