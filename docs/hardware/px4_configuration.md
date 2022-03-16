@@ -58,6 +58,10 @@ Install the SD card back into the Pixhawk.
 | 7           | MRS system switch    | Switch used to trigger some functionality of the MRS UAV system, like the "remote" mode                    |
 | 8           | MRS emergency switch | Triggers an emergency behaviour (e-hover, e-land, failsafe land) according to MRS UAV system configuration |
 
+- The following switches are used by default on the RC transmitters:
+
+[![](fig/RC1.png "RC switch configuration")](fig/RC1.png) | [![](fig/RC2.png "RC switch configuration")](fig/RC2.png)
+
 - Calibrate your transmitter with the `Calibrate` button in QGroundControl and follow the instruction.
 - Setup the flight modes. Select Channel 5 as Offboard switch channel and channel 6 as Position Control switch channel and Mode Channel. Set Flight Mode 1 as Manual, Flight Mode 4 as Altitude and Flight Mode 6 as position (3 position switch is used at channel 6 to switch between those three modes).
 
