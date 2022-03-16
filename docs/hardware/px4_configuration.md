@@ -62,7 +62,7 @@ Install the SD card back into the Pixhawk.
 
 [![](fig/RC1.jpg "RC switch configuration")](fig/RC1.jpg) | [![](fig/RC2.jpg "RC switch configuration")](fig/RC2.jpg)
 
-- If you need to guickly remember what each switch is designated to, you can find it in the RC settings. The MRS team mostly uses Radiomaster TX16s RCs with OpenTX and as you can see from the following screenshot, the switches used are `SB`,`SC`,`SD` and `SH` respectively.
+- If you need to quickly remember what each switch is designated to, you can find it in the RC settings. The MRS team mostly uses Radiomaster TX16s RCs with OpenTX and as you can see from the following screenshot (and the picture of the real thing above), the switches used are `SB`,`SC`,`SD` and `SH` respectively.
 
 [![](fig/rc_3_mixes.bmp "RC Mixes screenshot")](fig/rc_3_mixes.bmp)
 
