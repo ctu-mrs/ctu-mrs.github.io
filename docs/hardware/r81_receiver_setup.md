@@ -33,6 +33,7 @@ When the receiver is in the failsafe mode (rc is lost), it is outputing some pre
   * Set the mode switch to Position (GPS)
   * Set the offboard switch to On
   * Set the throttle to minimum
+  * Set the Failsafe in the model settings of the RC to 'Receiver'. The 'Hold Pulses' or 'No Pulses' options will negate this entire exercise.
 3. Once the RC is in the desired configuration, turn on the UAV. 
 4. Wait a second for the RC to connect (solid red light) and then press the button on the receiver. You have 10 seconds to do this after the receiver is powered on.
 5. The receiver should start flashing, release the button.
