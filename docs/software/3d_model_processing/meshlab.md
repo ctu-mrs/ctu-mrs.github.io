@@ -26,7 +26,7 @@ grand_parent: Software
 ## Import and merge
 1. **PTX**
     - Newest version of Meshlab (2021.05) has a new setting in the **Settings->Tools** for each file format. Please set it as shown in the image\
-  ![plot](../.fig/ptx_settings.png) 
+  ![plot](.fig/ptx_settings.png) 
     - At the end, merge all imported layers into one. Click on the one of the layer with **right mouse button -> Flatten Visible Layers**. Check **Keep unreferenced vertices** and click **Apply**.
     - Use the tool **Select Faces/Vertices inside polyline area** to clean the pointcloud.
     - Make sure to have the layer you want to clean active (in blue color)!
@@ -40,7 +40,7 @@ grand_parent: Software
 
 2. **PTS**
     - Newest version of Meshlab (2021.05) has a new setting in the **Settings->Tools** for each file format. Please set it as shown in the image\
-  ![plot](../.fig/pts_settings.png) 
+  ![plot](.fig/pts_settings.png) 
     - Imported *.pts* file has to be renamed to *.txt*.
     - *Point format* as *X Y Z Reflectance R G B*
     - *Separator* as *SPACE*
@@ -66,11 +66,11 @@ grand_parent: Software
 * The general rule: Better to create a huge model and simplify it than create a small model right away.
 * **AMD processors are much faster on Ubuntu to create the mesh**: It takes much longer time for Intel to do the same task.
     - **Surface Reconstruction: Screened Poission**: this methos is useful for most cases. It usually works well for closed environemnts as buildings. Various parameters are possible to set. I have found useful to increase the **Reconstruction Depth**. The "optimal" number is between 12--16. The higher the number, the more detailed is the model. The RAM demands increases faster than linear. Similar is the *Adaptive Ocree Depth* parameter. Leave it as default or slightly increase the value. Example of the set values is in the image below.\
-    ![plot](../.fig/poisson_reconstruction.png)
+    ![plot](.fig/poisson_reconstruction.png)
     - **Surface Reconstruction: Ball Pivoting**: Single thread, slow. Creates loose pointcloud with bunch of holes.
     - **Surface Reconstruction: VGC**: Single thread, slow. Suitable for smaller "open" models as electrical tower. It crashes a lot (Segmentation fault). Check **Vertex Splatting** box before executing. 
 * The mesh processing can take a long time, check the commandline for further details.
 * Simplify the model with **Simplification: Quadric Edge Collapse Decimation** functionality.
     - I recommend to use the checkboxes as shown in the image. Most of those preserve the original shape and the planarity as well. Other parameters in the image are just an example. The higher the default mesh, the longer the processing time. At the beginning, it could be around 30 minutes for 1GB mesh. Meshlab show the percentage done for this method.
     - Save the model into *.ply** and check the file size. Recommend *.ply* file size in between **10--150MB**, depending on the application. For texture processing, the lower the better. The texture will cover inperfections. For model with no texture, the quality is visible more. If you would like to use the model in the simulation, assume **1.5x** times larger final exported file, so shrink the file accordingly. If exported with texture later on, the size will be about **2.5x** times bigger. These numbers depends on the amount of saved information in the *.ply* file.\
-    ![plot](../.fig/simplification_example.png)
+    ![plot](.fig/simplification_example.png)
