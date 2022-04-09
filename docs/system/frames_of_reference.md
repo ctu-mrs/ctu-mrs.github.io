@@ -60,6 +60,9 @@ The most important frames, that are used in MRS system and are automatically cre
 * **\<uav_name\>/gps_origin**
   * coordinate frame representing the GPS frame
   * enables commanding multiple UAVs in a common coordinate frame
+* **\<uav_name\>/rtk_origin**
+  * coordinate frame representing the RTK-GPS frame
+  * enables commanding multiple UAVs in a common coordinate frame
 
 where the `<uav_name>` is the unique name of a UAV.
 
