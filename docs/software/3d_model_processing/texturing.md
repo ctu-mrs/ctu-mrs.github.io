@@ -14,7 +14,7 @@ grand_parent: Software
 2. **Good quality texture: SLOW BUT NICE**
   - Only for a single texture file and pointcloud color.
   - Recommend to use low quality *.ply* file about 10MB ~ 250k faces. If double the amount of faces (500k) the Blender process time will be really long.
-  1. **[Blender](https://ctu-mrs.github.io/docs/software/3d_model_processing/blender)**
+  1. **Blender**
     - Import the *.ply* mesh file
     - Change default **Object mode** to **Edit mode**
     - Select all data with *a* key
@@ -25,7 +25,7 @@ grand_parent: Software
     - When finished, split the screen and change the **Editor Type** to **UV Editor**. It shows the texture parametrization.
     - Export the file as *.ply*
       - Or (when some problems occure) export file as *.obj*, when exporting set **Y** as **FORWARD** axis and **Z** as **UP** axis. Then import this file to meshlab, skip **Convert PerVertex UV to PerWedge UV** because *.obj* already contain this and export it as *.ply*. 
-  2. [Meshlab](https://ctu-mrs.github.io/docs/software/3d_model_processing/meshlab)
+  2. **Meshlab**
     - Import the Blender processed *.ply* file 
     - Run **Convert PerVertex UV to PerWedge UV** to convert Blender parametrization into Meshlab convention
     - Import the original *.ply* pointcloud with coloured vertices.

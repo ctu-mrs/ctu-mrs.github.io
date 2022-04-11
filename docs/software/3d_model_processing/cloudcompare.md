@@ -10,6 +10,19 @@ grand_parent: Software
 Tool for general work with pointclouds (including cartesian, color, and normal operations).
 Used for data processing before meshing and texturing.
 
+## Normals computing
+- Recommend to use with *.e57* or *.ptx* data.
+- `Edit -> Normals -> Compute`
+- Local surface model
+  - (best fit) Plane - robust to noise but very bad with sharp edges and corners
+  - Triangulation - weak to noise but good with sharp edges
+  - Quadric - very good for curvy surfaces
+- Neighbors
+  - Structured clouds can be associated to a grid structure. This grid structure can be used to determine the neighbors around each point. **However this is generally not better nor faster. This structure is however very useful to orient the normals properly.**
+- Orientation
+  - Use sensor(s) whenever possible - **recommend to use for .e57** 
+  - If the cloud is associated to a grid structure, then this structure can be used to very guess the right normal orientation quickly and in a very robust way - **probably good to use with .ptx, but check**
+
 ## Smoothing colors
 - `Edit -> Colors -> Convert to Scalar field`
 - For each scalar field `{R, G, B}`
@@ -75,7 +88,3 @@ sudo cmake --install .
 ```
 
 ## Work in progress
-
-- The CMD tool enables to generate normals on [import](https://www.cloudcompare.org/doc/wiki/index.php?title=Command_line_mode#.28Mesh.29_format_conversion). However, I did not manage to save the result with normals.
-- Does it work with e57 as well?
-- What about limit box in e57?

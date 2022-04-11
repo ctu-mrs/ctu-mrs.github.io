@@ -9,7 +9,7 @@ grand_parent: Software
 ## General tips
 * Use the **Linux AppImage** from [Meshlab official website](https://www.meshlab.net/#download).
 * Better live rendering
-    1. Tools -> Options
+    1. `Tools -> Options`
     2. Scroll down to maxGPUMemDedicatedTechnology
     3. Set it according to our GPU memory, e.g., for 4000 MB RAM, use slightly lower to 3500 MB
     4. After restart open some large model. On left down panel, there is information about FPS and rendering mode:
@@ -25,9 +25,9 @@ grand_parent: Software
 
 ## Import and merge
 1. **PTX**
-    - Newest version of Meshlab (2021.05) has a new setting in the **Settings->Tools** for each file format. Please set it as shown in the image\
+    - Newest version of Meshlab has a new setting in the `Settings->Tools` for each file format. Please set it as shown in the image\
   ![plot](.fig/ptx_settings.png) 
-    - At the end, merge all imported layers into one. Click on the one of the layer with **right mouse button -> Flatten Visible Layers**. Check **Keep unreferenced vertices** and click **Apply**.
+    - At the end, merge all imported layers into one. Click on the one of the layer with `Right mouse button -> Flatten Visible Layers`. Check **Keep unreferenced vertices** and click **Apply**.
     - Use the tool **Select Faces/Vertices inside polyline area** to clean the pointcloud.
     - Make sure to have the layer you want to clean active (in blue color)!
 * **IMPORTANT**: Adjust the PointCloud coordinate system. It is useful to do ASAP at the beginning of the process.
