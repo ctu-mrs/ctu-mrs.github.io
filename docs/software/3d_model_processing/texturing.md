@@ -6,7 +6,7 @@ grand_parent: Software
 ---
 
 # Texturing
-**A good quality texture can significantly visualy improve the low mesh model**
+**A good quality texture can significantly improve the low mesh model visually**
 1. **Simple (primitive) texture: FAST AND EASY**
     * Go to **'Filters → Sampling → Vertex Attribute Transfer'**. Make sure the 'Transfer Color' option is checked and press 'Apply' to transfer the colour of the points onto the mesh.
     * Go to **'Filters → Texture → Parametrization: Trivial Per-Triangle'**. Set **Inter-Triangle border** to 5 for smoother transition between triangles. The higher the number, the bigger the texture will be. Press **'Apply'** to generate the faces from which the mesh texture will be created. If you receive an error about the inter-triangle border being too much, try increasing the **Texture dimension**.
@@ -14,7 +14,7 @@ grand_parent: Software
 2. **Good quality texture: SLOW BUT NICE**
   - Only for a single texture file and pointcloud color.
   - Recommend to use low quality *.ply* file about 10MB ~ 250k faces. If double the amount of faces (500k) the Blender process time will be really long.
-  1. **Blender**
+  - **Blender**
     - Import the *.ply* mesh file
     - Change default **Object mode** to **Edit mode**
     - Select all data with *a* key
@@ -25,7 +25,7 @@ grand_parent: Software
     - When finished, split the screen and change the **Editor Type** to **UV Editor**. It shows the texture parametrization.
     - Export the file as *.ply*
       - Or (when some problems occure) export file as *.obj*, when exporting set **Y** as **FORWARD** axis and **Z** as **UP** axis. Then import this file to meshlab, skip **Convert PerVertex UV to PerWedge UV** because *.obj* already contain this and export it as *.ply*. 
-  2. **Meshlab**
+  - **Meshlab**
     - Import the Blender processed *.ply* file 
     - Run **Convert PerVertex UV to PerWedge UV** to convert Blender parametrization into Meshlab convention
     - Import the original *.ply* pointcloud with coloured vertices.
@@ -45,7 +45,7 @@ grand_parent: Software
       - Click **Apply**
       - The process takes usually a lot of time. The cmd line will show some **QImage::pixel: coordinate (number,number) out of range** messages. It means it cannot fit the point from the pointcloud into the desired texture. However, this is not a problem. The texture from Blender is not predefined for specific dimension, hence arbitrary resolution will result in this message.
       - Save the final *.ply* file
-  3. **Texture simplification**
+  - **Texture simplification**
     - Current texture is quite large and not that practicaly useful. Gazebo has its own [limitation](https://answers.gazebosim.org//question/1331/solved-jpeg-file-make-gazebo-die/) to load a large textures.
     - I recommend to convert it to *.jpg* with the [convert](https://linux.die.net/man/1/convert) tool: `convert input.png -quality 20 output.jpg`. The 20% quality is sufficient. The imagemagick tool might have some RAM/disk limitations set in default config */etc/ImageMagick-version/policy.xml*. Check it if you have errors. If yes put that limitations to coments.
     - For Gazebo use, you have to resize the image with `convert input -resample 16384x16384 output`. Otherwise, you will be unable to load the texture.
@@ -54,14 +54,14 @@ grand_parent: Software
       - You should see your previous *.png* texture on the right side of the popup window.
       - Click *Rename Texture* then *Search Texture* and choose the *.jpg* one.
       - Save the *.ply* file.  
-  4. **Several texture files**
+  - **Several texture files**
     - A single texture file might be limiting the amount of details in the final model. Hence an 
-4. **Texturing with raster images**
+3. **Texturing with raster images**
   - [link](https://wikis.utexas.edu/display/specify6/Texture+overlay+in+MeshLab), [video guide](https://www.youtube.com/playlist?list=PL60mCsep96Je1bzGrWnK-nL9pi95r7UqI)
   - Recommend to check these videos about image texturing. First is a [image alginment tool](https://www.youtube.com/watch?v=T7gAuI-LQ2w&ab_channel=MisterP.MeshLabTutorials) to visually align the image on the mesh. The second is [image parametrization and texturing](https://www.youtube.com/watch?v=OJZRuIzHcVw&ab_channel=MisterP.MeshLabTutorials) giving the final result.
   - If we do not have images for all parts of the model (churches), then it is necessary to cut out the parts of the mesh model, that we would like to color. Color them separately and then join the final models with separate textures.
 
-6. EXPERIMENTAL: [Capturing Reality](https://www.capturingreality.com/)
+4. EXPERIMENTAL: [Capturing Reality](https://www.capturingreality.com/)
     - A professional software to create models from photos, laser scans, drone photos, etc.
     - Offers [PPI licensing](https://www.capturingreality.com/Products) which allows to create the model and pay only for the result.
     - Only works with Windows and require NVIDIA card with [CUDA 3.0+](https://support.capturingreality.com/hc/en-us/articles/115001524071-OS-and-hardware-requirements)
@@ -72,7 +72,7 @@ grand_parent: Software
         - I would recommend to watch first [YouTube](https://www.youtube.com/watch?v=y3aNUBckwnE&list=PL56jeA0rCS3LWuahdfIFWp1d0WDuEKVqe&index=28) series about the process. It seems it takes a lot of effort to do it. It cannot import final mesh, the whole process must be done inside.
         - It would require a powerful PC to do it right.
         - Im not sure about the final size, but it should be compressable.
-7. EXPERIMENTAL: Leica Cyclone 3DR
+5. EXPERIMENTAL: Leica Cyclone 3DR
     - Provides quite a bad quality mesh with a lot of imperfections. Meshlab does much better Mesh
     - Texture is bad as well.
     - Procesing is fast but not good quality. 
