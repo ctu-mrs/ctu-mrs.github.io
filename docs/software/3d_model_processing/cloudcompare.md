@@ -31,6 +31,9 @@ Used for data processing before meshing and texturing.
     - lower kernel size: less smoothing (keeps more detail but filters less noise)
     - higher kernel size: more smoothing (keeps less detail but filters more noise)
 - `Edit -> Scalar fields -> Convert to RGB`
+  - be sure to select the correct R, G, B channels
+  - the dynamic range is clipped by default: move the color arrows to reverse this
+  - set alpha to 255
 
 ## Command line mode
 [CC command line mode](https://www.cloudcompare.org/doc/wiki/index.php?title=Command_line_mode) opens a way for scripting of most of the functions available within CC GUI.
