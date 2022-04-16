@@ -15,15 +15,15 @@ grand_parent: Software
   * Only for a single texture file and pointcloud color.
   * Recommend to use low quality `.ply` file about 10MB ~ 250k faces. If double the amount of faces (500k) the `Blender` processing time will be really long.
   * `Blender`
-    * Import the `.ply` mesh file
-    * Change default `Object mode` to `Edit mode`
-    * Select all data with `a` key
-    * Open UV Mapping menu with `u` key
-    * Select `Smart UV Project`
-    * Keep the default values and press `OK`.
-    * Do something else. It takes a long time to process. Average an hour, depending on the model size. (250k faces ~1 hour 15 minutes, 500k faces ~3 hours)
-    * When finished, split the screen and change the `Editor Type` to `UV Editor`. It shows the texture parametrization.
-    * Export the file as `.ply` or `.obj`.
+    - Import the `.ply` mesh file
+    - Change default `Object mode` to `Edit mode`
+    - Select all data with `a` key
+    - Open UV Mapping menu with `u` key
+    - Select `Smart UV Project`
+    - Keep the default values and press `OK`.
+    - Do something else. It takes a long time to process. Average an hour, depending on the model size. (250k faces ~1 hour 15 minutes, 500k faces ~3 hours)
+    - When finished, split the screen and change the `Editor Type` to `UV Editor`. It shows the texture parametrization.
+    - Export the file as `.ply` or `.obj`.
       * `.obj` format might be needed if `.ply` output is corrupted. It has to be exported from `Blender` with `Y` axis as `FORWARD` and `Z` axis as `UP`. Then import this file to `Meshlab`, skip `Convert PerVertex UV to PerWedge UV` because `.obj` file already contains `PerWedge UV` and export it in `.ply` format for next steps. 
   2. **Meshlab**
     - Import the Blender processed *.ply* file 
