@@ -15,7 +15,7 @@ grand_parent: Software
   * Only for a single texture file and pointcloud color.
   * Recommend to use low quality `.ply` file about 10MB ~ 250k faces. If double the amount of faces (500k) the `Blender` processing time will be really long.
   * `Blender`
-    - Import the `.ply` mesh file
+    * Import the `.ply` mesh file
     - Change default `Object mode` to `Edit mode`
     - Select all data with `a` key
     - Open UV Mapping menu with `u` key
@@ -25,7 +25,7 @@ grand_parent: Software
     - When finished, split the screen and change the `Editor Type` to `UV Editor`. It shows the texture parametrization.
     - Export the file as `.ply` or `.obj`.
       * `.obj` format might be needed if `.ply` output is corrupted. It has to be exported from `Blender` with `Y` axis as `FORWARD` and `Z` axis as `UP`. Then import this file to `Meshlab`, skip `Convert PerVertex UV to PerWedge UV` because `.obj` file already contains `PerWedge UV` and export it in `.ply` format for next steps. 
-  2. **Meshlab**
+    * `Meshlab`
     - Import the Blender processed *.ply* file 
     - Run **Convert PerVertex UV to PerWedge UV** to convert Blender parametrization into Meshlab convention
     - Import the original *.ply* pointcloud with coloured vertices.
@@ -45,7 +45,7 @@ grand_parent: Software
       - Click **Apply**
       - The process takes usually a lot of time. The cmd line will show some **QImage::pixel: coordinate (number,number) out of range** messages. It means it cannot fit the point from the pointcloud into the desired texture. However, this is not a problem. The texture from Blender is not predefined for specific dimension, hence arbitrary resolution will result in this message.
       - Save the final *.ply* file
-  - **Texture simplification**
+  * **Texture simplification**
     - Current texture is quite large and not that practicaly useful. Gazebo has its own [limitation](https://answers.gazebosim.org//question/1331/solved-jpeg-file-make-gazebo-die/) to load a large textures.
     - I recommend to convert it to *.jpg* with the [convert](https://linux.die.net/man/1/convert) tool: `convert input.png -quality 20 output.jpg`. The 20% quality is sufficient. The imagemagick tool might have some RAM/disk limitations set in default config */etc/ImageMagick-version/policy.xml*. Check it if you have errors. If yes put that limitations to coments.
     - For Gazebo use, you have to resize the image with `convert input -resample 16384x16384 output`. Otherwise, you will be unable to load the texture.
