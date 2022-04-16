@@ -14,7 +14,7 @@ grand_parent: Software
 2. Good quality texture: SLOW BUT NICE
   * Only for a single texture file and pointcloud color.
   * Recommend to use low quality `.ply` file about 10MB ~ 250k faces. If double the amount of faces (500k) the `Blender` processing time will be really long.
-  * `Blender`
+  * Blender
     * Import the `.ply` mesh file
     * Change default `Object mode` to `Edit mode`
     * Select all data with `a` key
