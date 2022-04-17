@@ -8,7 +8,7 @@ has_children: true
 # 3D Modeling guide
 Purpose of this guide is to describe the steps of acquiring, processing, and presenting pointclouds through pipeline:
 
-`Scanning with Leica -> Processing (cleaning, fixing colors, decimation) -> Meshing -> Presenting on web`
+`Scanning with Leica -> Processing (cleaning, fixing colors, decimation) -> Meshing -> Texturing -> Presenting on web`
 
 ## Pipeline
 * [Leica Cyclone Register 360](https://ctu-mrs.github.io/docs/software/3d_model_processing/leica.html)
@@ -23,7 +23,8 @@ Purpose of this guide is to describe the steps of acquiring, processing, and pre
   * Merge all `.e57` files and decimate the result to desired resolution
 * [Meshlab](https://ctu-mrs.github.io/docs/software/3d_model_processing/meshlab.html) and/or [Blender](https://ctu-mrs.github.io/docs/software/3d_model_processing/blender.html)
   * Use to create mesh
-* Create [textures](https://ctu-mrs.github.io/docs/software/3d_model_processing/texturing.html)
+  * Create [textures](https://ctu-mrs.github.io/docs/software/3d_model_processing/texturing.html)
+* Model [export](https://ctu-mrs.github.io/docs/software/3d_model_processing/exporting.html)  
 
 ## Software versions
 
