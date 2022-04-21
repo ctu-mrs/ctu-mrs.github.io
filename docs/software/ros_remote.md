@@ -21,10 +21,12 @@ export ROS_MASTER_URI=http://localhost:11311
 - Do NOT export `ROS_IP` to **.bashrc**.
 - Remove the server's (the robot's) own hostname in `/etc/hosts` except of `127.0.1.1`.
   The top of the `/etc/hosts` file of robot with hostname `dog` and IP `192.168.69.123` should look like below.
-  No other instances of `dog` nor `192.168.69.123` should be present in `/etc/hosts`.
+  For correct functionality, only one instance of `192.168.69.123` can be present in `/etc/hosts`. 
+  Duplicated instances for IP `192.168.69.123` are not allowed.
 ```bash
 127.0.0.1 localhost
 127.0.1.1 dog
+192.168.69.123 dog
 ```
 
 ## Client computer, a.k.a., "the notebook"
