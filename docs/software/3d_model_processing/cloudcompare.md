@@ -30,7 +30,7 @@ Used for data processing before meshing and texturing.
   - `Edit -> Scalar fields -> Gaussian filter`
     - lower kernel size: less smoothing (keeps more detail but filters less noise)
     - higher kernel size: more smoothing (keeps less detail but filters more noise)
-- `Edit -> Scalar fields -> Convert to RGB`
+- `Edit -> Colors -> From Scalar fields`
   - be sure to select the correct R, G, B channels
   - the dynamic range is clipped by default: move the color arrows to reverse this
   - set alpha to 255
