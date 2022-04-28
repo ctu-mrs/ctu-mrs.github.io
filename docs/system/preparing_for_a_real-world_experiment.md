@@ -41,9 +41,9 @@ You also have to add your workspace into the ROS_WORKSPACES variable inside .bas
 
 
 ```bash
-# source ~/mrs_workspace/devel/setup.zsh
-# source ~/modules_workspace/devel/setup.zsh
-source ~/john_doe_workspace/devel/setup.zsh
+# source ~/mrs_workspace/devel/setup.bash
+# source ~/modules_workspace/devel/setup.bash
+source ~/john_doe_workspace/devel/setup.bash
 
 export ROS_WORKSPACES="~/modules_workspace ~/mrs_workspace ~/john_doe_workspace"
 ```
