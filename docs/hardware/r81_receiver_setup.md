@@ -9,6 +9,7 @@ parent: Hardware
 ### Binding:
 
 Set the receiver mode on the Radiomaster RC to MULTI FrSky D8.
+Always bind the receiver while the UAV is powered through a battery, do not use just the Pixhawk's USB cable, it may cause issues.
 To bind with the receiver:
 1. Hold the button on the receiver, then power the UAV on. 
 2. The receiver LED should be solid red.
