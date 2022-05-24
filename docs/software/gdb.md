@@ -127,8 +127,17 @@ Finally, after your program crashes, you can debug it using simply the command
 ```
 gdb <path to the program> <path to the core>
 ```
-Note that for ROS nodelets, `<path to the program>` should typically be something like `~/workspace/devel/lib/libYourNodelet.so` and `<path to the core>` is typically `~/.ros/core.<PID>`.
-Other possible locations of the coredump are the current path and `/var/crash`.
+Note that for ROS nodelets, `<path to the program>` should typically be something like `~/workspace/devel/lib/libYourNodelet.so` and `<path to the core>` is by default `/var/lib/apport/coredump/core.<filepath+filename>.<unimportant number>.<unimportant hash>.<PID>.<unimportant number>` in Ubuntu 20.04 when using `apport`.
+
+It is possible that the `apport` service may need to be enabled using `sudo service apport enable` (you can check its status using `sudo service apport status`).
+Other possible locations of the coredump are the current path and `~/.ros/<core dump filename>`.
+
+Using the `ulimit -c unlimited` command will only enable coredump until logging out, then the default behaviour will be reset.
+To permanently enable coredump for all users, edit the file `/etc/security/limits.conf` (as root) and add these two lines:
+```
+root - core unlimited
+*    - core unlimited
+```
 
 ## Further reading
 
