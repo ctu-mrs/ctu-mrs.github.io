@@ -59,6 +59,7 @@ rosservice call /mrs_drone_spawner/spawn "1 7 --f450 --enable-rangefinder --enab
 * Using a blank space instead of a number will assign the vehicle an ID from unused numbers.
 * The spawner will **not** attempt to create a new vehicle, if the desired **ID is already in use**.
 * The service calls in Python are handled asynchronously. Please **wait** until the previous spawn command is dealt with **before issuing a new one**. Disrupting the spawn procedure may lead to Gazebo freezing or crashing.
+* If you want ground truth odometry to be published or use the `RTK` estimator, add the parameter `--enable-ground-truth`.
 
 # Advanced user zone
 
