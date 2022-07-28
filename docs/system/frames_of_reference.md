@@ -7,8 +7,6 @@ nav_order: 1
 
 # Frames of Reference
 
-![](fig/tf_rviz.png)
-
 As described in the [Transformations](transformations.md) manual, the MRS control system enables to send commands to a UAV in all coordinate frames for which a transformation to the control frame exists.
 The coordinate frames that are used within MRS system are listed below. 
 
@@ -35,13 +33,16 @@ But, maintaining the **tree structure** is impossible for multiple *world*/*map*
 The MRS system solves this by having the `<uav_name>/fcu` coordinate frame as the **root** node.
 A *frame* following the hierarchical order `<uav_name>/fcu -> frame` is kept untouched.
 However, a *frame* following the order `frame -> <uav_name>/fcu` is stored as a *children* of `<uav_name>/fcu` by inverting the order and the transformation.
-
 ![](fig/multi_frame_localization_problem.png)
 
-## Multi-UAV TF Tree
-`TFConnectorDummy` node within the `mrs_uav_odometry` package connects TF trees of multiple UAVs by connecting them through a new **root** node.
-How to use: see [example launch file](https://github.com/ctu-mrs/mrs_uav_odometry/blob/master/launch/tf_connector.launch) and [example config file](https://github.com/ctu-mrs/mrs_uav_odometry/blob/master/config/tf_connector.yaml).
-Remark that the `TFConnectorDummy` node can connect only trees containing a common (equal) frame --- e.g., coordination frame of GPS `<uav_name>/gps_origin`.
+## Connecting multiple TF trees
+
+To connect transform trees of two or more UAVs, you can use the [`tf_connector`](https://github.com/ctu-mrs/mrs_utils/tree/master/tf_connector) node within the [`mrs_utils`](https://github.com/ctu-mrs/mrs_utils) package.
+The node creates a new common connecting frame and defines transforms from root frames of the separate trees to this common frame that are recalculated so that the specified frames in the subtrees remain equal.
+See the corresponding [Readme](https://github.com/ctu-mrs/mrs_utils/blob/master/tf_connector/README.md) for usage hints and parameter documentation.
+
+*Note:* The `tf_connector` node can connect only trees containing a common (equal) frame --- e.g., a local coordinate frame of the GPS `<uav_name>/gps_origin`.
+
 
 ## Elementary frames
 
