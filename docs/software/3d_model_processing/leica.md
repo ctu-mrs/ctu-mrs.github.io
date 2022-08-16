@@ -3,7 +3,6 @@ layout: default
 title: Leica Cyclone Register 360
 parent: 3D model processing
 grand_parent: Software
-
 ---
 
 # Leica Cyclone Register 360 (LCR)

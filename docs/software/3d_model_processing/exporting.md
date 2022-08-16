@@ -12,6 +12,7 @@ Details, how to export the final model.
 * Please follow the [original guide](https://mrs.felk.cvut.cz/gitlab/bednaj14/meshlab/blob/master/modely_report.pdf) and the scripts inside.
 * Recommend to install `NodeJS` with [snapcraft](https://snapcraft.io/node) tool. The `apt` version for `Ubuntu` does not contain the up-to-date version.
 * The convert tool needs to have max *16384x16384* texture. Otherwise it will not work. Validate this sentence!
+* If you create a texture from raster images, check the *gltf-pipeline* tool parameter *quantizePositionBits* to have value lower than 25. Otherwise, the model will not be possible to visualize. 
 
 ## Gazebo
 * The `.dae` format is most suitable for Gazebo.
