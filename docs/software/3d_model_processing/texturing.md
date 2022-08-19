@@ -8,15 +8,19 @@ grand_parent: Software
 # Texturing
 **A good quality texture can significantly improve the low quality mesh model**
 
-## Simple (primitive) texture: FAST AND EASY
+We have experience with two ways of texturing. Pointcloud vertex color texturing and raster image texturing. Both will be described below.
+
+## Pointcloud vertex color
+These methods using pointcloud vertex color to create a full texture.
+### Simple (primitive) texture: FAST AND EASY
 * `Filters → Sampling → Vertex Attribute Transfer` Make sure the `Transfer Color` option is checked and press `Apply` to transfer the colour of the points onto the mesh.
 * `Filters → Texture → Parametrization: Trivial Per-Triangle` Set `Inter-Triangle border` to 5 for smoother transition between triangles. The higher the number, the bigger the texture will be. Press `Apply` to generate the faces from which the mesh texture will be created. If you receive an error about the inter-triangle border being too much, try increasing the `Texture dimension`.
 * `Filters → Texture → Vertex Color to Texture` Specify the texture file name and resolution for the mesh. The resolution should give the `Texture dimension` parameter from the previous step, e.g., `Texture width * Texture height = Texture Dimension`. Then press `Apply` to create it.
 
-## Good quality texture: SLOW BUT NICE
+### Good quality texture: SLOW BUT NICE
 * Recommend to use low quality `.ply` file about 10MB ~ 250k faces. If double the amount of faces (500k) the `Blender` processing time will be really long. However, this migt be different for various models, rather check by yourself.
  
-### `Blender`
+#### `Blender`
   * Import the `.ply` mesh file
   * Change default `Object mode` to `Edit mode`
   * Select all data with `a` key
@@ -28,7 +32,7 @@ grand_parent: Software
   * Export the file as `.ply` or `.obj`.
     * `.obj` format might be needed if `.ply` output is corrupted. It has to be exported from `Blender` with `Y` axis as `FORWARD` and `Z` axis as `UP`. Then import this file to `Meshlab`, skip `Convert PerVertex UV to PerWedge UV` because `.obj` file already contains `PerWedge UV` and export it in `.ply` format for next steps. 
 
-### `Meshlab`
+#### `Meshlab`
   * Import the Blender processed `.ply` file. 
   * Run `Convert PerVertex UV to PerWedge UV` to convert `Blender` parametrization into `Meshlab` convention.
   * Import the original `.ply` pointcloud with coloured vertices.
@@ -49,7 +53,7 @@ grand_parent: Software
       * The process takes usually a lot of time. The cmd line might show `QImage::pixel: coordinate (number,number) out of range` messages. It means it cannot fit the point from the pointcloud into the desired texture. However, this is not a problem. The texture from `Blender` is not predefined for specific dimension, hence arbitrary resolution will result in this message.
     * Save the final result in `.ply` format.
 
-## Texture simplification
+### Texture simplification
   * It is recommended to convert the texture to `.jpg` format. Recommend to use either [Gimp](https://www.gimp.org/) or [convert](https://linux.die.net/man/1/convert) tool. Next steps will be described using `convert` tool.
     * `convert input.png -quality 20 output.jpg`
     * The 20% jpeg quality is sufficient. The `imagemagick` tool might have some RAM/disk limitations set in default config file `/etc/ImageMagick-version/policy.xml`. Check it if you have errors. If yes comment that limitations.
@@ -63,12 +67,18 @@ grand_parent: Software
     * Open the `.ply` file again and validate, if the correct `.jpg` texture is applied. It can be checked in the `Export Mesh` option window.
 
 ## Texturing with raster images
-  * The pointcloud coloring might not be precise enough for the whole model. It is useful to improve the model with raster images.
+The pointcloud vertex color might not be detailed enough for the whole model or it might help to improve part of the model with raster images.
+
+### Improving part of the model
   * There is a nice text [guide](https://wikis.utexas.edu/display/specify6/Texture+overlay+in+MeshLab) describing the whole process. Moreover, there is a [video guide](https://www.youtube.com/playlist?list=PL60mCsep96Je1bzGrWnK-nL9pi95r7UqI) showing all steps in the video.
-  * Recommend to check these videos about image texturing. First is a [image alingment tool](https://www.youtube.com/watch?v=T7gAuI-LQ2w&ab_channel=MisterP.MeshLabTutorials) to visually align the image on the mesh. The second is [image parametrization and texturing](https://www.youtube.com/watch?v=OJZRuIzHcVw&ab_channel=MisterP.MeshLabTutorials) showing the final result.
-  * **IMPORTANT NOTICE**. If you do not have images for the whole model, then it is necessary to cut out the parts of the mesh model, where images are missing. Then color the part of the model with images and the rest of the model with the pointcloud. Finally, join them into the final model having several texture files.
+  * Recommend to check videos about **image texturing**. First is a [image alingment tool](https://www.youtube.com/watch?v=T7gAuI-LQ2w&ab_channel=MisterP.MeshLabTutorials) to visually align the image on the mesh. The second is [image parametrization and texturing](https://www.youtube.com/watch?v=OJZRuIzHcVw&ab_channel=MisterP.MeshLabTutorials) showing the final texture creation process and the result.
+  * **IMPORTANT NOTICE**. It is necessary to cut out the parts of the mesh model, where images are missing. Then color the part of the model with images and the rest of the model with the pointcloud. Finally, join them into the final model having several texture files. Meshlab allows to merge several texture files in one `.ply` file.  
+  * It might be useful to uncheck **Use distance weight** parameter. Otherwise, there will be dark color on some triangles.
 
-## Several texture files
-  * A single texture file might be limiting the amount of details in the final model. It is possible to have more texture files assigned to a single `.ply` file. Usually the best is to create the texture with separate `.ply` files and then merge the `.ply` files together having all textures in the final model. 
-
-
+### Create whole model 
+  * **This method is not automatized, only proof of concept.** 
+  * This process assume having precise position of the images w.r.t. the model.
+  * In our case, you need the [`.e57`](https://ctu-mrs.github.io/docs/software/3d_model_processing/leica.html#e57) single file in **separate setups (structured)** variant. It will contain the raster images with precise position.
+  * Use either [CloudCompare](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#extracting-images-and-sensor-positions) or [VoxelizeE57Files](https://mrs.felk.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master) package to extract images and scanner position.
+  * Open the MeshLab and import raster images....
+  * work in progress

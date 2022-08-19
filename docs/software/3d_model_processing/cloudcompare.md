@@ -90,4 +90,13 @@ cmake --build . --parallel
 sudo cmake --install .
 ```
 
+## Extracting images and sensor positions
+* Import [`.e57`](https://ctu-mrs.github.io/docs/software/3d_model_processing/leica.html#e57) file in **separate setups (structured)** variant.  
+* Select appropriate scan and expand the structure tree to see the content of the scan. You should see a `TLS\GBL` and a 6 image files.
+* Select the image you would like to export and save it with the `Save` button.
+* Every image contains further a `Camera Sensor` with exact position of the picture w.r.t. to the model.
+* Select the `Camera Sensor` and scroll in the `Properties` window down to `Position/Orientation` section. Change it to `Export` tab and save with `ASCII` option to the file.
+* CloudCompare and MeshLab uses different rotation matrix system, so the `Camera Sensor` output has to be transformed before use as shown in the image./
+![plot](.fig/cc_camera_sensor.png)  
+
 ## Work in progress
