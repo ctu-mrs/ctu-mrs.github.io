@@ -1,12 +1,25 @@
 ---
 layout: default
-title: Exporting
+title: Export
 parent: 3D model processing
 grand_parent: Software
 ---
 
-# Exporting
+# Export
 Details, how to export the final model.
+
+## General formats
+Most of the times, the models are saved in following formats
+
+### Polygon File Format - `.ply`
+* Mainly used MeshLab format.
+* Allows binary format of the file which saves a lot of space on the data storage.
+* Allows to store all kind of data into this format.
+
+### Wavefront - `.obj`
+* Useful to share data with other software as Blender
+* More structured format for sharing.
+* Unfortunatelly bigger file size. 
 
 ## Web
 * Please follow the [original guide](https://mrs.felk.cvut.cz/gitlab/bednaj14/meshlab/blob/master/modely_report.pdf) and the scripts inside.

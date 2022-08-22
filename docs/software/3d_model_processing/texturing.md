@@ -67,41 +67,28 @@ These methods using pointcloud vertex color to create a full texture.
     * Open the `.ply` file again and validate, if the correct `.jpg` texture is applied. It can be checked in the `Export Mesh` option window.
 
 ## Texturing with raster images
-The pointcloud vertex color might not be detailed enough for the whole model or it might help to improve part of the model with raster images.
+  * The pointcloud vertex color might not be detailed enough for the whole model or it might help to improve part of the model with raster images. 
+  * There is a nice [video guide](https://www.youtube.com/playlist?list=PL60mCsep96Je1bzGrWnK-nL9pi95r7UqI) showing all features and steps. **Recommend to check the videos first. It will help you to understand the program layout and functionalities before next steps!**
+  * Also, if you like to read, there is a text [guide](https://wikis.utexas.edu/display/specify6/Texture+overlay+in+MeshLab) describing the whole process.
 
 ### Improving part of the model
-  * There is a nice text [guide](https://wikis.utexas.edu/display/specify6/Texture+overlay+in+MeshLab) describing the whole process. Moreover, there is a [video guide](https://www.youtube.com/playlist?list=PL60mCsep96Je1bzGrWnK-nL9pi95r7UqI) showing all steps in the video.
   * Recommend to check videos about **image texturing**. First is a [image alingment tool](https://www.youtube.com/watch?v=T7gAuI-LQ2w&ab_channel=MisterP.MeshLabTutorials) to visually align the image on the mesh. The second is [image parametrization and texturing](https://www.youtube.com/watch?v=OJZRuIzHcVw&ab_channel=MisterP.MeshLabTutorials) showing the final texture creation process and the result.
   * **IMPORTANT NOTICE**. It is necessary to cut out the parts of the mesh model, where images are missing. Then color the part of the model with images and the rest of the model with the pointcloud. Finally, join them into the final model having several texture files. Meshlab allows to merge several texture files in one `.ply` file.  
   * It might be useful to uncheck **Use distance weight** parameter. Otherwise, there will be dark color on some triangles.
-
+ 
 ### Create whole model 
   * **This method is not automatized, only proof of concept.** 
   * This process assume having precise position of the images w.r.t. the model.
   * In our case, you need the [`.e57`](https://ctu-mrs.github.io/docs/software/3d_model_processing/leica.html#e57) single file in **separate setups (structured)** variant. It will contain the raster images with precise position.
-  * Use either [CloudCompare](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#extracting-images-and-sensor-positions) or [VoxelizeE57Files](https://mrs.felk.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master) package to extract images and scanner position.
+  * Use either [CloudCompare](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#extracting-images) or [VoxelizeE57Files](https://mrs.felk.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master) package to extract images.
+  * Open the MeshLab and import the mesh model, you would like to texture with `File->Import Mesh...`. The model do not need parametrization.
+  * Import all raster images `File->Import Raster...`
   * **Recommend to save the MeshLab project `.mlp` as much as you can. MeshLab likes to crash**
-  * Open the MeshLab and import all raster images `File->Import Raster...`
-  * Select one of the raster images and right click `Export active raster cameras to file`. Output format `Agisoft xml` and click `Apply`.
-  * Open the `cameras.xml` configuration file in some text editor and modify the `sensor` tag for each image as below.
-```xml
-<sensor id="keep the original" label="keep the original" type="frame">
-  <resolution width="2048" height="2048"/>
-  <property name="pixel_width" value="0.01"/>
-  <property name="pixel_height" value="0.01"/>
-  <property name="focal_length" value="10.235"/>
-  <property name="fixed" value="false"/>
-  <calibration type="frame" class="adjusted">
-    <resolution width="2048" height="2048"/>
-    <fx>1023.5</fx>
-    <fy>1023.5</fy>
-    <cx>1024</cx>
-    <cy>1024</cy>
-    <k1>0</k1>
-    <k2>0</k2>
-    <p1>0</p1>
-    <p2>0</p2>
-  </calibration>
-</sensor>
-```
-* These values were extracted from `Camera Sensor` tag value from `.e57` files. You might notice, that the values are not exactly same as the one exported from CloudCompare, however this is how the Meshlab inteprets the imported value. If you have a different camera sensor or you would like to do it again, feel free to follow [camera settings](https://ctu-mrs.github.io/docs/software/3d_model_processing/meshlab.html#camera-settings) guide.
+  * Correct the camera settings and sensor position and orientation for all raster images as described in [camera settings](https://ctu-mrs.github.io/docs/software/3d_model_processing/meshlab.html#raster-camera) guide.
+  * Check the image alignment with toggle the `Show Current Raster Mode` button. If you zoom in and out, the alignment of the images and mesh model behind should be precise.
+    * *Note: We have noticed, that some of the images are not perfectly aligned. Usually the images are from the same scan position. Just to remind, every scanning position has 6 images. The calibratino should be same for all images and scanning position. Do not know, where the problem is.* 
+    * If the images are not aligned well, you might tune it up with the `Raster alignment` tool from MeshLab. Try to simply press `Apply mutual information registration` button without any setting up the algorithm since the image and the model are almost aligned, it could easily help. If did not help, check the [Raster Alignment Tool video](https://youtu.be/T7gAuI-LQ2w) how to use the tool.
+    * These alingment will change the camera FOV, position and orientation.
+  * Run the `Parametrization + texturing from registered textures` function. Choose the parameters according to the [video](https://youtu.be/OJZRuIzHcVw) guide. 
+    * *Note: It might be possible to combine good texture from pointcloud with texture from raster images. Parametrization and texturing could be done separately. Check!* 
+  * Save the final textured mesh in required format described in the [export](https://ctu-mrs.github.io/docs/software/3d_model_processing/export.html) section.

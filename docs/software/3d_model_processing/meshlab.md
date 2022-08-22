@@ -78,3 +78,64 @@ grand_parent: Software
 
 ### Camera settings
 * This guide shows how to setup the MeshLab raster or general MeshLab camera.
+#### MeshLab main camera
+* Backup the original MeshLab camera settings before changing anything with `Windows->Save cammera settings to file` option. MeshLab will always reset the main camera setting when a new program instance is launched, but rather to make sure.
+* Copy the current value of the camera with `Windows->Copy camera settings to clipboard`. If you have just launched MeshLab, the values should look like following snippet
+```xml
+<!DOCTYPE ViewState>
+<project>
+ <VCGCamera LensDistortion="0 0" RotationMatrix="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 " CameraType="0" BinaryData="0" TranslationVector="0 0 -3.03109 1" PixelSizeMm="0.0369161 0.0369161" CenterPx="468 465" ViewportPx="936 931" FocalMm="29.764309"/>
+ <ViewSettings NearPlane="0.30310887" TrackScale="1" FarPlane="4.7810888"/>
+</project>
+```
+* Modify the `PixelSizeMm`, `CenterPx`, `ViewportPx` and `FocalMm` with your values. For our Leica BLK Scanner, the values are following
+```
+PixelSizeMm="0.006 0.006"
+CenterPx="1023.5 1023.5"
+ViewportPx="2048 2048"
+FocalMm="6.141"
+```
+* Values are obtained from both CloudCompare `Camera Sensor` output and [VoxelizeE57Files](https://mrs.felk.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master) package running with `--only-export-images` option.
+* Copy the whole `.xml` snippet and select `Windows->Paste clipboard to camera setting`.
+* You should be able to see the change in the camera perspective.
+* If you copy again the current value of the camera with `Windows->Copy camera settings to clipboard`, the values are different since MeshLab recalculates the imported values. Values are correct. Here is the example of such a snippet
+```xml
+<!DOCTYPE ViewState>
+<project>
+ <VCGCamera BinaryData="0" LensDistortion="0 0" PixelSizeMm="0.0369161 0.0369161" ViewportPx="936 931" CenterPx="468 465" TranslationVector="0 0 -3.03109 1" CameraType="0" RotationMatrix="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 " FocalMm="17.176043"/>
+ <ViewSettings FarPlane="3.4991455" NearPlane="0.30310887" TrackScale="1"/>
+</project>
+```
+#### Raster Camera
+* Select one of the raster images in the bottom down window and right click `Export active raster cameras to file`. Output format `Agisoft xml` and click `Apply`.
+* Open the `cameras.xml` configuration file in some text editor and modify the `sensor` tag for each image as below.
+```xml
+<sensor id="keep the original" label="keep the original" type="frame">
+  <resolution width="2048" height="2048"/>
+  <property name="pixel_width" value="0.01"/>
+  <property name="pixel_height" value="0.01"/>
+  <property name="focal_length" value="10.235"/>
+  <property name="fixed" value="false"/>
+  <calibration type="frame" class="adjusted">
+    <resolution width="2048" height="2048"/>
+    <fx>1023.5</fx>
+    <fy>1023.5</fy>
+    <cx>1024</cx>
+    <cy>1024</cy>
+    <k1>0</k1>
+    <k2>0</k2>
+    <p1>0</p1>
+    <p2>0</p2>
+  </calibration>
+</sensor>
+```
+* These values represent the Leica BLK 360 camera sensor as described in the previous chapter even the values do not match. MeshLab recalculates the values for its own projection. 
+* To correct the camera sensor position and orientation, check the [extract sensor position](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#extracting-sensor-positions) guide or [VoxelizeE57Files](https://mrs.felk.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master) package. *Note: Not sure if VoxelizeE57Files gives the same transformation.*
+* Correct the values in `cameras.xml` configuration file for the `cameras` tag for each image as below:
+```xml
+<camera id="keep the original" label="keep the original" sensor_id="keep the original" enabled="true">
+  <transform>0.93981 -1.49012e-08 -0.341699 -10.4113 0.341699 9.31323e-09 0.939809 17.8044 1.49012e-08 -1 9.31323e-09 0.00407573 0 0 0 1</transform>
+</camera>
+```
+* The `transform` contains the line representation of the 4x4 matrix from previous step. **Do not forget to use the transformed value as mention in the guide**!
+* Import values with right click on the right-down raster image file and selecting `Import cameras for active rasters from file`
