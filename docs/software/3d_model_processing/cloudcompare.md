@@ -96,7 +96,8 @@ sudo cmake --install .
 * Select the image you would like to export and save it with the `Save` button.
 * Every image contains further a `Camera Sensor` with exact position of the picture w.r.t. to the model.
 * Select the `Camera Sensor` and scroll in the `Properties` window down to `Position/Orientation` section. Change it to `Export` tab and save with `ASCII` option to the file.
-* CloudCompare and MeshLab uses different rotation matrix system, so the `Camera Sensor` output has to be transformed before use as shown in the image./
-![plot](.fig/cc_camera_sensor.png)  
+* CloudCompare and MeshLab uses different rotation matrix system, so the `Camera Sensor` output has to be transformed before use as shown in the image below or the appropriate transformation :)
+ 
+![](.fig/cc_camera_sensor.png)  
 
 ## Work in progress
