@@ -109,6 +109,7 @@ FocalMm="6.141"
 #### Raster Camera
 * Select one of the raster images in the bottom down window and right click `Export active raster cameras to file`. Output format `Agisoft xml` and click `Apply`.
 * Open the `cameras.xml` configuration file in some text editor and modify the `sensor` tag for each image as below.
+
 ```xml
 <sensor id="keep the original" label="keep the original" type="frame">
   <resolution width="2048" height="2048"/>
@@ -129,6 +130,7 @@ FocalMm="6.141"
   </calibration>
 </sensor>
 ```
+
 * These values represent the Leica BLK 360 camera sensor as described in the previous chapter even the values do not match. MeshLab recalculates the values for its own projection. 
 * To correct the camera sensor position and orientation, check the [extract sensor position](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#extracting-sensor-positions) guide or [VoxelizeE57Files](https://mrs.felk.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master) package. *Note: Not sure if VoxelizeE57Files gives the same transformation.*
 * Correct the values in `cameras.xml` configuration file for the `cameras` tag for each image as below:
