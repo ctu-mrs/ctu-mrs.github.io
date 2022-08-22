@@ -98,6 +98,6 @@ sudo cmake --install .
 * Select the `Camera Sensor` and scroll in the `Properties` window down to `Position/Orientation` section. Change it to `Export` tab and save with `ASCII` option to the file.
 * CloudCompare and MeshLab uses different rotation matrix system, so the `Camera Sensor` output has to be transformed before use as shown in the image below or the appropriate transformation :)
  
-![](.fig/cc_camera_sensor.png)  
+![plot](fig/cc_camera_sensor.png)  
 
 ## Work in progress
