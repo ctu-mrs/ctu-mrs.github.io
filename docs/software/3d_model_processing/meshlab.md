@@ -65,7 +65,7 @@ grand_parent: Software
 
 ## Simplification
 <details>
-  <summary>Recommend to use simplification from [command line mode](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#command-line-mode) with CloudCompare software. However, if you want to use the Meshlab for it, here is the guide.</summary>
+  <summary>Recommend to use simplification from <a href="https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#command-line-mode">CloudCompare</a> software. However, if you want to use the Meshlab for it, here is the guide.</summary>
 * If you would like to use only the pointcloud, you can keep it as large as it is, but usually it is more practical to decrease the amount of vertices.
     - **Poisson-disk Sampling**: You can define exact number of samples or explicit radius (distance) between samples. I would recommend to use the *world unit* explicit radius. Generally, Meshlab does not scale everything to meters, but if you used pointcloud from Leica scanning, you can assume metric units. Hence set about 0.01 *world unit* should be about one vertex per 1 cm. Reasonable value is around 0.02--0.05. Personally, I would go for 0.02/0.03 to make the whole process faster for large models. Make sure to check **Base Mesh Subsampling**.
     - **Point Cloud Simplification**: Define number of samples or world units you would like to have and click **Apply**. It uses some "heuristic" to keep the most of points. Usually, set the number of samples lower than you want. It will always give you more.
