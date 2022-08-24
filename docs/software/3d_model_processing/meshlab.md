@@ -24,9 +24,14 @@ grand_parent: Software
 * [Basic texturing guide](https://github.com/gsilano/CrazyS/wiki/Working-With-Meshes-in-Gazebo)
 
 ## Import and merge
-1. **PTX**
-    - Newest version of Meshlab has a new setting in the `Settings->Tools` for each file format. Please set it as shown in the image\
-  ![plot](fig/ptx_settings.png) 
+<details>
+  <summary>Describe steps to import `.ptx` and `.pts` files into MeshLab.</summary>
+  
+### `.ptx`
+    - Newest version of Meshlab has a new setting in the `Settings->Tools` for each file format. Please set it as shown in the image
+
+  ![](fig/ptx_settings.png) 
+
     - At the end, merge all imported layers into one. Click on the one of the layer with `Right mouse button -> Flatten Visible Layers`. Check **Keep unreferenced vertices** and click **Apply**.
     - Use the tool **Select Faces/Vertices inside polyline area** to clean the pointcloud.
     - Make sure to have the layer you want to clean active (in blue color)!
@@ -38,30 +43,40 @@ grand_parent: Software
     - Run *Matrix: Freeze Current Matrix* function to apply the transformation on current file.
     - Save the final *.ply* file
 
-2. **PTS**
-    - Newest version of Meshlab (2021.05) has a new setting in the **Settings->Tools** for each file format. Please set it as shown in the image\
-  ![plot](fig/pts_settings.png) 
+### `.pts`
+    - Newest version of Meshlab (2021.05) has a new setting in the **Settings->Tools** for each file format. Please set it as shown in the image
+ 
+  ![](fig/pts_settings.png) 
+  
     - Imported *.pts* file has to be renamed to *.txt*.
     - *Point format* as *X Y Z Reflectance R G B*
     - *Separator* as *SPACE*
     - Click *OK*
+</details>
 
 ## Cleaning: not useful 
-* I did not find any that useful filters to clean the pointcloud in the Meshlab. I recommend to perform filtering in [CloudCompare](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare).
+<details>
+  <summary>I did not find any that useful filters to clean the pointcloud in the Meshlab. I recommend to perform filtering in [CloudCompare](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare).</summary>
 * CloudCompare gives two options:
     1. **[Noise filter](http://www.cloudcompare.org/doc/wiki/index.php?title=Noise_filter)**
     2. **[SOR Filter](https://www.cloudcompare.org/doc/wiki/index.php?title=SOR_filter)**: recommend to use. Try to adjust the values according to the particular example.
 * Export the file in the binary **.PLY** format for further use in Meshlab.
+</details>
 
 ## Simplification
-* Recommend to use simplification from [command line mode](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#command-line-mode) with CloudCompare software. However, if you want to use the Meshlab for it, here is the guide.
+<details>
+  <summary>Recommend to use simplification from [command line mode](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#command-line-mode) with CloudCompare software. However, if you want to use the Meshlab for it, here is the guide.</summary>
 * If you would like to use only the pointcloud, you can keep it as large as it is, but usually it is more practical to decrease the amount of vertices.
     - **Poisson-disk Sampling**: You can define exact number of samples or explicit radius (distance) between samples. I would recommend to use the *world unit* explicit radius. Generally, Meshlab does not scale everything to meters, but if you used pointcloud from Leica scanning, you can assume metric units. Hence set about 0.01 *world unit* should be about one vertex per 1 cm. Reasonable value is around 0.02--0.05. Personally, I would go for 0.02/0.03 to make the whole process faster for large models. Make sure to check **Base Mesh Subsampling**.
     - **Point Cloud Simplification**: Define number of samples or world units you would like to have and click **Apply**. It uses some "heuristic" to keep the most of points. Usually, set the number of samples lower than you want. It will always give you more.
         - If you use the world size, it will have similar result as the *Poisson-disk Sampling* method.
 * I have not studied the difference between both methods, but the **Poisson-disk Sampling** is used more.
+</details>
 
 ## Mesh computing
+<details>
+  <summary>Steps to create mesh from a pointcloud.</summary>
+
 * Mesh computing requires a huge amount of RAM! It is recommended to have at least 32 GB RAM with some backup swap. If you can provide 64 GB RAM, even better!
 * The input pointcloud has to be simplified to be able to mesh it. The ideal number of vertices is 6--10 milions.
 * The general rule: Better to create a huge model and simplify it than create a small model right away.
@@ -76,11 +91,16 @@ grand_parent: Software
     - Save the model into *.ply** and check the file size. Recommend *.ply* file size in between **10--150MB**, depending on the application. For texture processing, the lower the better. The texture will cover inperfections. For model with no texture, the quality is visible more. If you would like to use the model in the simulation, assume **1.5x** times larger final exported file, so shrink the file accordingly. If exported with texture later on, the size will be about **2.5x** times bigger. These numbers depends on the amount of saved information in the *.ply* file.
     ![plot](fig/simplification_example.png)
 
-### Camera settings
-* This guide shows how to setup the MeshLab raster or general MeshLab camera.
-#### MeshLab main camera
+</details>
+
+## Camera settings
+<details>
+  <summary>This guide shows how to setup the MeshLab raster or general MeshLab camera.</summary>
+  
+### MeshLab Main Camera
 * Backup the original MeshLab camera settings before changing anything with `Windows->Save cammera settings to file` option. MeshLab will always reset the main camera setting when a new program instance is launched, but rather to make sure.
 * Copy the current value of the camera with `Windows->Copy camera settings to clipboard`. If you have just launched MeshLab, the values should look like following snippet
+
 ```xml
 <!DOCTYPE ViewState>
 <project>
@@ -88,17 +108,21 @@ grand_parent: Software
  <ViewSettings NearPlane="0.30310887" TrackScale="1" FarPlane="4.7810888"/>
 </project>
 ```
+
 * Modify the `PixelSizeMm`, `CenterPx`, `ViewportPx` and `FocalMm` with your values. For our Leica BLK Scanner, the values are following
+ 
 ```
 PixelSizeMm="0.006 0.006"
 CenterPx="1023.5 1023.5"
 ViewportPx="2048 2048"
 FocalMm="6.141"
 ```
+
 * Values are obtained from both CloudCompare `Camera Sensor` output and [VoxelizeE57Files](https://mrs.felk.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master) package running with `--only-export-images` option.
 * Copy the whole `.xml` snippet and select `Windows->Paste clipboard to camera setting`.
 * You should be able to see the change in the camera perspective.
 * If you copy again the current value of the camera with `Windows->Copy camera settings to clipboard`, the values are different since MeshLab recalculates the imported values. Values are correct. Here is the example of such a snippet
+ 
 ```xml
 <!DOCTYPE ViewState>
 <project>
@@ -106,7 +130,8 @@ FocalMm="6.141"
  <ViewSettings FarPlane="3.4991455" NearPlane="0.30310887" TrackScale="1"/>
 </project>
 ```
-#### Raster Camera
+
+### Raster Camera
 * Select one of the raster images in the bottom down window and right click `Export active raster cameras to file`. Output format `Agisoft xml` and click `Apply`.
 * Open the `cameras.xml` configuration file in some text editor and modify the `sensor` tag for each image as below.
 
@@ -134,10 +159,14 @@ FocalMm="6.141"
 * These values represent the Leica BLK 360 camera sensor as described in the previous chapter even the values do not match. MeshLab recalculates the values for its own projection. 
 * To correct the camera sensor position and orientation, check the [extract sensor position](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#extracting-sensor-positions) guide or [VoxelizeE57Files](https://mrs.felk.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master) package. *Note: Not sure if VoxelizeE57Files gives the same transformation.*
 * Correct the values in `cameras.xml` configuration file for the `cameras` tag for each image as below:
+
 ```xml
 <camera id="keep the original" label="keep the original" sensor_id="keep the original" enabled="true">
   <transform>0.93981 -1.49012e-08 -0.341699 -10.4113 0.341699 9.31323e-09 0.939809 17.8044 1.49012e-08 -1 9.31323e-09 0.00407573 0 0 0 1</transform>
 </camera>
 ```
+
 * The `transform` contains the line representation of the 4x4 matrix from previous step. **Do not forget to use the transformed value as mention in the guide**!
 * Import values with right click on the right-down raster image file and selecting `Import cameras for active rasters from file`
+
+</details>
