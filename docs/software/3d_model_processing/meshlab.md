@@ -56,7 +56,8 @@ grand_parent: Software
 
 ## Cleaning: not useful 
 <details>
-  <summary>I did not find any that useful filters to clean the pointcloud in the Meshlab. I recommend to perform filtering in [CloudCompare](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare).</summary>
+  <summary>I did not find any that useful filters to clean the pointcloud in the Meshlab. I recommend to perform filtering in <a href="https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare">CloudCompare</a> software.</summary>
+  
 * CloudCompare gives two options:
     1. **[Noise filter](http://www.cloudcompare.org/doc/wiki/index.php?title=Noise_filter)**
     2. **[SOR Filter](https://www.cloudcompare.org/doc/wiki/index.php?title=SOR_filter)**: recommend to use. Try to adjust the values according to the particular example.
@@ -66,6 +67,7 @@ grand_parent: Software
 ## Simplification
 <details>
   <summary>Recommend to use simplification from <a href="https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#command-line-mode">CloudCompare</a> software. However, if you want to use the Meshlab for it, here is the guide.</summary>
+  
 * If you would like to use only the pointcloud, you can keep it as large as it is, but usually it is more practical to decrease the amount of vertices.
     - **Poisson-disk Sampling**: You can define exact number of samples or explicit radius (distance) between samples. I would recommend to use the *world unit* explicit radius. Generally, Meshlab does not scale everything to meters, but if you used pointcloud from Leica scanning, you can assume metric units. Hence set about 0.01 *world unit* should be about one vertex per 1 cm. Reasonable value is around 0.02--0.05. Personally, I would go for 0.02/0.03 to make the whole process faster for large models. Make sure to check **Base Mesh Subsampling**.
     - **Point Cloud Simplification**: Define number of samples or world units you would like to have and click **Apply**. It uses some "heuristic" to keep the most of points. Usually, set the number of samples lower than you want. It will always give you more.
@@ -75,7 +77,7 @@ grand_parent: Software
 
 ## Mesh computing
 <details>
-  <summary>Steps to create mesh from a pointcloud.</summary>
+  <summary>We are using manily two methods to create a mesh from a pointcloud. **Screened Poisson** and **VGC**. </summary>
 
 * Mesh computing requires a huge amount of RAM! It is recommended to have at least 32 GB RAM with some backup swap. If you can provide 64 GB RAM, even better!
 * The input pointcloud has to be simplified to be able to mesh it. The ideal number of vertices is 6--10 milions.

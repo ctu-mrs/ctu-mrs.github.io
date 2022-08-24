@@ -59,8 +59,8 @@ We have experience with two ways of texturing. Pointcloud vertex color texturing
 ## Texturing with raster images
 <details>
   <summary>The pointcloud vertex color might not be detailed enough for the whole model or it might help to improve part of the model with raster images.</summary>
-  * There is a nice [video guide](https://www.youtube.com/playlist?list=PL60mCsep96Je1bzGrWnK-nL9pi95r7UqI) showing all features and steps. **Recommend to check the videos first. It will help you to understand the program layout and functionalities before next steps!**
-  * Also, if you like to read, there is a text [guide](https://wikis.utexas.edu/display/specify6/Texture+overlay+in+MeshLab) describing the whole process.
+  * There is a nice <a href="https://www.youtube.com/playlist?list=PL60mCsep96Je1bzGrWnK-nL9pi95r7UqI">video guide</a> showing all features and steps. **Recommend to check the videos first. It will help you to understand the program layout and functionalities before next steps!**
+  * Also, if you like to read, there is a text <a href="https://wikis.utexas.edu/display/specify6/Texture+overlay+in+MeshLab">guide</a> describing the whole process.
 
 ### Improving part of the model
   * Recommend to check videos about **image texturing**. First is a [image alingment tool](https://www.youtube.com/watch?v=T7gAuI-LQ2w&ab_channel=MisterP.MeshLabTutorials) to visually align the image on the mesh. The second is [image parametrization and texturing](https://www.youtube.com/watch?v=OJZRuIzHcVw&ab_channel=MisterP.MeshLabTutorials) showing the final texture creation process and the result.
