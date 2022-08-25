@@ -22,13 +22,12 @@ Purpose of this guide is to describe the steps of acquiring, processing, and pre
   * Clean points, [fix colors](https://ctu-mrs.github.io/docs/software/3d_model_processing/fixing_colors.html)
   * Merge all `.e57` files and decimate the result to desired resolution
 * [Meshlab](https://ctu-mrs.github.io/docs/software/3d_model_processing/meshlab.html) and/or [Blender](https://ctu-mrs.github.io/docs/software/3d_model_processing/blender.html)
-  * Use to create mesh
-  * Create [textures](https://ctu-mrs.github.io/docs/software/3d_model_processing/texturing.html)
-* Model [export](https://ctu-mrs.github.io/docs/software/3d_model_processing/exporting.html)  
+  * Use to create mesh and texture
+* Model [export](https://ctu-mrs.github.io/docs/software/3d_model_processing/export.html)  
 
 ## Software versions
 
-* [Meshlab](https://ctu-mrs.github.io/docs/software/3d_model_processing/meshlab.html): latest stable
+* [Meshlab](https://ctu-mrs.github.io/docs/software/3d_model_processing/meshlab.html): 2022.02 or latest stable 
 * [CloudCompare](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html): 2.11.3 compilled manually (how to in [readme](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html))
 * [Blender](https://ctu-mrs.github.io/docs/software/3d_model_processing/blender.html): latest stable
 * [Leica Cyclone Register 360](https://ctu-mrs.github.io/docs/software/3d_model_processing/leica.html): latest
