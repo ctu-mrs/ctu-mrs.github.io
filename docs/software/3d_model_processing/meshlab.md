@@ -26,9 +26,7 @@ Software for general work with meshes and texturing. Also allows to simply proce
 * [Basic texturing guide](https://github.com/gsilano/CrazyS/wiki/Working-With-Meshes-in-Gazebo)
 
 ## Import and merge
-
-<details>
-  <summary>Describe steps to import `.ptx` and `.pts` files into MeshLab.</summary>
+Describe steps to import `.ptx` and `.pts` files into MeshLab.
   
 ### `.ptx`
 * Meshlab has a new setting in the `Settings->Tools` for each file format. Please set it as shown in the image
@@ -56,13 +54,11 @@ Software for general work with meshes and texturing. Also allows to simply proce
 * `Point format` as `X Y Z Reflectance R G B`
 * `Separator` as `SPACE`
 * Click `OK`
-</details>
 
 
 ## Mesh computing
 
-<details>
-  <summary>We are using manily two methods to create a mesh from a pointcloud. <b>Screened Poisson</b> and <b>VGC</b>. </summary>
+We are using manily two methods to create a mesh from a pointcloud. <b>Screened Poisson</b> and <b>VGC</b>.
 
 * Mesh computing requires a huge amount of RAM! It is recommended to have at least 32 GB RAM with some backup swap. If you can provide 64 GB RAM, even better!
 * The input pointcloud has to be simplified to be able to mesh it. The ideal number of vertices is 6--10 milions.
@@ -81,19 +77,14 @@ Software for general work with meshes and texturing. Also allows to simply proce
 * Save the model into `.ply` and check the file size.
   * Recommend `.ply` file size in between **10--150MB**, depending on the application. For texture processing, the lower the better. The texture will cover inperfections. For model with no texture, the quality is visible more. If you would like to use the model in the simulation, assume **1.5x** times larger final exported file, so shrink the file accordingly. If exported with texture later on, the size will be about **2.5x** times bigger. These numbers depends on the amount of saved information in the *.ply* file.
 
-</details>
 
 ## Texturing
-
-<details>
-<summary>We use two types of texturing. <b>Pointcloud vertex color</b> texturing and <b>Raster image texturing</b>. Both will be described below.</summary>
+We use two types of texturing. <b>Pointcloud vertex color</b> texturing and <b>Raster image texturing</b>. Both will be described below.
 
 **A good quality texture can significantly improve the low quality mesh model**
 
 ### Pointcloud vertex color
-
-<details>
-  <summary>These methods using pointcloud vertex color to create a full texture.</summary>
+These methods using pointcloud vertex color to create a full texture.
   
 #### Simple (primitive) texture: FAST AND EASY
 * `Filters → Sampling → Vertex Attribute Transfer` Make sure the `Transfer Color` option is checked and press `Apply` to transfer the colour of the points onto the mesh.
@@ -124,12 +115,9 @@ Software for general work with meshes and texturing. Also allows to simply proce
 * Convert the texture to `.jpg` as shown in the [texture simplification](https://ctu-mrs.github.io/docs/software/3d_model_processing/meshlab.html#texture-simplification) guide.
 * Save the final result in `.ply` format.
  
-</details>
 
 ### Texturing with raster images
-
-<details>
-  <summary>The pointcloud vertex color might not be detailed enough for the whole model or it might help to improve part of the model with raster images.</summary>
+The pointcloud vertex color might not be detailed enough for the whole model or it might help to improve part of the model with raster images.
   
   * There is a nice <a href="https://www.youtube.com/playlist?list=PL60mCsep96Je1bzGrWnK-nL9pi95r7UqI">video guide</a> showing all features and steps. **Recommend to check the videos first. It will help you to understand the program layout and functionalities before next steps!**
   * Also, if you like to read, there is a text <a href="https://wikis.utexas.edu/display/specify6/Texture+overlay+in+MeshLab">guide</a> describing the whole process.
@@ -154,12 +142,9 @@ Software for general work with meshes and texturing. Also allows to simply proce
     * *Note: It might be possible to combine good texture from pointcloud with texture from raster images. Parametrization and texturing could be done separately. Check!* 
   * Save the final textured mesh in required format described in the [export](https://ctu-mrs.github.io/docs/software/3d_model_processing/export.html) section.
 
-</details>
 
 ## Texture simplification
-
-<details>
-  <summary>It is recommended to convert the texture to `.jpg` format. Recommend to use either <a href="https://www.gimp.org/">Gimp</a> or <a href="https://linux.die.net/man/1/convert">tool</a> tool. Next steps will be described using `convert` tool.</summary>
+It is recommended to convert the texture to `.jpg` format. Recommend to use either <a href="https://www.gimp.org/">Gimp</a> or <a href="https://linux.die.net/man/1/convert">tool</a> tool. Next steps will be described using `convert` tool.
   
     * `convert input.png -quality 30 output.jpg`
     * The 30% jpeg quality is sufficient. The `imagemagick` tool might have some RAM/disk limitations set in default config file `/etc/ImageMagick-version/policy.xml`. Check it if you have errors. If yes comment that limitations.
@@ -172,14 +157,8 @@ Software for general work with meshes and texturing. Also allows to simply proce
     * Replace the newly created texture with the one that you simplified to `.jpg` and keep the same name.
     * Open the `.ply` file again and validate, if the correct `.jpg` texture is applied. It can be checked in the `Export Mesh` option window.
 
-</details>
-
-</details>
-
 ## Camera settings
-
-<details>
-  <summary>This guide shows how to setup the MeshLab raster or general MeshLab camera.</summary>
+This guide shows how to setup the MeshLab raster or general MeshLab camera.
   
 ### MeshLab Main Camera
 * Backup the original MeshLab camera settings before changing anything with `Windows->Save cammera settings to file` option. MeshLab will always reset the main camera setting when a new program instance is launched, but rather to make sure.
@@ -253,29 +232,20 @@ FocalMm="6.141"
 * The `transform` contains the line representation of the 4x4 matrix from previous step. **Do not forget to use the transformed value as mention in the guide**!
 * Import values with right click on the right-down raster image file and selecting `Import cameras for active rasters from file`
 
-</details>
-
 ## Cleaning
-
-<details>
-  <summary>I did not find any that useful filters to clean the pointcloud in the Meshlab. I recommend to perform filtering in <a href="https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare">CloudCompare</a> software.</summary>
+I did not find any that useful filters to clean the pointcloud in the Meshlab. I recommend to perform filtering in <a href="https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare">CloudCompare</a> software.
   
 * CloudCompare gives two options:
     1. **[Noise filter](http://www.cloudcompare.org/doc/wiki/index.php?title=Noise_filter)**
     2. **[SOR Filter](https://www.cloudcompare.org/doc/wiki/index.php?title=SOR_filter)**: recommend to use. Try to adjust the values according to the particular example.
 * Export the file in the binary **.PLY** format for further use in Meshlab.
  
-</details>
-
 ## Pointcloud simplification
 
-<details>
-  <summary>Recommend to use simplification from <a href="https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#command-line-mode">CloudCompare</a> software. However, if you want to use the Meshlab for it, here is the guide.</summary>
+Recommend to use simplification from <a href="https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#command-line-mode">CloudCompare</a> software. However, if you want to use the Meshlab for it, here is the guide.
   
 * If you would like to use only the pointcloud, you can keep it as large as it is, but usually it is more practical to decrease the amount of vertices.
     - **Poisson-disk Sampling**: You can define exact number of samples or explicit radius (distance) between samples. I would recommend to use the *world unit* explicit radius. Generally, Meshlab does not scale everything to meters, but if you used pointcloud from Leica scanning, you can assume metric units. Hence set about 0.01 *world unit* should be about one vertex per 1 cm. Reasonable value is around 0.02--0.05. Personally, I would go for 0.02/0.03 to make the whole process faster for large models. Make sure to check **Base Mesh Subsampling**.
     - **Point Cloud Simplification**: Define number of samples or world units you would like to have and click **Apply**. It uses some "heuristic" to keep the most of points. Usually, set the number of samples lower than you want. It will always give you more.
         - If you use the world size, it will have similar result as the *Poisson-disk Sampling* method.
 * I have not studied the difference between both methods, but the **Poisson-disk Sampling** is used more.
- 
-</details>
