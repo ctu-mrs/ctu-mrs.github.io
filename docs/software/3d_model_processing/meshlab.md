@@ -35,17 +35,17 @@ Software for general work with meshes and texturing. Also allows to simply proce
 
     ![](fig/ptx_settings.png) 
 
-* At the end, merge all imported layers into one. Click on the one of the layer with `Right mouse button -> Flatten Visible Layers`. Check **Keep unreferenced vertices** and click **Apply**.
-* Use the tool **Select Faces/Vertices inside polyline area** to clean the pointcloud.
-* Make sure to have the layer you want to clean active (in blue color)!
-* **IMPORTANT: Adjust the PointCloud coordinate system.** It is useful to do ASAP at the beginning of the process.
+- At the end, merge all imported layers into one. Click on the one of the layer with `Right mouse button -> Flatten Visible Layers`. Check **Keep unreferenced vertices** and click **Apply**.
+- Use the tool **Select Faces/Vertices inside polyline area** to clean the pointcloud.
+- Make sure to have the layer you want to clean active (in blue color)!
+- **IMPORTANT: Adjust the PointCloud coordinate system.** It is useful to do ASAP at the beginning of the process.
     - The best option is to align the coordinate system before exporting the data from Leica as explained [here](https://ctu-mrs.github.io/docs/software/3d_model_processing/leica.html#defining-own-cooridnate-system). 
     - Show the coordinate system with the `Draw XYZ axes in world coordinates` icon
     - Click the `Manipulators tool` icon
     - Follow the instruction to adjust the position of the pointcloud
     - If you are stasified with the adjustement, firstly **save the Meshlab project**. It keeps the transformation from the original position in the readable XML format simple savefile.
     - Run `Matrix: Freeze Current Matrix` function to apply the transformation on current file.
-* Save the final `.ply` file
+- Save the final `.ply` file
 
 ### `.pts`
 * Please set it as shown in the image
