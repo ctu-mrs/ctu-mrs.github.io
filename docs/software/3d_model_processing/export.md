@@ -22,10 +22,15 @@ Most of the times, the models are saved in following formats
 * Unfortunatelly bigger file size. 
 
 ## Web
-* Please follow the [original guide](https://mrs.felk.cvut.cz/gitlab/bednaj14/meshlab/blob/master/modely_report.pdf) and the scripts inside.
+* The basic guide will be described here. Please follow the [original guide](https://mrs.felk.cvut.cz/gitlab/bednaj14/meshlab/blob/master/modely_report.pdf) and the scripts inside for detailed information.  
+* Download the [obj2optimizedGlb.sh](https://mrs.felk.cvut.cz/gitlab/bednaj14/meshlab/blob/master/obj2optimizedGlb.sh) script.
 * Recommend to install `NodeJS` with [snapcraft](https://snapcraft.io/node) tool. The `apt` version for `Ubuntu` does not contain the up-to-date version.
-* The convert tool needs to have max *16384x16384* texture. Otherwise it will not work. Validate this sentence!
-* If you create a texture from raster images, check the *gltf-pipeline* tool parameter *quantizePositionBits* to have value lower than 25. Otherwise, the model will not be possible to visualize. 
+* The convert tool needs to have max *16384x16384* texture. Otherwise it will not work.
+  * *Note: In general, it is better to have several lower size texture files than a single large one.*
+  * **Raster texture warning:** If you create a texture from raster images, check the *gltf-pipeline* tool parameter *quantizePositionBits* to have value lower than 25, e.g. 20. Otherwise, the model will not be possible to visualize. 
+* Run `./obj2optimizedGlb.sh input_file.obj output_file.glb`
+  * Parameters `quantizePositionBits`,`quantizeNormalBits`, `quantizeTexcoordBits`, `quantizeColorBits` and `quantizeGenericBits` are set to max values to provide best quality model. Feel free to lower the values to decrease the `.glb` file size.    
+* Upload the `.glb` file in [glTF Viewer](https://gltf-viewer.donmccurdy.com/) to view the result. 
 
 ## Gazebo
 * The `.dae` format is most suitable for Gazebo.

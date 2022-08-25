@@ -34,3 +34,7 @@ grand_parent: Software
 
 ## Saving rendered animation
 * Output properties tab on right panel, set location to save, set File Format on FFmpeg Video, set Container MPEG-4, set Output Quality high quality
+
+## Blender with color pointcloud
+* Use the [video](https://www.youtube.com/watch?v=kwpj7ZUtnac&ab_channel=Nicko16) to setup a plugin into Blender to allow pointcloud color visualization.
+* All steps are described in the video.
