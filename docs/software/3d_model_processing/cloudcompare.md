@@ -107,5 +107,3 @@ sudo cmake --install .
 * *Note: To check the image alignment in the CloudCompare, change the FOV of the camera in `Camera settings` of the image view to `117.60°`. This will allow you to visually compare the alignment sensor position and the pointcloud behind.*
 
   ![](fig/cc_camera_visualization.png)  
-
-## Work in progress

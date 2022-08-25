@@ -7,7 +7,7 @@ grand_parent: Software
 
 # Blender
 * Great tutorial how to do the [camera movements](https://www.youtube.com/watch?v=a7qyW1G350g&t=111s&ab_channel=Polyfjord)
-* Always use the *.dae* model: fast loading and proper texture rendering
+* Always use the `.dae` model: fast loading and proper texture rendering
 * I used Eeevee rendering mode, the fastest and sufficient with default settings
 
 ## Mesh parametrization

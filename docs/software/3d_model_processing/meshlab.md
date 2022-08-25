@@ -26,6 +26,7 @@ Software for general work with meshes and texturing. Also allows to simply proce
 * [Basic texturing guide](https://github.com/gsilano/CrazyS/wiki/Working-With-Meshes-in-Gazebo)
 
 ## Import and merge
+
 <details>
   <summary>Describe steps to import `.ptx` and `.pts` files into MeshLab.</summary>
   
@@ -59,6 +60,7 @@ Software for general work with meshes and texturing. Also allows to simply proce
 
 
 ## Mesh computing
+
 <details>
   <summary>We are using manily two methods to create a mesh from a pointcloud. <b>Screened Poisson</b> and <b>VGC</b>. </summary>
 
@@ -121,9 +123,11 @@ Software for general work with meshes and texturing. Also allows to simply proce
     * The process takes usually a lot of time. The cmd line might show `QImage::pixel: coordinate (number,number) out of range` messages. It means it cannot fit the point from the pointcloud into the desired texture. However, this is not a problem. The texture from `Blender` is not predefined for specific dimension, hence arbitrary resolution will result in this message.
 * Convert the texture to `.jpg` as shown in the [texture simplification](https://ctu-mrs.github.io/docs/software/3d_model_processing/meshlab.html#texture-simplification) guide.
 * Save the final result in `.ply` format.
+ 
 </details>
 
 ### Texturing with raster images
+
 <details>
   <summary>The pointcloud vertex color might not be detailed enough for the whole model or it might help to improve part of the model with raster images.</summary>
   
@@ -149,9 +153,11 @@ Software for general work with meshes and texturing. Also allows to simply proce
   * Run the `Parametrization + texturing from registered textures` function. Choose the parameters according to the [video](https://youtu.be/OJZRuIzHcVw) guide. 
     * *Note: It might be possible to combine good texture from pointcloud with texture from raster images. Parametrization and texturing could be done separately. Check!* 
   * Save the final textured mesh in required format described in the [export](https://ctu-mrs.github.io/docs/software/3d_model_processing/export.html) section.
+
 </details>
 
 ## Texture simplification
+
 <details>
   <summary>It is recommended to convert the texture to `.jpg` format. Recommend to use either <a href="https://www.gimp.org/">Gimp</a> or <a href="https://linux.die.net/man/1/convert">tool</a> tool. Next steps will be described using `convert` tool.</summary>
   
@@ -171,6 +177,7 @@ Software for general work with meshes and texturing. Also allows to simply proce
 </details>
 
 ## Camera settings
+
 <details>
   <summary>This guide shows how to setup the MeshLab raster or general MeshLab camera.</summary>
   
@@ -249,6 +256,7 @@ FocalMm="6.141"
 </details>
 
 ## Cleaning
+
 <details>
   <summary>I did not find any that useful filters to clean the pointcloud in the Meshlab. I recommend to perform filtering in <a href="https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare">CloudCompare</a> software.</summary>
   
@@ -256,9 +264,11 @@ FocalMm="6.141"
     1. **[Noise filter](http://www.cloudcompare.org/doc/wiki/index.php?title=Noise_filter)**
     2. **[SOR Filter](https://www.cloudcompare.org/doc/wiki/index.php?title=SOR_filter)**: recommend to use. Try to adjust the values according to the particular example.
 * Export the file in the binary **.PLY** format for further use in Meshlab.
+ 
 </details>
 
 ## Pointcloud simplification
+
 <details>
   <summary>Recommend to use simplification from <a href="https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#command-line-mode">CloudCompare</a> software. However, if you want to use the Meshlab for it, here is the guide.</summary>
   
@@ -267,4 +277,5 @@ FocalMm="6.141"
     - **Point Cloud Simplification**: Define number of samples or world units you would like to have and click **Apply**. It uses some "heuristic" to keep the most of points. Usually, set the number of samples lower than you want. It will always give you more.
         - If you use the world size, it will have similar result as the *Poisson-disk Sampling* method.
 * I have not studied the difference between both methods, but the **Poisson-disk Sampling** is used more.
+ 
 </details>
