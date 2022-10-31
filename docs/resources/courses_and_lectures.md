@@ -15,3 +15,6 @@ nav_order: 2
   - series on what they did not teach you in the lectures (shell, vim, debugging, profiling, git, and others)
 - [Robotic Systems (draft)](https://motion.cs.illinois.edu/RoboticSystems/):
   - work in progess on book on robotic systems from Kris Hauser from University of Illinois at Urbana-Champaing
+- [KSP MFF CUNI: Programatorske kucharky (CZ)](http://ksp.mff.cuni.cz/kucharky/):
+  - 18 well-written manuals on introduction to algoritmization
+  - available also in single [pdf](http://ksp.mff.cuni.cz/kucharky/programatorske-kucharky.pdf) file
