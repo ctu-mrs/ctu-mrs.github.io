@@ -8,8 +8,8 @@ grand_parent: Software
 
 ![](fig/thumbnail.jpg)
 
-| Build status | [![Build Status](https://github.com/ctu-mrs/mrs_uav_odometry/workflows/Melodic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_odometry/actions) | [![Build Status](https://github.com/ctu-mrs/mrs_uav_odometry/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_odometry/actions) |
-|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| Build status | [![Build Status](https://github.com/ctu-mrs/mrs_uav_odometry/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_odometry/actions) |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 
 This package provides state estimation of the UAV dynamics based on sensor fusion of onboard sensors.
 The estimated states are:

@@ -8,8 +8,8 @@ grand_parent: Software
 
 ![](fig/thumbnail.jpg)
 
-| Build status | [![Build Status](https://github.com/ctu-mrs/mrs_uav_managers/workflows/Melodic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_managers/actions) | [![Build Status](https://github.com/ctu-mrs/mrs_uav_managers/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_managers/actions) |
-|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| Build status | [![Build Status](https://github.com/ctu-mrs/mrs_uav_managers/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_managers/actions) |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 
 This package contains *high-level* flight managers.
 

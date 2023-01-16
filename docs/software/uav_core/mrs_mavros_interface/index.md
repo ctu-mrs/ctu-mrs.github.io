@@ -6,8 +6,8 @@ grand_parent: Software
 ---
 # MRS Mavros Interface
 
-| Build status | [![Build Status](https://github.com/ctu-mrs/mrs_mavros_interface/workflows/Melodic/badge.svg)](https://github.com/ctu-mrs/mrs_mavros_interface/actions) | [![Build Status](https://github.com/ctu-mrs/mrs_mavros_interface/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_mavros_interface/actions) |
-|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Build status | [![Build Status](https://github.com/ctu-mrs/mrs_mavros_interface/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_mavros_interface/actions) |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 An interface between [MRS UAV core](https://github.com/ctu-mrs/uav_core) and [Mavros](http://wiki.ros.org/mavros).
 Historically, it provided conversion between Mavros's and our conventions, but there is no need for them now.

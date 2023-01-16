@@ -6,8 +6,8 @@ grand_parent: Software
 ---
 # MRS UAV Trajectory Generation
 
-| Build status | [![Build Status](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/workflows/Melodic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/actions) | [![Build Status](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/actions) |
-|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Build status | [![Build Status](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/actions) |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 ![](fig/thumbnail.jpg)
 
