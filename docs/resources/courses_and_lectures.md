@@ -16,7 +16,7 @@ nav_order: 2
 - [Robotic Systems (draft)](https://motion.cs.illinois.edu/RoboticSystems/):
   - work in progess on book on robotic systems from Kris Hauser from University of Illinois at Urbana-Champaing
 - [KSP MFF CUNI: Programatorske kucharky (CZ)](http://ksp.mff.cuni.cz/kucharky/):
-  - 18 well-written manuals on introduction to algoritmization
+  - 18 well-written manuals on introduction to algorithmization
   - available also in single [pdf](http://ksp.mff.cuni.cz/kucharky/programatorske-kucharky.pdf) file
 - [Machine Learning cheat sheet](https://github.com/soulmachine/machine-learning-cheat-sheet) (90 pages):
   - work in progress
