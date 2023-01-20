@@ -17,3 +17,5 @@ nav_order: 1
 - [**The Book of Statistical Proofs**](https://statproofbook.github.io/)
   - centralized, open and collaboratively edited archive of statistical theorems for the computational sciences
   - example proof: [MLE for the univariate Gaussian](https://statproofbook.github.io/P/ug-mle)
+- [**The Matrix Cookbook**](https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf)
+  - everything about matrices and matters relating to them
