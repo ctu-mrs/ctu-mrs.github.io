@@ -75,7 +75,7 @@ We are using manily two methods to create a mesh from a pointcloud. <b>Screened 
     ![](fig/simplification_example.png)
 
 * Save the model into `.ply` and check the file size.
-  * Recommend `.ply` file size in between **10--150MB**, depending on the application. For texture processing, the lower the better. The texture will cover inperfections. For model with no texture, the quality is visible more. If you would like to use the model in the simulation, assume **1.5x** times larger final exported file, so shrink the file accordingly. If exported with texture later on, the size will be about **2.5x** times bigger. These numbers depends on the amount of saved information in the *.ply* file.
+  * Recommend `.ply` file size in between **10--150MB**, depending on the application. For texture processing, the lower the better. The texture will cover inperfections. For model with no texture, the quality is visible more. If you would like to use the model in the simulation, assume **2.5x** times larger final exported file, so shrink the file accordingly. If exported with texture later on, the size will be about **2.5x** times bigger. These numbers depends on the amount of saved information in the *.ply* file.
 
 
 ## Texturing
