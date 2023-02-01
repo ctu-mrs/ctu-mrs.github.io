@@ -13,6 +13,7 @@ Used for data processing before meshing and texturing.
 ## Normals computing
 - Recommend to use with *.e57* or *.ptx* data.
 - `Edit -> Normals -> Compute`
+- The options below are description from the official documentation.
 - Local surface model
   - (best fit) Plane - robust to noise but very bad with sharp edges and corners
   - Triangulation - weak to noise but good with sharp edges
@@ -22,6 +23,11 @@ Used for data processing before meshing and texturing.
 - Orientation
   - Use sensor(s) whenever possible - **recommend to use for .e57** 
   - If the cloud is associated to a grid structure, then this structure can be used to very guess the right normal orientation quickly and in a very robust way - **probably good to use with .ptx, but check**
+- If sensor position not available, recommend to use the default parameters set. Example as image below. The `octree` value depends on the model.   
+ 
+  ![](fig/cc_normals_computing.png)  
+
+- Some parts might have inverted normals orientation. I did not find the way how to check this in the `CloudCompare`. I recommend to export the data and check it in the `Meshlab`. `CloudCompare` allows to invert normals with `Edit->Normals->Invert`. **The function inverts all normals**. Cut the model in pieces with `Meshlab` before inverting to invert only the required parts.
 
 ## Smoothing colors
 - `Edit -> Colors -> Convert to Scalar field`
