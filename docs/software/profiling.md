@@ -225,6 +225,8 @@ Notice that the program will run significantly slower than if you simply run it 
 
 *Note:* All these tools can be installed in Ubuntu by running `sudo apt install valgrind kcachegrind`.
 
+*Note:* To run the tool with a ROS launchfile, add the command as a `launch-prefix` parameter of the `node` tag (i.e. `<node ... launch-prefix="valgrind --tool=callgrind" >`). The output file will by default be created in the `~/.ros` folder. An example of the `node` tag with Callgrind enabled:
+
 Now, the data can be visualized using another tool - [KCachegrind](https://kcachegrind.github.io/html/Home.html).
 Simply call
 
