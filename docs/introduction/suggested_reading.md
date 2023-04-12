@@ -42,7 +42,7 @@ Thus, we don't need to reinvent the wheel.
 
 Getting into ROS is simple, follow tutorials on their webpage, and don't be afraid to experiment.
 You can't break the drone in simulation :-).
-Before trying the tutorials, please install our [UAV system](http://github.com/mrs_uav_system).
+Before trying the tutorials, please install our [UAV system](https://github.com/ctu-mrs/mrs_uav_system).
 It will install all the tools we usually use.
 
 * Tutorials: [http://wiki.ros.org/ROS/Tutorials](http://wiki.ros.org/ROS/Tutorials)
