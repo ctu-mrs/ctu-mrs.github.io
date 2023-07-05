@@ -4,28 +4,41 @@ title: PX4 Log Knowledgebase
 parent: Hardware
 ---
 
-`vehicle_status/nav_state` : N for which :   
+### Vehicle flight mode
+---
 
-flight_modes_table = {
-0: ('Manual', '#cc0000'), # red
-1: ('Altitude', '#eecc00'), # yellow
-2: ('Position', '#00cc33'), # green
-10: ('Acro', '#66cc00'), # olive
-14: ('Offboard', '#00cccc'), # light blue
-15: ('Stabilized', '#0033cc'), # dark blue
-16: ('Rattitude', '#ee9900'), # orange # all AUTO-modes use the same color
-3: ('Mission', '#6600cc'), # purple
-4: ('Loiter', '#6600cc'), # purple
-5: ('Return to Land', '#6600cc'), # purple
-6: ('RC Recovery', '#6600cc'), # purple
-7: ('Return to groundstation', '#6600cc'), # purple
-8: ('Land (engine fail)', '#6600cc'), # purple
-9: ('Land (GPS fail)', '#6600cc'), # purple
-12: ('Descend', '#6600cc'), # purple
-13: ('Terminate', '#6600cc'), # purple
-17: ('Takeoff', '#6600cc'), # purple
-18: ('Land', '#6600cc'), # purple
-19: ('Follow Target', '#6600cc'), # purple
-20: ('Precision Land', '#6600cc'), # purple
-21: ('Orbit', '#6600cc'), # purple
+`vehicle_status/nav_state`:\
+\
+flight_modes_table = {\
+0: ('Manual'), # red\
+1: ('Altitude'), # yellow\
+2: ('Position'), # green\
+10: ('Acro'), # olive\
+14: ('Offboard'), # light blue\
+15: ('Stabilized'), # dark blue\
+16: ('Rattitude'), # orange # all AUTO-modes use the same color\
+3: ('Mission'), # purple\
+4: ('Loiter'), # purple\
+5: ('Return to Land'), # purple\
+6: ('RC Recovery'), # purple\
+7: ('Return to groundstation'), # purple\
+8: ('Land (engine fail)'), # purple\
+9: ('Land (GPS fail)'), # purple\
+12: ('Descend'), # purple\
+13: ('Terminate'), # purple\
+17: ('Takeoff'), # purple\
+18: ('Land'), # purple\
+19: ('Follow Target'), # purple\
+20: ('Precision Land'), # purple\
+21: ('Orbit'), # purple\
 }
+
+### RC Inputs
+---
+`input_rc/values.00` : Roll\
+`input_rc/values.01` : Throttle\
+`input_rc/values.02` : Pitch\
+`input_rc/values.03` : Yaw\
+`input_rc/values.04` : Offboard\
+`input_rc/values.05` : Flight Mode\
+`manual_control_switches/*` : Switches\
