@@ -130,9 +130,11 @@ Disable: `EKF2_MAG_TYPE := None` and `SYS_HAS_MAG := 0`
 
 Enable: `EKF2_MAG_TYPE := Automatic` and `SYS_HAS_MAG := 1`
 
-## Magnetometer priorities
+## Magnetometer priorities - FIX for Firmware 1.13.2-3 (Pixhawk 6X/6C)
 
-When flying with external magnetometer, always set the lowest priority to the internal magnetometer and the maximal priority to the external one. This prevents jumps in heading odometry and avoids potential crashes as default fusion of both magnetometers was observed to be not reliable.
+When flying with external magnetometer, always set the lowest priority to the internal magnetometer and the maximal priority to the external one. 
+Best is to only use the external magnetometer. This prevents jumps in heading odometry and avoids potential crashes as default fusion of both magnetometers was observed to be not reliable.
 
-Priorities setting: `CAL_MAG0_PRIO := Disabled` and `CAL_MAG1_PRIO := Max`
+Publish only the primary magnetometer: `SENS_MAG_MODE=Publish primary magnetometer`
+Priorities setting: `CAL_MAG0_PRIO := Min` (internal) and `CAL_MAG1_PRIO := Max` (external)
 
