@@ -139,6 +139,12 @@ root - core unlimited
 *    - core unlimited
 ```
 
+## Getting debugging symbols for the C++ standard library
+
+By default, the `libstdc++` regrettably doesn't come installed with debugging symbols in Ubuntu 20.04 (this shouldn't be a problem for 22.04 and newer releases).
+This means, that you can't use e.g. `std::cout::operator<<()` and other functions from the standard library while in GDB, which may be quite limiting.
+[Here](https://wiki.ubuntu.com/Debug%20Symbol%20Packages) is an official tutorial on how to install them.
+
 ## Further reading
 
 If you're not satisfied with the basic CLI/TUI debugging options GDB offers, note that it is very easily extendable and scriptable.
