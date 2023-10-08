@@ -4,6 +4,10 @@ title: ROS remote
 parent: Software
 ---
 
+| :warning: **Attention please: This page is outdated.**                                                                                           |
+| :---                                                                                                                                             |
+| The MRS UAV System 1.5 is being released and this page needs updating. Plase, keep in mind that the information on this page might not ve valid. |
+
 # Connecting to ROS core remotely
 
 ROS allows multiple computers to communicate and share topics and services via a local network.

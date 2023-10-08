@@ -5,6 +5,10 @@ parent: catkin
 grand_parent: Software
 ---
 
+| :warning: **Attention please: This page is outdated.**                                                                                           |
+| :---                                                                                                                                             |
+| The MRS UAV System 1.5 is being released and this page needs updating. Plase, keep in mind that the information on this page might not ve valid. |
+
 # Managing Workspaces
 
 This guide is an important and mandatory reading for all MRS members.

@@ -4,6 +4,10 @@ title: Hector SLAM
 parent: Software
 ---
 
+| :warning: **Attention please: This page is outdated.**                                                                                           |
+| :---                                                                                                                                             |
+| The MRS UAV System 1.5 is being released and this page needs updating. Plase, keep in mind that the information on this page might not ve valid. |
+
 # Hector SLAM
 
 Hector slam ([github.com/tu-darmstadt-ros-pkg/hector_slam](http://github.com/tu-darmstadt-ros-pkg/hector_slam)) is a 2D LIDAR SLAM.

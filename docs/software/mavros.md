@@ -5,6 +5,10 @@ parent: Software
 nav_order: 97
 ---
 
+| :warning: **Attention please: This page is outdated.**                                                                                           |
+| :---                                                                                                                                             |
+| The MRS UAV System 1.5 is being released and this page needs updating. Plase, keep in mind that the information on this page might not ve valid. |
+
 # Mavros
 
 [Mavros](https://github.com/mavlink/mavros) provides an interface between the [uav_core](https://github.com/ctu-mrs/uav_core) and the [Pixhawk](https://pixhawk.org/) flight controller.

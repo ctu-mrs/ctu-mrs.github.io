@@ -5,6 +5,10 @@ parent: Introduction
 nav_order: 98
 ---
 
+| :warning: **Attention please: This page is outdated.**                                                                                           |
+| :---                                                                                                                                             |
+| The MRS UAV System 1.5 is being released and this page needs updating. Plase, keep in mind that the information on this page might not ve valid. |
+
 # How to update the mrs_uav_system
 
 This manual assumes you have already installed the [mrs_uav_system](https://github.com/ctu-mrs/mrs_uav_system) and you want to update package(s) of the MRS system.

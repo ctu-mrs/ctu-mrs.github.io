@@ -5,6 +5,10 @@ parent: Introduction
 nav_order: 99
 ---
 
+| :warning: **Attention please: This page is outdated.**                                                                                           |
+| :---                                                                                                                                             |
+| The MRS UAV System 1.5 is being released and this page needs updating. Plase, keep in mind that the information on this page might not ve valid. |
+
 We use [catkin tools](https://catkin-tools.readthedocs.io/en/latest/) to manage our ROS workspaces.
 Make sure you are located within the workspace when issuing the following commands.
 If your workspace is sourced, you can `cd` to the workspace by:

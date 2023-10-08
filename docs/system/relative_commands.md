@@ -5,6 +5,10 @@ parent: The UAV system
 nav_order: 9
 ---
 
+| :warning: **Attention please: This page is outdated.**                                                                                           |
+| :---                                                                                                                                             |
+| The MRS UAV System 1.5 is being released and this page needs updating. Plase, keep in mind that the information on this page might not ve valid. |
+
 ## tl;dr:
 If you're setting a setpoint reference relative to the current UAV pose, do not use the pose from the [state estimator](https://github.com/ctu-mrs/mrs_uav_odometry) to calculate the new setpoint.
 Use the UAV pose from the "commanded pose" topic (currently named `control_manager/position_cmd`) to avoid drift.

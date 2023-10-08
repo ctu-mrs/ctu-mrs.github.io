@@ -5,6 +5,10 @@ parent: Introduction
 nav_order: 1
 ---
 
+| :warning: **Attention please: This page is outdated.**                                                                                           |
+| :---                                                                                                                                             |
+| The MRS UAV System 1.5 is being released and this page needs updating. Plase, keep in mind that the information on this page might not ve valid. |
+
 # Mandatory readings for newcomers
 
 Nowadays, doing research in this field is not just about the theory and occasional lab experiment.

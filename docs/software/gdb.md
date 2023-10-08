@@ -4,6 +4,10 @@ title: Debugging with GDB
 parent: Software
 ---
 
+| :warning: **Attention please: This page is outdated.**                                                                                           |
+| :---                                                                                                                                             |
+| The MRS UAV System 1.5 is being released and this page needs updating. Plase, keep in mind that the information on this page might not ve valid. |
+
 # Debugging with GDB
 
 If you're experiencing crashes of your C/C++ ROS node/nodelet or if your program is not behaving as expected in general and you want to inspect it, you can reach for a debugger.

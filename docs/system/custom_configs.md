@@ -5,6 +5,10 @@ parent: The UAV system
 nav_order: 6
 ---
 
+| :warning: **Attention please: This page is outdated.**                                                                                           |
+| :---                                                                                                                                             |
+| The MRS UAV System 1.5 is being released and this page needs updating. Plase, keep in mind that the information on this page might not ve valid. |
+
 # How to use custom config files for uav_core modules
 
 ## Motivation
