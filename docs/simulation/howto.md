@@ -7,7 +7,7 @@ nav_order: 1
 
 | :warning: **Attention please: This page is outdated.**                                                                                           |
 | :---                                                                                                                                             |
-| The MRS UAV System 1.5 is being released and this page needs updating. Plase, keep in mind that the information on this page might not be valid. |
+| The MRS UAV System 1.5 is being released and this page needs updating. Please, keep in mind that the information on this page might not be valid. |
 
 # How to start the simulation
 If you have everything installed and compiled, the next step is to test it in the simulation.
