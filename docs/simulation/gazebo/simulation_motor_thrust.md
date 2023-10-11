@@ -1,8 +1,7 @@
 ---
 layout: default
 title: Gazebo Motor Parameters
-parent: Simulation
-nav_order: 6
+parent: Gazebo
 ---
 
 | :warning: **Attention please: This page is outdated.**                                                                                           |

@@ -1,15 +1,15 @@
 ---
 layout: default
 title: How to simulate
-parent: Simulation
-nav_order: 1
+parent: Gazebo
 ---
 
-| :warning: **Attention please: This page is outdated.**                                                                                           |
-| :---                                                                                                                                             |
+| :warning: **Attention please: This page is outdated.**                                                                                            |
+| :---                                                                                                                                              |
 | The MRS UAV System 1.5 is being released and this page needs updating. Please, keep in mind that the information on this page might not be valid. |
 
 # How to start the simulation
+
 If you have everything installed and compiled, the next step is to test it in the simulation.
 Running the simulation consists of several steps, which are usually **automated** using a **tmuxinator** script.
 Examples of tmuxinator files can be found in subfolders of [simulation/example_tmux_scripts](https://github.com/ctu-mrs/simulation/tree/master/example_tmux_scripts), e.g., [one_drone_gps](https://github.com/ctu-mrs/simulation/blob/master/example_tmux_scripts/one_drone_gps/session.yml).
@@ -19,7 +19,6 @@ Assuming the simulation was cloned to the **~/git** folder, you can launch an ex
 cd ~/git/simulation/example_tmux_scripts/one_drone_gps
 ./start.sh
 ```
-
 
 # Individual steps explanation
 

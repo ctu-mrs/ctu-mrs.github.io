@@ -1,8 +1,7 @@
 ---
 layout: default
 title: MRS Drone Spawner
-parent: Simulation
-nav_order: 2
+parent: Gazebo
 ---
 
 | :warning: **Attention please: This page is outdated.**                                                                                           |

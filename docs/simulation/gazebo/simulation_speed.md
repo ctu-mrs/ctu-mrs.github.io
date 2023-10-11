@@ -1,8 +1,7 @@
 ---
 layout: default
 title: Run Simulation Faster than Real-time
-parent: Simulation
-nav_order: 4
+parent: Gazebo
 ---
 
 | :warning: **Attention please: This page is outdated.**                                                                                           |
