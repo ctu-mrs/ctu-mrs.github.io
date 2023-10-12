@@ -11,11 +11,11 @@ nav_order: 3
 
 # UAV-ROS interface
 
-The UAV can be given commands via the following [managers](https://github.com/ctu-mrs/mrs_uav_managers) and the [state estimator](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-).
+The UAV can be given commands via the following [managers](https://github.com/ctu-mrs/mrs_uav_managers).
 
 ## ControlManager
 
-The [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers#ControlManager) takes care of executing the [trackers](https://github.com/ctu-mrs/mrs_uav_trackers#mrs-uav-trackers-) and [controllers](https://github.com/ctu-mrs/mrs_uav_controllers#mrs-uav-controllers-) and it maintains one of each as an *active*.
+The [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers#ControlManager) takes care of executing the [trackers](https://github.com/ctu-mrs/mrs_uav_trackers#mrs-uav-trackers-) and [controllers](https://github.com/ctu-mrs/mrs_uav_controllers#mrs-uav-controllers-) and it maintains one of each as an *active* one.
 The controllers handle a feedback loop for stabilization and control of the UAV.
 The trackers are the reference generators for the controllers.
 High-level navigation (or a user) does not interact with the controllers/trackers directly.
@@ -23,10 +23,10 @@ The *managers* provide most of the interface*.
 
 ### The flow of information
 
-The ControManager is subscribed to a source of [UAV odometry](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-), and it hands it to the trackers and controllers.
-With each update of the state estimate, the currently active tracker produces a new reference, and the currently active controller generates a new control command.
-The controllers and trackers can be switched in mid-flight to accommodate for mission different scenarios.
-Users supply the desired references to the ControlManager, which forwards them to the currently active tracker and controller.
+The ControManager is subscribed to a source of [UAV State](https://ctu-mrs.github.io/mrs_msgs/msg/UavState.html), and it hands it to the trackers and controllers.
+With each update of the UAV State, the currently active tracker produces a new reference, and the currently active controller generates a new control output.
+The controllers and trackers can be switched in mid-flight to accommodate for different mission scenarios.
+Users supply the desired references to the ControlManager, which forwards the references to the currently active tracker and controller.
 
 ### Provided topics
 

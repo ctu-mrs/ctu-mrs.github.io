@@ -2,6 +2,7 @@
 layout: default
 title: Custom simulation world
 parent: Gazebo
+grand_parent: Simulation
 ---
 
 | :warning: **Attention please: This page is outdated.**                                                                                           |

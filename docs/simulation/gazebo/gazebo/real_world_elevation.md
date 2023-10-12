@@ -2,6 +2,7 @@
 layout: default
 title: How to create a real world elevation map in Gazebo
 parent: Gazebo
+grand_parent: Simulation
 ---
 
 # How to create a real world elevation map in Gazebo

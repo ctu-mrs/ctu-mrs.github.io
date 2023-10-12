@@ -2,6 +2,7 @@
 layout: default
 title: How to simulate
 parent: Gazebo
+grand_parent: Simulation
 ---
 
 | :warning: **Attention please: This page is outdated.**                                                                                            |
