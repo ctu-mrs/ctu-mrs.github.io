@@ -5,9 +5,9 @@ parent: The UAV System
 nav_order: 7
 ---
 
-| :warning: **Attention please: This page is outdated.**                                                                                           |
-| :---                                                                                                                                             |
-| The MRS UAV System 1.5 is being released and this page needs updating. Plase, keep in mind that the information on this page might not ve valid. |
+| :warning: **Attention please: This page is outdated.**                                                                                            |
+| :---                                                                                                                                              |
+| The MRS UAV System 1.5 is being released and this page needs updating. Please, keep in mind that the information on this page might not ve valid. |
 
 # Preparing for a real-world experiment:
 
