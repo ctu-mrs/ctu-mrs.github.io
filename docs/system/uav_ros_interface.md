@@ -127,7 +127,7 @@ It also carries some non-essential safety routines.
 The [ConstraintManager](https://github.com/ctu-mrs/mrs_uav_managers#ConstraintManager) handles the definition and switching of dynamics constraints for trackers.
 The constraints are supplied to all the loaded trackers by the ControlManager.
 To simplify the system structure, the ConstraintManager was created to load user-defined constraints from parameter files.
-The ConstraintManager maintains feasible constraints active during the flight based on the currently active [odometry source](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-) and allows users to change them by ROS service.
+The ConstraintManager maintains feasible constraints active during the flight based on the currently active estimator and allows users to change them by ROS service.
 
 ### Provided topics
 
