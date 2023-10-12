@@ -72,6 +72,7 @@ rosservice call /mrs_drone_spawner/spawn "1 7 --f450 --enable-rangefinder --enab
 ## Command line arguments
 
 When starting the spawner manually, you can use the following command-line arguments:
+
 * `no_help` - will *not* display the list of available parameters and instead *start the ROS node*
 * `verbose` - will display the list of available parameters after the node is started
 * The [`mrs_drone_spawner.launch`](https://github.com/ctu-mrs/mrs_simulation/blob/master/launch/mrs_drone_spawner.launch) uses both `no_help` and `verbose` by default.

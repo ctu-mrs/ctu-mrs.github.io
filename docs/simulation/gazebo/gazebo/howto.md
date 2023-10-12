@@ -37,6 +37,7 @@ roscd mrs_uav_gazebo_simulation/tmux/one_drone
 # Stopping the simulation
 
 You have two options:
+
 a) Run the `./stop.sh` script.
 b) Hit the _killing shortcut_: `ctrl+a k` (`ctrl+a` and then `k`). A menu will appear in which you confirm the selection.
 
