@@ -2,7 +2,7 @@
 layout: default
 title: Configuring the MRS UAV System
 parent: The UAV System
-nav_order: 6
+nav_order: 2
 ---
 
 | :warning: **Attention please: This page needs work.**                                                                                             |
