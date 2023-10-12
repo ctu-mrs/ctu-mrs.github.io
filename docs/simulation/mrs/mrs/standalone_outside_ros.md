@@ -16,31 +16,32 @@ All the headers should be linked using relative includes so it should be possibl
 ## Provided API
 
 The API to the single UAV model is provided from
-```
+
+```cpp
 include uav_system.hpp
 ```
 
 ### Constructors
 
 Default constructor, uses parameters for Holybro x500 drone:
-```C
+```cpp
 UavSystem(void);
 ```
 
 A constructor that accepts model parameters:
-```C
+```cpp
 UavSystem(const MultirotorModel::ModelParams& model_params);
 ```
 
 A constructor that accepts model parameters and an initial spawn position:
-```C
+```cpp
 UavSystem(const MultirotorModel::ModelParams& model_params, const Eigen::Vector3d spawn_pos, const double spawn_heading);
 ```
 
 ### Stepping the simulator
 
 The simulator step with a particular time step can be executed by:
-```C
+```cpp
 void makeStep(const double dt);
 ```
 
@@ -48,7 +49,7 @@ void makeStep(const double dt);
 
 The UAV accepts a variety of control inputs.
 You can start controlling the drone by calling any of these functions:
-```C
+```cpp
 void setInput(const reference::Actuators& actuators);
 void setInput(const reference::ControlGroup& control_group);
 void setInput(const reference::AttitudeRate& attitude_rate);
@@ -69,18 +70,18 @@ void setFeedforward(const reference::VelocityHdgRate& cmd);
 ### Getting data
 
 The full UAV state can be obtained by:
-```C
+```cpp
 MultirotorModel::State       getState(void);
 ```
 
 The simulated accelerometer measurement can be obtained by:
-```C
+```cpp
 Eigen::Vector3d getImuAcceleration(void);
 ```
 
 ### Setting controller parameters
 
-```C
+```cpp
 void setMixerParams(const Mixer::Params& params);
 void setRateControllerParams(const RateController::Params& params);
 void setAttitudeControllerParams(const AttitudeController::Params& params);
@@ -91,11 +92,11 @@ void setPositionControllerParams(const PositionController::Params& params);
 ### Other routines
 
 A crash can be induced by:
-```C
+```cpp
 void crash(void);
 ```
 
 External force can be applied to the UAV by:
-```C
+```cpp
 void applyForce(const Eigen::Vector3d& force);
 ```
