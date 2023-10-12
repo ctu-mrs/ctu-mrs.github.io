@@ -3,7 +3,7 @@ layout: default
 title: Standalone outside ROS
 parent: MRS Simulator
 grand_parent: Simulation
-nav_order: 3
+nav_order: 2
 ---
 
 The MRS Multirotor Simulator contains a **header-only** implementation of the single UAV dynamics including a feedback controller pipeline.
@@ -15,10 +15,9 @@ All the headers should be linked using relative includes so it should be possibl
 
 ## Provided API
 
-The API to the single UAV model is provided from
-
+The API to the single UAV model is provided from:
 ```cpp
-include uav_system.hpp
+#include "uav_system.hpp"
 ```
 
 ### Constructors
