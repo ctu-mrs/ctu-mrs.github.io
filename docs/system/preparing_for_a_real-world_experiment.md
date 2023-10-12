@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Preparing for a real-world experiment
-parent: The UAV system
+parent: The UAV System
 nav_order: 7
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Custom config files
-parent: The UAV system
+title: Configuring the MRS UAV System
+parent: The UAV System
 nav_order: 6
 ---
 
@@ -9,70 +9,66 @@ nav_order: 6
 | :---                                                                                                                                             |
 | The MRS UAV System 1.5 is being released and this page needs updating. Plase, keep in mind that the information on this page might not be valid. |
 
-# How to use custom config files for uav_core modules
+# Motivation
 
-## Motivation
+There are many configuration files _baked_ in the [mrs_uav_core](https://github.com/ctu-mrs/mrs_uav_core) and other packages of the system.
+They contain many options for modifying the behavior of the system and users are **encouraged** to configure the system to their needs.
+In this tutorial, we provide an efficient way ho customize the configuration **without the need to change** any files withing the installed system.
 
-There are many configuration files in the [uav_core](https://github.com/ctu-mrs/uav_core).
-They contain many options to modify the behavior of the control and estimation pipeline.
-Since everyone needs to change some values for his experiments, the uav_core modules contain only a *general defaults* for each supported UAV type.
-In this tutorial, we provide an efficient way ho customize the configuration **without the need to change** any files in the uav_core repository.
-It is done by creating a custom configuration files which contain only the option you would like to change from the default values.
-Those **custom configs** can be loaded over the defaults without the need to change the uav_core itself.
+## The concept of a _custom config_ file
 
-## The config file hierarchy
-
-The ROS launch files in the **uav_core** load three levels of configuration files.
-1. A topmost general configuration, typically stored in a **default** subfolder of the packages.
-2. A UAV-type specific configuration, which is already divided into two groups: for **simulation** and the real **uav**. The particular files are automatically selected using the environment variables `$UAV_TYPE` and `$RUN_TYPE`.
-3. A user-defined **custom config** file provided through the launch file argument, which is the subject of this manual.
-
-## Activating a custom config file
-
-We assume you already have a custom *tmuxinator* session, as suggested by this [manual](https://ctu-mrs.github.io/docs/simulation/howto.html).
-Let's say that you want to change the controller, which will be used after takeoff.
-This option is originally defined in [uav_manager.yaml](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/config/default/control_manager.yaml), in the [mrs_uav_manager](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/config/default/uav_manager.yaml) package.
-An example of how to use this technique is to create a `.yaml` file with the value of the parameter that you want to change.
-The file is then passed to the [core.launch](https://github.com/ctu-mrs/mrs_uav_general/blob/master/launch/core.launch) launchfile.
-Create a file `uav_manager.yaml` in a subfolder `custom_configs` within your tmuxinator session folder and fill it with the following lines:
+Each launch file within our system loads appropriate config files from its package.
+Changing these config files directly is **not recommended** as well as **copying them elsewehere and changing the launch file**.
+Instead, a parameter can be used to pass a **custom config** file that only overrides the values that the used wants to change relative to the defaults.
+This mechanism allows the user to store the changes locally.
+In general, our launchfiles accept the argument
 ```
-takeoff:
-  after_takeoff:
-    controller: "Se3Controller"
+custom_config:=<path to the file>
 ```
-Then add an optional argument to the [core.launch](https://github.com/ctu-mrs/mrs_uav_general/blob/master/launch/core.launch) line in your tmuxinator session:
+which is used to pass the path to the custom config.
+
+## core.launch configs
+
+The [MRS UAV System](https://github.com/ctu-mrs/mrs_uav_system) is launched throught the `core.launch` launch file.
+The `core.launch` requires the following 2 custom configuration files:
+
+## The Platform Config
+
+This file is supposed to override the defaults for a particular UAV platform.
+Usually, this file is provided by us with each simulated (and realword) UAV.
+The platform configs are stored in a location logically close the the source of the simulated UAV, e.g.,
+
+* In [mrs_uav_gazebo_simulation](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/tree/master/ros_packages/mrs_uav_gazebo_simulation/config/mrs_uav_system) for our Gazebo simulation,
+* In [mrs_multirotor_simulator](https://github.com/ctu-mrs/mrs_multirotor_simulator/tree/master/config/mrs_uav_system) for our MRS simulation,
+* In [mrs_uav_coppelia_simulation](https://github.com/ctu-mrs/mrs_uav_coppelia_simulation/tree/master/mrs_uav_coppelia_simulation/config/mrs_uav_system) for our Coppelia simulation,
+* In [mrs_uav_dji_tello_api](https://github.com/ctu-mrs/mrs_uav_dji_tello_api/tree/master/config/mrs_uav_system) for our DJI Tello interface.
+* In [mrs_uav_deployment](https://github.com/ctu-mrs/mrs_uav_deployment/tree/master/config/mrs_uav_system) for our realword drones.
+
+## The Custom Config
+
+This file is dedicated for the user's relative changes to the default configuration that was already modified by the _platform config_.
+
+## Which parameters can be changed?
+
+All parameters that can be changed by the users can be listed by
+```bash
+rosrun mrs_uav_core get_public_params.py
 ```
-roslaunch mrs_uav_general core.launch config_uav_manager:=./custom_configs/uav_manager.yaml
+The parameters are _scraped_ from the currently installed packages from the system, so the list is always going to be compatible with your current installation.
+
+For convenience, the parameters can be piped into a file and later inspected:
+```bash
+rosrun mrs_uav_core get_public_params.py > /tmp/params.yaml
 ```
-This will load your custom configuration file and it will override the default parameters from the [mrs_uav_managers](https://github.com/ctu-mrs/mrs_uav_managers) package.
+or piped to less:
+```bash
+rosrun mrs_uav_core get_public_params.py | less
+```
+or piped to vim:
+```bash
+vim <(rosrun mrs_uav_core get_public_params.py)
+```
 
-We strongly suggest using [tmuxinator](https://github.com/ctu-mrs/simulation/tree/master/example_tmux_scripts) (for simulation) or a [tmux](https://github.com/ctu-mrs/uav_core/tree/master/tmux_scripts) (for a real UAV) scripts for starting the simulation.
-In both cases, we usually create a subfolder `custom_configs` in the same path as the tmuxinator/tmux script.
-This way, you can prepare a self-contained folder in your own repository, which you can save, version it with git and change independently on the uav_core.
+## Example
 
-**The lesson** from this should be:
-
-* never edit config files directly in somewhere in [uav_core],
-* always keep the **custom config** files at your tmux/tmuxinator session.
-
-## Which parameters should I change?
-
-Deducing which parameters you want to change depends on your particular scenario.
-We recommend to go through the description of all our packages ([link](https://ctu-mrs.github.io/docs/software/uav_core)) and familiarize yourself with their functions.
-Their config files are typically contained within the `config/default` subfolder of each repository.
-
-## How should I name the *core.launch* argument?
-
-Each program in each package the `[core.launch](https://github.com/ctu-mrs/mrs_uav_general/blob/master/launch/core.launch)` has an argument dedicated to the program's custom config file.
-The simplest way how to find the argument is to look into the launch file.
-However, generally, the argument name has a pattern `config_node_name`.
-E.g., `config_control_manager`, `config_odometry` or `config_mpc_controller`.
-
-## Complete examples
-
-An example dedicated to **custom configs** is located within our tmux session examples:
-[https://github.com/ctu-mrs/simulation/tree/master/example_tmux_scripts](https://github.com/ctu-mrs/simulation/tree/master/example_tmux_scripts)
-under the name `one_drone_tmuxinator_custom_configs`.
-
-Also, the [mrs_uav_testing](https://github.com/ctu-mrs/mrs_uav_testing) package has its test sessions customized this way.
-See [https://github.com/ctu-mrs/mrs_uav_testing/tree/master/tmux](https://github.com/ctu-mrs/mrs_uav_testing/tree/master/tmux).
+All the example tmux session that we provide are already pre-set with the _platform configs_ and the _custom config_ file.

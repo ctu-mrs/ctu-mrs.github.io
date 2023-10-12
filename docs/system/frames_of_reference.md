@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Frames of reference
-parent: The UAV system
+parent: The UAV System
 nav_order: 1
 ---
 

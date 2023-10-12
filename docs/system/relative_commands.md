@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Commanding the robot relative to its position
-parent: The UAV system
+parent: The UAV System
 nav_order: 9
 ---
 
