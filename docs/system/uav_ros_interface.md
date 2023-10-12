@@ -5,7 +5,7 @@ parent: The UAV system
 nav_order: 3
 ---
 
-| :warning: **Attention please: This page is outdated.**                                                                                           |
+| :warning: **Attention please: This page needs work.**                                                                                            |
 | :---                                                                                                                                             |
 | The MRS UAV System 1.5 is being released and this page needs updating. Plase, keep in mind that the information on this page might not be valid. |
 
@@ -38,8 +38,7 @@ General topics reporting on the current state of the ControlManager:
 | **topic**                           | **description**                           | **topic type**                                                                                              |
 |-------------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------------|
 | control_manager/diagnostics         | status of the ControlManager              | [mrs_msgs/ControlManagerDiagnostics](https://ctu-mrs.github.io/mrs_msgs/msg/ControlManagerDiagnostics.html) |
-| control_manager/position_cmd        | control reference from the active tracker | [mrs_msgs/PositionCommand](https://ctu-mrs.github.io/mrs_msgs/msg/PositionCommand.html)                     |
-| control_manager/attitude_cmd        | output from the active controller         | [mrs_msgs/AttitudeCommand](https://ctu-mrs.github.io/mrs_msgs/msg/AttitudeCommand.html)                     |
+| control_manager/tracker_cmd         | control reference from the active tracker | [mrs_msgs/TrackerCommand](https://ctu-mrs.github.io/mrs_msgs/msg/TrackerCommand.html)                       |
 | control_manager/mass_estimate       | total estimated mass                      | `std_msgs/Float64`                                                                                          |
 | control_manager/current_constraints | current values of the dynamic constraints | [mrs_msgs::DynamicsConstraints](https://ctu-mrs.github.io/mrs_msgs/msg/DynamicsConstraints.html)            |
 | control_manager/heading             | current heading                           | [mrs_msgs::Float64Stamped](https://ctu-mrs.github.io/mrs_msgs/msg/Float64Stamped.html)                      |
@@ -48,7 +47,7 @@ Topics dedicated to Rviz vizualization:
 
 | **topic**                                   | **description**                                         | **topic type**                    |
 |---------------------------------------------|---------------------------------------------------------|-----------------------------------|
-| control_manager/cmd_odom                    | control reference from the active tracker (Rviz-able)   | `nav_msgs/Odometry`               |
+| control_manager/control_reference           | control reference from the active tracker               | `nav_msgs/Odometry`               |
 | control_manager/safety_area_markers         | Rviz markers showing the safety area                    | `visualization_msgs::MarkerArray` |
 | control_manager/safety_area_coordinates     | Rviz markers showing the coordinates of the safety area | `visualization_msgs::MarkerArray` |
 | control_manager/disturbance_markers         | Rviz markers showing the estimated distrubances         | `visualization_msgs::MarkerArray` |
@@ -64,7 +63,7 @@ Use those services to interact with the drone from the terminal:
 | **service**                          | **description**                                   | **service type**                                                  | **args**      |
 |--------------------------------------|---------------------------------------------------|-------------------------------------------------------------------|---------------|
 | control_manager/goto                 | fly to given coordinates                          | [mrs_msgs/Vec4](https://ctu-mrs.github.io/mrs_msgs/srv/Vec4.html) | `[x,y,z,hdg]` |
-| control_manager/goto_fcu             | fly to given coordinates in the drone's frame    | [mrs_msgs/Vec4](https://ctu-mrs.github.io/mrs_msgs/srv/Vec4.html) | `[x,y,z,hdg]` |
+| control_manager/goto_fcu             | fly to given coordinates in the drone's frame     | [mrs_msgs/Vec4](https://ctu-mrs.github.io/mrs_msgs/srv/Vec4.html) | `[x,y,z,hdg]` |
 | control_manager/goto_relative        | fly to relative coordinates in the world frame    | [mrs_msgs/Vec4](https://ctu-mrs.github.io/mrs_msgs/srv/Vec4.html) | `[x,y,z,hdg]` |
 | control_manager/goto_altitude        | fly to a given height/altitude (the z coordinate) | [mrs_msgs/Vec1](https://ctu-mrs.github.io/mrs_msgs/srv/Vec1.html) | `[z]`         |
 | control_manager/set_heading          | set the heading                                   | [mrs_msgs/Vec1](https://ctu-mrs.github.io/mrs_msgs/srv/Vec1.html) | `[hdg]`       |
@@ -145,7 +144,7 @@ The ConstraintManager maintains feasible constraints active during the flight ba
 ## GainManager
 
 The [GainManager](https://github.com/ctu-mrs/mrs_uav_managers#GainManager) handles the definition and switching of controller gains for the [Se3Controller](https://github.com/ctu-mrs/mrs_uav_controllers#available-controllers).
-The Se3Controller should be tuned for a particular UAV model, desired dynamics, and the [Odometry](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-) under which it is going to fly.
+The Se3Controller should be tuned for a particular UAV model, desired dynamics, and the state estimator used for obtained the UAV State.
 A proper set of gains needs to be provided based on the flight conditions and odometry source.
 
 ### Provided topics
@@ -160,36 +159,27 @@ A proper set of gains needs to be provided based on the flight conditions and od
 |------------------------|----------------------------|-----------------------------------------------------------------------|
 | gain_manager/set_gains | activate the desired gains | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
 
-## MRS Odometry
+## Estimation Manager
 
-The [mrs_uav_odometry](https://github.com/ctu-mrs/mrs_uav_odometry#mrs-uav-odometry-) handles the fusion of various measurements of the UAV state variables (position, velocity, acceleration, heading, heading rate) and publishes odometry messages for the [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers#ControlManager).
-The estimation of UAV odometry is seperated into lateral, altitude and heading estimation based on sets of three-state Linear Kalman Filters to keep the models simple and modular.
-Each filter has a specific sets of fused measurements (GPS, Optic Flow, Visual Odometry, etc.) and it is possible to switch between these filters mid-flight, which allows the UAV to condinue flying even in the case of failure of the primary localization technique.
+The estimation manager handles the fusion of various measurements of the UAV state variables (position, velocity, acceleration, heading, heading rate) and publishes [UAV State](https://ctu-mrs.github.io/mrs_msgs/msg/UavState.html) messages for the [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers#ControlManager).
 
 ### Provided topics
 
-Please refer to [odometry.launch](https://github.com/ctu-mrs/mrs_uav_odometry/blob/master/launch/odometry.launch) for a complete list of topics.
+Please refer to [estimation_manager.launch](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/launch/estimation_manager.launch) for a complete list of topics.
 
 Notable topics:
 
-| **topic**               | **description**                                                                       | **topic type**                                                            |
-|-------------------------|---------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| odometry/uav_state      | UAV state msg used for control                                                        | [mrs_msgs/UavState](https://ctu-mrs.github.io/mrs_msgs/msg/UavState.html) |
-| odometry/odom_main      | odometry msg used for control                                                         | `nav_msgs/Odometry`                                                       |
-| odometry/slow_odom      | odometry msg published at lower rate (2 Hz default)                                   | `nav_msgs/Odometry`                                                       |
-| odometry/odom_local     | odometry msg with origin in the takeoff position                                      | `nav_msgs/Odometry`                                                       |
-| odometry/odom_stable    | odometry msg without discontinuities caused by estimator switches                     | `nav_msgs/Odometry`                                                       |
-| odometry/rtk_local_odom | unfiltered RTK odometry msg. Unsuitable for control, but can be used as ground truth. | `nav_msgs/Odometry`                                                       |
+| **topic**                     | **description**                          | **topic type**                                                                         |
+|-------------------------------|------------------------------------------|----------------------------------------------------------------------------------------|
+| estimation_manager/uav_state  | UAV state msg used for control           | [mrs_msgs/UavState](https://ctu-mrs.github.io/mrs_msgs/msg/UavState.html)              |
+| estimation_manager/odom_main  | current UAV state in the _Odometry_ type | `nav_msgs/Odometry`                                                                    |
+| estimation_manager/height_agl | height above ground level                | [mrs_msgs::Float64Stamped](https://ctu-mrs.github.io/mrs_msgs/msg/Float64Stamped.html) |
 
 ### Provided services
 
 | **service**                               | **description**                                         | **service type**                                                      |
 |-------------------------------------------|---------------------------------------------------------|-----------------------------------------------------------------------|
-| odometry/toggle_garmin                    | turns Garmin rangefinder correction on/off              | `std_srvs::SetBool`                                                   |
-| odometry/change_odometry_source           | start using the requested odometry source for control   | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
-| odometry/change_estimator_type_string     | start using the requested lateral estimator for control | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
-| odometry/change_alt_estimator_type_string | start using the requested altitude source for control   | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
-| odometry/change_hdg_estimator_type_string | start using the requested heading source for control    | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
+| estimation_manager/change_estimator       | switch to a desired estimator                           | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
 
 ## Trajectory generation
 
@@ -203,7 +193,6 @@ The [mrs_uav_trajectory_generation](https://github.com/ctu-mrs/mrs_uav_trajector
 
 ### Provided services
 
-| **service**                | **description**                                                                                                    | **service type**                                                        |
-|----------------------------|--------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| trajectory_generation/path | desired path to fly                                                                                                | [mrs_msgs/PathSrv](https://ctu-mrs.github.io/mrs_msgs/srv/PathSrv.html) |
-| trajectory_generation/test | test using [example.yaml](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/blob/master/paths/example.yaml) | `std_srvs/Trigger`                                                      |
+| **service**                | **description**     | **service type**                                                        |
+|----------------------------|---------------------|-------------------------------------------------------------------------|
+| trajectory_generation/path | desired path to fly | [mrs_msgs/PathSrv](https://ctu-mrs.github.io/mrs_msgs/srv/PathSrv.html) |
