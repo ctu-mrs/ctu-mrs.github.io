@@ -3,6 +3,7 @@ layout: default
 title: Gazebo
 parent: Simulation
 has_children: true
+nav_order: 1
 ---
 
 # Gazebo Simulator

@@ -3,6 +3,7 @@ layout: default
 title: Coppelia
 parent: Simulation
 has_children: true
+nav_order: 3
 ---
 
 # Coppelia Simulator

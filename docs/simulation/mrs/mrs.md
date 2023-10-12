@@ -3,6 +3,7 @@ layout: default
 title: MRS Simulator
 parent: Simulation
 has_children: true
+nav_order: 2
 ---
 
 # MRS Multirotor Simulator
