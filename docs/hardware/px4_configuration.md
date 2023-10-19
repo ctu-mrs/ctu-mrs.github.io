@@ -128,7 +128,7 @@ More info: [https://dev.px4.io/master/en/middleware/modules_driver_distance_sens
 
 # Configuration
 
-## Disabling/Enabling internal magnetometer
+## Disabling/Enabling magnetometer
 
 Disable: `EKF2_MAG_TYPE := None` and `SYS_HAS_MAG := 0`
 
@@ -140,5 +140,4 @@ When flying with external magnetometer, always set the lowest priority to the in
 Best is to only use the external magnetometer. This prevents jumps in heading odometry and avoids potential crashes as default fusion of both magnetometers was observed to be not reliable.
 
 Publish only the primary magnetometer: `SENS_MAG_MODE=Publish primary magnetometer`
-Priorities setting: `CAL_MAG0_PRIO := Min` (internal) and `CAL_MAG1_PRIO := Max` (external)
-
+Priorities setting: `CAL_MAG0_PRIO := Disabled` (internal) and `CAL_MAG1_PRIO := Max` (external)
