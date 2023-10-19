@@ -24,6 +24,8 @@ and install its dependencies according to the [manual](https://dev.px4.io/master
 
 1. go into the root of the firmware repository
 2. `make <target>`, where the <target> depends on the version of the hardware:
+  * Pixhawk 6x: make px4_fmu-v6x_default
+  * Pixhawk 6c: make px4_fmu-v6c_default
   * Pixhawk 4: make px4_fmu-v5_default
   * Pixracer: make px4_fmu-v4_default
   * Pixhawk 3 Pro: make px4_fmu-v4pro_default
