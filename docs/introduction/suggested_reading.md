@@ -5,8 +5,8 @@ parent: Introduction
 nav_order: 1
 ---
 
-| :warning: **Attention please: This page is outdated.**                                                                                           |
-| :---                                                                                                                                             |
+| :warning: **Attention please: This page needs work.**                                                                                             |
+| :---                                                                                                                                              |
 | The MRS UAV System 1.5 is being released and this page needs updating. Please, keep in mind that the information on this page might not be valid. |
 
 # Mandatory readings for newcomers
@@ -21,9 +21,9 @@ Please follow it thoroughly and enjoy the learning!
 
 ### Ubuntu
 
-All our software for drones runs on **Ubuntu 18.04/20.04 LTS, 64-bit**.
-Please install this particular version; a lot of other software depends explicitly on it.
+Our software is compatible with **Ubuntu 20.04**.
 We strongly suggest installing a native system, not a virtual one.
+The [Singularity container system](https://github.com/ctu-mrs/mrs_singularity/) can be used to run our system on other Linux distributions, or even using Windows WSL.
 Do not use Virtual Box, although it works fine, the drop in performance is noticeable, especially when simulating a real-time flying drone.
 
 ### Bash
@@ -46,19 +46,15 @@ Thus, we don't need to reinvent the wheel.
 
 Getting into ROS is simple, follow tutorials on their webpage, and don't be afraid to experiment.
 You can't break the drone in simulation :-).
-Before trying the tutorials, please install our [UAV system](https://github.com/ctu-mrs/mrs_uav_system).
+Before trying the tutorials, please install the [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system).
 It will install all the tools we usually use.
 
 * Tutorials: [http://wiki.ros.org/ROS/Tutorials](http://wiki.ros.org/ROS/Tutorials)
   * It is not as important to know how to create repositories; we have already prepared the structure for you. But skimming through all the tutorials is recommended.
   * Suggested tutorials: 2, 5, and further.
 * Required skills: The more, the better, most of it will come as you start working on your project.
-* Our ROS examples:
-  * If you feel like it, try to dig into our own ROS examples.
-  * [Example ROS UAV](https://github.com/ctu-mrs/example_ros_uav) showcase most of our techniques.
-  * [ROS example](https://github.com/ctu-mrs/example_ros_vision) is dedicated to online computer vision.
 
-### Catkin
+### Catkin - the ROS compilation overlord
 
 Catkin is the package and workspace manager used by ROS.
 You'll use it to build the ROS packages and manage their dependencies.
@@ -104,13 +100,13 @@ All our simulation startup script are written for tmuxinator.
 
 * [https://github.com/tmuxinator/tmuxinator](https://github.com/tmuxinator/tmuxinator)
 
-### Vim (~~recommended~~ mandatory)
+### Vim - TUI-based text editor
 
 Everyone should use a tool that is right for the job.
-Well, for our purposes (C++, ROS, Python, bash), Vim is very well suited.
+Well, for our purposes (C++, ROS, Python, Bash), Vim is very well suited.
 A lot of the time, you will find yourself in need of editing a code remotely (over ssh), and Vim can provide IDE-like features even in that situation.
 You might hear that Vim is "tough to learn" or "Vim is for crazy people," but in reality, it is not valid.
-Vim provides an efficient way to edit (explicitly written edit, because editing is what you mostly do while programming) which will pay itself off after you learn it.
+Vim provides an efficient way to edit (explicitly "to edit", because editing is what you mostly do while programming) which will pay itself off after you learn it.
 Learning Vim is about changing the paradigm of editing - it's more about controlling a machine (synthesizer) that edits text, rather than moving a cursor with a mouse and then typing.
 Working in the terminal, using, e.g., **tmux** and **Vim** can also help you put away your mouse.
 Yes, a mouse is not an ideal tool for programming, though it has its use in gaming, 3D modeling, video editing, and so on.
