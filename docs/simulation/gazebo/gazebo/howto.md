@@ -34,6 +34,9 @@ roscd mrs_uav_gazebo_simulation/tmux/one_drone
 ./start.sh
 ```
 
+You should be presented with the windows of the "Gazebo simulator" and the "Rviz" upon starting the session.
+![](fig/gazebo_windows.png)
+
 # Stopping the simulation
 
 You have two options:
