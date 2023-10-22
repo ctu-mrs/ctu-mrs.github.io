@@ -32,7 +32,7 @@ roscd mrs_uav_coppelia_simulation/tmux
 ./start.sh
 ```
 
-When the CoppeliaSim window appears, click on the "play" button to start/resume the simulation.
+When the CoppeliaSim window appears, click on the "**play**" button to start/resume the simulation.
 Then, the MRS UAV System will start and RViz window will appear.
 ![](fig/coppelia_windows.png)
 
@@ -45,4 +45,4 @@ b) Hit the _killing shortcut_: `ctrl+a k` (`ctrl+a` and then `k`). A menu will a
 
 # How does it work?
 
-For more details, see the (mrs_uav_coppelia_simulation)[https://github.com/ctu-mrs/mrs_uav_coppelia_simulation] repository.
+For more details, see the [mrs_uav_coppelia_simulation](https://github.com/ctu-mrs/mrs_uav_coppelia_simulation) repository.
