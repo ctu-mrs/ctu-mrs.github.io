@@ -35,7 +35,7 @@ You should be presented with the "Rviz" window upon starting the session.
 
 You have two options:
 
-a) Run the `./stop.sh` script.
+a) Run the `./kill.sh` script.
 b) Hit the _killing shortcut_: `ctrl+a k` (`ctrl+a` and then `k`). A menu will appear in which you confirm the selection.
 
 # Configuring the simulator

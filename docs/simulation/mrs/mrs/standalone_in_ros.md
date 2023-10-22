@@ -31,14 +31,20 @@ roscd mrs_multirotor_simulator/tmux/standalone
 You should be presented with the "Rviz" window upon starting the session.
 ![](fig/mrs_standalone_windows.png)
 
-A similar session (400_uavs) was also prepared to showcase the simulator of large number (400) of UAVs:
+A similar session was also prepared to showcase the simulator of large number (400) of UAVs:
+
+```bash
+roscd mrs_multirotor_simulator/tmux/standalone_400_uavs
+./start.sh
+```
+
 ![](fig/mrs_standalone_400_windows.png)
 
 # Stopping the simulation
 
 You have two options:
 
-a) Run the `./stop.sh` script.
+a) Run the `./kill.sh` script.
 b) Hit the _killing shortcut_: `ctrl+a k` (`ctrl+a` and then `k`). A menu will appear in which you confirm the selection.
 
 # Configuring the simulator
