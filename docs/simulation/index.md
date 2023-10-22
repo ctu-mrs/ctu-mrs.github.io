@@ -16,12 +16,12 @@ The following interfaces are provided out-of-the box.
 
 ## Gazebo/ROS
 
-[How to simulate using Gazebo/ROS](./gazebo/howto.md).
+[How to simulate using Gazebo/ROS](./gazebo/gazebo/howto.md).
 
 ## CoppeliaSim
 
-[How to simulate using CoppeliaSim](./coppelia/howto.md).
+[How to simulate using CoppeliaSim](./coppelia/coppelia/howto.md).
 
 ## MRS Multirotor Simulator
 
-[How to simulate using the MRS Multirotor Simulator](./mrs/howto.md).
+[How to simulate using the MRS Multirotor Simulator](./mrs/mrs/howto.md).
