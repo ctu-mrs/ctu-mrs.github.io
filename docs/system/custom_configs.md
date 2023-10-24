@@ -13,7 +13,7 @@ nav_order: 2
 
 There are many configuration files _baked_ in the [mrs_uav_core](https://github.com/ctu-mrs/mrs_uav_core) and other packages of the system.
 They contain many options for modifying the behavior of the system and users are **encouraged** to configure the system to their needs.
-In this tutorial, we provide an efficient way ho customize the configuration **without the need to change** any files withing the installed system.
+In this tutorial, we provide an efficient way ho customize the configuration **without the need to change** any files within the installed system.
 
 ## The concept of a _custom config_ file
 
@@ -36,7 +36,7 @@ The `core.launch` requires the following 2 custom configuration files:
 
 This file is supposed to override the defaults for a particular UAV platform.
 Usually, this file is provided by us with each simulated (and realword) UAV.
-The platform configs are stored in a location logically close the the source of the simulated UAV, e.g.,
+The platform configs are stored in a location logically close to the source of the simulated UAV, e.g.,
 
 * In [mrs_uav_gazebo_simulation](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/tree/master/ros_packages/mrs_uav_gazebo_simulation/config/mrs_uav_system) for our Gazebo simulation,
 * In [mrs_multirotor_simulator](https://github.com/ctu-mrs/mrs_multirotor_simulator/tree/master/config/mrs_uav_system) for our MRS simulation,
@@ -71,4 +71,4 @@ vim <(rosrun mrs_uav_core get_public_params.py)
 
 ## Example
 
-All the example tmux session that we provide are already pre-set with the _platform configs_ and the _custom config_ file.
+All the example tmux sessions that we provide are already pre-set with the _platform configs_ and the _custom config_ file.
