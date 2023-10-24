@@ -161,7 +161,7 @@ A proper set of gains needs to be provided based on the flight conditions and od
 
 ## Estimation Manager
 
-The estimation manager handles the fusion of various measurements of the UAV state variables (position, velocity, acceleration, heading, heading rate) and publishes [UAV State](https://ctu-mrs.github.io/mrs_msgs/msg/UavState.html) messages for the [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers#ControlManager).
+The [EstimationManager](https://github.com/ctu-mrs/mrs_uav_managers#EstimationManager) handles the fusion of various measurements of the UAV state variables (position, velocity, acceleration, heading, heading rate) and publishes [UAV State](https://ctu-mrs.github.io/mrs_msgs/msg/UavState.html) messages for the [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers#ControlManager).
 
 ### Provided topics
 
@@ -180,6 +180,25 @@ Notable topics:
 | **service**                               | **description**                                         | **service type**                                                      |
 |-------------------------------------------|---------------------------------------------------------|-----------------------------------------------------------------------|
 | estimation_manager/change_estimator       | switch to a desired estimator                           | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
+
+## Transform manager
+
+The [TransformManager](https://github.com/ctu-mrs/mrs_uav_managers#TransformManager) handles the broadcasting of default TFs.
+Can construct custom [configurable](https://github.com/ctu-mrs/mrs_uav_managers/blob/f9e0eac0680cc1cd2f5bea0e2d55199c8af1178a/config/public/transform_manager/transform_manager.yaml#L53C6-L53C6) TFs from `nav_msgs/Odometry` topics by adding them to the `tf_sources` [array](https://github.com/ctu-mrs/mrs_uav_managers/blob/f9e0eac0680cc1cd2f5bea0e2d55199c8af1178a/config/public/transform_manager/transform_manager.yaml#L48C11-L48C11) in custom config.
+Can republish a `nav_msgs/Odometry` topic in another frame by adding the `frame_id` to the `republish_in_frames` [array](https://github.com/ctu-mrs/mrs_uav_managers/blob/f9e0eac0680cc1cd2f5bea0e2d55199c8af1178a/config/public/transform_manager/transform_manager.yaml#L61);
+   
+### Provided default TFs
+
+| **TF**              | **description**                                                                                                                                | **example usage **                                                                      |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| fcu_untilted_origin | (heading only) fcu frame with removed tilts (z-axis is aligned with the gravity vector)                                                        | commanding UAV in body frame disregarding tilts                                         |
+| world_origin        | origin position defined by the world file, ENU orientation, based on UTM estimators (GPS, RTK, etc.), does not exist for non-UTM estimators    | commanding UAV localized by UTM-based estimator in a locally defined coordinate world   |
+| local_origin        | origin pose defined by the initial pose of the UAV (including orientation), exists for all estimators                                          | commanding UAV w.r.t. initial pose, universal frame that is always available            |
+| fixed_origin        | origin pose defined by the initial estimator, origin does not move after estimator switch, odometry in this frame jumps after estimator switch | commanding UAV w.r.t. initial estimator frame, universal frame that is always available |
+| stable_origin       | origin pose defined by the initial estimator, origin jumps after estimator switch, odometry in this frame is smooth without jumps              | mapping position of detected objects invariant to estimator switching                   |
+| utm_origin          | origin position defined by the intersetion of the equator and the zone's central meridian, ENU orientation                                     | commanding UAV in absolute metric coordinates irregardless of the current world file    |
+| mapping_origin_tf   | origin position and heading defined by initialization of a SLAM algorithm, origin tilt around x and y axes optionally defined by custom topic  | mapping of environment using a SLAM that cannot estimate orientation                    |
+
 
 ## Trajectory generation
 
