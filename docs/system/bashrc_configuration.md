@@ -21,12 +21,13 @@ In the `.bashrc` file of a typical UAV which is running the MRS UAV System, you 
 
 ```bash
 export UAV_NAME=uav1
-export UAV_TYPE=x500
 export RUN_TYPE=realworld
+export UAV_TYPE=x500
 export UAV_MASS=2.0
 export WORLD_NAME=temesvar_field
 export INITIAL_DISTURBANCE_X=0.0
 export INITIAL_DISTURBANCE_Y=0.0
+export SENSORS="garmin_down, realsense_front"
 export OLD_PX4_FW=0
 ```
 
@@ -50,10 +51,10 @@ Setting `RUN_TYPE` to `realworld` will tell the system that we are **not** in si
 export UAV_TYPE="x500"
 ```
 
-The `UAV_TYPE` variable used used within the tmux sessions to find the correct _platform configuration file_.
+The `UAV_TYPE` variable used within the tmux sessions to find the correct _platform configuration file_.
 
 ```bash
-export UAV_MASS="2.9"
+export UAV_MASS="2.0"
 ```
 
 This is the total takeoff mass (including the battery) of the UAV in `kg`.
@@ -68,11 +69,11 @@ export INITIAL_DISTURBANCE_Y="0.0"
 
 The UAV can suffer from an intrinsic internal disturbance, like offset center of mass, motor which is not performing as well as the others and so on.
 This disturbance will "pull" the UAV in a certain direction.
-The MRS UAV System will estimated and compensate for these disturbances.
+The MRS UAV System will estimate and compensate for these disturbances.
 The `INITIAL_DISTURBANCE` variable serves as the initial condition for the disturbance estimator.
 It is defined in `Newtons` of thrust in the `X` or `Y` directions.
 You can leave the values at `0.0` and the UAV will estimate the disturbances on its own relatively quickly.
-Only when you require a precise and straight takeoff and the best possible performance right after takeoff, you should measure and define the `INITIAL_DITURBANCE` values.
+Only when you require a precise and straight takeoff and the best possible performance right after takeoff, you should measure and define the `INITIAL_DISTURBANCE` values.
 
 ```bash
 export SENSORS="garmin_down, realsense_front"
@@ -86,13 +87,13 @@ export WORLD_NAME="temesvar_field"
 ```
 
 This variable is used to specify a [world file](https://github.com/ctu-mrs/mrs_uav_deployment/tree/master/config/worlds) which is used for the flight.
-The world file can define the origin of the global frame, the safety area in which filghts can be conducted and the minimum and maximum flight heights.
-Note that this only makes sense when a global localization like gps or rtk is used.
-If you use a non-global localization (like laser-slam or optflow), use the local world file.
+The world file can define the origin of the global frame, the safety area in which flights can be conducted and the minimum and maximum flight heights.
+Note that this only makes sense when a global GNSS-based localization like GPS or RTK is used.
+If you use a non-global localization (like laser-slam or visual odometry), use the local world file.
 The origin of the local frame will be the starting position of the UAV.
 
 ```bash
 export export OLD_PX4_FW=0
 ```
 
-This variable is a teporary workaround for flying with both the _new_ version of Pixhawk6 (with PX4 1.13.2) and with the old Pixhawk4 (with older PX4).
+This variable is a temporary workaround for flying with both the _new_ version of Pixhawk6 (with PX4 FW version > 1.13.2) and with the old Pixhawk4 (with older PX4 FW versions).
