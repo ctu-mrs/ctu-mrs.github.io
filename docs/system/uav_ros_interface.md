@@ -185,11 +185,11 @@ Notable topics:
 
 The [TransformManager](https://github.com/ctu-mrs/mrs_uav_managers#TransformManager) handles the broadcasting of default TFs.
 Can construct custom [configurable](https://github.com/ctu-mrs/mrs_uav_managers/blob/f9e0eac0680cc1cd2f5bea0e2d55199c8af1178a/config/public/transform_manager/transform_manager.yaml#L53C6-L53C6) TFs from `nav_msgs/Odometry` topics by adding them to the `tf_sources` [array](https://github.com/ctu-mrs/mrs_uav_managers/blob/f9e0eac0680cc1cd2f5bea0e2d55199c8af1178a/config/public/transform_manager/transform_manager.yaml#L48C11-L48C11) in custom config.
-Can republish a `nav_msgs/Odometry` topic in another frame by adding the `frame_id` to the `republish_in_frames` [array](https://github.com/ctu-mrs/mrs_uav_managers/blob/f9e0eac0680cc1cd2f5bea0e2d55199c8af1178a/config/public/transform_manager/transform_manager.yaml#L61);
+Can republish a `nav_msgs/Odometry` topic in another frame by adding the `frame_id` to the `republish_in_frames` [array](https://github.com/ctu-mrs/mrs_uav_managers/blob/f9e0eac0680cc1cd2f5bea0e2d55199c8af1178a/config/public/transform_manager/transform_manager.yaml#L61).
    
 ### Provided default TFs
 
-| **TF**              | **description**                                                                                                                                | **example usage **                                                                      |
+| **TF**              | **description**                                                                                                                                | **example usage**                                                                       |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
 | fcu_untilted_origin | (heading only) fcu frame with removed tilts (z-axis is aligned with the gravity vector)                                                        | commanding UAV in body frame disregarding tilts                                         |
 | world_origin        | origin position defined by the world file, ENU orientation, based on UTM estimators (GPS, RTK, etc.), does not exist for non-UTM estimators    | commanding UAV localized by UTM-based estimator in a locally defined coordinate world   |

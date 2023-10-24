@@ -11,7 +11,7 @@ nav_order: 2
 
 # Frames of Reference
 
-As described in the [Transformations](transformations.md) manual, the MRS control system enables to send commands to a UAV in all coordinate frames for which a transformation to the control frame exists.
+# As described in the [Transformations](transformations.md) manual, the MRS control system enables to send commands to a UAV in all coordinate frames for which a transformation to the control frame exists.
 The coordinate frames that are used within MRS system are listed below. 
 
 The graphical illustration of relations among particular frames can be displayed with rqt utility `tf_tree` by executing command:
@@ -45,7 +45,7 @@ To connect transform trees of two or more UAVs, you can use the [`tf_connector`]
 The node creates a new common connecting frame and defines transforms from root frames of the separate trees to this common frame that are recalculated so that the specified frames in the subtrees remain equal.
 See the corresponding [Readme](https://github.com/ctu-mrs/mrs_utils/blob/master/tf_connector/README.md) for usage hints and parameter documentation.
 
-*Note:* The `tf_connector` node can connect only trees containing a common (equal) frame --- e.g., a local coordinate frame of the GPS `<uav_name>/gps_origin`.
+*Note:* The `tf_connector` node can connect only trees containing a common (equal) frame --- e.g., a local GNSS coordinate frame of the world `<uav_name>/world_origin`.
 
 
 ## Elementary frames
@@ -60,14 +60,13 @@ The most important frames, that are used in MRS system and are automatically cre
   * enables commanding UAV in the `<uav_name>/fcu` frame without being affected by the UAV tilt
 * **\<uav_name\>/local_origin**
   * coordinate frame with center and orientation cooincident with the starting point and orientation of the UAV 
+* **\<uav_name\>/fixed_origin**
+  * coordinate frame with center and orientation cooincident with the starting estimator
 * **\<uav_name\>/stable_origin**
   * coordinate frame used for stable odometry, which does not jump when a state estimator is switched
-* **\<uav_name\>/gps_origin**
-  * coordinate frame representing the GPS frame
-  * enables commanding multiple UAVs in a common coordinate frame
-* **\<uav_name\>/rtk_origin**
-  * coordinate frame representing the RTK-GPS frame
-  * enables commanding multiple UAVs in a common coordinate frame
+* **\<uav_name\>/world_origin**
+  * coordinate frame representing the GNSS-based frame with origin defined in the world file
+  * enables commanding multiple UAVs in a common locally-defined coordinate frame
 
 where the `<uav_name>` is the unique name of a UAV.
 
@@ -79,14 +78,15 @@ The sensor frames includes
 * **\<uav_name\>/garmin**
 * **\<uav_name\>/rplidar**
 * **\<uav_name\>/os1_sensor**
-* **\<uav_name\>/bluefox_optflow**
+* **\<uav_name\>/bluefox_front**
 * ...
 
 ## Additional frames
 
-Last group of frames used in MRS system is formed by coordinate frames created by addditional sotware (e.g., systems for localization).
+Last group of frames used in MRS system is formed by coordinate frames created by [TransformManager](https://github.com/ctu-mrs/mrs_uav_managers#TransformManager) from `nav_msgs/Odometry` messages or by addditional sotware (e.g., systems for localization).
 This group incorporates 
 
-* **\<uav_name\>/aloam_origin**
-* **\<uav_name\>/hector_origin**
+* **\<uav_name\>/mapping_origin**
+* **\<uav_name\>/ground_truth**
+* **\<uav_name\>/vio_origin**
 * ...
