@@ -5,55 +5,33 @@ parent: Software
 nav_order: 95
 ---
 
-# Connecting git repository with an overleaf project
+# Sync git repository with an Overleaf project
 
-1. Create a project in overleaf
+1. Create a project in overleaf:
   * Create a blank project, no complex stuff is required
-  * Important note - you must be login with an email and password, not just through a google account, it is needed to push to the overleaf afterward since it doesn't support SSH keys by default
-2. Getting git link
-  * Once you've created a project, go to the menu, in the section called ```Sync``` you can find ```Git```, go there.
-    * If you have created a new account, this feature will be paid only. For this purpose you have to use our shared credentials, see on this page "Overleaf credentials" [here](http://mrs.felk.cvut.cz/internal), use them to log in and get GitLab link
-  * This will open a pop-up window with ```git clone https://git.overleaf.com/<your overleaf project link>```, copy the https link
+  * **Note:** you must login with an email and password and not through a Google account. It is needed to push to the overleaf afterward since it doesn't support SSH keys by default.
+2. Get git link:
+  * Once you've created a project, go to the menu, in the section called ```Sync``` you can find ```Git```. Go there.
+    * If you have created a new account, this feature will be paid only. For this purpose you have to use our shared credentials, see on this page "Overleaf credentials" [here](http://mrs.felk.cvut.cz/internal), use them to log in and get GitLab link.
+  * This will open a pop-up window with ```git clone https://git.overleaf.com/<your overleaf project link>```. Copy the ``https...`` link.
 
-3. Syncing your repo
-  * Open your repo, and run the following command
+3. Sync your repo:
+  * **Recommendation**: cache the credentials so you don't have to type them all the time: ``git config credential.helper "cache --timeout 3600"``
+  * Add remote: open your repo, and run command: ``git remote add overleaf <https link from step 2 >``
+  * Pull the overleaf repository while synchronizing the histories: ``git pull overleaf master --allow-unrelated-histories``
+  * Resolve merge conflicts: ``git mergetool``
+  * Push to overleaf: ``git push overleaf master``
+  * (optional) Pulling from overleaf: `git pull overleaf master`
 
-    ```git remote add over <your https link from step 2 >```
-  * You will need firstly no pull the overleaf repo, to synchronize the histories
+### Two-branch setup (recommended)
+Overleaf automatically pushes its changes. As you don't want anyone to mess with your master branch, create a two-branch setup in which you are free to push/pull/merge as you wish.
 
-    ```git pull over master --allow-unrelated-histories```
-
-    ***Note***: if you got tired to type in the credentials every time run this command, it will store them in cache:
-
-    ```git config credential.helper "cache --timeout 3600" ```
-  * And ofc there are gonna be merge conflicts, so use mergetool to fix them, just delete the initiated part by overleaf and use yours
-
-    ``` git mergetool ```
-  * Afterward you can push to the overleaf
-
-    ``` git push over master ```
-4. Pushing to overleaf the easy way
-    ``` git push over master ```
-5. Pulling from overleaf
-    ```git pull over master ```
-6. Pushing to overleaf the harder way with two branches
-  * Since overleaf changes all the stuff automatically, you don't want somebody to mess around with your master branch,( it doesn't push, but once you want to sync it's kinda painful ),
-  so let's create an overleaf branch
-
-    ``` git checkout -b overleaf ```
-  * Then if you want to pull from overleaf to this branch use the following command
-
-    ``` git pull over master:overleaf ```
-  * And all the changes from the overleaf will be on the current overleaf specific branch, and you can safely merge it with master
-  * So, if you have done any changes that you want to push use this command: 
-
-    ``` git push over overleaf:master ```
-
-       **Note**: you can substitute overleaf with any branch name.
- 7. Pulling from overleaf
-   * For much more pleasant experience, I recommend pulling the changes from overleaf to a separate branch, similar to step 4, via this sequence 
-  ``` 
+1. Create an overleaf branch: `git checkout -b overleaf`
+2. Push your changes at `overleaf` branch to Overleaf: `git push overleaf overleaf:master`
+3. Pull to this branch from Overleaf: `git pull overleaf master:overleaf`
+4. Or pull using `merge` as
+``` 
   git fetch 
   git checkout overleaf
-  git merge over/master
+  git merge overleaf/master
 ```
