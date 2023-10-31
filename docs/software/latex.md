@@ -13,7 +13,7 @@ nav_order: 95
 2. Get git link:
   * Once you've created a project, go to the menu, in the section called ```Sync``` you can find ```Git```. Go there.
     * If you have created a new account, this feature will be paid only. For this purpose you have to use our shared credentials, see on this page "Overleaf credentials" [here](http://mrs.felk.cvut.cz/internal), use them to log in and get GitLab link.
-  * This will open a pop-up window with ```git clone https://git.overleaf.com/<your overleaf project link>```. Copy the ``https...`` link.
+  * This will open a pop-up window with ``git clone https://git.overleaf.com/<your overleaf project link>``. Copy the ``https...`` link.
 
 3. Sync your repo:
   * **Recommendation**: cache the credentials so you don't have to type them all the time: ``git config credential.helper "cache --timeout 3600"``
