@@ -5,14 +5,15 @@ parent: The UAV System
 nav_order: 2
 ---
 
-| :warning: **Attention please: This page is outdated.**                                                                                            |
+| :warning: **Attention please: This page needs work.**                                                                                             |
 | :---                                                                                                                                              |
 | The MRS UAV System 1.5 is being released and this page needs updating. Please, keep in mind that the information on this page might not be valid. |
 
 # Frames of Reference
 
-# As described in the [Transformations](transformations.md) manual, the MRS control system enables to send commands to a UAV in all coordinate frames for which a transformation to the control frame exists.
-The coordinate frames that are used within MRS system are listed below. 
+As described in the [Transformations](transformations.md) manual, the MRS control system enables to send commands to the UAV in all coordinate frames that are part of the same TF Tree as the `<uav_name>/fcu` frame.
+The `<uav_name>/fcu` frame is the _body frame_ of the UAV.
+The coordinate frames that are used within MRS system are listed below.
 
 The graphical illustration of relations among particular frames can be displayed with rqt utility `tf_tree` by executing command:
 ```bash
@@ -34,7 +35,7 @@ The `tf2` library requires the mutual transformations to be stored in a **tree s
 
 But, maintaining the **tree structure** is impossible for multiple *world*/*map*/*odometry* coordinate frames.
 
-The MRS system solves this by having the `<uav_name>/fcu` coordinate frame as the **root** node.
+The MRS system solves this by having the `<uav_name>/fcu` coordinate frame as the **root** node of the tree.
 A *frame* following the hierarchical order `<uav_name>/fcu -> frame` is kept untouched.
 However, a *frame* following the order `frame -> <uav_name>/fcu` is stored as a *children* of `<uav_name>/fcu` by inverting the order and the transformation.
 ![](fig/multi_frame_localization_problem.png)
@@ -59,7 +60,7 @@ The most important frames, that are used in MRS system and are automatically cre
   * coordinate frame with coincident center and orientation with the `<uav_name>/fcu` frame, but xy-plane parallel to xy-plane of of the world.
   * enables commanding UAV in the `<uav_name>/fcu` frame without being affected by the UAV tilt
 * **\<uav_name\>/local_origin**
-  * coordinate frame with center and orientation cooincident with the starting point and orientation of the UAV 
+  * coordinate frame with center and orientation cooincident with the starting point and orientation of the UAV
 * **\<uav_name\>/fixed_origin**
   * coordinate frame with center and orientation cooincident with the starting estimator
 * **\<uav_name\>/stable_origin**
@@ -84,7 +85,7 @@ The sensor frames includes
 ## Additional frames
 
 Last group of frames used in MRS system is formed by coordinate frames created by [TransformManager](https://github.com/ctu-mrs/mrs_uav_managers#TransformManager) from `nav_msgs/Odometry` messages or by addditional sotware (e.g., systems for localization).
-This group incorporates 
+This group incorporates
 
 * **\<uav_name\>/mapping_origin**
 * **\<uav_name\>/ground_truth**

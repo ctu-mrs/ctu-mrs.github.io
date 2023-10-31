@@ -54,7 +54,7 @@ All parameters that can be changed by the users can be listed by
 ```bash
 rosrun mrs_uav_core get_public_params.py
 ```
-The parameters are _scraped_ from the currently installed packages from the system, so the list is always going to be compatible with your current installation.
+The parameters are obtained from the currently installed packages from the system, so the list is always going to be compatible with your current installation.
 
 For convenience, the parameters can be piped into a file and later inspected:
 ```bash

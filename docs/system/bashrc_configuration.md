@@ -27,7 +27,7 @@ export UAV_MASS=2.0
 export WORLD_NAME=temesvar_field
 export INITIAL_DISTURBANCE_X=0.0
 export INITIAL_DISTURBANCE_Y=0.0
-export SENSORS="garmin_down, realsense_front"
+export SENSORS="pixhawk, rtk, garmin_down, realsense_front"
 export OLD_PX4_FW=0
 ```
 
@@ -76,7 +76,7 @@ You can leave the values at `0.0` and the UAV will estimate the disturbances on 
 Only when you require a precise and straight takeoff and the best possible performance right after takeoff, you should measure and define the `INITIAL_DISTURBANCE` values.
 
 ```bash
-export SENSORS="garmin_down, realsense_front"
+export SENSORS="pixhawk, rtk, garmin_down, realsense_front"
 ```
 
 This variable contains a list of sensors connected to the onboard computer.

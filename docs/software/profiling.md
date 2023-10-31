@@ -20,7 +20,7 @@ std::vector<double> fibonacci(std::vector<double> seq, size_t N)
     seq.push_back(seq.size());
   else
     seq.push_back(seq.at(seq.size()-1) + seq.at(seq.size()-2));
-    
+
   if (seq.size() < N)
     return fibonacci(seq, N);
   else
@@ -30,14 +30,14 @@ std::vector<double> fibonacci(std::vector<double> seq, size_t N)
 int main()
 {
   const size_t N_elems = 1000;
-  
+
   // calculate the first 1000 elements of the Fibonacci sequence
   const auto sequence = fibonacci({}, N_elems);
-  
+
   // print out the result
   for (const auto& num : sequence)
     std::cout << num << std::endl;
-  
+
   return 0;
 }
 ```
@@ -70,7 +70,7 @@ std::vector<double> fibonacci(std::vector<double> seq, size_t N)
     seq.push_back(seq.size());
   else
     seq.push_back(seq.at(seq.size()-1) + seq.at(seq.size()-2));
-    
+
   if (seq.size() < N)
     return fibonacci(seq, N);
   else
@@ -81,20 +81,20 @@ int main()
 {
   const size_t N_test = 1000;
   const size_t N_elems = 1000;
-  
+
   // save the time before running the algorithm
   const auto start_t = steady_clock::now();
   for (size_t it = 0; it < N_test; it++)
     const auto sequence = fibonacci({}, N_elems);
-    
+
   // save the time after running the algorithm N_test-times
   const auto end_t = steady_clock::now();
-  
+
   // calculate the average duration of running the algorithm once
   const auto avg_us = duration_cast<microseconds>((end_t - start_t) / N_test);
 
   std::cout << "Average time: " << avg_us.count() << "us" << std::endl;
-  
+
   return 0;
 }
 ```
@@ -129,7 +129,7 @@ std::vector<double> fibonacci(std::vector<double> seq, size_t N)
     seq.push_back(seq.size());
   else
     seq.push_back(seq.at(seq.size()-1) + seq.at(seq.size()-2));
-    
+
   if (seq.size() < N)
     return fibonacci(seq, N);
   else
@@ -140,15 +140,15 @@ int main()
 {
   mrs_lib::ScopeTimer tim("fibonacci");
   const size_t N_elems = 1000;
-  
+
   // calculate the first 1000 elements of the Fibonacci sequence
   const auto sequence = fibonacci({}, N_elems);
   tim.checkpoint("seq_calc");
-  
+
   // print out the result
   for (const auto& num : sequence)
     std::cout << num << std::endl;
-    
+
   return 0;
 }
 ```
@@ -268,7 +268,7 @@ void fibonacci(std::vector<double>& seq, size_t N)
     seq.push_back(seq.size());
   else
     seq.push_back(seq.at(seq.size()-1) + seq.at(seq.size()-2));
-    
+
   if (seq.size() < N)
     fibonacci(seq, N);
 }
@@ -277,7 +277,7 @@ int main()
 {
   const size_t N_test = 1000;
   const size_t N_elems = 1000;
-  
+
   // save the time before running the algorithm
   const auto start_t = steady_clock::now();
   for (size_t it = 0; it < N_test; it++)
@@ -285,15 +285,15 @@ int main()
     std::vector<double> sequence;
     fibonacci(sequence, N_elems);
   }
-    
+
   // save the time after running the algorithm N_test-times
   const auto end_t = steady_clock::now();
-  
+
   // calculate the average duration of running the algorithm once
   const auto avg_us = duration_cast<microseconds>((end_t - start_t) / N_test);
 
   std::cout << "Average time: " << avg_us.count() << "us" << std::endl;
-  
+
   return 0;
 }
 ```

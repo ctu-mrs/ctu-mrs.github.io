@@ -11,7 +11,7 @@ nav_order: 1
 
 # UAV-ROS interface
 
-The UAV can be given commands via the following [managers](https://github.com/ctu-mrs/mrs_uav_managers).
+The UAV can be given commands via the following [managers](https://github.com/ctu-mrs/mrs_uav_managers) and nodes.
 
 ## ControlManager
 
@@ -177,16 +177,16 @@ Notable topics:
 
 ### Provided services
 
-| **service**                               | **description**                                         | **service type**                                                      |
-|-------------------------------------------|---------------------------------------------------------|-----------------------------------------------------------------------|
-| estimation_manager/change_estimator       | switch to a desired estimator                           | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
+| **service**                         | **description**               | **service type**                                                      |
+|-------------------------------------|-------------------------------|-----------------------------------------------------------------------|
+| estimation_manager/change_estimator | switch to a desired estimator | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/srv/String.html) |
 
 ## Transform manager
 
 The [TransformManager](https://github.com/ctu-mrs/mrs_uav_managers#TransformManager) handles the broadcasting of default TFs.
 Can construct custom [configurable](https://github.com/ctu-mrs/mrs_uav_managers/blob/f9e0eac0680cc1cd2f5bea0e2d55199c8af1178a/config/public/transform_manager/transform_manager.yaml#L53C6-L53C6) TFs from `nav_msgs/Odometry` topics by adding them to the `tf_sources` [array](https://github.com/ctu-mrs/mrs_uav_managers/blob/f9e0eac0680cc1cd2f5bea0e2d55199c8af1178a/config/public/transform_manager/transform_manager.yaml#L48C11-L48C11) in custom config.
 Can republish a `nav_msgs/Odometry` topic in another frame by adding the `frame_id` to the `republish_in_frames` [array](https://github.com/ctu-mrs/mrs_uav_managers/blob/f9e0eac0680cc1cd2f5bea0e2d55199c8af1178a/config/public/transform_manager/transform_manager.yaml#L61).
-   
+
 ### Provided default TFs
 
 | **TF**              | **description**                                                                                                                                | **example usage**                                                                       |

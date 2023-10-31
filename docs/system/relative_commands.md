@@ -10,15 +10,16 @@ nav_order: 9
 | The MRS UAV System 1.5 is being released and this page needs updating. Please, keep in mind that the information on this page might not be valid. |
 
 ## tl;dr:
-If you're setting a setpoint reference relative to the current UAV pose, do not use the pose ([uav_state](https://github.com/ctu-mrs/mrs_uav_managers/blob/f9e0eac0680cc1cd2f5bea0e2d55199c8af1178a/launch/estimation_manager.launch#L66), [odom_main](https://github.com/ctu-mrs/mrs_uav_managers/blob/f9e0eac0680cc1cd2f5bea0e2d55199c8af1178a/launch/estimation_manager.launch#L64) from the [EstimationManager](https://github.com/ctu-mrs/mrs_uav_managers/tree/master#EstimationManager) to calculate the new setpoint.
-Use the UAV pose from the "commanded pose" topic (currently named `control_manager/tracker_cmd`) to avoid drift.
+
+If you're setting a setpoint reference relative to the current UAV pose, do not use the current UAV State (`/<uav_name>/estimation_manager/uav_state`, or `/<uav_name>/estimation_manager/odom_main`) to calculate the new setpoint.
+Instead, use the current control reference topic (`/<uav_name>/control_manager/tracker_cmd`, or `/<uav_name>/control_manager/control_reference`) to avoid drift.
 Also, read the rest of this page to understand the problem!
 
 ## Problem description
 
 Consider the following typical situation: You are attempting to make the UAV remain stationary at its current position.
 Although, this is already taken care of by our [feedback controllers](https://github.com/ctu-mrs/mrs_uav_controllers), you might still want to set the control rerefence to induce hover, or alter the desired position slightly to induce movement in a desired direction.
-An intuitive (yet wrong) approach is to subscribe to the UAV [odometry](https://github.com/ctu-mrs/mrs_uav_managers/blob/f9e0eac0680cc1cd2f5bea0e2d55199c8af1178a/launch/estimation_manager.launch#L66) and start from the current UAV position as the desired command setpoint for the control pipeline.
+An intuitive (yet wrong) approach is to subscribe to the current UAV State and start from the current UAV position as the desired command setpoint for the control pipeline.
 However, this will most probably cause your UAV to drift, as is illustrated in the following figure.
 This is due to the fact, that the UAV is in practice *never* precisely at the commanded position, even when stationary (because of various disturbances, delays, noise in the odometry, UAV dynamics etc.).
 
@@ -40,7 +41,7 @@ The same situation emerges, e.g., when you're trying to fly straight forward and
 ## Problem solution
 
 The solution is simple --- don't use UAV pose supplied by the [EstimationManager estimator](https://github.com/ctu-mrs/mrs_uav_managers/tree/master#EstimationManager) for calculating the relative pose setpoint.
-Instead, use the control reference, a.k.a, the "commanded pose" (currently found on the `control_manager/tracker_cmd` topic), which is the current pose setpoint as calculated by the MRS control pipeline (corresponding to the dotted green UAV positions in the above figures).
+Instead, use the control reference, a.k.a, the "commanded pose" (currently found on the `/<uav_name>/control_manager/tracker_cmd` topic), which is the current pose setpoint as calculated by the MRS control pipeline (corresponding to the dotted green UAV positions in the above figures).
 Then, the situation from the last figure becomes more like this:
 
 ![uav_moving_nodrift](fig/relative_commands_nodrift.svg)
@@ -53,7 +54,7 @@ Do not try to compensate the offset --- that is the work for the [feedback contr
 If you're setting the UAV pose setpoints for the control system relative to some other objects in the environment, such as in various visual servoing or SLAM scenarios, this problem is not relevant.
 Similarly, when you're commanding the UAV through a trajectory, which is defined in absolute coordinetes (such as in the GPS frame), you don't have to worry about the drift, described at this page.
 
-There are also cases, when you're interested in the *actual* position of the UAV, and not the current commanded position (e.g. in the case of physical interaction with the environment, low-level collision avoidance etc.).
+There are also cases, when you're interested in the *actual* position of the UAV, and not the current commanded position (e.g., in the case of physical interaction with the environment, low-level collision avoidance etc.).
 Then it is appropriate to use the odometry (measured) UAV position, and not `control_manager/tracker_cmd`.
 
 *Think about what your specific situation is and what approach to use.*

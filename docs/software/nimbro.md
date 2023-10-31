@@ -10,7 +10,7 @@ The way Nimbro works is that it spawns several sockets that connect the IP addre
 
 ## Topics
 
-Topics work slightly differently to services. When a topic is published on Host1 as `/Host1/<topic_name>/<topic_subname>`, Nimbro has to be informed on Host1 through configuration file to listen to this topic and republish it on the other side on Host2. However, Host2 doesn't need to contain this configuration because this topic name is sent from one nimbro node to another nimbro node, and it can publish this topic using the topic name contained in the UDP or TCP packet. 
+Topics work slightly differently to services. When a topic is published on Host1 as `/Host1/<topic_name>/<topic_subname>`, Nimbro has to be informed on Host1 through configuration file to listen to this topic and republish it on the other side on Host2. However, Host2 doesn't need to contain this configuration because this topic name is sent from one nimbro node to another nimbro node, and it can publish this topic using the topic name contained in the UDP or TCP packet.
 
 This configuration can be done in two ways:
 - Topic: `<topic_name>/<topic_subname>`: If specified without a leading slash, nimbro will forward your topic to other hosts and they will show up as `/Host1/<topic_name>/<topic_subname>`.
@@ -23,4 +23,4 @@ Services are slightly different because the information for which service to cal
 
 # Nimbro Failures
 
-One of the key way Nimbro can fail is if you don't have ports unblocked when it starts. Nimbro needs some port series to be unblocked and you can check both the port series and their status in the Nimbro launch pane. You can then modify the series according to your needs. They are currently set at 17XXX and 6XXX. 
+One of the key way Nimbro can fail is if you don't have ports unblocked when it starts. Nimbro needs some port series to be unblocked and you can check both the port series and their status in the Nimbro launch pane. You can then modify the series according to your needs. They are currently set at 17XXX and 6XXX.
