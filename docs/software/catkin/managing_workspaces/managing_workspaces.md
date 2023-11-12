@@ -5,8 +5,8 @@ parent: catkin
 grand_parent: Software
 ---
 
-| :warning: **Attention please: This page is outdated.**                                                                                           |
-| :---                                                                                                                                             |
+| :warning: **Attention please: This page needs work.**                                                                                             |
+| :---                                                                                                                                              |
 | The MRS UAV System 1.5 is being released and this page needs updating. Please, keep in mind that the information on this page might not be valid. |
 
 # Managing Workspaces
@@ -16,13 +16,11 @@ Please, make a coffee and take your time to carefully study it, because it will 
 
 ## TL;DR & Tips
 
-* Do not place your software in the `mrs_workspace`, `modules_workspace`, or other workspaces that contain MRS software.
 * Learn to configure the workspaces by hand, learn to [setup](managing_workspaces.html#the-tools-to-manage-a-workspace) and [verify](managing_workspaces.html#verifying-the-state-of-a-workspace) dependencies between the workspaces.
-* Do not `source` more than one workspace in your `~/.bashrc` or `~/.zshrc`, only [source the bottom-most workspace](managing_workspaces.html#sourcing-the-workspace).
+* Do not `source` more than one workspace in your `~/.bashrc` or `~/.zshrc`.
 * Be mindful about the [workspace hierarchy](managing_workspaces.html#recommended-workspace-hierarchy). It will allow you to work more efficiently.
 * It is possible to maintain multiple copies of a workspace, each with a different build type or particular version of the software.
 * Symlink packages from `~/git` to your workspaces, instead of directly cloning them into the `src` folder.
-* Do not modify `mrs_workspace` and `modules_workspace` on a real drone. Place your packages in a custom workspace.
 
 ## What is a Catkin Workspace?
 
@@ -131,75 +129,27 @@ The extending hierarchy will handle the rest.
 
 Workspaces can be linked together such that dependencies between the workspaces can be satisfied.
 Linking of workspaces is an integral mechanism for separating logical packages into groups.
-We can recommend creating the following workspaces and populating them with the following packages:
+Workspaces can be linked in an arbitrary way, e.g.:
 
-![](./fig/workspaces/recommended_hierarchy.png)
+![](./fig/workspaces/workspace_hierarchy.png)
 
-Workspaces that contain MRS software should not contain any user software.
 To extend a workspace, it either has to be sourced when creating the new workspace (see [creating a workspace](managing_workspaces.html#creating-a-workspace)) or extended manually using the `catkin config` command (see below).
 
-**Note:** When working with a single custom workspace, select select one position of `~/my_workspace` for it in the above image based on its dependencies.
-As a rule of thumb:
+### Extending ROS
 
-1. If you need `octomap`, use position #3.
+The top-most workspace in the hierarchy should extend the installed ROS ecosystem:
 
-2. If you don't need `octomap`, but need something from `uav_modules` (e.g. the Ouster driver), use position #2.
-
-3. Else, use position #1.
-
-### ~/mrs_workspace
-
-Should extend ROS:
 ```bash
 catkin config --extend /opt/ros/noetic
 ```
-Should contain:
 
-* [uav_core](http://github.com/ctu-mrs/uav_core)
-* [simulation](http://github.com/ctu-mrs/simulation)
+### Extending particular workspace
 
-### ~/modules_workspace (optional)
+Any other workspace should extend the workspace hier in the hierarchy:
 
-Should extend `~/mrs_workspace`:
 ```bash
-catkin config --extend ~/mrs_workspace/devel
+catkin config --extend ~/particular_workspace/devel
 ```
-Should contain:
-
-* [uav_modules](http://github.com/ctu-mrs/uav_modules)
-
-### ~/octomap_workspace (optional)
-
-Should extend `~/modules_workspace`:
-```bash
-catkin config --extend ~/modules_workspace/devel
-```
-Should contain:
-
-* [octomap_mapping_planning](http://github.com/ctu-mrs/octomap_mapping_planning)
-
-### ~/my_workspace (optional, use a more expressive name in practice)
-
-Your custom workspace can extend whichever from the existing workspaces based on its dependencies.
-It is recommended to follow the [recommended workspace hierarchy](managing_workspaces.html#recommended-workspace-hierarchy) when setting up a custom workspace.
-
-It should extend the bottom-most workspace in the hierarchy, e.g., the `~/modules_workspace`:
-```bash
-catkin config --extend ~/modules_workspace/devel
-```
-Put your packages to `~/my_workspace/src`, [build](managing_workspaces.html#building-a-workspace) the workspace and you are set.
-
-**Note:** In practice, use a more expressive name for the workspace folder than `~/my_workspace` according to what you're trying to do, such as `~/detection_workspace` or `~/darpa_workspace`.
-
-## Workspaces on a real UAV
-
-The MRS workspaces on a real UAV are typically shared.
-Therefore, the `~/mrs_workspace` and `~/modules_workspace` should not be customized or modified for each particular experiment.
-On the other hand, a UAV user may expect that these workspaces are _vanilla_ and can be therefore updated to the current version.
-When a user prepares for an experiment, he should place his packages into his own dedicated workspace (e.g., `~/john_workspace`).
-
-**Note:** If you need to use some custom configuration options for some package from the MRS UAV system, do not commit these to the respective package, but instead use the [custom config way](https://ctu-mrs.github.io/docs/system/custom_configs.html).
-Similarly, if you need to change some options of a package from the MRS modules (such as setting a different frame rate for a camera driver), create a custom launchfile in your own repository to start the node with your options.
 
 ## Build profiles
 
@@ -207,11 +157,39 @@ Workspace can maintain a set of pre-configured build profiles.
 A build profile provides custom compilation flags for all packages.
 This is typically used to specify the workspace-wide optimization level.
 
+### Setting build profiles
+
+We typically use three build profiles that correspond to CMake build profiles:
+
+| name         |         | description                                     | optimization |
+|--------------|---------|-------------------------------------------------|--------------|
+| `debug`      |         | corresponds to CMake's `Debug` profile          | `-Og -g`     |
+| **`reldeb`** | default | corresponds to CMake's `RelWithDebInfo` profile | `-O2 -g`     |
+| `release`    |         | corresponds to CMake's `Release` profile        | `-O3`        |
+
+Use the following commands to set the profiles in your workspace:
+```bash
+catkin config --profile debug --cmake-args -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-Og' -DCMAKE_C_FLAGS='-Og'
+catkin config --profile release --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+catkin config --profile reldeb --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+```
+
+The profiles can be switched by calling `catkin profile set <profile name>`.
+After the profile is switched, the whole workspace needs to be [cleaned](managing_workspaces.html#cleaning-the-workspace) and [recompiled](managing_workspaces.html#building-a-workspace).
+See [GCC optimization](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html) for info about the optimization flags.
+
+**Note:** For the standard development cycle of programming-compilation-debugging, it's recommended to use the `debug` profile as it provides the best compromise of fast compilation, code optimization and debugging experience.
+You can set the `debug` profile in your current workspace and leave the others at the default for performance.
+
+**Note2**: Pre-built deb packages are typically build with the `reldeb` profile.
+
+### Overriding build profiles on per-package level
+
 **Note**: Take care not to override the workspace's compilation flags (unless you know what you're doing) with a CMake statement in your `CMakeLists.txt` file such as
 ```cmake
 set(CMAKE_CXX_FLAGS_DEBUG "-fsanitize=address,undefined")
 ```
-The correct command is 
+The correct command is
 ```cmake
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fsanitize=address,undefined")
 ```
@@ -221,23 +199,6 @@ add_definitions(-fsanitize=address,undefined)
 ```
 so that your flags are *added* after the workspace flags and *don't replace* them.
 
-### MRS Build profiles
-
-We create three build profiles that correspond to CMake build profiles:
-
-| name         |         | description                                     | optimization |
-|--------------|---------|-------------------------------------------------|--------------|
-| `debug`      |         | corresponds to CMake's `Debug` profile          | `-Og -g`     |
-| **`reldeb`** | default | corresponds to CMake's `RelWithDebInfo` profile | `-O2 -g`     |
-| `release`    |         | corresponds to CMake's `Release` profile        | `-O3`        |
-
-The profiles are automatically pre-configured while using our shell alias for [`catkin init`](https://github.com/ctu-mrs/uav_core/blob/master/miscellaneous/shell_additions/shell_additions.sh).
-The profiles can be switched by calling `catkin profile set <profile name>`.
-After the profile is switched, the whole workspace needs to be [cleaned](managing_workspaces.html#cleaning-the-workspace) and [recompiled](managing_workspaces.html#building-a-workspace).
-See [GCC optimization](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html) for info about the optimization flags.
-
-**Note:** For the standard development cycle of programming-compilation-debugging, it's recommended to use the `debug` profile as it provides the best compromise of fast compilation, code optimization and debugging experience.
-You can set the `debug` profile in your current workspace and leave the others at the default for performance.
 
 ## Package blacklisting
 
@@ -249,9 +210,3 @@ A package can be excluded from the build by:
 ## Verifying the state of a workspace
 
 Use the command `catkin config` to obtain the current configuration for your workspace.
-The output for the **mrs_workpace** should contain the following:
-![](./fig/workspaces/mrs_workpace_config.png)
-Notice the _explicit_ extending of `/opt/ros/noetic`, which should be found only in **mrs_workspace** (since this is the top-level workspace of the MRS UAV system).
-
-The output for the **modules_workspace** should be similar to the following:
-![](./fig/workspaces/modules_workspace_config.png)

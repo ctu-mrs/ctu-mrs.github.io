@@ -5,8 +5,8 @@ parent: Introduction
 nav_order: 99
 ---
 
-| :warning: **Attention please: This page is outdated.**                                                                                           |
-| :---                                                                                                                                             |
+| :warning: **Attention please: This page is outdated.**                                                                                            |
+| :---                                                                                                                                              |
 | The MRS UAV System 1.5 is being released and this page needs updating. Please, keep in mind that the information on this page might not be valid. |
 
 We use [catkin tools](https://catkin-tools.readthedocs.io/en/latest/) to manage our ROS workspaces.
@@ -37,9 +37,6 @@ If you use Tomas's [linux-setup](https://github.com/klaxalk/linux-setup), you ca
 to compile the file you are editing.
 
 ## Cleaning the workspace
-
-Sometimes, cleaning the workspace can help with, e.g., corrupted binaries (which can happen on a drone, which is not usually shut down properly).
-Cleaning might also help when dependencies changed too much.
 
 Cleaning the whole workspace:
 ```bash

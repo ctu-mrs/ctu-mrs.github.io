@@ -4,8 +4,8 @@ title: Debugging with GDB
 parent: Software
 ---
 
-| :warning: **Attention please: This page is outdated.**                                                                                           |
-| :---                                                                                                                                             |
+| :warning: **Attention please: This page needs work.**                                                                                             |
+| :---                                                                                                                                              |
 | The MRS UAV System 1.5 is being released and this page needs updating. Please, keep in mind that the information on this page might not be valid. |
 
 # Debugging with GDB
@@ -19,7 +19,7 @@ A debugger (namely GDB in our case) enables you to inspect the state of the prog
 2. Run your node through the `debug_roslaunch` script by putting it to the `launch-prefix` in the launchfile[^2].
 3. If you're debugging a nodelet, it is recommended to run it in standalone mode and not under a nodelet manager.
 
-An example of how to set up your package like this is in the [ROS vision example package](https://github.com/ctu-mrs/example_ros_vision) (take a look in the `CMakeLists.txt` file and the launchfile).
+An example of how to set up your package like this is in the [waypooint flier](https://github.com/ctu-mrs/mrs_core_examples) (take a look in the `CMakeLists.txt` file and the launchfile).
 
 ## Debugging your node
 
