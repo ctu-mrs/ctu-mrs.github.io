@@ -27,10 +27,10 @@ sudo apt-get -y install dpkg git
 sudo pip3 install gitman
 sudo -H pip3 install gitman
 
-echo "clone uav_core"
+echo "clone mrs_uav_core"
 cd
-git clone https://github.com/ctu-mrs/uav_core.git
-cd uav_core
+git clone https://github.com/ctu-mrs/mrs_uav_core.git
+cd mrs_uav_core
 gitman install
 
 echo "install part ended"
