@@ -20,7 +20,7 @@ People often start by hardcoding things like the `UAV_NAME`, or parameters of th
 This is very impractical during a real-world experiment.
 The `UAV_NAME` is stored in the `$UAV_NAME` environmental variable, and your code should load it and use it.
 Configurable parameters of your code should be loaded from a config file, which can be changed without the need to recompile your code.
-Use our [example ros node](https://github.com/ctu-mrs/example_ros_uav) for inspiration.
+Use our [mrs_core_examples](https://github.com/ctu-mrs/mrs_core_examples) for inspiration.
 
 ### Do not launch new nodes during flight.
 

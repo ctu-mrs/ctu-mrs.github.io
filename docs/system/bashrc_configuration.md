@@ -15,6 +15,10 @@ You can find the `.bashrc` file in the home folder of the UAV's onboard computer
 The purpose of the `.bashrc` file is to set up environmental variables, aliases and other settings.
 We use it to define the current configuration of the UAV through a set of environmental variables.
 
+## .bashrc for your personal computer
+
+## .bashrc for a REAL UAV
+
 ## Environmental variables:
 
 In the `.bashrc` file of a typical UAV which is running the MRS UAV System, you will find a list of environmental variables similar to this:
