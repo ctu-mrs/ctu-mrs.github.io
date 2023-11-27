@@ -27,7 +27,7 @@ Use our [mrs_core_examples](https://github.com/ctu-mrs/mrs_core_examples) for in
 Your node should be running even before takeoff, in a "deactivated" state (e.g., not sending "goto" commands).
 You should have an activation service, which will be called (manually) after the takeoff is finished.
 This way, if your node crashes for some reason, we can see it even before takeoff, which saves time and batteries.
-Also, starting a new ros node can be hard on the CPU load, which is not what we want during flight.
+Also, starting a new ROS node can produce spikes in the CPU load, which is not wanted during flight.
 
 ### The real world is different than simulations.
 
@@ -42,7 +42,7 @@ The output should, for example, contain the current state of your node, informat
 
 ### Set up your own workspace
 
-You should clone your code into the `~/git` folder, create your own repository (usually called your_name_workspace) and symlink your code into your workspace.
+You should clone your code into the `~/git` folder, create your own ROS workspace (usually called your_name_workspace) and symlink your code into your workspace.
 Your workspace has to extend `/opt/ros/noetic`.
 Follow these instructions to set up a new workspace:
 
@@ -61,13 +61,14 @@ Then link/move your packages to the `~/john_doe_workspace/src` and compile the w
 cd ~/john_doe_workspace
 catkin build
 ```
-
+Set up the automatic sourcing of your workspace in the .bashrc file.
 Note that only one workspace can be sourced, so comment out any other workspaces that are being sourced.
 
 ```bash
 # source ~/other_persons_workspace/devel/setup.bash
 source ~/john_doe_workspace/devel/setup.bash
 ```
+
 
 ### You have to prepare your own real-world tmux script.
 
