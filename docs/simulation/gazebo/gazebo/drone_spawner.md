@@ -12,7 +12,7 @@ nav_order: 2
 
 # About
 
-The `mrs_drone_spawner` is a ROS node written in Python, which allows you to dynamically add drones into your Gazebo simulation. We have also developed a Spawner API to facilitate development of new modular Gazebo models derived from the MRS UAV System. At the core, the spawner handles the following operations:
+The `mrs_drone_spawner` is a ROS node written in Python, which allows you to dynamically add drones into your Gazebo simulation. We have also developed a **Spawner API** to facilitate the development of new modular Gazebo models derived from the MRS UAV System. At the core, the spawner handles the following operations:
 
 * generating an SDF model from the [available templates](https://github.com/ctu-mrs/mrs_uav_system#unmanned-aerial-vehicles)
 * adding optional components (sensors, plugins...) based on the user input
@@ -146,7 +146,7 @@ Jinja is a templating language that allows the use of Python-esque syntax inside
 * To declare a variable, use `set`, e.g. like this `{%- set my_variable = 10.7 -%}`
 * Jinja supports `int`, `float`, `string`, `list` and `dict` just like Python. None datatype is spelled with lowercase n: `none`
 * You can use `if` and `for` in a fashion similar to Python, but the block needs to be ended with `endif` or `endfor`.
-* Datatype filter - if you want to make sure, that a variable is of a specific type, you can use a type filter. For example `{%- set my_string = arg1 | string -%}` will make sure that the variable `my_string` is only filled with a string. Filtering can also be used to check the length of an iterable datatype, e.g. `{%- if my_list | length > 10 -%}`
+* Data filter - if you want to make sure, that a variable is of a specific type, you can use a type filter. For example `{%- set my_string = arg1 | string -%}` will make sure that the variable `my_string` is only filled with a string. Filtering can also be used to check the length of an iterable datatype, e.g. `{%- if my_list | length > 10 -%}`
 
 ## Design philosophy
 Two general-purpose templates are used for building blocks shared by multiple robots. Generic items (a colored mesh, a Gazebo camera plugin...), are defined in `generic_components`. Components that are compatible with the Spawner API are defined in `component_snippets`. Platform templates should not implement any components that may be used by other robots. Use `import` statements to include other templates, the syntax is similar to Python.
