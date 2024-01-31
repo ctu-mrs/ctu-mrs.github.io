@@ -173,13 +173,13 @@ A good example for this is the `lidar_mount` in the [x500.sdf.jinja](https://git
 Jinja is a templating language that allows the use of Python-esque syntax inside xml files.
 After rendering a template into an SDF model, all Jinja syntax is removed.
 
-* Jinja statemets begin with `{%` and end with `%}`. This will add an empty line into the rendered file. Using `{%-` and `-%}` will also remove the empty line and is recommended when contributing to the MRS UAV System.
+* Jinja statemets begin with `\{\%` and end with `\%\}`. This will add an empty line into the rendered file. Using `\{\%-` and `-\%\}` will also remove the empty line and is recommended when contributing to the MRS UAV System.
 * Jinja comments begin with `{#` and end with `#}`. No extra line removal is necessary here.
-* Jinja macros function similarly to python functions but have to be ended with `endmacro`. Declare a macro with `{%- macro my_macro(arg1, arg2, ...) -%}` and call the macro with `{{ my_macro(arg1, arg2, ...) }}`
-* To declare a variable, use `set`, e.g. like this `{%- set my_variable = 10.7 -%}`
+* Jinja macros function similarly to python functions but have to be ended with `endmacro`. Declare a macro with `\{\%- macro my_macro(arg1, arg2, ...) -\%\}` and call the macro with `{{ my_macro(arg1, arg2, ...) }}`
+* To declare a variable, use `set`, e.g. like this `\{\%- set my_variable = 10.7 -\%\}`
 * Jinja supports `int`, `float`, `string`, `list` and `dict` just like Python. None datatype is spelled with lowercase n: `none`
 * You can use `if` and `for` in a fashion similar to Python, but the block needs to be ended with `endif` or `endfor`.
-* Data filter - if you want to make sure, that a variable is of a specific type, you can use a type filter. For example `{%- set my_string = arg1 | string -%}` will make sure that the variable `my_string` is only filled with a string. Filtering can also be used to check the length of an iterable datatype, e.g. `{%- if my_list | length > 10 -%}`
+* Data filter - if you want to make sure, that a variable is of a specific type, you can use a type filter. For example `\{\%- set my_string = arg1 | string -\%\}` will make sure that the variable `my_string` is only filled with a string. Filtering can also be used to check the length of an iterable datatype, e.g. `\{\%- if my_list | length > 10 -\%\}`
 
 ## Design philosophy
 
