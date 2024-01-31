@@ -21,11 +21,11 @@ jobs:
 
   docs:
     runs-on: ubuntu-20.04
-    steps:
+
     env:
       PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
 
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    steps:
       - uses: actions/checkout@v3
 
       - name: Install
