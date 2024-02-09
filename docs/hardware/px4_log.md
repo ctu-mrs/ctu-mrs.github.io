@@ -5,6 +5,7 @@ parent: Hardware
 ---
 
 ### Vehicle flight mode
+
 ---
 
 `vehicle_status/nav_state`:\
@@ -34,6 +35,7 @@ flight_modes_table = {\
 }
 
 ### RC Inputs
+
 ---
 `input_rc/values.00` : Roll\
 `input_rc/values.01` : Throttle\
@@ -42,3 +44,9 @@ flight_modes_table = {\
 `input_rc/values.04` : Offboard\
 `input_rc/values.05` : Flight Mode\
 `manual_control_switches/*` : Switches\
+
+### Log Profiles
+
+---
+In addition to the topics logged by the SD card, adding `Bit:4 - High rate` is enough to get values on actuators, rates, attitude, and sensors. Note that `Bit:3 - System identification` is a subset of topics included in `high_rate` topics and so it is not useful to enable them both. Although, enabling both is not harmful. In essence, unless flying on PX4's autonomy, `SDLOG_PROFILE:17` is recommended.  
+More details can be found in the PX4 file `src/modules/logger/logged_topics.cpp`.
