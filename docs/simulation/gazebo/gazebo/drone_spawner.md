@@ -174,14 +174,7 @@ Please refer to the [example_custom_drone](https://github.com/ctu-mrs/example_cu
 
 Jinja is a templating language that allows the use of Python-esque syntax inside xml files.
 After rendering a template into an SDF model, all Jinja syntax is removed.
-
-* Jinja statemets begin with `{% raw %} {% {% endraw %}` and end with `{% raw %} %} {% endraw %}`. This will add an empty line into the rendered file. Using `{% raw %} {%- {% endraw %}` and `{% raw %} -%} {% endraw %}` will also remove the empty line and is recommended when contributing to the MRS UAV System.
-* Jinja comments begin with `{#` and end with `#}`. No extra line removal is necessary here.
-* Jinja macros function similarly to python functions but have to be ended with `{% raw %} {% endmacro %} {% endraw %}`. Declare a macro with `{% raw %} {%- macro my_macro(arg1, arg2, ...) -%} {% endraw %}` and call the macro with `{% raw %} {{ my_macro(arg1, arg2, ...) }} {% endraw %}`
-* To declare a variable, use `set`, e.g. like this `{% raw %} {%- set my_variable = 10.7 -%} {% endraw %}`
-* Jinja supports `int`, `float`, `string`, `list` and `dict` just like Python. None datatype is spelled with lowercase n: `none`
-* You can use `if` and `for` in a fashion similar to Python, but the block needs to be ended with `endif` or `endfor`.
-* Data filter - if you want to make sure, that a variable is of a specific type, you can use a type filter. For example `{% raw %} {%- set my_string = arg1 | string -%} {% endraw %}` will make sure that the variable `my_string` is only filled with a string. Filtering can also be used to check the length of an iterable datatype, e.g. `{% raw %} {%- if my_list | length > 10 -%} {% endraw %}`
+Please refer to the project website for Jinja [documentation](https://jinja.palletsprojects.com/en/3.1.x/templates/#synopsis).
 
 ## Design philosophy
 
