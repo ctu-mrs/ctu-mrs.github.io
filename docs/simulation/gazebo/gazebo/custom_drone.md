@@ -3,7 +3,6 @@ layout: default
 title: Custom drone
 parent: Gazebo
 grand_parent: Simulation
-render_with_liquid: false
 ---
 
 # Adding a custom drone to the simulation (tutorial)
@@ -112,7 +111,8 @@ In essence the model for Gazebo is always created just at the time we need to pl
 Let's create a jinja template for the `my_drone` model. The SDF Jinja template will be placed in `/models/my_drone/sdf/` and use the name `my_drone.sdf.jinja`. Make sure that the file **suffix** matches your suffix param from the [drone spawner config](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/blob/master/ros_packages/mrs_uav_gazebo_simulation/config/spawner_params.yaml).
 
 The basic model skeleton should look like this:
-```
+```xml
+{% raw %}
 <?xml version="1.0" encoding="utf-8"?>
 <sdf version='1.6'>
 
@@ -126,17 +126,21 @@ The basic model skeleton should look like this:
 
   </model>
 </sdf>
+{% endraw %}
 ```
 In this example, `root` is set as a jinja variable, and will be used later in the code. The template will receive a dicitionary `spawner_args` from the MRS drone spawner. We will import some utilities from the `mrs_uav_gazebo_simulation`:
-```
+```xml
+{% raw %}
 ...
 <sdf version='1.6'>
   {%- import 'mrs_robots_description/sdf/component_snippets.sdf.jinja' as mrs_components -%}
   {%- import 'mrs_robots_description/sdf/generic_components.sdf.jinja' as mrs_generic -%}
+{% endraw %}
 ```
 And use the multirotor_physics_macro to give our drone mass, inertia and a collision envelope:
 
-```
+```xml
+{% raw %}
 ...
 
   {%- set mass = 2.0 -%} {# [kg] #}
@@ -172,11 +176,13 @@ And use the multirotor_physics_macro to give our drone mass, inertia and a colli
         izz = body_izz)
       }}
       <!--}-->
+{% endraw %}
 ```
 
 Now we will add some visuals to the model, so that the drone body can be viewed in Gazebo. In this tutorial, we use a mix of geometric primitives and meshes. Since we use a `cylinder` visual several times in the project, it gives us a good opportunity to create a Jinja macro to attach a cylinder to the drone. To keep the base model file as clean as possible, let's create a new template called `custom_macros.sdf.jinja` in the `models/my_drone/sdf/` directory. The macro could look like this:
 
-```
+```xml
+{% raw %}
 <?xml version="1.0" encoding="utf-8"?>
 <sdf version='1.6'>
 
@@ -200,12 +206,13 @@ Now we will add some visuals to the model, so that the drone body can be viewed 
 {%- endmacro -%}
 
 </sdf>
+{% endraw %}
 ```
 
 Now let's go back to our `my_drone.sdf.jinja` and import the custom macros. We will use the newly created macro to add the central pieces of our drone - two flat cylinders stacked on top of each other with a small gap in between. This will serve as the center board of the frame.
 
-```
-
+```xml
+{% raw %}
   ...
 
   {%- import 'models/my_drone/sdf/custom_macros.sdf.jinja' as custom_macros -%}
@@ -252,19 +259,23 @@ Now let's go back to our `my_drone.sdf.jinja` and import the custom macros. We w
   <!--}-->
 
   <!--}-->
+{% endraw %}
 ```
 
 Now we add the drone arms which use a mesh. We provide two meshes with this example: [arm and propeller](https://github.com/ctu-mrs/example_custom_drone/tree/main/models/my_drone/meshes).If placed in the model directory, the files can be accessed using uri `model://MODEL_NAME/RELATIVE_FILEPATH`
 
-```
+```xml
+{% raw %}
   {%- set arm_mesh_file = 'model://my_drone/meshes/arm.dae' -%}
   {%- set prop_mesh_file = 'model://my_drone/meshes/propeller.dae' -%}
   {%- set mesh_scale = '1 1 1' -%}
+{% endraw %}
 ```
 
 This model will have arms placed at unequal angles (i.e. body length > body width). **Notice that we use the math module from python**. The module has to be loaded into the jinja environment, which is then used to create a sdf file from the jinja template. In our case, the environment setup is handled by the MRS drone spawner, and only adds the `math` module. A macro to attach the mesh as a visual component is provided by [mrs_generic](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/blob/master/ros_packages/mrs_uav_gazebo_simulation/models/mrs_robots_description/sdf/generic_components.sdf.jinja):
 
-```
+```xml
+{% raw %}
       ...
 
       <!-- Arms {-->
@@ -320,11 +331,13 @@ This model will have arms placed at unequal angles (i.e. body length > body widt
         yaw = math.radians(217))
       }}
       <!--}-->
+{% endraw %}
 ```
 
 Now we add the propellers. We utilize a propeller macro from [mrs_components](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/blob/master/ros_packages/mrs_uav_gazebo_simulation/models/mrs_robots_description/sdf/component_snippets.sdf.jinja), which adds the motor physics and gazebo plugins, and also loads the mesh from a provided filepath. Note that propellers have their separate links, so they should be placed outside the root link block:
 
-```
+```xml
+{% raw %}
     ...
     {%- set motor_radius = 0.015 -%} {# [m] #}
     {%- set motor_height = 0.013 -%} {# [m] #}
@@ -414,13 +427,15 @@ Now we add the propellers. We utilize a propeller macro from [mrs_components](ht
       spawner_args = spawner_args)
     }}
     {# <!--}--> #}
+{% endraw %}
 ```
 
 Make sure to follow the [PX4 airframe reference](https://docs.px4.io/main/en/airframes/airframe_reference.html) to assign correct orientation and motor number to the propellers. In this tutorial, we are building a **Quadrotor H** configuration (Note: a majority of quadrotors uses **Quadrotor X**).
 
 The last part our drone needs to fly is the flight control unit (FCU). We will model the Pixhawk FCU with PX4 firmware. We can use an external mesh of the Pixhawk chasis, that is already included in mrs_uav_gazebo_simulation. The FCU includes the following sensors: GPS, IMU, magnetometer and barometer. It also creates a Gazebo-Mavlink interface, which needs to be connected to the correct ports (especially in case of multi-vehicle simulation). This is handled by the MRS drone spawner, which provides the ports in `spawner_args['mavlink_config']`:
 
-```
+```xml
+{% raw %}
   ...
 
   {%- set pixhawk_mesh_file = 'model://mrs_robots_description/meshes/sensors/pixhawk.dae' -%}
@@ -517,4 +532,5 @@ The last part our drone needs to fly is the flight control unit (FCU). We will m
   <!--}-->
 
   <!--}-->
+{% endraw %}
 ```
