@@ -622,10 +622,14 @@ The sensor will be a monocular grayscale camera based on the gazebo ros camera p
 ```
 
 The three internal variables called `spawner_...` are our interface to the spawner API.
-The component can be then activated by adding the spawner keyword to the spawn command (in this example `--enable-custom-monochrome-camera`).
-The spawner description will be displayed whenever `--help` is added to the spawn command, and a platform using this component is selected (i.e. ` --my_drone --help`).
+The component can be then activated by adding the spawner keyword to the spawn command (in this example `--enable-custom-monochrome-camera` ).
+The spawner description will be displayed whenever `--help` is added to the spawn command, and a platform using this component is selected (i.e. `--my_drone --help` ).
+
 The spawner default args allow the user to change some internal parameters of the plugin in spawn-time, in this case set a specific update rate of the camera or change the noise strength.
-This can be done from the spawn command, e.g.: ` --enable-custom-monochrome-camera update_rate:=30 noise:=0`.
+This can be done from the spawn command, e.g.:
+```bash
+rosservice call /mrs_drone_spawner/spawn "1 --my_drone --enable-custom-monochrome-camera update_rate:=30 noise:=0
+```
 
 We use a macro from `mrs_generic` called `handle_spawner_args`, that overrides the default values with user input whenever possible, and uses default values elsewhere.
 The values are then available inside the macro as `spawner_args[spawner_keyword]['update_rate']` and `spawner_args[spawner_keyword]['noise']`.
