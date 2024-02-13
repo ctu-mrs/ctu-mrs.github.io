@@ -15,7 +15,7 @@ The tutorial covers the following steps:
 * Model template creation in Jinja
 * Configuring a custom airframe for PX4
 * Adding the custom drone to the MRS drone spawner
-* Running the simulation
+* Running the simulation with the MRS UAV System
 * Adding a custom optional sensor (configurable by the MRS drone spawner)
 The complete example drone is available in the [example_custom_drone](https://github.com/ctu-mrs/example_custom_drone) repository.
 
@@ -534,3 +534,68 @@ The last part our drone needs to fly is the flight control unit (FCU). We will m
   <!--}-->
 {% endraw %}
 ```
+
+## Configuring a custom airframe for PX4
+
+Before we can take it to the sky, we need to add the PX4 airframe config for `Quadrotor H`. The config files go into the `ROMFS` directory and have to include an airframe definition. This file has to be placed in `ROMFS/px4fmu_common/init.d-posix/airframes/` and the naming convention is: `SYS_AUTOSTART`, underscore and `PLATFORM_NAME`. In our case, the Quadrotor H has an autostart code `4041` and the platform is called `my_drone`, i.e. we need to have a file named `4041_my_drone` with the following content:
+
+```bash
+#!/bin/sh
+
+. ${R}etc/init.d/rc.mc_defaults
+
+set MIXER quadrotor_h
+```
+We will also have to provide the mixer file in `ROMFS/px4fmu_common/mixers/`. The mixer name should match the name we provide in the airframe file. The file should have a suffix `.main.mix`, i.e. we should have a file called `quadrotor_h.main.mix`. I won't go into details of creating custom mixers. For our drone, we just need to define that there are 4 motors in the H configuration:
+
+```bash
+# Motors
+R: 4h
+```
+
+The remaining files handle mavlink configuration, which needs to match the ports assigned by the MRS drone spawner. We recommend to use the reference files provided with this tutorial: [ROMFS/px4fmu_common](https://github.com/ctu-mrs/example_custom_drone/tree/main/ROMFS/px4fmu_common).
+
+## Adding the custom drone to the MRS drone spawner
+Now the custom drone should be ready for a test flight. The package with our drone just needs to be registered by the MRS drone spawner. We now assume that the **package was already built in a catkin workspace, and the workspace is sourced**. You can verify this in terminal by calling:
+```bash
+rospack find example_custom_drone
+```
+which should return the path to the package. The drone spawner can load additional packages using a custom config file. Create a new file called `spawner_config.yaml`:
+
+```yaml
+extra_resource_paths: ["example_custom_drone"]
+```
+
+Now pass this file to simulation or spawner launch file:
+
+```bash
+roslaunch mrs_uav_gazebo_simulation simulation.launch spawner_config:=spawner_config.yaml
+```
+or
+```bash
+roslaunch mrs_uav_gazebo_simulation mrs_drone_spawner.launch spawner_config:=spawner_config.yaml
+```
+
+The template for a custom drone should be loaded automatically. Check the output of the simulation node for `[MrsDroneSpawner]: Jinja templates loaded:`. If the template for `my_drone` is loaded, the model can be spawned by calling
+
+```bash
+rosservice call /mrs_drone_spawner/spawn "1 --my_drone"
+```
+
+You should see the custom drone model to the Gazebo simulation.
+
+
+## Running the simulation with the MRS UAV System
+We provide an example [tmuxinator session](https://github.com/ctu-mrs/example_custom_drone/tree/main/tmux) to start the simulation with the MRS UAV System. In case of a custom platform, a `platform_config.yaml` has to be given to the mrs_uav_core node. An example `platform_config.yaml` is provided:
+```yaml
+uav_mass: 2.0 # [kg]
+
+motor_params:
+  n_motors: 4
+  a:  0.37119
+  b: -0.17647
+```
+The tmuxinator session can be started with the `start.sh` script. This will launch Gazebo, spawn the drone, start the MRS UAV System, and perform an automated takeoff.
+
+## Adding a custom optional sensor (configurable by the MRS drone spawner)
+TODO
