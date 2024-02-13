@@ -598,4 +598,116 @@ motor_params:
 The tmuxinator session can be started with the `start.sh` script. This will launch Gazebo, spawn the drone, start the MRS UAV System, and perform an automated takeoff.
 
 ## Adding a custom optional sensor (configurable by the MRS drone spawner)
-TODO
+In this section, we will create our own sensor that can be added to the model dynamically using the MRS drone spawner.
+The sensor will be a monocular grayscale camera based on the gazebo ros camera plugin. We will start by creating the component macro in `custom_macros.sdf.jinja`:
+
+```xml
+{% raw %}
+{%- import 'mrs_robots_description/sdf/generic_components.sdf.jinja' as mrs_generic -%}
+
+{%- macro custom_monochrome_camera_macro(camera_name, parent_link, x, y, z, roll, pitch, yaw, spawner_args) -%}
+
+  {%- set spawner_keyword = 'enable-custom-monochrome-camera' -%} {# access this macro from the drone spawner #}
+  {%- set spawner_description = 'Add a custom monochrome camera to the drone' -%} {# displayed when --help is called in the drone spawner #}
+  {%- set spawner_default_args = {'update_rate': 45, 'noise': 0.004} -%} {# internal params that can be overriden in spawn-time #}
+
+  {%- if spawner_keyword in spawner_args.keys() -%}
+
+    {{ mrs_generic.handle_spawner_args(spawner_keyword, spawner_default_args, spawner_args) }}
+
+  {%- endif -%}
+{%- endmacro -%}
+
+{% endraw %}
+```
+
+The three internal variables called `spawner_...` are our interface to the spawner API.
+The component can be then activated by adding the spawner keyword to the spawn command (in this example `--enable-custom-monochrome-camera`).
+The spawner description will be displayed whenever `--help` is added to the spawn command, and a platform using this component is selected (i.e. ` --my_drone --help`).
+The spawner default args allow the user to change some internal parameters of the plugin in spawn-time, in this case set a specific update rate of the camera or change the noise strength.
+This can be done from the spawn command, e.g.: ` --enable-custom-monochrome-camera update_rate:=30 noise:=0`.
+
+We use a macro from `mrs_generic` called `handle_spawner_args`, that overrides the default values with user input whenever possible, and uses default values elsewhere.
+The values are then available inside the macro as `spawner_args[spawner_keyword]['update_rate']` and `spawner_args[spawner_keyword]['noise']`.
+The `if` condition will ensure that the component will only attach code to the base model, if the keyword was used in the spawn command.
+We will now add the camera plugin into the `if` block. Note that a `zero_inertial_macro` is used, since all links in our model need to have some mass and inertia. Otherwise Gazebo will ignore them, and the plugins will not be active.
+
+```xml
+{% raw %}
+    <!-- custom monochrome camera {-->
+    <link name="{{ camera_name }}_link">
+      <pose>{{ x }} {{ y }} {{ z }} {{ roll }} {{ pitch }} {{ yaw }}</pose>
+      {{ mrs_generic.zero_inertial_macro() }}
+      <sensor name="{{ camera_name }}_sensor" type="camera">
+        <update_rate>{{ spawner_args[spawner_keyword]['update_rate'] }}</update_rate>
+        <camera>
+          <horizontal_fov>{{ horizontal_fov }}</horizontal_fov>
+          <image>
+            <width>{{ image_width }}</width>
+            <height>{{ image_height }}</height>
+            <format>L_INT8</format> <!-- this makes the data grayscale -->
+          </image>
+          <clip>
+            <near>{{ min_distance }}</near>
+            <far>{{ max_distance }}</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>{{ spawner_args[spawner_keyword]['noise'] }}</stddev>
+          </noise>
+        </camera>
+        <plugin name="{{ camera_name }}_plugin" filename="libgazebo_ros_camera.so">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>{{ spawner_args[spawner_keyword]['update_rate'] }}</updateRate>
+          <cameraName>/{{ spawner_args['name'] }}/{{ camera_name }}</cameraName>
+          <imageTopicName>/{{ spawner_args['name'] }}/{{ camera_name }}/image_raw</imageTopicName>
+          <cameraInfoTopicName>/{{ spawner_args['name'] }}/{{ camera_name }}/camera_info</cameraInfoTopicName>
+          <frameName>/{{ spawner_args['name'] }}/{{ camera_name }}_link</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+        </plugin>
+      </sensor>
+      <visual name="{{ camera_name }}_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.03 0.022 0.015</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Yellow</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name="{{ camera_name }}_lens_visual">
+        <pose>0.014 0 0 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.006</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name="{{ camera_name }}_joint" type="fixed">
+      <parent>{{ parent_link }}</parent>
+      <child>{{ camera_name }}_link</child>
+    </joint>
+    <!--}-->
+{% endraw %}
+```
+
+## Adding more components
+We added legs (cylinders with collision), motors (just visual cylinders) and two additional components from the MRS simulation (laser rangefinder, ground truth publisher). The full model is available [here](https://github.com/ctu-mrs/example_custom_drone/tree/main).
