@@ -167,19 +167,21 @@ We provide several quadrotor templates (f330, f450, t650, x500), a 6-rotor (f550
 Some parts of the airframe may be conditional, such as holders for specific sensors that depend on the existence of multiple drones.
 This can be done by storing the result of a component macro call in a variable and checking its length.
 A good example for this is the `lidar_mount` in the [x500.sdf.jinja](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/blob/master/ros_packages/mrs_uav_gazebo_simulation/models/mrs_robots_description/sdf/x500.sdf.jinja) template.
+A completely new platform may be created in an external package.
+Please refer to the [example_custom_drone](https://github.com/ctu-mrs/example_custom_drone) repository for more information and a [tutorial](https://ctu-mrs.github.io/docs/simulation/gazebo/gazebo/custom_drone.html).
 
 ## Jinja syntax
 
 Jinja is a templating language that allows the use of Python-esque syntax inside xml files.
 After rendering a template into an SDF model, all Jinja syntax is removed.
 
-* Jinja statemets begin with `\{\%` and end with `\%\}`. This will add an empty line into the rendered file. Using `\{\%-` and `-\%\}` will also remove the empty line and is recommended when contributing to the MRS UAV System.
+* Jinja statemets begin with `{% raw %} {% {% endraw %}` and end with `{% raw %} %} {% endraw %}`. This will add an empty line into the rendered file. Using `{% raw %} {%- {% endraw %}` and `{% raw %} -%} {% endraw %}` will also remove the empty line and is recommended when contributing to the MRS UAV System.
 * Jinja comments begin with `{#` and end with `#}`. No extra line removal is necessary here.
-* Jinja macros function similarly to python functions but have to be ended with `endmacro`. Declare a macro with `\{\%- macro my_macro(arg1, arg2, ...) -\%\}` and call the macro with `{{ my_macro(arg1, arg2, ...) }}`
-* To declare a variable, use `set`, e.g. like this `\{\%- set my_variable = 10.7 -\%\}`
+* Jinja macros function similarly to python functions but have to be ended with `{% raw %} {% endmacro %} {% endraw %}`. Declare a macro with `{% raw %} {%- macro my_macro(arg1, arg2, ...) -%} {% endraw %}` and call the macro with `{% raw %} {{ my_macro(arg1, arg2, ...) }} {% endraw %}`
+* To declare a variable, use `set`, e.g. like this `{% raw %} {%- set my_variable = 10.7 -%} {% endraw %}`
 * Jinja supports `int`, `float`, `string`, `list` and `dict` just like Python. None datatype is spelled with lowercase n: `none`
 * You can use `if` and `for` in a fashion similar to Python, but the block needs to be ended with `endif` or `endfor`.
-* Data filter - if you want to make sure, that a variable is of a specific type, you can use a type filter. For example `\{\%- set my_string = arg1 | string -\%\}` will make sure that the variable `my_string` is only filled with a string. Filtering can also be used to check the length of an iterable datatype, e.g. `\{\%- if my_list | length > 10 -\%\}`
+* Data filter - if you want to make sure, that a variable is of a specific type, you can use a type filter. For example `{% raw %} {%- set my_string = arg1 | string -%} {% endraw %}` will make sure that the variable `my_string` is only filled with a string. Filtering can also be used to check the length of an iterable datatype, e.g. `{% raw %} {%- if my_list | length > 10 -%} {% endraw %}`
 
 ## Design philosophy
 
