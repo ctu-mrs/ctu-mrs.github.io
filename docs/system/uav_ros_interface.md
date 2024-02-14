@@ -108,6 +108,14 @@ Safety and higher-level flight control:
 | control_manager/failsafe_escalating | emergency escalating failsafe                                | `std_srvs/Trigger` |
 | control_manager/motors              | activates/deactivates the control output (don't touch this!) | `std_srvs/SetBool` |
 
+Transformation services:
+
+| **service**                         | **description**                                                          | **service type**                                                                                    |
+|-------------------------------------|--------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| control_manager/transform_pose      | uses the mrs_lib::Transformer to transform geometry_msgs::PoseStamped    | [mrs_msgs/TransformPoseSrv](https://ctu-mrs.github.io/mrs_msgs/srv/TransformPoseSrv.html)           |
+| control_manager/transform_vector    | uses the mrs_lib::Transformer to transform geometry_msgs::Vector3Stamped | [mrs_msgs/TransformVector3Srv](https://ctu-mrs.github.io/mrs_msgs/srv/TransformVector3Srv.html)     |
+| control_manager/transform_reference | uses the mrs_lib::Transformer to transform mrs_msgs::ReferenceStamped    | [mrs_msgs/TransformReferenceSrv](https://ctu-mrs.github.io/mrs_msgs/srv/TransformReferenceSrv.html) |
+
 ## UavManager
 
 The [UavManager](https://github.com/ctu-mrs/mrs_uav_managers#UavManager) handles higher-level routines such as takeoff and landing.
