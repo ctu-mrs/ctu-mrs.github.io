@@ -107,4 +107,5 @@ The geographical location of object and robots is often represented using latitu
 * `x`: latitude in degrees
 * `y`: longitude in degrees
 * `z`: height above mean sea level (AMSL)
+
 ![](fig/latlon_frame.png)
