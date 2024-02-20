@@ -68,6 +68,14 @@ The most important frames, that are used in MRS system and are automatically cre
 * **\<uav_name\>/world_origin**
   * coordinate frame representing the GNSS-based frame with origin defined in the world file
   * enables commanding multiple UAVs in a common locally-defined coordinate frame
+* **\<uav_name\>/utm_origin**
+  * coordinate frame representing the UTM coordinates with UTM zone derived from the current GNSS data
+  * enables commanding multiple UAVs in a Earth-based coordinate frame
+  * allows use of software that might expect UTM coordinates
+  * points with `header.frame_id` as **\<uav_name\>/utm_origin** have the following meaning
+    * `x`: easting
+    * `y`: northing
+    * `z`: height above mean sea level (AMSL)
 
 where the `<uav_name>` is the unique name of a UAV.
 
@@ -91,3 +99,13 @@ This group incorporates
 * **\<uav_name\>/ground_truth**
 * **\<uav_name\>/vio_origin**
 * ...
+
+## Special LATLON frame
+
+The geographical location of object and robots is often represented using latitude, longitude and altitude (above mean sea level). Due to the curved nature of the Earth's surface, the transformation between the latitude-longitude coordinates and a Cartesian coordinate system (all the above frames) is non-linear in nature. These non-linear transformations are not part of the tf tree maintianed by the `tf2` library. However, the MRS system includes methods to perform transformations and can work with msgs/commands containing latitude-longitude information. Any msg/command having the following structure is accepted by the MRS system.
+* `frame_id`: **latlon_origin**
+* `x`: latitude in degrees
+* `y`: longitude in degrees
+* `z`: height above mean sea level (AMSL)
+
+![](fig/latlon_frame.png)
