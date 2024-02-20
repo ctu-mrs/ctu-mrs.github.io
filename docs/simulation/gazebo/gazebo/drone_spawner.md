@@ -168,7 +168,7 @@ Some parts of the airframe may be conditional, such as holders for specific sens
 This can be done by storing the result of a component macro call in a variable and checking its length.
 A good example for this is the `lidar_mount` in the [x500.sdf.jinja](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/blob/master/ros_packages/mrs_uav_gazebo_simulation/models/mrs_robots_description/sdf/x500.sdf.jinja) template.
 A completely new platform may be created in an external package.
-Please refer to the [example_custom_drone](https://github.com/ctu-mrs/example_custom_drone) repository for more information and a [tutorial](https://ctu-mrs.github.io/docs/simulation/gazebo/gazebo/custom_drone.html).
+Please refer to the [mrs_gazebo_custom_drone_example](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example) repository for more information and a [tutorial](https://ctu-mrs.github.io/docs/simulation/gazebo/gazebo/custom_drone.html).
 
 ## Jinja syntax
 
