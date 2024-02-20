@@ -17,13 +17,13 @@ The tutorial covers the following steps:
 * Adding the custom drone to the MRS drone spawner
 * Running the simulation with the MRS UAV System
 * Adding a custom optional sensor (configurable by the MRS drone spawner)
-The complete example drone is available in the [example_custom_drone](https://github.com/ctu-mrs/example_custom_drone) repository.
+The complete example drone is available in the [mrs_gazebo_custom_drone_example](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example) repository.
 
 ## Custom directory setup
 We highly recommend using a separate directory for your custom drones. The directory should be set up as a ROS package, which can be added into a ROS workspace and built with catkin.
 The directory should follow this structure:
 ```yaml
-example_custom_drone
+mrs_gazebo_custom_drone_example
   - package.xml
   - CMakeLists.txt
   - models
@@ -45,7 +45,7 @@ A minimalistic example of the full `package.xml` could be:
 <?xml version="1.0"?>
 <package format="2">
 
-  <name>example_custom_drone</name>
+  <name>mrs_gazebo_custom_drone_example</name>
   <version>0.0.1</version>
   <description>An example drone extending the MRS simulation</description>
 
@@ -69,7 +69,7 @@ A minimalistic example of the full `package.xml` could be:
 A corresponding minimalistic `CMakeLists.txt` has to be added for the package:
 ```cmake
 cmake_minimum_required(VERSION 3.5)
-project(example_custom_drone)
+project(mrs_gazebo_custom_drone_example)
 
 set(CATKIN_DEPENDENCIES
   cmake_modules
@@ -262,7 +262,7 @@ Now let's go back to our `my_drone.sdf.jinja` and import the custom macros. We w
 {% endraw %}
 ```
 
-Now we add the drone arms which use a mesh. We provide two meshes with this example: [arm and propeller](https://github.com/ctu-mrs/example_custom_drone/tree/main/models/my_drone/meshes).If placed in the model directory, the files can be accessed using uri `model://MODEL_NAME/RELATIVE_FILEPATH`
+Now we add the drone arms which use a mesh. We provide two meshes with this example: [arm and propeller](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example/tree/main/models/my_drone/meshes).If placed in the model directory, the files can be accessed using uri `model://MODEL_NAME/RELATIVE_FILEPATH`
 
 ```xml
 {% raw %}
@@ -553,17 +553,17 @@ We will also have to provide the mixer file in `ROMFS/px4fmu_common/mixers/`. Th
 R: 4h
 ```
 
-The remaining files handle mavlink configuration, which needs to match the ports assigned by the MRS drone spawner. We recommend to use the reference files provided with this tutorial: [ROMFS/px4fmu_common](https://github.com/ctu-mrs/example_custom_drone/tree/main/ROMFS/px4fmu_common).
+The remaining files handle mavlink configuration, which needs to match the ports assigned by the MRS drone spawner. We recommend to use the reference files provided with this tutorial: [ROMFS/px4fmu_common](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example/tree/main/ROMFS/px4fmu_common).
 
 ## Adding the custom drone to the MRS drone spawner
 Now the custom drone should be ready for a test flight. The package with our drone just needs to be registered by the MRS drone spawner. We now assume that the **package was already built in a catkin workspace, and the workspace is sourced**. You can verify this in terminal by calling:
 ```bash
-rospack find example_custom_drone
+rospack find mrs_gazebo_custom_drone_example
 ```
 which should return the path to the package. The drone spawner can load additional packages using a custom config file. Create a new file called `spawner_config.yaml`:
 
 ```yaml
-extra_resource_paths: ["example_custom_drone"]
+extra_resource_paths: ["mrs_gazebo_custom_drone_example"]
 ```
 
 Now pass this file to simulation or spawner launch file:
@@ -586,7 +586,7 @@ You should see the custom drone model to the Gazebo simulation.
 
 
 ## Running the simulation with the MRS UAV System
-We provide an example [tmuxinator session](https://github.com/ctu-mrs/example_custom_drone/tree/main/tmux) to start the simulation with the MRS UAV System. In case of a custom platform, a `platform_config.yaml` has to be given to the mrs_uav_core node. An example `platform_config.yaml` is provided:
+We provide an example [tmuxinator session](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example/tree/main/tmux) to start the simulation with the MRS UAV System. In case of a custom platform, a `platform_config.yaml` has to be given to the mrs_uav_core node. An example `platform_config.yaml` is provided:
 ```yaml
 uav_mass: 2.0 # [kg]
 
@@ -714,4 +714,4 @@ We will now add the camera plugin into the `if` block. Note that a `zero_inertia
 ```
 
 ## Adding more components
-We added legs (cylinders with collision), motors (just visual cylinders) and two additional components from the MRS simulation (laser rangefinder, ground truth publisher). The full model is available [here](https://github.com/ctu-mrs/example_custom_drone/tree/main).
+We added legs (cylinders with collision), motors (just visual cylinders) and two additional components from the MRS simulation (laser rangefinder, ground truth publisher). The full model is available [here](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example/tree/main).
