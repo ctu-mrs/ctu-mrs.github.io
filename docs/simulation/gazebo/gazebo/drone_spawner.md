@@ -45,16 +45,31 @@ The string should contain the following:
 * `device IDs` - non-negative integers, separated by spaces. These will be auto-assigned if no ID is specified.
 * `model` - use `--` and a model name to select a specific model (e.g. `--x500` to use the template ). The model name should match the name of a jinja template file without suffix.
 * `keywords` - specified inside jinja macros as a `spawner_keyword`. Add `--` before each keyword (e.g. `--enable-rangefinder` to add a Garmin rangefinder).
-* `component args` - after a keyword, you can specify arguments for that component. Use ":=" to assign a new argument value (e.g. `--enable-ground-truth update_rate:=50` to set the update rate of the ground truth plugin to 50 Hz).
+* `component args` - after a keyword, you can specify arguments for that component. Use ":=" to assign a new argument value (e.g. `--enable-ground-truth update_rate:=50` to set the update rate of the ground truth plugin to 50 Hz). Use **Python-like syntax for boolean arguments** (`True` or `False` with capital letters).
+
+This example will spawn a single drone with an ID 3, set the vehicle type to x500, add a Garmin rangefinder, and an Ouster OS0-128 3D LiDAR. The command will also modify some of the default LiDAR params (set horizontal samples to 128, set update rate to 8 Hz):
+```bash
+rosservice call /mrs_drone_spawner/spawn "3 --x500 --enable-rangefinder --enable-ouster model:=OS0-128 use_gpu:=True horizontal_samples:=128 update_rate:=8"
+```
 
 **NOTE**: The rosservice CLI may not allow the string to start with a dash.
-Add a space at the beginning to prevent errors.
+Add a space at the beginning of the string to prevent errors, like in the example below.
 
-Spawning multiple drones with the same configuration (useful for swarms).
+This example will spawn a single drone of the type f550, and add a Garmin rangefinder. The vehicle ID will be automatically assigned as the lowest unused positive integer.
+```bash
+rosservice call /mrs_drone_spawner/spawn " --f550 --enable-rangefinder"
+```
+
+
+## Spawning multiple drones with the same configuration (e.g. for swarms)
+For simulations with multiple drones using identical configuration, we provide a convenient way to spawn an entire swarm with just one command.
+
 This example will spawn 5 drones, set the vehicle type to f450, add a Garmin rangefinder, blinking UV LEDs below the propellers, and 2 wide-angle cameras sensitive to UV light.
 ```bash
 rosservice call /mrs_drone_spawner/spawn "1 2 3 4 5 --f450 --enable-rangefinder --enable-uv-leds --enable-dual-uv-cameras"
 ```
+
+Note that this may take a while, as each model has to be added into the Gazebo world, PX4 SITL and MAVROS have to be launched and mavlink ports have to be connected for each vehicle separately.
 
 ## Help
 
