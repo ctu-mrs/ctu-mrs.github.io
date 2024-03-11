@@ -8,32 +8,19 @@ nav_order: 1
 # Motor thrust model
 
 The MRS UAV System requires a model which can estimate the relation between a throttle input and thrust force produced by the rotors.
-e.g. the model tells us that when we use 0.6 (60%) throttle, we will get 30N of thrust.
+e.g. we need a model which tells us that when we use 0.6 (60%) throttle, we will get 30N of thrust.
 
 ## The model
 
-The System uses a very simple but reliable model, which relies on the relationship between thrust and angular velocity of the propeller.
+The System uses a very simple but reliable model, which relies on the relationship between thrust and angular velocity of the propeller, where the thrust is proportional to the angular velocity squared.
+We therefore model the relationship between throttle and thrust as a quadratic curve.
 The thrust is modelled as:
 
-$$ T_d = a_t\sqrt{f_d} + b_t $$
+$$ T = a\sqrt{f} + b $$
 
-and:
+Where $$ T $$ is throttle, $$ a $$ and $$ b $$ are the parameters of the quadratic curve and $$ f $$ is the produced force.
+We can substitute $$ f = m*g $$ and invert the equation, to get an estimate of the current UAV mass based on the used throttle:
 
-$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
+$$ m=\frac{1}{g}\left ( \frac{T-b}{a} \right )^{2} $$
 
-$$
-\begin{aligned}
-  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
-  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
-  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
-      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
-      \vdots & \ddots & \vdots \\
-      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
-    \end{array} \right)
-  \left( \begin{array}{c}
-      y_1 \\
-      \vdots \\
-      y_n
-    \end{array} \right)
-\end{aligned}
-$$
+This mass estimate is used for landing detection, and can be used for other purposes, like confirmation of payload attachment/release based on change in the mass of the UAV.
