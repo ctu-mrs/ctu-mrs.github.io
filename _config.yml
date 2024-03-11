@@ -17,3 +17,5 @@ aux_links:
 
 plugins:
   - jemoji
+
+math: katex
