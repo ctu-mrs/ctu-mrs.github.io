@@ -8,7 +8,7 @@ nav_order: 10
 # Motor thrust model
 
 The MRS UAV System requires a model which can estimate the relation between a throttle input and thrust force produced by the rotors.
-e.g. we need a model which tells us that when we use 0.6 (60%) throttle, we will get 3.0 kg-force of thrust. (kg-force will be used in this article, as it is easier to imagine and work with than Newtons.  $$ 1 kg-f = 9.81N $$)
+e.g. we need a model which tells us that when we use 0.6 (60%) throttle, we will get 3.0 kg-force of thrust. (kg-force will be used in this article, as it is easier to imagine and work with than Newtons.  $$ 1 kgForce = 9.81N $$)
 
 The model is just a qudratic curve, which gives us an approximate relationship between input throttle and produced thrust. To obtain the parameters of the quadratic curve,
 we need to measure the thrust of the rotors at different throttle values, and then a fit a curve to these measurements.
@@ -77,8 +77,8 @@ The thrust is modelled as:
 
 $$ T = a\sqrt{f} + b $$
 
-Where $$ T $$ is throttle, $$ a $$ and $$ b $$ are the parameters of the quadratic curve and $$ f $$ is the produced force.
-Note that we only use a quadratic and constant term. There is no linear term, which makes the model a bit less accurate, but it greatly simplifies the inversion of the equation and avoids some other issues.
+Where $$ T $$ is throttle, $$ a $$ and $$ b $$ are the parameters of the quadratic curve and $$ f $$ is the produced force (thrust).
+Note that we only use a quadratic and a constant term. There is no linear term, which makes the model a bit less accurate, but it greatly simplifies the inversion of the equation and avoids some other issues.
 
 
 We can substitute $$ f = mg $$ and invert the equation, to get an estimate of the current UAV mass based on the used throttle:
@@ -86,7 +86,3 @@ We can substitute $$ f = mg $$ and invert the equation, to get an estimate of th
 $$ m=\frac{1}{g}\left ( \frac{T-b}{a} \right )^{2} $$
 
 This mass estimate is used for landing detection, and can be used for other purposes, like confirmation of payload attachment/release based on change in the mass of the UAV.
-
-## Thrust curve estimation
-
-The parameters $$ a $$ and $$ b $$ are measured empirically, either by running tests on a static thrust measuring test stand, or by doing a few test flights with an UAV, changing its mass (by attaching additional payload) and observing the throttle value needed for hover.
