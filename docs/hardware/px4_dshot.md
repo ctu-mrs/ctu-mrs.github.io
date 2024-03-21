@@ -18,7 +18,7 @@ Dshot has lower latency, and no calibration, since it is digital.
 2. Using QGroundControl, modify these parameters:
   * `DSHOT_CONFIG` to one of the values (`150, 300, 600, 1200`). These values corresponds to communication speed in kb/s. Higher value means lower latency. Not all ESCs support all communication speeds.
   * `SYS_USE_IO` to `0`
-3. Connect the motor signals to the `FMU PWM OUT` port. By default, they are connected to the `I/O PWM OUT` port.
+3. Connect the motor signals to the `I/O PWM OUT` port.
 
 That is it, you can now try to arm your drone and spin the motors (without props).
 If they spin, you are good to go.
