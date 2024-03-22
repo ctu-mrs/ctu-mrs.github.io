@@ -57,7 +57,7 @@ For a more exhaustive list, see the GDB manpages (`man gdb`) or any online tutor
 | `<Enter>`                    | repeats the last command                 |                                                                                             |
 | `u #`                        | continue Until line `#`                  | `#` = the line number in the current file                                                   |
 | `ref`                        | REFresh the screen                       | in case of some visual problems                                                             |
-| `cv_imshow #`                | display an OpenCV image `#`              | requires [a plugin](https://github.com/renatoGarcia/gdb-imshow) (installed with `uav_core`) |
+| `cv_imshow #`                | display an OpenCV image `#`              | requires [a plugin](https://github.com/ViktorWalter/gdb-imshow) (installed with `uav_core`) |
 | `~/.gdbinit` file            | put pre-start settings in here           | an example is in the file                                                                   |
 
 ## Advanced debugging
