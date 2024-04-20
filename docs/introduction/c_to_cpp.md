@@ -15,39 +15,22 @@ At the minimum, check out the sections related to [smart pointers](#dynamic-memo
 
 A list of the main tackled topics is:
 
- * [Some useful C++ libraries.](#useful-libraries)
  * [Avoid raw pointers, `new`, `malloc`, etc. like the devil.](#dynamic-memory-management)
  * [Take function parameters by constant referece (or constant copy in case of primitive types).](#function-parameters)
+ * [Use C++ containers correctly.](#containers)
  * [Use the native multithreading and thread synchronization tools.](#thread-synchronization)
- * [ROS-related coding practices.](#ros-related-coding-practices)
  * [Other tips and remarks.](#other-tips-and-remarks)
+ * [ROS-related coding practices.](#ros-related-coding-practices)
+ * [Some useful C++ libraries.](#useful-libraries)
  * [Further reading.](#further-reading)
 
+Other pages from our series on C++:
+
+ 1. [Good practices in C++](https://ctu-mrs.github.io/docs/introduction/c_to_cpp.html) (this page)
+ 2. [Debugging C++ programs with GDB](https://ctu-mrs.github.io/docs/software/gdb.html)
+ 3. [Profiling C++ programs for optimization](https://ctu-mrs.github.io/docs/software/profiling.html)
+
 If you spot any errors, don't understand something or have ideas for improevments, feel free to contact me at `matous.vrba (at) fel.cvut.cz`.
-
-## Useful libraries
-Before implementing basically anything, **first check that a suitable implementation doesn't already exist** (this goes for scientific research as well - do your research before you start reinventing the wheel 😀)!
-Typically, using an already existing and optimized implementation is not only easier and faster than implementing your own, but also the code will be faster and bug-free.
-A list of useful C++ libraries that you might need with links to their documentation pages follows:
-
-* **The standard C++ library:** Implements many useful algorithms, tools and utilities. Part of the C++ standard. Learn it and learn to use it!
-  - [https://en.cppreference.com/w/](https://en.cppreference.com/w/)
-* **roscpp:** The main ROS C++ API.
-  - [https://docs.ros.org/en/noetic/api/roscpp/html/](https://docs.ros.org/en/noetic/api/roscpp/html/)
-* **tf2_ros:** The ROS tf2 library API, implementing coordinate transformations and related stuff.
-  - [https://docs.ros.org/en/noetic/api/tf2_ros/html/c++/](https://docs.ros.org/en/noetic/api/tf2_ros/html/c++/)
-* **Eigen:** Linear algebra, basic geometry and other matrix-related stuff (ROS has compatible interfaces).
-  - [https://eigen.tuxfamily.org/dox/index.html](https://eigen.tuxfamily.org/dox/index.html)
-* **OpenCV:** Computer vision and image processing (ROS has compatible interfaces).
-  - [https://docs.opencv.org/4.2.0/](https://docs.opencv.org/4.2.0/)
-* **PCL:** Point cloud processing (ROS has compatible interfaces).
-  - [https://pointclouds.org/documentation/](https://pointclouds.org/documentation/)
-* **Boost:** General C++ library implementing *many* tools, algorithms and utilities (used internaly in ROS).
-  - [https://www.boost.org/doc/libs/1_71_0/](https://www.boost.org/doc/libs/1_71_0/)
-* **`mrs_lib`**: Our own MRS library implementing some algorithms (e.g. various Kalman filters), ROS wrappers (e.g. for parameter loading) and other utilities (e.g. a 3D geometry library).
-  - [https://ctu-mrs.github.io/mrs_lib/](https://ctu-mrs.github.io/mrs_lib/)
-
-Most of these libraries already come pre-installed with ROS or our UAV system and we use them, so we can help you in case you encounter any problems (don't be afraid to ask).
 
 ## Dynamic memory management
 
@@ -167,103 +150,52 @@ The rules of thumb when defining function parameters is:
      }
      ```
 
-## Thread synchronization
+## Containers
 
-There are three types of synchronization mechanisms for multi-threading in C++:
+The most used container in C++ is the [`std::vector`](https://en.cppreference.com/w/cpp/container/vector).
+If you're coming from C, you may try to use C-style static or dynamic arrays (e.g. `int a[N]` and `int* a = malloc(sizeof(int)*N)`).
+This is a bad coding practice in C++, because you'll be forced to reimplement a lot of functionality that already exists in the C++ standard (and you'll most likely make a mistake) and you're loosing on a lot of the great features of C++.
 
- 1. **Atomic variable:**
-   If you have a single primitive-type variable which you want to access and modify from multiple threads in a thread-safe manner (e.g. some counter or a flag that a thread is running), use `std::atomic<T>`.
-   See also the [`mrs_lib::AtomicScopeFlag` helper class](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1AtomicScopeFlag.html) for automatic atomical setting and unsetting a flag (boolean variable).
-
- 2. **Mutex:**
-   For cases where multiple threads modify/read a common resource (e.g. an `std::vector` or other data), use [`std::mutex`](https://en.cppreference.com/w/cpp/thread/mutex) and [`std::lock_guard`](https://en.cppreference.com/w/cpp/thread/lock_guard) to synchronize the access and prevent data races.
-   See [an example on cppreference.com](https://en.cppreference.com/w/cpp/thread/lock_guard#Example).
-
- 3. **Condition variable:**
-   The `std::condition_variable` is useful in cases when a thread (or multiple threads) has to wait for another thread to generate a resource to be consumed by the waiting thread (threads).
-   In the context of ROS, this may be waiting until a message on some topic arrives for your thread to process (this is implemented in the `mrs_lib::SubscribeHandler`'s [`waitForNew()` method](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1SubscribeHandler.html#a4d2789e1f6172c5ff9e496af55aab5e1)).
-   See [an example on cppreference.com](https://en.cppreference.com/w/cpp/thread/condition_variable#Example).
-   
-Other remarks regarding multi-threading in C++:
-
- * In general, do **not** use `volatile` (unless working with a microcontroller where you really need it or other platform-specific cases, which generally don't concern us).
-   Note that `volatile` does [*NOT* ensure thread safety](https://en.cppreference.com/w/c/language/volatile#Uses_of_volatile) - for these cases, use `std::atomic<T>` (which also much better communicates your intention to the compiler as well as to any potential readers of the code)!
-
- * The condition variable may sound very similar to mutex, but actually isn't.
-   A mutex is intended to keep two threads from using the same resource (i.e. a data race), whereas a condition variable is used to suspend a thread until a resource becomes available.
-   You may think of it this way:
-    - By default, a *mutex* is unlocked and any thread can lock it.
-      Any other thread then has to wait for the first one to release it again.
-    - By default, a *condition variable* is unavailable and no thread can use it.
-      Any thread may wait for the condition variable (and atomically lock it when it becomes available).
-      Any thread may notify a single or all threads waiting on the condition variable that it has become available (thus waking them).
-
-## ROS-related coding practices
-
-To get started with ROS, check out the [official *roscpp* tutorials](http://wiki.ros.org/roscpp/Tutorials) and our example ROS packages:
-
- * [example_ros_uav](https://github.com/ctu-mrs/example_ros_uav) - general ROS package, demonstrating some basic concepts.
- * [example_ros_vision](https://github.com/ctu-mrs/example_ros_vision) - a computer vision ROS package, demonstrating some basic CV stuff.
-Go through the code of these examples and try to understand it (you can skip the vision package if you won't be working on CV).
-**Read their README** - especially the [Coding style](https://github.com/ctu-mrs/example_ros_uav#coding-style) and [Coding practices](https://github.com/ctu-mrs/example_ros_vision#coding-practices) parts, which contain useful information related to using C++ in the context of ROS and the *roscpp* API.
-
-Also be sure to check out the available ROS helpers in our [`mrs_lib` C++ library](https://github.com/ctu-mrs/mrs_lib/).
-Namely, these helpers are good to use to improve code clarity and robustness:
-
- * [`ParamLoader`](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1ParamLoader.html): Loading of parameters from the `rosparam` server, checking of parameters being loaded correctly, automatic printing of the loaded values.
- * [`SubscribeHandler`](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1SubscribeHandler.html): Subscription to ROS topics with automatic printing when no messages were received for a specified timeout. Threadsafe blocking waiting (with timeout) for new messages or callbacks or flag-checking for new messages.
- * [`Transformer`](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1Transformer.html): ROS transformations wrapper for easier transformation lookup, one-time or repeated transformation of various types including handling of the special GPS UTM frame (specification of points in lat/lon coordinates).
- * [`ScopeTimer`](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1ScopeTimer.html): Simple scope-based profiling tool (like `tic-toc` and similar) for timing of duration of various processes.
-
-## Other tips and remarks
-
- * Turn on `-Wall` and write your code to emit no warnings.
-   The warnings are there to tell you about potential code smell (not to annoy you), so do not ignore them.
- * Do not use the `NULL` macro, use the `nullptr` pointer literal.
-   `NULL` may be defined to be the integer literal `0` according to the standard, which makes some unexpected implicit conversions possible when using `NULL`.
-   `nullptr` can never be implicitly converted to `int`, making it safer.
- * Use `const` whenever possible.
-   This way you will avoid accidentally modifying variables which are not supposed to be modified and enable the compiler to better optimize.
- * Use `std::numeric_limits` instead of the `INT_MAX`, `DBL_MAX`, etc. macros.
-   In general, you should avoid macros whenever possible.
-   Watch out for [`std::numeric_limits<T>::min`](https://en.cppreference.com/w/cpp/types/numeric_limits/min) vs. [`std::numeric_limits<T>::lowest`](https://en.cppreference.com/w/cpp/types/numeric_limits/lowest)!
-   The `::min` function returns the *smallest positive value* (not the lowest - therefore negative - value, which is returned by `::lowest`) for floating types (this behavior is the same for the macros such as `FLT_MIN` by the way).
- * Shorten long typenames that you use repeatedly with the [`using` aliasing](https://en.cppreference.com/w/cpp/language/type_alias) to improve code readability.
- * Learn and use the `gdb` debugger (see our short [introduction](https://ctu-mrs.github.io/docs/software/gdb.html)).
- * Learn to use the [C++ reference documentation](https://en.cppreference.com/) and consult it whenever you use a new thing from the standard library.
- * Use documentation in general.
-   Do not guess what stuff does or how it's called.
-   Find the documentation of whatever library you're working with, bookmark it, read it and use it.
-   Also learn to use the search tool (the input field on the top-right) in Doxygen-generated pages.
-
-### Automatic type deduction
-C++ is a typed language, meaning that the type of any variable in the program has to be known at compilation.
-This has many advantages and enables very powerful compile-time sanitization and error-checking as well as performance improvements and optimizations, but the language can become extremely verbose even to the point of reduced readability (this is especially the case when using templates and the standard library).
-Enter the [`auto` keyword](https://en.cppreference.com/w/cpp/language/auto).
-
-`auto` loosely translates to "dear Mr. compiler, please substitute this word with the appropriate deduced type during compilation".
-For example, instead of writing the whole type of a `std::vector` iterator such as
-```
-const std::vector<float> cont = init_container();
-for (std::vector<float>::const_iterator it = std::cbegin(cont); it != std::cend(cont); it++)
-{
-  // do stuff with it
-}
-```
-you can simplify this code without loosing expressivity to 
-```
-const std::vector<float> cont = init_container();
-for (auto it = std::cbegin(cont); it != std::cend(cont); it++)
-{
-  // do stuff with it
-}
-```
-Note that `auto` should not be overused at the cost of code readability.
+You may also be tempted to use other more fancy containers, such as the associative [`std::unordered_map`](https://en.cppreference.com/w/cpp/container/unordered_map), but be wary of [*premature optimization*](https://ctu-mrs.github.io/docs/software/profiling.html#premature-optimization).
+Because of the way modern CPUs work, processing sequential data is much more effective then random memory access, so using **a linear-access container is faster than random-access containers in most cases** anyway (for more info, see [cache locality](https://en.wikipedia.org/wiki/Locality_of_reference), [branch prediction](https://en.wikipedia.org/wiki/Branch_predictor), [SIMD](https://en.wikipedia.org/wiki/Single_instruction,_multiple_data), and [instruction pipelining](https://en.wikipedia.org/wiki/Instruction_pipelining).
 
 **A rule of thumb:**
-If the typename can be automatically deduced by the compiler and it is long, too verbose and the type is clear from the context or variable naming, substitute it with `auto`.
 
-### Range-based loops
+ * Do not use raw C-style arrays (`int[]` or `int*`).
+ * Unless you have a strong reason not to, use the `std::vector` as the default container implementation.
+   Strong reasons not to use `std::vector` include:
+   * You don't need a general container, but rather a "smart" class such as `pcl::PointCloud`, `cv::Mat`, or `Eigen::MatrixXd` that provides some required functionality.
+   * You have profiled your code and found that operations on the `std::vector` are a bottleneck and another type of container could provide a significant improvement.
+     In this case, first consider using a sorted `std::vector` (e.g. using `std::sort`).
+     Sorting an array is a relatively cheap operation and there are many algorithms that can take advantage of sorted data.
+   * You need to implement a fixed-size FIFO-like buffer.
+     For this, I recommend the [`boost::circular_buffer`](https://www.boost.org/doc/libs/1_85_0/doc/html/circular_buffer.html)
+   * You need a stack-allocated static array (e.g. on microcontrollers) - then use the [`std::array`](https://en.cppreference.com/w/cpp/container/array) instead (if you don't know what it is, you don't need it).
+   * You're doing some low-level optimizations (and you really know what you're doing).
+
+### Element access
+Most containers in the standard library as well as in other libraries offer bounds-checked element access (e.g. the `at()` method for `std::vector`) in addition to the (sadly mostly default) non-bounds-checked element access (`operator[]()` for `std::vector`).
+The bounds-checked operators will throw an error if you try to access an element outside the container.
+The non-bounds-checked operators will not produce any kind of error and happily return a nonsensical value outside the container's memory.
+If you access memory outside of your process' reserved address space, the program will crash, otherwise, such out-of-bounds access *will not even be detected*.
+
+To save you *a lot* of headaches and debugging, **I strongly recommend always using bounds-checked element access** unless you really know what you're doing (similar rules as for using `std::vector` apply).
+The performace impact is most likely negligible (it does not change the asymptotic complexity of your algorithms, which is where the major performance costs typically comes from), so there is not really any major downsides.
+If you think you're a good enough programmer to never access out-of-bounds elements, *you're not*, sorry.
+It happens even to the best of us ☺.
+
+**A rule of thumb:**
+
+ * Always use bounds-checked element access operators.
+   * For most STL-like containers (including `std::vector`, `std::array`, `boost::circular_buffer`, and `pcl::PointCloud`), this means replacing the square brackets with the `at()` method.
+   * For Eigen types, use the round brackets (`operator()()`).
+     These perform bounds checking *unless* the `NDEBUG` macro is set (i.e. the `-DNDEBUG` flag is set in CMake).
+     This means that for the `Release` and `RelWithDebInfo` (the default) catkin build profiles, *bounds checking will be turned off* in Eigen.
+     To force it on, either switch to the `Debug` profile, or you can undefine the macro `NDEBUG` by passing `-UNDEBUG` to the compiler.
+   * If you're desperately trying to squeeze out more performance from your program, *profile first* (see [premature optimization](https://ctu-mrs.github.io/docs/software/profiling.html#premature-optimization) again).
+     Only if you're sure that removing bounds-checking can have a significant impact on your program's runtime, consider removing it.
+
+### Iterating through containers
 Since C++11, the [range-based `for` loops](https://en.cppreference.com/w/cpp/language/range-for) syntactic sugar is available.
 Specifically, the following syntax is legal for any container that implements the `begin()` and `end()` methods according to the standard (e.g. `std::vector`, `std::forward_list`, `pcl::PointCloud`, `cv::Mat` etc.):
 ```
@@ -301,6 +233,130 @@ I recommend using this syntax whenever applicable as it's more expressive and le
    for (auto it = std::cbegin(container); it != std::cend(container); it++)
    ```
 
+## Thread synchronization
+
+There are three types of synchronization mechanisms for multi-threading in C++:
+
+ 1. **Atomic variable:**
+   If you have a single primitive-type variable which you want to access and modify from multiple threads in a thread-safe manner (e.g. some counter or a flag that a thread is running), use `std::atomic<T>`.
+   See also the [`mrs_lib::AtomicScopeFlag` helper class](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1AtomicScopeFlag.html) for automatic atomical setting and unsetting a flag (boolean variable).
+
+ 2. **Mutex:**
+   For cases where multiple threads modify/read a common resource (e.g. an `std::vector` or other data), use [`std::mutex`](https://en.cppreference.com/w/cpp/thread/mutex) and [`std::lock_guard`](https://en.cppreference.com/w/cpp/thread/lock_guard) to synchronize the access and prevent data races.
+   See [an example on cppreference.com](https://en.cppreference.com/w/cpp/thread/lock_guard#Example).
+
+ 3. **Condition variable:**
+   The `std::condition_variable` is useful in cases when a thread (or multiple threads) has to wait for another thread to generate a resource to be consumed by the waiting thread (threads).
+   In the context of ROS, this may be waiting until a message on some topic arrives for your thread to process (this is implemented in the `mrs_lib::SubscribeHandler`'s [`waitForNew()` method](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1SubscribeHandler.html#a4d2789e1f6172c5ff9e496af55aab5e1)).
+   See [an example on cppreference.com](https://en.cppreference.com/w/cpp/thread/condition_variable#Example).
+   
+Other remarks regarding multi-threading in C++:
+
+ * In general, do **not** use `volatile` (unless working with a microcontroller where you really need it or other platform-specific cases, which generally don't concern us).
+   Note that `volatile` does [*NOT* ensure thread safety](https://en.cppreference.com/w/c/language/volatile#Uses_of_volatile) - for these cases, use `std::atomic<T>` (which also much better communicates your intention to the compiler as well as to any potential readers of the code)!
+
+ * The condition variable may sound very similar to mutex, but actually isn't.
+   A mutex is intended to keep two threads from using the same resource (i.e. a data race), whereas a condition variable is used to suspend a thread until a resource becomes available.
+   You may think of it this way:
+    - By default, a *mutex* is unlocked and any thread can lock it.
+      Any other thread then has to wait for the first one to release it again.
+    - By default, a *condition variable* is unavailable and no thread can use it.
+      Any thread may wait for the condition variable (and atomically lock it when it becomes available).
+      Any thread may notify a single or all threads waiting on the condition variable that it has become available (thus waking them).
+
+## Other tips and remarks
+
+ * Turn on `-Wall` and write your code to emit no warnings.
+   The warnings are there to tell you about potential code smell (not to annoy you), so do not ignore them.
+ * Do not use the `NULL` macro, use the `nullptr` pointer literal.
+   `NULL` may be defined to be the integer literal `0` according to the standard, which makes some unexpected implicit conversions possible when using `NULL`.
+   `nullptr` can never be implicitly converted to `int`, making it safer.
+ * Use `const` whenever possible.
+   This way you will avoid accidentally modifying variables which are not supposed to be modified and enable the compiler to better optimize.
+ * Use `std::numeric_limits` instead of the `INT_MAX`, `DBL_MAX`, etc. macros.
+   In general, you should avoid macros whenever possible.
+   Watch out for [`std::numeric_limits<T>::min`](https://en.cppreference.com/w/cpp/types/numeric_limits/min) vs. [`std::numeric_limits<T>::lowest`](https://en.cppreference.com/w/cpp/types/numeric_limits/lowest)!
+   The `::min` function returns the *smallest positive value* (not the lowest - therefore negative - value, which is returned by `::lowest`) for floating types (this behavior is the same for the macros such as `FLT_MIN` by the way).
+ * Shorten long typenames that you use repeatedly with the [`using` aliasing](https://en.cppreference.com/w/cpp/language/type_alias) to improve code readability.
+ * Learn and use the `gdb` debugger (see our short [introduction](https://ctu-mrs.github.io/docs/software/gdb.html)).
+ * If your code is slow and you're unsure why, profile it before trying to optimize it to avoid [*premature optimization*](https://ctu-mrs.github.io/docs/software/profiling.html#premature-optimization) (see our short [introduction on profiling](https://ctu-mrs.github.io/docs/software/profiling.html)).
+ * Learn to use the [C++ reference documentation](https://en.cppreference.com/) and consult it whenever you use a new thing from the standard library.
+ * Be aware of the [`Algorithms` STL library](https://en.cppreference.com/w/cpp/algorithm) and learn to use it when applicable.
+ * Use documentation in general.
+   Do not guess what stuff does or how it's called.
+   Find the documentation of whatever library you're working with, bookmark it, read it and use it.
+   Also learn to use the search tool (the input field on the top-right) in Doxygen-generated pages.
+
+### Automatic type deduction
+C++ is a typed language, meaning that the type of any variable in the program has to be known at compilation.
+This has many advantages and enables very powerful compile-time sanitization and error-checking as well as performance improvements and optimizations, but the language can become extremely verbose even to the point of reduced readability (this is especially the case when using templates and the standard library).
+Enter the [`auto` keyword](https://en.cppreference.com/w/cpp/language/auto).
+
+`auto` loosely translates to "dear Mr. compiler, please substitute this word with the appropriate deduced type during compilation".
+For example, instead of writing the whole type of a `std::vector` iterator such as
+```
+const std::vector<float> cont = init_container();
+for (std::vector<float>::const_iterator it = std::cbegin(cont); it != std::cend(cont); it++)
+{
+  // do stuff with it
+}
+```
+you can simplify this code without loosing expressivity to 
+```
+const std::vector<float> cont = init_container();
+for (auto it = std::cbegin(cont); it != std::cend(cont); it++)
+{
+  // do stuff with it
+}
+```
+Note that `auto` should not be overused at the cost of code readability.
+
+**A rule of thumb:**
+If the typename can be automatically deduced by the compiler and it is long, too verbose and the type is clear from the context or variable naming, substitute it with `auto`.
+
+## ROS-related coding practices
+
+To get started with ROS, check out the [official *roscpp* tutorials](http://wiki.ros.org/roscpp/Tutorials) and our example ROS packages:
+
+ * [mrs_core_examples](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp) - general ROS packages, demonstrating various basic concepts.
+ * [mrs_computer_vision_examples](https://github.com/ctu-mrs/mrs_computer_vision_examples/tree/master/cpp/edge_detector) - a computer vision ROS package, demonstrating some basic CV stuff.
+Go through the code of these examples and try to understand it (you can skip the vision package if you won't be working with CV).
+**Read their README** - especially the [Coding style](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/waypoint_flier#coding-style) and [Coding practices](https://github.com/ctu-mrs/mrs_computer_vision_examples/tree/master/cpp/edge_detector#coding-practices) parts, which contain useful information related to using C++ in the context of ROS and the *roscpp* API.
+
+Also be sure to check out the available ROS helpers in our [`mrs_lib` C++ library](https://github.com/ctu-mrs/mrs_lib/).
+Namely, these helpers are good to use to improve code clarity and robustness:
+
+ * [`ParamLoader`](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1ParamLoader.html): Loading of parameters from the `rosparam` server, checking of parameters being loaded correctly, automatic printing of the loaded values.
+ * [`SubscribeHandler`](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1SubscribeHandler.html): Subscription to ROS topics with automatic printing when no messages were received for a specified timeout. Threadsafe blocking waiting (with timeout) for new messages or callbacks or flag-checking for new messages.
+ * [`Transformer`](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1Transformer.html): ROS transformations wrapper for easier transformation lookup, one-time or repeated transformation of various types including handling of the special GPS UTM frame (specification of points in lat/lon coordinates).
+ * [`ScopeTimer`](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1ScopeTimer.html): Simple scope-based profiling tool (like `tic-toc` and similar) for timing of duration of various processes.
+
+## Useful libraries
+Before implementing basically anything, **first check that a suitable implementation doesn't already exist** (this goes for scientific research as well - do your research before you start reinventing the wheel 😀)!
+Typically, using an already existing and optimized implementation is not only easier and faster than implementing your own, but also the code will be faster and bug-free.
+A list of useful C++ libraries that you might need with links to their documentation pages follows:
+
+* **The standard C++ library:** Implements many useful algorithms, tools and utilities. Part of the C++ standard. Learn it and learn to use it!
+  - [https://en.cppreference.com/w/](https://en.cppreference.com/w/)
+* **roscpp:** The main ROS C++ API.
+  - [https://docs.ros.org/en/noetic/api/roscpp/html/](https://docs.ros.org/en/noetic/api/roscpp/html/)
+* **tf2_ros:** The ROS tf2 library API, implementing coordinate transformations and related stuff.
+  - [https://docs.ros.org/en/noetic/api/tf2_ros/html/c++/](https://docs.ros.org/en/noetic/api/tf2_ros/html/c++/)
+* **Eigen:** Linear algebra, basic geometry and other matrix-related stuff (ROS has compatible interfaces).
+  - [https://eigen.tuxfamily.org/dox/index.html](https://eigen.tuxfamily.org/dox/index.html)
+* **OpenCV:** Computer vision and image processing (ROS has compatible interfaces).
+  - [https://docs.opencv.org/4.2.0/](https://docs.opencv.org/4.2.0/)
+* **PCL:** Point cloud processing (ROS has compatible interfaces).
+  - [https://pointclouds.org/documentation/](https://pointclouds.org/documentation/)
+* **Boost:** General C++ library implementing *many* tools, algorithms and utilities (used internaly in ROS).
+  - [https://www.boost.org/doc/libs/1_71_0/](https://www.boost.org/doc/libs/1_71_0/)
+* **`mrs_lib`**: Our own MRS library implementing some algorithms (e.g. various Kalman filters), ROS wrappers (e.g. for parameter loading) and other utilities (e.g. a 3D geometry library).
+  - [https://ctu-mrs.github.io/mrs_lib/](https://ctu-mrs.github.io/mrs_lib/)
+
+Most of these libraries already come pre-installed with ROS or our UAV system and we use them, so we can help you in case you encounter any problems (don't be afraid to ask).
+
 ## Further reading
 
+ * Our [C++ debugging](https://ctu-mrs.github.io/docs/software/gdb.html) guide.
+ * Our [C++ profiling](https://ctu-mrs.github.io/docs/software/profiling.html) guide.
  * The [C++ Best Practices site](http://cppbestpractices.com/) from Jason Turner are a good general overview of C++ programming.

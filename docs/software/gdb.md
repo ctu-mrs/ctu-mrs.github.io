@@ -13,6 +13,12 @@ parent: Software
 If you're experiencing crashes of your C/C++ ROS node/nodelet or if your program is not behaving as expected in general and you want to inspect it, you can reach for a debugger.
 A debugger (namely GDB in our case) enables you to inspect the state of the program after a crash or at any point during the program runtime and is a very powerful tool for rooting out bugs.
 
+Other pages from our series on C++:
+
+ 1. [Good practices in C++](https://ctu-mrs.github.io/docs/introduction/c_to_cpp.html)
+ 2. [Debugging C++ programs with GDB](https://ctu-mrs.github.io/docs/software/gdb.html)
+ 3. [Profiling C++ programs for optimization](https://ctu-mrs.github.io/docs/software/profiling.html) (this page)
+
 ## Preparing your node for GDB debugging
 
 1. Make sure that the program is compiled with the flags `-O0 -g`[^1].
