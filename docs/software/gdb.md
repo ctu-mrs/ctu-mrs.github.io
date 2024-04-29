@@ -16,8 +16,8 @@ A debugger (namely GDB in our case) enables you to inspect the state of the prog
 Other pages from our series on C++:
 
  1. [Good practices in C++](https://ctu-mrs.github.io/docs/introduction/c_to_cpp.html)
- 2. [Debugging C++ programs with GDB](https://ctu-mrs.github.io/docs/software/gdb.html)
- 3. [Profiling C++ programs for optimization](https://ctu-mrs.github.io/docs/software/profiling.html) (this page)
+ 2. [Debugging C++ programs with GDB](https://ctu-mrs.github.io/docs/software/gdb.html) (this page)
+ 3. [Profiling C++ programs for optimization](https://ctu-mrs.github.io/docs/software/profiling.html)
 
 ## Preparing your node for GDB debugging
 
