@@ -51,13 +51,13 @@ auto& cur_el = cont.at(102);
 cur_el = 10 + 3*cur_el + 0.1*cur_el*cur_el;
 ```
 The reference also avoids unnecessary copying of the container element (which is important if it's a large data structure).
-This approach is often employed in [range-based for loops](##range-based-loops), so it's good to understand it well.
+This approach is often employed in [range-based for loops](https://en.cppreference.com/w/cpp/language/range-for), so it's good to understand it well.
 
 *Note:* Watch out for [dangling references](https://en.cppreference.com/w/cpp/language/reference#Dangling_references) (references to variables which went out of scope)
 These typically happen when returning a reference to a local variable from a function, which is a no-no.
 
 ### Smart pointers
-For dynamic memory and data ownership management in modern C++ is done using the so-called *smart pointers* (and yes, they are pretty clever).
+Dynamic memory and data ownership management in modern C++ is done using the so-called *smart pointers* (and yes, they are pretty clever).
 **You should not use the keywords `new` nor `delete` (and definitely not `malloc()` nor `free()`) in almost any case in modern C++!
 This functionality is replaced by smart pointers, which are safer, more user-friendly and less error-prone.**
 There are three types of smart pointers:
@@ -169,7 +169,7 @@ Because of the way modern CPUs work, processing sequential data is much more eff
      In this case, first consider using a sorted `std::vector` (e.g. using `std::sort`).
      Sorting an array is a relatively cheap operation and there are many algorithms that can take advantage of sorted data.
    * You need to implement a fixed-size FIFO-like buffer.
-     For this, I recommend the [`boost::circular_buffer`](https://www.boost.org/doc/libs/1_85_0/doc/html/circular_buffer.html)
+     For this, I recommend the [`boost::circular_buffer`](https://www.boost.org/doc/libs/1_85_0/doc/html/circular_buffer.html).
    * You need a stack-allocated static array (e.g. on microcontrollers) - then use the [`std::array`](https://en.cppreference.com/w/cpp/container/array) instead (if you don't know what it is, you don't need it).
    * You're doing some low-level optimizations (and you really know what you're doing).
 
@@ -197,7 +197,7 @@ It happens even to the best of us ☺.
 
 ### Iterating through containers
 Since C++11, the [range-based `for` loops](https://en.cppreference.com/w/cpp/language/range-for) syntactic sugar is available.
-Specifically, the following syntax is legal for any container that implements the `begin()` and `end()` methods according to the standard (e.g. `std::vector`, `std::forward_list`, `pcl::PointCloud`, `cv::Mat` etc.):
+Specifically, the following syntax is legal for any container that implements the `begin()` and `end()` methods according to the standard (e.g. `std::vector`, [`std::forward_list`](https://en.cppreference.com/w/cpp/container/forward_list), `pcl::PointCloud`, `cv::Mat` etc.):
 ```
 for (const auto& element : container)
 {
@@ -253,7 +253,7 @@ There are three types of synchronization mechanisms for multi-threading in C++:
 Other remarks regarding multi-threading in C++:
 
  * In general, do **not** use `volatile` (unless working with a microcontroller where you really need it or other platform-specific cases, which generally don't concern us).
-   Note that `volatile` does [*NOT* ensure thread safety](https://en.cppreference.com/w/c/language/volatile#Uses_of_volatile) - for these cases, use `std::atomic<T>` (which also much better communicates your intention to the compiler as well as to any potential readers of the code)!
+   Note that `volatile` does [*NOT* ensure thread safety](https://en.cppreference.com/w/c/language/volatile#Uses_of_volatile) - for these cases, use `std::atomic<T>` (which also communicates your intention to the compiler as well as to any potential readers of the code much better)!
 
  * The condition variable may sound very similar to mutex, but actually isn't.
    A mutex is intended to keep two threads from using the same resource (i.e. a data race), whereas a condition variable is used to suspend a thread until a resource becomes available.
@@ -272,7 +272,7 @@ Other remarks regarding multi-threading in C++:
    `NULL` may be defined to be the integer literal `0` according to the standard, which makes some unexpected implicit conversions possible when using `NULL`.
    `nullptr` can never be implicitly converted to `int`, making it safer.
  * Use `const` whenever possible.
-   This way you will avoid accidentally modifying variables which are not supposed to be modified and enable the compiler to better optimize.
+   This way you will avoid accidentally modifying variables which are not supposed to be modified and enable the compiler to optimize better.
  * Use `std::numeric_limits` instead of the `INT_MAX`, `DBL_MAX`, etc. macros.
    In general, you should avoid macros whenever possible.
    Watch out for [`std::numeric_limits<T>::min`](https://en.cppreference.com/w/cpp/types/numeric_limits/min) vs. [`std::numeric_limits<T>::lowest`](https://en.cppreference.com/w/cpp/types/numeric_limits/lowest)!
@@ -288,9 +288,9 @@ Other remarks regarding multi-threading in C++:
    Also learn to use the search tool (the input field on the top-right) in Doxygen-generated pages.
 
 ### Automatic type deduction
-C++ is a typed language, meaning that the type of any variable in the program has to be known at compilation.
+C++ is a typed language, meaning that the type of any variable in the program has to be known at compile time.
 This has many advantages and enables very powerful compile-time sanitization and error-checking as well as performance improvements and optimizations, but the language can become extremely verbose even to the point of reduced readability (this is especially the case when using templates and the standard library).
-Enter the [`auto` keyword](https://en.cppreference.com/w/cpp/language/auto).
+The [`auto` keyword](https://en.cppreference.com/w/cpp/language/auto) exists for these reasons.
 
 `auto` loosely translates to "dear Mr. compiler, please substitute this word with the appropriate deduced type during compilation".
 For example, instead of writing the whole type of a `std::vector` iterator such as

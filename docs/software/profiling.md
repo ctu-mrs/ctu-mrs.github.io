@@ -62,7 +62,7 @@ You should also make sure to ensure that the load on your PC during testing is m
 
 If we wanted to measure how long it takes our implementation to calculate the first 1000 members of the Fibonacci sequence, we could modify our piece of code using this method to look something like this:
 
-*Note:* You should use a steady clock (e.g. `ros::SteadyTime` or `std::chrono::steady_clock` in pure C++) to ensure there are no hiccups in the clock due to time synchronization, daylight saving time, etc., which could cause errorneous measurements.
+*Note:* You should use a steady clock (e.g. `ros::SteadyTime` or `std::chrono::steady_clock` in pure C++) to ensure there are no hiccups in the clock due to time synchronization, daylight saving time, etc., which could cause erroneous measurements.
 
 ``` C++
 #include <iostream>
@@ -113,7 +113,7 @@ You could also measure just a single iteration, which is used e.g. to check if e
 However, **we have made one important mistake** -- we have not enabled the compile-time optimization!
 Before manually optimizing your code, make sure that the machine has done its part (see also [Premature optimization](#premature-optimization)).
 Let's fix this by changing the compilation command to `g++ fibonacci.cpp -O3 && ./a.out`.
-Now, I get an average run duration of 1500-1560 -- for free!
+Now, I get an average run duration of 1500--1560us!
 If you're working with a ROS package, optimizations should be automatically enabled for the `RELEASE` and `REL_WITH_DEB_INFO` catkin profiles with the MRS setup, or you can enforce them by adding the following line to your `CMakeLists.txt` file:
 
 ``` CMake
@@ -175,7 +175,7 @@ It's useful to have add the [`mrs_lib::ScopeTimer`](https://ctu-mrs.github.io/mr
 The one-shot duration will mostly be longer.
 2. The actual duration can depend on the data provided to the algorithm.
 It may not always be trivial to generate a sufficient number of samples of valid data to thoroughly test the algorithm (e.g. unbiased generation of valid rotation matrices).
-3. Non-trivial to integrate with more complex programs without heavily modifying the code potentially resulting in code bloat.
+3. Non-trivial to integrate with more complex programs without heavily modifying the code and potentially bloating it.
 4. Unsuitable for deep debugging of existing programs -- "Why is my mapping/planning/detection/whatever algorithm so slow?"
 5. How to debug multi-threaded programs?
 

@@ -10,7 +10,7 @@ parent: Software
 
 # Debugging with GDB
 
-If you're experiencing crashes of your C/C++ ROS node/nodelet or if your program is not behaving as expected in general and you want to inspect it, you can reach for a debugger.
+If you're experiencing crashes of your C/C++ ROS node/nodelet or if your program is not behaving as expected and you want to inspect it, you can utilize a debugger.
 A debugger (namely GDB in our case) enables you to inspect the state of the program after a crash or at any point during the program runtime and is a very powerful tool for rooting out bugs.
 
 Other pages from our series on C++:
@@ -25,7 +25,7 @@ Other pages from our series on C++:
 2. Run your node through the `debug_roslaunch` script by putting it to the `launch-prefix` in the launchfile[^2].
 3. If you're debugging a nodelet, it is recommended to run it in standalone mode and not under a nodelet manager.
 
-An example of how to set up your package like this is in the [waypooint flier](https://github.com/ctu-mrs/mrs_core_examples) (take a look in the `CMakeLists.txt` file and the launchfile).
+An example of how to set up your package like this is in the [waypoint flier](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/waypoint_flier) (take a look in the `CMakeLists.txt` file and the launchfile).
 
 ## Debugging your node
 
@@ -46,25 +46,25 @@ GDB is a very powerful tool, and if you learn how to use it properly, it will sa
 A table of common useful GDB commands, which you'll probably need to debug your program, are listed below.
 For a more exhaustive list, see the GDB manpages (`man gdb`) or any online tutorial.
 
-| Command                      | Description                              | Comment                                                                                     |
-|------------------------------|------------------------------------------|---------------------------------------------------------------------------------------------|
-| `b filename.cpp:310`         | Breakpoint in `filename.cpp` at line 310 |                                                                                             |
-| `bt`                         | BackTrace                                | use `bt full` for a more detailed `bt`                                                      |
-| `f #`                        | change to Frame `#`                      | `#` = the number from `bt`                                                                  |
-| `s`                          | Step in function                         |                                                                                             |
-| `n`                          | step to the Next line                    |                                                                                             |
-| `fin`                        | FINish function                          | in case you accidentaly step into a fun.                                                    |
-| `c`                          | Continue                                 | resume program until breakpoint or crash                                                    |
-| `p #`                        | Print variable                           | `#` = variable name                                                                         |
-| `wh`                         | open window with code (TUI)              | actually sets Window Height                                                                 |
-| `tui enable` / `tui disable` | open / close window with code (TUI)      | the official way of `wh`                                                                    |
-| `focus cmd` / `focus src`    | changes FOCUS in gdb TUI                 | if you want to use arrows for cmd hist.                                                     |
-| `up` / `down`                | jumps in the frames UP/DOWN              |                                                                                             |
-| `<Enter>`                    | repeats the last command                 |                                                                                             |
-| `u #`                        | continue Until line `#`                  | `#` = the line number in the current file                                                   |
-| `ref`                        | REFresh the screen                       | in case of some visual problems                                                             |
-| `cv_imshow #`                | display an OpenCV image `#`              | requires [a plugin](https://github.com/renatoGarcia/gdb-imshow) (installed with `uav_core`) |
-| `~/.gdbinit` file            | put pre-start settings in here           | an example is in the file                                                                   |
+| Command                      | Description                              | Comment                                                                                             |
+|------------------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| `b filename.cpp:310`         | Breakpoint in `filename.cpp` at line 310 |                                                                                                     |
+| `bt`                         | BackTrace                                | use `bt full` for a more detailed `bt`                                                              |
+| `f #`                        | change to Frame `#`                      | `#` = the number from `bt`                                                                          |
+| `s`                          | Step in function                         |                                                                                                     |
+| `n`                          | step to the Next line                    |                                                                                                     |
+| `fin`                        | FINish function                          | in case you accidentaly step into a fun.                                                            |
+| `c`                          | Continue                                 | resume program until breakpoint or crash                                                            |
+| `p #`                        | Print variable                           | `#` = variable name                                                                                 |
+| `wh`                         | open window with code (TUI)              | actually sets Window Height                                                                         |
+| `tui enable` / `tui disable` | open / close window with code (TUI)      | the official way of `wh`                                                                            |
+| `focus cmd` / `focus src`    | changes FOCUS in gdb TUI                 | if you want to use arrows for cmd hist.                                                             |
+| `up` / `down`                | jumps in the frames UP/DOWN              |                                                                                                     |
+| `<Enter>`                    | repeats the last command                 |                                                                                                     |
+| `u #`                        | continue Until line `#`                  | `#` = the line number in the current file                                                           |
+| `ref`                        | REFresh the screen                       | in case of some visual problems                                                                     |
+| `cv_imshow #`                | display an OpenCV image `#`              | requires [a plugin](https://github.com/renatoGarcia/gdb-imshow) (installed with [`mrs_uav_core`](https://github.com/ctu-mrs/mrs_uav_core)) |
+| `~/.gdbinit` file            | put pre-start settings in here           | an example is in the file                                                                           |
 
 ## Advanced debugging
 
@@ -126,7 +126,7 @@ To enable coredump, run (*will change settings for the current terminal only!*)
 ```
 ulimit -c unlimited
 ```
-Now, when a program crashes, its core will be autmatically saved a file named `core` in the current path (this is the default behaviour).
+Now, when a program crashes, its core will be automatically saved a file named `core` in the current path (this is the default behaviour).
 If you need to differentiate between coredumps from different programs, enable coredumping with PID:
 ```
 echo 1 | sudo tee /proc/sys/kernel/core_uses_pid
@@ -165,4 +165,4 @@ You can play around with the `~/.gdbinit` file and tweak a lot of the settings t
 **GOOD HUNTING!**
 
 [^1]: The `-O0` flag of `gcc`/`g++` disables optimizations, which makes debugging easier (although it potentially makes your program run slower). `-g` turns on generation of debugging symbols, which enables you to inspect code, print values of variables etc. during debugging.
-[^2]: The `debug_roslaunch` script is a utility script, which will create a tmux split to separate output/output of your node and GDB in order to make debugging clearer. You can find it in the `uav_core` repository in case you don't have it.
+[^2]: The `debug_roslaunch` script is a utility script, which will create a tmux split separating output of your node and output of GDB in order to make debugging clearer. You can find it in the [`mrs_uav_core`](https://github.com/ctu-mrs/mrs_uav_core) repository in case you don't have it.
