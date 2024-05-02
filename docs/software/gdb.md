@@ -4,10 +4,6 @@ title: Debugging with GDB
 parent: Software
 ---
 
-| :warning: **Attention please: This page needs work.**                                                                                             |
-| :---                                                                                                                                              |
-| The MRS UAV System 1.5 is being released and this page needs updating. Please, keep in mind that the information on this page might not be valid. |
-
 # Debugging with GDB
 
 If you're experiencing crashes of your C/C++ ROS node/nodelet or if your program is not behaving as expected and you want to inspect it, you can utilize a debugger.
@@ -164,5 +160,5 @@ You can play around with the `~/.gdbinit` file and tweak a lot of the settings t
 
 **GOOD HUNTING!**
 
-[^1]: The `-O0` flag of `gcc`/`g++` disables optimizations, which makes debugging easier (although it potentially makes your program run slower). `-g` turns on generation of debugging symbols, which enables you to inspect code, print values of variables etc. during debugging.
+[^1]: The `-O0` flag of `gcc`/`g++` disables optimizations, which makes debugging easier (although it potentially makes your program run slower). `-g` turns on generation of debugging symbols, which enables you to inspect code, print values of variables etc. during debugging. You should be able to debug your program even with optimizations turned on, but the code flow may be mangled due to them, which complicates the debugging.
 [^2]: The `debug_roslaunch` script is a utility script, which will create a tmux split separating output of your node and output of GDB in order to make debugging clearer. You can find it in the [`mrs_uav_core`](https://github.com/ctu-mrs/mrs_uav_core) repository in case you don't have it.
