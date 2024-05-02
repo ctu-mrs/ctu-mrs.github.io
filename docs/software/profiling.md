@@ -17,7 +17,7 @@ Other pages from our series on C++:
 In case you're currently asking yourself "what the hell is profiling?", it is a process of finding which parts of your code are slow or inefficient and ideally also of possible ways to optimize it.
 We will use the following (**truly terrible!**) implementation of the Fibonacci sequence for demostration purposes:
 
-``` C++
+```C++
 #include <iostream>
 #include <vector>
 
@@ -64,7 +64,7 @@ If we wanted to measure how long it takes our implementation to calculate the fi
 
 *Note:* You should use a steady clock (e.g. `ros::SteadyTime` or `std::chrono::steady_clock` in pure C++) to ensure there are no hiccups in the clock due to time synchronization, daylight saving time, etc., which could cause erroneous measurements.
 
-``` C++
+```C++
 #include <iostream>
 #include <vector>
 #include <chrono>
@@ -116,7 +116,7 @@ Let's fix this by changing the compilation command to `g++ fibonacci.cpp -O3 && 
 Now, I get an average run duration of 1500--1560us!
 If you're working with a ROS package, optimizations should be automatically enabled for the `RELEASE` and `REL_WITH_DEB_INFO` catkin profiles with the MRS setup, or you can enforce them by adding the following line to your `CMakeLists.txt` file:
 
-``` CMake
+```CMake
 add_compile_options("-O3")
 ```
 
@@ -125,7 +125,7 @@ You can just initialize  a `mrs_lib::ScopeTimer` object at the start of a functi
 The duration from object initialization until the checkpoints and the object's destruction will be automatically measured and printed to console.
 Our code could then look something like this:
 
-``` C++
+```C++
 #include <iostream>
 #include <vector>
 #include <mrs_lib/scope_timer.h>
@@ -262,7 +262,7 @@ And `main()` itself only takes up around 84% of the total execution -- the rest 
 In any case, just with these two commands, we've been able to identify the main culprit slowing our program down and now we can finally fix it!
 Let's use a slightly different definition for `fibonacci()` and try to measure it's performance again:
 
-``` C++
+```C++
 #include <iostream>
 #include <vector>
 #include <chrono>
