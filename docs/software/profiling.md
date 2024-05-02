@@ -223,7 +223,7 @@ In other words -- **this method tells you directly on which functions to focus**
 
 For our toy program, we can use Valgrind's [Callgrind tool](https://valgrind.org/docs/manual/cl-manual.html) to perform the random sampling simply by calling
 
-```
+```bash
 g++ fibonacci.cpp -O3 && valgrind --tool=callgrind --callgrind-out-file=callgrind.out ./a.out
 ```
 
@@ -237,7 +237,7 @@ Notice that the program will run significantly slower than if you simply run it 
 Now, the data can be visualized using another tool - [KCachegrind](https://kcachegrind.github.io/html/Home.html).
 Simply call
 
-```
+```bash
 kcachegrind callgrind.out
 ```
 

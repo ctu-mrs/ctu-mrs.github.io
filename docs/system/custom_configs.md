@@ -22,7 +22,7 @@ Changing these config files directly is **not recommended** as well as **copying
 Instead, a parameter can be used to pass a **custom config** file that only overrides the values that the used wants to change relative to the defaults.
 This mechanism allows the user to store the changes locally.
 In general, our launchfiles accept the argument
-```
+```bash
 custom_config:=<path to the file>
 ```
 which is used to pass the path to the custom config.

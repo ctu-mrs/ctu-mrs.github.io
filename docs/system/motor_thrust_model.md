@@ -22,7 +22,7 @@ There are several ways of measuring the relationship between throttle and thrust
 
 We take our UAV with no additional payload, measure its mass and fly it manually. While it is hovering high enough above ground (to avoid ground effect), we read out its current throttle value. This can be done either through QGroundControl mavlink inspector, through Mavros or by checking the flight log on the SD card after the flight. Note that throttle is often called "thrust" in the mavlink messages, it is a value between 0 and 1. We then proceed to attach some payload to the UAV, measure the total UAV mass and fly it again. We then compile our test data into a yaml file, which looks like this:
 
-```
+```bash
 # num_motors - How many motors were used in this test?
 num_motors: 4
 
@@ -43,7 +43,7 @@ throttle: [
 
 This file can be then passed to a python script in the [mrs_uav_deployment](https://github.com/ctu-mrs/mrs_uav_deployment/tree/master/miscellaneous/motor_model) repository like this:
 
-```
+```bash
 python3 thrust_curve.py example_uav.yaml
 
 ```
@@ -61,7 +61,7 @@ If the values looks appropriate, you can proceed. If not, check that your input 
 
 The script will produce file named output.yaml, which looks like this:
 
-```
+```bash
 motor_params:
   a: 0.282796
   b: -0.180959

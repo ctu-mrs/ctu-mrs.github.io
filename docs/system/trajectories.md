@@ -32,7 +32,7 @@ nav_order: 4
 
 The [`mrs-ctu/trajectory_loader`](https://github.com/ctu-mrs/trajectory_loader) package contains all information you need for loading a trajectory from a file: [documentation](https://github.com/ctu-mrs/trajectory_loader), [example trajectories](https://github.com/ctu-mrs/trajectory_loader/tree/master/sample_trajectories), and [launch files](https://github.com/ctu-mrs/trajectory_loader/tree/master/launch).
 It expects trajectory sampled with period of T = 0.2 s (can be modified in the message), in line-format `x,y,z,heading`, e.g.,:
-```
+```bash
 0.0,0.0,1.0,0.0
 0.2,0.2,1.2,0.1
 0.3,0.1,1.4,0.15

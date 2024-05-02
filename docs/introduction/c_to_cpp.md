@@ -41,12 +41,12 @@ Many of these problems may be tackled using more focused tools in C++, significa
 In many cases, pointers may be avoided altogether in C++ by using references, especially when passing function parameters (see the [next section](#function-parameters)).
 However, references are useful in other cases as well.
 Consider the following scenario, where you want to transform the fifth element of the container `cont`:
-```
+```cpp
 cont.at(102) = 10 + 3*cont.at(102) + 0.1*cont.at(102)*cont.at(102);
 ```
 Here, the `at()` method of the `cont` object is called four times, which may be quite costly e.g. in the case of a linked-list, and is error-prone (a single typo in the index number can break this code).
 A cleaner version may be obtained using references:
-```
+```cpp
 auto& cur_el = cont.at(102);
 cur_el = 10 + 3*cur_el + 0.1*cur_el*cur_el;
 ```
@@ -79,7 +79,7 @@ Note that ROS uses the [Boost implementation](https://www.boost.org/doc/libs/1_7
 Luckily, the Boost shared pointer works identically to the standard library (although they cannot be converted to each other's type).
 
 When instantiating a `std::shared_ptr`, use the `std::make_shared<T>()` function, which takes the object `T`'s constructor parameters as arguments - e.g.:
-```
+```cpp
 class Bar
 {
 public:
@@ -99,16 +99,16 @@ Similarly for `std::unique_ptr` and `std::make_unique`.
 The rules of thumb when defining function parameters is:
 
   1. If you're taking a primitive type as a parameter (e.g. `int`, `float`, `bool` etc.), use a constant copy:
-     ```
+     ```cpp
      bool foo(const int a, const float b);
      ```
   2. If you're taking a class/struct, use a constant reference:
-     ```
+     ```cpp
      class Bar, Baz;
      Bar foo(const int a, const Baz& b);
      ```
   3. If you need to return multiple variables, there are several possibilities:
-     ```
+     ```cpp
      std::tuple<bool, float> foo(const int a)
      {
        if (a > 0)
@@ -123,7 +123,7 @@ The rules of thumb when defining function parameters is:
      const auto [c, b] = foo(a);
      ```
      or
-     ```
+     ```cpp
      bool foo(const int a, float& ret_b)
      {
        if (a > 0)
@@ -143,7 +143,7 @@ The rules of thumb when defining function parameters is:
      const bool c = foo(a, b);
      ```
   4. If you want to modify a parameter passed to a function (e.g. use the function to update an object's value), use a reference, but make this clear (ideally by naming of the function and the parameters):
-     ```
+     ```cpp
      void append_squared(std::vector<float>& to, const float new_val)
      {
        to.push_back(new_val*new_val);
@@ -198,7 +198,7 @@ It happens even to the best of us ☺.
 ### Iterating through containers
 Since C++11, the [range-based `for` loops](https://en.cppreference.com/w/cpp/language/range-for) syntactic sugar is available.
 Specifically, the following syntax is legal for any container that implements the `begin()` and `end()` methods according to the standard (e.g. `std::vector`, [`std::forward_list`](https://en.cppreference.com/w/cpp/container/forward_list), `pcl::PointCloud`, `cv::Mat` etc.):
-```
+```cpp
 for (const auto& element : container)
 {
   // do stuff with element
@@ -207,7 +207,7 @@ for (const auto& element : container)
 }
 ```
 If you want to modify the elements, just drop the `const` keyword:
-```
+```cpp
 for (auto& element : container)
 {
   // do stuff with element
@@ -220,15 +220,15 @@ I recommend using this syntax whenever applicable as it's more expressive and le
 **A rule of thumb:**
 
  * If you do not need to know the iterator inside the `for` loop and only need to access/modify the elements, use a range-based `for` loop:
-   ```
+   ```cpp
    for (const auto& element : container)
    ```
  * If you need to use the iterator inside the loop body, use an iterator-based `for` loop:
-   ```
+   ```cpp
    for (size_t it = 0; it < container.size(); it++)
    ```
    or
-   ```
+   ```cpp
    // if you need to modify the elements, use std::begin() and std::end() instead
    for (auto it = std::cbegin(container); it != std::cend(container); it++)
    ```
@@ -294,7 +294,7 @@ The [`auto` keyword](https://en.cppreference.com/w/cpp/language/auto) exists for
 
 `auto` loosely translates to "dear Mr. compiler, please substitute this word with the appropriate deduced type during compilation".
 For example, instead of writing the whole type of a `std::vector` iterator such as
-```
+```cpp
 const std::vector<float> cont = init_container();
 for (std::vector<float>::const_iterator it = std::cbegin(cont); it != std::cend(cont); it++)
 {
@@ -302,7 +302,7 @@ for (std::vector<float>::const_iterator it = std::cbegin(cont); it != std::cend(
 }
 ```
 you can simplify this code without loosing expressivity to 
-```
+```cpp
 const std::vector<float> cont = init_container();
 for (auto it = std::cbegin(cont); it != std::cend(cont); it++)
 {

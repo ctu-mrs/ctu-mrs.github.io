@@ -24,7 +24,7 @@ However, there are several types of devices and ways to connect them. The device
 
 ## SW setup
 The MRS UAV system uses systemd-newtorkd to control network connections. networkd doesn't support the modems option. Therefore NetworkManager needs to be used. It is disabled by default. Use the following command to start it:
-```
+```bash
 sudo systemctl start NetworkManager  -- to start program in current session
 sudo systemctl enable NetworkManager -- to start automatically on boot
 ```
@@ -32,17 +32,17 @@ It also requires a `modem-manager` to be installed, but this should already be d
 
 ### Netplan config
 Before updating the control, you have to find the device name. To do that, call:
-```
+```bash
 nmcli device
 ```
 this will output all available devices for NetworkManager. In our case, it was called **cdc-wdm0**. 
 Once you have the device name, you can update the `/etc/netplan/01-netcfg.yaml`.
 First, replace the `renderer`, which selects a program that manages the connections, with NetworkManager.
-```
+```bash
   renderer: NetworkManager
 ```
 Then, add the following to the end of the config, such that `modems` is aligned with `ethernets` and `wifis`:
-```
+```bash
   modems:
     cdc-wdm0:
       apn: internet

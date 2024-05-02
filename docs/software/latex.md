@@ -30,7 +30,7 @@ Overleaf automatically pushes its changes. As you don't want anyone to mess with
 2. Push your changes at `overleaf` branch to Overleaf: `git push overleaf overleaf:master`
 3. Pull to this branch from Overleaf: `git pull overleaf master:overleaf`
 4. Or pull using `merge` as
-``` 
+```bash
   git fetch 
   git checkout overleaf
   git merge overleaf/master

@@ -71,11 +71,11 @@ Typically, this is useful when you encounter a deadlock in your program or anoth
 To do this, first you need to know the PID (Program IDentifier) of the program that you want to attach GDB to.
 You can find that using `htop`, `pidof`, `pgrep` or any other command.
 For example, to find the PID of the process in which the `ControlManager` nodelet is running, you can use the command
-```
+```bash
 pgrep -fia controlmanager
 ```
 When you know the PID of the process you want to attach to, use the command
-```
+```bash
 sudo gdb -p PID
 ```
 to do that (it has to be done using superuser privileges - if a normal user could do this, that would be quite a security concern).
@@ -87,23 +87,23 @@ To detach gdb from the program, use the `detach` command.
 
 If the deadlock ocurred when no debugger is attached to the program, you can attach to a running program using the method described above.
 When you have gdb prompt available, a good way to start debugging the deadlock is to list all threads using
-```
+```bash
 info threads
 ```
 and finding threads that are waiting on a mutex.
 These will typically list their current callframe function as `__lll_lock_wait ()` or something similar.
 A command to list the complete backtrace of all threads that you may also find useful is
-```
+```bash
 thread apply all bt
 ```
 When you find a thread that is waiting on a mutex, switch to its context using
-```
+```bash
 thread <thread number>
 ```
 Then, you can print details of the mutex that the thread is waiting for (you may need to change the current callframe using the `up`, `down` or `frame` commands).
 Specifically, you're looking for the current owner of the mutex.
 Typically, you need to change the frame up until you hit the frame with the lock and then print the dereferenced mutex pointer using a command like
-```
+```bash
 p *mutex
 ```
 In the output, you should see several pieces of information, but most importantly the PID of the owning thread.
@@ -114,23 +114,23 @@ This way, you should be able to find the cause of the deadlock.
 
 You can even debug a program that crashed and was not launched with an attached debugger.
 However, you have to make sure that coredumping is actually enabled by running
-```
+```bash
 ulimit -a | grep core
 ```
 If the configured core file size is zero, no coredump will be created.
 To enable coredump, run (*will change settings for the current terminal only!*)
-```
+```bash
 ulimit -c unlimited
 ```
 Now, when a program crashes, its core will be automatically saved a file named `core` in the current path (this is the default behaviour).
 If you need to differentiate between coredumps from different programs, enable coredumping with PID:
-```
+```bash
 echo 1 | sudo tee /proc/sys/kernel/core_uses_pid
 ```
 Now, the coredump will be named `core.<PID>`, so a new crash will not overwrite an old coredump.
 
 Finally, after your program crashes, you can debug it using simply the command
-```
+```bash
 gdb <path to the program> <path to the core>
 ```
 Note that for ROS nodelets, `<path to the program>` should typically be something like `~/workspace/devel/lib/libYourNodelet.so` and `<path to the core>` is by default `/var/lib/apport/coredump/core.<filepath+filename>.<unimportant number>.<unimportant hash>.<PID>.<unimportant number>` in Ubuntu 20.04 when using `apport`.
@@ -140,7 +140,7 @@ Other possible locations of the coredump are the current path and `~/.ros/<core 
 
 Using the `ulimit -c unlimited` command will only enable coredump until logging out, then the default behaviour will be reset.
 To permanently enable coredump for all users, edit the file `/etc/security/limits.conf` (as root) and add these two lines:
-```
+```bash
 root - core unlimited
 *    - core unlimited
 ```
