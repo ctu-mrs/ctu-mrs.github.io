@@ -1,3 +1,9 @@
+---
+layout: default
+title: Raspberry Pi 5 Knowledge base
+parent: Hardware
+---
+
 # Camera firmware issues
 For cameras based on `ov9281` connected via the MIPI port, such as the Arducam UC-599 Rev-B, you need to set up explicit firmware overlay. This is set up in `/boot/firmware/config.txt`. You need to disable automatic detection of cameras by commenting out or setting to `0` the line:
 ```
