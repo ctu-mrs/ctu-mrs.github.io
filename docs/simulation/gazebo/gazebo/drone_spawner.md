@@ -138,6 +138,13 @@ An example of a csv pos-file:
 2, 22, 14, 0.5, 3.14
 ```
 
+## Mavlink GCS connection
+
+By default, the UAV will connect to Gazebo using Mavlink on port 14550. If you want to use QGroundControl or access raw Mavlink data, you can use the spawner param `--enable_mavlink_gcs` to add an extra mavlink stream.
+Note that this will not cause the drone to autoconnect to QGC, but you can manually connect in Application Settings -> Comm Links -> Add -> Type: UDP -> port: MAVLINK_GCS_PORT_REMOTE.
+The extra stream is configured [here](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/blob/master/ros_packages/mrs_uav_gazebo_simulation/ROMFS/px4fmu_common/init.d-posix/px4-rc.mavlink_gcs) and the UDP ports will be automatically assigned according to the UAV's ID as a `gcs_base_port + ID`. The stream will listen to the simulation data at a MAVLINK_GCS_UDP_PORT_LOCAL (default `18000 + ID`) and publish on a MAVLINK_GCS_UDP_PORT_REMOTE (default `18100 + ID`).
+Default port nubmers are loaded from the config file [spawner_params.yaml](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/blob/master/ros_packages/mrs_uav_gazebo_simulation/config/spawner_params.yaml).
+
 ## Jinja templates and SDF models
 
 We only provide model templates in Jinja format (suffix `.sdf.jinja`), which need to be *rendered*.
