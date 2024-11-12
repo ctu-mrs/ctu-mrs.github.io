@@ -27,7 +27,7 @@ Do not install the `vcdbg` package - it will remove the overlays needed for MIPI
 It seems that the package is currently only compatible with older versions of the Raspberry Pi.
 If you did this, remove all packages that were installed with `vcdbg` and reinstall `raspi-firmware`.
 
-# Using GPU acceleration in Singularity
+# Using GPU acceleration in Singularity/Apptainer
 By default, the Ubuntu 20.04 Singularity image we use to run ROS on the device has older MESA drivers that do not support hardware acceleration on the onboard Broadcom V3D 7.1 GPU.
 This can be overcome by manually adding a non-official ppa to upgrade the drivers in Singularity.
 
@@ -49,3 +49,32 @@ sudo apt install libglx-mesa0 libgl1-mesa-dri
 ```
 This should have upgraded the MESA drivers to the newest version.
 Lastly, note that the V3D 7.1 GPU only supports GLSL 3.10 - if you are using a shader that explicitly requires a newer version, try manually rewriting the requirement in the code, it may work. If not, you may be out of luck.
+
+# Using WiringPi in Singularity/Apptainer
+
+In order to control the GPIO pins inside of 20.04 Ubuntu Singularity image, you need to install an up-to-date version of the library inside the container.
+These steps worked for me:
+
+1. Enter the wrapper with `sudo`
+2. Download new versions of `autoconf` and `autoconf-archive`:
+```
+wget ftp.de.debian.org/debian/pool/main/a/autoconf/autoconf_2.71-3_all.deb
+wget ftp.de.debian.org/debian/pool/main/a/autoconf-archive/autoconf-archive_20220903-3_all.deb
+dpkg -i ./autoconf*deb
+```
+4. Build and install `libgpiod`:
+```
+git clone https://github.com/brgl/libgpiod.git
+cd libgpiod
+./autogen.sh --enable-tools=yes --prefix=/usr
+make
+make install
+```
+5. Copy (and replace if there is one already) `libgpoiod/lib/uapi/gpio.h` from the git directory to `/usr/include/linux/`
+6. Build and install new `WiringPi`:
+```
+git clone https://github.com/WiringPi/WiringPi.git
+cd WiringPi
+./build debian
+sudo dpkg -i ./debian-template/wiringpi-*.deb
+```
