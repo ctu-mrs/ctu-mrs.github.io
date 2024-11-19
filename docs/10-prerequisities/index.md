@@ -2,7 +2,7 @@
 title: Prerequisities
 ---
 
-# Prerequsities
+# Prerequisities
 
 import DocCardList from '@theme/DocCardList';
 

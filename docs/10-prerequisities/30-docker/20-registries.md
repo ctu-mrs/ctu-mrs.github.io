@@ -1,5 +1,0 @@
----
-title: Registries
----
-
-# Registries
