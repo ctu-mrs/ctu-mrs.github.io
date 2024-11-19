@@ -121,14 +121,11 @@ echo ""
 </p>
 </details>
 <details>
-<summary>build_image.sh</summary>
+<summary>paths.sh</summary>
 <p>
-
 ```bash
 export WORKSPACE_PATH=etc/docker/catkin_workspace
 export CACHE_PATH=cache
-
 ```
-
 </p>
 </details>
