@@ -1,7 +1,7 @@
 ---
 title: FAQ
-description: Docker FAQ
 pagination_label: Docker FAQ
+description: Docker FAQ
 ---
 
 # Docker FAQ

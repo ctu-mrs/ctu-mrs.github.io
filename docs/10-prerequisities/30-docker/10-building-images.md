@@ -1,7 +1,7 @@
 ---
 title: Building images
-description: How to build docker images.
 pagination_label: Building Docker images
+description: How to build docker images.
 ---
 
 # Building images

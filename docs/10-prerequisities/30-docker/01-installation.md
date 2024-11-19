@@ -1,7 +1,7 @@
 ---
 title: Installation
 pagination_label: Installing Docker
-description: Learn how to install Docker.
+description: Learn how to install Docker
 ---
 
 The following guide is a digest of the official installation guide at [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/).
