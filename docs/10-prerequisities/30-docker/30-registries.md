@@ -1,13 +1,13 @@
 ---
-title: Registries
-pagination_label: Docker Registries
-description: Using docker registries
+title: Docker Registries
+pagination_label: Using Docker Registries
+description: Using docker Registries
 ---
 
 # Docker Registries
 
 Docker registries are storage and distribution systems for Docker images.
-They allow you to share images with others or deploy them across different environments. 
+They allow you to share images with others or deploy them across different environments.
 The default Docker registry is **Docker Hub**, but you can also use private registries, including locally hosted ones.
 
 ## Default Docker Registry: Docker Hub
@@ -26,8 +26,8 @@ Before pushing images to a Docker registry, you must authenticate.
   ```bash
   docker login
   ```
-  
-## Pushing an Image to a Docker Registry 
+
+## Pushing an Image to a Docker Registry
 
 **Tag your image:** To push an image to a registry, you must tag it with the appropriate registry URL and repository name.
 
@@ -40,7 +40,7 @@ Example for Docker Hub:
 docker tag my-app:latest username/my-app:latest
 ```
 
-**Push the image:** 
+**Push the image:**
 
 ```bash
 docker push <registry-url>/<repository-name>:<tag>
@@ -127,7 +127,7 @@ To pull an image from a local registry hosted on another computer, use the IP ad
    ```bash
    docker pull <host-ip>:<port>/<repository-name>:<tag>
    ```
-   
+
 Example
 ```bash
 docker pull 192.168.1.100:5000/my-app:latest
@@ -158,7 +158,7 @@ By default, Docker requires secure (HTTPS) connections to communicate with regis
      "insecure-registries": ["<registry-host>:<port>"]
    }
    ```
-   
+
 ### Listing Images in a Local Registry
 
 To view the list of images stored in a local Docker registry, you can use the registry's API.
@@ -170,7 +170,7 @@ To view the list of images stored in a local Docker registry, you can use the re
    ```bash
    curl http://<registry-host>:<port>/v2/_catalog
    ```
-   
+
 Replace `<registry-host>` and `<port>` with your local registry's address and port (e.g., `localhost:5000`).
 
 Example:
