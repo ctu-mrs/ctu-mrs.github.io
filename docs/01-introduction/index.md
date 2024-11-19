@@ -2,4 +2,4 @@
 title: Introduction
 ---
 
-# The MRS UAV System (MUS) documentation
+# The MRS UAV System (MRS) documentation

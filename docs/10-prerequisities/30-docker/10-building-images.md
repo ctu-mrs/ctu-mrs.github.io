@@ -1,61 +1,61 @@
 ---
-title:Buildingimages
-pagination_label:BuildingDockerimages
-description:Howtobuilddockerimages.
+title: Building images
+pagination_label: Building Docker images
+description: How to build docker images.
 ---
 
-#Buildingimages
+# Building images
 
-Followthe[officialguide](https://docs.docker.com/build/)formorein-depthinformation.
+Follow the [official guide](https://docs.docker.com/build/) for more in-depth information.
 
-###BuildingaDockerImagefromaDockerfile
+### Building a Docker Image from a Dockerfile
 
-ADockerfileisatextfilecontainingaseriesofinstructionstocreateaDockerimage.
-Here'showtobuildanimageusingaDockerfile.
+A Dockerfile is a text file containing a series of instructions to create a Docker image.
+Here's how to build an image using a Dockerfile.
 
-1.**CreateaDockerfile**:
-Writea`Dockerfile`withthenecessaryinstructionsforyourapplication.Example:
-```dockerfile
-#UsetheMRSUAVSystemthebaseimage
-FROMctumrs/mrs_uav_system:latest
+1. **Create a Dockerfile**:
+   Write a `Dockerfile` with the necessary instructions for your application. Example:
+   ```dockerfile
+   # Use the MRS UAV System the base image
+   FROM ctumrs/mrs_uav_system:latest
 
-#Installadditionalpackagesintotheimage
-RUNsudoapt-get-yinstall<my_dependency>
+   # Install additional packages into the image
+   RUN sudo apt-get -y install <my_dependency>
 
-#Specifythedefaultcommandtorun
-CMD["/ros_entrypoint.sh"]
-```
-2.**SavetheDockerfile:**SavetheDockerfileintherootdirectoryofyourproject.
-3.**BuildtheDockerImage:**Usethedockerbuildcommandtobuildtheimage.RunthiscommandinthesamedirectoryasyourDockerfile:
+   # Specify the default command to run
+   CMD ["/ros_entrypoint.sh"]
+   ```
+2. **Save the Dockerfile:** Save the Dockerfile in the root directory of your project.
+3. **Build the Docker Image:** Use the docker build command to build the image. Run this command in the same directory as your Dockerfile:
 ```bash
-dockerbuild-t<image-name>:<tag>.
+docker build -t <image-name>:<tag> .
 ```
 Example:
 ```bash
-dockerbuild-tmy-app:latest.
+docker build -t my-app:latest .
 ```
 
-*The`-t`flagassignsanameandtagtoyourimage(e.g.,my-app:latest).
-*The`.`attheendspecifiesthebuildcontext(thecurrentdirectory).
+* The `-t` flag assigns a name and tag to your image (e.g., my-app:latest).
+* The `.` at the end specifies the build context (the current directory).
 
-##DockerfilefortheMRSUAVSystem
+## Dockerfile for the MRS UAV System
 
 ```dockerfile
-FROMctumrs/ros:noetic
+FROM ctumrs/ros:noetic
 
-RUNapt-get-yupdate
+RUN apt-get -y update
 
-#workaroundinterractivepromptsduringaptinstallations
-RUNecho'debconfdebconf/frontendselectNoninteractive'|sudodebconf-set-selections
-RUNDEBIAN_FRONTEND=noninteractiveapt-get-yinstallkeyboard-configuration
+# workaround interractive prompts during apt installations
+RUN echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install keyboard-configuration
 
-#INSTALLtheMRSUAVSystem
+# INSTALL the MRS UAV System
 
-RUNapt-get-yinstallsoftware-properties-commoncurlbash
+RUN apt-get -y install software-properties-common curl bash
 
-RUNcurlhttps://ctu-mrs.github.io/ppa-stable/add_ppa.sh|bash
+RUN curl https://ctu-mrs.github.io/ppa-stable/add_ppa.sh | bash
 
-RUNapt-get-yinstallros-noetic-mrs-uav-system-full
+RUN apt-get -y install ros-noetic-mrs-uav-system-full
 
-CMD["/ros_entrypoint.sh"]
+CMD ["/ros_entrypoint.sh"]
 ```
