@@ -8,7 +8,8 @@ description: How to build and chache a ROS workspace into a Docker image
 
 ## Folder contents
 
-* <details><summary>Dockerfile</summary>
+<details>
+<summary>Dockerfile</summary>
 <p>
 
 ```dockerfile
@@ -57,7 +58,8 @@ CMD ["sh"]
 
 </p>
 </details>
-* <details><summary>build_image.sh</summary>
+<details>
+<summary>build_image.sh</summary>
 <p>
 
 ```bash
@@ -118,7 +120,8 @@ echo ""
 
 </p>
 </details>
-* <details><summary>build_image.sh</summary>
+<details>
+<summary>build_image.sh</summary>
 <p>
 
 ```bash
