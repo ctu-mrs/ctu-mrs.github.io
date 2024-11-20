@@ -1,8 +1,8 @@
 ---
-title: Hardware
+title: Cameras
 ---
 
-# Hardware notes
+# Cameras
 
 import DocCardList from '@theme/DocCardList';
 

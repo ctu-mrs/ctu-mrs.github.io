@@ -1,5 +1,5 @@
 ---
-title: R81 receiver setup
+title: Radiomaster R81
 ---
 
 # How to setup Radiomaster R81 receivers

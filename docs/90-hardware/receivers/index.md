@@ -1,8 +1,8 @@
 ---
-title: Hardware
+title: Receivers
 ---
 
-# Hardware notes
+# Receivers
 
 import DocCardList from '@theme/DocCardList';
 
