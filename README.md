@@ -1,12 +1,5 @@
 # Documentation at [https://ctu-mrs.github.io/](https://ctu-mrs.github.io/)
 
-# How to update
-1) Create a branch with your changes
-2) Once you're done, create a pull request
-3) Assign a senior MRS member to check the content and
-  - to give you feedback or
-  - to merge into `master`.
-
 # Running locally
 
 ## Ubuntu 20.04: install dependencies
