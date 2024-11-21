@@ -135,21 +135,25 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Shortcuts',
           items: [
             {
               label: 'Robot Operating System',
               to: '/docs/prerequisities/ros',
+            },
+            {
+              label: 'Installation',
+              to: '/docs/installation',
+            },
+            {
+              label: 'API',
+              to: '/docs/api',
             },
           ],
         },
         {
           title: 'More',
           items: [
-            {
-              label: 'Articles',
-              to: '/blog',
-            },
             {
               label: 'CTU GitHub',
               href: 'https://github.com/ctu-mrs',

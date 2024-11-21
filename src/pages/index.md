@@ -1,12 +1,13 @@
-# Welcome to the CTU MRS Docs
-
 ![](./logos.png)
 
-Please continue to the latest [Documentation](/docs/introduction) using the top menu bar.
-Documentation for older version of the MRS UAV System is also preserved (however, it is not maintained anymore).
+# Welcome to the MRS UAV System documentation
+ 
+The MRS UAV System is an open-source software framework developed by the Multi-Robot Systems Group at Czech Technical University, designed to support advanced R&D in autonomous UAV systems, from speed racing and decentralized swarming to GNSS-denied coordination of multi-UAV formations.
 
-<Button label="🔗 Documentation" link="/docs/introduction" block /><br />
+Please continue to <Button label="🔗 Documentation" link="/docs/introduction" block /> to read more.
 
-Read the latest news in the [Blog](/blog):
+**Note**: Older versions of the documentation are preserved, however, the versions are not maintained anymore.
 
-<Button label="🔗 Blog" link="/blog" block /><br />
+%% Read the latest news in the [Blog](/blog):
+
+%% <Button label="🔗 Blog" link="/blog" block /><br />
