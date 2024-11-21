@@ -98,12 +98,13 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/mrs_logo.png',
+    image: 'img/mrs_f4f_small_light.png',
     navbar: {
       title: 'CTU MRS Docs',
       logo: {
         alt: 'CTU MRS Logo',
-        src: 'img/mrs_logo.png',
+        src: 'img/mrs_f4f_small_light.png',
+        srcDark: 'img/mrs_f4f_small_dark.png', // Dark mode logo
       },
       items: [
         {

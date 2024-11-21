@@ -33,3 +33,21 @@
 html[data-theme='dark'] button {
   color: #ffffff;
 }
+
+/* Main page theme */
+.text_image_side_by_side
+{
+  display:flex;
+  align-items:justify;
+}
+.text_image_side_by_side img
+{
+  width:60%;
+  float:right;
+}
+.text_image_side_by_side p
+{
+  width:135%;
+  text-align:justify;
+  float: left;
+}
