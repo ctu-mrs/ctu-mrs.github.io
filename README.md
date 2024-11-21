@@ -1,6 +1,6 @@
 # Documentation at [https://ctu-mrs.github.io/](https://ctu-mrs.github.io/)
 
-# Running locally
+# How to run locally
 
 ## Ubuntu 20.04: install dependencies
 `Node.js` and `nvm` (here versions [v22](https://nodejs.org/en/about/previous-releases) and [v0.40.1](https://github.com/nvm-sh/nvm/releases))
@@ -12,13 +12,12 @@ curl https://raw.githubusercontent.com/creationix/nvm/v0.40.1/install.sh | sh
 
 ## Run
 ```bash
-cd ctu-mrs.github.io
+cd ctu-mrs.github.io && git pull
 yarn install
-yarn add --frozen-lockfile --non-interactive remark-math@6 rehype-katex@7 @aldridged/docusaurus-plugin-lunr docusaurus-lunr-search
 npm run start
 ```
 
-Open `http://localhost:3000` in your browser. **Note**: no need to restart if you make local changes, `npm` should deploy your changes in real-time.
+Open `http://localhost:3000` in your browser. **No need to restart if you make local changes, `npm` should deploy your changes in real-time** (no more `<leader>m` to html conversion).
 
 # Troubleshooting
  
