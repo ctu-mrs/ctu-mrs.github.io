@@ -1,5 +1,7 @@
 ---
 title: Catkin
+pagination_label: Catkin build system
+description: Catkin build system
 ---
 
 # Catkin

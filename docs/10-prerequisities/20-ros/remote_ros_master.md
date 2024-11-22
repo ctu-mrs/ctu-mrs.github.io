@@ -1,5 +1,7 @@
 ---
 title: Remote ROS master
+pagination_label: Remote access to ROS core
+description: Remote access to ROS core
 ---
 
 # Connecting to ROS core remotely

@@ -1,5 +1,7 @@
 ---
 title: Compiling a workspace
+pagination_label: Compiling a workspace with catkin
+description: Compiling a workspace with catkin
 ---
 
 Make sure you are located within the workspace when issuing the following commands.

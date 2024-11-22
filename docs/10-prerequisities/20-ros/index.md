@@ -1,5 +1,7 @@
 ---
 title: ROS
+pagination_label: Robot Operating System
+description: Robot Operating System
 ---
 
 # Robot Operating System (ROS)
