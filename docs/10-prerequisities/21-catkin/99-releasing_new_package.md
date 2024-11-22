@@ -1,5 +1,7 @@
 ---
 title: Releasing new package version
+pagination_label: Releasing new package version
+description: Releasing new package version
 ---
 
 # Releaseing new version of a package
