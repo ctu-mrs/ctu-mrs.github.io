@@ -1,2 +1,5 @@
 *.swp
 *.swo
+
+.docusaurus
+node_modules/.cache
