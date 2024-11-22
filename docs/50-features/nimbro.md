@@ -1,5 +1,7 @@
 ---
 title: Nimbro Network
+pagination_label: Nimbro Network
+description: Nimbro Network
 ---
 
 # How Nimbro Works

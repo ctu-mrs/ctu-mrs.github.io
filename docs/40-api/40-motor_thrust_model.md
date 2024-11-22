@@ -1,5 +1,7 @@
 ---
 title: Motor thrust model
+pagination_label: Supplying motor thrust model
+description: Supplying motor thrust model
 ---
 
 # Motor thrust model
@@ -13,6 +15,7 @@ The thrust-curve parameters are a part of a platform config for a specific UAV.
 ![](fig/thrust_fit_1.png)
 
 ## Getting the model parameters
+
 There are several ways of measuring the relationship between throttle and thrust. Your goal is to get at least three different measurements of the throttle-thrust relationship. If you have a reliable test data from the manufacturer of the motor and propeller, you can use these (Note that some manufacturers often exaggerate the performance of their motors). If you have a thrust test stand, you can produce the test data yourself. If you have neither of these, you can simply fly your UAV manually with different payload masses attached, and observe the throttle value needed to hover. Note that the model is very simple, it does not take battery voltage and other factors into account, it only provides a rough approximation, which is all we need for the system.
 
 ## Example - UAV with different payloads

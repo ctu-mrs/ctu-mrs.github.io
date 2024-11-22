@@ -1,5 +1,7 @@
 ---
 title: Simulations
+pagination_label: Simulating with the MRS
+description: Simulating with the MRS
 ---
 
 # Simulations

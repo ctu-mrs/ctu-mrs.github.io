@@ -1,5 +1,7 @@
 ---
 title: ROS messages
+pagination_label: ROS message defined by the MRS
+description: ROS message defined by the MRS
 ---
 
 # MRS ROS messages

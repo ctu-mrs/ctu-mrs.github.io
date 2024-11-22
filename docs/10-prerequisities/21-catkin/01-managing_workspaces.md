@@ -1,5 +1,7 @@
 ---
 title: Managing Workspaces
+pagination_label: Managing workspaces with catkin
+description: Managing workspaces with catkin
 ---
 
 # Managing Workspaces

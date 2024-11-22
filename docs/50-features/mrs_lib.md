@@ -1,5 +1,7 @@
 ---
 title: MRS libraries
+pagination_label: MRS libraries
+description: MRS libraries
 ---
 
 # MRS Libraries

@@ -1,5 +1,7 @@
 ---
 title: CoppeliaSim
+pagination_label: CoppeliaSim simulator
+description: CoppeliaSim simulator
 ---
 
 # Prerequsities
