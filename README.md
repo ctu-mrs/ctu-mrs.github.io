@@ -1,5 +1,5 @@
 # Documentation at [https://ctu-mrs.github.io/](https://ctu-mrs.github.io/)
-Runs using Docusaurus 3.6.0.
+Runs on Docusaurus v3.6.0.
 
 # How to run locally
 

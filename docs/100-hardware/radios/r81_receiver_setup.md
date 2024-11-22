@@ -1,5 +1,5 @@
 ---
-title: Radiomaster R81
+title: Radiomaster R81 RX
 ---
 
 # How to setup Radiomaster R81 receivers

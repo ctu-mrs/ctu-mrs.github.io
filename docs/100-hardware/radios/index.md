@@ -1,8 +1,8 @@
 ---
-title: Receivers
+title: Radio TX/RX
 ---
 
-# Receivers
+# Radio TX/RX
 
 import DocCardList from '@theme/DocCardList';
 

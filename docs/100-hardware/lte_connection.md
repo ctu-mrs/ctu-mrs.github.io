@@ -1,5 +1,5 @@
 ---
-title: LTE connection guide
+title: LTE connection
 ---
 
 # Guide to enable LTE connection on the drone
@@ -10,7 +10,7 @@ Follow this guide to setup an LTE connection on a drone with the MRS UAV System.
 
 This guide is described for device [LTE EG25-G Mini PCIe](https://www.quectel.com/product/lte-eg25-g-mpci://www.quectel.com/product/lte-eg25-g-mpcie).
 
-<img src="fig/lte-module.jpg" width="400px"></img>
+![LTE module](fig/lte-module.jpg)
 
 However, there are several types of devices and ways to connect them. The devices mainly differ in setup requirements (e.g. need for special drivers) and reliability. It can be summarized like this:
 

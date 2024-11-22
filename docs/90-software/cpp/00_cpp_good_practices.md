@@ -1,5 +1,5 @@
 ---
-title: Good practices in C++
+title: Good practices
 ---
 
 # Good practices in modern C++ for the purposes of MRS

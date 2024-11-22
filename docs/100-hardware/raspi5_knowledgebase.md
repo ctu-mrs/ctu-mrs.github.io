@@ -1,8 +1,10 @@
 ---
-title: Raspberry Pi 5 Knowledge base
-pagination_label: Raspberry Pi 5 Knowledge base
-description: Raspberry Pi 5 Knowledge base
+title: Raspberry Pi 5
+pagination_label: Raspberry Pi 5
+description: Raspberry Pi 5
 ---
+
+This repository contains our knowledge base on Raspbery Pi 5.
 
 # Camera firmware issues
 

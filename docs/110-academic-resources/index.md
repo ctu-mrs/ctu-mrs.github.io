@@ -1,8 +1,6 @@
 ---
-title: External resources
+title: Academic resources
 ---
-
-# Resources
 
 Crossroad for resources related to robotics and general research in the MRS group.
 Includes links to courses, lectures, study materials, interesting blogs & podcasts, tips & tricks to academic writing, and many others.

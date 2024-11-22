@@ -1,5 +1,5 @@
 ---
-title: Profiling C++ code
+title: Profiling
 ---
 
 # Profiling methods for C++
