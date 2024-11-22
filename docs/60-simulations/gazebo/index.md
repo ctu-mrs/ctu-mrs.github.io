@@ -1,5 +1,7 @@
 ---
 title: Gazebo/ROS
+pagination_label: Gazebo/ROS with PX4 SITL
+description: Gazebo/ROS with PX4 SITL
 ---
 
 # Gazebo Simulator

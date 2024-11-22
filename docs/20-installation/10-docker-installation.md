@@ -1,5 +1,7 @@
 ---
 title: Docker installation
+pagination_label: Installing the MRS using Docker
+description: Installing the MRS using Docker
 ---
 
 # Docker installation

@@ -1,5 +1,7 @@
 ---
-title: Configuring the MRS UAV System
+title: Configuring the MRS
+pagination_label: Configuring the MRS UAV System
+description: Configuring the MRS UAV System
 ---
 
 # Motivation

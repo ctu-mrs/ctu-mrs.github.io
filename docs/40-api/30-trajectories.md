@@ -1,5 +1,7 @@
 ---
-title: Trajectories
+title: Trajectory input
+pagination_label: Supplying trajectory input
+description: Supplying trajectory input
 ---
 
 ## Definitions

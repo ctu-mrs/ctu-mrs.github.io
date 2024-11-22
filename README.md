@@ -10,14 +10,12 @@ Runs using Docusaurus 3.6.0.
 curl -sL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 sudo apt-get -y install nodejs
 curl https://raw.githubusercontent.com/creationix/nvm/v0.40.1/install.sh | bash
-sudo apt-get -y install yarn
 ```
 
 ## Run
 
 ```bash
 cd ctu-mrs.github.io && git pull
-yarn install
 npm run start
 ```
 

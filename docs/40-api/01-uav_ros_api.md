@@ -1,8 +1,10 @@
 ---
 title: UAV-ROS API
+pagination_label: ROS API for the MRS System
+description: ROS API for the MRS System
 ---
 
-# UAV-ROS interface
+# MRS System's UAV-ROS API
 
 The UAV can be given commands via the following [managers](https://github.com/ctu-mrs/mrs_uav_managers) and nodes.
 

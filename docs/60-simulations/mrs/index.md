@@ -1,5 +1,7 @@
 ---
 title: MRS Multirotor Simulator
+pagination_label: MRS Multirotor Dynamics Simulator
+description: MRS Multirotor Dynamics Simulator
 ---
 
 # MRS Multirotor Simulator
