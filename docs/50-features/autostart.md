@@ -8,9 +8,6 @@ description: Autostart Takeoff Routine
 
 The ROS node for automating takeoff routine for UAVs.
 The code originates from the [mrs_uav_autostart](https://github.com/ctu-mrs/mrs_uav_autostart) package.
-
-## General description
-
 The **Autostart** checks the availability of essential parts of the system and validity of received data.
 Once all modules and data are available, it waits for the UAV to be armed and switched to offboard mode.
 Then, after a __safety timeout__, it initiates the takeoff procedure.
