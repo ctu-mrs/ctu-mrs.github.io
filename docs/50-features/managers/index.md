@@ -6,6 +6,8 @@ description: High-level manager nodes within the core
 
 # High-level manager nodes within the MRS
 
+![](./fig/thumbnail.jpg)
+
 ## ControlManager
 
 * integrates the control and tracking part of the MRS UAV pipeline
