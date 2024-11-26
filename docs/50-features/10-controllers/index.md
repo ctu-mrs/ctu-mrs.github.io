@@ -38,3 +38,12 @@ Loaded controllers can be switched by the [control manager](https://github.com/c
 ## Loading controllers to the [Control manager](https://github.com/ctu-mrs/mrs_uav_managers)
 
 An example controller plugin is located [here](https://github.com/ctu-mrs/mrs_core_examples).
+
+
+## Parameter description for control manager
+
+```address: "example_controller_plugin/ExampleController``` : Specifies the address of the plugin to be loaded into the interface as a controller
+```namespace: "example_controller"``` : Specifies the namespace of the controller as per the package description in the plugin
+```eland_threshold: 20.0 # [m]``` :  Specifies the position error in the controller which would trigger the eland, but this doesn't attempt a failsafe landing
+```failsafe_threshold: 30.0 # [m]``` :  Usually set to a higher value than the eland_threshold, this triggers the failsafe landing where thrust is reduced below expected hover to allow descend while maintaining level flight
+```odometry_innovation_threshold: 1.5 # [m]``` : Odometry innovation threshold varies between controllers depending on whether they are able to supplement the state estimators such that the internal Kalman innovation of the estimators don't exceed a certain value and cause the vehicle to emergency land.

@@ -98,3 +98,7 @@ The namespace of the UAV will be added automatically to the tfs and topics (```g
 To monitor a tf/topic outside of the namespace, use "/" as the first character of the tf/topic_name (```/garmin/range```)
 
  ![](fig/hz_display.png)
+
+### Replay status in terminal from a bag file
+
+When replaying a bag file in the terminal, you can view the status from terminal by launching ```roslaunch mrs_uav_status terminal.launch```
