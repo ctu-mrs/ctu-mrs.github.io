@@ -1,7 +1,7 @@
 ---
-title: MRS libraries
-pagination_label: MRS libraries
-description: MRS libraries
+title: C++ libraries
+pagination_label: MRS C++ libraries
+description: MRS C++ libraries
 ---
 
 # MRS Libraries
