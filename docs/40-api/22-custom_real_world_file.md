@@ -63,4 +63,8 @@ This origin leads to the defintion of a plane which converts from either `LATLON
 
 Safety area is a polyhedron defined by vertically extruding a polygon to mark an area outside which the UAV should not fly. When specified and enabled, the system prevents ```goto``` commands and ```trajectory_references``` from taking the UAV outside the safety area. 
 
-This area can either be defined in co-ordinate frames such as ```local_origin``` or ```world_origin``` which uses the origin specified in the world to define the polygon in meters, or in ```latlon_origin``` which uses the latitude and longitude to define the polygon in degrees.
+This area can either be defined in co-ordinate frames such as `local_origin` or `world_origin` which uses the origin specified in the world to define the polygon in meters, or in ```latlon_origin``` which uses the latitude and longitude to define the polygon.
+
+To define a new polygon, simply add the co-ordinates of the vertices in the `points` parameter. Order the co-ordinates in a clockwise or anti-clockwise manner to define the polygon. The last point is connected to the first point to close the polygon.
+
+The vertical limit of the safety area can **only** be defined in meters by specifying the `max_z` and `min_z` parameters. The `max_z` parameter specifies the maximum height, while the `min_z` parameter specifies the minimum height. When a UAV is initialised, its altitude is set to zero, and is further incremented/decremented based on sensors like `GNSS | Laser altimeter | Barometer`, and therefore, the UAV might intend to land below its takeoff altitude. To enable autonomous operations in these cases, `min_z` can be set to a negative value to allow the UAV to land below its takeoff altitude.
