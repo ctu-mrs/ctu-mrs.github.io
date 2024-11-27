@@ -1,5 +1,7 @@
 ---
 title: Profiling
+pagination_label: Profiling a C++ program
+description: Profiling a C++ program
 ---
 
 # Profiling methods for C++

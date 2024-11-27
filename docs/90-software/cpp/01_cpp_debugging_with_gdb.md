@@ -1,5 +1,7 @@
 ---
 title: Debugging with GDB
+pagination_label: Debugging with GDB
+description: Debugging with GDB
 ---
 
 # Debugging with GDB

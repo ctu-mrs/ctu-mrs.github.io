@@ -1,5 +1,7 @@
 ---
 title: Gitman
+pagination_label: Gitman submodule manager
+description: Gitman submodule manager
 ---
 
 # Gitman: alternative git "submodule" manager
@@ -15,7 +17,7 @@ It substitutes git's built-in submodule mechanism and provides more user-friendl
 ## installation
 
 ```bash
-sudo pip3 install gitman
+pip3 install gitman
 ```
 
 ## .gitman.yml config file

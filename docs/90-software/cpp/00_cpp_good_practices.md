@@ -1,5 +1,7 @@
 ---
 title: Good practices
+pagination_label: Good practices with C++
+description: Good practices with C++
 ---
 
 # Good practices in modern C++ for the purposes of MRS
