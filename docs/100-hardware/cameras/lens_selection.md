@@ -19,13 +19,13 @@ In most cases, you want to select an optical imaging system (camera + lens in ot
 Additionally, you usually want to ensure a minimal frame rate, the application dictates if an RGB or monochrome camera is preferred and sometimes a specific connection option is required (USB2, USB3, Ethernet etc.).
 Two useful conversion equations are:
 
- 1. <img src="https://render.githubusercontent.com/render/math?math=r_o=\frac{rs_of}{s(d-f)}"></img>,
+ 1. $r_o=\frac{rs_of}{s(d-f)}$,
 
-where <img src="https://render.githubusercontent.com/render/math?math=r_o"></img> is pixel size of an object with physical size <img src="https://render.githubusercontent.com/render/math?math=s_o"></img> which is at distance <img src="https://render.githubusercontent.com/render/math?math=d"></img> from the sensor, <img src="https://render.githubusercontent.com/render/math?math=r"></img> is resolution of the sensor, <img src="https://render.githubusercontent.com/render/math?math=s"></img> is size of the sensor, and <img src="https://render.githubusercontent.com/render/math?math=f"></img> is focal length of the camera.
+where $r_o$ is pixel size of an object with physical size $s_o$ which is at distance $d$ from the sensor, $r$ is resolution of the sensor, $s$ is size of the sensor, and $f$ is focal length of the camera.
 
- 2. <img src="https://render.githubusercontent.com/render/math?math=FOV=2\mathrm{atan}\left(\frac{s}{2f}\right)"></img>,
+ 2. $FOV=2\mathrm{atan}\left(\frac{s}{2f}\right)$
 
-where <img src="https://render.githubusercontent.com/render/math?math=FOV"></img> is an angular field of view of the optical imaging system.
+where $FOV$ is an angular field of view of the optical imaging system.
 
 Equations 1. and 2. can be used to convert between the cases.
 How these equations are obtained from the geometrical layout of the optical imaging system is illustrated in the following image.
