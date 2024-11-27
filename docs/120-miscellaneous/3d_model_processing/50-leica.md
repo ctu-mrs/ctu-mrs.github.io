@@ -1,5 +1,7 @@
 ---
 title: Leica Cyclone Register 360
+pagination_label: Working with Leica Cyclone Register 360
+description: Working with Leica Cyclone Register 360
 ---
 
 # Leica Cyclone Register 360 (LCR)

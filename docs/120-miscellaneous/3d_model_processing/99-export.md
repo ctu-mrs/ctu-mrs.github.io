@@ -1,24 +1,31 @@
 ---
-title: Export
+title: Exporting models
+pagination_label: Exporting the final model
+description: Exporting the final model
 ---
 
 # Export
+
 Details, how to export the final model.
 
 ## General formats
+
 Most of the times, the models are saved in following formats
 
 ### Polygon File Format - `.ply`
+
 * Mainly used MeshLab format.
 * Allows binary format of the file which saves a lot of space on the data storage.
 * Allows to store all kind of data into this format.
 
 ### Wavefront - `.obj`
+
 * Useful to share data with other software as Blender
 * More structured format for sharing.
 * Unfortunatelly bigger file size.
 
 ## Web
+
 * The basic guide will be described here. Please follow the [original guide](https://mrs.felk.cvut.cz/gitlab/bednaj14/meshlab/blob/master/modely_report.pdf) and the scripts inside for detailed information.
 * Download the [obj2optimizedGlb.sh](https://mrs.felk.cvut.cz/gitlab/bednaj14/meshlab/blob/master/obj2optimizedGlb.sh) script.
 * Recommend to install `NodeJS` with [snapcraft](https://snapcraft.io/node) tool. The `apt` version for `Ubuntu` does not contain the up-to-date version.
@@ -30,6 +37,7 @@ Most of the times, the models are saved in following formats
 * Upload the `.glb` file in [glTF Viewer](https://gltf-viewer.donmccurdy.com/) to view the result.
 
 ## Gazebo
+
 * The `.dae` format is most suitable for Gazebo.
 * Gazebo has its own [limitation](https://answers.gazebosim.org//question/1331/solved-jpeg-file-make-gazebo-die/) to load a large textures.
 * The image has to be resized with `convert input.jpg -resample 16384x16384 output.jpg`. Otherwise, Gazebo will be unable to load the texture.

@@ -1,5 +1,7 @@
 ---
 title: Meshlab
+pagination_label: Tips for Meshlab
+description: Tips for Meshlab
 ---
 
 # Meshlab

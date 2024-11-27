@@ -1,5 +1,7 @@
 ---
 title: Fixing colors
+pagination_label: Fixing colors in pointclouds
+description: Fixing colors in pointclouds
 ---
 
 # Fixing colors

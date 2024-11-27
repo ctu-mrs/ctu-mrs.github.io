@@ -1,5 +1,7 @@
 ---
 title: CloudCompare
+pagination_label: Tips for CloudCompare
+description: Tips for CloudCompare
 ---
 
 # CloudCompare (CC)
@@ -8,6 +10,7 @@ Tool for general work with pointclouds (including cartesian, color, and normal o
 Used for data processing before meshing and texturing.
 
 ## Normals computing
+
 - Recommend to use with *.e57* or *.ptx* data.
 - `Edit -> Normals -> Compute`
 - The options below are description from the official documentation.
@@ -27,6 +30,7 @@ Used for data processing before meshing and texturing.
 - Some parts might have inverted normals orientation. I did not find the way how to check this in the `CloudCompare`. I recommend to export the data and check it in the `Meshlab`. `CloudCompare` allows to invert normals with `Edit->Normals->Invert`. **The function inverts all normals**. Cut the model in pieces with `Meshlab` before inverting to invert only the required parts.
 
 ## Smoothing colors
+
 - `Edit -> Colors -> Convert to Scalar field`
 - For each scalar field `{R, G, B}`
   - select scalar field in cloud properties
@@ -39,6 +43,7 @@ Used for data processing before meshing and texturing.
   - set alpha to 255
 
 ## Command line mode
+
 [CC command line mode](https://www.cloudcompare.org/doc/wiki/index.php?title=Command_line_mode) opens a way for scripting of most of the functions available within CC GUI.
 **Scripting is faster than GUI and provides repeatability: prefer scripting over GUI.**
 Example script is available [here](https://mrs.felk.cvut.cz/gitlab/NAKI/naki_postprocessing/blob/master/scripts/pointclouds/processPtxFiles.sh).
@@ -48,6 +53,7 @@ CloudCompare -AUTO_SAVE OFF -O Setup249.ptx -O Setup250.ptx -MERGE_CLOUDS -C_EXP
 ```
 
 ## Manual compilation
+
 Get latest release version from [CC Github](https://github.com/CloudCompare/CloudCompare/releases).
 Latest release on April 6, 2022: `v2.12.0`.
 
@@ -94,6 +100,7 @@ sudo cmake --install .
 ```
 
 ## Extracting images
+
 * Import [`.e57`](https://ctu-mrs.github.io/docs/software/3d_model_processing/leica.html#e57) file in **separate setups (structured)** variant.
 * Select appropriate scan and expand the structure tree to see the content of the scan. You should see a `TLS\GBL` and a 6 image files.
 * Select the image you would like to export and save it with the `Save` button.

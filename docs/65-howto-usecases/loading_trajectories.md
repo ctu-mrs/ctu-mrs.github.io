@@ -1,7 +1,7 @@
 ---
 title: Loading trajectories
-pagination_label: Loading trajectories
-description: Loading trajectories
+pagination_label: Loading desired trajectories to the system
+description: Loading desired trajectories to the system
 ---
 
 # Loading trajectories

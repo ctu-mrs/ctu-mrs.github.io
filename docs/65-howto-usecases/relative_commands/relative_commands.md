@@ -1,5 +1,7 @@
 ---
-title: Commanding the robot relative to its position
+title: Giving relative commands
+pagination_label: Commanding the UAV relative to its position
+description: Commanding the UAV relative to its position
 ---
 
 ## tl;dr:

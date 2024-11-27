@@ -1,5 +1,7 @@
 ---
 title: Overleaf-to-git sync
+pagination_label: Syncing overleaf with a git repository
+description: Syncing overleaf with a git repository
 ---
 
 # Sync git repository with an Overleaf project

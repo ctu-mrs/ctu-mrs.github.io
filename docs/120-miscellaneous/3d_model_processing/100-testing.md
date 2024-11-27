@@ -1,5 +1,7 @@
 ---
-title: Testing
+title: Other software (maybe useful)
+pagination_label: Other software (maybe useful)
+description: Other software (maybe useful)
 ---
 
 # Testing
