@@ -12,10 +12,9 @@ The MRS System is provided in the form of pre-compiled docker images on [Dockerh
 
 The following versions have been tagged by the MRS Team:
 
-* *1.5.0*
-```yaml
-ctumrs/mrs_uav_system:1.5.0
-```
+* ctumrs/mrs_uav_system:[1.5.0](https://hub.docker.com/layers/ctumrs/mrs_uav_system/1.5.0/images/sha256-2c64141c9541f8b4a3b2094d36a553d1f35e35880dc1b83c957a99f46fa42f6f?context=explore)
+
+Images a provided for the **amd64** and **arm64** platforms.
 
 ## Rolling stable version
 
