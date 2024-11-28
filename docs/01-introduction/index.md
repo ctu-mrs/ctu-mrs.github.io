@@ -1,8 +1,13 @@
 ---
 title: Introduction
+pagination_label: Introduction
+description: Introduction
 ---
 
+# Introduction
+
 This documentation describes in detail the [MRS UAV System](https://github.com/ctu-mrs/mrs_uav_system) and
+
 - how to install it,
 - how to use it in simulation,
 - what is the software architecture and how can you plug-in your algorithms, and
