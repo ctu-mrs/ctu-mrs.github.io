@@ -1,5 +1,7 @@
 ---
 title: Academic writing
+pagination_label: Resources on academic writing
+description: Resources on academic writing
 ---
 
 # Academic writing: tips & tricks

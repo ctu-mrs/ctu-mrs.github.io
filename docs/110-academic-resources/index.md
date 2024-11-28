@@ -1,5 +1,7 @@
 ---
 title: Academic resources
+pagination_label: Academic resources
+description: Academic resources
 ---
 
 Crossroad for resources related to robotics and general research in the MRS group.

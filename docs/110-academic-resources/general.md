@@ -1,5 +1,7 @@
 ---
 title: General
+pagination_label: General academic resources
+description: General academic resources
 ---
 
 # Resources: general (other resources, databases, and others)

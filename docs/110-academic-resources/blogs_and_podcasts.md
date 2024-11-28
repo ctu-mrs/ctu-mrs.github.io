@@ -1,5 +1,7 @@
 ---
 title: Blogs and Podcasts
+pagination_label: Links to blogs and podcasts
+description: Links to blogs and podcasts
 ---
 
 # Blogs

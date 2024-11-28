@@ -1,5 +1,7 @@
 ---
 title: Courses and lectures
+pagination_label: Links to courses and lectures
+description: Links to courses and lectures
 ---
 
 # Courses, tutorials, lectures
