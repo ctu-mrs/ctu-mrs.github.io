@@ -1,5 +1,7 @@
 ---
 title: C++
+pagination_label: C++
+description: C++
 ---
 
 # C++

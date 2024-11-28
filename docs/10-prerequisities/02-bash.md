@@ -1,8 +1,10 @@
 ---
 title: Bash
+pagination_label: Bash shell
+description: Bash shell
 ---
 
-# Bash
+# Bash shell
 
 Bash is the standard shell in Ubuntu.
 Most of the time, when you work in the terminal, you use bash to run programs, for scripting and to manage your file system.

@@ -1,5 +1,7 @@
 ---
 title: Vim
+pagination_label: Vim modal editor
+description: Vim modal editor
 ---
 
 # Vim

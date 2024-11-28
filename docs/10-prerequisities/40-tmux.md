@@ -1,8 +1,10 @@
 ---
 title: Tmux
+pagination_label: Tmux terminal multiplexer
+description: Tmux terminal multiplexer
 ---
 
-# Tmux
+# Tmux terminal multiplexer
 
 Tmux is a command-line utility that allows splitting a terminal to multiple panels and creating windows (tabs).
 It is similar to, e.g., Terminator, but runs entirely in the command line.

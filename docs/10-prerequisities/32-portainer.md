@@ -1,5 +1,7 @@
 ---
-title: Portainer
+title: Portainer.io
+pagination_label: Deploying Docker with Portainer.io
+description: Deploying Docker with Portainer.io
 ---
 
-# Portainer
+# Portainer.io
