@@ -35,7 +35,7 @@ Example tmuxinator session is provided in the `tmux` subfolder.
 
 ## Main launch file
 
-The [launch file](./ros_packages/mrs_octomap_mapping_planning/launch/mapplan.launch)
+The [launch file](https://github.com/ctu-mrs/mrs_octomap_mapping_planning/blob/master/ros_packages/mrs_octomap_mapping_planning/launch/mapplan.launch)
 ```
 roslaunch mrs_octomap_mapping_planning mapplan.launch
 ```
