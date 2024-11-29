@@ -29,9 +29,9 @@ import DocCardList from '@theme/DocCardList';
 * [mrs_octomap_tools](https://github.com/ctu-mrs/mrs_octomap_tools) - MRS Tools and libraries for Octomap
 * [mrs_subt_planning_lib](https://github.com/ctu-mrs/mrs_subt_planning_lib) - 3D A*-based planner utilized by mrs_octomap_planner
 
-## Example session
+## Example simulation session
 
-Example tmuxinator session is provided in the `tmux` subfolder.
+Example tmuxinator session is provided in the [tmux subfolder](https://github.com/ctu-mrs/mrs_octomap_mapping_planning/tree/master/ros_packages/mrs_octomap_mapping_planning/tmux/simulation_example).
 
 ## Main launch file
 
@@ -47,10 +47,10 @@ was prepared to utilize 3D LiDAR and depth camera data and to launch
 * Octomap RVIZ Visualizer,
 * Nodelet manager.
 
-To use the launch file, you might need to:
+To use the launch file for your specific usecase, you might need to:
 - Specify reference frame of the map in the **world_frame_id** argument.
-- Provide custom configs customizing the behavior of the PCL filters, octomap server, octomap planner, and octomap visualizer.
-- Remap ROS topics expected by the launch file to correspond to your sensor configuration.
+- Provide **custom configs** customizing the behavior of the PCL filters, octomap server, octomap planner, and octomap visualizer.
+- Remap ROS **topics** expected by the launch file to correspond to your sensor configuration.
 
 Example usage of the launch file with custom configs provided:
 ```
