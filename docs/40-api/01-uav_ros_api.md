@@ -97,8 +97,9 @@ Safety and higher-level flight control:
 
 | **service**                         | **description**                                              | **service type**   |
 |-------------------------------------|--------------------------------------------------------------|--------------------|
-| control_manager/ehover              | emergency hover                                              | `std_srvs/Trigger` |
-| control_manager/eland               | emergency landing                                            | `std_srvs/Trigger` |
+| control_manager/hover               | hover (cancels out the previous command and stops the UAV)   | `std_srvs/Trigger` |
+| control_manager/ehover              | emergency hover (=hover, + disables future inputs)           | `std_srvs/Trigger` |
+| control_manager/eland               | emergency landing, disables user's input                     | `std_srvs/Trigger` |
 | control_manager/failsafe            | emergency failsafe landing                                   | `std_srvs/Trigger` |
 | control_manager/failsafe_escalating | emergency escalating failsafe                                | `std_srvs/Trigger` |
 | control_manager/motors              | activates/deactivates the control output (don't touch this!) | `std_srvs/SetBool` |
