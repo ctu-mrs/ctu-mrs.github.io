@@ -12,7 +12,9 @@ import DocCardList from '@theme/DocCardList';
 
 <DocCardList />
 
-TODO description
+3D volumetric mapping based on Octomap + A*-based planning
+
+<Button label="🔗 mrs_octomap_mapping_planning repository" link="https://github.com/ctu-mrs/mrs_octomap_mapping_planning/tree/master" block /><br />
 
 ## Dependencies
 
@@ -21,10 +23,11 @@ TODO description
 
 ## Packages
 
-* mrs_octomap_mapping_planning - launch files, example tmux session
+* [mrs_octomap_mapping_planning](https://github.com/ctu-mrs/mrs_octomap_mapping_planning) - launch files, example tmux session
 * [mrs_octomap_server](https://github.com/ctu-mrs/mrs_octomap_server) - Uses Octomap to build global & local map
 * [mrs_octomap_planner](https://github.com/ctu-mrs/mrs_octomap_planner) - 3D planner for UAVs
 * [mrs_octomap_tools](https://github.com/ctu-mrs/mrs_octomap_tools) - MRS Tools and libraries for Octomap
+* [mrs_subt_planning_lib](https://github.com/ctu-mrs/mrs_subt_planning_lib) - 3D A*-based planner utilized by mrs_octomap_planner
 
 ## Example session
 
@@ -36,7 +39,7 @@ The [launch file](./ros_packages/mrs_octomap_mapping_planning/launch/mapplan.lau
 ```
 roslaunch mrs_octomap_mapping_planning mapplan.launch
 ```
-was prepared to launch
+was prepared to utilize 3D LiDAR and depth camera data and to launch
 
 * PointCloud filter ([mrs_pcl_tools](https://github.com/ctu-mrs/mrs_pcl_tools)),
 * Octomap Server,
@@ -44,4 +47,12 @@ was prepared to launch
 * Octomap RVIZ Visualizer,
 * Nodelet manager.
 
-Please, use provided arguments and custom config files to customize the behaviour of the nodes.
+To use the launch file, you might need to:
+- Specify reference frame of the map in the **world_frame_id** argument.
+- Provide custom configs customizing the behavior of the PCL filters, octomap server, octomap planner, and octomap visualizer.
+- Remap ROS topics expected by the launch file to correspond to your sensor configuration.
+
+Example usage of the launch file with custom configs provided:
+```
+roslaunch mrs_octomap_mapping_planning mapplan.launch config_octomap_server:="./config/octomap.yaml" world_frame_id:="$UAV_NAME/mapping_origin" config_octomap_visualizer:="./config/octomap_rviz_visualizer.yaml" config_octomap_planner:="./config/pathfinder.yaml" config_pcl_filter_ouster:="./config/pcl_filter_mapping.yaml"
+```
