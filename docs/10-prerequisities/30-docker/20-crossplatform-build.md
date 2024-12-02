@@ -13,12 +13,12 @@ docker build . --file Dockerfile --tag <my_tag> --platform=arm64
 ```
 
 The crossplatform build is facilitated by QEMU.
-Expect a run-time approx. 10x slower than for the native platform.
+Expect a run-time approx. 10x slower than for your native platform.
 
 ## Multi-platform docker build
 
 Multi-platform images can be built using the `dockerx` multiplatform builder.
-First, instantiate a multiplatform builder and set it to be the default:
+First, instantiate a multiplatform builder and set it to be the default (`--use`):
 
 ```bash
 docker buildx create --name container-builder --driver docker-container --bootstrap --use
@@ -27,7 +27,7 @@ docker buildx create --name container-builder --driver docker-container --bootst
 Then, build an image using the `buildx` command (which uses the selected builder) and supply the `--platform` parameter with the list of the desired platforms:
 
 ```bash
-docker buildx build . --file Dockerfile --tag $REGISTRY/$LOCAL_TAG --platform=linux/arm64,linux/amd64 --push
+docker buildx build . --file Dockerfile --tag <my_tag> --platform=linux/arm64,linux/amd64 --push
 ```
 
 ### Listing the available docker builders
