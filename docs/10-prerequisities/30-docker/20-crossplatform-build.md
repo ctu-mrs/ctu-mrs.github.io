@@ -24,11 +24,14 @@ First, instantiate a multiplatform builder and set it to be the default (`--use`
 docker buildx create --name container-builder --driver docker-container --bootstrap --use
 ```
 
-Then, build an image using the `buildx` command (which uses the selected builder) and supply the `--platform` parameter with the list of the desired platforms:
+Then, build an image using the `buildx` command (which uses the selected builder) and supply the `--platform` parameter with the list of the desired platforms.
+We usually `--push` the image immediately after the build into a docker registry.
 
 ```bash
 docker buildx build . --file Dockerfile --tag <my_tag> --platform=linux/arm64,linux/amd64 --push
 ```
+
+Do not forget to change the default builder back into the original builder (probably `default`) after you finish with the multiplatform build.
 
 ### Listing the available docker builders
 
