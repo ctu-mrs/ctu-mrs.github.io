@@ -8,13 +8,19 @@ description: Example Portainer stacks (compose sessions)
 
 Stacks are **docker compose sessions** within portainer.
 As in vanilla docker, stacks are defined by a [compose file](/docs/prerequisities/docker/compose-sessions).
+
+![](./fig/stack.png)
+
 Moreover, a set of environment varibles is defined _by hand_ in Portainer, which can define how the session behave.
+
+![](./fig/environment_variables.png)
 
 ## Example simulation session
 
 An example simulation session is located at [mrs_docker/tree/master/compose/1.5.0/portainer](https://github.com/ctu-mrs/mrs_docker/tree/master/compose/1.5.0/portainer).
-Custom configs for the MRS UAV System are supposed to be packed into a transport docker image.
-The subfolder `custom_configs` containes the example custom cofigs and scripts for build an image that is going to unload the configs during the runtime for the running containers.
+
+Custom configs (and other _shared data_ for all the running containers) for the MRS UAV System are supposed to be packed into a transport docker image.
+The subfolder `shared_data` containes the example shared data and scripts for build an image that is going to unload the configs during the runtime for the running containers.
 
 <details>
 <summary>Compose file</summary>
@@ -215,8 +221,9 @@ DISPLAY=:0
 ## Example realworld UAV session
 
 An example realworld session is located at [mrs_docker/tree/master/compose/1.5.0/portainer](https://github.com/ctu-mrs/mrs_docker/tree/master/compose/1.5.0/portainer).
-Custom configs for the MRS UAV System are supposed to be packed into a transport docker image.
-The subfolder `custom_configs` containes the example custom cofigs and scripts for build an image that is going to unload the configs during the runtime for the running containers.
+
+Custom configs (and other _shared data_ for all the running containers) for the MRS UAV System are supposed to be packed into a transport docker image.
+The subfolder `shared_data` containes the example shared data and scripts for build an image that is going to unload the configs during the runtime for the running containers.
 
 <details>
 <summary>Compose file</summary>
