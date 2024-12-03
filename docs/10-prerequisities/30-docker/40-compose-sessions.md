@@ -4,6 +4,9 @@ pagination_label: Running Docker compose sessions
 description: How to run Docker compose sessions
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Compose sessions
 
 Compose sessions are a convenient way of launching multiple containers in a pre-determined way.
@@ -45,6 +48,26 @@ docker compose --env-file ./stack.env down
 Additional arguments:
 * `--v`, `--volumes`: remove declared volumes
 * `--remove-orphans`: remove containers not defined in the compose file
+
+## Piping GUI from containers
+
+The following steps apply only for Ubuntu host OS.
+
+<Tabs>
+  <TabItem value="ubuntu" label="Ubuntu" default>
+    1. mount `/dev/dri` into the container
+      ```bash
+      volumes:
+        - /dev/dri:/dev/dri
+      ```
+    2. set the `$DISPLAY` environment variable:
+      ```bash
+      environment:
+          DISPLAY: $DISPLAY
+      ```
+    3. run `xhost +` before starting the compose session
+  </TabItem>
+</Tabs>
 
 ## Compose session for the MRS System
 
