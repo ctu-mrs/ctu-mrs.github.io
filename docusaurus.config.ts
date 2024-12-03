@@ -139,10 +139,6 @@ const config: Config = {
           title: 'Shortcuts',
           items: [
             {
-              label: 'Robot Operating System',
-              to: '/docs/prerequisities/ros',
-            },
-            {
               label: 'Installation',
               to: '/docs/installation',
             },
@@ -150,6 +146,10 @@ const config: Config = {
               label: 'API',
               to: '/docs/api',
             },
+            {
+              label: 'Simulation',
+              to: '/docs/simulations',
+            }
           ],
         },
         {
@@ -163,6 +163,27 @@ const config: Config = {
               label: 'MRS UAV System',
               href: 'https://github.com/ctu-mrs/mrs_uav_system',
             },
+            {
+              label: 'CTU MRS Group',
+              href: 'https://mrs.felk.cvut.cz',
+            }
+          ],
+        },
+        {
+          title: 'Ask the developers',
+          items: [
+            {
+              label: 'Github Discussions',
+              href: 'https://github.com/orgs/ctu-mrs/discussions',
+            },
+            {
+              label: 'Github Issues',
+              href: 'https://github.com/ctu-mrs/mrs_uav_system/issues',
+            },
+            {
+              label: 'Discourt',
+              href: 'http://google.com',
+            }
           ],
         },
       ],
