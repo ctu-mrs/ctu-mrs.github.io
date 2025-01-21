@@ -20,3 +20,4 @@ sudo chmod 666 /var/run/docker.sock
 sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
+reboot might be needed.
