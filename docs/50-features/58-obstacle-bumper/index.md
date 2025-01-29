@@ -24,6 +24,63 @@ A custom config can be passed to the launch file as:
 roslaunch mrs_bumper bumper.launch custom_config:=<path to your file>
 ```
 
-## Configuration and behavior
+## Behavior of the avoidance
 
-TODO
+The bumper's mechanism takes control of the vehicle if distance to the nearest obstacle crosses a **threshold**.
+The threshold has the two following components:
+
+1. A static component defined by the user,
+2. A dynamic component equal to the maximum stopping distance given the allowed system dynamics.
+
+The two compoents are added together in real time.
+When a distance to the obstacle is lower than the sum of both compoenents, the system takes control of the vehicle and moves it away from the obstacle untill the safety distance is no longer violated.
+
+## Configuration
+
+The reactive-based behavior can be enabled in the `custom_config` for the MRS System's core:
+
+```yaml
+mrs_uav_managers:
+
+  control_manager:
+
+    obstacle_bumper:
+
+      enabled: true
+```
+
+```yaml
+mrs_uav_managers:
+
+  control_manager:
+
+    obstacle_bumper:
+
+      enabled: true
+
+      # should a tracker be switch for the avoindace maneuvre?
+      switch_tracker: true
+      tracker: "MpcTracker"
+
+      # should a controller be switch for the avoindace maneuvre?
+      switch_controller: true
+      controller: "Se3Controller"
+
+      horizontal:
+
+        # user-defined component of the minimum distance
+        min_distance_to_obstacle: 1.2 # [m]
+
+        # when enabled, the min_distance_to_obstacle will increased by the distances
+        # needed for stopping given the current system constraints
+        derived_from_dynamics: true
+
+      vertical:
+
+        # user-defined component of the minimum distance
+        min_distance_to_obstacle: 1.2 # [m]
+
+        # when enabled, the min_distance_to_obstacle will increased by the distances
+        # needed for stopping given the current system constraints
+        derived_from_dynamics: true
+```
