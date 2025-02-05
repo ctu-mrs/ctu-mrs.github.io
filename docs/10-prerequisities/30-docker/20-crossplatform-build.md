@@ -37,7 +37,7 @@ Do not forget to change the default builder back into the original builder (prob
 ### Listing the available docker builders
 
 ```bash
-docker buildx list
+docker buildx ls
 ```
 
 ```
