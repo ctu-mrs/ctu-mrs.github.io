@@ -9,11 +9,11 @@ description: API for the controller plugins
 The Controller plugin takes current UAV state and command from the [Reference tracker](https://ctu-mrs.github.io/docs/features/trackers/) and provides the desired control ouptuts, which are sent to the flight controller (Embedded autopilot block in diagram below) via [Hardware API](https://ctu-mrs.github.io/docs/plugin-interface/hardware-api/).
 Diagram below shows the data architecture of the MRS system where the block containing the Controller plugin is marked in red.
 
-![Diagram of MRS system architecture](./fig/diagram_of_system_architecture.jpg)
-
 The controller plugin is compiled as *ROS plugins* ([http://wiki.ros.org/pluginlib](http://wiki.ros.org/pluginlib)) with the [interface](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/include/mrs_uav_managers/controller.h) defined by the [control manager](https://github.com/ctu-mrs/mrs_uav_managers).
 A controller plugin from any ROS package can be loaded dynamically by the [control manager](https://github.com/ctu-mrs/mrs_uav_managers) without it being present during [control manager](https://github.com/ctu-mrs/mrs_uav_managers)'s compile time.
 Loaded controllers can be switched by the [control manager](https://github.com/ctu-mrs/mrs_uav_managers) in mid-flight, which allows safe testing of new controllers and adds flexibility to the [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system).
+
+![](./fig/diagram_of_system_architecture.jpg)
 
 ## Controller plugin - outputs 
 The controller plugin can output any of the following control outputs:
