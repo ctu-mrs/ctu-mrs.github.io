@@ -15,6 +15,23 @@ The controller plugin is compiled as *ROS plugins* ([http://wiki.ros.org/pluginl
 A controller plugin from any ROS package can be loaded dynamically by the [control manager](https://github.com/ctu-mrs/mrs_uav_managers) without it being present during [control manager](https://github.com/ctu-mrs/mrs_uav_managers)'s compile time.
 Loaded controllers can be switched by the [control manager](https://github.com/ctu-mrs/mrs_uav_managers) in mid-flight, which allows safe testing of new controllers and adds flexibility to the [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system).
 
+## Controller plugin - outputs 
+The controller plugin can output any of the following control outputs:
+
+  * individual Actuators' throttle
+  * Control groups
+  * body-frame Attitude rate + Throttle
+  * 3D world-frame Attitude + Throttle
+  * 3D body-frame Acceleration + Heading rate
+  * 3D body-frame Acceleration + Heading
+  * 3D body-frame Velocity + Heading rate
+  * 3D body-frame Velocity + Heading
+  * 3D Position + Heading
+  
+In the controller plugin source code, you can decide what to return, but it must be available in [Hardware API](https://ctu-mrs.github.io/docs/plugin-interface/hardware-api/). 
+
+## Example controller plugin 
+
 An example of a cutom controller plugin can be found at [this link](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/controller_plugin).
 It is highly reccomended to base your controller plugin on this example.
 In the example, there is also a [tmux folder](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/controller_plugin/tmux) containing a script that starts the simulation of a UAV in the [Gazebo simulator](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation), where the UAV uses the [example controller plugin](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/controller_plugin).
@@ -51,5 +68,4 @@ mrs_uav_managers:
       "ExampleController",
     ]
 ```
-
 
