@@ -20,7 +20,7 @@ It is highly reccomended to base your controller plugin on this example.
 In the example, there is also a [tmux folder](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/controller_plugin/tmux) containing a script that starts the simulation of a UAV in the [Gazebo simulator](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation), where the UAV uses the [example controller plugin](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/controller_plugin).
 You have to install [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system) first to run the example.
 To load the controller plugin into the [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system), you need to provide a custom config file to the [MRS UAV Core](https://github.com/ctu-mrs/mrs_uav_core) containing the parameters for the controller plugin.
-The custom config file should contain the following lines (taken from [example controller plugin](https://github.com/ctu-mrs/mrs_core_examples/blob/master/cpp/controller_plugin/tmux/config/custom_config.yaml)):
+The custom config file should contain the following lines (taken from [custom config file of example controller plugin](https://github.com/ctu-mrs/mrs_core_examples/blob/master/cpp/controller_plugin/tmux/config/custom_config.yaml)):
 ```yaml 
 mrs_uav_managers:
 
