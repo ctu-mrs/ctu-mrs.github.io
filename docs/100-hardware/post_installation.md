@@ -4,19 +4,39 @@ title: Post installation guide
 
 # Linux SWAP size increase
 
-TODO
+When compiling the workspace on a machine with multiple cores, the memory gets full quite fast, which leads to freezing of the whole OS.
+One solution is to build with less threads using the `-j` compile flag (e.g. `catkin build -j4`)
+Other solution is to increase the size of the swap file, which extends the available memory for the build process.
+
+Perform these steps to increase the size of the swap file.
 
 ```bash
-~/git/uav_core/miscellaneous/scripts/set_swap.sh
-```
-OR
-```bash
+# Turn swap off
+# This moves stuff in swap to the main memory and might take several minutes
 sudo swapoff -a
+
+# Create an empty swapfile
+# Note that "1M" is basically just the unit and count is an integer.
+# Together, they define the size. In this case 16GiB.
 sudo dd if=/dev/zero of=/swapfile bs=1G count=16
+
+# Set the correct permissions
 sudo chmod 600 /swapfile
-sudo mkswap /swapfile
+
+# Set up a Linux swap area
+sudo mkswap /swapfile 
+
+# Turn the swap on
 sudo swapon /swapfile
+
+# Check if the swap is now the desired size
 grep SwapTotal /proc/meminfo
+```
+
+To make the changes permanent (persist on restarts), add this line to the end of your `/etc/fstab`:
+
+```bash
+/swapfile none swap sw 0 0
 ```
 
 # Disabling automatic sleep/hibernation
