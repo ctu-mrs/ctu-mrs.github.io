@@ -8,8 +8,7 @@ description: Installing ROS2 Jazzy
 
 The following commands will install ROS2 Jazzy on Ubuntu 24.04:
 ```bash
-sudo apt-get -y update
-sudo apt-get -y install curl
+sudo apt-get -y install software-properties-common curl bash
 
 sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
 
@@ -22,9 +21,11 @@ sudo apt-get -y install ros-jazzy-desktop-full ros-dev-tools
 
 ## Using MRS's script
 
-Alternatively, you can use our setup script:
+Alternatively, you can use our setup script for adding the ROS PPA:
 ```bash
-RUN apt-get -y install software-properties-common curl bash
+sudo apt-get -y install software-properties-common curl bash
 
-RUN curl https://ctu-mrs.github.io/ppa2-stable/add_ppa.sh | bash
+curl https://ctu-mrs.github.io/ppa2-stable/add_ros_ppa.sh | bash
+
+sudo apt-get -y install ros-jazzy-desktop-full ros-dev-tools
 ```
