@@ -12,6 +12,13 @@ description: Working with ROS Time in ROS2
 
 ## Rate
 
+## Duration
+
+Duration object storing an interal of `1 second`:
+```cpp
+rclcpp::Duration(std::chrono::duration<double>(1.0))
+```
+
 ## Sleeping
 
 ## Simulation time
