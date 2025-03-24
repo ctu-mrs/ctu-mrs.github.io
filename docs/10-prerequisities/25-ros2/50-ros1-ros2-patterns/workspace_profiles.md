@@ -8,11 +8,11 @@ description: ROS2 workspace profiles
 
 ## Setting work-space wide configurations
 
-Create a file `colcon_defaults.yaml` in the workspace's root:
+Create a file `colcon_defaults.yaml` in the workspace's root.
+Build parameters can be set, e.g., for limiting the number of build threads:
 
 ```yaml
 build:
-  executor: sequential
   parallel-workers: 8
 ```
 
@@ -45,5 +45,6 @@ Use mixins automatically: Use the `colcon_defaults.yaml` file:
 ```yaml
 build:
   mixin:
-    - debug
+    - rel-with-deb-info
+    - compile-commands
 ```
