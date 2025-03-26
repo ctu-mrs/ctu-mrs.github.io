@@ -1,5 +1,5 @@
 ---
-title: ROS
+title: ROS2
 pagination_label: Robot Operating System
 description: Robot Operating System
 ---
