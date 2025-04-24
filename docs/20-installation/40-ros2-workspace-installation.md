@@ -23,13 +23,10 @@ curl https://ctu-mrs.github.io/ppa2-unstable/add_ppa.sh | bash
 sudo apt update
 ```
 
-Install the dependencies:
+Install the MRS UAV System deb packages and dependencies:
 ```bash
-sudo apt install mrs-uav-shell-additions ros-jazzy-nlopt ros-jazzy-rmw-zenoh-cpp
+sudo apt install ros-jazzy-mrs-uav-core
 ```
-  * `mrs-uav-shell-additions` - installs tmux config file to `/etc/ctu-mrs/tmux.conf` (necessary for running simulation tmux sessions)
-  * `ros-jazzy-rmw-zenoh-cpp` - the ROS MiddleWare (RMW) implementation of Zenoh communication protocol
-  * `ros-jazzy-nlopt` - necessary for `mrs_uav_trajectory_generation` package
 
 Add to `~/.bashrc` (`~/.zshrc`):
 ```
