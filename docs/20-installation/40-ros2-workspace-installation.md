@@ -80,7 +80,7 @@ colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-r
 colcon mixin update default
 ```
 
-Add the following config to `~/ws_mrs_uav_core/colcon_default.yaml`:
+Add the following config to `~/ws_mrs_uav_core/colcon_defaults.yaml`:
 ```yaml
 build:
   parallel-workers: 8
