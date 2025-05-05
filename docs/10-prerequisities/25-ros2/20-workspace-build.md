@@ -51,16 +51,28 @@ mkdir -p ~/ws_examples/src
 ln -s $HOME/git/ros2_examples $HOME/ws_examples/src/
 ```
 
-Set the compilation flags to `rel-with-deb-info` using mixin according to:
+Now we need to set the workspace compilation flags using mixin.
 
-First, install mixin:
+First, install mixin
 ```bash
 sudo apt install python3-colcon-mixin
+```
+
+then add default mixin
+
+```bash
 colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
 colcon mixin update default
 ```
 
-Add the following config to `~/ws_examples/colcon_defaults.yaml`:
+finally add MRS mixin
+
+```bash
+colcon mixin add mrs https://raw.githubusercontent.com/ctu-mrs/mrs_uav_development/refs/heads/ros2/mixin/index.yaml
+colcon mixin mrs default
+```
+
+Add the following config to `~/ws_examples/colcon_defaults.yaml` to set the number of build threads to 8 and build with the "rel-with-deb-info" mixin profile:
 ```yaml
 build:
   parallel-workers: 8
@@ -69,6 +81,7 @@ build:
 ```
 
 For more information regarding setting workspace flags using mixins see [ROS2 Workspace Profiles](https://ctu-mrs.github.io/docs/prerequisities/ros2/ros1-ros2-patterns/workspace_profiles)
+
 ### 6. Build the workspace
 ```bash
 cd ~/ws_examples/
