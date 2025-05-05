@@ -41,8 +41,7 @@ source ~/.bashrc
 
 ### 3. Run the multirotor simulation session to verify the installation
 ```bash
-roscd mrs_multirotor_simulator
-cd tmux/mrs_one_drone
+cd /opt/ros/jazzy/share/mrs_multirotor_simulator/tmux/mrs_one_drone
 ./start.sh
 ```
 
