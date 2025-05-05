@@ -1,40 +1,24 @@
 ---
-title: ROS2 workspace installation
-pagination_label: Building the MRS ROS2 in workspace
-description: Building the MRS ROS2 in workspace
+title: Workspace build
+pagination_label: Building ROS2 packages in a workspace
+description: Building ROS2 packages in a workspace
 ---
+# Workspace build of ROS2 packages
 
-# Workspace build of the ROS2 MRS UAV System
-
-This guide is meant mainly for developers of the ROS2 MRS UAV System.
-Users of the system that do not need to modify the core of the system can stick to the deb installation (Step 1-2).
-If you encounter any issues during the installation, see the end of this page for *Troubleshooting* of common issues.
+This guide shows how to set up a workspace in ROS2.
+If you encounter any issues during the process, see the end of this page for *Troubleshooting* of common issues.
 
 
 ## Installation steps
 
 ### 1. Install the Robot Operating System (Jazzy)
 
-  Follow the [Installation](https://ctu-mrs.github.io/docs/prerequisities/ros2/installation) guide. 
+  Follow the [ROS2 Installation](https://ctu-mrs.github.io/docs/prerequisities/ros2/installation) guide. 
 
-### 2. Install necessary dependencies
+### 2. Install the MRS UAV Core with necessary dependencies
 
-Add the Personal Package Archive (PPA) for unstable ROS2 MRS deb packages:
-```bash
-curl https://ctu-mrs.github.io/ppa2-unstable/add_ppa.sh | bash
-sudo apt update
-```
-
-Install the MRS UAV System deb packages and dependencies:
-```bash
-sudo apt install ros-jazzy-mrs-uav-core
-```
-
-Add to `~/.bashrc` (`~/.zshrc`):
-```
-export RMW_IMPLEMENTATION="rmw_zenoh_cpp"
-```
-
+  Follow the [ROS2 MRS UAV Core Installation](https://ctu-mrs.github.io/docs/installation/ros2-installation) guide. 
+  
 ### 3. Get aliases that make common ROS2 commands usable
 
 By default, calling `colcon build` anywhere creates a workspace there (even in a subdirectory of an workspace).
@@ -50,28 +34,24 @@ git checkout ros2
 
 Add to `~/.bashrc` (`~/.zshrc`): 
 ```bash
-source $GIT_PATH/mrs_uav_development/shell_additions/shell_additions.sh
+source $HOME/git/mrs_uav_development/shell_additions/shell_additions.sh
 ```
 
-### 4. Clone the MRS UAV Core repository
+### 4. Clone the ROS2 Examples package
 
 ```bash
 cd ~/git
-git clone git@github.com:ctu-mrs/mrs_uav_core.git
-cd mrs_uav_core
-git checkout ros2
-gitman install
+git clone git@github.com:ctu-mrs/ros2_examples.git
 ```
 
 ### 5. Prepare the workspace
 
 ```bash
-mkdir -p ~/ws_mrs_uav_core/src
-ln -s $GIT_PATH/mrs_uav_core $HOME/ws_mrs_uav_core/src/
+mkdir -p ~/ws_examples/src
+ln -s $HOME/git/ros2_examples $HOME/ws_examples/src/
 ```
 
 Set the compilation flags to `rel-with-deb-info` using mixin according to:
-https://ctu-mrs.github.io/docs/prerequisities/ros2/ros1-ros2-patterns/workspace_profiles
 
 First, install mixin:
 ```bash
@@ -80,7 +60,7 @@ colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-r
 colcon mixin update default
 ```
 
-Add the following config to `~/ws_mrs_uav_core/colcon_defaults.yaml`:
+Add the following config to `~/ws_examples/colcon_defaults.yaml`:
 ```yaml
 build:
   parallel-workers: 8
@@ -88,32 +68,17 @@ build:
     - rel-with-deb-info
 ```
 
-Add to `~/.bashrc` (`~/.zshrc`):
-```bash
-source /opt/ros/jazzy/setup.bash
-```
-
-Source `~/.bashrc` (`~/.zshrc`):
-```bash
-source ~/.bashrc
-```
-
+For more information regarding setting workspace flags using mixins see [ROS2 Workspace Profiles](https://ctu-mrs.github.io/docs/prerequisities/ros2/ros1-ros2-patterns/workspace_profiles)
 ### 6. Build the workspace
 ```bash
-cd ~/ws_mrs_uav_core/
+cd ~/ws_examples/
 colcon init
 colcon build
 ```
 
 Add to `~/.bashrc` (`~/.zshrc`):
 ```bash
-source $HOME/ws_mrs_uav_core/install/setup.bash
-```
-
-### 7. Run the multirotor simulation session to verify the installation
-```bash
-cd ~/ws_mrs_uav_core/src/mrs_uav_core/ros_packages/mrs_multirotor_simulator/tmux/mrs_one_drone/
-./start.sh
+export ROS_WORKSPACE="$HOME/ws_examples"
 ```
 
 # Troubleshooting
