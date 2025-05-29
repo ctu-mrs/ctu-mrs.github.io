@@ -79,7 +79,7 @@ services:
 ```
 ## Solution 2. - Inline, through compose.yaml from Portainer
 
-When you are starting the system from the Portainer using Docker Compose, you can past the yaml config directly to the compose.yaml file. Example:
+When you are starting the system from the [Portainer](https://ctu-mrs.github.io/docs/prerequisities/portainer/) using Docker Compose, you can past the yaml config directly to the compose.yaml file. Example:
 
 ```
 services:
