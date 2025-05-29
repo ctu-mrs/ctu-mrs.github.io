@@ -6,7 +6,7 @@ description: Custom configs for containers
 
 # Custom configs for containers
 
-## Problem definition
+### Problem definition
 
 A users has a **docker image** from which his software can be started.
 The image contains pre-compiled binaries with a **default configuration**.
@@ -18,9 +18,11 @@ Configuration can be facilited by several mechanisms:
 * shell scripts,
 * additional files loaded in runtime.
 
-These **custom configuration files**, which are handed to the software in runtime, need to be exposed to the **container** runing from the **user's docker image**.
+There are two ways how to provide **custom configuration files** to the system:
+  1. expose them to the **container** runing from the **user's docker image**
+  2. paste them as a part of the **compose.yaml** file directly from the Portainer
 
-## Our solution
+## Solution 1. - Through docker image
 
 We pack the configurations (**shared data**) in a dedicated transport image which is easily delivered to the robot.
 Then, **during runtime**, this image spawns a container in which the data is coppied to a **shared docker volume**.
@@ -28,7 +30,7 @@ Then, the user's containers are started, all mounting the same **shared docker v
 
 ![](./fig/containers_shared_data.png)
 
-## Packing shared data to a transport image
+### Packing shared data to a transport image
 
 The following minimalistic dockerfile coppies the `shared_data` subfolder in the **transport docker image**:
 
@@ -47,7 +49,7 @@ Select the appropriate `tag` and `platform`.
 docker build build . --file Dockerfile --tag <shared_data_image_tag> --platform=linux/<my_platform>
 ```
 
-## Unloading the shared data from the transport image
+### Unloading the shared data from the transport image
 
 The following compose session shows the process of unloading the shared data.
 The `user_program` can then access the files in the shared docker volume.
@@ -75,3 +77,36 @@ services:
       - shared_data:/etc/docker/shared_data:consistent
     command: my_process /etc/docker/shared_data/config_file.txt
 ```
+## Solution 2. - Inline, through compose.yaml from Portainer
+
+When you are starting the system from the [Portainer](https://ctu-mrs.github.io/docs/prerequisities/portainer/) using Docker Compose, you can past the yaml config directly to the compose.yaml file. Example:
+
+```
+services:
+  realsense:
+    image: ctumrs/realsense
+    #build: .
+    privileged: true
+    network_mode: "host"
+    configs:
+      - source: cfg_yaml
+        target: /custom_config.yaml
+        mode: 0444  # read-only permissions
+    command: custom_config:=/custom_config.yaml
+
+configs:
+  cfg_yaml:
+    content: |
+      /uav1/rgbd:
+        ros__parameters:
+          remappings:
+            '~/depth/image_rect_raw': ~/depth/image_raw
+            '~/depth/image_rect_raw/compressed': ~/depth/image_raw/compressed
+            '~/depth/image_rect_raw/compressedDepth': ~/depth/image_raw/compressedDepth
+          aligned_depth_to_color:
+            image_raw:
+              compressed:
+                format: jpeg
+```
+
+This is **compose.yaml** for starting Docker container for the Realsense camera. Configuration in the yaml format is under the **configs** section, in the **content** subsection. This content is copied into the file specified in the service section, in the configs/target subsections - **/custom_config.yaml**. It is then passed to the ROS2 launchfile through **command** subsection. The user only needs to modify the **configs** section.
