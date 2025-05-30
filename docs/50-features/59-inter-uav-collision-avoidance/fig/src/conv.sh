@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
-for t in *.tex; do
-  latex -output-directory=build "$t" > /dev/null
-  if [ $? -ne 0 ]; then
-    echo "Warning: the command 'latex -output-directory=build $t' failed!"
-  fi
-done
+latex -output-directory=build "inter-uav-collision-avoidance.tex" > /dev/null
+if [ $? -ne 0 ]; then
+  echo "Warning: the command 'latex -output-directory=build inter-uav-collision-avoidance.tex' failed!"
+fi
 
 for f in build/*.dvi; do
   outf="${f%.dvi}.svg"

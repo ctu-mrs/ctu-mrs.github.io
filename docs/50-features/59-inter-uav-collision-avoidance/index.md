@@ -8,6 +8,10 @@ description: Inter-UAV collision avoidance
 
 The mutual collision avoidance of the UAVs is implemented by the [MPC tracker](/docs/features/trackers/).
 In short, each UAV shares its **predicted trajectory** with the other UAVs, and checks whether its own predicted trajectory does not collide with the trajectories of the others (with a specified **safety margin**).
+This is illustrated in the figure below ($r$ is the safety margin radius).
+
+![Trajectory prediction and collision detection.](fig/inter-uav-collision-avoidance.svg)
+
 If a future collision is detected, a collision avoidance maneuver is executed by the UAV with the lower **priority**:
 
 * Both UAVs slow down.
@@ -50,3 +54,21 @@ The UAV names list is specified in a special custom config called `network_confi
 
 In real-world deployments, the ROS topic sharing between UAVs is implemented using the NimbRo system (see our documentation [here](/docs/features/nimbro-network/)).
 In simulation, all topics are available for all UAVs by default, so NimbRo is not required, but the UAV names list still has to be provided in the `network_config.yaml`.
+
+## Things to double-check for collision avoidance
+
+For all UAVs, check the following conditions to ensure that collision avoidance will work:
+
+1. The MPC tracker is active.
+2. All relevant UAV names are specified in the UAV names list in the network config file (see above).
+3. The predicted MPC trajectory topic and the control manager diagnostics topic are specified in the nimbro config file with a sufficient rate (at least 1Hz).
+4. The collision avoidance is enabled in the custom config file (see above) and has a sufficient radius and correction.
+5. The `/etc/hosts` file is correctly set up with hostnames of all relevant UAVs and their respective IP addresses.
+6. The relevant messages from the other UAVs can be "heard" (i.e. you can print them out using e.g. `rostopic echo`) when they are turned on and the MRS system is running.
+7. You can see the other UAVs listed as "heard" in the MRS status.
+
+## Further reading
+
+The collision avoidance system is described in detail from a more theoretical point of view in the paper
+
+* T Báča, D Heřt, G Loianno, M Saska and V Kumar, **Model Predictive Trajectory Tracking and Collision Avoidance for Reliable Outdoor Deployment of Unmanned Aerial Vehicles**, IROS, 2018 ([pdf](https://mrs.fel.cvut.cz/data/papers/iros_2018_mpc.pdf)).
