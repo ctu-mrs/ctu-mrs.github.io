@@ -61,6 +61,10 @@ Docker provides an official image for running a registry locally.
 Start it by using the following compose file:
 
 ```yaml
+volumes:
+
+  data:
+
 services:
 
   registry:
@@ -71,6 +75,10 @@ services:
       - 5000:5000
 
     restart: always
+    
+    volumes:
+
+      - data:/data 
 ```
 By running the command:
 ```bash
