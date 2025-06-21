@@ -6,7 +6,7 @@ description: Lazydocker
 
 # Lazydocker
 
-[Lazydocker](https://github.com/jesseduffield/lazydocker) is a simple **TUI for docker and docker-compose**. It can be an alternative to Portainer.
+[Lazydocker](https://github.com/jesseduffield/lazydocker) is a simple **TUI for docker and docker-compose**. 
 
 It allows you to monitor, manage and inspect docker containers, images, volumes and networks.
 
@@ -42,4 +42,4 @@ customCommands:
 
 ### How it looks like
 
-![Lazydocker](media/lazy.gif)
+![Lazydocker](fig/lazy.gif)
