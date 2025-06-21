@@ -6,10 +6,8 @@ description: Lazydocker
 
 # Lazydocker
 
-[Lazydocker](https://github.com/jesseduffield/lazydocker) is a simple **TUI for docker and docker-compose**. 
-
-It allows you to monitor, manage and inspect docker containers, images, volumes and networks.
-
+[Lazydocker](https://github.com/jesseduffield/lazydocker) is a simple **TUI for docker** and **docker-compose**. 
+It allows you to monitor, manage and inspect docker **containers**, **images**, **volumes** and **networks**.
 Lazydocker has a customizable `config.yml`, where you can add custom commands.
 
 <details>
@@ -25,9 +23,7 @@ customCommands:
     command: docker logs -f {{ .Container.ID }} 
   - name: removeall
     attach: true
-    # command: docker container prune -foa
-    # command: "docker ps -aq | xargs -I {} docker rm -f {}"
-    command: "/bin/zsh -c 'docker rm -f $(docker ps -aq)'"
+    command: "script -q -c 'docker rm -f $(docker ps -aq)'"
   - name: kill-rosbag
     attach: true
     command: docker exec -it {{ .Container.ID }} /bin/sh -c "kill -2 \$(pgrep -f record)"
