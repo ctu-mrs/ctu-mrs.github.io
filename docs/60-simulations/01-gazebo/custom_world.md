@@ -44,7 +44,7 @@ roslaunch mrs_simulation simulation.launch gui:=true world_file:=/path/to/world/
 Create a [completely new](http://gazebosim.org/tutorials/?tut=ros_roslaunch#CreatingaCustomWorldFile) *.world* file or copy & modify an existing file (e.g., [forest.world](https://github.com/ctu-mrs/mrs_gazebo_common_resources/blob/master/worlds/forest.world)).
 Make sure your world file contains line
 ```xml
-    <plugin name="mrs_gazebo_static_transform_republisher_plugin" filename="libMRSGazeboStaticTransformRepublisher.so"/>
+    <plugin name="mrs_gazebo_static_transform_republisher_plugin" filename="libMrsGazeboCommonResources_StaticTransformRepublish.so"/>
 ```
 The included [mrs_gazebo_static_transform_republisher](https://github.com/ctu-mrs/mrs_gazebo_common_resources/blob/master/src/world_plugins/static_transform_republisher.cpp) plugin provides static [transforms](https://ctu-mrs.github.io/docs/system/frames_of_reference.html) of all the [spawned sensors](https://ctu-mrs.github.io/docs/simulation/howto.html#2-spawn-a-drone-drones) to the `<uav_name>/fcu` frame.
 
