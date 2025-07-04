@@ -60,7 +60,7 @@ const config: Config = {
 
           versions: {
             'current': {
-              label: '1.5.0',
+              label: '2.0.0',
             },
           },
 
