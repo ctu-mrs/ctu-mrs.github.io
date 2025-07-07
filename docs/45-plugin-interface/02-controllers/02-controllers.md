@@ -4,6 +4,10 @@ pagination_label: API for the controller plugins
 description: API for the controller plugins
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # The Controller plugin interface
 
 The Controller plugin takes current UAV state and command from the [Reference tracker](https://ctu-mrs.github.io/docs/features/trackers/) and provides the desired control ouptuts, which are sent to the flight controller (Embedded autopilot block in diagram below) via [Hardware API](https://ctu-mrs.github.io/docs/plugin-interface/hardware-api/).

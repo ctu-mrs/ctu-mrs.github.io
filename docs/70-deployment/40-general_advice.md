@@ -4,6 +4,10 @@ pagination_label: General advice for deployment
 description: General advice for deployment
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # General advice for deployment
 
 ## Do not hardcode things.

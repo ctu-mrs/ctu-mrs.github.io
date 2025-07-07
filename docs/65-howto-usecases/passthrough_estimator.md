@@ -4,6 +4,10 @@ pagination_label: Using the passthrough estimator within MRS system
 description: A guide on how to use the passthrough estimator within MRS system
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Passthrough Estimator
 
 By default, the MRS system uses a state estimator running as a plugin within the `estimation_manager` nodelet to provide the full state estimate required for the feedback control of the UAV.

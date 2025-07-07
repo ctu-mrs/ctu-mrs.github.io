@@ -4,6 +4,10 @@ pagination_label: FlightForge Drone Simulator
 description: FlightForge Engine Drone Simulator
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # FlightForge simulator
 
 This folder contains docs on simulation using the MRS's FlightForge simulator.

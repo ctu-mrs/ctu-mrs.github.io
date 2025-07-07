@@ -4,6 +4,10 @@ pagination_label: Handling transformations within the MRS
 description: Handling transformations within the MRS
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Transformations
 
 ![](fig/transformations.png)

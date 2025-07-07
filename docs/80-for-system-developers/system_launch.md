@@ -4,6 +4,10 @@ pagination_label: MRS System Launch Pipeline
 descriptin: What happens when you launch the system
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # MRS System Launch Pipeline
 
 - When you first launch the system, the `core` launches various managers of the system. All of these managers are nodes that contain plugins that are loaded at runtime and they all share a parameter loader. These nodes are:

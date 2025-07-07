@@ -4,6 +4,10 @@ pagination_label: ROS API for the MRS System
 description: ROS API for the MRS System
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # MRS System's UAV-ROS API
 
 The UAV can be given commands via the following [managers](https://github.com/ctu-mrs/mrs_uav_managers) and nodes.

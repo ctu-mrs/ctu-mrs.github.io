@@ -4,21 +4,25 @@ pagination_label: Installing the MRS nativelly
 description: Installing the MRS nativelly
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Native installation of the MRS UAV System
 
 ## Native installation
 
-1. Install the Robot Operating System (Noetic):
+1. Install the Robot Operating System (Jazzy):
 ```bash
-curl https://ctu-mrs.github.io/ppa-stable/add_ros_ppa.sh | bash
-sudo apt install ros-noetic-desktop-full
+curl https://ctu-mrs.github.io/ppa2-stable/add_ros_ppa.sh | bash
+sudo apt install ros-jazzy-desktop-full
 ```
 
 2. Configure your ROS environment according to [http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment)
 
-3. Add the **[stable](https://github.com/ctu-mrs/ppa-stable)** PPA into your apt-get repository:
+3. Add the **[stable](https://github.com/ctu-mrs/ppa2-stable)** PPA into your apt-get repository:
 ```bash
-curl https://ctu-mrs.github.io/ppa-stable/add_ppa.sh | bash
+curl https://ctu-mrs.github.io/ppa2-stable/add_ppa.sh | bash
 ```
   * <details>
     <summary> Special instructions for the MRS System developers </summary>
@@ -31,12 +35,23 @@ curl https://ctu-mrs.github.io/ppa-stable/add_ppa.sh | bash
 
 4. Install the MRS UAV System:
 ```bash
-sudo apt install ros-noetic-mrs-uav-system-full
+sudo apt install ros-jazzy-mrs-uav-system-full
 ```
 
-5. Start the example Gazebo simulation session:
+5. Set Zenoh to be the used RMW implementation. The Zenoh RMW is used by default in our example simulation sessions.
+Add to `~/.bashrc` (`~/.zshrc`):
+```
+export RMW_IMPLEMENTATION="rmw_zenoh_cpp"
+```
+
+Source `~/.bashrc` (`~/.zshrc`):
 ```bash
-roscd mrs_uav_gazebo_simulation/tmux/one_drone
+source ~/.bashrc
+```
+
+6. Start the example simulation session:
+```bash
+roscd mrs_multirotor_simulator/tmux/mrs_one_drone
 ./start.sh
 ```
 

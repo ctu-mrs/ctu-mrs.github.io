@@ -4,6 +4,10 @@ pagination_label: Example sessions with the FlightForge simulator
 description: Example sessions with the FlightForge simulator
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Example sessions
 
 The FlightForge simulator comes with a few example sessions that you can use to get started with the simulator. 

@@ -4,6 +4,10 @@ pagination_label: Custom Real World File
 description: How to create a custom real world file for the MRS system to fly in a new location
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Frames of Reference
 
 As described in the [Frames of Reference](/docs/api/frames_of_reference) manual, the MRS system offers a flexible way to define the coordinate frames used in the system. This is enabled using geographical libraries in the real-world that map from latitude-longitude coordinates to the local Cartesian coordinate system. The MRS system uses the [GeographicLib](https://geographiclib.sourceforge.io/) library to handle these transformations.

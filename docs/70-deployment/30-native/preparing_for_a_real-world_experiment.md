@@ -4,6 +4,10 @@ pagination_label: Preparing for a real-world experiment
 description: Preparing for a real-world experiment
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Preparing for a real-world experiment
 
 ## Set up your own workspace

@@ -4,6 +4,10 @@ pagination_label: Supplying motor thrust model
 description: Supplying motor thrust model
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Motor thrust model
 
 The MRS UAV System requires a model which can estimate the relation between a throttle input and thrust force produced by the rotors.

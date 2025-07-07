@@ -4,6 +4,10 @@ pagination_label: Configuring the Unreal Engine simulator
 description: How to configure the Unreal Engine simulator
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Configuration
 
 The FlightForge simulator is highly configurable. This page will guide you through the configuration options available to you.

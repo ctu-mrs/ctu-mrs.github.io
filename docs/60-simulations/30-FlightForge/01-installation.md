@@ -4,6 +4,10 @@ pagination_label: Installing the FlightForge simulator
 description: How to install the FlightForge simulator
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Installation
 
 The FlightForge simulator is composed of two main parts - the simulator itself either as a binary or as a Unreal engine plugin and the ROS package that interfaces with the simulator and provides the necessary ROS topics and services.

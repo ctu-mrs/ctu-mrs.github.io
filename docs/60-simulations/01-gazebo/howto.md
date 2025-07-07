@@ -2,6 +2,10 @@
 title: How to simulate
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Prerequsities
 
 1. The [ROS Noetic](http://wiki.ros.org/noetic/Installation/Ubuntu) installed.

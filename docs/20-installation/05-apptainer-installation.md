@@ -4,6 +4,10 @@ pagination_label: Installing the MRS using Apptainer
 description: Installing the MRS using Apptainer
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Apptainer
 
 [Apptainer](https://apptainer.org/) is an open-source **containerization** software designed specifically for high-performance computing (HPC), scientific research, and environments requiring strong security.
