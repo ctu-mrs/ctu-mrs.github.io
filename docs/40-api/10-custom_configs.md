@@ -12,7 +12,7 @@ This page is describing the upcomming ROS2 version of the MRS UAV System (howeve
 
 There are many configuration files _baked_ in the [mrs_uav_core](https://github.com/ctu-mrs/mrs_uav_core) and other packages of the system.
 They contain many options for modifying the behavior of the system and users are **encouraged** to configure the system to their needs.
-In this tutorial, we provide an efficient way ho customize the configuration **without the need to change** any files within the installed system.
+In this tutorial, we provide an efficient way to customize the configuration **without the need to change** any files within the installed system.
 
 ## The concept of a _custom config_ file
 
