@@ -12,6 +12,12 @@ A docker image can be build for a desired platform by adding the `--platform` pa
 docker build . --file Dockerfile --tag <my_tag> --platform=arm64
 ```
 
+Note: If you are getting *"/bin/sh: exec format error"* error during build, you are probably lacking a package that can be installed by:
+
+```bash
+sudo apt install qemu-user-static
+```
+
 The crossplatform build is facilitated by QEMU.
 Expect a run-time approx. 10x slower than for your native platform.
 
