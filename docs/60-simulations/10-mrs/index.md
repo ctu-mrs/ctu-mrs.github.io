@@ -10,7 +10,7 @@ This page is describing the upcomming ROS2 version of the MRS UAV System (howeve
 
 # MRS Multirotor Simulator
 
-This folder contains docs on simulation using the [MRS Multirotor Simulator](https://github.com/ctu-mrs/mrs_multirotor_simulator) and the MRS UAV System.
+This folder contains docs on simulation using the [MRS Multirotor Simulator](https://github.com/ctu-mrs/mrs_multirotor_simulator/tree/ros2) and the MRS UAV System.
 
 import DocCardList from '@theme/DocCardList';
 

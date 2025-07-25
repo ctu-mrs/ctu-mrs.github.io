@@ -10,7 +10,7 @@ The MRS Multirotor Simulator contains a **header-only** implementation of the si
 
 ## Headers
 
-The headers are located in [include/mrs_multirotor_simulator/uav_system](https://github.com/ctu-mrs/mrs_multirotor_simulator/tree/master/include/mrs_multirotor_simulator/uav_system).
+The headers are located in [include/mrs_multirotor_simulator/uav_system](https://github.com/ctu-mrs/mrs_multirotor_simulator/tree/ros2/include/mrs_multirotor_simulator/uav_system).
 All the headers should be linked using relative includes so it should be possible to just copy the whole folder into your own code.
 
 ## Provided API
