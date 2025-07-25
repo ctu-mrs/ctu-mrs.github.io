@@ -14,7 +14,7 @@ The FlightForge simulator is composed of two main parts - the simulator itself e
 
 ## Prerequisites
 
-1. The [ROS Jazzy](http://wiki.ros.org/jazzy/Installation/Ubuntu) installed.
+1. The [ROS Jazzy](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html) installed.
 2. The [MRS UAV System](https://github.com/ctu-mrs/mrs_uav_system) installed.
 
 ## FlightForge Simulator 
@@ -31,7 +31,7 @@ To interface with the FlightForge simulator, you need to install the ROS package
 The ROS package is either installed when installing the MRS UAV System Full or can be installed separately by running the following command:
 
 ```bash
-sudo apt install ros-jazzy-mrs-uav-flightforge-simulator
+sudo apt install ros-jazzy-mrs-uav-flightforge-simulation
 ```
 
 If you wish to modify the ROS package, you can clone the repository from [mrs_uav_flightforge_simulator](https://github.com/ctu-mrs/mrs_uav_flightforge_simulator/tree/ros2) and place it in your workspace.
