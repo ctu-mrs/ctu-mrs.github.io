@@ -17,14 +17,14 @@ Running the simulation consists of several steps, which are **automated** using 
 Examples of tmuxinator files can be found in the **tmux** folder within the [mrs_multirotor_simulator](https://github.com/ctu-mrs/mrs_multirotor_simulator/tree/ros2) package.
 With the system installed, you can find them (and then copy them elsewhere) by running
 ```bash
-roscd mrs_multirotor_simulator/tmux
+cd /opt/ros/jazzy/share/mrs_multirotor_simulator/tmux
 ```
 Each folder contains a different simulation scenario.
 
 The simlation scenario will be started by calling the `start.sh` script within its folder.
 This will call the `tmuxinator` utility that uses the prescription in the `session.yml` file to spawn a `tmux` session.
 ```bash
-roscd mrs_multirotor_simulator/tmux/mrs_one_drone
+cd /opt/ros/jazzy/share/mrs_multirotor_simulator/tmux/mrs_one_drone
 ./start.sh
 ```
 

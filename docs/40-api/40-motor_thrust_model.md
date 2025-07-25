@@ -45,7 +45,7 @@ throttle: [
 ]
 ```
 
-This file can be then passed to a python script in the [mrs_uav_deployment](https://github.com/ctu-mrs/mrs_uav_deployment/tree/master/miscellaneous/motor_model) repository like this:
+This file can be then passed to a python script in the [mrs_uav_deployment](https://github.com/ctu-mrs/mrs_uav_deployment/tree/ros2/miscellaneous/motor_model) repository like this:
 
 ```bash
 python3 thrust_curve.py example_uav.yaml

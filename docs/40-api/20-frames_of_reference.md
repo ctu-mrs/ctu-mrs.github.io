@@ -1,6 +1,6 @@
 ---
 title: Frames of reference
-pagination_label: TF frames of reference
+[pagination_label](pagination_label): TF frames of reference
 description: TF frames of reference
 ---
 
@@ -41,9 +41,9 @@ However, a *frame* following the order `frame -> <uav_name>/fcu` is stored as a 
 
 ## Connecting multiple TF trees
 
-To connect transform trees of two or more UAVs, you can use the [`tf_connector`](https://github.com/ctu-mrs/mrs_utils/tree/master/mrs_tf_connector) node within the [`mrs_utils`](https://github.com/ctu-mrs/mrs_utils) package.
+To connect transform trees of two or more UAVs, you can use the [`tf_connector`](https://github.com/ctu-mrs/mrs_utils/tree/ros2/mrs_tf_connector) node within the [`mrs_utils`](https://github.com/ctu-mrs/mrs_utils/tree/ros2) package.
 The node creates a new common connecting frame and defines transforms from root frames of the separate trees to this common frame that are recalculated so that the specified frames in the subtrees remain equal.
-See the corresponding [Readme](https://github.com/ctu-mrs/mrs_utils/blob/master/mrs_tf_connector/README.md) for usage hints and parameter documentation.
+See the corresponding [Readme](https://github.com/ctu-mrs/mrs_utils/blob/ros2/mrs_tf_connector/README.md) for usage hints and parameter documentation.
 
 *Note:* The `tf_connector` node can connect only trees containing a common (equal) frame --- e.g., a local GNSS coordinate frame of the world `<uav_name>/world_origin`.
 
@@ -91,7 +91,7 @@ The sensor frames includes
 
 ## Additional frames
 
-Last group of frames used in MRS system is formed by coordinate frames created by [TransformManager](https://github.com/ctu-mrs/mrs_uav_managers#TransformManager) from `nav_msgs/Odometry` messages or by addditional sotware (e.g., systems for localization).
+Last group of frames used in MRS system is formed by coordinate frames created by [TransformManager](https://github.com/ctu-mrs/mrs_uav_managers/tree/ros2#TransformManager) from `nav_msgs/Odometry` messages or by addditional sotware (e.g., systems for localization).
 This group incorporates
 
 * **\<uav_name\>/mapping_origin**
