@@ -8,8 +8,8 @@ This page is describing the upcomming ROS2 version of the MRS UAV System (howeve
 
 # Prerequsities
 
-1. The [ROS Jazzy](http://wiki.ros.org/jazzy/Installation/Ubuntu) installed.
-2. The [MRS UAV System](http://github.com/ctu-mrs/mrs_uav_system) installed.
+1. The [ROS Jazzy](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html) installed.
+2. The [MRS UAV System](https://github.com/ctu-mrs/mrs_uav_system/tree/ros2) installed.
 
 # Starting the simulation
 
