@@ -15,14 +15,14 @@ The FlightForge simulator is composed of two main parts - the simulator itself e
 ## Prerequisites
 
 1. The [ROS Jazzy](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html) installed.
-2. The [MRS UAV System](https://github.com/ctu-mrs/mrs_uav_system) installed.
+2. The [MRS UAV System](https://github.com/ctu-mrs/mrs_uav_system/tree/ros2) installed.
 
 ## FlightForge Simulator 
 
 The prebuild binaries of the simulator can be downloaded from the [here](https://nasmrs.felk.cvut.cz/index.php/s/MnGARsSwnpeVy5z). 
 The simulator is available for Linux and Windows, the simulator can be run by running the binary file `mrs_flight_forge.sh` in the downloaded archive.
 The binary provides the simulator as a standalone application that can be run without the need of Unreal Engine.
-However, if you wish to create a custom environment or modify the simulator you can download our Unreal Engine plugin from [flight_forge repository](https://github.com/ctu-mrs/flight_forge/tree/rosw), and place it in the `Plugins` folder of your Unreal Engine project.
+However, if you wish to create a custom environment or modify the simulator you can download our Unreal Engine plugin from [flight_forge repository](https://github.com/ctu-mrs/flight_forge/), and place it in the `Plugins` folder of your Unreal Engine project.
 Currently, the plugin is only guaranteed to work with Unreal Engine 5.4.
 
 ## ROS Package
