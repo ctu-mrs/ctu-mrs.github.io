@@ -1,6 +1,6 @@
 ---
 title: Frames of reference
-[pagination_label](pagination_label): TF frames of reference
+pagination_label: TF frames of reference
 description: TF frames of reference
 ---
 
