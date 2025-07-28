@@ -110,3 +110,23 @@ configs:
 ```
 
 This is **compose.yaml** for starting Docker container for the Realsense camera. Configuration in the yaml format is under the **configs** section, in the **content** subsection. This content is copied into the file specified in the service section, in the configs/target subsections - **/custom_config.yaml**. It is then passed to the ROS2 launchfile through **command** subsection. The user only needs to modify the **configs** section.
+
+**Attention** - when using composable nodes, you cannot use the namespace. Instead of this:
+
+```
+/uav1/rgbd:
+  ros__parameters:
+    aligned_depth_to_color:
+      image_raw:
+        compressed:
+          format: jpeg
+```
+
+you have to define the config like this:
+
+```
+aligned_depth_to_color:
+  image_raw:
+    compressed:
+      format: jpeg
+```
