@@ -26,3 +26,7 @@ ros 2 launch mrs_vins_imu_filter filter_t265.py
 
 ## Configuration
 Edit / create configs in `config/` folder.
+
+## Source files
+
+The source code of the IMU filter can be found on [GitHub](https://github.com/ctu-mrs/mrs_vins_imu_filter/tree/ros2)
