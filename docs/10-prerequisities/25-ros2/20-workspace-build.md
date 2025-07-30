@@ -122,4 +122,10 @@ Sourcing `mrs_uav_development` sources the `ROS_WORKSPACE` specified in `~/.bash
 * *Issue:* Calling colcon build fails with error: `ModuleNotFoundError: No module named 'ament_package'`
 * *Reason:* `ROS_WORKSPACE` is sourced before building the workspace.
 * *Solution:* Remove `ROS_WORKSPACE` from `~/.bashrc` (`~/.zshrc`), open new terminal, build the workspace, return `ROS_WORKSPACE` to `~/.bashrc` (`~/.zshrc`).
+ 
+## Any ros2 command fails
+* *Issue:* Calling any ros2 commands fails with `importlib.metadata.PackageNotFoundError: No package metadata was found for ros2cli`
+* *Reason:* `/tmp/ros_presource_output.sh` exists and needs to be deleted.
+* *Solution:* Remove `rm /tmp/ros_presource_output.sh`
+ 
 
