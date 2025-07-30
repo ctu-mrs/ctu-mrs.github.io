@@ -58,18 +58,11 @@ First, install mixin
 sudo apt install python3-colcon-mixin
 ```
 
-then add default mixin
+then add MRS mixin.
 
 ```bash
-colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
+colcon mixin add default https://raw.githubusercontent.com/ctu-mrs/colcon-mixin-repository/master/index.yaml
 colcon mixin update default
-```
-
-finally add MRS mixin
-
-```bash
-colcon mixin add mrs https://raw.githubusercontent.com/ctu-mrs/mrs_uav_development/refs/heads/ros2/mixin/index.yaml
-colcon mixin mrs default
 ```
 
 Add the following config to `~/ws_examples/colcon_defaults.yaml` to set the number of build threads to 8 and build with the "rel-with-deb-info" mixin profile:
