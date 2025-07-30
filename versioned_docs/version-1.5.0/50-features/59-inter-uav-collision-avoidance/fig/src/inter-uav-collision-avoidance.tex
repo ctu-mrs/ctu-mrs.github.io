@@ -1,0 +1,135 @@
+\documentclass{article}
+\usepackage{tikz}   %TikZ is required for this to work.  Make sure this exists before the next line
+% \usepackage{tikz-3dplot} %requires 3dplot.sty to be in same directory, or in your LaTeX installation
+
+\usetikzlibrary{calc}
+
+\usepackage[active,tightpage]{preview}  %generates a tightly fitting border around the work
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{2mm}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.shapes}
+
+\usetikzlibrary{nfold}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+
+\usepackage{pgfplots}
+\usetikzlibrary{intersections, pgfplots.fillbetween}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+
+\usepackage{bm}  % bold italized fonts (for vectors)
+\renewcommand\vec{\bm}
+% \tdplotsetmaincoords{43}{13}{0}
+
+\begin{document}
+
+%%{ 
+
+\newcommand{\drawDrone}[3]% x, y, z, size
+{
+  \coordinate (c) at #1;
+  \pgfmathsetmacro{\armL}{1.5*#2}
+
+  \path (c) ++(45:\armL) coordinate (r1);
+  \path (c) ++(45+90:\armL) coordinate (r2);
+  \path (c) ++(45+180:\armL) coordinate (r3);
+  \path (c) ++(45+270:\armL) coordinate (r4);
+
+  \draw [fill=white, draw=none] (r1) rectangle (r3);
+  \draw [#3] (r1) -- (r3);
+  \draw [#3] (r2) -- (r4);
+  \draw [fill=white, #3] (r1) circle (#2);
+  \draw [fill=white, #3] (r2) circle (#2);
+  \draw [fill=white, #3] (r3) circle (#2);
+  \draw [fill=white, #3] (r4) circle (#2);
+}
+
+%%}
+
+\pgfmathsetmacro{\gridMin}{0}
+\pgfmathsetmacro{\gridMaxX}{4.0}
+\pgfmathsetmacro{\gridMaxY}{2.75}
+\pgfmathsetmacro{\r}{0.4}
+
+
+%start tikz picture, and use the tdplot_main_coords style to implement the display 
+%coordinate transformation provided by 3dplot
+\begin{tikzpicture}[scale=2,
+    grid/.style={line width=0, gray!20}
+  ]
+
+  \coordinate (dm) at (1.3, 0.4);
+  \coordinate (txtOff) at (0, 0.3);
+
+  %%{ draw first figure contents
+  
+  \begin{scope}
+    % draw the grid
+    \foreach \x in {\gridMin,0.25,...,\gridMaxX}
+    {
+        \draw[grid] (\x,\gridMin) -- (\x,\gridMaxY);
+    }
+    \foreach \y in {\gridMin,0.25,...,\gridMaxY}
+    {
+        \draw[grid] (\gridMin,\y) -- (\gridMaxX,\y);
+    }
+    
+    %draw the main coordinate system axes
+    \draw[thick, ->] (0,0,0) -- (0.25,0,0) node[anchor=north]{$\vec{e}_x$};
+    \draw[thick, ->] (0,0,0) -- (0,0.25,0) node[anchor=east]{$\vec{e}_y$};
+    \draw[mark=*, mark size=1.0, black, mark options={fill=white}] plot coordinates { (0, 0, 0) };
+    \draw[mark=*, mark size=0.2, black] plot coordinates { (0, 0, 0) }  node[anchor=east]{$\vec{e}_z$};
+
+
+    \coordinate (drone1) at (0.3, 0.55);
+    
+    \drawDrone{(drone1)}{0.1}{thin}
+
+    \draw[thick, dashed] (drone1) -- ++(20:0.5) coordinate(d11) -- ++(15:0.5) coordinate(d12) -- ++(10:0.5) coordinate(d13) -- ++(5:0.5) coordinate(d14) -- ++(0:0.5) coordinate(d15) -- ++(-5:0.5) coordinate(d16) -- ++(-10:0.5) coordinate (drone1end);
+    \draw[dashed, red, double distance=1.6cm, nfold=2, line join=round] (drone1) -- ++(20:0.5) -- ++(15:0.5) -- ++(10:0.5) -- ++(5:0.5) -- ++(0:0.5) -- ++(-5:0.5) -- ++(-10:0.5);
+    \draw[dashed, red] (drone1) ++(110:\r) arc(110:290:\r);
+    \draw[dashed, red] (drone1end) ++(-100:\r) arc(-100:80:\r);
+    \draw[-{latex}] (drone1end) -- ++(-80:\r) node [midway, anchor=west] {$r$};
+
+    \node[anchor=south, yshift=0.5cm, fill=white, rounded corners, draw=black] at (drone1) {UAV 1};
+
+
+    \coordinate (drone2) at (0.5, 1.8);
+    
+    \drawDrone{(drone2)}{0.1}{thin}
+
+    \draw[thick, dashed] (drone2) -- ++(-20:0.5) coordinate(d21) -- ++(-10:0.5) coordinate(d22) -- ++(0:0.5) coordinate(d23) -- ++(10:0.5) coordinate(d24) -- ++(20:0.5) coordinate(d25) -- ++(30:0.5) coordinate(d26) -- ++(40:0.5) coordinate (drone2end);
+    \draw[dashed, red, double distance=1.6cm, nfold=2, line join=round] (drone2) -- ++(-20:0.5) -- ++(-10:0.5) -- ++(0:0.5) -- ++(10:0.5) -- ++(20:0.5) -- ++(30:0.5) -- ++(40:0.5);
+    \draw[dashed, red] (drone2) ++(70:\r) arc(70:250:\r);
+    \draw[dashed, red] (drone2end) ++(-50:\r) arc(-50:130:\r);
+
+    \node[anchor=south, yshift=0.5cm, fill=white, rounded corners, draw=black] at (drone2) {UAV 2};
+
+    \path[name path=A] ($ (d11) + (110:\r) $) -- ($ (d12) + (105:\r) $) -- ($ (d13) + (100:\r) $) -- ($ (d14) + (95:\r) $) -- ($ (d15) + (90:\r) $) -- ++(-5:0.5);
+    \path[name path=B] ($ (d21) + (-110:\r) $) -- ($ (d22) + (-100:\r) $) -- ($ (d23) + (-90:\r) $) -- ($ (d24) + (-80:\r) $) -- ($ (d25) + (-70:\r) $);
+
+    \path [name intersections={of=A and B, by={I1, I2}}];
+
+    \path[name path=A1] (I1) -- ($ (d12) + (105:\r) $) -- ($ (d13) + (100:\r) $) -- ($ (d14) + (95:\r) $) -- ($ (d15) + (90:\r) $) -- (I2);
+    \path[name path=B1] (I1) -- ($ (d22) + (-100:\r) $) -- ($ (d23) + (-90:\r) $) -- ($ (d24) + (-80:\r) $) -- (I2);
+
+    \tikzfillbetween[of=A1 and B1]{red, opacity=0.2};
+
+    \draw[thick, dashed] (0.5, -0.3) -- ++(0.5, 0) node [anchor=west] {predicted trajectory};
+    \draw[red, dashed] (0.5, -0.6) -- ++(0.5, 0) node [anchor=west, black] {collision safety margin};
+    \fill[red, opacity=0.2] (0.5, -0.9) ++(0, -0.1) rectangle ++(0.5, 0.2) ++(0, -0.1) node [anchor=west, black, opacity=1] {predicted collision area};
+
+
+  \end{scope}
+  
+  %%}
+
+\end{tikzpicture}
+
+\end{document}
+
+
+

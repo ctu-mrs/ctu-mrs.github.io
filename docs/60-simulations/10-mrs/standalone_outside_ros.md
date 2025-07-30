@@ -2,11 +2,15 @@
 title: Standalone outside ROS
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 The MRS Multirotor Simulator contains a **header-only** implementation of the single UAV dynamics including a feedback controller pipeline.
 
 ## Headers
 
-The headers are located in [include/mrs_multirotor_simulator/uav_system](https://github.com/ctu-mrs/mrs_multirotor_simulator/tree/master/include/mrs_multirotor_simulator/uav_system).
+The headers are located in [include/mrs_multirotor_simulator/uav_system](https://github.com/ctu-mrs/mrs_multirotor_simulator/tree/ros2/include/mrs_multirotor_simulator/uav_system).
 All the headers should be linked using relative includes so it should be possible to just copy the whole folder into your own code.
 
 ## Provided API

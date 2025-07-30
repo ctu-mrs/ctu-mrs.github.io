@@ -4,6 +4,10 @@ pagination_label: MRS ROS utilities
 description: MRS ROS utilities
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # MRS ROS utilities
 
 MRS Utilities contains various useful tools for development and testing.

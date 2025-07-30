@@ -4,6 +4,10 @@ pagination_label: Autostart Takeoff Routine
 description: Autostart Takeoff Routine
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Autostart takeoff routine
 
 The ROS node for automating takeoff routine for UAVs.

@@ -2,6 +2,10 @@
 title: How to create a real world elevation map in Gazebo
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # How to create a real world elevation map in Gazebo
 
 We will create a 3D model in [Blender](https://www.blender.org/download/) using

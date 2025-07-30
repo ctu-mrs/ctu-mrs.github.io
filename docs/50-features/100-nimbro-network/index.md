@@ -4,6 +4,10 @@ pagination_label: Nimbro Network
 description: Nimbro Network
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # How Nimbro Works
 
 The way Nimbro works is that it spawns several sockets that connect the IP addresses of all the robots in a network. It uses TCP and UDP communication to forward topics and services to these. It does this by spawning many nodes/agents on each host and these agents relay information on the ports which are then converted to topics and services. There are some nuances about how topics and services work and how they are different that are relevant.

@@ -2,6 +2,10 @@
 title: Videos from Gazebo
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # How to generate video from Gazebo
 
 Videos from Gazebo simulator can be recorded directly with the functionality of Gazebo GUI or by any screen-capturing software.

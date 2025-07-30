@@ -1,0 +1,89 @@
+<mxfile host="Electron" modified="2023-12-20T08:12:35.944Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="anpVzrYPU7MFmm5DgzU1" version="22.0.3" type="device">
+  <diagram name="Page-1" id="1a2SnUTWAeg05GDIgyPo">
+    <mxGraphModel dx="1434" dy="867" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-1" value="MRS UAV HW API" style="swimlane;whiteSpace=wrap;html=1;fillColor=none;glass=0;labelBackgroundColor=default;" parent="1" vertex="1">
+          <mxGeometry x="80" y="10" width="550" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-3" value="Plugin&#39;s ROS Data Publishers" style="swimlane;whiteSpace=wrap;html=1;" parent="U1AcUGGEV4LpM3dcbxfQ-1" vertex="1">
+          <mxGeometry x="270" y="200" width="250" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-15" value="&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;IMU&lt;/span&gt;&lt;br&gt;&lt;/li&gt;&lt;li&gt;GNSS&lt;/li&gt;&lt;li&gt;Range finder (for height)&lt;/li&gt;&lt;li&gt;Altitude (AMSL)&lt;/li&gt;&lt;li&gt;Magnetometer heading&lt;/li&gt;&lt;li&gt;RTK GNSS&lt;/li&gt;&lt;li&gt;Ground truth&lt;/li&gt;&lt;li&gt;Battery state&lt;/li&gt;&lt;li&gt;RC Channels&lt;/li&gt;&lt;li&gt;Position&lt;/li&gt;&lt;li&gt;Body velocity&lt;/li&gt;&lt;li&gt;3D Orientation&lt;/li&gt;&lt;li&gt;Angular velocity&lt;/li&gt;&lt;li&gt;Odometry&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=none;fillColor=none;html=1;whiteSpace=wrap;verticalAlign=top;overflow=hidden;" parent="U1AcUGGEV4LpM3dcbxfQ-3" vertex="1">
+          <mxGeometry x="4" y="20" width="210" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-5" value="Plugin&#39;s ROS Subscribers" style="swimlane;whiteSpace=wrap;html=1;" parent="U1AcUGGEV4LpM3dcbxfQ-1" vertex="1">
+          <mxGeometry x="270" y="460" width="250" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-16" value="&lt;ul&gt;&lt;li&gt;Position + Heading&lt;/li&gt;&lt;li&gt;Velocity + Heading&lt;/li&gt;&lt;li&gt;Velocity + Heading Rate&lt;/li&gt;&lt;li&gt;Acceleration + Heading&lt;/li&gt;&lt;li&gt;Acceleration + Heading Rate&lt;/li&gt;&lt;li&gt;Orientation + Throttle&lt;/li&gt;&lt;li&gt;Attitude rate + Throttle&lt;/li&gt;&lt;li&gt;Control groups&lt;/li&gt;&lt;li&gt;Actuators&lt;/li&gt;&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;MRS Tracker command (for feed forward control)&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=none;fillColor=none;html=1;whiteSpace=wrap;verticalAlign=top;overflow=hidden;" parent="U1AcUGGEV4LpM3dcbxfQ-5" vertex="1">
+          <mxGeometry y="26" width="236" height="194" as="geometry" />
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-19" value="Plugin&#39;s State ROS Publishers" style="swimlane;whiteSpace=wrap;html=1;" parent="U1AcUGGEV4LpM3dcbxfQ-1" vertex="1">
+          <mxGeometry x="270" y="90" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-22" value="&lt;ul&gt;&lt;li&gt;Plugin Status&lt;/li&gt;&lt;li&gt;Connection Status&lt;/li&gt;&lt;li&gt;Plugin&#39;s Capabilities and requirements&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=none;fillColor=none;html=1;verticalAlign=top;overflow=hidden;whiteSpace=wrap;" parent="U1AcUGGEV4LpM3dcbxfQ-19" vertex="1">
+          <mxGeometry x="4" y="15" width="236" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-36" value="HW API Plugin Interface" style="swimlane;whiteSpace=wrap;html=1;gradientColor=none;fillOpacity=100;" parent="U1AcUGGEV4LpM3dcbxfQ-1" vertex="1">
+          <mxGeometry x="14" y="90" width="216" height="590" as="geometry" />
+        </mxCell>
+        <UserObject label="Github" link="https://github.com/ctu-mrs/mrs_uav_hw_api" id="U1AcUGGEV4LpM3dcbxfQ-48">
+          <mxCell style="text;html=1;strokeColor=none;fillColor=none;whiteSpace=wrap;align=center;verticalAlign=middle;fontColor=#0000EE;fontStyle=4;" parent="U1AcUGGEV4LpM3dcbxfQ-1" vertex="1">
+            <mxGeometry x="497" y="-9" width="60" height="40" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-49" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;An abstraction layer providing a unified interface to a &lt;/span&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;generic flight controller. &lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;A particular flight controller or a simulator is connected to the MRS UAV System via an interface plugin, that facilitates the communication, presents data and gatheres control references form the MRS UAV System.&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="U1AcUGGEV4LpM3dcbxfQ-1" vertex="1">
+          <mxGeometry x="8" y="28" width="550" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-53" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;strokeWidth=3;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;startArrow=none;startFill=0;endArrow=classic;" parent="1" source="U1AcUGGEV4LpM3dcbxfQ-12" target="U1AcUGGEV4LpM3dcbxfQ-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-12" value="MRS UAV System" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="690" y="10" width="20" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;" parent="1" source="U1AcUGGEV4LpM3dcbxfQ-3" target="U1AcUGGEV4LpM3dcbxfQ-12" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="335" />
+              <mxPoint x="620" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-38" value="HW API Plugin (C++)" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;rotation=-90;flipV=0;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="22.5" y="512.5" width="355" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;strokeWidth=3;" parent="1" source="U1AcUGGEV4LpM3dcbxfQ-19" target="U1AcUGGEV4LpM3dcbxfQ-38" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;strokeWidth=3;" parent="1" source="U1AcUGGEV4LpM3dcbxfQ-3" target="U1AcUGGEV4LpM3dcbxfQ-38" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;strokeWidth=3;endArrow=none;endFill=0;" parent="1" source="U1AcUGGEV4LpM3dcbxfQ-5" target="U1AcUGGEV4LpM3dcbxfQ-38" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="330" y="580" />
+              <mxPoint x="330" y="390" />
+              <mxPoint x="200" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-45" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;strokeWidth=3;" parent="1" source="U1AcUGGEV4LpM3dcbxfQ-46" target="U1AcUGGEV4LpM3dcbxfQ-38" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="200" y="910" as="sourcePoint" />
+            <mxPoint x="195.30120481927702" y="810.0008433734938" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-46" value="Flight Controller" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="140" y="830" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="U1AcUGGEV4LpM3dcbxfQ-12" target="U1AcUGGEV4LpM3dcbxfQ-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U1AcUGGEV4LpM3dcbxfQ-52" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;strokeWidth=3;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;startArrow=none;startFill=0;endArrow=classic;" parent="1" source="U1AcUGGEV4LpM3dcbxfQ-19" target="U1AcUGGEV4LpM3dcbxfQ-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

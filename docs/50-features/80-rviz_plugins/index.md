@@ -4,6 +4,10 @@ pagination_label: MRS Rviz plugins
 description: MRS Rviz plugins
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # MRS Rviz Plugins
 
 The Rviz plugins originate from the package [mrs_rviz_plugins](https://github.com/ctu-mrs/mrs_rviz_plugins).

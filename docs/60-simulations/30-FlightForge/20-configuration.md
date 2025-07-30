@@ -4,18 +4,22 @@ pagination_label: Configuring the Unreal Engine simulator
 description: How to configure the Unreal Engine simulator
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Configuration
 
 The FlightForge simulator is highly configurable. This page will guide you through the configuration options available to you.
-The configuration is done using the ROS package `mrs_uav_unreal_simulation`.
-The default configuration file is located in `mrs_uav_unreal_simulation/config/unreal_simulator.yaml`.
+The configuration is done using the ROS package `mrs_uav_flightforge_simulator`.
+The default configuration file is located in `mrs_uav_flightforge_simulator/config/flightforge_simulator.yaml`.
 
 ## Main Parameters
 
 ### Simulation and Clock Rates
 
--   `simulation_rate`: Defines the rate at which the simulation runs in Hz. The default value is 250.0 Hz.
--   `clock_rate`: Sets the rate of the simulation clock in Hz. The default value is 250.0 Hz.
+-   `simulation_rate`: Defines the rate at which the simulation runs in Hz. The default value is 100.0 Hz.
+-   `clock_rate`: Sets the rate of the simulation clock in Hz. The default value is 400.0 Hz.
 
 ### Realtime Factor
 

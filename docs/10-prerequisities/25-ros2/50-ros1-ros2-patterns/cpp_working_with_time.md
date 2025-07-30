@@ -26,6 +26,13 @@ rclcpp::Duration(std::chrono::duration<double>(1.0))
 rclcpp::Duration(std::chrono::duration<double>(1.0))
 ```
 
+* incrementing time: you can add `rclcpp::Duration` to `rclcpp::Clock` , but it needs to have the same clock type:
+```cpp
+last_time_ + rclcpp::Duration(secs_passed, clock_->get_clock_type());
+```
+or
+last_time_ + rclcpp::Duration(secs_passed, last_time_->get_clock_type());
+
 ## Sleeping
 
 What was in ROS1 done as:

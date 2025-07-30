@@ -4,6 +4,10 @@ pagination_label: Midair activation of the MRS system
 description: Midair activation of the MRS system
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Midair activation
 
 For the cases of flight where you need the aircraft to either activate in the air or be flight-ready on the ground without having to perform a take-off procedure, you can use the midair activation feature. To use this, follow this procedure:

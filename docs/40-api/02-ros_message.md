@@ -4,6 +4,10 @@ pagination_label: ROS message defined by the MRS
 description: ROS message defined by the MRS
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # MRS ROS messages
 
 We keep all of our messages defined within a handful of packages.

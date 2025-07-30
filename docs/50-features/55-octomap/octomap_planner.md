@@ -4,6 +4,10 @@ pagination_label: Octomap planner
 description: Octomap planner
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Octomap planner
 
 This package comprises the algorithms for planning of paths in 3D environments represented as an [octomap](https://octomap.github.io/).

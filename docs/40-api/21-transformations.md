@@ -4,6 +4,10 @@ pagination_label: Handling transformations within the MRS
 description: Handling transformations within the MRS
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # Transformations
 
 ![](fig/transformations.png)
@@ -14,7 +18,7 @@ The transformations within the MRS system are important not only for tracking th
 
 ## How to supply the frame_id
 
-The MRS UAV system provides [topics and services](https://ctu-mrs.github.io/docs/system/uav_ros_interface.html) to command a UAV in any coordinate frame that is part of the main TF tree.
+The MRS UAV system provides [topics and services](system/uav_ros_interface) to command a UAV in any coordinate frame that is part of the main TF tree.
 The coordinate frame in which the desired reference is provided has to be specified in the `'frame_id'` variable of the message header.
 
 ### Using the full frame_id

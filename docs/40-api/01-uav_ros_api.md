@@ -4,6 +4,10 @@ pagination_label: ROS API for the MRS System
 description: ROS API for the MRS System
 ---
 
+:::warning
+This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+:::
+
 # MRS System's UAV-ROS API
 
 The UAV can be given commands via the following [managers](https://github.com/ctu-mrs/mrs_uav_managers) and nodes.
@@ -25,7 +29,7 @@ Users supply the desired references to the ControlManager, which forwards the re
 
 ### Provided topics
 
-Please refer to [control_manager.launch](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/launch/control_manager.launch) for a complete list of topics.
+Please refer to [control_manager.py](https://github.com/ctu-mrs/mrs_uav_managers/blob/ros2/launch/control_manager.py) for a complete list of topics.
 Notable topics:
 
 General topics reporting on the current state of the ControlManager:
@@ -169,7 +173,7 @@ The [EstimationManager](https://github.com/ctu-mrs/mrs_uav_managers#EstimationMa
 
 ### Provided topics
 
-Please refer to [estimation_manager.launch](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/launch/estimation_manager.launch) for a complete list of topics.
+Please refer to [estimation_manager.py](https://github.com/ctu-mrs/mrs_uav_managers/blob/ros2/launch/estimation_manager.py) for a complete list of topics.
 
 Notable topics:
 
