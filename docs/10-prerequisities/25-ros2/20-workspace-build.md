@@ -34,6 +34,10 @@ git checkout ros2
 
 Add to `~/.bashrc` (`~/.zshrc`): 
 ```bash
+# ROS DEVELOPMENT
+# * source this after exporting $ROS_WORKSPACE="<path to your workspace>"
+# * workspace is automatically sourced and the soucing is cached
+# * to force-source a workspace after adding new packages, call `presource_ros`
 source $HOME/git/mrs_uav_development/shell_additions/shell_additions.sh
 ```
 
@@ -82,10 +86,15 @@ colcon init
 colcon build
 ```
 
-Add to `~/.bashrc` (`~/.zshrc`):
+Add to `~/.bashrc` (`~/.zshrc`) before sourcing of `source $HOME/git/mrs_uav_development/shell_additions/shell_additions.sh`:
 ```bash
+## workspace to be sourced
 export ROS_WORKSPACE="$HOME/ws_examples"
 ```
+
+Do not put any manual sourcing of the workspace or `/opt/ros/jazzy/` into your `~/.bashrc` (`~/.zshrc`)!
+Sourcing `mrs_uav_development` sources the `ROS_WORKSPACE` specified in `~/.bashrc` (`~/.zshrc`) automatically (or it sources `/opt/ros/jazzy` if no `ROS_WORKSPACE` is specified.
+
 
 # Troubleshooting
 
@@ -108,4 +117,9 @@ export ROS_WORKSPACE="$HOME/ws_examples"
 * *Issue:* Calling colcon build does not create a workspace and start building it.
 * *Reason:* We have an alias for colcon, to make its usage less awkward. See step 3 for details.
 * *Solution:* First call `colcon init` in the root of the workspace, then `colcon build`.
+
+## Colcon build fails to find ament_package
+* *Issue:* Calling colcon build fails with error: `ModuleNotFoundError: No module named 'ament_package'`
+* *Reason:* `ROS_WORKSPACE` is sourced before building the workspace.
+* *Solution:* Remove `ROS_WORKSPACE` from `~/.bashrc` (`~/.zshrc`), open new terminal, build the workspace, return `ROS_WORKSPACE` to `~/.bashrc` (`~/.zshrc`).
 
