@@ -108,7 +108,7 @@ Note: The `--break-system-packages` flag is often required to install pip packag
 Once the extension is installed, you can use the new output style with the following command:
 
 ```bash
-colcon build --output-style catkin_tools
+colcon --output-style catkin_tools build
 ```
 
 If you like the colorful output and want to use it by default for all colcon commands, add the following line to your shell's configuration file (e.g., `~/.bashrc` for Bash or `~/.zshrc` for Zsh):
