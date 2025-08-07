@@ -111,11 +111,11 @@ Once the extension is installed, you can use the new output style with the follo
 colcon build --output-style catkin_tools
 ```
 
-If you like the colorful output and want to use it by default for all colcon commands, add the following line to your shell's configuration file (e.g., ~/.bashrc for Bash or ~/.zshrc for Zsh):
+If you like the colorful output and want to use it by default for all colcon commands, add the following line to your shell's configuration file (e.g., `~/.bashrc` for Bash or `~/.zshrc` for Zsh):
 ```bash
 export COLCON_DEFAULT_OUTPUT_STYLE=catkin_tools
 ```
-After adding the line, be sure to open a new terminal or run source ~/.bashrc (or the appropriate file) for the change to take effect.
+After adding the line, be sure to open a new terminal or run `source ~/.bashrc` (or the appropriate file) for the change to take effect.
 
 
 
