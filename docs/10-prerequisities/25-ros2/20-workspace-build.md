@@ -95,6 +95,29 @@ export ROS_WORKSPACE="$HOME/ws_examples"
 Do not put any manual sourcing of the workspace or `/opt/ros/jazzy/` into your `~/.bashrc` (`~/.zshrc`)!
 Sourcing `mrs_uav_development` sources the `ROS_WORKSPACE` specified in `~/.bashrc` (`~/.zshrc`) automatically (or it sources `/opt/ros/jazzy` if no `ROS_WORKSPACE` is specified.
 
+### 7. Colorful output for colcon commands
+If you're accustomed to the colorful output of catkin_tools from ROS 1, you can achieve a similar look and feel with colcon in ROS 2.
+This makes it easier to read build logs and quickly identify important messages or errors.
+
+To get started, install the colcon-ansi-colors-example extension using pip:
+```bash
+pip install git+https://github.com/cottsay/colcon-ansi-colors-example --break-system-packages
+```
+Note: The `--break-system-packages` flag is often required to install pip packages globally on systems where the package manager is strict about system files.
+
+Once the extension is installed, you can use the new output style with the following command:
+
+```bash
+colcon build --output-style catkin_tools
+```
+
+If you like the colorful output and want to use it by default for all colcon commands, add the following line to your shell's configuration file (e.g., ~/.bashrc for Bash or ~/.zshrc for Zsh):
+```bash
+export COLCON_DEFAULT_OUTPUT_STYLE=catkin_tools
+```
+After adding the line, be sure to open a new terminal or run source ~/.bashrc (or the appropriate file) for the change to take effect.
+
+
 
 # Troubleshooting
 
