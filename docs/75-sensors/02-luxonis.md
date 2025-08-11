@@ -26,7 +26,7 @@ ros2 launch depthai_ros_driver camera.launch.py
 ## Useful parameters
 
 - **namespace** prefix for the oak topics e.g namespace:=$UAV_NAME
-- **pointcloud.enable** should the node publish a pointcloud topic e.g pointcloud.enable=true
+- **pointcloud.enable** should the node publish a pointcloud topic e.g pointcloud.enable:=true
 
 ## More info
 
