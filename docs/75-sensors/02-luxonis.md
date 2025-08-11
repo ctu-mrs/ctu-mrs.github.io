@@ -19,6 +19,12 @@ sudo apt install ros-jazzy-depthai-ros
 
 ## Startup
 
+You need to have the following udev rule for the camera to be detected and work properly
+
+```
+SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", OWNER="mrs", MODE="0666"
+```
+
 ```bash
 ros2 launch depthai_ros_driver camera.launch.py
 ```
