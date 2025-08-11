@@ -26,3 +26,7 @@ ros2 launch ouster_ros sensor.composite.launch.py sensor_hostname:=10.10.20.90 u
 
 - the **udp_dest** parameter is the IP address (hostname) of the drone's computer
 - the **sensor_hostname** is the IP address (hostname) of the sensor
+
+## Useful parameters
+
+- **viz** decides if the ros visualizer will be started alongside the node e.g viz:=false
