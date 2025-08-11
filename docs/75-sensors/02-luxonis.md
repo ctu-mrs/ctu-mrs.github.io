@@ -25,6 +25,8 @@ You need to have the following udev rule for the camera to be detected and work 
 SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", OWNER="mrs", MODE="0666"
 ```
 
+Then the launch command will work
+
 ```bash
 ros2 launch depthai_ros_driver camera.launch.py
 ```
