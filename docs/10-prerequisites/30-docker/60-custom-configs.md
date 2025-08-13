@@ -19,20 +19,20 @@ Configuration can be facilited by several mechanisms:
 * additional files loaded in runtime.
 
 There are two ways how to provide **custom configuration files** to the system:
-  1. expose them to the **container** runing from the **user's docker image**
+  1. expose them to the **container** running from the **user's docker image**
   2. paste them as a part of the **compose.yaml** file directly from the Portainer
 
 ## Solution 1. - Through docker image
 
 We pack the configurations (**shared data**) in a dedicated transport image which is easily delivered to the robot.
-Then, **during runtime**, this image spawns a container in which the data is coppied to a **shared docker volume**.
+Then, **during runtime**, this image spawns a container in which the data is copied to a **shared docker volume**.
 Then, the user's containers are started, all mounting the same **shared docker volume** and accessing the configuration data.
 
 ![](./fig/containers_shared_data.png)
 
 ### Packing shared data to a transport image
 
-The following minimalistic dockerfile coppies the `shared_data` subfolder in the **transport docker image**:
+The following minimalistic dockerfile copies the `shared_data` subfolder in the **transport docker image**:
 
 ```dockerfile
 FROM alpine
@@ -79,7 +79,7 @@ services:
 ```
 ## Solution 2. - Inline, through compose.yaml from Portainer
 
-When you are starting the system from the [Portainer](https://ctu-mrs.github.io/docs/prerequisities/portainer/) using Docker Compose, you can past the yaml config directly to the compose.yaml file. Example:
+When you are starting the system from the [Portainer](https://ctu-mrs.github.io/docs/prerequisites/portainer/) using Docker Compose, you can past the yaml config directly to the compose.yaml file. Example:
 
 ```
 services:

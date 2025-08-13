@@ -5,7 +5,7 @@ description: Octomap Server
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # Octomap server
@@ -29,4 +29,4 @@ Topic names are set as arguments to the [launch file](https://github.com/ctu-mrs
 
 ## Configuration
 The frame of reference, where the map is built, is set by argument **world_frame_id** of the launch file.
-Default configuration parameters are available at [the config file](https://github.com/ctu-mrs/mrs_octomap_server/blob/master/config/default.yaml). They can be overriden by passing a custom config file to the main launch file.
+Default configuration parameters are available at [the config file](https://github.com/ctu-mrs/mrs_octomap_server/blob/master/config/default.yaml). They can be overridden by passing a custom config file to the main launch file.

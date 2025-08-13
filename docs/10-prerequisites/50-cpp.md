@@ -6,7 +6,7 @@ description: C++
 
 # C++
 
-All software that is intended to run onboard a UAV is preffered to be written in C++.
+All software that is intended to run onboard a UAV is preferred to be written in C++.
 Although ROS/ROS2 natively supports also Python, well-written C++ provides significantly better performance (computational resources are scarce onboard a UAV) and compile-time sanity checking (the code is much less likely to crash during runtime mid-flight).
 Therefore we recommend to learn C++ and get used to programming with it.
 

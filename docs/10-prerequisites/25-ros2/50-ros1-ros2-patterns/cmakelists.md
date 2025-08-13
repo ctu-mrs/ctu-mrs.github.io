@@ -27,7 +27,7 @@ rclcpp_components_register_nodes(MrsMultirotorSimulator_Simulator PLUGIN "mrs_mu
 
 ## exporting pluginlib plugins
 
-You need to provide path to the `.xml` file with plugin description in CmakeLists, instaed of in `package.xml` like it was in ROS1:
+You need to provide path to the `.xml` file with plugin description in CmakeLists, instead of in `package.xml` like it was in ROS1:
 ```
 # <package of the base class>, <relative path to the xml>
 pluginlib_export_plugin_description_file(mrs_uav_hw_api plugins.xml)

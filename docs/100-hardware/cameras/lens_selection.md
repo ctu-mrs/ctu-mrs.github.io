@@ -107,7 +107,7 @@ Alternatively, such wide overview can be obtained by using a curved reflective s
 For these cases, the pinhole camera model is not appropriate.
 
 The pinhole model of cameras is very popular due to its simplicity and presumed computational efficiency.
-It is used frequently in computer vision and in computer graphics this model is used almost exlusively.
+It is used frequently in computer vision and in computer graphics this model is used almost exclusively.
 However, it does practically never perfectly correspond to the projection of real cameras that have lenses, because of which most calibration systems based on the pinhole model compute additional "lens distortion" parameters used to first correct the projection to better correspond to the calculated model.
 This means that additional computation has to be performed anyway and any gains one has from exploiting the math of the pinhole-based perspective projection are rendered pretty much moot.
 I (ViktorWalter) therefore recommend that you consider using a different model than the popular pinhole for better precision in 3D position estimation.

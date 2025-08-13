@@ -1,6 +1,6 @@
 ---
 title: C++ components (nodelets)
-pagination_label: C++ componentes (nodelets)
+pagination_label: C++ components (nodelets)
 description: C++ components (nodelets)
 ---
 

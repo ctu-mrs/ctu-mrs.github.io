@@ -49,7 +49,7 @@ For a more exhaustive list, see the GDB manpages (`man gdb`) or any online tutor
 | `f #`                        | change to Frame `#`                      | `#` = the number from `bt`                                                                          |
 | `s`                          | Step in function                         |                                                                                                     |
 | `n`                          | step to the Next line                    |                                                                                                     |
-| `fin`                        | FINish function                          | in case you accidentaly step into a fun.                                                            |
+| `fin`                        | FINish function                          | in case you accidentally step into a fun.                                                            |
 | `c`                          | Continue                                 | resume program until breakpoint or crash                                                            |
 | `p #`                        | Print variable                           | `#` = variable name                                                                                 |
 | `wh`                         | open window with code (TUI)              | actually sets Window Height                                                                         |
@@ -85,7 +85,7 @@ To detach gdb from the program, use the `detach` command.
 ### Debugging a deadlocked program
 *Note: Inspired by [this blog post](https://codeistry.wordpress.com/2016/10/24/gdb-find-the-thread-which-has-locked-the-mutex/).*
 
-If the deadlock ocurred when no debugger is attached to the program, you can attach to a running program using the method described above.
+If the deadlock occurred when no debugger is attached to the program, you can attach to a running program using the method described above.
 When you have gdb prompt available, a good way to start debugging the deadlock is to list all threads using
 ```bash
 info threads

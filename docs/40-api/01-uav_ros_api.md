@@ -5,7 +5,7 @@ description: ROS API for the MRS System
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # MRS System's UAV-ROS API
@@ -22,7 +22,7 @@ The *managers* provide most of the interface*.
 
 ### The flow of information
 
-The ControManager is subscribed to a source of [UAV State](https://ctu-mrs.github.io/mrs_msgs/msg/UavState.html), and it hands it to the trackers and controllers.
+The ControlManager is subscribed to a source of [UAV State](https://ctu-mrs.github.io/mrs_msgs/msg/UavState.html), and it hands it to the trackers and controllers.
 With each update of the UAV State, the currently active tracker produces a new reference, and the currently active controller generates a new control output.
 The controllers and trackers can be switched in mid-flight to accommodate for different mission scenarios.
 Users supply the desired references to the ControlManager, which forwards the references to the currently active tracker and controller.
@@ -42,14 +42,14 @@ General topics reporting on the current state of the ControlManager:
 | control_manager/current_constraints | current values of the dynamic constraints | [mrs_msgs::DynamicsConstraints](https://ctu-mrs.github.io/mrs_msgs/msg/DynamicsConstraints.html)            |
 | control_manager/heading             | current heading                           | [mrs_msgs::Float64Stamped](https://ctu-mrs.github.io/mrs_msgs/msg/Float64Stamped.html)                      |
 
-Topics dedicated to Rviz vizualization:
+Topics dedicated to Rviz visualization:
 
 | **topic**                                   | **description**                                         | **topic type**                    |
 |---------------------------------------------|---------------------------------------------------------|-----------------------------------|
 | control_manager/control_reference           | control reference from the active tracker               | `nav_msgs/Odometry`               |
 | control_manager/safety_area_markers         | Rviz markers showing the safety area                    | `visualization_msgs::MarkerArray` |
 | control_manager/safety_area_coordinates     | Rviz markers showing the coordinates of the safety area | `visualization_msgs::MarkerArray` |
-| control_manager/disturbance_markers         | Rviz markers showing the estimated distrubances         | `visualization_msgs::MarkerArray` |
+| control_manager/disturbance_markers         | Rviz markers showing the estimated disturbances         | `visualization_msgs::MarkerArray` |
 | control_manager/trajectory_original/poses   | pose array re-publishing the original set trajectory    | `geometry_msgs::PoseArray`        |
 | control_manager/trajectory_original/markers | Rviz markers re-publishing the original set trajectory  | `visualization_msgs::MarkerArray` |
 
@@ -204,7 +204,7 @@ Can republish a `nav_msgs/Odometry` topic in another frame by adding the `frame_
 | local_origin        | origin pose defined by the initial pose of the UAV (including orientation), exists for all estimators                                          | commanding UAV w.r.t. initial pose, universal frame that is always available            |
 | fixed_origin        | origin pose defined by the initial estimator, origin does not move after estimator switch, odometry in this frame jumps after estimator switch | commanding UAV w.r.t. initial estimator frame, universal frame that is always available |
 | stable_origin       | origin pose defined by the initial estimator, origin jumps after estimator switch, odometry in this frame is smooth without jumps              | mapping position of detected objects invariant to estimator switching                   |
-| utm_origin          | origin position defined by the intersetion of the equator and the zone's central meridian, ENU orientation                                     | commanding UAV in absolute metric coordinates irregardless of the current world file    |
+| utm_origin          | origin position defined by the intersection of the equator and the zone's central meridian, ENU orientation                                     | commanding UAV in absolute metric coordinates regardless of the current world file    |
 | mapping_origin_tf   | origin position and heading defined by initialization of a SLAM algorithm, origin tilt around x and y axes optionally defined by custom topic  | mapping of environment using a SLAM that cannot estimate orientation                    |
 
 

@@ -24,14 +24,14 @@ Our process comprises of the following docker build stages:
     * Encapsulation of the whole workspace into a transport image (`alpine:latest`)
     * Export of the image into a local directory (`./cache`)
 3. **Stage 3: export the transport image**
-    * Copy of the build neccessary build artefacts into a transport image (`alpine:latest`)
+    * Copy of the build necessary build artifacts into a transport image (`alpine:latest`)
     * Export of the transport image
 
 The compiled workspace is **transported** into the **robot** within an minimalistic `alpine`-based image, which makes it relatively small.
 The overhead of the transport image is only around 5 MB.
 On the other hand, if the workspace would be packed in a image based on the **base image**, the size would be offset by hundreds of megabytes.
-That is not a problem when the tranport occurs through a **docker registry**.
-However, since the [Portainer](/docs/prerequisities/portainer) interface makes the upload of **archived** images very simple, we prefer to bundle the whole image into a `.tar.gz` file.
+That is not a problem when the transport occurs through a **docker registry**.
+However, since the [Portainer](/docs/prerequisites/portainer) interface makes the upload of **archived** images very simple, we prefer to bundle the whole image into a `.tar.gz` file.
 This approach complicates the deployment in one simple way: The workspace needs to **extracted** from the transport image and placed into a **shared volume** during runtime.
 
 ## Pre-configured build pipeline
@@ -45,13 +45,13 @@ A set of scripts that facilitate the build is provided at [ctu-mrs/mrs_docker](h
 * The sources of your ROS packages are supposed to be placed (or linked) into the `./src` folder.
 * The file `./common_vars.sh` configures the process by setting up the following environment variables:
 ```bash
-# tag for the source image agains which the catkin workspace will be built
+# tag for the source image against which the catkin workspace will be built
 export BASE_IMAGE=ctumrs/mrs_uav_system:1.5.0
 
 # tag for the 'transport' image used for packing the workspace
 export TRANSPORT_IMAGE=alpine:latest
 
-# tag for the resulting image in which the workspace will be packged
+# tag for the resulting image in which the workspace will be packaged
 export OUTPUT_IMAGE=catkin_workspace:1.0.0
 
 # location for the exported docker images using the `./export_image.sh` script
@@ -75,7 +75,7 @@ export CACHE_PATH=cache
 
 ## Using the workspace on a robot
 
-The ROS catkin workspace needs to be first extracted from the **transport image** and coppied into a shared docker volume.
+The ROS catkin workspace needs to be first extracted from the **transport image** and copied into a shared docker volume.
 Then, a container can be started using the **base image** and the workspace can be sourced and used to start your packages.
 
 Here is an example of a minimalistic compose session.

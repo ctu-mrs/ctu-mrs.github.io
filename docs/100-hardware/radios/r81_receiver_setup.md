@@ -25,7 +25,7 @@ With the new R81 receivers, Pixhawk can detect the RC loss through the SBus prot
 
 These are the default values, so on a fresh PX4 you should not have to change anything. To check if everything is working, connect to PX4 through QGroundControl, and then turn off the RC. You should see a message saying 'Manual control lost'. This means PX4 detected the loss of RC, which is what we want. Turn the RC back on and you should see a message saying 'Manual control regained'.
 
-When the receiver is in the failsafe mode (rc is lost), it is outputing some predefined values on its channels. We want to set these channels to specific values, e.g., keep the offboard mode on even when RC is lost. Follow these steps:
+When the receiver is in the failsafe mode (rc is lost), it is outputting some predefined values on its channels. We want to set these channels to specific values, e.g., keep the offboard mode on even when RC is lost. Follow these steps:
 1. Turn off the UAV
 2. Set the RC into a state to represent the desired failsafe output of the receiver:
   * Put all switches into default positions

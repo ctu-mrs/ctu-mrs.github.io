@@ -44,7 +44,7 @@ Describe steps to import `.ptx` and `.pts` files into MeshLab.
     - Show the coordinate system with the `Draw XYZ axes in world coordinates` icon
     - Click the `Manipulators tool` icon
     - Follow the instruction to adjust the position of the pointcloud
-    - If you are stasified with the adjustement, firstly **save the Meshlab project**. It keeps the transformation from the original position in the readable XML format simple savefile.
+    - If you are satisfied with the adjustment, firstly **save the Meshlab project**. It keeps the transformation from the original position in the readable XML format simple savefile.
     - Run `Matrix: Freeze Current Matrix` function to apply the transformation on current file.
 - Save the final `.ply` file
 
@@ -61,13 +61,13 @@ Describe steps to import `.ptx` and `.pts` files into MeshLab.
 
 ## Mesh computing
 
-We are using manily two methods to create a mesh from a pointcloud. <b>Screened Poisson</b> and <b>VGC</b>.
+We are using mainly two methods to create a mesh from a pointcloud. <b>Screened Poisson</b> and <b>VGC</b>.
 
 * Mesh computing requires a huge amount of RAM! It is recommended to have at least 32 GB RAM with some backup swap. If you can provide 64 GB RAM, even better!
-* The input pointcloud has to be simplified to be able to mesh it. The ideal number of vertices is 6--10 milions.
+* The input pointcloud has to be simplified to be able to mesh it. The ideal number of vertices is 6--10 millions.
 * The general rule: Better to create a huge model and simplify it than create a small model right away.
 * **AMD processors are much faster on Ubuntu to create the mesh**: It takes much longer time for Intel to do the same task.
-    - **Surface Reconstruction: Screened Poission**: this methos is useful for most cases. It usually works well for closed environemnts as buildings. Various parameters are possible to set. I have found useful to increase the **Reconstruction Depth**. The "optimal" number is between 12--16. The higher the number, the more detailed is the model. The RAM demands increases faster than linear. Example of the set values is in the image below.\
+    - **Surface Reconstruction: Screened Poission**: this method is useful for most cases. It usually works well for closed environments as buildings. Various parameters are possible to set. I have found useful to increase the **Reconstruction Depth**. The "optimal" number is between 12--16. The higher the number, the more detailed is the model. The RAM demands increases faster than linear. Example of the set values is in the image below.\
     ![plot](fig/poisson_reconstruction.png)
     - **Surface Reconstruction: Ball Pivoting**: Single thread, slow. Creates loose pointcloud with bunch of holes.
     - **Surface Reconstruction: VGC**: Single thread in the most part, slower. Suitable for smaller "open" models as electrical tower. It crashes a lot (Segmentation fault). Check **Vertex Splatting** box before executing. Most useful parameter is the **Voxel side**. The smaller the value, the more detailed and precised is the model. Recommend to set the value to **0.01** which corresponds to `1 cm` voxel side. **Geodesic Weightening** value increase makes the mesh smoother in general. **Volume Laplacian iter** will inflate the volume of the model. **Widening** makes the model wider, even decrease the value might be more useful.
@@ -78,7 +78,7 @@ We are using manily two methods to create a mesh from a pointcloud. <b>Screened 
     ![](fig/simplification_example.png)
 
 * Save the model into `.ply` and check the file size.
-  * Recommend `.ply` file size in between **10--150MB**, depending on the application. For texture processing, the lower the better. The texture will cover inperfections. For model with no texture, the quality is visible more. If you would like to use the model in the simulation, assume **2.5x** times larger final exported file, so shrink the file accordingly. If exported with texture later on, the size will be about **2.5x** times bigger. These numbers depends on the amount of saved information in the *.ply* file.
+  * Recommend `.ply` file size in between **10--150MB**, depending on the application. For texture processing, the lower the better. The texture will cover imperfections. For model with no texture, the quality is visible more. If you would like to use the model in the simulation, assume **2.5x** times larger final exported file, so shrink the file accordingly. If exported with texture later on, the size will be about **2.5x** times bigger. These numbers depends on the amount of saved information in the *.ply* file.
 
 
 ## Texturing
@@ -98,7 +98,7 @@ These methods using pointcloud vertex color to create a full texture.
 * `Filters → Texture → Vertex Color to Texture` Specify the texture file name and resolution for the mesh. The resolution should give the `Texture dimension` parameter from the previous step, e.g., `Texture width * Texture height = Texture Dimension`. Then press `Apply` to create it.
 
 #### Good quality texture: SLOW BUT NICE
-* Recommend to use low quality `.ply` file about 10MB ~ 250k faces. If double the amount of faces (500k) the next processing step in Blender will take a long time. However, this migt be different for various models, rather check by yourself.
+* Recommend to use low quality `.ply` file about 10MB ~ 250k faces. If double the amount of faces (500k) the next processing step in Blender will take a long time. However, this might be different for various models, rather check by yourself.
 * Process the `.ply` file with [mesh parametrization](https://ctu-mrs.github.io/docs/software/3d_model_processing/blender.html#mesh-parametrization) guide.
 * Import the Blender processed `.ply` file.
 * Run `Convert PerVertex UV to PerWedge UV` to convert `Blender` parametrization into `Meshlab` convention.
@@ -131,7 +131,7 @@ The pointcloud vertex color might not be detailed enough for the whole model or 
 
 #### Improving part of the model
 
-  * Recommend to check videos about **image texturing**. First is a [image alingment tool](https://www.youtube.com/watch?v=T7gAuI-LQ2w&ab_channel=MisterP.MeshLabTutorials) to visually align the image on the mesh. The second is [image parametrization and texturing](https://www.youtube.com/watch?v=OJZRuIzHcVw&ab_channel=MisterP.MeshLabTutorials) showing the final texture creation process and the result.
+  * Recommend to check videos about **image texturing**. First is a [image alignment tool](https://www.youtube.com/watch?v=T7gAuI-LQ2w&ab_channel=MisterP.MeshLabTutorials) to visually align the image on the mesh. The second is [image parametrization and texturing](https://www.youtube.com/watch?v=OJZRuIzHcVw&ab_channel=MisterP.MeshLabTutorials) showing the final texture creation process and the result.
   * **IMPORTANT NOTICE**. It is necessary to cut out the parts of the mesh model, where images are missing. Then color the part of the model with images and the rest of the model with the pointcloud. Finally, join them into the final model having several texture files. Meshlab allows to merge several texture files in one `.ply` file.
   * It might be useful to uncheck **Use distance weight** parameter. Otherwise, there will be dark color on some triangles.
 
@@ -144,9 +144,9 @@ The pointcloud vertex color might not be detailed enough for the whole model or 
   * **Recommend to save the MeshLab project `.mlp` as much as you can. MeshLab likes to crash.**
   * Correct the camera settings and sensor position and orientation for all raster images as described in [camera settings](https://ctu-mrs.github.io/docs/software/3d_model_processing/meshlab.html#raster-camera) guide.
   * Check the image alignment with toggle the `Show Current Raster Mode` button. If you zoom in and out, the alignment of the images and mesh model behind should be precise.
-    * *Note: We have noticed, that some of the images are not perfectly aligned. Usually the images are from the same scan position. Just to remind, every scanning position has 6 images. The calibratino should be same for all images and scanning position. Do not know, where the problem is.*
+    * *Note: We have noticed, that some of the images are not perfectly aligned. Usually the images are from the same scan position. Just to remind, every scanning position has 6 images. The calibration should be same for all images and scanning position. Do not know, where the problem is.*
     * If the images are not aligned well, you might tune it up with the `Raster alignment` tool from MeshLab. Try to simply press `Apply mutual information registration` button without any setting up the algorithm since the image and the model are almost aligned, it could easily help. If did not help, check the [Raster Alignment Tool video](https://youtu.be/T7gAuI-LQ2w) how to use the tool.
-    * These alingment will change the camera FOV, position and orientation.
+    * These alignment will change the camera FOV, position and orientation.
   * Run the `Parametrization + texturing from registered textures` function. Choose the parameters according to the [video](https://youtu.be/OJZRuIzHcVw) guide.
     * *Note: It might be possible to combine good texture from pointcloud with texture from raster images. Parametrization and texturing could be done separately. Check!*
   * Save the final textured mesh in required format described in the [export](https://ctu-mrs.github.io/docs/software/3d_model_processing/export.html) section.
@@ -158,7 +158,7 @@ It is recommended to convert the texture to `.jpg` format. Recommend to use eith
 
     * `convert input.png -quality 30 output.jpg`
     * The 30% jpeg quality is sufficient. The `imagemagick` tool might have some RAM/disk limitations set in default config file `/etc/ImageMagick-version/policy.xml`. Check it if you have errors. If yes comment that limitations.
-  * Do not forget to update the texture for current mesh. **READ THIS CAREFULLY, OTHERWISE YOU MIGHT ACCIDENTALY REWRITE THE TEXTURE FILE.**
+  * Do not forget to update the texture for current mesh. **READ THIS CAREFULLY, OTHERWISE YOU MIGHT ACCIDENTALLY REWRITE THE TEXTURE FILE.**
     * Press `Export Mesh` icon.
     * You should see the original `.png` file name on the right side of the popup window.
     * Double click the texture name and type the name of the new updated texture file. **Make sure that there is no texture located in the same folder with such a name**.

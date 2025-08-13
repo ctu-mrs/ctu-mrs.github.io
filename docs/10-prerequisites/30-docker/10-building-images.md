@@ -45,7 +45,7 @@ FROM ctumrs/ros:noetic
 
 RUN apt-get -y update
 
-# workaround interractive prompts during apt installations
+# workaround interactive prompts during apt installations
 RUN echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install keyboard-configuration
 

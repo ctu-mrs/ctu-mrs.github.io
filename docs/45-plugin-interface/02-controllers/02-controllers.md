@@ -5,12 +5,12 @@ description: API for the controller plugins
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # The Controller plugin interface
 
-The Controller plugin takes current UAV state and command from the [Reference tracker](https://ctu-mrs.github.io/docs/features/trackers/) and provides the desired control ouptuts, which are sent to the flight controller (Embedded autopilot block in diagram below) via [Hardware API](https://ctu-mrs.github.io/docs/plugin-interface/hardware-api/).
+The Controller plugin takes current UAV state and command from the [Reference tracker](https://ctu-mrs.github.io/docs/features/trackers/) and provides the desired control outputs, which are sent to the flight controller (Embedded autopilot block in diagram below) via [Hardware API](https://ctu-mrs.github.io/docs/plugin-interface/hardware-api/).
 Diagram below shows the data architecture of the MRS system where the block containing the Controller plugin is marked in red.
 
 The controller plugin is compiled as [ROS plugins](http://wiki.ros.org/pluginlib) with the [interface](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/include/mrs_uav_managers/controller.h) defined by the [control manager](https://github.com/ctu-mrs/mrs_uav_managers).
@@ -36,8 +36,8 @@ In the controller plugin source code, you can decide what to return, but it must
 
 ## Example controller plugin 
 
-An example of a cutom controller plugin can be found at [this link](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/controller_plugin).
-It is highly reccomended to base your controller plugin on this example.
+An example of a custom controller plugin can be found at [this link](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/controller_plugin).
+It is highly recommended to base your controller plugin on this example.
 In the example, there is also a [tmux folder](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/controller_plugin/tmux) containing a script that starts the simulation of a UAV in the [MRS multirotor simulator](https://github.com/ctu-mrs/mrs_multirotor_simulator), where the UAV uses the [example controller plugin](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/controller_plugin).
 You have to install [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system) first to run the example.
 To load the controller plugin into the [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system), you need to provide a custom config file to the [MRS UAV Core](https://github.com/ctu-mrs/mrs_uav_core) containing the parameters for the controller plugin.

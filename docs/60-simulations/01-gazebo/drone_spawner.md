@@ -3,7 +3,7 @@ title: MRS Drone Spawner
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # About
@@ -139,12 +139,12 @@ An example of a csv pos-file:
 By default, the UAV will connect to Gazebo using Mavlink on port 14550. If you want to use QGroundControl or access raw Mavlink data, you can use the spawner param `--enable_mavlink_gcs` to add an extra mavlink stream.
 Note that this will not cause the drone to autoconnect to QGC, but you can manually connect in Application Settings -> Comm Links -> Add -> Type: UDP -> port: MAVLINK_GCS_PORT_REMOTE.
 The extra stream is configured [here](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/blob/master/ros_packages/mrs_uav_gazebo_simulation/ROMFS/px4fmu_common/init.d-posix/px4-rc.mavlink_gcs) and the UDP ports will be automatically assigned according to the UAV's ID as a `gcs_base_port + ID`. The stream will listen to the simulation data at a MAVLINK_GCS_UDP_PORT_LOCAL (default `18000 + ID`) and publish on a MAVLINK_GCS_UDP_PORT_REMOTE (default `18100 + ID`).
-Default port nubmers are loaded from the config file [spawner_params.yaml](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/blob/master/ros_packages/mrs_uav_gazebo_simulation/config/spawner_params.yaml).
+Default port numbers are loaded from the config file [spawner_params.yaml](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/blob/master/ros_packages/mrs_uav_gazebo_simulation/config/spawner_params.yaml).
 
 ## Jinja templates and SDF models
 
 We only provide model templates in Jinja format (suffix `.sdf.jinja`), which need to be *rendered*.
-The rendered SDF models are loaded direcly into Gazebo by the spawner.
+The rendered SDF models are loaded directly into Gazebo by the spawner.
 The SDF models may also be stored in temporary files if enabled in the **config file** (param `jinja_templates/save_rendered_sdf`).
 If enabled, the temporary files are saved to `/tmp` and named `mrs_drone_spawner_` + timestamp + unique hash + model type + vehicle name + `.sdf`.
 
@@ -171,8 +171,8 @@ The Spawner API requires each component to be defined as a **Jinja macro**.
 Inside the macro, the following variables must be declared:
 
 * `spawner_keyword` - this will become the argument to activate the component through the spawn service call
-* `spawner_description` - a descripton of the component displayed as the help
-* `spawner_default_args` - `dict` or `none`. Defines the default values of internal parameters that can be overriden from the spawn service call. For example a camera resolution or a plugin update rate.
+* `spawner_description` - a description of the component displayed as the help
+* `spawner_default_args` - `dict` or `none`. Defines the default values of internal parameters that can be overridden from the spawn service call. For example a camera resolution or a plugin update rate.
 
 We provide a generic macro to override the default args with the user input in `generic_components.handle_spawner_args`.
 An example of a component that is always active and the spawner only modifies its properties: `propellers_macro` in [component_snippets.sdf.jinja](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/blob/master/ros_packages/mrs_uav_gazebo_simulation/models/mrs_robots_description/sdf/component_snippets.sdf.jinja).

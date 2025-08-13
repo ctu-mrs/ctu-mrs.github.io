@@ -5,7 +5,7 @@ description: Inter-UAV collision avoidance
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # Inter-UAV collision avoidance
@@ -51,14 +51,14 @@ mrs_uav_trackers:
       correction:         3.0   # the altitude increase step when avoiding collision [m]
 ```
 
-*Note:* In case the names or the structure of these paremeters change in the future, you can always find the most up-to-date information using the `get_public_params.py` script (see [here](/docs/api/custom_configs/)).
+*Note:* In case the names or the structure of these parameters change in the future, you can always find the most up-to-date information using the `get_public_params.py` script (see [here](/docs/api/custom_configs/)).
 
 Furthermore, as mentioned above, the UAVs need to communicate with each other and share their predicted trajectories.
 Configuration of the inter-UAV communication has three parts:
 
 1. Specifying the list of UAVs in the group that should avoid collisions.
 2. Configuring ROS topics to be shared between the UAVs (the trajectories).
-3. Setting up the hostnames in `/etc/hosts`.
+3. Setting up the host names in `/etc/hosts`.
 
 The UAV names list is specified in a special custom config called `network_config.yaml`, that is passed to `mrs_uav_core core.launch` and to `mrs_uav_deployment run_nimbro.py`.
 
@@ -66,7 +66,7 @@ In real-world deployments, the sharing of ROS topics between UAVs is implemented
 In simulation, all topics are available for all UAVs by default, so NimbRo is not required, but the UAV names list still has to be provided in the `network_config.yaml`.
 
 The `/etc/hosts` file should be set up by default, unless you are using some custom-made UAV with special names.
-Check that the IP addresses and the corresponding hostnames of all UAVs are present in the file.
+Check that the IP addresses and the corresponding host names of all UAVs are present in the file.
 
 ## Things to double-check for collision avoidance
 

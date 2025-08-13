@@ -15,7 +15,7 @@ At the minimum, check out the sections related to [smart pointers](#dynamic-memo
 A list of the main tackled topics is:
 
  * [Avoid raw pointers, `new`, `malloc`, etc. like the devil.](#dynamic-memory-management)
- * [Take function parameters by constant referece (or constant copy in case of primitive types).](#function-parameters)
+ * [Take function parameters by constant reference (or constant copy in case of primitive types).](#function-parameters)
  * [Use C++ containers correctly.](#containers)
  * [Use the native multithreading and thread synchronization tools.](#thread-synchronization)
  * [Other tips and remarks.](#other-tips-and-remarks)
@@ -29,7 +29,7 @@ Other pages from our series on C++:
  2. [Debugging C++ programs with GDB](https://ctu-mrs.github.io/docs/software/gdb.html)
  3. [Profiling C++ programs for optimization](https://ctu-mrs.github.io/docs/software/profiling.html)
 
-If you spot any errors, don't understand something or have ideas for improevments, feel free to contact me at `matous.vrba (at) fel.cvut.cz`.
+If you spot any errors, don't understand something or have ideas for improvements, feel free to contact me at `matous.vrba (at) fel.cvut.cz`.
 
 ## Dynamic memory management
 
@@ -117,7 +117,7 @@ The rules of thumb when defining function parameters is:
          return {false, a};
      }
 
-     // preffered way since it's clearer what is input and what output
+     // preferred way since it's clearer what is input and what output
      // and all can be const, avoiding accidental modification
      const int a = 5;
      const auto [c, b] = foo(a);
@@ -154,7 +154,7 @@ The rules of thumb when defining function parameters is:
 
 The most used container in C++ is the [`std::vector`](https://en.cppreference.com/w/cpp/container/vector).
 If you're coming from C, you may try to use C-style static or dynamic arrays (e.g. `int a[N]` and `int* a = malloc(sizeof(int)*N)`).
-This is a bad coding practice in C++, because you'll be forced to reimplement a lot of functionality that already exists in the C++ standard (and you'll most likely make a mistake) and you're loosing on a lot of the great features of C++.
+This is a bad coding practice in C++, because you'll be forced to reimplement a lot of functionality that already exists in the C++ standard (and you'll most likely make a mistake) and you're losing on a lot of the great features of C++.
 
 You may also be tempted to use other more fancy containers, such as the associative [`std::unordered_map`](https://en.cppreference.com/w/cpp/container/unordered_map), but be wary of [*premature optimization*](https://ctu-mrs.github.io/docs/software/profiling.html#premature-optimization).
 Because of the way modern CPUs work, processing sequential data is much more effective then random memory access, so using **a linear-access container is faster than random-access containers in most cases** anyway (for more info, see [cache locality](https://en.wikipedia.org/wiki/Locality_of_reference), [branch prediction](https://en.wikipedia.org/wiki/Branch_predictor), [SIMD](https://en.wikipedia.org/wiki/Single_instruction,_multiple_data), and [instruction pipelining](https://en.wikipedia.org/wiki/Instruction_pipelining).
@@ -181,7 +181,7 @@ The non-bounds-checked operators will not produce any kind of error and happily 
 If you access memory outside of your process' reserved address space, the program will crash, otherwise, such out-of-bounds access *will not even be detected*.
 
 To save you *a lot* of headaches and debugging, **I strongly recommend always using bounds-checked element access** unless you really know what you're doing (similar rules as for using `std::vector` apply).
-The performace impact is most likely negligible (it does not change the asymptotic complexity of your algorithms, which is where the major performance costs typically comes from), so there is not really any major downsides.
+The performance impact is most likely negligible (it does not change the asymptotic complexity of your algorithms, which is where the major performance costs typically comes from), so there is not really any major downsides.
 If you think you're a good enough programmer to never access out-of-bounds elements, *you're not*, sorry.
 It happens even to the best of us ☺.
 
@@ -302,7 +302,7 @@ for (std::vector<float>::const_iterator it = std::cbegin(cont); it != std::cend(
   // do stuff with it
 }
 ```
-you can simplify this code without loosing expressivity to
+you can simplify this code without losing expressivity to
 ```cpp
 const std::vector<float> cont = init_container();
 for (auto it = std::cbegin(cont); it != std::cend(cont); it++)
@@ -350,7 +350,7 @@ A list of useful C++ libraries that you might need with links to their documenta
   - [https://docs.opencv.org/4.2.0/](https://docs.opencv.org/4.2.0/)
 * **PCL:** Point cloud processing (ROS has compatible interfaces).
   - [https://pointclouds.org/documentation/](https://pointclouds.org/documentation/)
-* **Boost:** General C++ library implementing *many* tools, algorithms and utilities (used internaly in ROS).
+* **Boost:** General C++ library implementing *many* tools, algorithms and utilities (used internally in ROS).
   - [https://www.boost.org/doc/libs/1_71_0/](https://www.boost.org/doc/libs/1_71_0/)
 * **`mrs_lib`**: Our own MRS library implementing some algorithms (e.g. various Kalman filters), ROS wrappers (e.g. for parameter loading) and other utilities (e.g. a 3D geometry library).
   - [https://ctu-mrs.github.io/mrs_lib/](https://ctu-mrs.github.io/mrs_lib/)

@@ -5,7 +5,7 @@ description: Status terminal user interface (TUI)
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # Status terminal user interface (TUI)
@@ -19,7 +19,7 @@ This page is describing the upcomming ROS2 version of the MRS UAV System (howeve
 * Especially useful in real world UAV flights, but works as well in simulation
 * Written in C++ with ncurses
 * Runs on the UAV within its TMUX session
-* Works through SSH on a flying UAV, or in a split-mode through nimbro-network (data is being collected on the UAV, transfered over nimbro, and the terminal interface runs on your remote computer)
+* Works through SSH on a flying UAV, or in a split-mode through nimbro-network (data is being collected on the UAV, transferred over nimbro, and the terminal interface runs on your remote computer)
 * vim-like key bindings
 
 ### Why is my mrs_uav_status blue?
@@ -37,7 +37,7 @@ If the MRS UAV Status window is focused, you can use it to command the UAV. This
    * use 'wsad' or 'hjkl' keys to fly laterally
    * use 'qe' keys to change the UAVs heading
    * use 'rf' keys to fly up and down
-   * use 'G' to switch between local and global mode, in local mode, the UAV follows the commands in its FCU frame, in global mode the commands are interpretted in the current world frame (X and Y are independed of the UAV's heading)
+   * use 'G' to switch between local and global mode, in local mode, the UAV follows the commands in its FCU frame, in global mode the commands are interpreted in the current world frame (X and Y are independent of the UAV's heading)
    * Only one key at a time is registered, multiple key inputs are not supported
    * To exit the remote mode, hit 'Esc'
 
@@ -63,16 +63,16 @@ Simply publish a [std_msgs/String](http://docs.ros.org/melodic/api/std_msgs/html
 
  * By default, only one message can be displayed from one node/nodelet manager.
  * By default, the message will be displayed for 10 seconds
- * You can use several parameters with mrs_uav_status. These parameters are placed at the begining of the string message, like this:
+ * You can use several parameters with mrs_uav_status. These parameters are placed at the beginning of the string message, like this:
     * ```-id my_id -R -p the rest of my message```
  * -id my_id
     * If you want to display more messages from one node/nodelet manager, you can use the argument -id my_id
-    * At the begining of you string, put "-id my_id the rest of my message"
+    * At the beginning of your string, put "-id my_id the rest of my message"
     * Message will be displayed for each unique id
 * -p
-    * You can add "-p " at the beginning of your string, to make the message persistent, it will not disappear, only if it is overriden by a new message
+    * You can add "-p " at the beginning of your string, to make the message persistent, it will not disappear, only if it is overridden by a new message
 * -r, -y,- g, -R, -Y -G
-    * By default, the messages will be displayed as black/white (depending on the current colorsheme). You can use -r -y -g parameters to set the color to red/yellow/green. If you use
+    * By default, the messages will be displayed as black/white (depending on the current color scheme). You can use -r -y -g parameters to set the color to red/yellow/green. If you use
       capital letter as the parameter, it will make the displayed message blink
 
 ### Monitoring ROS topic rates
@@ -80,7 +80,7 @@ Simply publish a [std_msgs/String](http://docs.ros.org/melodic/api/std_msgs/html
 MRS UAV Status can monitor rates of different ROS topics, and warn the user if the topic is published less or more frequently than required, or not published at all. There are two ways how to add monitored topics:
 
 * Static tf
-  * If a defined static tf is present, MRS UAV Status will monitor a coresponding topic.
+  * If a defined static tf is present, MRS UAV Status will monitor a corresponding topic.
   * This is intended to automatically monitor different sensor configurations.
   * To add more monitored static tfs, modify ```config/status.yaml``` file and add to the ```tf_static_list```
   * Each list member consists of 4 entries separated by spaces:

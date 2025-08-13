@@ -38,7 +38,7 @@ These quantities are roughly for 3 servings, scale them up as needed..
 
 - Mix everything and keep the heat on high until the soup starts boiling.
 - Turn the heat down, add a lid and boil for 15 minutes.
-- Use a masher or a hand-held mixer and mash the peas to your prefered consistency.
+- Use a masher or a hand-held mixer and mash the peas to your preferred consistency.
 - Dilute the soup. You can use water if you prefer a watery soup, but I would recommend using milk for a creamier result. You can even use cream for an extra creamy soup.
 
 [![](images/mash.jpg "Mashing")](images/mash.jpg) | [![](images/milk.jpg "Adding milk")](images/milk.jpg)

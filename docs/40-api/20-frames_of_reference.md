@@ -5,7 +5,7 @@ description: TF frames of reference
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # Frames of Reference
@@ -91,7 +91,7 @@ The sensor frames includes
 
 ## Additional frames
 
-Last group of frames used in MRS system is formed by coordinate frames created by [TransformManager](https://github.com/ctu-mrs/mrs_uav_managers/tree/ros2#TransformManager) from `nav_msgs/Odometry` messages or by addditional sotware (e.g., systems for localization).
+Last group of frames used in MRS system is formed by coordinate frames created by [TransformManager](https://github.com/ctu-mrs/mrs_uav_managers/tree/ros2#TransformManager) from `nav_msgs/Odometry` messages or by additional software (e.g., systems for localization).
 This group incorporates
 
 * **\<uav_name\>/mapping_origin**
@@ -101,7 +101,7 @@ This group incorporates
 
 ## Special LATLON frame
 
-The geographical location of object and robots is often represented using latitude, longitude and altitude (above mean sea level). Due to the curved nature of the Earth's surface, the transformation between the latitude-longitude coordinates and a Cartesian coordinate system (all the above frames) is non-linear in nature. These non-linear transformations are not part of the tf tree maintianed by the `tf2` library. However, the MRS system includes methods to perform transformations and can work with msgs/commands containing latitude-longitude information. Any msg/command having the following structure is accepted by the MRS system.
+The geographical location of object and robots is often represented using latitude, longitude and altitude (above mean sea level). Due to the curved nature of the Earth's surface, the transformation between the latitude-longitude coordinates and a Cartesian coordinate system (all the above frames) is non-linear in nature. These non-linear transformations are not part of the tf tree maintained by the `tf2` library. However, the MRS system includes methods to perform transformations and can work with msgs/commands containing latitude-longitude information. Any msg/command having the following structure is accepted by the MRS system.
 * `frame_id`: **latlon_origin**
 * `x`: latitude in degrees
 * `y`: longitude in degrees

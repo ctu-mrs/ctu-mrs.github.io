@@ -5,7 +5,7 @@ description: Installing the MRS using Apptainer
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # Apptainer
@@ -29,7 +29,7 @@ Please follow this link to the [repository](https://github.com/ctu-mrs/mrs_appta
 ## Doing it yourself
 
 Feel free to learn and master Apptainer yourself with the help of the official [documentation](https://apptainer.org/documentation/).
-Your first apptainer image of the MRS UAV System can be built by bootstraping from our docker image.
+Your first apptainer image of the MRS UAV System can be built by bootstrapping from our docker image.
 You can bootstrap from the latest _rolling_ version:
 ```
 ctumrs/mrs_uav_system:latest

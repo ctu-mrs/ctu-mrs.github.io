@@ -5,7 +5,7 @@ description: Handling transformations within the MRS
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # Transformations
@@ -33,7 +33,7 @@ Such frame_id, if it exists in the TF Tree, is compatible with both the MRS syst
 ### Using the short frame_id
 
 The short name of the `frame_id`, e.g., `world_origin` does not contain the prefix part.
-Short frame_id can be provided when sending data to the MRS System, which **automatically fills in the prefix based on the currently controlled UAV** befores transforming the data.
+Short frame_id can be provided when sending data to the MRS System, which **automatically fills in the prefix based on the currently controlled UAV** before transforming the data.
 
 ### Leaving it empty
 

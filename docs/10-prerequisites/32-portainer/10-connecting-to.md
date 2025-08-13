@@ -8,6 +8,6 @@ description: Connecting to Portainer
 
 1. Open your web browser
 2. Determine the hostname of the machine that run Portainer (e.g., `localhost`, or `uav1`)
-3. Open the url [https://localhost:9443](https://localhost:9443) (substitude your hostname)
+3. Open the url [https://localhost:9443](https://localhost:9443) (substitute your hostname)
 
 ![](./fig/portainer_login.png)
