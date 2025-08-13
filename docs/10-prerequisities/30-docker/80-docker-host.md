@@ -22,9 +22,9 @@ add the following:
 ExecStart=
 ExecStart= /usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375 --containerd=/run/containerd/containerd.sock
 ```
-and restart the service
+and reload the service
 ```bash
-sudo systemctl restart docker.service
+sudo systemctl reload docker.service
 ```
 ### Usage 
   Set the `DOCKER_HOST` environment variable to point to the remote Docker
