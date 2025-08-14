@@ -47,7 +47,7 @@ For this to work, the Docker daemon on the drone must be configured according to
 
 Edit the `session.yml` file and change `DOCKER_HOST` and the rest of the arguments to the hostname of your drone and then run `./tmux.sh`.
 
-If you wish, you can add more windows and control multiple drones with different `up.sh` scripts. After starting tmux, you'll get you an overview of the session with lazydocker and the uav status, courtesy of [mrs_uav_status](https://github.com/ctu-mrs/mrs_uav_status/tree/ros2).
+If you wish, you can add more windows and control multiple drones with different `up.sh` scripts. After starting tmux, you'll get an overview of the session with lazydocker and the uav status, courtesy of [mrs_uav_status](https://github.com/ctu-mrs/mrs_uav_status/tree/ros2).
 
 To exit, hit the killing shortcut: `ctrl+a k` (`ctrl+a` and then `k`). A menu will appear in which you confirm the selection.
 
