@@ -16,7 +16,7 @@ This page will guide you in getting ssh working between your computer and your d
 
 ## Configure network
 
-We recommend setting static ip's for your devices, in this guide, we'll assume that on your network:
+We recommend setting static IPs for your devices, in this guide, we'll assume that on your network:
 
 * Your computer's ip is `192.168.0.11`, with `pc1` as the hostname.
 
