@@ -19,4 +19,4 @@ It allows collaborative work between many people and can be managed entirely fro
   * merging,
   * fixing merge conflicts (will come sooner or later).
 
-Checkout out our [Cheatsheet](https://github.com/ctu-mrs/mrs_cheatsheet) for some useful tips.
+Check out our [Cheatsheet](https://github.com/ctu-mrs/mrs_cheatsheet) for some useful tips.

@@ -23,4 +23,4 @@ Without a mouse, you will become much more productive, and your carpal tunnels w
   * [https://www.youtube.com/watch?v=5r6yzFEXajQ](https://www.youtube.com/watch?v=5r6yzFEXajQ)
 * A list of particular features and key bindings used in our setup can be found here: [http://github.com/klaxalk/linux-setup/wiki](http://github.com/klaxalk/linux-setup/wiki)
 
-Checkout out our [Cheatsheet](https://github.com/ctu-mrs/mrs_cheatsheet) for some useful tips.
+Check out our [Cheatsheet](https://github.com/ctu-mrs/mrs_cheatsheet) for some useful tips.
