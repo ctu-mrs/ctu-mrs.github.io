@@ -29,10 +29,10 @@ description: Tips for Blender
 * Import .dae model
 * Adding camera path by clicking on add -> curve -> path
 * You can select path points by changing to Edit mode on left up corner and on the left side you can chose move, rotate or scale
-* Adding camera by cliking on add -> camera
+* Adding camera by clicking on add -> camera
 * Set camera on path by selecting camera, choose Object Constraint Properties tab on right panel, select add Object Constraint -> Follow Path
 * Check fixed position
-* You can set animation on 1st frame and right click on left panel on offset and set insert keyframe (you will add actual frame on loacation set by offset)
+* You can set animation on 1st frame and right click on left panel on offset and set insert keyframe (you will add actual frame on location set by offset)
 
 ## Saving rendered animation
 

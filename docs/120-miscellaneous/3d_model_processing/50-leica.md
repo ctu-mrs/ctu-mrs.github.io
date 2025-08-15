@@ -20,7 +20,7 @@ description: Working with Leica Cyclone Register 360
 
 ## Review and Optimize
 
-* The precision of scan matching can be improved by editing the points used for cloud-to-cloud matching. These points can be removed from matching proces but still can be used for visualisation later on. Explained [here](https://youtu.be/AV0LPKowOXU?t=1574). Really useful if you have buildings and trees together (static and dynamic structures).
+* The precision of scan matching can be improved by editing the points used for cloud-to-cloud matching. These points can be removed from matching process but still can be used for visualisation later on. Explained [here](https://youtu.be/AV0LPKowOXU?t=1574). Really useful if you have buildings and trees together (static and dynamic structures).
 * If having scans between outdoor/indoor environment, it is better to process outdoor and indoor separately. Then merge them back together. Meanwhile, cut off the visual points going through windows/mirrors because they will create ghost points.
 * There should be usually only **one bundle**. However, during the automatic bind process, there might be separate bundles created.
 * Select two scans and click **Visual Alignment** if not satisfied with the automatic binding process. Scans can be aligned in xy-axes and z-axis separately.
@@ -30,7 +30,7 @@ description: Working with Leica Cyclone Register 360
 * Recommend to clean most of the noise before the data export. Choose the **Bundle Cloud** mode and change the view of the camera to front/back/let/right/up/down position and cut off the noisy points with the selection tool. **You cannot undo one step. You can only restore all deleted points for particular setup.**
 * **There is a new surface tool to cut off some anomalies, as humans, ghosts etc from final merge.** The surface detection works quite well. Recommend to see the tutorial in the [video](https://www.youtube.com/watch?v=AV0LPKowOXU&t=1s) guide at the end.
 
-## Defining own cooridnate system
+## Defining own coordinate system
 
 * The Register 360 allows to setup up a new coordinate system. Follow the tutorial in the help of LCR.
 * It is important to change the used coordinate system in the field map overview.
@@ -46,10 +46,10 @@ description: Working with Leica Cyclone Register 360
 
 ### E57
 
-* Fomat contains **scan origins, images and points**.
+* Format contains **scan origins, images and points**.
 * It is possible to export with two variants
-  * **single point cloud (unstructered)**: can be decimated only with reduce cloud option providing average point spacing value. Useful to have equally distributed points in the scan, but misses the scanner position. Recommend to use **1mm** option. Have to be exported separatelly.
-  * **separate setups (structured)**: can be decimated only with sub-sampling factor method, but contains the scanner position. Useful to gain complete information from scanning. The sub-sampling decimation doest not have equally distributed data, recommend to use only to have images and scan origins.
+  * **single point cloud (unstructured)**: can be decimated only with reduce cloud option providing average point spacing value. Useful to have equally distributed points in the scan, but misses the scanner position. Recommend to use **1mm** option. Have to be exported separately.
+  * **separate setups (structured)**: can be decimated only with sub-sampling factor method, but contains the scanner position. Useful to gain complete information from scanning. The sub-sampling decimation does not have equally distributed data, recommend to use only to have images and scan origins.
 * Possible to open in both **Meshlab** and **CloudCompare** software.
 * **Cloud Compare** is more useful to load and visualize all data.
 * **Meshlab** does not support automatic normals creation and visualizing the scans origin and images.

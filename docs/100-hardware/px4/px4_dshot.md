@@ -7,7 +7,7 @@ title: PX4 Dshot setup
 By default, ESCs and Pixhawk communicate via PWM.
 This analog approach has a few disadvantages, it has relatively high latency and it requires calibration.
 Pixhawk and the ESCs have to "agree" which pulse width corresponds to what levels of throttle.
-Sometimes, ESCs can enter the calibration sequence by accident, this can happen when you use an anti-spark connector on you battery, or you have some intermittent contacts when pluging the battery in.
+Sometimes, ESCs can enter the calibration sequence by accident, this can happen when you use an anti-spark connector on you battery, or you have some intermittent contacts when plugging the battery in.
 The result is bad PWM calibration, which can lead to unexpected motor behaviour.
 To fix all these problems, we can use Dshot - a digital communication protocol.
 Dshot has lower latency, and no calibration, since it is digital.

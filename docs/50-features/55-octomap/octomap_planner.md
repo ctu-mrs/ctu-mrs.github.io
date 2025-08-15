@@ -5,7 +5,7 @@ description: Octomap planner
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # Octomap planner
@@ -19,7 +19,7 @@ After the planning request to **user-specified goal** is obtained, the **Octomap
 
 * gets an **initial condition** for planning from the current MPC prediction (x seconds in the future),
 * starts the planning algorithm to get a path from **initial condition** to the **user-specified goal**,
-* cuts the generated path to the required length to prevent generating unnecesarry long trajectory,
+* cuts the generated path to the required length to prevent generating unnecessary long trajectory,
 * sends the trajectory generation request to [MRS UAV trajectory generator](https://github.com/ctu-mrs/mrs_uav_trajectory_generation),
 * publishes the obtained trajectory reference to [MRS trajectory tracker](https://github.com/ctu-mrs/mrs_uav_trackers),
 * repeats the above described steps until the **user-specified goal** is reached while preventing potential collisions with the environment.

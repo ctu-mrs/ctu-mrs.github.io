@@ -5,7 +5,7 @@ description: Luxonis
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # Luxonis
@@ -40,6 +40,6 @@ ros2 launch depthai_ros_driver camera.launch.py
 
 Check the following sources
 
-[Luxonis Documentaton](https://docs.luxonis.com/software/ros/depthai-ros/driver/)
+[Luxonis Documentation](https://docs.luxonis.com/software/ros/depthai-ros/driver/)
 
 [GitHub Repository](https://github.com/luxonis/depthai-ros/tree/jazzy)

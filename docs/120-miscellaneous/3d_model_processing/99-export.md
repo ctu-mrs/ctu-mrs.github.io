@@ -22,7 +22,7 @@ Most of the times, the models are saved in following formats
 
 * Useful to share data with other software as Blender
 * More structured format for sharing.
-* Unfortunatelly bigger file size.
+* Unfortunately bigger file size.
 
 ## Web
 

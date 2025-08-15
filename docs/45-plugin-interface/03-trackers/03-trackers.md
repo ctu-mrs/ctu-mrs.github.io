@@ -5,14 +5,14 @@ description: API for the tracker plugins
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # The Tracker plugin interface
 
 
 The Tracker plugin receives the high-level references from a Mission \& navigation software and provides the UAV state reference to the [Feedback controller](https://ctu-mrs.github.io/docs/features/controllers/) that ensure the UAV follows the reference.
-In general, the high-level referene received from the Mission \& navigation software can be
+In general, the high-level reference received from the Mission \& navigation software can be
 
 * a single position and heading reference,
 * a trajectory, consisting of several position and heading references separated by a fixed time constant.
@@ -44,8 +44,8 @@ If you develop your own [controller plugin](https://ctu-mrs.github.io/docs/plugi
 
 ## Example tracker plugin 
 
-An example of a cutom tracker plugin can be found at [this link](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/tracker_plugin).
-It is highly reccomended to base your tracker plugin on this example.
+An example of a custom tracker plugin can be found at [this link](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/tracker_plugin).
+It is highly recommended to base your tracker plugin on this example.
 In the example, there is also a [tmux folder](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/tracker_plugin/tmux) containing a script that starts the simulation of a UAV in the [MRS multirotor simulator](https://github.com/ctu-mrs/mrs_multirotor_simulator), where the UAV uses the [example tracker plugin](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/tracker_plugin).
 You have to install [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system) first to run the example.
 To load the tracker plugin into the [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system), you need to provide a custom config file to the [MRS UAV Core](https://github.com/ctu-mrs/mrs_uav_core) containing the parameters for the tracker plugin.

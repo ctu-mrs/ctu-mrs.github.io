@@ -259,7 +259,7 @@
 % (implying that we are on the inside of the second join), the first join must not connect all the way to
 % to \pgf@nfold@cur@movedfirst, because that would overshoot the second join. Instead we connect to
 % \pgf@nfold@cur@movedlast (which is *closer* to the first join than \pgf@nfold@cur@movedfirst in this edge case).
-% To accomodate for the vertical offset we connect to \pgf@nfold@join@end which is the vertical
+% To accommodate for the vertical offset we connect to \pgf@nfold@join@end which is the vertical
 % offset of \pgf@nfold@cur@movedlast by definition.
 \def\pgf@nfold@token@finish@normal{%
   \pgfpathlineto{\pgf@nfold@join@end}%
@@ -724,7 +724,7 @@
   % Expand #1 once (\pgf@arrow@handle@shorthand@empty is just an identity operator)
   \expandafter\def\expandafter\pgf@tmp\expandafter{#1}
   \expandafter\pgf@nfold@parsearrowmacro\pgf@tmp\relax
-  % still need to gobble the rest of the orginal arrow definition
+  % still need to gobble the rest of the original arrow definition
   \pgfutil@gobble@until@relax
 }
 
@@ -1052,7 +1052,7 @@
   % Counterintuitively, an "invisibleline" segment has next@visible=1 because
   % we want its end join to be rendered.
   % In case the \pgfpathclose segment has non-zero length, we can just use a copy of
-  % this segment for the invisible line. Otherwise, the invisble line segment must will receive
+  % this segment for the invisible line. Otherwise, the invisible line segment must will receive
   % the same angle/tangent as the last finite-sized segment, which is the second-to-last
   % segment overall (cached in \pgf@nfold@sectolast@segment).
   \ifdim\pgf@xa>.1pt\relax%

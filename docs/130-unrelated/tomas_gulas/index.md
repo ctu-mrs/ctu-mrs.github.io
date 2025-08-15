@@ -8,7 +8,7 @@ title: "Tomas's Gulas"
 
 * low heat: boiling occurs, but it does not boil much without a lid
 * medium heat: boiling occurs even without a lid
-* hight heat: boiling is too fast with a cover, frying is possible
+* high heat: boiling is too fast with a cover, frying is possible
 
 ## Ingredients
 
@@ -89,9 +89,9 @@ All the quantities are for 4 servings.
 \end{figure} -->
 
 ![The meat is chopped to small pieces.](images/meat_chopped.jpg)
-![It can be pre-seasoned (salt + pepper) beforhand, it can make it easier to judge the amount of seasoning if you are experimenting.](images/meat_seasoned.jpg)
+![It can be pre-seasoned (salt + pepper) beforehand, it can make it easier to judge the amount of seasoning if you are experimenting.](images/meat_seasoned.jpg)
 <!-- \begin{figure}[!h]
-\caption{The meat is chopped to small pieces (left). It can be pre-seasoned (salt + pepper) beforhand, it can make it easier to judge the amount of seasoning if you are experimenting.}
+\caption{The meat is chopped to small pieces (left). It can be pre-seasoned (salt + pepper) beforehand, it can make it easier to judge the amount of seasoning if you are experimenting.}
 \end{figure} -->
 
 ![When the onion is caramelized add the paprika spice.](images/onion_golden.jpg)

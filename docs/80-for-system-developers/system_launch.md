@@ -5,7 +5,7 @@ descriptin: What happens when you launch the system
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # MRS System Launch Pipeline
@@ -32,7 +32,7 @@ The param loader is a special component of `mrs_lib` and serves as an evolution 
 
 As such, when you launch the MRS system, the parameters are loaded in every node for itself and passed to each plugin inside a node. The order of loading and returning the parameters is as follows:
 
-- `custom_config`: The custom configuration of the system specified in the launch file. Given hightest priority.
+- `custom_config`: The custom configuration of the system specified in the launch file. Given highest priority.
 - `platform_config`: The platform config is specific to each UAV of the system and is loaded and retrieved with second highest priority.
 - `world_config`: The config containing the origin, co-ordinates, and safety area specifications.
 - `network_config`

@@ -23,7 +23,7 @@ This guide is written for Pixhawk 4, because it is used on most of the MRS aeria
 
 - Install the Pixhawk into the drone frame and connect the power cables from the distribution board to the `POWER1` and `POWER2` slots.
 - Connect the ESC signal cable to the `I/O PWM OUT` port.
-- Connect the RC receiver. At MRS we use an OPTIMA SL reciver with SBUS output, so it is connected to the `DSM/SBUS RC` port.
+- Connect the RC receiver. At MRS we use an OPTIMA SL receiver with SBUS output, so it is connected to the `DSM/SBUS RC` port.
 - Connect the onboard computer to the `TELEM2` port. This is a UART port which ensures communication between the Pixhawk and the onboard computer. We use an FTDI serial to USB converter to connect the Pixhawk with the onboard computer.
 -. Optionally, you can connect other sensors, like a GPS module, rangefinder, etc. Note that the arming button and the buzzer are integrated into the GPS receiver, so if you want to use them either connect the GPS receiver or your own arming button and buzzer to the `GPS MODULE` port. The arming button has to be disabled in SW if it is not used (this is unsafe).
 
@@ -41,7 +41,7 @@ Install the SD card back into the Pixhawk.
 - Download [QGroundControl](http://qgroundcontrol.com/)
 - Connect the Pixhawk to your computer with a USB cable and run QGroundControl
 - Update the Pixhawk firmware to the latest stable version. Optionally, you can use our [tweaked firmware](https://ctu-mrs.github.io/docs/hardware/px4_firmware.html) or your custom firmware.
-- Set the airframe type according to your drone (most common options are Generic Quadcopter, Generic Hexarotor and Genereic Octocopter)
+- Set the airframe type according to your drone (most common options are Generic Quadcopter, Generic Hexarotor and Generic Octocopter)
 - Calibrate all the sensors according to the instructions in QGroundControl. Pixhawk has to be installed in the drone frame during calibration.
 
 [![](fig/Qground1.png "QGroundControl frame selection")](fig/Qground1.png) | [![](fig/Qground2.png "QGroundControl sensor calibration")](fig/Qground2.png)
@@ -75,7 +75,7 @@ Install the SD card back into the Pixhawk.
 [![](fig/Qground3.png "QGroundControl radio setup")](fig/Qground3.png) | [![](fig/Qground4.png "QGroundControl flight modes setup")](fig/Qground4.png)
 
 - Calibrate your ESCs in the `Power` section. You can also configure your battery here (not needed for the MRS UAV system). Note that the `Power` icon may stay red, you can ignore this.
-- In the `Safety` section, configure failsafe actions. Standard MRS configuration is Warning for Low Battery Failsafe Trigger, Land mode for RC Loss Failsafe Trigger and Land imediately in the Return To Launch Settings. No other triggers are activated (Object detection, data link loss etc.).
+- In the `Safety` section, configure failsafe actions. Standard MRS configuration is Warning for Low Battery Failsafe Trigger, Land mode for RC Loss Failsafe Trigger and Land immediately in the Return To Launch Settings. No other triggers are activated (Object detection, data link loss etc.).
 - Setup the RC loss failsafe. This failsafe is activated when the drone is flying manually (not in offboard mode) and the RC signal is lost. The RC receiver on the drone is configured to output abnormally low throttle signal when RC is lost, which is detected by the Pixhawk. This guide is for the Hitec Optima receivers, if you are using a different receiver the configuration steps may be different. To configure RC loss failsafe, follow these steps:
   * Turn on your RC transmitter and receiver.
   * Push you RC transmitter's throttle stick to the lowest level, then trim the throttle channel all the way down and use sub-trims to trim it even lower (we want to achieve the lowest possible value at the throttle CH2 channel).
@@ -114,7 +114,7 @@ Replace idVendor, idProduct and serial with you values, and change the OWNER nam
 roslaunch mrs_uav_general mavros_uav.launch
 ```
 
-# Garmin rangefinder throught Pixhawk
+# Garmin rangefinder through Pixhawk
 
 - The Pixhawk's sd-card config should contain:
 ```

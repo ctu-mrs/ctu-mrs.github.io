@@ -5,7 +5,7 @@ description: Generating trajectories using nonlinear optimization
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # Trajectory generation
@@ -56,7 +56,7 @@ Output: by default, the node calls [/uav*/control_manager/trajectory_reference](
 ### Minimum waypoint distance
 
 The minimum distance between the waypoints is set to 0.05 m.
-A waypoint that violates the condition relative to its predecesor will be removed.
+A waypoint that violates the condition relative to its predecessor will be removed.
 
 ### Segment subsectioning
 
@@ -106,7 +106,7 @@ Therefore, only the **horizontal** constraints values are pull out of [ControlMa
 For arbitrarily structured paths set the horizontal and vertical constraints equal in the [ConstraintManager](https://github.com/ctu-mrs/mrs_uav_managers).
 
 The input service/topic allows to override the maximum velocity and acceleration constraints.
-If overriden, the smaller values (between the user-overriden and the supplied by the [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers)) will be used.
+If overridden, the smaller values (between the user-overridden and the supplied by the [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers)) will be used.
 
 ## Dependencies
 

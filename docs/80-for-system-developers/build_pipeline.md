@@ -5,7 +5,7 @@ descriptin: MRS ROS Build Pipeline
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # MRS ROS Build Pipeline
@@ -32,7 +32,7 @@ These [packages](https://github.com/ctu-mrs/buildfarm/blob/master/nonbloom.yaml)
 
 ### Third-party ROS packages
 
-These [packages](https://github.com/ctu-mrs/buildfarm/blob/master/thirdparty.yaml) do not change often and not dependend on anything from the custom MRS packages (the third group).
+These [packages](https://github.com/ctu-mrs/buildfarm/blob/master/thirdparty.yaml) do not change often and not dependent on anything from the custom MRS packages (the third group).
 
 ### MRS packages
 
@@ -43,11 +43,11 @@ They can depend on the third-party packages.
 
 ### Unstable pipeline
 
-The unstable pipiline builds packages into the [unstable PPA](https://github.com/ctu-mrs/ppa-unstable).
+The unstable pipeline builds packages into the [unstable PPA](https://github.com/ctu-mrs/ppa-unstable).
 The packages are most-commonly built from the **master** branch of the git repository.
 The particular branches are encoded in the buildfarm definition files.
-Each push to the respective branch generates a **deb** package immediatelly.
-A user won't typically use the unstable PPA, unles he specifically choses to.
+Each push to the respective branch generates a **deb** package immediately.
+A user won't typically use the unstable PPA, unless he specifically choses to.
 The unstable PPA is meant to be used by developers (the packages appear there quickly) and is used to regularly check the state of the main branch in all the repositories.
 Tests are executed daily on the unstable PPA.
 

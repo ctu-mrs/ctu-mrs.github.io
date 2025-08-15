@@ -5,7 +5,7 @@ description: Obstacle bumper
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # Obstacle bumper
@@ -36,8 +36,8 @@ The threshold has the two following components:
 1. A static component defined by the user,
 2. A dynamic component equal to the maximum stopping distance given the allowed system dynamics.
 
-The two compoents are added together in real time.
-When a distance to the obstacle is lower than the sum of both compoenents, the system takes control of the vehicle and moves it away from the obstacle untill the safety distance is no longer violated.
+The two components are added together in real time.
+When a distance to the obstacle is lower than the sum of both components, the system takes control of the vehicle and moves it away from the obstacle until the safety distance is no longer violated.
 
 ## Configuration
 
@@ -62,11 +62,11 @@ mrs_uav_managers:
 
       enabled: true
 
-      # should a tracker be switch for the avoindace maneuvre?
+      # should a tracker be switch for the avoidance maneuver?
       switch_tracker: true
       tracker: "MpcTracker"
 
-      # should a controller be switch for the avoindace maneuvre?
+      # should a controller be switch for the avoidance maneuver?
       switch_controller: true
       controller: "Se3Controller"
 

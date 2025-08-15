@@ -5,7 +5,7 @@ description: Configuring the MRS UAV System
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # Motivation
@@ -17,7 +17,7 @@ In this tutorial, we provide an efficient way to customize the configuration **w
 ## The concept of a _custom config_ file
 
 Each launch file within our system loads appropriate config files from its package.
-Changing these config files directly is **not recommended** as well as **copying them elsewehere and changing the launch file**.
+Changing these config files directly is **not recommended** as well as **copying them elsewhere and changing the launch file**.
 Instead, a parameter can be used to pass a **custom config** file that only overrides the values that the used wants to change relative to the defaults.
 This mechanism allows the user to store the changes locally.
 In general, our launchfiles accept the argument
@@ -28,7 +28,7 @@ which is used to pass the path to the custom config.
 
 ## core.launch configs
 
-The [MRS UAV System](https://github.com/ctu-mrs/mrs_uav_system/tree/ros2) is launched throught the `core.py` launch file.
+The [MRS UAV System](https://github.com/ctu-mrs/mrs_uav_system/tree/ros2) is launched through the `core.py` launch file.
 The `core.launch` requires the following 2 custom configuration files:
 
 ## The Platform Config

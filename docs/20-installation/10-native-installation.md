@@ -1,11 +1,11 @@
 ---
 title: Native installation
-pagination_label: Installing the MRS nativelly
-description: Installing the MRS nativelly
+pagination_label: Installing the MRS natively
+description: Installing the MRS natively
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # Native installation of the MRS UAV System
@@ -27,7 +27,7 @@ curl https://ctu-mrs.github.io/ppa2-stable/add_ppa.sh | bash
   * <details>
     <summary> Special instructions for the MRS System developers </summary>
 
-      * Instead of the stable PPA, you can add the **[unstable](https://github.com/ctu-mrs/ppa-unstable)** PPA, for which the packages are build immediatelly after being pushed to **master**.
+      * Instead of the stable PPA, you can add the **[unstable](https://github.com/ctu-mrs/ppa-unstable)** PPA, for which the packages are build immediately after being pushed to **master**.
       * If you have both PPAs, the **unstable** has a priority.
       * Beware! The **unstable** PPA might be internally inconsistent, buggy and dangerous!
 
@@ -65,7 +65,7 @@ sudo apt update && rosdep update && sudo apt upgrade --with-new-pkgs --allow-dow
 ### What does it do?
 
 * `sudo apt update` will refresh the available debian packages from the archives.
-* `rosdep update` will refresh the rosdep depedency tree >
+* `rosdep update` will refresh the rosdep dependency tree >
 * `sudo apt upgrade` will download the new versions of packages.
   * `--with-new-pkgs` will ensure that if new dependency appears for an already installed package, it will be installed as well.
   * `--allow-downgrades` will allow to downgrade a package version. This happens when installing our forks of official ROS packages.

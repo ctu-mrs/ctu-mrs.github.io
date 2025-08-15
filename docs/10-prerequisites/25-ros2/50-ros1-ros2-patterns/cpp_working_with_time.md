@@ -14,7 +14,7 @@ description: Working with ROS Time in ROS2
 
 ## rclcpp::Duration
 
-Duration object storing an interal of `1 second`:
+Duration object storing an interval of `1 second`:
 ```cpp
 rclcpp::Duration(std::chrono::duration<double>(1.0))
 ```

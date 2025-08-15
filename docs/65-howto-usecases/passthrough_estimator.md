@@ -5,7 +5,7 @@ description: A guide on how to use the passthrough estimator within MRS system
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # Passthrough Estimator
@@ -41,7 +41,7 @@ The odometry used as input for the passthrough estimator must satisfy at least t
   * e.g. if a position suddenly jumps 2 meters due to a loop closure, it is bad   
 * Body-frame velocities — The linear and angular velocities are in the body (FCU) frame of the UAV  
   * The frame must be specified in the `child_frame_id` of the odometry message (e.g., `uav1/fcu`) 
-* Consistend pose and velocity — The pose should correspond with integrated velocities (up to some reasonable drift)
+* Consistent pose and velocity — The pose should correspond with integrated velocities (up to some reasonable drift)
 
 ## Running the Passthrough Estimator
 

@@ -3,7 +3,7 @@ title: Custom drone
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # Adding a custom drone to the simulation (tutorial)
@@ -610,7 +610,7 @@ The sensor will be a monocular grayscale camera based on the gazebo ros camera p
 
   {%- set spawner_keyword = 'enable-custom-monochrome-camera' -%} {# access this macro from the drone spawner #}
   {%- set spawner_description = 'Add a custom monochrome camera to the drone' -%} {# displayed when --help is called in the drone spawner #}
-  {%- set spawner_default_args = {'update_rate': 45, 'noise': 0.004} -%} {# internal params that can be overriden in spawn-time #}
+  {%- set spawner_default_args = {'update_rate': 45, 'noise': 0.004} -%} {# internal params that can be overridden in spawn-time #}
 
   {%- if spawner_keyword in spawner_args.keys() -%}
 

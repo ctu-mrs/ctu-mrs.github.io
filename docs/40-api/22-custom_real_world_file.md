@@ -5,7 +5,7 @@ description: How to create a custom real world file for the MRS system to fly in
 ---
 
 :::warning
-This page is describing the upcomming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
+This page is describing the upcoming ROS2 version of the MRS UAV System (however, it may be still outdated). If you are looking for ROS1 version of the docs, follow to https://ctu-mrs.github.io/docs/1.5.0/introduction/.
 :::
 
 # Frames of Reference
@@ -60,7 +60,7 @@ There are two choices available for the coordinate system in the real world file
 
 For example, the latitude and longitude for our university yard can be specified as ```50.076408, 14.418019``` in the `LATLON` system. The same point can be specified as ```458357.390, 5547288.346``` in the `UTM` system.
 
-This origin leads to the defintion of a plane which converts from either `LATLON` or `UTM` to the local cartesian plane with co-ordinates in meters.
+This origin leads to the definition of a plane which converts from either `LATLON` or `UTM` to the local cartesian plane with co-ordinates in meters.
 
 
 ## Safety Area

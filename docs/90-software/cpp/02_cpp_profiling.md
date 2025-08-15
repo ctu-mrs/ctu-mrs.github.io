@@ -15,7 +15,7 @@ Other pages from our series on C++:
  3. [Profiling C++ programs for optimization](https://ctu-mrs.github.io/docs/software/profiling.html) (this page)
 
 In case you're currently asking yourself "what the hell is profiling?", it is a process of finding which parts of your code are slow or inefficient and ideally also of possible ways to optimize it.
-We will use the following (**truly terrible!**) implementation of the Fibonacci sequence for demostration purposes:
+We will use the following (**truly terrible!**) implementation of the Fibonacci sequence for demonstration purposes:
 
 ```cpp
 #include <iostream>
@@ -338,8 +338,8 @@ The `at()` method is not even present in the logged call stacks, because it take
 
 ![KCachegrind screenshot after optimization](fig/kcachegrind2.png)
 
-Instead, we could focus on optimizing the `fibonacci()` function itself (i.e. remove recursion and use a sequential algoritm instead) -- or use `sequence.reserve(N_elems)` before calling the `fibonacci()` function to reduce the number of reallocations.
-The `at()` method is actually a good coding practice because if someone were to take our code as is and modify it to remove the check for the containers size before the element access for some reason, the `at()` would help catch this bug, potetially saving you significantly more time than you'd spend prematurely optimizing it or even debugging a sporadic segfault caused by an out-of-bounds access.
+Instead, we could focus on optimizing the `fibonacci()` function itself (i.e. remove recursion and use a sequential algorithm instead) -- or use `sequence.reserve(N_elems)` before calling the `fibonacci()` function to reduce the number of reallocations.
+The `at()` method is actually a good coding practice because if someone were to take our code as is and modify it to remove the check for the containers size before the element access for some reason, the `at()` would help catch this bug, potentially saving you significantly more time than you'd spend prematurely optimizing it or even debugging a sporadic segfault caused by an out-of-bounds access.
 
 Overall, if your program is slow, remember to measure first, optimize later.
 
