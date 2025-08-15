@@ -91,7 +91,7 @@ You'll be prompted for the password of the `mrs` user and your public key will b
 
 ### Edit SSH config
 
-In ∼/.ssh/config you can set aliases for ssh connections which will set the hostname, user and key used when connecting to them. You can set it on both your machines like this:
+In `∼/.ssh/config` you can set aliases for ssh connections which will set the hostname, user and key used when connecting to them. You can set it on both your machines like this:
 
 ```bash
 host uav1
