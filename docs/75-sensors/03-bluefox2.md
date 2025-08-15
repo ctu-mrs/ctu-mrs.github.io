@@ -93,4 +93,4 @@ Note: You cannot specify namespace in your custom config because this node is ru
 
 Check the following sources
 
-[GitHub Repository](https://github.com/ctu-mrs/realsense/tree/ros2)
+[GitHub Repository](https://github.com/ctu-mrs/bluefox2/tree/ros2)
