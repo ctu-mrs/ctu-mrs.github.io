@@ -10,7 +10,7 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 # Deployment using standalone Docker
 
-This page will describe how to run a Docker Compose session of the MRS UAV System using Lazydocker and Tmux. For more info about what those are and how to install them, please check the [prerequisities](https://ctu-mrs.github.io/docs/prerequisities/).
+This page will describe how to run a Docker Compose session of the MRS UAV System using Lazydocker and Tmux. For more info about what those are and how to install them, please check the [prerequisites](https://ctu-mrs.github.io/docs/prerequisites/).
 
 ## Get the mrs_docker repo
 
@@ -43,7 +43,7 @@ just_flying_zenoh
 
 ### Remote
 
-For this to work, the Docker daemon on the drone must be configured according to the instructions at [docker-host](https://ctu-mrs.github.io/docs/prerequisities/docker/docker-host), we also recommend this [ssh configuration](https://ctu-mrs.github.io/docs/prerequisities/ssh).
+For this to work, the Docker daemon on the drone must be configured according to the instructions at [docker-host](https://ctu-mrs.github.io/docs/prerequisites/docker/docker-host), we also recommend this [ssh configuration](https://ctu-mrs.github.io/docs/prerequisites/ssh).
 
 Edit the `session.yml` file and change `DOCKER_HOST` and the rest of the arguments to the hostname of your drone and then run `./tmux.sh`.
 
