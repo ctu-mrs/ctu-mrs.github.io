@@ -28,7 +28,7 @@ For more info about setting the environment variables, check the [native install
 
 ## Start the compose session
 
-Before you start the session, you should edit `compose.yaml` according to your needs, for example to add or remove sensors your drone uses. The main image used will be [ctumrs/mrs_uav_system](https://hub.docker.com/r/ctumrs/mrs_uav_system)
+Before you start the session, you should edit `compose.yaml` according to your needs, for example to add or remove sensors your drone uses. The main image used will be [ctumrs/mrs_uav_system](https://hub.docker.com/r/ctumrs/mrs_uav_system).
 
 ### On the drone
 
