@@ -10,6 +10,8 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 # Deployment using standalone Docker
 
+Docker is a platform that allows you to build, share, and run applications quickly in a repeatable and isolated way. It uses containers which are like extended versions of chroot.
+
 This page will describe how to run a Docker Compose session of the MRS UAV System using Lazydocker and Tmux. For more info about what those are and how to install them, please check the [prerequisites](https://ctu-mrs.github.io/docs/prerequisites/).
 
 ## Get the mrs_docker repo
@@ -20,19 +22,19 @@ In this example, we'll use [uav30](https://github.com/ctu-mrs/mrs_docker/tree/ma
 
 ## Configure environment variables 
 
-The values in the `stack.env` file will be set in every service from `compose.yml`, this is set as an argument to docker compose in `up.sh` and `down.sh`.
+The values in the `stack.env` file will be set in every service from `compose.yaml`, this is set as an argument to docker compose in `up.sh` and `down.sh`.
 
 For more info about setting the environment variables, check the [native installation](https://ctu-mrs.github.io/docs/deployment/native/bashrc_configuration#bashrc-for-a-real-uav).
 
 ## Start the compose session
 
-Before you start the session, you should edit `compose.yml` according to your needs, for example to add or remove sensors your drone uses.
+Before you start the session, you should edit `compose.yaml` according to your needs, for example to add or remove sensors your drone uses. The main image used will be [ctumrs/mrs_uav_system](https://hub.docker.com/r/ctumrs/mrs_uav_system)
 
 ### On the drone
 
-You can use `./up.sh` to start a session in the background and `/.down.sh` to end it.
+You can use `./up.sh` to start a session in the background and `./down.sh` to end it.
 
-Running `/up.sh -h` will show you the arguments that can be passed to the script, notably `-n` which will make the script not try to overwrite colcon_workspace.
+Running `./up.sh -h` will show you the arguments that can be passed to the script, notably `-n` which will make the script not try to overwrite colcon_workspace.
 
 These scripts source `setup.sh`, in it the `SESSION_NAME` variable is set which will prefix every resource created by the compose session like volumes and containers:
 
@@ -55,7 +57,7 @@ To exit, hit the killing shortcut: `ctrl+a k` (`ctrl+a` and then `k`). A menu wi
 
 When running lazydocker, you can see that an init container has exited, this is expected for the system to run properly.
 
-We define the init service in `compose.yml` and run it before all others for the purpose of creating volumes and filling them with shared data with a command like:
+We define the init service in `compose.yaml` and run it before all others for the purpose of creating volumes and filling them with shared data with a command like:
 
 ```bash
 docker compose cp . init:/etc/docker
