@@ -107,7 +107,7 @@ host github.com
 
 ### Test connection
 
-Now you should be able to ssh to your drone without using your password
+Now you should be able to ssh to your drone without using your password:
 
 ```bash
 ssh uav1 'echo Hello from the drone!'
@@ -122,6 +122,6 @@ scp -rPC uav1:/tmp/file.txt .
 rsync -azP uav1:/tmp/file.txt .
 ```
 
-You may disable ssh password authentication for added security, more info about it [here](https://serverpilot.io/docs/guides/ssh/password-auth/)
+You may disable ssh password authentication for added security, more info about it [here](https://serverpilot.io/docs/guides/ssh/password-auth/).
 
 Check out our [Cheatsheet](https://github.com/ctu-mrs/mrs_cheatsheet) for some useful tips.
