@@ -31,6 +31,23 @@ Then the launch command will work
 ros2 launch depthai_ros_driver camera.launch.py
 ```
 
+### In Docker
+
+Place the following compose session snippet into the [example session](deployment/docker/):
+
+```yaml
+  # starts the HW API for connecting the MRS UAV System to PX4
+  luxonis:
+    image: ctumrs/mrs_uav_system:${MRS_UAV_SYSTEM_VERSION}
+    network_mode: host
+    volumes:
+      - /dev:/dev
+    privileged: true
+    env_file:
+      - ./stack.env
+    command: bash -c "ros2 launch depthai_ros_driver camera.launch.py namespace:=$UAV_NAME pointcloud.enable:=true"
+```
+
 ## Useful parameters
 
 - **namespace** prefix for the oak topics e.g namespace:=$UAV_NAME
