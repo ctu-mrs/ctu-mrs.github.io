@@ -7,10 +7,10 @@ title: PX4 RTK Knowledge Base
 
 Following are the parameters that have to be changed to fly on the F9P Helical RTK system.
 
-`EKF2_GPS_P_NOISE` = 0.2
-`EKF2_GPS_V_NOISE` = 0.2
-`EKF2_HGT_REF` = 1 to fly on GPS altitude
-`GPS_UBX_DYNMODEL` = 8 for flying at the \<4g civilian limit of accelerations
+`EKF2_GPS_P_NOISE` = 0.2  
+`EKF2_GPS_V_NOISE` = 0.2  
+`EKF2_HGT_REF` = 1 to fly on GPS altitude  
+`GPS_UBX_DYNMODEL` = 8 for flying at the \<4g civilian limit of accelerations  
 
 ### PX4 HW API Changes
 ---
