@@ -17,7 +17,7 @@ Following are the parameters that have to be changed to fly on the F9P Helical R
 
 It was observed that on `v1.14.0`, the mavros topic `/mavros/odometry/in` used by the PX4 `api.launch` for new PX4 boards is providing velocity estimates in the wrong frame and angular velocities are noisy. So, it is recommended to move the `api.launch` topic remap to: 
 
-```
+``` xml
 <remap if="$(eval arg('OLD_PX4_FW') == 0)" from="~mavros_local_position_in" to="mavros/odometry/in" />
 <remap if="$(eval arg('OLD_PX4_FW') == 1)" from="~mavros_local_position_in" to="mavros/local_position/odom" />
 ```
