@@ -75,10 +75,10 @@ services:
       - 5000:5000
 
     restart: always
-    
+
     volumes:
 
-      - data:/data 
+      - data:/data
 ```
 By running the command:
 ```bash
