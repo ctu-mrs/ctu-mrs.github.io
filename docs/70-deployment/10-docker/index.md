@@ -65,7 +65,7 @@ docker compose cp . init:/etc/docker
 
 Using `docker compose up` will skip these steps so please refrain from using it unless you customize the system to work without `up.sh`.
 
-When using DOCKER_HOST, the image you run will need to be available on the drone, in case you need to transfer an image from your host, you can setup a [local registry](https://ctu-mrs.github.io/docs/prerequisites/docker/registries#using-a-local-docker-registry) or run a command like
+When using `DOCKER_HOST`, the image you run will need to be available on the drone, in case you need to transfer an image from your host, you can setup a [local registry](https://ctu-mrs.github.io/docs/prerequisites/docker/registries#using-a-local-docker-registry) or run a command like
 
 ```bash
 docker save ctumrs/mrs_uav_system:stable | docker -H tcp://uav30:2375 load
