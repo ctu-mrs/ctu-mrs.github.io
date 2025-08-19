@@ -20,6 +20,14 @@ If missing, install it by running the following command (it is part of the `mrs_
 sudo apt install ros-jazzy-mrs-serial
 ```
 
+You also need to install udev rules, so you don't have access permission errors. Copy the udev rule file from package's `install/udev` directory to `/etc/udev/rules.d/` and refresh udev daemon:
+
+```bash
+sudo cp install/udev/* /etc/udev/rules.d/
+sudo udevadm control --reload
+sudo udevadm trigger
+```
+
 ## Startup
 
 First, you have to define environment variable 'UAV_NAME'. For example, you can do it by:
