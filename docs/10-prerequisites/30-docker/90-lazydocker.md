@@ -36,6 +36,14 @@ customCommands:
 ```
 </details>
 
-### How it looks like
+## How it looks like
 
 ![Lazydocker](fig/lazy.gif)
+
+## Installation
+
+The GitHub repository shows different ways of installation but the quickest is:
+
+```bash
+curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+```
