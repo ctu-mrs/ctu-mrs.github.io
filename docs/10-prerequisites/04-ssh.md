@@ -34,7 +34,7 @@ Add your drone's hostname to `/etc/hosts`, your file should look something like 
 127.0.0.1 localhost
 127.0.1.1 pc1
 
-192.168.0.101 uav
+192.168.0.101 uav1
 ```
 
 ### On the drone
