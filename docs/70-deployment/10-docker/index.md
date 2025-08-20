@@ -47,7 +47,7 @@ just_flying_zenoh
 
 For this to work, the Docker daemon on the drone must be configured according to the instructions at [docker-host](https://ctu-mrs.github.io/docs/prerequisites/docker/docker-host), we also recommend this [ssh configuration](https://ctu-mrs.github.io/docs/prerequisites/ssh).
 
-Edit the `session.yml` file and change `DOCKER_HOST` and the rest of the arguments to the hostname of your drone and then run `./tmux.sh`.
+Edit the `session.yml` file and change `DOCKER_HOST` and the rest of the arguments to the hostname of your drone and then run `./tmux.sh`. Alternatively, you can run it without tmux like `export DOCKER_HOST=tcp://uav30:2375 && ./up.sh`
 
 If you wish, you can add more windows and control multiple drones with different `up.sh` scripts. After starting tmux, you'll get an overview of the session with lazydocker and the uav status, courtesy of [mrs_uav_status](https://github.com/ctu-mrs/mrs_uav_status/tree/ros2).
 
