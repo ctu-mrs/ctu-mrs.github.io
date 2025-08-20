@@ -20,7 +20,7 @@ We recommend setting static IPs for your devices, in this guide, we'll assume th
 
 * Your computer's ip is `192.168.0.10`, with `pc1` as the hostname.
 
-* Your drone's ip is `192.168.0.100`, with `uav1` as the hostname and a `mrs` user on it.
+* Your drone's ip is `192.168.0.101`, with `uav1` as the hostname and a `mrs` user on it.
 
 For more info, please check [this page](https://linuxconfig.org/setting-a-static-ip-address-in-ubuntu-24-04-via-the-command-line).
 
@@ -34,7 +34,7 @@ Add your drone's hostname to `/etc/hosts`, your file should look something like 
 127.0.0.1 localhost
 127.0.1.1 pc1
 
-192.168.0.100 uav1
+192.168.0.101 uav
 ```
 
 ### On the drone
