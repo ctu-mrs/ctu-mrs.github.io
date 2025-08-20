@@ -63,7 +63,7 @@ We define the init service in `compose.yaml` and run it before all others for th
 docker compose cp . init:/etc/docker
 ```
 
-Using `docker compose up` will skip these steps so please refrain from using it unless you customize the system to work without `up.sh`.
+Using `docker compose up` will skip these steps so refrain from using it unless you make the system to work without `up.sh`.
 
 When using `DOCKER_HOST`, the image you run will need to be available on the drone, in case you need to transfer an image from your host, you can setup a [local registry](https://ctu-mrs.github.io/docs/prerequisites/docker/registries#using-a-local-docker-registry) or run a command like
 
