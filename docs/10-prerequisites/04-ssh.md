@@ -18,7 +18,7 @@ This page will guide you in getting ssh working between your computer and your d
 
 We recommend setting static IPs for your devices, in this guide, we'll assume that on your network:
 
-* Your computer's ip is `192.168.0.10`, with `pc1` as the hostname.
+* Your computer's ip is `192.168.0.11`, with `pc1` as the hostname.
 
 * Your drone's ip is `192.168.0.101`, with `uav1` as the hostname and a `mrs` user on it.
 
@@ -45,7 +45,7 @@ Add your machine's hostname in `/etc/hosts`:
 127.0.0.1 localhost
 127.0.1.1 uav1
 
-192.168.0.10 pc1
+192.168.0.11 pc1
 ```
 
 We recommend removing any other IPv4 loopbacks on the drone besides these.
