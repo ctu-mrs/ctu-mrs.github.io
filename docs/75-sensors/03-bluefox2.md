@@ -97,6 +97,22 @@ remappings: # remap topics in case your software searches for specific topic
 
 Note: You cannot specify namespace in your custom config because this node is running as a composable node.
 
+### In Docker
+
+Place the following compose session snippet into the [example session](deployment/docker/):
+
+```yaml
+  bluefox:
+    image: ctumrs/bluefox2:stable # ctumrs/mrs_uav_system is not used here, because bluefox2 is not multiplatform
+    network_mode: host
+    volumes:
+      - /dev/:/dev/
+    privileged: true
+    env_file:
+      - ./stack.env
+    # there is no command, because launch command is a part of the entrypoint
+```
+
 ## More info
 
 Check the following sources

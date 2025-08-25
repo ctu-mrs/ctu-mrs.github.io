@@ -84,6 +84,22 @@ Note: You cannot specify namespace in your custom config because this node is ru
 
 The `desired_publish_rate` determines how many messages will be skipped. If it is set to `500`, then every other message is published. If it is set to 100, then only every 10th message is published. Skip factor is computed as `floor(1000/desired_publish_rate)`, so it makes sense to only use the integer divisors: 1000, 500, 200, 100, 50...
 
+### In Docker
+
+Place the following compose session snippet into the [example session](deployment/docker/):
+
+```yaml
+  bluefox_imu:
+    image: ctumrs/mrs_uav_system:stable
+    network_mode: host
+    volumes:
+      - /dev/:/dev/ # besides setting 'privileged' flag to true, you also have to mount '/dev' to see device file
+    privileged: true
+    env_file:
+      - ./stack.env
+    command: bash -c "ros2 launch mrs_serial vio_imu.launch.py"
+```
+
 ## More info
 
 Check the following sources
