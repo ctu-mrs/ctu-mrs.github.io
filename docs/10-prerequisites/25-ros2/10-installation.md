@@ -1,4 +1,4 @@
----
+<img width="517" height="456" alt="image" src="https://github.com/user-attachments/assets/93001eb7-ba34-433b-aad3-72619557befe" />---
 title: Installation
 pagination_label: Installing ROS2 Jazzy
 description: Installing ROS2 Jazzy
@@ -29,3 +29,45 @@ curl https://ctu-mrs.github.io/ppa2-stable/add_ros_ppa.sh | bash
 
 sudo apt-get -y install ros-jazzy-desktop-full ros-dev-tools
 ```
+
+## Docker
+
+If you don't want to run ROS natively, you can run it in a container with the VS Code [dev containers](https://code.visualstudio.com/docs/devcontainers/containers) extenstion or you can place the following helper function in your `~/.bashrc` which will help manage permanent containers based on the MRS ROS images. It's designed to give you an interactive terminal no matter what state the container is (started, stopped, non-existent) or to run a command if it's running.
+
+```bash
+rosker() {
+  local name="${1:-jazzy}"
+  shift
+
+  if docker ps -a --format '{{.Names}}' | grep -xq "$name"; then
+    if docker ps --format '{{.Names}}' | grep -xq "$name"; then
+      docker exec -it "$name" ./ros_entrypoint.sh bash -ic "${*:-exec bash}"
+    else
+      docker start -ai "$name"
+    fi
+  else
+    docker run -it --name "$name" --network=host --privileged \
+      -v "$HOME/:/root/" \
+      -v "/dev:/dev/" \
+      -v "/etc/hosts:/etc/hosts" \
+      "ctumrs/ros_$name:latest" bash
+  fi
+}
+```
+
+Usage examples:
+
+```
+rosker
+rosker jazzy
+rosker jazzy ros2 topic list
+````
+
+Note that by default your home directory (and devices) will be available in the container, to avoid issues with `~/.bashrc` errors, you can conditionally source things like:
+
+```bash
+[ -f /root/git/mrs_uav_development/shell_additions/shell_additions.sh ] ||
+source ~/git/mrs_uav_development/shell_additions/shell_additions.sh
+```
+
+Which will not source this file if it's located in /root (in the container), if you want to source it, you should change `||` for `&&`
