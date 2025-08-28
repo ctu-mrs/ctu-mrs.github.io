@@ -1,4 +1,4 @@
-<img width="517" height="456" alt="image" src="https://github.com/user-attachments/assets/93001eb7-ba34-433b-aad3-72619557befe" />---
+---
 title: Installation
 pagination_label: Installing ROS2 Jazzy
 description: Installing ROS2 Jazzy
