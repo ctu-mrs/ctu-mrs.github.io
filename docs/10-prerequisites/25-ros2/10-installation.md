@@ -32,7 +32,7 @@ sudo apt-get -y install ros-jazzy-desktop-full ros-dev-tools
 
 ## Docker
 
-If you don't want to run ROS natively, you can run it in a container with the VS Code [dev containers](https://code.visualstudio.com/docs/devcontainers/containers) extenstion or you can place the following helper function in your `~/.bashrc` which will help manage permanent containers based on the MRS ROS images. It's designed to give you an interactive terminal no matter what state the container is (started, stopped, non-existent) or to run a command if it's running.
+If you don't want to run ROS natively, you can run it in a container with the VS Code [dev containers](https://code.visualstudio.com/docs/devcontainers/containers) extenstion or you can place the following helper function in your `~/.bashrc` which will help manage permanent containers based on the MRS ROS images.
 
 ```bash
 rosker() {
@@ -55,7 +55,7 @@ rosker() {
 }
 ```
 
-Usage examples:
+It'll give you an interactive terminal no matter what state the container is (started, stopped, non-existent) or run a command if it's running, usage examples:
 
 ```
 rosker
