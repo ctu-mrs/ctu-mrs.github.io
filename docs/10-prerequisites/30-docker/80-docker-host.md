@@ -34,6 +34,8 @@ sudo systemctl restart docker.service
 export DOCKER_HOST=tcp://<remote-host-ip>:2375
 ```
 
+You can also set it as [Docker context](https://docs.docker.com/engine/manage-resources/contexts/).
+
 Now you can use `docker` commands to manage containers, images and volumes on
 the remote machine.
 
