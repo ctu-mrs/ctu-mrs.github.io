@@ -78,3 +78,5 @@ If your ip changes, you may have issues with your nodes. To fix it you can set a
 sudo tee /etc/rancher/k3s/config.yaml <<< 'node-ip: "192.168.0.105"'
 sudo systemctl restart k3s
 ```
+
+A popular cluster visualiser is [k9s](https://github.com/derailed/k9s).
