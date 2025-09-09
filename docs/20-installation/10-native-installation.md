@@ -51,7 +51,7 @@ source ~/.bashrc
 
 6. Start the example simulation session:
 ```bash
-roscd mrs_multirotor_simulator/tmux/mrs_one_drone
+cd /opt/ros/jazzy/share/mrs_multirotor_simulator/tmux/mrs_one_drone
 ./start.sh
 ```
 
