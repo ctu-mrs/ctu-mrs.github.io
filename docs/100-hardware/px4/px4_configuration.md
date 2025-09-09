@@ -32,7 +32,7 @@ This guide is written for Pixhawk 4, because it is used on most of the MRS aeria
 ## SD card setup
 
 Pixawk has an SD card for flight logs and for additional configuration.
-If you want to use the MRS system, you have to use our PX4 sd card configuration. You can find it in the [uav_core/miscellaneous](https://github.com/ctu-mrs/uav_core/tree/master/miscellaneous/pixhawk_sdcard_config) repository.
+If you want to use the MRS system, you have to use our PX4 sd card configuration. You can find it in the [mrs_uav_deployment](https://github.com/ctu-mrs/mrs_uav_deployment/tree/master/miscellaneous/pixhawk_sdcard_config) repository.
 Create a folder called `etc` in the root of the SD card and copy the `extras.txt` file into this folder.
 Install the SD card back into the Pixhawk.
 
