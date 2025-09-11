@@ -44,7 +44,22 @@ Once you're satisfied with the location and zoom level, press `E` to create a ne
 
 ![](fig/real-world-elevation/textured-plane.png)
 
-## 3. Adding elevation data
+## 3. Aligning the map to the correct coordinates
+
+
+By default, the map's origin will typically not be at the lattitude/longitude coordinates that you enter using the `G` command.
+This would cause the created mesh to be misaligned in Gazebo by some offset.
+To fix this, open the **GIS** -> `Web geodata` -> `Basemap` dialog again.
+Now, you should see a subdialog `Scene georeferencing` (see below).
+
+Select the `Geo` option and enter the lattitude/longitude coordinates of your world origin (this are the same numbers you will put into your Gazebo world's `spherical_coordinates` tag).
+This will move Blender's origin to these lat/lon coordinates so that the mesh is aligned when you import it to gazebo.
+
+![](fig/real-world-elevation/georeferencing.png)
+
+Note that if you use GPS in your Gazebo simulation and you move the world's origin, you also need to set the `simulated_rtk` parameter of `mrs_uav_px4_api` via a custom config (see [here](https://github.com/ctu-mrs/mrs_uav_px4_api/blob/master/config/px4_api.yaml)).
+
+## 4. Adding elevation data
 
 To import the elevation data, we use OpenTopography API. We will need an API key to feed into the plugin. It's free.
 
@@ -59,7 +74,7 @@ Now in Blender, **select the plane object we've created.**
 Go to `GIS` -> `Web geodata` -> `Get elevation (SRTM)`. Enter the API key and press `OK`. This takes some time.
 ![](fig/real-world-elevation/elevation.png)
 
-## 4. Adjusting the elevation
+## 5. Adjusting the elevation
 
 Usually we want to adjust our map model so that its origin is at zero. To do that we:
 
@@ -79,7 +94,7 @@ Now, because the plugin is creating a plane based on the screen ratio, the plane
   ![](fig/real-world-elevation/move-all-X.png)
 - Repeat the same for the `Y` and `Z`.
 
-## 5. Exporting the model
+## 6. Exporting the model
 
 We export our model as Collada `.dae` file. Select the plane object, go to `File` -> `Export` -> `Collada (.dae)`.
 
@@ -91,7 +106,7 @@ Check `Selection Only`, check `Global Orientation` -> `Apply`, and select `X` as
 
 Press `Export COLLADA` and save the file somewhere. There should be two files created: the `.dae` and the `.tif` texture.
 
-## 6. Importing to the Gazebo world.
+## 7. Importing to the Gazebo world.
 
 Create a simple `test.world` file with the following content:
 
