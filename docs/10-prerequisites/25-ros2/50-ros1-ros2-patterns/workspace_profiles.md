@@ -22,9 +22,9 @@ Update the mixins:
 colcon mixin update
 ```
 
-Show the mixins:
+List the mixins:
 ```bash
-colcon mixin show
+colcon mixin list
 ```
 
 Build with particular mixin:
@@ -37,18 +37,18 @@ colcon build --mixin rel-with-deb-info
 ```json
 {
     "build": {
-        "debug": {
+        "mrs-debug": {
             "cmake-args": ["-DCMAKE_BUILD_TYPE=Debug",
                             "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
                             "-DCMAKE_CXX_FLAGS='-std=c++17 -Og'",
                             "-DCMAKE_C_FLAGS='-Og'"]
         },
-        "rel-with-deb-info": {
+        "mrs-rel-with-deb-info": {
             "cmake-args": ["-DCMAKE_BUILD_TYPE=RelWithDebInfo",
                             "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
                             "-DCMAKE_CXX_FLAGS='-std=c++17'"]
         },
-        "release": {
+        "mrs-release": {
             "cmake-args": ["-DCMAKE_BUILD_TYPE=Release",
                             "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
                             "-DCMAKE_CXX_FLAGS='-std=c++17'"]
@@ -66,7 +66,6 @@ mixin:
 colcon mixin add mrs file://<path-to-directory-with-mixin-index-file>/index.yaml
 colcon mixin update mrs
 ```
-Add these lines to your `.zshrc` or `.bashrc` to automatically access the mixins with each new shell.
 
 ## Using Mixins for build
 - `colcon` uses configuration files for building, testing and installing packages. It's good practice to have a `colcon_defaults.yaml` in the root of your ROS2 workspace.
@@ -75,5 +74,5 @@ Add these lines to your `.zshrc` or `.bashrc` to automatically access the mixins
 build:
   parallel-workers: 8
   mixin:
-    - rel-with-deb-info
+    - mrs-rel-with-deb-info
 ```
