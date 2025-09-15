@@ -12,7 +12,7 @@ description: ROS2 workspace profiles
 A `mixin` is a tag given to a set of parameters that you may want to pass to `colcon` during build (maybe used with other `colcon` commands).
 
 ### Adding Mixins to `colcon`
-Add the official mixin repository:
+Add the official mixin repository to install the default mixins:
 ```bash
 colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
 ```
@@ -33,34 +33,24 @@ colcon build --mixin rel-with-deb-info
 ```
 
 ### Adding a custom Mixins
-- Make a `build_types.mixin` file that defines custom mixins(`JSON` format)
+- Make a `custom.mixin` file that defines custom mixins(`JSON` format). Here we add a mixin for the `MRS_ENABLE_TESTING` flag.
 ```json
 {
     "build": {
-        "mrs-debug": {
-            "cmake-args": ["-DCMAKE_BUILD_TYPE=Debug",
-                            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
-                            "-DCMAKE_CXX_FLAGS='-std=c++17 -Og'",
-                            "-DCMAKE_C_FLAGS='-Og'"]
+        "mrs-testing": {
+            "cmake-args": ["-DMRS_ENABLE_TESTING=true",
+                           "-DENABLE_TESTS=true"]
         },
-        "mrs-rel-with-deb-info": {
-            "cmake-args": ["-DCMAKE_BUILD_TYPE=RelWithDebInfo",
-                            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
-                            "-DCMAKE_CXX_FLAGS='-std=c++17'"]
-        },
-        "mrs-release": {
-            "cmake-args": ["-DCMAKE_BUILD_TYPE=Release",
-                            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
-                            "-DCMAKE_CXX_FLAGS='-std=c++17'"]
-        }
     }
 }
 ```
+
 - Make an `index.yaml` file for `colcon mixin` to find all the defined mixins
 ```bash
 mixin:
-  - build_types.mixin
+  - custom.mixin
 ```
+
 - Add the file to the mixin repository and update the mixins:
 ```bash
 colcon mixin add mrs file://<path-to-directory-with-mixin-index-file>/index.yaml
@@ -74,5 +64,6 @@ colcon mixin update mrs
 build:
   parallel-workers: 8
   mixin:
-    - mrs-rel-with-deb-info
+    - rel-with-deb-info
+    - mrs-testing
 ```
