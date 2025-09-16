@@ -24,3 +24,14 @@ It was observed that on `v1.14.0`, the mavros topic `/mavros/odometry/in` used b
 
 This allows you to fly on PX4's own odometry which has been verified by the agile team to be accurate to centimeters. `gps_baro` estimator does not fuse velocities and therefore, does not run into the issue of inconsistent velocities.
 
+#### Running a Single EKF Instance
+> [!WARNING] 
+> **This has not been tested yet!**
+
+You may notice in your data that the odometry from PX4 sometimes suddenly jumps for no apparent reason. This could be caused by the EKF estimator switching inside PX4, as it can run multiple EKF estimators and select the one that is the healthiest.
+To run a single EKF in PX4, you should set:
+  `EKF2_MULTI_IMU`=0  
+  `EKF2_MULTI_MAG`=0  
+  `SENS_IMU_MODE`=1  
+  `SENS_MAG_MODE`=1  
+This provides protection against a limited number of sensor faults, such as loss of data, but does not protect against the sensor providing inaccurate data that exceeds the ability of the EKF and control loops to compensate.
