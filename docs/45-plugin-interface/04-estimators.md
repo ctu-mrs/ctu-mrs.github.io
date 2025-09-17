@@ -14,7 +14,7 @@ The Estimator plugin takes in IMU sensor data(Orientation and Angular velocity) 
 
 The estimator plugin is compiled as ROS plugins with the interface defined by the estimator manager. A estimator plugin from any ROS package can be loaded dynamically by the estimator manager without it being present during estimator manager's compile time. Loaded estimators can be switched by the estimator manager in mid-flight, which allows safe testing of new estimator and adds flexibility to the MRS UAV system.
 
-Linear kalman filter is used for state estimation. It is important to set appropriate value of covariance parameter in config file and it depends on sensor specifications.
+[Linear kalman filter](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1LKF.html) is used for state estimation, mrs_lib also provides implementation of [unscented kalman filter](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1UKF.html). It is important to set appropriate value of covariance parameter in config file. Covariance parameter is specific to sensor hardware.
 
 ![estimator_dependency_tree-Page-1.drawio](https://hackmd.io/_uploads/BJq_KRBolx.png)
 
@@ -34,7 +34,6 @@ mrs_uav_managers:
   # |----------------------------------------------------------|
   # |                   Estimation manager                     | 
   # |----------------------------------------------------------|
-   
   estimation_manager:
 
     # loaded state estimator plugins
@@ -177,7 +176,7 @@ mrs_uav_managers:
 
       override_frame_id:
         enabled: false # if true, custom frame_id can be provided instead of the default "[estimator_name]_origin"
-        frame_id:  
+        frame_id: ""
 
   ## |----------------------------------------------------------|
   ## |                      Gain manager                        | 
@@ -211,28 +210,47 @@ mrs_uav_managers:
   ## |                      UAV manager                         | 
   ## |----------------------------------------------------------|
   uav_manager:
+    takeoff:
+      during_takeoff:
+        controller: "MpcController"
+        tracker: "LandoffTracker"
+
+      after_takeoff:
+        controller: "Se3Controller"
+        tracker: "MpcTracker"
 
     midair_activation:
+      during_activation:
+        controller: "MidairActivationController"
+        tracker: "MidairActivationTracker"
 
       after_activation:
         controller: "Se3Controller"
         tracker: "MpcTracker"
 
+    min_height_checking:
+      enabled: false
+
+    max_height_checking:
+      enabled: false
+
   ## |----------------------------------------------------------|
   ## |                   Tranform manager                       | 
   ## |----------------------------------------------------------|
   transform_manager:
-      example_estimator_plugin:
-        odom_topic: "odom" # name of the topic (expects nav_msgs/Odometry topic type)
-        tf_from_attitude: # used for transforming velocities before full transform is available
-          enabled: true
-          attitude_topic: "attitude" # name of the attitude topic(expects geometry_msgs/QuaternionStamped topic type)
-        namespace: "mrs_uav_state_estimators/example_estimator_plugin" # the namespace of the topic (usually the node that publishes the topic)
-        utm_based: true # if true, will publish tf to utm_origin
-        inverted: true # publish as inverted tf (the default for inverted mrs tf tree convention)
-        republish_in_frames: [] # the odometry message will be transformed and republished in the specified frames
-        custom_frame_id:
-          enabled: false
-        custom_child_frame_id:
-          enabled: false
+    utm_source_priority: ["example_estimator_plugin"]
+
+    example_estimator_plugin:
+      odom_topic: "odom" # name of the topic (expects nav_msgs/Odometry topic type)
+      tf_from_attitude: # used for transforming velocities before full transform is available
+        enabled: true
+        attitude_topic: "attitude" # name of the attitude topic(expects geometry_msgs/QuaternionStamped topic type)
+      namespace: "estimation_manager/example_estimator_plugin" # the namespace of the topic (usually the node that publishes the topic)
+      utm_based: true # if true, will publish tf to utm_origin
+      inverted: true # publish as inverted tf (the default for inverted mrs tf tree convention)
+      republish_in_frames: [] # the odometry message will be transformed and republished in the specified frames
+      custom_frame_id:
+        enabled: false
+      custom_child_frame_id:
+        enabled: false
 ```
