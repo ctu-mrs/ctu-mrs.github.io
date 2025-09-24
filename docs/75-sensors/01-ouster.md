@@ -29,7 +29,7 @@ ros2 launch ouster_ros sensor.composite.launch.py sensor_hostname:=10.10.20.90 u
 
 ### In Docker
 
-Place the following compose session snippet into the [example session](70-deployment/10-docker):
+Place the following compose session snippet into the [example session](https://ctu-mrs.github.io/docs/deployment/docker/):
 
 ```yaml
   # starts the HW API for connecting the MRS UAV System to PX4

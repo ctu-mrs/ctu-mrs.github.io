@@ -10,8 +10,8 @@ description: ROS examples for computer vision
 
 ## C++
 
-* [Edge Detector](./cpp/edge_detector) - Comprehensive C++ ROS Example with OpenCV Edge detector
+* [Edge Detector](https://github.com/ctu-mrs/mrs_computer_vision_examples/tree/master/cpp/edge_detector) - Comprehensive C++ ROS Example with OpenCV Edge detector
 
 ## Python
 
-* [Blob Detector](./python/blob_detector) - Simple Python ROS Example with OpenCV Blob detector
+* [Blob Detector](https://github.com/ctu-mrs/mrs_computer_vision_examples/tree/master/python/blob_detector) - Simple Python ROS Example with OpenCV Blob detector

@@ -33,7 +33,7 @@ ros2 launch depthai_ros_driver camera.launch.py
 
 ### In Docker
 
-Place the following compose session snippet into the [example session](70-deployment/10-docker):
+Place the following compose session snippet into the [example session](https://ctu-mrs.github.io/docs/deployment/docker/):
 
 ```yaml
   # starts the HW API for connecting the MRS UAV System to PX4
