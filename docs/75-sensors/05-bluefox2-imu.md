@@ -86,7 +86,7 @@ The `desired_publish_rate` determines how many messages will be skipped. If it i
 
 ### In Docker
 
-Place the following compose session snippet into the [example session](deployment/docker/):
+Place the following compose session snippet into the [example session](70-deployment/10-docker):
 
 ```yaml
   bluefox_imu:
