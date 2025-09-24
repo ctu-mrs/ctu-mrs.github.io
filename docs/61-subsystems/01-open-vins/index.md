@@ -15,3 +15,20 @@ This folder contains docs on the subsystems needed to run VIO, specifically Open
 import DocCardList from '@theme/DocCardList';
 
 <DocCardList />
+
+If you wish to run [Bluefox2](https://ctu-mrs.github.io/docs/sensors/bluefox2) and [Bluefox2 IMU](https://ctu-mrs.github.io/docs/sensors/bluefox2-imu) in the same VIO service, place the following compose session snippet into the [example session](https://ctu-mrs.github.io/docs/deployment/docker/):
+
+```yaml
+  vio:
+    image: ctumrs/bluefox2:stable
+    network_mode: host
+    volumes:
+      - /dev/:/dev/
+    privileged: true
+    env_file:
+      - ./stack.env
+    entrypoint: [
+      "bash", "-c",
+      "source /opt/ros/jazzy/setup.sh && ros2 launch mrs_open_vins_core vio_real.launch.py enable_bluefox_cam_and_imu:=true"
+    ]
+```
