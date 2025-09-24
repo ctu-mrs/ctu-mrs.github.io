@@ -21,7 +21,7 @@ Please follow to the official DogTail repository to learn more about it:
 ## Example usecase
 
 The following `compose` files shows how to load DogTail into a compose session.
-The resulting logs will be stored in the `logs` volume and accesible via [Portainer](/docs/prerequisities/portainer).
+The resulting logs will be stored in the `logs` volume and accesible via [Portainer](/docs/prerequisites/portainer).
 
 ```yaml
 volumes:

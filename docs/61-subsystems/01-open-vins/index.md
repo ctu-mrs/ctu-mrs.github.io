@@ -16,7 +16,7 @@ import DocCardList from '@theme/DocCardList';
 
 <DocCardList />
 
-To run [Bluefox2](https://ctu-mrs.github.io/docs/sensors/bluefox2) and [Bluefox2 IMU](https://ctu-mrs.github.io/docs/sensors/bluefox2-imu) in the same VIO service, place the following compose session snippet into the [example session](https://ctu-mrs.github.io/docs/deployment/docker/):
+To run [Bluefox2](https://ctu-mrs.github.io/docs/sensors/bluefox2) and [Bluefox2 IMU](https://ctu-mrs.github.io/docs/sensors/bluefox2-imu) in the same service, place the following compose session snippet into the [example session](https://ctu-mrs.github.io/docs/deployment/docker/):
 
 ```yaml
   vio:

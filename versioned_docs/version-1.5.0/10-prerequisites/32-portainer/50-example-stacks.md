@@ -7,7 +7,7 @@ description: Example Portainer stacks (compose sessions)
 # Example stacks
 
 Stacks are **docker compose sessions** within portainer.
-As in vanilla docker, stacks are defined by a [compose file](/docs/prerequisities/docker/compose-sessions).
+As in vanilla docker, stacks are defined by a [compose file](/docs/prerequisites/docker/compose-sessions).
 
 ![](./fig/stack.png)
 

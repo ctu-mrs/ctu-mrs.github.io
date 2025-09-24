@@ -14,7 +14,7 @@ The FlightForge simulator comes with a few example sessions that you can use to 
 The example sessions are located in the `mrs_uav_flightforge_simulation` ROS package.
 The invariant part of using the FlightForge simulator is to first start the simulator and then start the ROS nodes that control the drones.
 
-To start the simulator first start the binary from the archive you downloaded in the [installation](/simulations/FlightForge/installation) section.:
+To start the simulator first start the binary from the archive you downloaded in the [installation](/docs/simulations/FlightForge/installation/) section.:
 
 ```bash
 ./mrs_flight_forge.sh 

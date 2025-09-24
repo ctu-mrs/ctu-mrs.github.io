@@ -49,6 +49,6 @@ b) Hit the _killing shortcut_: `ctrl+a k` (`ctrl+a` and then `k`). A menu will a
 
 # Configuring the simulator
 
-The simulator is configure through a _custom config_ file (how to [custom configs](/api/custom_config)) which contains the differences form the default simulator config.
+The simulator is configure through a _custom config_ file (how to [custom configs](/docs/api/custom_config)) which contains the differences form the default simulator config.
 You can configure how many drones should be spawned, of which type and where.
 The particular drone models are configure [here](https://github.com/ctu-mrs/mrs_multirotor_simulator/tree/ros2/config/uavs).

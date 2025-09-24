@@ -31,7 +31,7 @@ The compiled workspace is **transported** into the **robot** within an minimalis
 The overhead of the transport image is only around 5 MB.
 On the other hand, if the workspace would be packed in a image based on the **base image**, the size would be offset by hundreds of megabytes.
 That is not a problem when the tranport occurs through a **docker registry**.
-However, since the [Portainer](/docs/prerequisities/portainer) interface makes the upload of **archived** images very simple, we prefer to bundle the whole image into a `.tar.gz` file.
+However, since the [Portainer](/docs/prerequisites/portainer) interface makes the upload of **archived** images very simple, we prefer to bundle the whole image into a `.tar.gz` file.
 This approach complicates the deployment in one simple way: The workspace needs to **extracted** from the transport image and placed into a **shared volume** during runtime.
 
 ## Pre-configured build pipeline
