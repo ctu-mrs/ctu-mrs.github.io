@@ -14,15 +14,31 @@ Apptainer is an open source container platform designed to run complex applicati
 
 ## Useful info
 
-To transfer images between Docker and Apptainer, you have two options, you can save and build it:
+To transfer images between Docker and Apptainer, you have several options, you can save and build it:
 
 ```bash
 docker save ctumrs/mrs_uav_system:stable > mrs.tar
 apptainer build mrs.sif docker-archive:mrs.tar
 ```
 
-Or you can setup a [local registry](https://ctu-mrs.github.io/docs/prerequisites/docker/registries#using-a-local-docker-registry) in Docker and pull the image into Apptainer:
+You can also do that with no temporary file and remotely with SSH
 
 ```bash
-apptainer pull mrs.sif localhost:5000/ctumrs/mrs_uav_system:latest
+ssh uav30 'apptainer build mrs.sif docker-daemon:ctumrs/mrs_uav_system:stable'
+```
+
+Or you can setup a [local registry](https://ctu-mrs.github.io/docs/prerequisites/docker/registries#using-a-local-docker-registry) in Docker, add it as an insecure registry
+
+```bash
+sudo tee /etc/containers/registries.conf.d/mrs.conf <<EOF
+[[registry]]
+location = "localhost:5000"
+insecure = true
+EOF
+```
+
+And pull the image into Apptainer:
+
+```bash
+apptainer pull mrs.sif docker://localhost:5000/ctumrs/mrs_uav_system:latest
 ```
