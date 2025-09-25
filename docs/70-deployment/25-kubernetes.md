@@ -1,7 +1,7 @@
 ---
 title: Kubernetes
-pagination_label: Kubernetes
-description: Kubernetes
+pagination_label: Deploying using Kubernetes
+description: Deploying using Kubernetes
 ---
 
 # Deployment using Kubernetes
