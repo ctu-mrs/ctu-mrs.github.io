@@ -1,7 +1,7 @@
 ---
 title: Apptainer
-pagination_label: Deploing using Apptainer
-description: Deploing using Apptainer
+pagination_label: Deploying using Apptainer
+description: Deploying using Apptainer
 ---
 
 :::warning
