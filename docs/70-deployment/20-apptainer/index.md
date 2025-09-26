@@ -10,7 +10,7 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 # Deployment using Apptainer
 
-Apptainer is an open source container platform designed to run complex applications on high-performance computing (HPC) clusters.
+Apptainer is an open source container platform designed to run complex high-performance computing (HPC) applications.
 
 ## Useful info
 
