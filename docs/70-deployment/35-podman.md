@@ -23,9 +23,7 @@ Put the following in your `~/.bashrc` to allow running Docker commands from the 
 alias docker='podman'
 ```
 
-Install the [docker-compose-plugin](https://docs.docker.com/compose/install/linux/#install-using-the-repository) or [podman-compose](https://github.com/containers/podman-compose) package
-
-If you want to use docker-compose, you will need to enable the podman.socket user unit and set docker socket environment variable for that user:
+Install the [docker-compose-plugin](https://docs.docker.com/compose/install/linux/#install-using-the-repository) or [podman-compose](https://github.com/containers/podman-compose) package. If you want to use docker-compose, you will need to enable the podman.socket user unit and set docker socket environment variable for that user:
 
 ```bash
 systemctl --user enable --now podman.socket
