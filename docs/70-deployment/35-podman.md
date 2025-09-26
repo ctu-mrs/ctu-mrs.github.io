@@ -38,6 +38,8 @@ sudo tee /etc/containers/registries.conf.d/10-unqualified-search-registries.conf
 
 Now you can follow the instructions from the [Docker](https://ctu-mrs.github.io/docs/deployment/docker/) page
 
+To get dogtail log collection working, you should change the [sock](https://github.com/ctu-mrs/mrs_docker/blob/8a977d836bc94fc9d12a118e9602f6760c49b77c/deployment/ros2/lazydocker/uav30/compose.yaml#L115) in the `compose.yaml` to the one used by podman
+
 ## Quadlet
 
 [To-do](https://wiki.archlinux.org/title/Podman#Quadlet)
