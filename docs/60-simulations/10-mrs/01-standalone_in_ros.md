@@ -21,7 +21,7 @@ cd /opt/ros/jazzy/share/mrs_multirotor_simulator/tmux
 ```
 Each folder contains a different simulation scenario.
 
-The simlation scenario will be started by calling the `start.sh` script within its folder.
+The simulation scenario will be started by calling the `start.sh` script within its folder.
 This will call the `tmuxinator` utility that uses the prescription in the `session.yml` file to spawn a `tmux` session.
 ```bash
 cd /opt/ros/jazzy/share/mrs_multirotor_simulator/tmux/standalone

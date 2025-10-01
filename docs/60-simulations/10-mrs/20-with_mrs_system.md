@@ -21,7 +21,7 @@ cd /opt/ros/jazzy/share/mrs_multirotor_simulator/tmux
 ```
 Each folder contains a different simulation scenario.
 
-The simlation scenario will be started by calling the `start.sh` script within its folder.
+The simulation scenario will be started by calling the `start.sh` script within its folder.
 This will call the `tmuxinator` utility that uses the prescription in the `session.yml` file to spawn a `tmux` session.
 ```bash
 cd /opt/ros/jazzy/share/mrs_multirotor_simulator/tmux/mrs_one_drone
@@ -41,6 +41,6 @@ b) Hit the _killing shortcut_: `ctrl+a k` (`ctrl+a` and then `k`). A menu will a
 
 # Configuring the simulator
 
-The simulator is configure through a _custom config_ file [here](https://github.com/ctu-mrs/mrs_multirotor_simulator/blob/ros2/tmux/mrs_one_drone/config/simulator.yaml) which contains the differences form the [default simulator config file](https://github.com/ctu-mrs/mrs_multirotor_simulator/blob/ros2/config/multirotor_simulator.yaml).
+The simulator is configured through a _custom config_ file [here](https://github.com/ctu-mrs/mrs_multirotor_simulator/blob/ros2/tmux/mrs_one_drone/config/simulator.yaml) which contains the differences form the [default simulator config file](https://github.com/ctu-mrs/mrs_multirotor_simulator/blob/ros2/config/multirotor_simulator.yaml).
 You can configure how many drones should be spawned, of which type and where.
 The particular drone models are configure [here](https://github.com/ctu-mrs/mrs_multirotor_simulator/tree/ros2/config/uavs).
