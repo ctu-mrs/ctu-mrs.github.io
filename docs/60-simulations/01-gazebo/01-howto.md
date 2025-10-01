@@ -8,25 +8,27 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 # Prerequsities
 
-1. The [ROS Noetic](http://wiki.ros.org/noetic/Installation/Ubuntu) installed.
-2. The [MRS UAV System](https://github.com/ctu-mrs/mrs_uav_system) installed.
-3. The [MRS UAV Gazebo Simulation](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation) installed.
+1. The [ROS Jazzy](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html) installed.
+2. The [MRS UAV System](https://github.com/ctu-mrs/mrs_uav_system/tree/ros2) installed.
+3. The [MRS UAV Gazebo Simulation](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/tree/ros2) installed.
 4. Place `source /usr/share/gazebo/setup.sh` in your `.bashrc` file (or the `rc` file of your shell).
 
 # Starting the simulation
 
 Running the simulation consists of several steps, which are **automated** using a **tmuxinator** script.
-Examples of tmuxinator files can be found in the **tmux** folder within the [mrs_uav_gazebo_simulation](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation) package.
-With the system installed, you can find them (and then copy them elsewhere) by running
-```bash
-roscd mrs_uav_gazebo_simulation/tmux
-```
-Each folder contains a different simulation scenario.
+Examples of tmuxinator files can be found in the **tmux** folder within the `mrs_uav_gazebo_simulator` package. With the system installed, you can find them (and then copy them elsewhere) by running
 
-The simlation scenario will be started by calling the `start.sh` script within its folder.
-This will call the `tmuxinator` utility that uses the prescription in the `session.yml` file to spawn a `tmux` session.
 ```bash
-roscd mrs_uav_gazebo_simulation/tmux/one_drone
+roscd mrs_uav_gazebo_simulator/tmux
+```
+
+If `roscd` isn't available, the full path should be `/opt/ros/jazzy/share/mrs_uav_gazebo_simulator/tmux`. Each folder contains a different simulation scenario.
+
+The simulation scenario will be started by calling the `start.sh` script within its folder.
+This will call the `tmuxinator` utility that uses the prescription in the `session.yml` file to spawn a `tmux` session.
+
+```bash
+roscd mrs_uav_gazebo_simulator/tmux/one_drone
 ./start.sh
 ```
 
@@ -45,7 +47,9 @@ b) Hit the _killing shortcut_: `ctrl+a k` (`ctrl+a` and then `k`). A menu will a
 The UAVs are **not** part of the simulation world, but are _spawned_ dynamically after the world has started.
 The _spawning_ is handler by a ROS node `mrs_drone_spawner` that can introduce new UAVs into the world based on user's command.
 The properties of the drones are defined within the `session.yml` on the line
+
 ```yaml
-- waitForGazebo; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder --enable-ground-truth"
+waitForGazebo; sleep 5; ros2 service call /mrs_drone_spawner/spawn mrs_msgs/srv/String "{value: '1 --$UAV_TYPE --enable-rangefinder'}"
 ```
-See the [drone spawner documentation page](./drone_spawner.md) for details on how to modify the drone configurations.
+
+See the [drone spawner documentation page](./04-drone_spawner.md) for details on how to modify the drone configurations.
