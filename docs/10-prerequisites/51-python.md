@@ -28,4 +28,4 @@ There are currently 2 main versions of Python being used: Python2 and Python3. P
 
 ### First steps with ROS in Python
 
-A simple guide on how to write your first ROS node in Python is available here: [https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber](https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29).
+A simple guide on how to write your first ROS node in Python is available [here](https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html).
