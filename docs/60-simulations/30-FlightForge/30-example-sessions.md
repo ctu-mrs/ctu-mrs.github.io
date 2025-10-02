@@ -31,6 +31,6 @@ Alternatively, you can start the simulator without the GUI:
 Start the one drone tmux session example from the mrs_uav_flightforge_simulation ROS package:
  
 ```bash
-cd /opt/ros/jazzy/share/mrs_uav_flightforge_simulation
+cd /opt/ros/jazzy/share/mrs_uav_flightforge_simulator
 ./tmux/one_drone/start.sh
 ```
