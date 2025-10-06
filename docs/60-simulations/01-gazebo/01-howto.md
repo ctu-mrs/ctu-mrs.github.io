@@ -19,7 +19,7 @@ Running the simulation consists of several steps, which are **automated** using 
 Examples of tmuxinator files can be found in the **tmux** folder within the `mrs_uav_gazebo_simulator` package. With the system installed, you can find them (and then copy them elsewhere) by running
 
 ```bash
-roscd mrs_uav_gazebo_simulator/tmux
+cd /opt/ros/jazzy/share/mrs_uav_gazebo_simulator/tmux
 ```
 
 If `roscd` isn't available, the full path should be `/opt/ros/jazzy/share/mrs_uav_gazebo_simulator/tmux`. Each folder contains a different simulation scenario.
@@ -28,7 +28,7 @@ The simulation scenario will be started by calling the `start.sh` script within 
 This will call the `tmuxinator` utility that uses the prescription in the `session.yml` file to spawn a `tmux` session.
 
 ```bash
-roscd mrs_uav_gazebo_simulator/tmux/one_drone
+cd /opt/ros/jazzy/share/mrs_uav_gazebo_simulator/tmux/one_drone
 ./start.sh
 ```
 
