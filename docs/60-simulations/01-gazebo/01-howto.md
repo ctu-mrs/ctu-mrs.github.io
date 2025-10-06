@@ -10,8 +10,7 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 1. The [ROS Jazzy](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html) installed.
 2. The [MRS UAV System](https://github.com/ctu-mrs/mrs_uav_system/tree/ros2) installed.
-3. The [MRS UAV Gazebo Simulation](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/tree/ros2) installed.
-4. Place `source /usr/share/gazebo/setup.sh` in your `.bashrc` file (or the `rc` file of your shell).
+3. The [MRS UAV Gazebo Simulator](https://github.com/ctu-mrs/mrs_uav_gazebo_simulator/tree/ros2) installed.
 
 # Starting the simulation
 
