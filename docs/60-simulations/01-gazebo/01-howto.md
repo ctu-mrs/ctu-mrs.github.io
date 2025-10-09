@@ -21,8 +21,6 @@ Examples of tmuxinator files can be found in the **tmux** folder within the `mrs
 cd /opt/ros/jazzy/share/mrs_uav_gazebo_simulator/tmux
 ```
 
-If `roscd` isn't available, the full path should be `/opt/ros/jazzy/share/mrs_uav_gazebo_simulator/tmux`. Each folder contains a different simulation scenario.
-
 The simulation scenario will be started by calling the `start.sh` script within its folder.
 This will call the `tmuxinator` utility that uses the prescription in the `session.yml` file to spawn a `tmux` session.
 
