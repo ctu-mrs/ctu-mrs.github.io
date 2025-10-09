@@ -10,42 +10,56 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 ![](fig/custom_world.jpg)
 
-To [start the simulation](https://ctu-mrs.github.io/docs/simulation/howto.html), we use ROS launch file
+To [start the simulation](./01-howto.md), we use ROS launch files
+
 ```bash
-roslaunch mrs_simulation simulation.launch gui:=true
+ros2 launch mrs_uav_gazebo_simulator simulation.launch.py
 ```
-The launch [`simulation.launch`](https://github.com/ctu-mrs/mrs_simulation/blob/master/launch/simulation.launch) file contains two arguments
-```xml
-<arg name="world_name" default="grass_plane" />
-<arg name="world_file" default="$(find mrs_gazebo_common_resources)/worlds/$(arg world_name).world" />
+
+The launch [`simulation.launch.py`](https://github.com/ctu-mrs/mrs_uav_gazebo_simulator/blob/ros2/launch/simulation.launch.py) file contains this argument
+
+```python
+declare_world_file_arg = DeclareLaunchArgument(
+    'world_file',
+    default_value = PathJoinSubstitution([
+            pkg_mrs_common_gazebo_resources, 'worlds', 'grass_plane.world'
+        ]),
+    description='Path to the SDF world file'
+)
 ```
-specifying the default world to be `grass_plane` from the [`mrs_gazebo_common_resources`](https://github.com/ctu-mrs/mrs_gazebo_common_resources) package.
+
+specifying the default world to be `grass_plane.world` from the [`mrs_gazebo_common_resources`](https://github.com/ctu-mrs/mrs_gazebo_common_resources/tree/ros2) package.
 
 ## Load a custom world
 
-### Load world from [`mrs_gazebo_common_resources`](https://github.com/ctu-mrs/mrs_gazebo_common_resources/tree/master/worlds)
+### Load world from `mrs_gazebo_common_resources`
 
-Pass the **world name** (e.g., `forest`) as an argument to the launch file
+Pass the **world_file** (e.g., `forest.world`) as an argument to the launch file
+
 ```bash
-roslaunch mrs_simulation simulation.launch gui:=true world_name:=forest
+worlds="$(ros2 pkg prefix mrs_gazebo_common_resources)/share/mrs_gazebo_common_resources/worlds"
+ros2 launch mrs_uav_gazebo_simulator simulation.launch.py world_file:="$worlds/forest.world"
 ```
 
 ### Load arbitrary custom world
 
 Pass the **world file** as an argument to the launch file using `find` to locate your package
+
 ```bash
-roslaunch mrs_simulation simulation.launch gui:=true world_file:='$(find custom_gazebo_resources)/worlds/custom_world.world'
+ros2 launch mrs_uav_gazebo_simulator simulation.launch.py world_file:="$(find custom_gazebo_resources)/worlds/custom_world.world"
 ```
-or use absolute path of the world file
+
+or use the absolute path of the world file
+
 ```bash
-roslaunch mrs_simulation simulation.launch gui:=true world_file:=/path/to/world/custom_world.world
+ros2 launch mrs_simulation simulation.launch.py world_file:=/path/to/world/custom_world.world
 ```
 
 ## How to create a custom world
 
 ### Create the world manually in a text editor
 
-Create a [completely new](http://gazebosim.org/tutorials/?tut=ros_roslaunch#CreatingaCustomWorldFile) *.world* file or copy & modify an existing file (e.g., [forest.world](https://github.com/ctu-mrs/mrs_gazebo_common_resources/blob/master/worlds/forest.world)).
+Create a [completely new](https://gazebosim.org/docs/latest/sdf_worlds/#sdf-worlds) *.world* file or copy & modify an existing file (e.g., [forest.world](https://github.com/ctu-mrs/mrs_gazebo_common_resources/blob/ros2/worlds/forest.world)).
 Make sure your world file contains line
 ```xml
     <plugin name="mrs_gazebo_static_transform_republisher_plugin" filename="libMrsGazeboCommonResources_StaticTransformRepublish.so"/>
@@ -54,15 +68,21 @@ The included [mrs_gazebo_static_transform_republisher](https://github.com/ctu-mr
 
 ### Create the world using Gazebo
 
-1. Start a Gazebo simulation
+1. Start a Gazebo simulation, `gz sim`
 2. Insert models to the world as you wish using the Gazebo GUI
 3. Save world to file: `File -> Save as`
 4. Make sure the created file contains the `mrs_gazebo_static_transform_republisher` plugin.
 
-# Common issues
+## Common issues
 
-## No static transformations
+### No static transformations
 
 `rosrun rqt_tf_tree rqt_tf_tree` shows no transformations between spawned sensors and the `<uav_name>/fcu` frame?
 Make sure your world file contains the `mrs_gazebo_static_transform_republisher` plugin as described [above](https://ctu-mrs.github.io/docs/simulation/custom_world.html#create-the-world-manually-in-a-text-editor).
 Lack of static transformations might also prevent start of some systems and hence prevent taking off.
+
+## Further reading
+
+https://gazebosim.org/docs/latest/ros2_launch_gazebo/
+
+http://gazebosim.org/docs/latest/spawn_urdf/
