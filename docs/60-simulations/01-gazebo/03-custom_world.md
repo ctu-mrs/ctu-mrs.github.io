@@ -22,23 +22,23 @@ The launch [`simulation.launch.py`](https://github.com/ctu-mrs/mrs_uav_gazebo_si
 declare_world_file_arg = DeclareLaunchArgument(
     'world_file',
     default_value = PathJoinSubstitution([
-            pkg_mrs_common_gazebo_resources, 'worlds', 'grass_plane.world'
+            pkg_mrs_common_gazebo_resources, 'worlds', 'grass_plane.sdf'
         ]),
     description='Path to the SDF world file'
 )
 ```
 
-specifying the default world to be `grass_plane.world` from the [`mrs_gazebo_common_resources`](https://github.com/ctu-mrs/mrs_gazebo_common_resources/tree/ros2) package.
+specifying the default world to be `grass_plane.sdf` from the [`mrs_gazebo_common_resources`](https://github.com/ctu-mrs/mrs_gazebo_common_resources/tree/ros2) package.
 
 ## Load a custom world
 
 ### Load world from `mrs_gazebo_common_resources`
 
-Pass the **world_file** (e.g., `forest.world`) as an argument to the launch file
+Pass the **world_file** (e.g., `forest.sdf`) as an argument to the launch file
 
 ```bash
 worlds="$(ros2 pkg prefix mrs_gazebo_common_resources)/share/mrs_gazebo_common_resources/worlds"
-ros2 launch mrs_uav_gazebo_simulator simulation.launch.py world_file:="$worlds/forest.world"
+ros2 launch mrs_uav_gazebo_simulator simulation.launch.py world_file:="$worlds/forest.sdf"
 ```
 
 ### Load arbitrary custom world
@@ -46,20 +46,20 @@ ros2 launch mrs_uav_gazebo_simulator simulation.launch.py world_file:="$worlds/f
 Pass the **world file** as an argument to the launch file using `find` to locate your package
 
 ```bash
-ros2 launch mrs_uav_gazebo_simulator simulation.launch.py world_file:="$(find custom_gazebo_resources)/worlds/custom_world.world"
+ros2 launch mrs_uav_gazebo_simulator simulation.launch.py world_file:="$(find custom_gazebo_resources)/worlds/custom_world.sdf"
 ```
 
 or use the absolute path of the world file
 
 ```bash
-ros2 launch mrs_simulation simulation.launch.py world_file:=/path/to/world/custom_world.world
+ros2 launch mrs_simulation simulation.launch.py world_file:=/path/to/world/custom_world.sdf
 ```
 
 ## How to create a custom world
 
 ### Create the world manually in a text editor
 
-Create a [completely new](https://gazebosim.org/docs/latest/sdf_worlds/#sdf-worlds) *.world* file or copy & modify an existing file (e.g., [forest.world](https://github.com/ctu-mrs/mrs_gazebo_common_resources/blob/ros2/worlds/forest.world)).
+Create a [completely new](https://gazebosim.org/docs/latest/sdf_worlds/#sdf-worlds) *.sdf* file or copy & modify an existing file (e.g., [forest.sdf](https://github.com/ctu-mrs/mrs_gazebo_common_resources/blob/ros2/worlds/forest.sdf)).
 Make sure your world file contains line
 ```xml
     <plugin name="mrs_gazebo_static_transform_republisher_plugin" filename="libMrsGazeboCommonResources_StaticTransformRepublish.so"/>

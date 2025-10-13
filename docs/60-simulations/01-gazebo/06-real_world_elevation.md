@@ -12,7 +12,7 @@ We will create a 3D model in [Blender](https://www.blender.org/download/) using
 [BlenderGIS plugin](https://github.com/domlysz/BlenderGIS) and elevation data from
 [opentopography.org](https://opentopography.org/).
 We will then export the model as a `.dae` file and a texture as `.tif` to be used in Gazebo.
-Finally, we will create a simple Gazebo `.world` to view the created model.
+Finally, we will create a simple Gazebo `.sdf` to view the created model.
 
 ## 1. Getting Blender and the plugin
 
@@ -108,7 +108,7 @@ Press `Export COLLADA` and save the file somewhere. There should be two files cr
 
 ## 7. Importing to the Gazebo world.
 
-Create a simple `test.world` file with the following content:
+Create a simple `test.sdf` file with the following content:
 
 ```xml
 <?xml version="1.0"?>
@@ -134,12 +134,12 @@ Create a simple `test.world` file with the following content:
 </sdf>
 ```
 
-Place the `myModel.dae` and the corresponding `.tif` texture files in the same folder as the `test.world` file.
+Place the `myModel.dae` and the corresponding `.tif` texture files in the same folder as the `test.sdf` file.
 
-Finally, run Gazebo with the `test.world` file (you may want to zoom out a bit):
+Finally, run Gazebo with the `test.sdf` file (you may want to zoom out a bit):
 
 ```bash
-gazebo test.world
+gazebo test.sdf
 ```
 
 ![](fig/real-world-elevation/gazebo.png)
