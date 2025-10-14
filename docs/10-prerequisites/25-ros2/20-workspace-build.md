@@ -13,12 +13,12 @@ If you encounter any issues during the process, see the end of this page for *Tr
 
 ### 1. Install the Robot Operating System (Jazzy)
 
-  Follow the [ROS2 Installation](https://ctu-mrs.github.io/docs/prerequisites/ros2/installation) guide. 
+  Follow the [ROS2 Installation](https://ctu-mrs.github.io/docs/prerequisites/ros2/installation) guide.
 
 ### 2. Install the MRS UAV Core with necessary dependencies
 
-  Follow the [ROS2 MRS UAV Core Installation](https://ctu-mrs.github.io/docs/installation/ros2-installation) guide. 
-  
+  Follow the [ROS2 MRS UAV Core Installation](https://ctu-mrs.github.io/docs/installation/ros2-installation) guide.
+
 ### 3. Get aliases that make common ROS2 commands usable
 
 By default, calling `colcon build` anywhere creates a workspace there (even in a subdirectory of an workspace).
@@ -32,7 +32,7 @@ cd mrs_uav_development
 git checkout ros2
 ```
 
-Add to `~/.bashrc` (`~/.zshrc`): 
+Add to `~/.bashrc` (`~/.zshrc`):
 ```bash
 # ROS DEVELOPMENT
 # * source this after exporting $ROS_WORKSPACE="<path to your workspace>"
@@ -65,8 +65,9 @@ sudo apt install python3-colcon-mixin
 then add MRS mixin.
 
 ```bash
-colcon mixin add default https://raw.githubusercontent.com/ctu-mrs/colcon-mixin-repository/master/index.yaml
-colcon mixin update default
+colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
+colcon mixin add mrs https://raw.githubusercontent.com/ctu-mrs/colcon_mixin/refs/heads/master/index.yaml
+colcon mixin update
 ```
 
 Add the following config to `~/ws_examples/colcon_defaults.yaml` to set the number of build threads to 8 and build with the "rel-with-deb-info" mixin profile:
@@ -77,9 +78,17 @@ build:
     - rel-with-deb-info
 ```
 
+If you want to build MRS integration and unit tests, add the _mrs-testing_ mixin:
+```yaml
+build:
+  mixin:
+    - mrs-testing
+```
+
 For more information regarding setting workspace flags using mixins see [ROS2 Workspace Profiles](https://ctu-mrs.github.io/docs/prerequisites/ros2/ros1-ros2-patterns/workspace_profiles)
 
 ### 6. Build the workspace
+
 ```bash
 cd ~/ws_examples/
 colcon init
@@ -121,7 +130,7 @@ After adding the line, be sure to open a new terminal or run `source ~/.bashrc` 
 
 # Troubleshooting
 
-## Optimization flags 
+## Optimization flags
 * *Issue:* Estimation manager is outputting errors with `time since last msg too long`
 * *Reason:* Workspace is built without optimization flags.
 * *Solution:* See step 5. and make sure the workspace is built with `rel_with_deb_info`
@@ -132,10 +141,10 @@ After adding the line, be sure to open a new terminal or run `source ~/.bashrc` 
 * *Solution:* `sudo apt install mrs-uav-shell-additions`
 
 ## MRS UAV testing not building
-* *Issue:* The package `mrs_uav_testing` is not building 
+* *Issue:* The package `mrs_uav_testing` is not building
 * *Reason:* It hasn't been converted to ROS2 yet.
 * *Solution:* `touch ~/ws_mrs_uav_core/src/mrs_uav_core/ros_packages/mrs_uav_testing/COLCON_IGNORE`
-* 
+*
 ## Colcon build not working as expected
 * *Issue:* Calling colcon build does not create a workspace and start building it.
 * *Reason:* We have an alias for colcon, to make its usage less awkward. See step 3 for details.
@@ -145,10 +154,8 @@ After adding the line, be sure to open a new terminal or run `source ~/.bashrc` 
 * *Issue:* Calling colcon build fails with error: `ModuleNotFoundError: No module named 'ament_package'`
 * *Reason:* `ROS_WORKSPACE` is sourced before building the workspace.
 * *Solution:* Remove `ROS_WORKSPACE` from `~/.bashrc` (`~/.zshrc`), open new terminal, build the workspace, return `ROS_WORKSPACE` to `~/.bashrc` (`~/.zshrc`).
- 
+
 ## Any ros2 command fails
 * *Issue:* Calling any ros2 commands fails with `importlib.metadata.PackageNotFoundError: No package metadata was found for ros2cli`
 * *Reason:* `/tmp/ros_presource_output.sh` exists and needs to be deleted.
 * *Solution:* Remove `rm /tmp/ros_presource_output.sh`
- 
-
