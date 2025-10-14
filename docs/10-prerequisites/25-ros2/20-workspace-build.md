@@ -70,12 +70,13 @@ colcon mixin add mrs https://raw.githubusercontent.com/ctu-mrs/colcon_mixin/refs
 colcon mixin update
 ```
 
-Add the following config to `~/ws_examples/colcon_defaults.yaml` to set the number of build threads to 8 and build with the "rel-with-deb-info" mixin profile:
+Add the following config to `~/ws_examples/colcon_defaults.yaml` to set the number of build workers to 4 and build with the "rel-with-deb-info" and "compile-commands" mixin profiles:
 ```yaml
 build:
-  parallel-workers: 8
+  parallel-workers: 4
   mixin:
     - rel-with-deb-info
+    - compile-commands
 ```
 
 If you want to build MRS integration and unit tests, add the _mrs-testing_ mixin:
