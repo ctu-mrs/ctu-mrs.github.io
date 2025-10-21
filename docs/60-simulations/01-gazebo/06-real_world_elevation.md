@@ -8,11 +8,7 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 # How to create a real world elevation map in Gazebo
 
-We will create a 3D model in [Blender](https://www.blender.org/download/) using
-[BlenderGIS plugin](https://github.com/domlysz/BlenderGIS) and elevation data from
-[opentopography.org](https://opentopography.org/).
-We will then export the model as a `.dae` file and a texture as `.tif` to be used in Gazebo.
-Finally, we will create a simple Gazebo `.sdf` to view the created model.
+We will create a 3D model in [Blender](https://www.blender.org/download/) using [BlenderGIS plugin](https://github.com/domlysz/BlenderGIS) and elevation data from [opentopography.org](https://opentopography.org/). We will then export the model as a `.dae` file and a texture as `.tif` to be used in Gazebo. Finally, we will create a simple Gazebo `.sdf` to view the created model.
 
 ## 1. Getting Blender and the plugin
 
@@ -20,7 +16,7 @@ Finally, we will create a simple Gazebo `.sdf` to view the created model.
 
 [Download BlenderGIS plugin as zip](https://github.com/domlysz/BlenderGIS/archive/refs/heads/master.zip)
 
-In Blender, go to `Edit` -> `Preferences` -> `Add-ons` -> `Install` and select the downloaded zip file
+In Blender, go to `Edit` -> `Preferences` -> `Add-ons` -> `Install` (under `v` at the rop right corner of the window). Then select the downloaded zip file
 
 ![](fig/real-world-elevation/blender-preferences.png)
 
@@ -47,31 +43,28 @@ Once you're satisfied with the location and zoom level, press `E` to create a ne
 ## 3. Aligning the map to the correct coordinates
 
 
-By default, the map's origin will typically not be at the lattitude/longitude coordinates that you enter using the `G` command.
-This would cause the created mesh to be misaligned in Gazebo by some offset.
-To fix this, open the **GIS** -> `Web geodata` -> `Basemap` dialog again.
-Now, you should see a subdialog `Scene georeferencing` (see below).
+By default, the map's origin will typically not be at the lattitude/longitude coordinates that you enter using the `G` command. This would cause the created mesh to be misaligned in Gazebo by some offset. To fix this, open the **GIS** -> `Web geodata` -> `Basemap` dialog again. Now, you should see a subdialog `Scene georeferencing` (see below).
 
-Select the `Geo` option and enter the lattitude/longitude coordinates of your world origin (this are the same numbers you will put into your Gazebo world's `spherical_coordinates` tag).
-This will move Blender's origin to these lat/lon coordinates so that the mesh is aligned when you import it to gazebo.
+Select the `Geo` option and enter the lattitude/longitude coordinates of your world origin (this are the same numbers you will put into your Gazebo world's `spherical_coordinates` tag). This will move Blender's origin to these lat/lon coordinates so that the mesh is aligned when you import it to gazebo.
 
 ![](fig/real-world-elevation/georeferencing.png)
 
-Note that if you use GPS in your Gazebo simulation and you move the world's origin, you also need to set the `simulated_rtk` parameter of `mrs_uav_px4_api` via a custom config (see [here](https://github.com/ctu-mrs/mrs_uav_px4_api/blob/master/config/px4_api.yaml)).
+Note that if you use GPS in your Gazebo simulation and you move the world's origin, you also need to set the `simulated_rtk` parameter of `mrs_uav_px4_api` via a custom config (see [here](https://github.com/ctu-mrs/mrs_uav_px4_api/blob/ros2/config/px4_api.yaml)).
 
 ## 4. Adding elevation data
 
 To import the elevation data, we use OpenTopography API. We will need an API key to feed into the plugin. It's free.
 
-Got to [OpenTopography](https://portal.opentopography.org/login?redirect=%2FlidarAuthorizationInfo%3Fs%3Dapi)
+Got to [OpenTopography](https://portal.opentopography.org/login)
 
 Create an account. Select Affiliation: **Academia**, Organization: **Czech Technical University in Prague**.
 
-Then login with the created account. You should see the API key [here](https://portal.opentopography.org/lidarAuthorizationInfo?s=api)
+Then login with the created account. You can request the API key [here](https://portal.opentopography.org/requestService)
 
 Now in Blender, **select the plane object we've created.**
 
-Go to `GIS` -> `Web geodata` -> `Get elevation (SRTM)`. Enter the API key and press `OK`. This takes some time.
+Go to `GIS` -> `Web geodata` -> `Get elevation (SRTM)`. Select a server, enter your API key and press `OK`. This can take some time.
+
 ![](fig/real-world-elevation/elevation.png)
 
 ## 5. Adjusting the elevation
@@ -79,22 +72,33 @@ Go to `GIS` -> `Web geodata` -> `Get elevation (SRTM)`. Enter the API key and pr
 Usually we want to adjust our map model so that its origin is at zero. To do that we:
 
 Apply the modifiers: select the plane object, press `Ctrl+A` and select `Apply` -> `Visual Geometry to Mesh`
+
 ![](fig/real-world-elevation/apply-modifiers.png)
 
 Now, because the plugin is creating a plane based on the screen ratio, the plane will not be a perfect rectangle. What we can do is:
 
 - Select the plane
-- Go to the edit mode
+- Go to the edit mode, you can press tab to toggle it
 - Select the top view
-- Select a vertex that is the closest one to the origin
+- Select a vertex that is the closest one to the origin and press `n` to toggle the sidebar
+
   ![](fig/real-world-elevation/closest-point.png)
+
 - Now we can see its global coordinates. We want to move all of our vertices so that this point moves to the origin.
+
   ![](fig/real-world-elevation/location.png)
+
 - To do that we can copy the `X` position, then select **all vertices** (`a`), then subtract the copied value from the median's `X`:
+
   ![](fig/real-world-elevation/move-all-X.png)
+
 - Repeat the same for the `Y` and `Z`.
 
 ## 6. Exporting the model
+
+You can export the world using the legacy `.dae` format or the newer `.glb`
+
+### 6.1 dae
 
 We export our model as Collada `.dae` file. Select the plane object, go to `File` -> `Export` -> `Collada (.dae)`.
 
@@ -106,13 +110,21 @@ Check `Selection Only`, check `Global Orientation` -> `Apply`, and select `X` as
 
 Press `Export COLLADA` and save the file somewhere. There should be two files created: the `.dae` and the `.tif` texture.
 
+### 6.2 glb
+
+Check the `Selected Objects` include option and deselect the `+Y Up` transform option:
+
+![](fig/real-world-elevation/glb.png)
+
+After pressing `Export glTF` you will get a single file with the texture included in it.
+
 ## 7. Importing to the Gazebo world.
 
-Create a simple `test.sdf` file with the following content:
+Assuming you exported a `.dae` file, create a `test.sdf` file with the following content:
 
 ```xml
 <?xml version="1.0"?>
-<sdf version="1.4">
+<sdf version="1.6">
     <world name="default">
         <include>
             <uri>model://sun</uri>
@@ -139,7 +151,7 @@ Place the `myModel.dae` and the corresponding `.tif` texture files in the same f
 Finally, run Gazebo with the `test.sdf` file (you may want to zoom out a bit):
 
 ```bash
-gazebo test.sdf
+gz sim test.sdf
 ```
 
 ![](fig/real-world-elevation/gazebo.png)
