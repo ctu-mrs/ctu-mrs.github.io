@@ -8,7 +8,7 @@ description: Inserting custom drone into our Gazebo simulation
 
 <Button label="🔗 ctu-mrs/mrs_gazebo_custom_drone_example repository" link="https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example" block /><br />
 
-Please follow to the [tutorial](/docs/simulations/gazebo/custom_drone), which covers the following steps:
+Please follow to the [tutorial](../60-simulations/01-gazebo/custom_drone.md), which covers the following steps:
 
 - Custom directory setup
 - Model template creation in Jinja

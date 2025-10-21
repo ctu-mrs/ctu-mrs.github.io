@@ -10,9 +10,9 @@ This article presents several common methods for profiling your C++ algorithms.
 
 Other pages from our series on C++:
 
- 1. [Good practices in C++](https://ctu-mrs.github.io/docs/introduction/c_to_cpp.html)
- 2. [Debugging C++ programs with GDB](https://ctu-mrs.github.io/docs/software/gdb.html)
- 3. [Profiling C++ programs for optimization](https://ctu-mrs.github.io/docs/software/profiling.html) (this page)
+ 1. [Good practices in C++](./00_cpp_good_practices.md)
+ 2. [Debugging C++ programs with GDB](./01_cpp_debugging_with_gdb.md)
+ 3. [Profiling C++ programs for optimization](./02_cpp_profiling.md) (this page)
 
 In case you're currently asking yourself "what the hell is profiling?", it is a process of finding which parts of your code are slow or inefficient and ideally also of possible ways to optimize it.
 We will use the following (**truly terrible!**) implementation of the Fibonacci sequence for demostration purposes:

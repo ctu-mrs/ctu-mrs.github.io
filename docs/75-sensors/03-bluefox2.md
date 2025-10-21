@@ -99,7 +99,7 @@ Note: You cannot specify namespace in your custom config because this node is ru
 
 ### In Docker
 
-Place the following compose session snippet into the [example session](https://ctu-mrs.github.io/docs/deployment/docker/):
+Place the following compose session snippet into the [example session](../70-deployment/10-docker/index.md):
 
 ```yaml
   bluefox:
