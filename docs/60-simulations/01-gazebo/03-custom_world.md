@@ -37,7 +37,7 @@ specifying the default world to be `grass_plane.sdf` from the [`mrs_gazebo_commo
 Pass the **world_file** (e.g., `forest.sdf`) as an argument to the launch file
 
 ```bash
-worlds="$(ros2 pkg prefix mrs_gazebo_common_resources)/share/mrs_gazebo_common_resources/worlds"
+worlds="$(ros2 pkg prefix --share mrs_gazebo_common_resources)/worlds"
 ros2 launch mrs_uav_gazebo_simulator simulation.launch.py world_file:="$worlds/forest.sdf"
 ```
 
