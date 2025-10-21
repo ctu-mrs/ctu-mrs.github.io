@@ -29,7 +29,7 @@ windows:
 ...
 ```
 
-For more detail description see [px4 website](https://dev.px4.io/v1.10/en/simulation/#simulation_speed).
+For more detail description see [px4 website](https://docs.px4.io/main/en/sim_gazebo_classic/index#change-simulation-speed).
 
 # Run Simulation SLOWER than Real-time
 
