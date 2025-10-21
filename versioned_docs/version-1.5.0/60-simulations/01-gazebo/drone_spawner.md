@@ -10,7 +10,7 @@ At the core, the spawner handles the following operations:
 
 * generating an SDF model from the [available templates](https://github.com/ctu-mrs/mrs_uav_system#unmanned-aerial-vehicles)
 * adding optional components (sensors, plugins...) based on the user input
-* running the [PX4 Firmware SITL](https://dev.px4.io/master/en/simulation/ros_interface.html) (software-in-the-loop),
+* running the [PX4 Firmware SITL](https://docs.px4.io/main/en/simulation/ros_interface.html) (software-in-the-loop),
 * running [MAVROS](http://wiki.ros.org/mavros), which handles the communication (MAVLink) between the firmware and the simulator.
 
 # Spawning a drone
