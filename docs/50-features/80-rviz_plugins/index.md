@@ -10,7 +10,7 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 # MRS Rviz Plugins
 
-The Rviz plugins originate from the package [mrs_rviz_plugins](https://github.com/ctu-mrs/mrs_rviz_plugins).
+The Rviz plugins originate from the package [mrs_rviz_plugins](https://github.com/ctu-mrs/mrs_rviz_plugins/tree/ros2).
 
 ![](fig/thumbnail.jpg)
 
@@ -30,13 +30,11 @@ Integrates seamlessly.
 
 #### mrs_msgs/UavStatus visualization
 
-Displays useful information about the UAV state and sensors, integrates seamlessly.
-Use `mrs_rviz_plugins/UAV Status` display type.
+Displays useful information about the UAV state and sensors, integrates seamlessly. Use `mrs_rviz_plugins/UAV Status` display type.
 
 #### nav_msgs/Odometry visualization
 
-Includes visualization of velocity and its covariance, integrates seamlessly.
-Use `mrs_rviz_plugins/OdometryWithVelocity` display type.
+Includes visualization of velocity and its covariance, integrates seamlessly. Use `mrs_rviz_plugins/OdometryWithVelocity` display type.
 
 #### NamedSetGoal
 
@@ -44,8 +42,7 @@ RViz goal tool with modifiable label.
 
 #### Control tool
 
-Integrates [mrs_uav_status](https://github.com/ctu-mrs/mrs_uav_status/tree/master) and Selection tool functionality into one tool.
-Shortcut key for the tool is 'c'.
+Integrates [mrs_uav_status](https://github.com/ctu-mrs/mrs_uav_status/tree/ros2) and Selection tool functionality into one tool. Shortcut key for the tool is 'c'.
 
 ##### Mouse control
 
@@ -76,8 +73,8 @@ Only one key at a time is registered, multiple key inputs are not supported.
 
 You can add your own services to drone's menu.
  * To add a service to the menu, publish a message to the topic ```mrs_uav_status/set_trigger_service```
- * Only services of the [std_srvs/Trigger](http://docs.ros.org/melodic/api/std_srvs/html/srv/Trigger.html) type are supported
- * The message is a [std_msgs/String](http://docs.ros.org/melodic/api/std_msgs/html/msg/String.html), and has to consist of two entries separated by spaces:
+ * Only services of the [std_srvs/Trigger](https://docs.ros.org/en/jazzy/p/std_srvs/srv/Trigger.html) type are supported
+ * The message is a [std_msgs/String](https://docs.ros.org/en/jazzy/p/std_msgs/msg/String.html), and has to consist of two entries separated by spaces:
    * Service name (```uav_manager/land_home```)
    * Name to be displayed in the menu (```Land Home```) - this name can contain additional spaces
  * The namespace of the UAV will be added automatically (```uav_manager/land_home``` -> ```/uav1/uav_managerland_home```)
