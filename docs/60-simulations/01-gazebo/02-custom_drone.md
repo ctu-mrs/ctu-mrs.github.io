@@ -12,17 +12,19 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 In this tutorial, we will go through the process of adding a new vehicle to the MRS Gazebo simulation.
 The tutorial covers the following steps:
+
 * Custom directory setup
 * Model template creation in Jinja
 * Configuring a custom airframe for PX4
 * Adding the custom drone to the MRS drone spawner
 * Running the simulation with the MRS UAV System
 * Adding a custom optional sensor (configurable by the MRS drone spawner)
-The complete example drone is available in the [mrs_gazebo_custom_drone_example](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example) repository.
+
+The complete example drone is available in the [mrs_gazebo_custom_drone_example](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example/tree/ros2) repository.
 
 ## Custom directory setup
-We highly recommend using a separate directory for your custom drones. The directory should be set up as a ROS package, which can be added into a ROS workspace and built with catkin.
-The directory should follow this structure:
+We highly recommend using a separate directory for your custom drones. The directory should be set up as a ROS package, which can be added into a ROS workspace and built with colcon. The directory should follow this structure:
+
 ```yaml
 mrs_gazebo_custom_drone_example
   - package.xml
@@ -31,9 +33,10 @@ mrs_gazebo_custom_drone_example
   - ROMFS
 ```
 
-We use the `gazebo_ros_paths_plugin` which automatically updates the `GAZEBO_PLUGIN_PATH` and `GAZEBO_MODEL_PATH` when the package is built by catkin.
+We use the `gazebo_ros_paths_plugin` which automatically updates the `GAZEBO_PLUGIN_PATH` and `GAZEBO_MODEL_PATH` when the package is built by colcon.
 
 Make sure that your `package.xml` contains:
+
 ```xml
   <export>
     <gazebo_ros gazebo_model_path="${prefix}/models"/>
@@ -42,6 +45,7 @@ Make sure that your `package.xml` contains:
 ```
 
 A minimalistic example of the full `package.xml` could be:
+
 ```xml
 <?xml version="1.0"?>
 <package format="2">
@@ -53,10 +57,10 @@ A minimalistic example of the full `package.xml` could be:
   <maintainer email="todo@my.email">MY_NAME</maintainer>
   <license>BSD 3-Clause</license>
 
-  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>colcon</buildtool_depend>
 
   <depend>cmake_modules</depend>
-  <depend>mrs_uav_gazebo_simulation</depend>
+  <depend>mrs_uav_gazebo_simulator</depend>
   <depend>gazebo_ros</depend>
 
   <export>
@@ -68,30 +72,28 @@ A minimalistic example of the full `package.xml` could be:
 ```
 
 A corresponding minimalistic `CMakeLists.txt` has to be added for the package:
+
 ```cmake
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.20.0)
 project(mrs_gazebo_custom_drone_example)
 
-set(CATKIN_DEPENDENCIES
+set(DEPENDENCIES
   cmake_modules
-  mrs_uav_gazebo_simulation
+  mrs_uav_gazebo_simulator
   gazebo_ros
-  )
+)
 
-find_package(catkin REQUIRED COMPONENTS
-  ${CATKIN_DEPENDENCIES}
-  )
-
-catkin_package(
-  CATKIN_DEPENDS ${CATKIN_DEPENDENCIES}
-  )
+foreach(DEP IN LISTS DEPENDENCIES)
+  find_package(${DEP} REQUIRED)
+endforeach()
 
 install(DIRECTORY models/
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/models
-  )
+  DESTINATION share/models
+)
 ```
 
 The `models` directory should contain separate directories for all custom drones. Let's create a directory called `my_drone`, which will serve as the root for our model. To setup a model root, change directory to `models/my_drone` and create a file called `model.config` with the following content:
+
 ```xml
 <?xml version="1.0"?>
 <model>
@@ -102,16 +104,16 @@ The `models` directory should contain separate directories for all custom drones
 
 The remaining directory with the name `ROMFS` must be placed in the root of our ROS package. This directory will hold all configs for PX4.
 
-The package should be placed in a ROS [workspace](https://ctu-mrs.github.io/docs/software/catkin/managing_workspaces/managing_workspaces.html) and built at least once with catkin. The workspace does not have to be rebuilt after editing a `.sdf.jinja` file.
-
+The package should be placed in a ROS [workspace](../../10-prerequisites/25-ros2/20-workspace-build.md) and built at least once with colcon. The workspace does not have to be rebuilt after editing a `.sdf.jinja` file.
 
 ## Model template creation in Jinja
 Jinja is a templating engine, which allows us to define SDF models with dynamically assigned variables that only become defined in runtime.
 In essence the model for Gazebo is always created just at the time we need to place it into the world.
 
-Let's create a jinja template for the `my_drone` model. The SDF Jinja template will be placed in `/models/my_drone/sdf/` and use the name `my_drone.sdf.jinja`. Make sure that the file **suffix** matches your suffix param from the [drone spawner config](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/blob/master/ros_packages/mrs_uav_gazebo_simulation/config/spawner_params.yaml).
+Let's create a jinja template for the `my_drone` model. The SDF Jinja template will be placed in `/models/my_drone/sdf/` and use the name `my_drone.sdf.jinja`. Make sure that the file **suffix** matches your suffix param from the [drone spawner config](https://github.com/ctu-mrs/mrs_uav_gazebo_simulator/blob/ros2/config/spawner_params.yaml).
 
 The basic model skeleton should look like this:
+
 ```xml
 {% raw %}
 <?xml version="1.0" encoding="utf-8"?>
@@ -129,7 +131,9 @@ The basic model skeleton should look like this:
 </sdf>
 {% endraw %}
 ```
-In this example, `root` is set as a jinja variable, and will be used later in the code. The template will receive a dicitionary `spawner_args` from the MRS drone spawner. We will import some utilities from the `mrs_uav_gazebo_simulation`:
+
+In this example, `root` is set as a jinja variable, and will be used later in the code. The template will receive a dicitionary `spawner_args` from the MRS drone spawner. We will import some utilities from the `mrs_uav_gazebo_simulator`:
+
 ```xml
 {% raw %}
 ...
@@ -263,7 +267,7 @@ Now let's go back to our `my_drone.sdf.jinja` and import the custom macros. We w
 {% endraw %}
 ```
 
-Now we add the drone arms which use a mesh. We provide two meshes with this example: [arm and propeller](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example/tree/main/models/my_drone/meshes).If placed in the model directory, the files can be accessed using uri `model://MODEL_NAME/RELATIVE_FILEPATH`
+Now we add the drone arms which use a mesh. We provide two meshes with this example: [arm and propeller](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example/tree/ros2/models/my_drone/meshes).If placed in the model directory, the files can be accessed using uri `model://MODEL_NAME/RELATIVE_FILEPATH`
 
 ```xml
 {% raw %}
@@ -273,7 +277,7 @@ Now we add the drone arms which use a mesh. We provide two meshes with this exam
 {% endraw %}
 ```
 
-This model will have arms placed at unequal angles (i.e. body length > body width). **Notice that we use the math module from python**. The module has to be loaded into the jinja environment, which is then used to create a sdf file from the jinja template. In our case, the environment setup is handled by the MRS drone spawner, and only adds the `math` module. A macro to attach the mesh as a visual component is provided by [mrs_generic](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/blob/master/ros_packages/mrs_uav_gazebo_simulation/models/mrs_robots_description/sdf/generic_components.sdf.jinja):
+This model will have arms placed at unequal angles (i.e. body length > body width). **Notice that we use the math module from python**. The module has to be loaded into the jinja environment, which is then used to create a sdf file from the jinja template. In our case, the environment setup is handled by the MRS drone spawner, and only adds the `math` module. A macro to attach the mesh as a visual component is provided by [mrs_generic](https://github.com/ctu-mrs/mrs_uav_gazebo_simulator/blob/ros2/models/mrs_robots_description/sdf/generic_components.sdf.jinja):
 
 ```xml
 {% raw %}
@@ -335,7 +339,7 @@ This model will have arms placed at unequal angles (i.e. body length > body widt
 {% endraw %}
 ```
 
-Now we add the propellers. We utilize a propeller macro from [mrs_components](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/blob/master/ros_packages/mrs_uav_gazebo_simulation/models/mrs_robots_description/sdf/component_snippets.sdf.jinja), which adds the motor physics and gazebo plugins, and also loads the mesh from a provided filepath. Note that propellers have their separate links, so they should be placed outside the root link block:
+Now we add the propellers. We utilize a propeller macro from [mrs_components](https://github.com/ctu-mrs/mrs_uav_gazebo_simulator/blob/ros2/models/mrs_robots_description/sdf/component_snippets.sdf.jinja), which adds the motor physics and gazebo plugins, and also loads the mesh from a provided filepath. Note that propellers have their separate links, so they should be placed outside the root link block:
 
 ```xml
 {% raw %}
@@ -431,9 +435,9 @@ Now we add the propellers. We utilize a propeller macro from [mrs_components](ht
 {% endraw %}
 ```
 
-Make sure to follow the [PX4 airframe reference](https://docs.px4.io/main/en/airframes/airframe_reference.html) to assign correct orientation and motor number to the propellers. In this tutorial, we are building a **Quadrotor H** configuration (Note: a majority of quadrotors uses **Quadrotor X**).
+Make sure to follow the [PX4 airframe reference](https://docs.px4.io/main/en/airframes/airframe_reference) to assign correct orientation and motor number to the propellers. In this tutorial, we are building a **Quadrotor H** configuration (Note: a majority of quadrotors uses **Quadrotor X**).
 
-The last part our drone needs to fly is the flight control unit (FCU). We will model the Pixhawk FCU with PX4 firmware. We can use an external mesh of the Pixhawk chasis, that is already included in mrs_uav_gazebo_simulation. The FCU includes the following sensors: GPS, IMU, magnetometer and barometer. It also creates a Gazebo-Mavlink interface, which needs to be connected to the correct ports (especially in case of multi-vehicle simulation). This is handled by the MRS drone spawner, which provides the ports in `spawner_args['mavlink_config']`:
+The last part our drone needs to fly is the flight control unit (FCU). We will model the Pixhawk FCU with PX4 firmware. We can use an external mesh of the Pixhawk chasis, that is already included in mrs_uav_gazebo_simulator. The FCU includes the following sensors: GPS, IMU, magnetometer and barometer. It also creates a Gazebo-Mavlink interface, which needs to be connected to the correct ports (especially in case of multi-vehicle simulation). This is handled by the MRS drone spawner, which provides the ports in `spawner_args['mavlink_config']`:
 
 ```xml
 {% raw %}
@@ -554,14 +558,17 @@ We will also have to provide the mixer file in `ROMFS/px4fmu_common/mixers/`. Th
 R: 4h
 ```
 
-The remaining files handle mavlink configuration, which needs to match the ports assigned by the MRS drone spawner. We recommend to use the reference files provided with this tutorial: [ROMFS/px4fmu_common](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example/tree/main/ROMFS/px4fmu_common).
+The remaining files handle mavlink configuration, which needs to match the ports assigned by the MRS drone spawner. We recommend to use the reference files provided with this tutorial: [ROMFS/px4fmu_common](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example/tree/ros2/ROMFS/px4fmu_common).
 
 ## Adding the custom drone to the MRS drone spawner
-Now the custom drone should be ready for a test flight. The package with our drone just needs to be registered by the MRS drone spawner. We now assume that the **package was already built in a catkin workspace, and the workspace is sourced**. You can verify this in terminal by calling:
+
+Now the custom drone should be ready for a test flight. The package with our drone just needs to be registered by the MRS drone spawner. We now assume that the **package was already built in a colcon workspace, and the workspace is sourced**. You can verify this in terminal by calling:
+
 ```bash
-rospack find mrs_gazebo_custom_drone_example
+ros2 pkg prefix mrs_gazebo_custom_drone_example
 ```
-which should return the path to the package. The drone spawner can load additional packages using a custom config file. Create a new file called `spawner_config.yaml`:
+
+which should return the path where the package was installed. The drone spawner can load additional packages using a custom config file. Create a new file called `spawner_config.yaml`:
 
 ```yaml
 extra_resource_paths: ["mrs_gazebo_custom_drone_example"]
@@ -570,24 +577,27 @@ extra_resource_paths: ["mrs_gazebo_custom_drone_example"]
 Now pass this file to simulation or spawner launch file:
 
 ```bash
-roslaunch mrs_uav_gazebo_simulation simulation.launch spawner_config:=spawner_config.yaml
+ros2 launch mrs_uav_gazebo_simulator simulation.launch.py spawner_config:=spawner_config.yaml
 ```
+
 or
+
 ```bash
-roslaunch mrs_uav_gazebo_simulation mrs_drone_spawner.launch spawner_config:=spawner_config.yaml
+ros2 launch mrs_uav_gazebo_simulator mrs_drone_spawner.launch.py spawner_config:=spawner_config.yaml
 ```
 
 The template for a custom drone should be loaded automatically. Check the output of the simulation node for `[MrsDroneSpawner]: Jinja templates loaded:`. If the template for `my_drone` is loaded, the model can be spawned by calling
 
 ```bash
-rosservice call /mrs_drone_spawner/spawn "1 --my_drone"
+ros2 service call /mrs_drone_spawner/spawn mrs_msgs/srv/String "value: 1 --my_drone"
 ```
 
 You should see the custom drone model to the Gazebo simulation.
 
-
 ## Running the simulation with the MRS UAV System
-We provide an example [tmuxinator session](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example/tree/main/tmux) to start the simulation with the MRS UAV System. In case of a custom platform, a `platform_config.yaml` has to be given to the mrs_uav_core node. An example `platform_config.yaml` is provided:
+
+We provide an example [tmuxinator session](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example/tree/ros2/tmux) to start the simulation with the MRS UAV System. In case of a custom platform, a `platform_config.yaml` has to be given to the mrs_uav_core node. An example `platform_config.yaml` is provided:
+
 ```yaml
 uav_mass: 2.0 # [kg]
 
@@ -628,8 +638,9 @@ The spawner description will be displayed whenever `--help` is added to the spaw
 
 The spawner default args allow the user to change some internal parameters of the plugin in spawn-time, in this case set a specific update rate of the camera or change the noise strength.
 This can be done from the spawn command, e.g.:
+
 ```bash
-rosservice call /mrs_drone_spawner/spawn "1 --my_drone --enable-custom-monochrome-camera update_rate:=30 noise:=0
+ros2 service call /mrs_drone_spawner/spawn mrs_msgs/srv/String "value: 1 --my_drone --enable-custom-monochrome-camera update_rate:=30 noise:=0
 ```
 
 We use a macro from `mrs_generic` called `handle_spawner_args`, that overrides the default values with user input whenever possible, and uses default values elsewhere.
@@ -716,4 +727,4 @@ We will now add the camera plugin into the `if` block. Note that a `zero_inertia
 
 ## Adding more components
 
-We added legs (cylinders with collision), motors (just visual cylinders) and two additional components from the MRS simulation (laser rangefinder, ground truth publisher). The full model is available [here](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example/tree/main).
+We added legs (cylinders with collision), motors (just visual cylinders) and two additional components from the MRS simulation (laser rangefinder, ground truth publisher). The full model is available [here](https://github.com/ctu-mrs/mrs_gazebo_custom_drone_example/tree/ros2).
