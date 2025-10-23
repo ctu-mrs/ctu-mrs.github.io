@@ -112,5 +112,5 @@ The coordinates will appear as a standard output
 #### UAV Airframe visualization
 
 ```bash
-ros2 launch mrs_rviz_plugins load_robot.launch.py
+ros2 launch mrs_rviz_plugins load_robot.launch
 ```
