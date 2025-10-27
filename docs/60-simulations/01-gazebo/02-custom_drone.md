@@ -48,7 +48,8 @@ A minimalistic example of the full `package.xml` could be:
 
 ```xml
 <?xml version="1.0"?>
-<package format="2">
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
 
   <name>mrs_gazebo_custom_drone_example</name>
   <version>0.0.1</version>
@@ -57,13 +58,15 @@ A minimalistic example of the full `package.xml` could be:
   <maintainer email="todo@my.email">MY_NAME</maintainer>
   <license>BSD 3-Clause</license>
 
-  <buildtool_depend>colcon</buildtool_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_ros</buildtool_depend>
 
   <depend>cmake_modules</depend>
   <depend>mrs_uav_gazebo_simulator</depend>
-  <depend>gazebo_ros</depend>
+  <depend>ros_gz</depend>
 
   <export>
+    <build_type>ament_cmake</build_type>
     <gazebo_ros gazebo_model_path="${prefix}/models"/>
     <gazebo_ros gazebo_media_path="${prefix}"/>
   </export>
@@ -78,9 +81,8 @@ cmake_minimum_required(VERSION 3.20.0)
 project(mrs_gazebo_custom_drone_example)
 
 set(DEPENDENCIES
-  cmake_modules
-  mrs_uav_gazebo_simulator
-  gazebo_ros
+  ament_cmake
+  ros_gz
 )
 
 foreach(DEP IN LISTS DEPENDENCIES)
@@ -88,8 +90,10 @@ foreach(DEP IN LISTS DEPENDENCIES)
 endforeach()
 
 install(DIRECTORY models/
-  DESTINATION share/models
+  DESTINATION share/${PROJECT_NAME}/models
 )
+
+ament_package()
 ```
 
 The `models` directory should contain separate directories for all custom drones. Let's create a directory called `my_drone`, which will serve as the root for our model. To setup a model root, change directory to `models/my_drone` and create a file called `model.config` with the following content:
@@ -571,7 +575,9 @@ ros2 pkg prefix mrs_gazebo_custom_drone_example
 which should return the path where the package was installed. The drone spawner can load additional packages using a custom config file. Create a new file called `spawner_config.yaml`:
 
 ```yaml
-extra_resource_paths: ["mrs_gazebo_custom_drone_example"]
+mrs_drone_spawner:
+  ros__parameters:
+    extra_resource_paths: [ "mrs_gazebo_custom_drone_example" ]
 ```
 
 Now pass this file to simulation or spawner launch file:
