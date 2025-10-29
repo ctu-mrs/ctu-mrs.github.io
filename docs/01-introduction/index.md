@@ -6,7 +6,7 @@ description: Introduction
 
 # Introduction
 
-This documentation describes in detail the [MRS UAV System](https://github.com/ctu-mrs/mrs_uav_system) and
+This documentation describes in detail the [MRS UAV System](https://github.com/ctu-mrs/mrs_uav_system/tree/ros2) and
 
 - how to install it,
 - how to use it in simulation,
