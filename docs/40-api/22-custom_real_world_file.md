@@ -10,7 +10,7 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 # Frames of Reference
 
-As described in the [Frames of Reference](/docs/api/frames_of_reference) manual, the MRS system offers a flexible way to define the coordinate frames used in the system. This is enabled using geographical libraries in the real-world that map from latitude-longitude coordinates to the local Cartesian coordinate system. The MRS system uses the [GeographicLib](https://geographiclib.sourceforge.io/) library to handle these transformations.
+As described in the [Frames of Reference](./20-frames_of_reference.md) manual, the MRS system offers a flexible way to define the coordinate frames used in the system. This is enabled using geographical libraries in the real-world that map from latitude-longitude coordinates to the local Cartesian coordinate system. The MRS system uses the [GeographicLib](https://geographiclib.sourceforge.io/) library to handle these transformations.
 
 # Custom Real World File
 

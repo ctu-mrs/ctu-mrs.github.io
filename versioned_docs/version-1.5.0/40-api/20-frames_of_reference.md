@@ -25,7 +25,7 @@ Coordinate systems for mobile robots follow hierarchical convention (check coord
 ```bash
 world -> map -> odometry -> fcu -> sensors
 ```
-The [transformations](/docs/api/transformations) (`->`) among coordination frames are maintained by [tf2 ROS library](http://wiki.ros.org/tf2).
+The [transformations](./21-transformations.md) (`->`) among coordination frames are maintained by [tf2 ROS library](http://wiki.ros.org/tf2).
 The `tf2` library requires the mutual transformations to be stored in a **tree structure**, where each node has a single *parent* and there exists only a single **root** node with no *parent*.
 
 But, maintaining the **tree structure** is impossible for multiple *world*/*map*/*odometry* coordinate frames.

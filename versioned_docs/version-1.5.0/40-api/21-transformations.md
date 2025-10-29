@@ -8,7 +8,7 @@ description: Handling transformations within the MRS
 
 ![](fig/transformations.png)
 
-As a robotic system, the MRS system makes use of many coordinate [reference frames](/docs/api/frames_of_reference).
+As a robotic system, the MRS system makes use of many coordinate [reference frames](./20-frames_of_reference.md).
 Transformations within the MRS system are maintained by the [tf2 ros package](http://wiki.ros.org/tf2) and [Transformer](https://ctu-mrs.github.io/mrs_lib/classmrs__lib_1_1Transformer.html) from the [mrs_lib package](https://ctu-mrs.github.io/mrs_lib/), which is a tf2 wrapper with several functions simplifying the work with transformations.
 The transformations within the MRS system are important not only for tracking the relationship among particular coordinate frames, but they are used also to enable sending commands in various reference frames independently on current control frame.
 
