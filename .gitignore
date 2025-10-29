@@ -3,3 +3,4 @@
 
 .docusaurus
 node_modules/.cache
+build
