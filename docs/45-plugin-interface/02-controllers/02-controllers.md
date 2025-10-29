@@ -10,8 +10,7 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 # The Controller plugin interface
 
-The Controller plugin takes current UAV state and command from the [Reference tracker](https://ctu-mrs.github.io/docs/features/trackers/) and provides the desired control outputs, which are sent to the flight controller (Embedded autopilot block in diagram below) via [Hardware API](https://ctu-mrs.github.io/docs/plugin-interface/hardware-api/).
-Diagram below shows the data architecture of the MRS system where the block containing the Controller plugin is marked in red.
+The Controller plugin takes current UAV state and command from the [Reference tracker](../../50-features/20-trackers/index.md) and provides the desired control outputs, which are sent to the flight controller (Embedded autopilot block in diagram below) via the [Hardware API](../01-hardware-api/index.md). The diagram below shows the data architecture of the MRS system where the block containing the Controller plugin is marked in red.
 
 The controller plugin is compiled as [ROS plugins](http://wiki.ros.org/pluginlib) with the [interface](https://github.com/ctu-mrs/mrs_uav_managers/blob/master/include/mrs_uav_managers/controller.h) defined by the [control manager](https://github.com/ctu-mrs/mrs_uav_managers).
 A controller plugin from any ROS package can be loaded dynamically by the [control manager](https://github.com/ctu-mrs/mrs_uav_managers) without it being present during [control manager](https://github.com/ctu-mrs/mrs_uav_managers)'s compile time.
@@ -32,7 +31,7 @@ The controller plugin can output any of the following control outputs:
   * 3D body-frame Velocity + Heading
   * 3D Position + Heading
   
-In the controller plugin source code, you can decide what to return, but it must be available in [Hardware API](https://ctu-mrs.github.io/docs/plugin-interface/hardware-api/). 
+In the controller plugin source code, you can decide what to return, but it must be available in [Hardware API](../01-hardware-api/index.md).
 
 ## Example controller plugin 
 

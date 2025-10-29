@@ -7,7 +7,7 @@ description: API for the tracker plugins
 # The Tracker plugin interface
 
 
-The Tracker plugin receives the high-level references from a Mission \& navigation software and provides the UAV state reference to the [Feedback controller](https://ctu-mrs.github.io/docs/features/controllers/) that ensure the UAV follows the reference.
+The Tracker plugin receives the high-level references from a Mission \& navigation software and provides the UAV state reference to the [Feedback controller](../../50-features/10-controllers/index.md) that ensure the UAV follows the reference.
 In general, the high-level referene received from the Mission \& navigation software can be
 
 * a single position and heading reference,
@@ -35,8 +35,7 @@ The tracker plugin can output the combination following references:
   * Throttle 
   * Full state prediction 
   
-In the tracker plugin source code, you can decide which references should be considered by the [Feedback controller](https://ctu-mrs.github.io/docs/features/controllers/).
-If you develop your own [controller plugin](https://ctu-mrs.github.io/docs/plugin-interface/controllers/), ensure that your controller supports the required tracker references.
+In the tracker plugin source code, you can decide which references should be considered by the [Feedback controller](../../50-features/10-controllers/index.md). If you develop your own [controller plugin](../02-controllers/02-controllers.md), ensure that your controller supports the required tracker references.
 
 ## Example tracker plugin 
 
