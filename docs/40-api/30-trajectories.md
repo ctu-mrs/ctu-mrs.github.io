@@ -10,14 +10,14 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 ## Definitions
 
-**Path** ([mrs_msgs/Path.msg](https://ctu-mrs.github.io/mrs_msgs/msg/Path.html))
+**Path** ([mrs_msgs/Path.msg](https://ctu-mrs.github.io/mrs_msgs/interfaces/msg/Path.html))
 
 - An ordered sequence of geometric poses without any notion of time.
 - Specifies what poses should the UAV fly through: no control over dynamics.
 - Has to be sampled first by sampling period `T`.
 - See [below](https://ctu-mrs.github.io/docs/system/trajectories.html#generating-trajectories-from-paths) on how to generate dynamically feasible trajectories from paths.
 
-**Trajectory** ([mrs_msgs/TrajectoryReference.msg](https://ctu-mrs.github.io/mrs_msgs/msg/TrajectoryReference.html))
+**Trajectory** ([mrs_msgs/TrajectoryReference.msg](https://ctu-mrs.github.io/mrs_msgs/interfaces/msg/TrajectoryReference.html))
 
 - An ordered time-parametrized sequence of geometric poses.
 - Specifies what pose should the UAV be in at given time: more control over dynamics.

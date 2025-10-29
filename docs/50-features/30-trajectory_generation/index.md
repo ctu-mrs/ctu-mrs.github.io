@@ -14,7 +14,7 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 ## General description
 
-The [mrs_uav_trajectory_generation](https://github.com/ctu-mrs/mrs_uav_trajectory_generation) package provides a method for generation a time-parametrized [trajectory](https://ctu-mrs.github.io/mrs_msgs/msg/TrajectoryReference.html) out of a [path](https://ctu-mrs.github.io/mrs_msgs/msg/Path.html) (a sequence of waypoints).
+The [mrs_uav_trajectory_generation](https://github.com/ctu-mrs/mrs_uav_trajectory_generation/tree/ros2) package provides a method for generation a time-parametrized [trajectory](https://ctu-mrs.github.io/mrs_msgs/interfaces/msg/TrajectoryReference.html) out of a [path](https://ctu-mrs.github.io/mrs_msgs/interfaces/msg/Path.html) (a sequence of waypoints).
 The resulting trajectory satisfies the current dynamics constraints of the UAV **and** completes the path in **minimum possible time**.
 The **maximum deviation** of the resulting trajectory from the supplied path is a user-configurable parameter.
 
@@ -46,12 +46,12 @@ The main differences are:
 
 ### ROS interface
 
-Input: [service](https://ctu-mrs.github.io/mrs_msgs/srv/PathSrv.html) and [topic](https://ctu-mrs.github.io/mrs_msgs/msg/Path.html) address:
+Input: [service](https://ctu-mrs.github.io/mrs_msgs/interfaces/srv/PathSrv.html) and [topic](https://ctu-mrs.github.io/mrs_msgs/interfaces/msg/Path.html) address:
 ```
 /uav*/trajectory_generation/path
 ```
 
-Output: by default, the node calls [/uav*/control_manager/trajectory_reference](https://ctu-mrs.github.io/mrs_msgs/srv/TrajectoryReferenceSrv.html) service to the [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers).
+Output: by default, the node calls [/uav*/control_manager/trajectory_reference](https://ctu-mrs.github.io/mrs_msgs/interfaces/srv/TrajectoryReferenceSrv.html) service to the [ControlManager](../01-managers/index.md#controlmanager).
 
 ### Minimum waypoint distance
 

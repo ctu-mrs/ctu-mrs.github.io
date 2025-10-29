@@ -28,7 +28,7 @@ After the planning request to **user-specified goal** is obtained, the **Octomap
 
 ### ROS interface
 
-Input: The **user-specified goal** can be passed to **Octomap Planner** as a service of type [mrs_msgs/Vec4](https://ctu-mrs.github.io/mrs_msgs/srv/Vec4.html) or [mrs_msgs/ReferenceStampedSrv](https://ctu-mrs.github.io/mrs_msgs/srv/ReferenceStampedSrv.html) on topics:
+Input: The **user-specified goal** can be passed to **Octomap Planner** as a service of type [mrs_msgs/Vec4](https://ctu-mrs.github.io/mrs_msgs/interfaces/srv/Vec4.html) or [mrs_msgs/ReferenceStampedSrv](https://ctu-mrs.github.io/mrs_msgs/interfaces/srv/ReferenceStampedSrv.html) on topics:
 ```
 /uav*/octomap_planner/goto
 /uav*/octomap_planner/reference
@@ -40,7 +40,7 @@ The planning can be stopped by calling service
 ```
 which stops the planning process and sets the UAV to hovering state.
 
-Output: after each planning phase the node calls [/uav*/control_manager/trajectory_reference](https://ctu-mrs.github.io/mrs_msgs/srv/TrajectoryReferenceSrv.html) service provided by the [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers#controlmanager).
+Output: after each planning phase the node calls [/uav*/control_manager/trajectory_reference](https://ctu-mrs.github.io/mrs_msgs/interfaces/srv/TrajectoryReferenceSrv.html) service provided by the [ControlManager](../01-managers/index.md#controlmanager).
 
 ### Planner types
 
