@@ -172,6 +172,7 @@ Please refer to [estimation_manager.launch.py](https://github.com/ctu-mrs/mrs_ua
 | **service**                         | **description**               | **service type**                                                      |
 |-------------------------------------|-------------------------------|-----------------------------------------------------------------------|
 | estimation_manager/change_estimator | switch to a desired estimator | [mrs_msgs/String](https://ctu-mrs.github.io/mrs_msgs/interfaces/srv/String.html) |
+| estimation_manager/set_world_origin | set a new world origin        | [mrs_msgs/ReferenceStampedSrv](https://ctu-mrs.github.io/mrs_msgs/interfaces/srv/ReferenceStampedSrv.html) |
 
 ## Transform manager
 
@@ -182,12 +183,21 @@ The [TransformManager](../50-features/01-managers/index.md#transformmanager) han
 | **TF**              | **description**                                                                                                                                | **example usage**                                                                       |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
 | fcu_untilted_origin | (heading only) fcu frame with removed tilts (z-axis is aligned with the gravity vector)                                                        | commanding UAV in body frame disregarding tilts                                         |
-| world_origin        | origin position defined by the world file, ENU orientation, based on UTM estimators (GPS, RTK, etc.), does not exist for non-UTM estimators    | commanding UAV localized by UTM-based estimator in a locally defined coordinate world   |
+| world_origin        | origin position defined initially by the world file or set with the `estimation_manager/set_world_origin` service, ENU orientation, based on UTM estimators (GPS, RTK, etc.), does not exist for non-UTM estimators    | commanding UAV localized by UTM-based estimator in a locally defined coordinate world   |
 | local_origin        | origin pose defined by the initial pose of the UAV (including orientation), exists for all estimators                                          | commanding UAV w.r.t. initial pose, universal frame that is always available            |
 | fixed_origin        | origin pose defined by the initial estimator, origin does not move after estimator switch, odometry in this frame jumps after estimator switch | commanding UAV w.r.t. initial estimator frame, universal frame that is always available |
 | stable_origin       | origin pose defined by the initial estimator, origin jumps after estimator switch, odometry in this frame is smooth without jumps              | mapping position of detected objects invariant to estimator switching                   |
 | utm_origin          | origin position defined by the intersection of the equator and the zone's central meridian, ENU orientation                                     | commanding UAV in absolute metric coordinates regardless of the current world file    |
 | mapping_origin_tf   | origin position and heading defined by initialization of a SLAM algorithm, origin tilt around x and y axes optionally defined by custom topic  | mapping of environment using a SLAM that cannot estimate orientation                    |
+
+### Provided services
+
+| **service**                         | **description**               | **service type**                                                      |
+|-------------------------------------|-------------------------------|-----------------------------------------------------------------------|
+| transform_manager/set_world_origin  | set a new world origin        | [mrs_msgs/ReferenceStampedSrv](https://ctu-mrs.github.io/mrs_msgs/interfaces/srv/ReferenceStampedSrv.html) |
+
+>**NOTE**: This service is called internally by the `Estimation Manager` when calling the `estimation_manager/set_world_origin` service. This will only update the world origin for the TF sources, not the world origin in the Estimation Manager. To keep both managers in sync, always call the service in the Estimation Manager. 
+
 
 
 ## Trajectory generation
