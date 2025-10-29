@@ -6,7 +6,7 @@ description: Python
 
 # Python
 
-Python is generally recommended as the programming language for quick prototyping, and developing software that does not need to be executed quickly/frequently. This may include mission progress tracking, waypoint planning, analyzing flight recordings etc. Components which rely on fast execution (state estimators, flight controllers, onboard data processors...) should be written in [C++](https://ctu-mrs.github.io/docs/software/cpp).
+Python is generally recommended as the programming language for quick prototyping, and developing software that does not need to be executed quickly/frequently. This may include mission progress tracking, waypoint planning, analyzing flight recordings etc. Components which rely on fast execution (state estimators, flight controllers, onboard data processors...) should be written in [C++](../90-software/cpp/index.md).
 
 Coding with Python has its perks, mainly:
 * no need to re-compile after every change

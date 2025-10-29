@@ -6,9 +6,7 @@ description: How to build and cache a ROS workspace into a Docker image
 
 # ROS Workspace caching with Docker
 
-This page describes the process of compiling **custom ROS packages** against dependencies from **base docker image**.
-This task is not trivial in general, however, we have prepared a set of scripts that will make the process straightforward.
-The following **assumption** apply for our situation:
+This page describes the process of compiling **custom ROS packages** against dependencies from **base docker image**. This task is not trivial in general, however, we have prepared a set of scripts that will make the process straightforward. The following **assumption** apply for our situation:
 
 * We have a **base docker image**, which covers our dependencies, e.g., `ctumrs/mrs_uav_system:1.5.0`,
 * We need to **cache the build artifacts** (`./build`, `./devel`, `./.catkin_tools` within the workspace) for future rebuilds of the same sotware.
@@ -27,12 +25,9 @@ Our process comprises of the following docker build stages:
     * Copy of the build necessary build artifacts into a transport image (`alpine:latest`)
     * Export of the transport image
 
-The compiled workspace is **transported** into the **robot** within an minimalistic `alpine`-based image, which makes it relatively small.
-The overhead of the transport image is only around 5 MB.
-On the other hand, if the workspace would be packed in a image based on the **base image**, the size would be offset by hundreds of megabytes.
-That is not a problem when the transport occurs through a **docker registry**.
-However, since the [Portainer](/docs/prerequisites/portainer) interface makes the upload of **archived** images very simple, we prefer to bundle the whole image into a `.tar.gz` file.
-This approach complicates the deployment in one simple way: The workspace needs to **extracted** from the transport image and placed into a **shared volume** during runtime.
+The compiled workspace is **transported** into the **robot** within an minimalistic `alpine`-based image, which makes it relatively small. The overhead of the transport image is only around 5 MB. On the other hand, if the workspace would be packed in a image based on the **base image**, the size would be offset by hundreds of megabytes. 
+
+That is not a problem when the transport occurs through a **docker registry**. However, since the [Portainer](../32-portainer/index.md) interface makes the upload of **archived** images very simple, we prefer to bundle the whole image into a `.tar.gz` file. This approach complicates the deployment in one simple way: The workspace needs to **extracted** from the transport image and placed into a **shared volume** during runtime.
 
 ## Pre-configured build pipeline
 
@@ -44,6 +39,7 @@ A set of scripts that facilitate the build is provided at [ctu-mrs/mrs_docker](h
 
 * The sources of your ROS packages are supposed to be placed (or linked) into the `./src` folder.
 * The file `./common_vars.sh` configures the process by setting up the following environment variables:
+
 ```bash
 # tag for the source image against which the catkin workspace will be built
 export BASE_IMAGE=ctumrs/mrs_uav_system:1.5.0
@@ -75,11 +71,11 @@ export CACHE_PATH=cache
 
 ## Using the workspace on a robot
 
-The ROS catkin workspace needs to be first extracted from the **transport image** and copied into a shared docker volume.
-Then, a container can be started using the **base image** and the workspace can be sourced and used to start your packages.
+The ROS colcon workspace needs to be first extracted from the **transport image** and copied into a shared docker volume. Then, a container can be started using the **base image** and the workspace can be sourced and used to start your packages.
 
 Here is an example of a minimalistic compose session.
 The full example can be found at [ctu-mrs/mrs_docker/compose/custom_workspace](https://github.com/ctu-mrs/mrs_docker/compose/custom_workspace)
+
 ```yaml
 volumes:
 

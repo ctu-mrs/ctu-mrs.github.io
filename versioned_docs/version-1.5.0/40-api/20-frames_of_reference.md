@@ -6,7 +6,7 @@ description: TF frames of reference
 
 # Frames of Reference
 
-As described in the [Transformations](/docs/api/transformations) manual, the MRS control system enables to send commands to the UAV in all coordinate frames that are part of the same TF Tree as the `<uav_name>/fcu` frame.
+As described in the [Transformations](./21-transformations.md) manual, the MRS control system enables to send commands to the UAV in all coordinate frames that are part of the same TF Tree as the `<uav_name>/fcu` frame.
 The `<uav_name>/fcu` frame is the _body frame_ of the UAV.
 The coordinate frames that are used within MRS system are listed below.
 

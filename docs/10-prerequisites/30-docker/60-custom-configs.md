@@ -8,10 +8,7 @@ description: Custom configs for containers
 
 ### Problem definition
 
-A users has a **docker image** from which his software can be started.
-The image contains pre-compiled binaries with a **default configuration**.
-However, in many cases (robotics applications), the user's software needs to be started with **different configuration** each time.
-Configuration can be facilited by several mechanisms:
+A users has a **docker image** from which his software can be started. The image contains pre-compiled binaries with a **default configuration**. However, in many cases (robotics applications), the user's software needs to be started with **different configuration** each time. Configuration can be facilited by several mechanisms:
 
 * config files,
 * ROS launch files,
@@ -19,6 +16,7 @@ Configuration can be facilited by several mechanisms:
 * additional files loaded in runtime.
 
 There are two ways how to provide **custom configuration files** to the system:
+
   1. expose them to the **container** running from the **user's docker image**
   2. paste them as a part of the **compose.yaml** file directly from the Portainer
 
@@ -79,7 +77,7 @@ services:
 ```
 ## Solution 2. - Inline, through compose.yaml from Portainer
 
-When you are starting the system from the [Portainer](https://ctu-mrs.github.io/docs/prerequisites/portainer/) using Docker Compose, you can past the yaml config directly to the compose.yaml file. Example:
+When you are starting the system from the [Portainer](../32-portainer/index.md) using Docker Compose, you can past the yaml config directly to the compose.yaml file. Example:
 
 ```
 services:

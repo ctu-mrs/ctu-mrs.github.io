@@ -13,11 +13,11 @@ If you encounter any issues during the process, see the end of this page for *Tr
 
 ### 1. Install the Robot Operating System (Jazzy)
 
-  Follow the [ROS2 Installation](https://ctu-mrs.github.io/docs/prerequisites/ros2/installation) guide. 
+Follow the [ROS2 Installation](./10-installation.md) guide.
 
 ### 2. Install the MRS UAV Core with necessary dependencies
 
-  Follow the [ROS2 MRS UAV Core Installation](https://ctu-mrs.github.io/docs/installation/ros2-installation) guide. 
+Follow the [ROS2 MRS UAV Core Installation](../../20-installation/index.md) guide.
   
 ### 3. Get aliases that make common ROS2 commands usable
 
@@ -80,7 +80,7 @@ build:
     - rel-with-deb-info
 ```
 
-For more information regarding setting workspace flags using mixins see [ROS2 Workspace Profiles](https://ctu-mrs.github.io/docs/prerequisites/ros2/ros1-ros2-patterns/workspace_profiles)
+For more information regarding setting workspace flags using mixins see [ROS2 Workspace Profiles](50-ros1-ros2-patterns/workspace_profiles.md)
 
 ### 6. Build the workspace
 ```bash

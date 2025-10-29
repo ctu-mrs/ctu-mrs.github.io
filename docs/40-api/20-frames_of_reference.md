@@ -10,27 +10,31 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 # Frames of Reference
 
-As described in the [Transformations](/docs/api/transformations) manual, the MRS control system enables to send commands to the UAV in all coordinate frames that are part of the same TF Tree as the `<uav_name>/fcu` frame.
-The `<uav_name>/fcu` frame is the _body frame_ of the UAV.
-The coordinate frames that are used within MRS system are listed below.
+As described in the [Transformations](./21-transformations.md) manual, the MRS control system enables to send commands to the UAV in all coordinate frames that are part of the same TF Tree as the `<uav_name>/fcu` frame.
 
-The graphical illustration of relations among particular frames can be displayed with rqt utility `tf_tree` by executing command:
+The `<uav_name>/fcu` frame is the _body frame_ of the UAV. The coordinate frames that are used within MRS system are listed below.
+
+A graphical illustration of relations among particular frames can be displayed with the `tf2_tools` utility in an exported .pdf file by executing this command:
+
 ```bash
-rosrun rqt_tf_tree rqt_tf_tree
+ros2 run tf2_tools view_frames
 ```
-or using the main RQT application:
+
+or using the `rqt_graph` application:
+
 ```bash
-rqt
+ros2 run rqt_graph rqt_graph
 ```
 
 ## Multi-frame Localization Problem
 
 Coordinate systems for mobile robots follow hierarchical convention (check coordinate frames convention [REP-105](https://www.ros.org/reps/rep-0105.html) used with ROS):
+
 ```bash
 world -> map -> odometry -> fcu -> sensors
 ```
-The [transformations](/docs/api/transformations) (`->`) among coordination frames are maintained by [tf2 ROS library](http://wiki.ros.org/tf2).
-The `tf2` library requires the mutual transformations to be stored in a **tree structure**, where each node has a single *parent* and there exists only a single **root** node with no *parent*.
+
+The [transformations](./21-transformations.md) (`->`) among coordination frames are maintained by [tf2 ROS library](http://wiki.ros.org/tf2). The `tf2` library requires the mutual transformations to be stored in a **tree structure**, where each node has a single *parent* and there exists only a single **root** node with no *parent*.
 
 But, maintaining the **tree structure** is impossible for multiple *world*/*map*/*odometry* coordinate frames.
 
@@ -41,9 +45,9 @@ However, a *frame* following the order `frame -> <uav_name>/fcu` is stored as a 
 
 ## Connecting multiple TF trees
 
-To connect transform trees of two or more UAVs, you can use the [`tf_connector`](https://github.com/ctu-mrs/mrs_utils/tree/ros2/mrs_tf_connector) node within the [`mrs_utils`](https://github.com/ctu-mrs/mrs_utils/tree/ros2) package.
-The node creates a new common connecting frame and defines transforms from root frames of the separate trees to this common frame that are recalculated so that the specified frames in the subtrees remain equal.
-See the corresponding [Readme](https://github.com/ctu-mrs/mrs_utils/blob/ros2/mrs_tf_connector/README.md) for usage hints and parameter documentation.
+To connect transform trees of two or more UAVs, you can use the [`tf_connector`](https://github.com/ctu-mrs/mrs_utils/tree/master/mrs_tf_connector) node within the [`mrs_utils`](https://github.com/ctu-mrs/mrs_utils/) package.
+
+The node creates a new common connecting frame and defines transforms from root frames of the separate trees to this common frame that are recalculated so that the specified frames in the subtrees remain equal. See the corresponding [Readme](https://github.com/ctu-mrs/mrs_utils/blob/master/mrs_tf_connector/README.md) for usage hints and parameter documentation.
 
 *Note:* The `tf_connector` node can connect only trees containing a common (equal) frame --- e.g., a local GNSS coordinate frame of the world `<uav_name>/world_origin`.
 
@@ -91,7 +95,7 @@ The sensor frames includes
 
 ## Additional frames
 
-Last group of frames used in MRS system is formed by coordinate frames created by [TransformManager](https://github.com/ctu-mrs/mrs_uav_managers/tree/ros2#TransformManager) from `nav_msgs/Odometry` messages or by additional software (e.g., systems for localization).
+Last group of frames used in MRS system is formed by coordinate frames created by [TransformManager](../50-features/01-managers/index.md#transformmanager) from `nav_msgs/Odometry` messages or by additional software (e.g., systems for localization).
 This group incorporates
 
 * **\<uav_name\>/mapping_origin**

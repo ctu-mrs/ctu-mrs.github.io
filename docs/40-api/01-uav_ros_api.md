@@ -175,7 +175,7 @@ Please refer to [estimation_manager.launch.py](https://github.com/ctu-mrs/mrs_ua
 
 ## Transform manager
 
-The [TransformManager](../50-features/01-managers/index.md#controlmanager) handles the broadcasting of default TFs. Can construct custom [configurable](https://github.com/ctu-mrs/mrs_uav_managers/blob/ros2/config/public/transform_manager/transform_manager.yaml#L53) TFs from `nav_msgs/Odometry` topics by adding them to the `tf_sources` [array](https://github.com/ctu-mrs/mrs_uav_managers/blob/ros2/config/public/transform_manager/transform_manager.yaml#L48) in custom config. Can republish a `nav_msgs/Odometry` topic in another frame by adding the `frame_id` to the `republish_in_frames` [array](https://github.com/ctu-mrs/mrs_uav_managers/blob/ros2/config/public/transform_manager/transform_manager.yaml#L61).
+The [TransformManager](../50-features/01-managers/index.md#transformmanager) handles the broadcasting of default TFs. Can construct custom [configurable](https://github.com/ctu-mrs/mrs_uav_managers/blob/ros2/config/public/transform_manager/transform_manager.yaml#L53) TFs from `nav_msgs/Odometry` topics by adding them to the `tf_sources` [array](https://github.com/ctu-mrs/mrs_uav_managers/blob/ros2/config/public/transform_manager/transform_manager.yaml#L48) in custom config. Can republish a `nav_msgs/Odometry` topic in another frame by adding the `frame_id` to the `republish_in_frames` [array](https://github.com/ctu-mrs/mrs_uav_managers/blob/ros2/config/public/transform_manager/transform_manager.yaml#L61).
 
 ### Provided default TFs
 
