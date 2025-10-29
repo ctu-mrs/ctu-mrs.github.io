@@ -63,6 +63,9 @@ For example, the latitude and longitude for our university yard can be specified
 This origin leads to the definition of a plane which converts from either `LATLON` or `UTM` to the local cartesian plane with co-ordinates in meters.
 
 
+It's possible to change the world origin after the system has been started by using the service [`estimation_manager/set_world_origin`](./01-uav_ros_api.md#estimation-manager). The service accepts the same parameters as defined in the `world_origin` section of the real world file (latlon or utm coordinates), allowing for dynamic reconfiguration of the coordinate system during operation. 
+
+
 ## Safety Area
 
 Safety area is a polyhedron defined by vertically extruding a polygon to mark an area outside which the UAV should not fly. When specified and enabled, the system prevents ```goto``` commands and ```trajectory_references``` from taking the UAV outside the safety area. 
