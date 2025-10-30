@@ -19,10 +19,17 @@ sudo apt install ros-jazzy-depthai-ros
 
 ## Startup
 
-You need to have the following udev rule for the camera to be detected and work properly
+You need to have the following udev rule for the camera to be detected and work properly, you can place it for example in `/etc/udev/rules.d/60-luxonis.rules`
 
-```
+```bash
 SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", OWNER="mrs", MODE="0666"
+```
+
+After that refresh the udev daemon or reboot:
+
+```bash
+sudo udevadm control --reload
+sudo udevadm trigger
 ```
 
 Then the launch command will work
