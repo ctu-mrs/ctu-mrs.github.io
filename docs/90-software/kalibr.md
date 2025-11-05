@@ -18,9 +18,6 @@ The Kalibr docker image is sourced from the `ctumrs` [dockerhub](https://hub.doc
 
 ## Howto
 
-0. If you have bag file from ROS2, you need to first [convert it to the ROS1 bag format](../120-miscellaneous/bagfile_convert_ros1_ros2.md)
-
-
 1. clone the [ctu-mrs/kalibr_docker](https://github.com/ctu-mrs/kalibr_docker) repository
 2. `cd compose_session`
 2. Pull the docker image by calling `docker compose pull`
