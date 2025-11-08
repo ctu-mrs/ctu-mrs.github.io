@@ -126,7 +126,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'http://mrs.felk.cvut.cz',
+          href: 'http://mrs.fel.cvut.cz',
           label: 'CTU MRS',
           position: 'right',
         },
@@ -165,7 +165,7 @@ const config: Config = {
             },
             {
               label: 'CTU MRS Group',
-              href: 'https://mrs.felk.cvut.cz',
+              href: 'https://mrs.fel.cvut.cz',
             }
           ],
         },

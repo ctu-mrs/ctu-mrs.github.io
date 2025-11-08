@@ -15,7 +15,7 @@ The FlightForge simulator is composed of two main parts - the simulator itself e
 
 ## FlightForge Simulator 
 
-The prebuild binaries of the simulator can be downloaded from the [here](https://nasmrs.felk.cvut.cz/index.php/s/MnGARsSwnpeVy5z). 
+The prebuild binaries of the simulator can be downloaded from the [here](https://nasmrs.fel.cvut.cz/index.php/s/MnGARsSwnpeVy5z). 
 The simulator is available for Linux and Windows, the simulator can be run by running the binary file `FlightForge.sh` in the downloaded archive.
 The binary provides the simulator as a standalone application that can be run without the need of Unreal Engine.
 However, if you wish to create a custom environment or modify the simulator you can download our Unreal Engine plugin from [flight_forge repository](https://github.com/ctu-mrs/flight_forge), and place it in the `Plugins` folder of your Unreal Engine project.

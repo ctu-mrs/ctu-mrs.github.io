@@ -26,7 +26,7 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 * "MPC tracker"
   * the main *workhorse* of the [MRS UAV System](https://github.com/ctu-mrs/mrs_uav_system), it is used for most of the regular flying
   * based on a unique *realtime simulated Model Predictive Control* approach
-  * originally published in: `Baca, et al., "Model Predictive Trajectory Tracking and Collision Avoidance for Reliable Outdoor Deployment of Unmanned Aerial Vehicles", IROS 2018`, [link](http://mrs.felk.cvut.cz/data/papers/baca-mpc-tracker.pdf)
+  * originally published in: `Baca, et al., "Model Predictive Trajectory Tracking and Collision Avoidance for Reliable Outdoor Deployment of Unmanned Aerial Vehicles", IROS 2018`, [link](http://mrs.fel.cvut.cz/data/papers/baca-mpc-tracker.pdf)
   * produces feasible reference which is smooth up to snap and satisfies given state constraints.
   * can smoothly track trajectories
   * can efficiently stop a UAV from any previous motion

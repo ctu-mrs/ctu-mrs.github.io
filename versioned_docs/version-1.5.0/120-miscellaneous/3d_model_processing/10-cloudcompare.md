@@ -46,7 +46,7 @@ Used for data processing before meshing and texturing.
 
 [CC command line mode](https://www.cloudcompare.org/doc/wiki/index.php?title=Command_line_mode) opens a way for scripting of most of the functions available within CC GUI.
 **Scripting is faster than GUI and provides repeatability: prefer scripting over GUI.**
-Example script is available [here](https://mrs.felk.cvut.cz/gitlab/NAKI/naki_postprocessing/blob/master/scripts/pointclouds/processPtxFiles.sh).
+Example script is available [here](https://mrs.fel.cvut.cz/gitlab/NAKI/naki_postprocessing/blob/master/scripts/pointclouds/processPtxFiles.sh).
 Example command merging two `.ptx` files, exporting them to `.ply`, sampling the data to resolution of 2 cm and exporting the sampled data to `.ply`:
 ```bash
 CloudCompare -AUTO_SAVE OFF -O Setup249.ptx -O Setup250.ptx -MERGE_CLOUDS -C_EXPORT_FMT PLY -SAVE_CLOUDS FILE "merge_raw.ply" -SS SPATIAL 0.02 -SAVE_CLOUDS FILE "merge_raw_sampled_2cm.ply"

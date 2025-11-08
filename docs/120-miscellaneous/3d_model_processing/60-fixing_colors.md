@@ -16,7 +16,7 @@ Export
   - 1 structured `.e57` file with *N* low-res clouds, origins and images
   - *N* unstructured `.e57` files with full-point clouds.
 
-1. Merge unstructured data with [VoxelizeE57FilesByOriginDistance](https://mrs.felk.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master)
+1. Merge unstructured data with [VoxelizeE57FilesByOriginDistance](https://mrs.fel.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master)
   - voxelizes data to desired resolution
   - final voxel stores by default a point with the lowest distance from the scanning origin (origin parsed from the structured `.e57` file)
   - filters out measurements with respect to the sensor accuracy

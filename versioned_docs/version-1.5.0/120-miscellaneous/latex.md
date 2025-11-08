@@ -11,7 +11,7 @@ description: Syncing overleaf with a git repository
   * **Note:** you must login with an email and password and not through a Google account. It is needed to push to the overleaf afterward since it doesn't support SSH keys by default.
 2. Get git link:
   * Once you've created a project, go to the menu, in the section called ```Sync``` you can find ```Git```. Go there.
-    * If you have created a new account, this feature will be paid only. For this purpose you have to use our shared credentials, see on this page "Overleaf credentials" [here](http://mrs.felk.cvut.cz/internal), use them to log in and get GitLab link.
+    * If you have created a new account, this feature will be paid only. For this purpose you have to use our shared credentials, see on this page "Overleaf credentials" [here](http://mrs.fel.cvut.cz/internal), use them to log in and get GitLab link.
   * This will open a pop-up window with ``git clone https://git.overleaf.com/<your overleaf project link>``. Copy the ``https...`` link.
 
 3. Sync your repo:

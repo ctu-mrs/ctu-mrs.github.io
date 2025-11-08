@@ -137,8 +137,8 @@ The pointcloud vertex color might not be detailed enough for the whole model or 
 
 #### Create whole model
 
-  * **This method is not automatized, only proof of concept.** The method assume having precise position of the images w.r.t. the model. The files for this project are available [here](https://nasmrs.felk.cvut.cz/index.php/apps/files/?dir=/shared/3D_models/raster_texture_example).
-  * Use either [CloudCompare](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#extracting-images) or [VoxelizeE57Files](https://mrs.felk.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master) package to extract images.
+  * **This method is not automatized, only proof of concept.** The method assume having precise position of the images w.r.t. the model. The files for this project are available [here](https://nasmrs.fel.cvut.cz/index.php/apps/files/?dir=/shared/3D_models/raster_texture_example).
+  * Use either [CloudCompare](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#extracting-images) or [VoxelizeE57Files](https://mrs.fel.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master) package to extract images.
   * Open the MeshLab and import the mesh model, you would like to texture with `File->Import Mesh...`. The model do not need parametrization.
   * Import all raster images `File->Import Raster...`
   * **Recommend to save the MeshLab project `.mlp` as much as you can. MeshLab likes to crash.**
@@ -191,7 +191,7 @@ ViewportPx="2048 2048"
 FocalMm="6.141"
 ```
 
-* Values are obtained from both CloudCompare `Camera Sensor` output and [VoxelizeE57Files](https://mrs.felk.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master) package running with `--only-export-images` option.
+* Values are obtained from both CloudCompare `Camera Sensor` output and [VoxelizeE57Files](https://mrs.fel.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master) package running with `--only-export-images` option.
 * Copy the whole `.xml` snippet and select `Windows->Paste clipboard to camera setting`.
 * You should be able to see the change in the camera perspective.
 * If you copy again the current value of the camera with `Windows->Copy camera settings to clipboard`, the values are different since MeshLab recalculates the imported values. Values are correct. Here is the example of such a snippet
@@ -230,7 +230,7 @@ FocalMm="6.141"
 ```
 
 * These values represent the Leica BLK 360 camera sensor as described in the previous chapter even the values do not match. MeshLab recalculates the values for its own projection.
-* To correct the camera sensor position and orientation, check the [extract sensor position](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#extracting-sensor-positions) guide or [VoxelizeE57Files](https://mrs.felk.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master) package. *Note: Not sure if VoxelizeE57Files gives the same transformation.*
+* To correct the camera sensor position and orientation, check the [extract sensor position](https://ctu-mrs.github.io/docs/software/3d_model_processing/cloudcompare.html#extracting-sensor-positions) guide or [VoxelizeE57Files](https://mrs.fel.cvut.cz/gitlab/NAKI/naki_postprocessing/tree/master) package. *Note: Not sure if VoxelizeE57Files gives the same transformation.*
 * Correct the values in `cameras.xml` configuration file for the `cameras` tag for each image as below:
 
 ```xml

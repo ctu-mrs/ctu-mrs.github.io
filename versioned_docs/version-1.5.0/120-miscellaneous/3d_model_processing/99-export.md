@@ -26,8 +26,8 @@ Most of the times, the models are saved in following formats
 
 ## Web
 
-* The basic guide will be described here. Please follow the [original guide](https://mrs.felk.cvut.cz/gitlab/bednaj14/meshlab/blob/master/modely_report.pdf) and the scripts inside for detailed information.
-* Download the [obj2optimizedGlb.sh](https://mrs.felk.cvut.cz/gitlab/bednaj14/meshlab/blob/master/obj2optimizedGlb.sh) script.
+* The basic guide will be described here. Please follow the [original guide](https://mrs.fel.cvut.cz/gitlab/bednaj14/meshlab/blob/master/modely_report.pdf) and the scripts inside for detailed information.
+* Download the [obj2optimizedGlb.sh](https://mrs.fel.cvut.cz/gitlab/bednaj14/meshlab/blob/master/obj2optimizedGlb.sh) script.
 * Recommend to install `NodeJS` with [snapcraft](https://snapcraft.io/node) tool. The `apt` version for `Ubuntu` does not contain the up-to-date version.
 * The convert tool needs to have max *16384x16384* texture. Otherwise it will not work.
   * *Note: In general, it is better to have several lower size texture files than a single large one.*
