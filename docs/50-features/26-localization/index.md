@@ -44,6 +44,10 @@ The MRS estimation manager fuses multiple localization sources, including GNSS, 
 
 ## Localization Integration Structure
 
+<div style={{textAlign: 'center'}}>
+  <img src={require('./fig/Algo_Integration_Pipeline_MRS.png').default} alt="MRS Localization Layers" style={{width: '35%'}} />
+</div>
+
 To integrate a localization algorithm into the MRS UAV System, the implementation follows a three-layer structure that bridges the raw algorithm to the system's estimation framework.
 
 ### Algorithm Library
