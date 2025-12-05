@@ -35,7 +35,7 @@ const config: Config = {
 
   plugins: [
     // ...
-    //'@aldridged/docusaurus-plugin-lunr',
+    '@aldridged/docusaurus-plugin-lunr',
     require.resolve('docusaurus-lunr-search')
   ],
 
