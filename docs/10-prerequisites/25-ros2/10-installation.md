@@ -46,7 +46,7 @@ rosker() {
       docker start -ai "$name"
     fi
   else
-    docker run -it --name "$name" --network=host --privileged \
+    docker run -it --name "$name" --network=host --privileged -e DISPLAY \
       -v "$HOME/:/root/" \
       -v "/dev:/dev/" \
       -v "/etc/hosts:/etc/hosts" \
