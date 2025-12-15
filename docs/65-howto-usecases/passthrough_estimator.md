@@ -30,17 +30,17 @@ Be sure to fully understand the implications and always verify functionality in 
 The odometry used as input for the passthrough estimator must satisfy at least the following conditions:
 
 * Sufficient Rate — The odometry must be provided at a rate that meets or exceeds the control manager’s requirements for each [control modality](https://github.com/ctu-mrs/mrs_uav_managers/blob/da86b6229468a4dcf2e7d0f4da7c4e18808bdfc2/src/control_manager/control_manager.cpp#L1566C1-L1590C6) :
-  * Actuators commands, control group: 250 Hz 
+  * Actuators commands, control group: 250 Hz
   * *Attitude rate, attitude* (most common): 100 Hz
   * Acceleration + heading rate, acceleration + heading: 40 Hz
   * Velocity + heading rate, velocity + heading, position + heading: 20 Hz
-* Consistent dt — The dt between messages should remain stable 
+* Consistent dt — The dt between messages should remain stable
   * 0.01 s between all messages for 100 Hz odometry is good
   * 0.01 s between some messages but sometimes 0.05 s for 100 Hz odometry is bad
 * Smooth state variables — No sudden jumps between messages
-  * e.g. if a position suddenly jumps 2 meters due to a loop closure, it is bad   
-* Body-frame velocities — The linear and angular velocities are in the body (FCU) frame of the UAV  
-  * The frame must be specified in the `child_frame_id` of the odometry message (e.g., `uav1/fcu`) 
+  * e.g. if a position suddenly jumps 2 meters due to a loop closure, it is bad
+* Body-frame velocities — The linear and angular velocities are in the body (FCU) frame of the UAV
+  * The frame must be specified in the `child_frame_id` of the odometry message (e.g., `uav1/fcu`)
 * Consistent pose and velocity — The pose should correspond with integrated velocities (up to some reasonable drift)
 
 ## Running the Passthrough Estimator
@@ -50,9 +50,11 @@ Follow these steps to run the passthrough estimator in simulation:
 
 1. Specify the passthrough estimator parameters in the `custom_config.yaml` of your tmux session:
 
-```yaml 
+```yaml
 mrs_uav_managers:
+
   estimation_manager:
+
     # loaded state estimator plugins
     state_estimators: [
       "passthrough",
@@ -71,6 +73,7 @@ mrs_uav_managers:
 
 ```yaml
 mrs_uav_managers:
+
   constraint_manager:
 
     estimator_types: [
@@ -114,36 +117,40 @@ mrs_uav_managers:
 
 3. Specify the safety area in `world_config.yaml` in the `local_origin` frame:
 
-```yaml 
-safety_area:
+```yaml
+mrs_uav_managers:
 
-  enabled: true
+  safety_area_manager:
 
-  horizontal:
+    safety_area:
 
-    # the frame of reference in which the points are expressed
-    frame_name: "local_origin"
+      enabled: true
 
-    # polygon
-    #
-    # x, y [m] for any frame_name except latlon_origin
-    # x = latitude, y = longitude [deg]  for frame_name=="latlon_origin"
-    points: [
-      -50, -50,
-      50,  -50,
-      50,  50,
-      -50, 50,
-    ]
+      horizontal:
 
-  vertical:
+        # the frame of reference in which the points are expressed
+        frame_name: "local_origin"
 
-    # the frame of reference in which the max&min z is expressed
-    frame_name: "local_origin"
+        # polygon
+        #
+        # x, y [m] for any frame_name except latlon_origin
+        # x = latitude, y = longitude [deg]  for frame_name=="latlon_origin"
+        points: [
+          -50, -50,
+          50,  -50,
+          50,  50,
+          -50, 50,
+        ]
 
-    max_z: 30.0
-    min_z: 0.5
+      vertical:
+
+        # the frame of reference in which the max&min z is expressed
+        frame_name: "local_origin"
+
+        max_z: 30.0
+        min_z: 0.5
+
+      obstacles:
+
+        present: false
 ```
-
-## Example Simulation Session
-
-An example simulation session for running the passthrough estimator is located [here](https://github.com/ctu-mrs/mrs_core_examples/tree/tmux/tmux/passthrough_estimator).

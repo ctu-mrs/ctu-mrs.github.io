@@ -18,40 +18,48 @@ An example real world file is shown below. The file is divided into two main sec
 
 
 ```bash
-world_origin:
+mrs_uav_managers:
 
-  units: "LATLON" # {"UTM, "LATLON"}
+  world_origin:
 
-  origin_x: 50.0764041
-  origin_y: 14.4180359
+    units: "LATLON" # {"UTM, "LATLON"}
 
-safety_area:
+    origin_x: 50.0764041
+    origin_y: 14.4180359
 
-  enabled: true
+  safety_area_manager:
 
-  horizontal:
+    safety_area:
 
-    # the frame of reference in which the points are expressed
-    frame_name: "latlon_origin"
+      enabled: true
 
-    # polygon
-    #
-    # x, y [m] for any frame_name except latlon_origin
-    # x = latitude, y = longitude [deg]  for frame_name=="latlon_origin"
-    points: [
-      50.0765653, 14.4178914,
-      50.0762102, 14.4179722,
-      50.0763015, 14.4181847,
-      50.0765825, 14.4181411,
-    ]
+      horizontal:
 
-  vertical:
+        # the frame of reference in which the points are expressed
+        frame_name: "latlon_origin"
 
-    # the frame of reference in which the max&min z is expressed
-    frame_name: "world_origin"
+        # polygon
+        #
+        # x, y [m] for any frame_name except latlon_origin
+        # x = latitude, y = longitude [deg]  for frame_name=="latlon_origin"
+        points: [
+          50.0765653, 14.4178914,
+          50.0762102, 14.4179722,
+          50.0763015, 14.4181847,
+          50.0765825, 14.4181411,
+        ]
 
-    max_z: 8.0
-    min_z: 1.0
+      vertical:
+
+        # the frame of reference in which the max&min z is expressed
+        frame_name: "world_origin"
+
+        max_z: 8.0
+        min_z: 1.0
+
+      obstacles:
+
+        present: falsek
 ```
 
 ## Choice of coordinate system
@@ -63,12 +71,12 @@ For example, the latitude and longitude for our university yard can be specified
 This origin leads to the definition of a plane which converts from either `LATLON` or `UTM` to the local cartesian plane with co-ordinates in meters.
 
 
-It's possible to change the world origin after the system has been started by using the service [`estimation_manager/set_world_origin`](./01-uav_ros_api.md#estimation-manager). The service accepts the same parameters as defined in the `world_origin` section of the real world file (latlon or utm coordinates), allowing for dynamic reconfiguration of the coordinate system during operation. 
+It's possible to change the world origin after the system has been started by using the service [`estimation_manager/set_world_origin`](./01-uav_ros_api.md#estimation-manager). The service accepts the same parameters as defined in the `world_origin` section of the real world file (latlon or utm coordinates), allowing for dynamic reconfiguration of the coordinate system during operation.
 
 
 ## Safety Area
 
-Safety area is a polyhedron defined by vertically extruding a polygon to mark an area outside which the UAV should not fly. When specified and enabled, the system prevents ```goto``` commands and ```trajectory_references``` from taking the UAV outside the safety area. 
+Safety area is a polyhedron defined by vertically extruding a polygon to mark an area outside which the UAV should not fly. When specified and enabled, the system prevents ```goto``` commands and ```trajectory_references``` from taking the UAV outside the safety area.
 
 This area can either be defined in co-ordinate frames such as `local_origin` or `world_origin` which uses the origin specified in the world to define the polygon in meters, or in ```latlon_origin``` which uses the latitude and longitude to define the polygon.
 

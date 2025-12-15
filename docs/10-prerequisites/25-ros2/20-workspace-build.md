@@ -82,6 +82,8 @@ If you want to build MRS integration and unit tests, add the _mrs-testing_ mixin
 ```yaml
 build:
   mixin:
+    - rel-with-deb-info
+    - compile-commands
     - mrs-testing
 ```
 
