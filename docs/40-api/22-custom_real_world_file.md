@@ -59,7 +59,7 @@ mrs_uav_managers:
 
       obstacles:
 
-        present: falsek
+        present: false
 ```
 
 ## Choice of coordinate system
