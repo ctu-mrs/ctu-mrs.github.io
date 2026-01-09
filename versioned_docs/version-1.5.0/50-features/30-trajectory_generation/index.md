@@ -102,7 +102,7 @@ Therefore, only the **horizontal** constraints values are pull out of [ControlMa
 For arbitrarily structured paths set the horizontal and vertical constraints equal in the [ConstraintManager](https://github.com/ctu-mrs/mrs_uav_managers).
 
 The input service/topic allows to override the maximum velocity and acceleration constraints.
-If overriden, the smaller values (between the user-overriden and the supplied by the [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers)) will be used.
+If overridden, the smaller values (between the user-overridden and the supplied by the [ControlManager](https://github.com/ctu-mrs/mrs_uav_managers)) will be used.
 
 ## Dependencies
 

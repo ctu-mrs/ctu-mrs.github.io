@@ -99,7 +99,7 @@ The selected camera dictates the following parameters to which attention has to 
 
 ## On wide FoV and other "non-pinhole-like" setups
 
-*Note: May contain contoversial information - direct your flame to ViktorWalter*
+*Note: May contain controversial information - direct your flame to ViktorWalter*
 
 Very often, especially for applications of vision onboard of UAVs, you will need cameras with wide FoV to get an overview of the surroundings without the need for actively rotating the camera or the whole UAV.
 There is now a wide selection of affordable lenses that accomplish this, including [fisheye lenses](https://en.wikipedia.org/wiki/Fisheye_lens) with more than 180 degrees FoV, even in small sizes suitable for deployment onboard of UAVs.
@@ -107,7 +107,7 @@ Alternatively, such wide overview can be obtained by using a curved reflective s
 For these cases, the pinhole camera model is not appropriate.
 
 The pinhole model of cameras is very popular due to its simplicity and presumed computational efficiency.
-It is used frequently in computer vision and in computer graphics this model is used almost exlusively.
+It is used frequently in computer vision and in computer graphics this model is used almost exclusively.
 However, it does practically never perfectly correspond to the projection of real cameras that have lenses, because of which most calibration systems based on the pinhole model compute additional "lens distortion" parameters used to first correct the projection to better correspond to the calculated model.
 This means that additional computation has to be performed anyway and any gains one has from exploiting the math of the pinhole-based perspective projection are rendered pretty much moot.
 I (ViktorWalter) therefore recommend that you consider using a different model than the popular pinhole for better precision in 3D position estimation.

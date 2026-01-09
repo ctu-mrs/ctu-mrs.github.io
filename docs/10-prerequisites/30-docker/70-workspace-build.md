@@ -9,7 +9,7 @@ description: How to build and cache a ROS workspace into a Docker image
 This page describes the process of compiling **custom ROS packages** against dependencies from **base docker image**. This task is not trivial in general, however, we have prepared a set of scripts that will make the process straightforward. The following **assumption** apply for our situation:
 
 * We have a **base docker image**, which covers our dependencies, e.g., `ctumrs/mrs_uav_system:1.5.0`,
-* We need to **cache the build artifacts** (`./build`, `./devel`, `./.catkin_tools` within the workspace) for future rebuilds of the same sotware.
+* We need to **cache the build artifacts** (`./build`, `./devel`, `./.catkin_tools` within the workspace) for future rebuilds of the same software.
 * We need to transport the resulting compiled software to an offline machine (a.k.a. the **robot**),
 * The **robot** has the **base docker image** loaded in its docker daemon.
 

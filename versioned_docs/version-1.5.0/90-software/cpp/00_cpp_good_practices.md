@@ -350,7 +350,7 @@ A list of useful C++ libraries that you might need with links to their documenta
   - [https://docs.opencv.org/4.2.0/](https://docs.opencv.org/4.2.0/)
 * **PCL:** Point cloud processing (ROS has compatible interfaces).
   - [https://pointclouds.org/documentation/](https://pointclouds.org/documentation/)
-* **Boost:** General C++ library implementing *many* tools, algorithms and utilities (used internaly in ROS).
+* **Boost:** General C++ library implementing *many* tools, algorithms and utilities (used internally in ROS).
   - [https://www.boost.org/doc/libs/1_71_0/](https://www.boost.org/doc/libs/1_71_0/)
 * **`mrs_lib`**: Our own MRS library implementing some algorithms (e.g. various Kalman filters), ROS wrappers (e.g. for parameter loading) and other utilities (e.g. a 3D geometry library).
   - [https://ctu-mrs.github.io/mrs_lib/](https://ctu-mrs.github.io/mrs_lib/)

@@ -66,7 +66,7 @@ Simply publish a [std_msgs/String](http://docs.ros.org/melodic/api/std_msgs/html
     * At the begining of you string, put "-id my_id the rest of my message"
     * Message will be displayed for each unique id
 * -p
-    * You can add "-p " at the beginning of your string, to make the message persistent, it will not disappear, only if it is overriden by a new message
+    * You can add "-p " at the beginning of your string, to make the message persistent, it will not disappear, only if it is overridden by a new message
 * -r, -y,- g, -R, -Y -G
     * By default, the messages will be displayed as black/white (depending on the current colorsheme). You can use -r -y -g parameters to set the color to red/yellow/green. If you use
       capital letter as the parameter, it will make the displayed message blink

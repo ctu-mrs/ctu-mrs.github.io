@@ -7,7 +7,7 @@ description: Version control using GIT
 # Git
 
 GIT is a distributed versioning control system.
-All our code is stored and versioned using Git and hosted on [Gihub](https://github.com/ctu-mrs).
+All our code is stored and versioned using Git and hosted on [GitHub](https://github.com/ctu-mrs).
 It allows collaborative work between many people and can be managed entirely from the terminal.
 
 * Tutorials: [https://try.github.io/levels/1/challenges/1](https://try.github.io/levels/1/challenges/1), [https://git-scm.com/docs/gittutorial](https://git-scm.com/docs/gittutorial)

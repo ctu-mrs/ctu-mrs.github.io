@@ -25,14 +25,14 @@ There are two ways how to provide **custom configuration files** to the system:
 ## Solution 1. - Through docker image
 
 We pack the configurations (**shared data**) in a dedicated transport image which is easily delivered to the robot.
-Then, **during runtime**, this image spawns a container in which the data is coppied to a **shared docker volume**.
+Then, **during runtime**, this image spawns a container in which the data is copied to a **shared docker volume**.
 Then, the user's containers are started, all mounting the same **shared docker volume** and accessing the configuration data.
 
 ![](./fig/containers_shared_data.png)
 
 ### Packing shared data to a transport image
 
-The following minimalistic dockerfile coppies the `shared_data` subfolder in the **transport docker image**:
+The following minimalistic dockerfile copies the `shared_data` subfolder in the **transport docker image**:
 
 ```dockerfile
 FROM alpine

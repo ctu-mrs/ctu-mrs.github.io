@@ -12,7 +12,7 @@ Tables starts at 50% throttle and continue to 100% throttle in 10% increments.
 
 ## Motor: Readytosky 2312 920KV
 
-Cheap chinese motor, clone of the original DJI motors for F450/F550 and Phantom drones.
+Cheap Chinese motor, clone of the original DJI motors for F450/F550 and Phantom drones.
 
 [![](fig/motor_tests/2312_920KV_readytosky.jpg "Readytosky 2312 920KV motor")](fig/motor_tests/2312_920KV_readytosky.jpg)
 
@@ -29,7 +29,7 @@ Cheap chinese motor, clone of the original DJI motors for F450/F550 and Phantom 
 | 911        | 8608  | 16.40       | 11.48       | 188.27    | 4.84             |
 | 1024       | 9068  | 16.32       | 14.26       | 232.72    | 4.40             |
 
-### Propeller: Aliexpress plastic 9450 self-tightening propeller
+### Propeller: AliExpress plastic 9450 self-tightening propeller
 
 This is a copy of the DJI propeller, it is much more flexible
 

@@ -57,7 +57,7 @@ export UAV_MASS="2.0"
 This is the total takeoff mass (including the battery) of the UAV in `kg`.
 It is used as an initial condition for the mass estimator of the UAV, which is in turn used in the feedforward control actions of the controllers.
 It is not critical to set this value precisely before every flight, as the mass estimator will correct errors after a few seconds of flying.
-If the `UAV_MASS` is different than the real mass, the UAV can behave erraticaly during takeoff, it can jump up quickly or the takeoff can be slow.
+If the `UAV_MASS` is different than the real mass, the UAV can behave erratically during takeoff, it can jump up quickly or the takeoff can be slow.
 
 ```bash
 export INITIAL_DISTURBANCE_X="0.0"

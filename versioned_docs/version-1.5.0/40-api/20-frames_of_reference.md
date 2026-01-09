@@ -55,9 +55,9 @@ The most important frames, that are used in MRS system and are automatically cre
   * coordinate frame with coincident center and orientation with the `<uav_name>/fcu` frame, but xy-plane parallel to xy-plane of of the world.
   * enables commanding UAV in the `<uav_name>/fcu` frame without being affected by the UAV tilt
 * **\<uav_name\>/local_origin**
-  * coordinate frame with center and orientation cooincident with the starting point and orientation of the UAV
+  * coordinate frame with center and orientation coincident with the starting point and orientation of the UAV
 * **\<uav_name\>/fixed_origin**
-  * coordinate frame with center and orientation cooincident with the starting estimator
+  * coordinate frame with center and orientation coincident with the starting estimator
 * **\<uav_name\>/stable_origin**
   * coordinate frame used for stable odometry, which does not jump when a state estimator is switched
 * **\<uav_name\>/world_origin**
@@ -87,7 +87,7 @@ The sensor frames includes
 
 ## Additional frames
 
-Last group of frames used in MRS system is formed by coordinate frames created by [TransformManager](https://github.com/ctu-mrs/mrs_uav_managers#TransformManager) from `nav_msgs/Odometry` messages or by addditional sotware (e.g., systems for localization).
+Last group of frames used in MRS system is formed by coordinate frames created by [TransformManager](https://github.com/ctu-mrs/mrs_uav_managers#TransformManager) from `nav_msgs/Odometry` messages or by additional software (e.g., systems for localization).
 This group incorporates
 
 * **\<uav_name\>/mapping_origin**

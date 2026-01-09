@@ -18,7 +18,7 @@ The *managers* provide most of the interface*.
 
 ### The flow of information
 
-The ControManager is subscribed to a source of [UAV State](https://ctu-mrs.github.io/mrs_msgs/msg/UavState.html), and it hands it to the trackers and controllers.
+The ControlManager is subscribed to a source of [UAV State](https://ctu-mrs.github.io/mrs_msgs/msg/UavState.html), and it hands it to the trackers and controllers.
 With each update of the UAV State, the currently active tracker produces a new reference, and the currently active controller generates a new control output.
 The controllers and trackers can be switched in mid-flight to accommodate for different mission scenarios.
 Users supply the desired references to the ControlManager, which forwards the references to the currently active tracker and controller.
@@ -38,14 +38,14 @@ General topics reporting on the current state of the ControlManager:
 | control_manager/current_constraints | current values of the dynamic constraints | [mrs_msgs::DynamicsConstraints](https://ctu-mrs.github.io/mrs_msgs/msg/DynamicsConstraints.html)            |
 | control_manager/heading             | current heading                           | [mrs_msgs::Float64Stamped](https://ctu-mrs.github.io/mrs_msgs/msg/Float64Stamped.html)                      |
 
-Topics dedicated to Rviz vizualization:
+Topics dedicated to Rviz visualization:
 
 | **topic**                                   | **description**                                         | **topic type**                    |
 |---------------------------------------------|---------------------------------------------------------|-----------------------------------|
 | control_manager/control_reference           | control reference from the active tracker               | `nav_msgs/Odometry`               |
 | control_manager/safety_area_markers         | Rviz markers showing the safety area                    | `visualization_msgs::MarkerArray` |
 | control_manager/safety_area_coordinates     | Rviz markers showing the coordinates of the safety area | `visualization_msgs::MarkerArray` |
-| control_manager/disturbance_markers         | Rviz markers showing the estimated distrubances         | `visualization_msgs::MarkerArray` |
+| control_manager/disturbance_markers         | Rviz markers showing the estimated disturbances         | `visualization_msgs::MarkerArray` |
 | control_manager/trajectory_original/poses   | pose array re-publishing the original set trajectory    | `geometry_msgs::PoseArray`        |
 | control_manager/trajectory_original/markers | Rviz markers re-publishing the original set trajectory  | `visualization_msgs::MarkerArray` |
 

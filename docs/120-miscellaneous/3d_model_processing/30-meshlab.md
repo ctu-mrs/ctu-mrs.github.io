@@ -108,7 +108,7 @@ These methods using pointcloud vertex color to create a full texture.
 * Open `Transfer: Vertex Attributes to Texture (1 or 2 meshes)` tool.
   * Set the `Source Mesh` as the high quality pointcloud file.
   * Set the `Target Mesh` as the parametrized texture file.
-  * Name the `Texture file` with `.png` extension and no path in the name. Aftewards, it is possible **and recommended** to convert the texture to `.jpg` as shown in next steps.
+  * Name the `Texture file` with `.png` extension and no path in the name. Afterwards, it is possible **and recommended** to convert the texture to `.jpg` as shown in next steps.
   * Define the texture dimension in preferably multiplications of 2.
     * The higher the texture dimension, the better will be the final result. However, the larger will be the final file. Recommend to start with *8192x8192* res - *50MB* file. Most useful is the **16384x16384** res - *200MB* file. The quality depends on the input pointcloud. The more detailed, the better.
     * *16384x16384* gives *500MB* `.png` texture and takes ~ 30 minutes.
@@ -171,7 +171,7 @@ It is recommended to convert the texture to `.jpg` format. Recommend to use eith
 This guide shows how to setup the MeshLab raster or general MeshLab camera.
 
 ### MeshLab Main Camera
-* Backup the original MeshLab camera settings before changing anything with `Windows->Save cammera settings to file` option. MeshLab will always reset the main camera setting when a new program instance is launched, but rather to make sure.
+* Backup the original MeshLab camera settings before changing anything with `Windows->Save camera settings to file` option. MeshLab will always reset the main camera setting when a new program instance is launched, but rather to make sure.
 * Copy the current value of the camera with `Windows->Copy camera settings to clipboard`. If you have just launched MeshLab, the values should look like following snippet
 
 ```xml

@@ -168,7 +168,7 @@ Inside the macro, the following variables must be declared:
 
 * `spawner_keyword` - this will become the argument to activate the component through the spawn service call
 * `spawner_description` - a descripton of the component displayed as the help
-* `spawner_default_args` - `dict` or `none`. Defines the default values of internal parameters that can be overriden from the spawn service call. For example a camera resolution or a plugin update rate.
+* `spawner_default_args` - `dict` or `none`. Defines the default values of internal parameters that can be overridden from the spawn service call. For example a camera resolution or a plugin update rate.
 
 We provide a generic macro to override the default args with the user input in `generic_components.handle_spawner_args`.
 An example of a component that is always active and the spawner only modifies its properties: `propellers_macro` in [component_snippets.sdf.jinja](https://github.com/ctu-mrs/mrs_uav_gazebo_simulation/blob/master/ros_packages/mrs_uav_gazebo_simulation/models/mrs_robots_description/sdf/component_snippets.sdf.jinja).

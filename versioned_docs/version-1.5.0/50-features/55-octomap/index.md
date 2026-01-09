@@ -47,7 +47,7 @@ was prepared to utilize 3D LiDAR and depth camera data and to launch
 * Octomap RVIZ Visualizer,
 * Nodelet manager.
 
-To use the launch file for your specific usecase, you might need to:
+To use the launch file for your specific use case, you might need to:
 - Specify reference frame of the map in the **world_frame_id** argument.
 - Provide **custom configs** customizing the behavior of the PCL filters, octomap server, octomap planner, and octomap visualizer.
 - Remap ROS **topics** expected by the launch file to correspond to your sensor configuration.

@@ -49,7 +49,7 @@ For a more exhaustive list, see the GDB manpages (`man gdb`) or any online tutor
 | `f #`                        | change to Frame `#`                      | `#` = the number from `bt`                                                                          |
 | `s`                          | Step in function                         |                                                                                                     |
 | `n`                          | step to the Next line                    |                                                                                                     |
-| `fin`                        | FINish function                          | in case you accidentaly step into a fun.                                                            |
+| `fin`                        | FINish function                          | in case you accidentally step into a fun.                                                            |
 | `c`                          | Continue                                 | resume program until breakpoint or crash                                                            |
 | `p #`                        | Print variable                           | `#` = variable name                                                                                 |
 | `wh`                         | open window with code (TUI)              | actually sets Window Height                                                                         |
