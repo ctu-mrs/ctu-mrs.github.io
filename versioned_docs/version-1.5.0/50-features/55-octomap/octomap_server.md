@@ -25,4 +25,4 @@ Topic names are set as arguments to the [launch file](https://github.com/ctu-mrs
 
 ## Configuration
 The frame of reference, where the map is built, is set by argument **world_frame_id** of the launch file.
-Default configuration parameters are available at [the config file](https://github.com/ctu-mrs/mrs_octomap_server/blob/master/config/default.yaml). They can be overriden by passing a custom config file to the main launch file.
+Default configuration parameters are available at [the config file](https://github.com/ctu-mrs/mrs_octomap_server/blob/master/config/default.yaml). They can be overridden by passing a custom config file to the main launch file.

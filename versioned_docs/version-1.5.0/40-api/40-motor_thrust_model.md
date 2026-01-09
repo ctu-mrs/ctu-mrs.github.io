@@ -9,7 +9,7 @@ description: Supplying motor thrust model
 The MRS UAV System requires a model which can estimate the relation between a throttle input and thrust force produced by the rotors.
 e.g. we need a model which tells us that when we use 0.6 (60%) throttle, we will get 3.0 kg-force of thrust. (kg-force will be used in this article, as it is easier to imagine and work with than Newtons.  $$ 1 kgForce = 9.81N $$)
 
-The model is just a qudratic curve, which gives us an approximate relationship between input throttle and produced thrust. To obtain the parameters of the quadratic curve,
+The model is just a quadratic curve, which gives us an approximate relationship between input throttle and produced thrust. To obtain the parameters of the quadratic curve,
 we need to measure the thrust of the rotors at different throttle values, and then a fit a curve to these measurements.
 The thrust-curve parameters are a part of a platform config for a specific UAV.
 ![](fig/thrust_fit_1.png)

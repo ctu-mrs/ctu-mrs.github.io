@@ -99,7 +99,7 @@ The selected camera dictates the following parameters to which attention has to 
 
 ## On wide FoV and other "non-pinhole-like" setups
 
-*Note: May contain contoversial information - direct your flame to ViktorWalter*
+*Note: May contain controversial information - direct your flame to ViktorWalter*
 
 Very often, especially for applications of vision onboard of UAVs, you will need cameras with wide FoV to get an overview of the surroundings without the need for actively rotating the camera or the whole UAV.
 There is now a wide selection of affordable lenses that accomplish this, including [fisheye lenses](https://en.wikipedia.org/wiki/Fisheye_lens) with more than 180 degrees FoV, even in small sizes suitable for deployment onboard of UAVs.

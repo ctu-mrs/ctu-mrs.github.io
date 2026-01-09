@@ -18,7 +18,7 @@ The [MRS bumper](https://github.com/ctu-mrs/mrs_bumper) aggregates data from 1-D
 The advertised *obstacle sectors* message can be visualized in Rviz using our [Rviz plugins](/docs/features/rviz_plugins/) and can be used by other ROS nodes in real-time.
 The data is used in the [control manager](/docs/features/managers/), for its obstacle avoidance feature.
 
-The data aggregation does not run automatically, but it needs to be launched on-demand byu the user:
+The data aggregation does not run automatically, but it needs to be launched on-demand by the user:
 ```bash
 roslaunch mrs_bumper bumper.launch
 ```

@@ -61,16 +61,16 @@ Describe steps to import `.ptx` and `.pts` files into MeshLab.
 
 ## Mesh computing
 
-We are using manily two methods to create a mesh from a pointcloud. <b>Screened Poisson</b> and <b>VGC</b>.
+We are using mainly two methods to create a mesh from a pointcloud. <b>Screened Poisson</b> and <b>VGC</b>.
 
 * Mesh computing requires a huge amount of RAM! It is recommended to have at least 32 GB RAM with some backup swap. If you can provide 64 GB RAM, even better!
 * The input pointcloud has to be simplified to be able to mesh it. The ideal number of vertices is 6--10 milions.
 * The general rule: Better to create a huge model and simplify it than create a small model right away.
 * **AMD processors are much faster on Ubuntu to create the mesh**: It takes much longer time for Intel to do the same task.
-    - **Surface Reconstruction: Screened Poission**: this methos is useful for most cases. It usually works well for closed environemnts as buildings. Various parameters are possible to set. I have found useful to increase the **Reconstruction Depth**. The "optimal" number is between 12--16. The higher the number, the more detailed is the model. The RAM demands increases faster than linear. Example of the set values is in the image below.\
+    - **Surface Reconstruction: Screened Poission**: this method is useful for most cases. It usually works well for closed environments as buildings. Various parameters are possible to set. I have found useful to increase the **Reconstruction Depth**. The "optimal" number is between 12--16. The higher the number, the more detailed is the model. The RAM demands increases faster than linear. Example of the set values is in the image below.\
     ![plot](fig/poisson_reconstruction.png)
     - **Surface Reconstruction: Ball Pivoting**: Single thread, slow. Creates loose pointcloud with bunch of holes.
-    - **Surface Reconstruction: VGC**: Single thread in the most part, slower. Suitable for smaller "open" models as electrical tower. It crashes a lot (Segmentation fault). Check **Vertex Splatting** box before executing. Most useful parameter is the **Voxel side**. The smaller the value, the more detailed and precised is the model. Recommend to set the value to **0.01** which corresponds to `1 cm` voxel side. **Geodesic Weightening** value increase makes the mesh smoother in general. **Volume Laplacian iter** will inflate the volume of the model. **Widening** makes the model wider, even decrease the value might be more useful.
+    - **Surface Reconstruction: VGC**: Single thread in the most part, slower. Suitable for smaller "open" models as electrical tower. It crashes a lot (Segmentation fault). Check **Vertex Splatting** box before executing. Most useful parameter is the **Voxel side**. The smaller the value, the more detailed and precised is the model. Recommend to set the value to **0.01** which corresponds to `1 cm` voxel side. **Geodesic Weighting** value increase makes the mesh smoother in general. **Volume Laplacian iter** will inflate the volume of the model. **Widening** makes the model wider, even decrease the value might be more useful.
 * The mesh processing can take a long time, check the commandline for further details.
 * Simplify the model with **Simplification: Quadric Edge Collapse Decimation** functionality.
     - I recommend to use the checkboxes as shown in the image. Most of those preserve the original shape and the planarity as well. Other parameters in the image are just an example. The higher the default mesh, the longer the processing time. At the beginning, it could be around 30 minutes for 1GB mesh. Meshlab show the percentage done for this method.
@@ -108,7 +108,7 @@ These methods using pointcloud vertex color to create a full texture.
 * Open `Transfer: Vertex Attributes to Texture (1 or 2 meshes)` tool.
   * Set the `Source Mesh` as the high quality pointcloud file.
   * Set the `Target Mesh` as the parametrized texture file.
-  * Name the `Texture file` with `.png` extension and no path in the name. Aftewards, it is possible **and recommended** to convert the texture to `.jpg` as shown in next steps.
+  * Name the `Texture file` with `.png` extension and no path in the name. Afterwards, it is possible **and recommended** to convert the texture to `.jpg` as shown in next steps.
   * Define the texture dimension in preferably multiplications of 2.
     * The higher the texture dimension, the better will be the final result. However, the larger will be the final file. Recommend to start with *8192x8192* res - *50MB* file. Most useful is the **16384x16384** res - *200MB* file. The quality depends on the input pointcloud. The more detailed, the better.
     * *16384x16384* gives *500MB* `.png` texture and takes ~ 30 minutes.
@@ -131,7 +131,7 @@ The pointcloud vertex color might not be detailed enough for the whole model or 
 
 #### Improving part of the model
 
-  * Recommend to check videos about **image texturing**. First is a [image alingment tool](https://www.youtube.com/watch?v=T7gAuI-LQ2w&ab_channel=MisterP.MeshLabTutorials) to visually align the image on the mesh. The second is [image parametrization and texturing](https://www.youtube.com/watch?v=OJZRuIzHcVw&ab_channel=MisterP.MeshLabTutorials) showing the final texture creation process and the result.
+  * Recommend to check videos about **image texturing**. First is a [image alignment tool](https://www.youtube.com/watch?v=T7gAuI-LQ2w&ab_channel=MisterP.MeshLabTutorials) to visually align the image on the mesh. The second is [image parametrization and texturing](https://www.youtube.com/watch?v=OJZRuIzHcVw&ab_channel=MisterP.MeshLabTutorials) showing the final texture creation process and the result.
   * **IMPORTANT NOTICE**. It is necessary to cut out the parts of the mesh model, where images are missing. Then color the part of the model with images and the rest of the model with the pointcloud. Finally, join them into the final model having several texture files. Meshlab allows to merge several texture files in one `.ply` file.
   * It might be useful to uncheck **Use distance weight** parameter. Otherwise, there will be dark color on some triangles.
 
@@ -146,7 +146,7 @@ The pointcloud vertex color might not be detailed enough for the whole model or 
   * Check the image alignment with toggle the `Show Current Raster Mode` button. If you zoom in and out, the alignment of the images and mesh model behind should be precise.
     * *Note: We have noticed, that some of the images are not perfectly aligned. Usually the images are from the same scan position. Just to remind, every scanning position has 6 images. The calibratino should be same for all images and scanning position. Do not know, where the problem is.*
     * If the images are not aligned well, you might tune it up with the `Raster alignment` tool from MeshLab. Try to simply press `Apply mutual information registration` button without any setting up the algorithm since the image and the model are almost aligned, it could easily help. If did not help, check the [Raster Alignment Tool video](https://youtu.be/T7gAuI-LQ2w) how to use the tool.
-    * These alingment will change the camera FOV, position and orientation.
+    * These alignment will change the camera FOV, position and orientation.
   * Run the `Parametrization + texturing from registered textures` function. Choose the parameters according to the [video](https://youtu.be/OJZRuIzHcVw) guide.
     * *Note: It might be possible to combine good texture from pointcloud with texture from raster images. Parametrization and texturing could be done separately. Check!*
   * Save the final textured mesh in required format described in the [export](https://ctu-mrs.github.io/docs/software/3d_model_processing/export.html) section.
@@ -158,7 +158,7 @@ It is recommended to convert the texture to `.jpg` format. Recommend to use eith
 
     * `convert input.png -quality 30 output.jpg`
     * The 30% jpeg quality is sufficient. The `imagemagick` tool might have some RAM/disk limitations set in default config file `/etc/ImageMagick-version/policy.xml`. Check it if you have errors. If yes comment that limitations.
-  * Do not forget to update the texture for current mesh. **READ THIS CAREFULLY, OTHERWISE YOU MIGHT ACCIDENTALY REWRITE THE TEXTURE FILE.**
+  * Do not forget to update the texture for current mesh. **READ THIS CAREFULLY, OTHERWISE YOU MIGHT ACCIDENTALLY REWRITE THE TEXTURE FILE.**
     * Press `Export Mesh` icon.
     * You should see the original `.png` file name on the right side of the popup window.
     * Double click the texture name and type the name of the new updated texture file. **Make sure that there is no texture located in the same folder with such a name**.
@@ -171,7 +171,7 @@ It is recommended to convert the texture to `.jpg` format. Recommend to use eith
 This guide shows how to setup the MeshLab raster or general MeshLab camera.
 
 ### MeshLab Main Camera
-* Backup the original MeshLab camera settings before changing anything with `Windows->Save cammera settings to file` option. MeshLab will always reset the main camera setting when a new program instance is launched, but rather to make sure.
+* Backup the original MeshLab camera settings before changing anything with `Windows->Save camera settings to file` option. MeshLab will always reset the main camera setting when a new program instance is launched, but rather to make sure.
 * Copy the current value of the camera with `Windows->Copy camera settings to clipboard`. If you have just launched MeshLab, the values should look like following snippet
 
 ```xml

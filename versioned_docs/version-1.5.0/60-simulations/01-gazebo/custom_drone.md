@@ -125,7 +125,7 @@ The basic model skeleton should look like this:
 </sdf>
 {% endraw %}
 ```
-In this example, `root` is set as a jinja variable, and will be used later in the code. The template will receive a dicitionary `spawner_args` from the MRS drone spawner. We will import some utilities from the `mrs_uav_gazebo_simulation`:
+In this example, `root` is set as a jinja variable, and will be used later in the code. The template will receive a dictionary `spawner_args` from the MRS drone spawner. We will import some utilities from the `mrs_uav_gazebo_simulation`:
 ```xml
 {% raw %}
 ...
@@ -606,7 +606,7 @@ The sensor will be a monocular grayscale camera based on the gazebo ros camera p
 
   {%- set spawner_keyword = 'enable-custom-monochrome-camera' -%} {# access this macro from the drone spawner #}
   {%- set spawner_description = 'Add a custom monochrome camera to the drone' -%} {# displayed when --help is called in the drone spawner #}
-  {%- set spawner_default_args = {'update_rate': 45, 'noise': 0.004} -%} {# internal params that can be overriden in spawn-time #}
+  {%- set spawner_default_args = {'update_rate': 45, 'noise': 0.004} -%} {# internal params that can be overridden in spawn-time #}
 
   {%- if spawner_keyword in spawner_args.keys() -%}
 

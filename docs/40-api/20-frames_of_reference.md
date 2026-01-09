@@ -63,9 +63,9 @@ The most important frames, that are used in MRS system and are automatically cre
   * coordinate frame with coincident center and orientation with the `<uav_name>/fcu` frame, but xy-plane parallel to xy-plane of of the world.
   * enables commanding UAV in the `<uav_name>/fcu` frame without being affected by the UAV tilt
 * **\<uav_name\>/local_origin**
-  * coordinate frame with center and orientation cooincident with the starting point and orientation of the UAV
+  * coordinate frame with center and orientation coincident with the starting point and orientation of the UAV
 * **\<uav_name\>/fixed_origin**
-  * coordinate frame with center and orientation cooincident with the starting estimator
+  * coordinate frame with center and orientation coincident with the starting estimator
 * **\<uav_name\>/stable_origin**
   * coordinate frame used for stable odometry, which does not jump when a state estimator is switched
 * **\<uav_name\>/world_origin**

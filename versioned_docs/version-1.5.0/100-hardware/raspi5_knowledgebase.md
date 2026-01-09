@@ -48,7 +48,7 @@ sudo ./wrapper.sh
 and when inside do the following:
 ```
 sudo apt-get install software-properties-common # adds the missing add-apt-repository command
-chmod 1777 /tmp # necessary, since adding the ppa will be making temprary files here and by default it is not writable in the container
+chmod 1777 /tmp # necessary, since adding the ppa will be making temporary files here and by default it is not writable in the container
 add-apt-repository ppa:kisak/kisak-mesa # press Enter when prompted
 sudo apt install libglx-mesa0 libgl1-mesa-dri
 ```

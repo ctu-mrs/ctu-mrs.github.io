@@ -33,7 +33,7 @@ In the controller plugin source code, you can decide what to return, but it must
 ## Example controller plugin 
 
 An example of a cutom controller plugin can be found at [this link](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/controller_plugin).
-It is highly reccomended to base your controller plugin on this example.
+It is highly recommended to base your controller plugin on this example.
 In the example, there is also a [tmux folder](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/controller_plugin/tmux) containing a script that starts the simulation of a UAV in the [MRS multirotor simulator](https://github.com/ctu-mrs/mrs_multirotor_simulator), where the UAV uses the [example controller plugin](https://github.com/ctu-mrs/mrs_core_examples/tree/master/cpp/controller_plugin).
 You have to install [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system) first to run the example.
 To load the controller plugin into the [MRS UAV system](https://github.com/ctu-mrs/mrs_uav_system), you need to provide a custom config file to the [MRS UAV Core](https://github.com/ctu-mrs/mrs_uav_core) containing the parameters for the controller plugin.

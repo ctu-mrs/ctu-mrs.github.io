@@ -59,7 +59,7 @@ Go to `GIS` -> `Web geodata` -> `Get elevation (SRTM)`. Enter the API key and pr
 
 Usually we want to adjust our map model so that its origin is at zero. To do that we:
 
-Apply the modifiers: select the plane object, presss `Ctrl+A` and select `Apply` -> `Visual Geometry to Mesh`
+Apply the modifiers: select the plane object, press `Ctrl+A` and select `Apply` -> `Visual Geometry to Mesh`
 ![](fig/real-world-elevation/apply-modifiers.png)
 
 Now, because the plugin is creating a plane based on the screen ratio, the plane will not be a perfect rectangle. What we can do is:

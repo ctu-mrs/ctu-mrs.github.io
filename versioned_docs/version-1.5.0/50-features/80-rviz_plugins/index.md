@@ -12,24 +12,24 @@ The Rviz plugins originate from the package [mrs_rviz_plugins](https://github.co
 
 ## Plugins
 
-#### mrs_msgs/ObstacleSectors vizualization
+#### mrs_msgs/ObstacleSectors visualization
 
-"Bumper" vizualizations, integrates seamlessly.
+"Bumper" visualizations, integrates seamlessly.
 
-#### mrs_msgs/PoseWithCovarianceStamped vizualization
-
-Integrates seamlessly.
-
-#### mrs_msgs/TrackArrayStamped vizualization
+#### mrs_msgs/PoseWithCovarianceStamped visualization
 
 Integrates seamlessly.
 
-#### mrs_msgs/UavStatus vizualization
+#### mrs_msgs/TrackArrayStamped visualization
+
+Integrates seamlessly.
+
+#### mrs_msgs/UavStatus visualization
 
 Displays useful information about the UAV state and sensors, integrates seamlessly.
 Use `mrs_rviz_plugins/UAV Status` display type.
 
-#### nav_msgs/Odometry vizualization
+#### nav_msgs/Odometry visualization
 
 Includes visualization of velocity and its covariance, integrates seamlessly.
 Use `mrs_rviz_plugins/OdometryWithVelocity` display type.
@@ -108,7 +108,7 @@ The coordinates will appear as a standard output
 
 ## Utils
 
-#### UAV Airframe vizualization
+#### UAV Airframe visualization
 
 ```bash
 roslaunch mrs_rviz_plugins load_robot.launch
