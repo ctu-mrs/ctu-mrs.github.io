@@ -57,7 +57,7 @@ Besides, adding these options to the config may help you achieve better results:
 - For client, adding `minpoll -4 maxpoll -4` makes the synchronization instantaneous. I.e. `server <IP> offline iburst minpoll -4 maxpoll -4`.
 - For client, removing unused sources may help with configuration clarity.
 
-It is definitely a good idea to [log the output of your `chronyc tracking`](https://mrs.fel.cvut.cz/gitlab/vpritzl/mrs_chrony_ros_monitor) or `chronyc` sources.
+It is definitely a good idea to [log the output of your `chronyc tracking`](https://github.com/ctu-mrs/mrs_chrony_ros_monitor) or `chronyc` sources.
 
 The common network topology, as described in the diagram above, proved sufficient.
 In some cases, however, it might be useful to consider a laptop as an access point (e.g. via `hostapd`).
