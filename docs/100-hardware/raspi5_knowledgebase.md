@@ -25,7 +25,6 @@ dtoverlay=ov9281,cam1
 The `cam#` lines set the camera to be detectable on both the MIPI ports. The [arducam docs](https://docs.arducam.com/Raspberry-Pi-Camera/Native-camera/Global-Shutter/1MP-OV9281-OV9282/#raspberry-pi-5-cm5) specify that `arducam` should also be added, like this:
 
 ```
-dtoverlay=ov9281,arducam
 dtoverlay=ov9281,cam0,arducam
 dtoverlay=ov9281,cam1,arducam
 ```
