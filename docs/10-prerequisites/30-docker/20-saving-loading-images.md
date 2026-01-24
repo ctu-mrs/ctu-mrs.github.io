@@ -17,5 +17,5 @@ docker save <image tag> -o <output file>
 ## Loading an image
 
 ```bash
-docker load << <image file>
+docker load < <image file>
 ```
