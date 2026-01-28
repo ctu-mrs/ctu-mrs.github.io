@@ -18,7 +18,7 @@ curl https://ctu-mrs.github.io/ppa2-stable/add_ros_ppa.sh | bash
 sudo apt install ros-jazzy-desktop-full
 ```
 
-2. Configure your ROS environment according to [http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment)
+2. Configure your ROS environment. Follow the [official tutorial](https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.html). Further, ROS2 relies heavily on Python utilities. On Ubuntu 24.04, however, daily work with system-wide packages (ROS2 Python utilities are installed system-wide) is discouraged in favor of virtual environments. Make sure your virtual environment can see the system-wide packages. (E.g., with `virtualenv` utility, use the `--system-site-packages`.)
 
 3. Add the **[stable](https://github.com/ctu-mrs/ppa2-stable)** PPA into your apt-get repository:
 ```bash
