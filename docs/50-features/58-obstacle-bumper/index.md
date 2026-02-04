@@ -20,12 +20,12 @@ The data is used in the [control manager](/docs/features/managers/), for its obs
 
 The data aggregation does not run automatically, but it needs to be launched on-demand by the user:
 ```bash
-roslaunch mrs_bumper bumper.launch
+ros2 launch mrs_bumper bumper.launch.py
 ```
 
 A custom config can be passed to the launch file as:
 ```bash
-roslaunch mrs_bumper bumper.launch custom_config:=<path to your file>
+ros2 launch mrs_bumper bumper.launch.py custom_config:=<path to your file>
 ```
 
 ## Behavior of the avoidance
