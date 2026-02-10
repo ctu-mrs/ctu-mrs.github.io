@@ -16,12 +16,12 @@ Provides filtering of IMU data to be used in VIO/VINS. Provides Butterworth low-
 
 To use with the ICM-42688 IMU:
 ```
-ros2 launch mrs_vins_imu_filter filter_icm_42688.py
+ros2 launch mrs_vins_imu_filter filter_icm_42688.launch.py
 ```
 
 To use with the RealSense T265 IMU:
 ```
-ros2 launch mrs_vins_imu_filter filter_t265.py
+ros2 launch mrs_vins_imu_filter filter_t265.launch.py
 ```
 
 ## Configuration
