@@ -20,7 +20,7 @@ Clone the [mrs_docker](https://github.com/ctu-mrs/mrs_docker) repository, then u
 
 In this example, we'll use [uav30](https://github.com/ctu-mrs/mrs_docker/tree/master/deployment/ros2/lazydocker/uav30) with `up.sh` and `down.sh` wrappers for docker commands.
 
-## Configure environment variables 
+## Configure environment variables
 
 The values in the `stack.env` file will be set in every service from `compose.yaml`, this is set as an argument to docker compose in `up.sh` and `down.sh`.
 

@@ -14,9 +14,25 @@ We use it to define the current configuration of the UAV through a set of enviro
 
 ## .bashrc for your personal computer
 
+```bash
+source /opt/ros/jazzy/setup.bash
+
+export RMW_IMPLEMENTATION=rmw_zenoh_cpp
+
+export ZENOH_ROUTER_CONFIG_URI=<path_to_your_zenoh_router.json>
+```
+
 ## .bashrc for a REAL UAV
 
-## Environmental variables:
+```bash
+source /opt/ros/jazzy/setup.bash
+
+export RMW_IMPLEMENTATION=rmw_zenoh_cpp
+
+export ZENOH_ROUTER_CONFIG_URI=/opt/ros/jazzy/share/mrs_uav_deployment/config/zenoh/uav_router.json5
+```
+
+### Environmental variables:
 
 In the `.bashrc` file of a typical UAV which is running the MRS UAV System, you will find a list of environmental variables similar to this:
 
@@ -28,7 +44,6 @@ export UAV_MASS=2.0
 export WORLD_NAME=temesvar_field
 export INITIAL_DISTURBANCE_X=0.0
 export INITIAL_DISTURBANCE_Y=0.0
-export SENSORS="pixhawk, rtk, garmin_down, realsense_front"
 export OLD_PX4_FW=0
 ```
 
@@ -77,17 +92,10 @@ You can leave the values at `0.0` and the UAV will estimate the disturbances on 
 Only when you require a precise and straight takeoff and the best possible performance right after takeoff, you should measure and define the `INITIAL_DISTURBANCE` values.
 
 ```bash
-export SENSORS="pixhawk, rtk, garmin_down, realsense_front"
-```
-
-This variable contains a list of sensors connected to the onboard computer.
-It is read by the `mrs_uav_deployment` [sensors.launch](https://github.com/ctu-mrs/mrs_uav_deployment/blob/master/launch/sensors.launch) launch file, which will in turn launch the appropriate ROS drivers for the specified sensors, as well as publish a static transformation between the UAV's FCU frame and the sensor frame.
-
-```bash
 export WORLD_NAME="temesvar_field"
 ```
 
-This variable is used to specify a [world file](https://github.com/ctu-mrs/mrs_uav_deployment/tree/master/config/worlds) which is used for the flight.
+This variable is used to specify a [world file](https://github.com/ctu-mrs/mrs_uav_deployment/tree/ros2/config/worlds) which is used for the flight.
 The world file can define the origin of the global frame, the safety area in which flights can be conducted and the minimum and maximum flight heights.
 Note that this only makes sense when a global GNSS-based localization like GPS or RTK is used.
 If you use a non-global localization (like laser-slam or visual odometry), use the local world file.

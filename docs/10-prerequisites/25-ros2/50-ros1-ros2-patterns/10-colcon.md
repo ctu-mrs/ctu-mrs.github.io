@@ -1,6 +1,6 @@
 ---
 title: Colcon configuration
-pagination_label: ROS2 workspace colcon configuration 
+pagination_label: ROS2 workspace colcon configuration
 description: ROS2 colcon configuration
 ---
 
