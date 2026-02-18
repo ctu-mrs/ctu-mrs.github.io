@@ -76,6 +76,7 @@ build:
   mixin:
     - rel-with-deb-info
     - compile-commands
+  allow-overriding: []
 ```
 
 If you want to build MRS integration and unit tests, add the _mrs-testing_ mixin:
@@ -85,6 +86,7 @@ build:
     - rel-with-deb-info
     - compile-commands
     - mrs-testing
+  allow-overriding: []
 ```
 
 For more information regarding setting workspace flags using mixins see [ROS2 Workspace Profiles](50-ros1-ros2-patterns/70-workspace_profiles.md)
