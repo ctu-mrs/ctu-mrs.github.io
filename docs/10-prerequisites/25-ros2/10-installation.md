@@ -47,8 +47,9 @@ rosker() {
     fi
   else
     docker run -it --name "$name" --network=host --privileged -e DISPLAY \
-      -v "$HOME/:/root/" \
-      -v "/dev:/dev/" \
+      -w "/root" \
+      -v "$HOME:/root" \
+      -v "/dev:/dev" \
       -v "/etc/hosts:/etc/hosts" \
       "ctumrs/ros_$name:latest" bash
   fi
