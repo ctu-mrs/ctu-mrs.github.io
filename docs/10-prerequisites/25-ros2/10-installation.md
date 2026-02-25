@@ -41,7 +41,7 @@ rosker() {
 
   if docker ps -a --format '{{.Names}}' | grep -xq "$name"; then
     if docker ps --format '{{.Names}}' | grep -xq "$name"; then
-      docker exec -it "$name" ./ros_entrypoint.sh bash -ic "${*:-exec bash}"
+      docker exec -it "$name" /ros_entrypoint.sh bash -ic "${*:-exec bash}"
     else
       docker start -ai "$name"
     fi
