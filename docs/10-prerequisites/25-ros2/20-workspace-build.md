@@ -167,7 +167,7 @@ After adding the line, be sure to open a new terminal or run `source ~/.bashrc` 
 ## Colcon build gives a warning about unknown keys
 
 * *Issue:* WARNING:colcon.colcon_defaults.argument_parser.defaults:Skipping unknown keys for 'build': allow-overriding.
-* *Reason:* The key comes from the mixin or override_check extensions (see `colcon extensions`).
+* *Reason:* The key comes from the mixin or override_check extension (see `colcon extensions`).
 * *Solution:* `sudo apt install python3-colcon-mixin python3-colcon-override-check`.
 
 ## Colcon build fails to find ament_package
