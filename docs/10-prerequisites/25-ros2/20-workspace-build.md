@@ -55,12 +55,13 @@ ln -s $HOME/git/ros2_examples $HOME/ws_examples/src/
 
 Now we need to set the workspace compilation flags using mixin.
 
-First, install mixin
+First, install mixin and the extension which allows defining overrides
+
 ```bash
-sudo apt install python3-colcon-mixin
+sudo apt install python3-colcon-mixin python3-colcon-override-check
 ```
 
-then add MRS mixin.
+then add the MRS mixin.
 
 ```bash
 colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
@@ -80,6 +81,7 @@ build:
 ```
 
 If you want to build MRS integration and unit tests, add the _mrs-testing_ mixin:
+
 ```yaml
 build:
   mixin:
@@ -99,7 +101,7 @@ colcon init
 colcon build
 ```
 
-Add to `~/.bashrc` (`~/.zshrc`) before sourcing of `source $HOME/git/mrs_uav_development/shell_additions/shell_additions.sh`:
+Add this to `~/.bashrc` (`~/.zshrc`) before the sourcing of `source $HOME/git/mrs_uav_development/shell_additions/shell_additions.sh`:
 
 ```bash
 ## workspace to be sourced
@@ -107,6 +109,7 @@ export ROS_WORKSPACE="$HOME/ws_examples"
 ```
 
 Do not put any manual sourcing of the workspace or `/opt/ros/jazzy/` into your `~/.bashrc` (`~/.zshrc`)!
+
 Sourcing `mrs_uav_development` sources the `ROS_WORKSPACE` specified in `~/.bashrc` (`~/.zshrc`) automatically (or it sources `/opt/ros/jazzy` if no `ROS_WORKSPACE` is specified.
 
 ### 7. Colorful output for colcon commands
@@ -155,11 +158,17 @@ After adding the line, be sure to open a new terminal or run `source ~/.bashrc` 
 * *Reason:* It hasn't been converted to ROS2 yet.
 * *Solution:* `touch ~/ws_mrs_uav_core/src/mrs_uav_core/ros_packages/mrs_uav_testing/COLCON_IGNORE`
 
-## Colcon build not working as expected
+## Colcon build not creating a workspace
 
 * *Issue:* Calling colcon build does not create a workspace and start building it.
 * *Reason:* We have an alias for colcon, to make its usage less awkward. See step 3 for details.
 * *Solution:* First call `colcon init` in the root of the workspace, then `colcon build`.
+
+## Colcon build gives a warning about unknown keys
+
+* *Issue:* WARNING:colcon.colcon_defaults.argument_parser.defaults:Skipping unknown keys for 'build': allow-overriding.
+* *Reason:* The key comes from the mixin and override_check extensions (see `colcon extensions`).
+* *Solution:* `sudo apt install python3-colcon-mixin python3-colcon-override-check`.
 
 ## Colcon build fails to find ament_package
 
