@@ -10,20 +10,18 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 # Native installation of the MRS UAV System
 
-## Native installation
+## Installation steps
 
-1. Install the Robot Operating System (Jazzy):
-```bash
-curl https://ctu-mrs.github.io/ppa2-stable/add_ros_ppa.sh | bash
-sudo apt install ros-jazzy-desktop-full
-```
+### 1. Install the Robot Operating System (Jazzy)
 
-2. Configure your ROS environment. Follow the [official tutorial](https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.html). Further, ROS2 relies heavily on Python utilities. On Ubuntu 24.04, however, daily work with system-wide packages (ROS2 Python utilities are installed system-wide) is discouraged in favor of virtual environments. Make sure your virtual environment can see the system-wide packages. (E.g., with `virtualenv` utility, use the `--system-site-packages`.)
+Follow the [ROS2 Installation](../10-prerequisites/10-installation.md) guide.
 
-3. Add the **[stable](https://github.com/ctu-mrs/ppa2-stable)** PPA into your apt-get repository:
+2. Add the **[stable](https://github.com/ctu-mrs/ppa2-stable)** PPA into your apt-get repository:
+
 ```bash
 curl https://ctu-mrs.github.io/ppa2-stable/add_ppa.sh | bash
 ```
+
   * <details>
     <summary> Special instructions for the MRS System developers </summary>
 
@@ -33,23 +31,26 @@ curl https://ctu-mrs.github.io/ppa2-stable/add_ppa.sh | bash
 
     </details>
 
-4. Install the MRS UAV System:
+3. Install the MRS UAV System:
+
 ```bash
 sudo apt install ros-jazzy-mrs-uav-system-full
 ```
 
-5. Set Zenoh to be the used RMW implementation. The Zenoh RMW is used by default in our example simulation sessions.
-Add to `~/.bashrc` (`~/.zshrc`):
+4. Set Zenoh to be the used RMW implementation. The Zenoh RMW is used by default in our example simulation sessions. Add to `~/.bashrc` (`~/.zshrc`):
+
 ```
 export RMW_IMPLEMENTATION="rmw_zenoh_cpp"
 ```
 
 Source `~/.bashrc` (`~/.zshrc`):
+
 ```bash
 source ~/.bashrc
 ```
 
-6. Start the example simulation session:
+5. Start the example simulation session:
+
 ```bash
 cd /opt/ros/jazzy/share/mrs_multirotor_simulator/tmux/mrs_one_drone
 ./start.sh
@@ -58,6 +59,7 @@ cd /opt/ros/jazzy/share/mrs_multirotor_simulator/tmux/mrs_one_drone
 ## How to update the MRS UAV System
 
 Issue the following command to update the MRS UAV System:
+
 ```bash
 sudo apt update && rosdep update && sudo apt upgrade --with-new-pkgs --allow-downgrades
 ```
