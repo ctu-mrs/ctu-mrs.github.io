@@ -37,7 +37,7 @@ curl https://ctu-mrs.github.io/ppa2-stable/add_ppa.sh | bash
 sudo apt install ros-jazzy-mrs-uav-system-full
 ```
 
-### 4. Set Zenoh to be the used RMW implementation.
+### 4. Set Zenoh to be the used RMW implementation
 
 The Zenoh RMW is used by default in our example simulation sessions. Add to `~/.bashrc` (`~/.zshrc`):
 
