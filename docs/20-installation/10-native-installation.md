@@ -16,7 +16,7 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 Follow the [ROS2 Installation](../10-prerequisites/25-ros2/10-installation.md) guide.
 
-2. Add the **[stable](https://github.com/ctu-mrs/ppa2-stable)** PPA into your apt-get repository:
+### 2. Add the **[stable](https://github.com/ctu-mrs/ppa2-stable)** PPA into your apt-get repository:
 
 ```bash
 curl https://ctu-mrs.github.io/ppa2-stable/add_ppa.sh | bash
@@ -31,13 +31,15 @@ curl https://ctu-mrs.github.io/ppa2-stable/add_ppa.sh | bash
 
     </details>
 
-3. Install the MRS UAV System:
+### 3. Install the MRS UAV System:
 
 ```bash
 sudo apt install ros-jazzy-mrs-uav-system-full
 ```
 
-4. Set Zenoh to be the used RMW implementation. The Zenoh RMW is used by default in our example simulation sessions. Add to `~/.bashrc` (`~/.zshrc`):
+### 4. Set Zenoh to be the used RMW implementation.
+
+The Zenoh RMW is used by default in our example simulation sessions. Add to `~/.bashrc` (`~/.zshrc`):
 
 ```
 export RMW_IMPLEMENTATION="rmw_zenoh_cpp"
@@ -49,7 +51,7 @@ Source `~/.bashrc` (`~/.zshrc`):
 source ~/.bashrc
 ```
 
-5. Start the example simulation session:
+### 5. Start the example simulation session:
 
 ```bash
 cd /opt/ros/jazzy/share/mrs_multirotor_simulator/tmux/mrs_one_drone
