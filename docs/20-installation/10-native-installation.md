@@ -14,7 +14,7 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 ### 1. Install the Robot Operating System (Jazzy)
 
-Follow the [ROS2 Installation](../10-prerequisites/10-installation.md) guide.
+Follow the [ROS2 Installation](../10-prerequisites/25-ros2/10-installation.md) guide.
 
 2. Add the **[stable](https://github.com/ctu-mrs/ppa2-stable)** PPA into your apt-get repository:
 
