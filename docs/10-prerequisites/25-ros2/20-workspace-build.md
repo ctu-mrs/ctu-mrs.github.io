@@ -24,9 +24,7 @@ By default, calling `colcon build` anywhere creates a workspace there (even in a
 
 ```bash
 cd ~/git
-git clone git@github.com:ctu-mrs/mrs_uav_development.git
-cd mrs_uav_development
-git checkout ros2
+git clone -b ros2 https://github.com/ctu-mrs/mrs_uav_development.git
 ```
 
 Add to `~/.bashrc` (`~/.zshrc`):
@@ -43,7 +41,7 @@ source $HOME/git/mrs_uav_development/shell_additions/shell_additions.sh
 
 ```bash
 cd ~/git
-git clone git@github.com:ctu-mrs/ros2_examples.git
+git clone https://github.com/ctu-mrs/ros2_examples.git
 ```
 
 ### 5. Prepare the workspace
