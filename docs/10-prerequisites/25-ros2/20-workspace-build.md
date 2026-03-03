@@ -34,7 +34,7 @@ Add to `~/.bashrc` (`~/.zshrc`):
 # * source this after exporting $ROS_WORKSPACE="<path to your workspace>"
 # * workspace is automatically sourced and the soucing is cached
 # * to force-source a workspace after adding new packages, call `presource_ros`
-source $HOME/git/mrs_uav_development/shell_additions/shell_additions.sh
+source "$HOME/git/mrs_uav_development/shell_additions/shell_additions.sh"
 ```
 
 ### 4. Clone the ROS2 Examples package
@@ -48,7 +48,7 @@ git clone https://github.com/ctu-mrs/ros2_examples.git
 
 ```bash
 mkdir -p ~/ws_examples/src
-ln -s $HOME/git/ros2_examples $HOME/ws_examples/src/
+ln -s "$HOME/git/ros2_examples" "$HOME/ws_examples/src/"
 ```
 
 Now we need to set the workspace compilation flags using mixin.
