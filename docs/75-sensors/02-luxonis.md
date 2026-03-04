@@ -13,9 +13,31 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 ## Installation
 
 The Luxonis driver on ROS2 Jazzy is supported by DepthAI v2, it can be installed by running
+
 ```bash
 sudo apt install ros-jazzy-depthai-ros
 ```
+
+## Finding out the IP address of the sensor
+
+If you're connecting to the camera with [PoE](https://docs.luxonis.com/hardware/platform/deploy/poe-deployment-guide/), the default ip should be `169.254.1.222` but this can be verified by using the `depthai` CLI utility. you can install and run it as follows:
+
+```bash
+pipx install depthai
+depthai -l
+```
+
+It should give a response similar to this:
+
+```
+[DeviceInfo(name=169.254.1.222, deviceId=14442C101146E6D200, X_LINK_BOOTLOADER, X_LINK_TCP_IP, X_LINK_MYRIAD_X, X_LINK_SUCCESS)]
+```
+
+For this to work, your devices need to be on the same network. You can create an Ethernet connection in the NetworkManager applet and set a static IP address in the `169.254.0.0/16` network like this:
+
+<img alt="image" src="https://github.com/user-attachments/assets/81343e57-b254-40e5-af4e-eab07bc9e99f" />
+
+Be sure to check the "Use this connection only for resources on its network" option under the "Routes..." menu, otherwise your computer may try to use this connection as an internet gateway.
 
 ## Startup
 
