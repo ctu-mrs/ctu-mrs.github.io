@@ -57,7 +57,11 @@ If the MRS UAV Status window is focused, you can use it to command the UAV. This
 ### Display custom messages from your nodes
 
 If you need to monitor some aspect or behaviour of your node, you can display messages from said node in MRS UAV Status.
-Simply publish a [std_msgs/String](http://docs.ros.org/melodic/api/std_msgs/html/msg/String.html) message to the topic ```mrs_uav_status/display_string```, and the message, along with the publisher node name, will show in MRS UAV Status.
+Simply publish a [std_msgs/String](https://docs.ros.org/en/jazzy/p/std_msgs/msg/String.html) message to the uav status topic, and the message, along with the publisher node name, will show in MRS UAV Status.
+
+```bash
+ros2 topic pub /uav1/uav_status_acquisition/display_string std_msgs/msg/String "data: 'Hello'"
+```
 
  ![](fig/display_string.png)
 
@@ -105,4 +109,4 @@ To monitor a tf/topic outside of the namespace, use "/" as the first character o
 
 ### Replay status in terminal from a bag file
 
-When replaying a bag file in the terminal, you can view the status from terminal by launching ```roslaunch mrs_uav_status terminal.launch```
+When replaying a bag file in the terminal, you can view the status from terminal by launching ```ros2 launch mrs_uav_status terminal.launch.py```

@@ -12,6 +12,6 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 Package grouping smaller nodes for processing, filtering, and general online/offline work with pointclouds.
 
-<Button label="🔗 mrs_pcl_tools" link="https://github.com/ctu-mrs/mrs_pcl_tools" block /><br />
+<Button label="🔗 mrs_pcl_tools" link="https://github.com/ctu-mrs/mrs_pcl_tools/tree/ros2" block /><br />
 
-The package is installed as a part of the `ros-noetic-mrs-uav-modules` package, which comes automatically with `ros-noetic-mrs-uav-system-full`.
+The package is installed as a part of the `ros-jazzy-mrs-uav-modules` package, which comes automatically with `ros-jazzy-mrs-uav-system-full`.
