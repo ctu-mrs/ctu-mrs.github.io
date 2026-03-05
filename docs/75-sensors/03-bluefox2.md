@@ -10,7 +10,7 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 # Bluefox2
 
-This a refactored version of the old Bluefox2 camera driver for ROS2 Jazzy. Original ROS version can be found here: https://github.com/ctu-mrs/bluefox2/tree/ros2
+This a refactored version of the old Bluefox2 camera driver for ROS2 Jazzy. Original ROS version can be found here: https://github.com/KumarRobotics/bluefox2
 
 ## Installation
 
