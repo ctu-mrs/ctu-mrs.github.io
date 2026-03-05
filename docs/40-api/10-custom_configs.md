@@ -34,14 +34,14 @@ The `core.launch` requires the following 2 custom configuration files:
 ## The Platform Config
 
 This file is supposed to override the defaults for a particular UAV platform.
-Usually, this file is provided by us with each simulated (and realword) UAV.
+Usually, this file is provided by us with each simulated (and realworld) UAV.
 The platform configs are stored in a location logically close to the source of the simulated UAV, e.g.,
 
 * In mrs_uav_gazebo_simulation (not yet in ROS2) for our Gazebo simulation,
 * In [mrs_multirotor_simulator](https://github.com/ctu-mrs/mrs_multirotor_simulator/tree/ros2/config/mrs_uav_system) for our MRS simulation,
 * In mrs_uav_coppelia_simulation (not yet in ROS2) for our Coppelia simulation,
 * In mrs_uav_dji_tello_api (not yet in ROS2) for our DJI Tello interface.
-* In [mrs_uav_deployment](https://github.com/ctu-mrs/mrs_uav_deployment/tree/ros2/config/mrs_uav_system) for our realword drones.
+* In [mrs_uav_deployment](https://github.com/ctu-mrs/mrs_uav_deployment/tree/ros2/config/mrs_uav_system) for our realworld drones.
 
 ## The Custom Config
 
