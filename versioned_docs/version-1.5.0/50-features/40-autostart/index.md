@@ -15,10 +15,10 @@ During the __safety timeout__ period, takeoff can be aborted by switching the mo
 
 The **Autostart** performs following checks:
 
-* availability of [UAV Manager](https://ctu-mrs.github.io/docs/features/managers),
-* availability of [Control Manager](https://ctu-mrs.github.io/docs/features/managers),
-* availability of [Estimation Manager](https://ctu-mrs.github.io/docs/features/managers),
-* connection to [HW Api](https://ctu-mrs.github.io/docs/plugin-interface/hardware-api/),
+* availability of [UAV Manager](../01-managers/index.md#uavmanager),
+* availability of [Control Manager](../01-managers/index.md#controlmanager),
+* availability of [Estimation Manager](../01-managers/index.md#estimationmanager),
+* connection to [HW Api](../../45-plugin-interface/01-hardware-api/index.md),
 * validity of current position of the UAV (takeoff outside safety area is not allowed),
 * limit on current maximum estimated speed (UAV should be static before takeoff),
 * the UAV height (if available) needs to suggest that the UAV is on the ground,
@@ -35,9 +35,11 @@ roslaunch mrs_uav_autostart automatic_start.launch
 ```
 
 A custom config file can be passed to autostart's launch if needed:
+
 ```bash
 roslaunch mrs_uav_autostart automatic_start.launch custom_config:=./config/automatic_start.yaml
 ```
+
 ### Custom topics check
 
 The **Autostart** node allows the user to specify additional topics that have to be available before initiating takeoff procedure.

@@ -11,7 +11,7 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 # Autostart takeoff routine
 
 The ROS node for automating takeoff routine for UAVs.
-The code originates from the [mrs_uav_autostart](https://github.com/ctu-mrs/mrs_uav_autostart) package.
+The code originates from the [mrs_uav_autostart](https://github.com/ctu-mrs/mrs_uav_autostart/tree/ros2) package.
 The **Autostart** checks the availability of essential parts of the system and validity of received data.
 Once all modules and data are available, it waits for the UAV to be armed and switched to offboard mode.
 Then, after a __safety timeout__, it initiates the takeoff procedure.
@@ -19,10 +19,10 @@ During the __safety timeout__ period, takeoff can be aborted by switching the mo
 
 The **Autostart** performs following checks:
 
-* availability of [UAV Manager](https://ctu-mrs.github.io/docs/features/managers),
-* availability of [Control Manager](https://ctu-mrs.github.io/docs/features/managers),
-* availability of [Estimation Manager](https://ctu-mrs.github.io/docs/features/managers),
-* connection to [HW Api](https://ctu-mrs.github.io/docs/plugin-interface/hardware-api/),
+* availability of [UAV Manager](../01-managers/index.md#uavmanager),
+* availability of [Control Manager](../01-managers/index.md#controlmanager),
+* availability of [Estimation Manager](../01-managers/index.md#estimationmanager),
+* connection to [HW Api](../../45-plugin-interface/01-hardware-api/index.md),
 * validity of current position of the UAV (takeoff outside safety area is not allowed),
 * limit on current maximum estimated speed (UAV should be static before takeoff),
 * the UAV height (if available) needs to suggest that the UAV is on the ground,
@@ -35,13 +35,15 @@ The autostart node is launched individually (not as part of the core), since it 
 The autostart might be even omitted from the session completely if needed.
 
 ```bash
-roslaunch mrs_uav_autostart automatic_start.launch
+ros2 launch mrs_uav_autostart automatic_start.launch.py
 ```
 
 A custom config file can be passed to autostart's launch if needed:
+
 ```bash
-roslaunch mrs_uav_autostart automatic_start.launch custom_config:=./config/automatic_start.yaml
+ros2 launch mrs_uav_autostart automatic_start.launch.py custom_config:=./config/automatic_start.yaml
 ```
+
 ### Custom topics check
 
 The **Autostart** node allows the user to specify additional topics that have to be available before initiating takeoff procedure.
@@ -60,5 +62,5 @@ preflight_check:
 
 ## Dependencies
 
-* [mrs_lib](https://github.com/ctu-mrs/mrs_lib)
-* [mrs_msgs](https://github.com/ctu-mrs/mrs_msgs)
+* [mrs_lib](https://github.com/ctu-mrs/mrs_lib/tree/ros2)
+* [mrs_msgs](https://github.com/ctu-mrs/mrs_msgs/tree/ros2)
