@@ -10,6 +10,8 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 
 # Localization sources within the MRS
 
+These pages may contain docs on some software, that is mostly not the product of the MRS group, but is frequently used as a backbone for experiments and describes how to use it together with the MRS UAV System.
+
 ## The Need for Localization
 
 Accurate and reliable localization is the cornerstone of autonomous UAV operation. For a drone to navigate its environment, execute complex missions, and avoid obstacles, it must have a precise understanding of its own position and orientation (collectively known as *pose*). This awareness is fundamental for everything from simple waypoint following to advanced tasks like autonomous landing and interaction with the environment. Without a robust localization system, a UAV is essentially flying blind, posing a significant risk to itself and its surroundings.
@@ -76,4 +78,3 @@ Below you can find the localization algorithms currently integrated into the MRS
 import DocCardList from '@theme/DocCardList';
 
 <DocCardList />
-
