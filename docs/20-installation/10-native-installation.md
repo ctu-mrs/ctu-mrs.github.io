@@ -73,3 +73,8 @@ sudo apt update && rosdep update && sudo apt upgrade --with-new-pkgs --allow-dow
 * `sudo apt upgrade` will download the new versions of packages.
   * `--with-new-pkgs` will ensure that if new dependency appears for an already installed package, it will be installed as well.
   * `--allow-downgrades` will allow to downgrade a package version. This happens when installing our forks of official ROS packages.
+
+
+## Note
+
+ROS2 relies heavily on Python utilities. On Ubuntu 24.04, however, daily work with system-wide packages (ROS2 Python utilities are installed system-wide) is discouraged in favor of virtual environments. Make sure your virtual environment can see the system-wide packages. (E.g., with `virtualenv` utility, use the `--system-site-packages`.)
