@@ -8,3 +8,8 @@ updates:
     schedule:
       interval: "weekly"
     versioning-strategy: increase-if-necessary
+    groups:
+      npm-version-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
