@@ -1,11 +1,13 @@
 # Documentation at [https://ctu-mrs.github.io/](https://ctu-mrs.github.io/)
-Runs on Docusaurus v3.6.0.
+
+Runs on Docusaurus v3.9.2.
 
 # How to run locally
 
 ## Ubuntu 20.04: install dependencies
 
 `Node.js` and `nvm` (here versions [v22](https://nodejs.org/en/about/previous-releases) and [v0.40.1](https://github.com/nvm-sh/nvm/releases))
+
 ```bash
 curl -sL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 sudo apt-get -y install nodejs
