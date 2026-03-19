@@ -27,7 +27,7 @@
     "rehype-katex": "7",
     "remark-math": "6",
     "search-insights": "^2.17.3",
-    "@algolia/client-search": "^4.24.0"
+    "@algolia/client-search": "^5.49.2"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.2",
