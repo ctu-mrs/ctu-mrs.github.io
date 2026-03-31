@@ -110,6 +110,8 @@ Do not put any manual sourcing of the workspace or `/opt/ros/jazzy/` into your `
 
 Sourcing `mrs_uav_development` sources the `ROS_WORKSPACE` specified in `~/.bashrc` (`~/.zshrc`) automatically (or it sources `/opt/ros/jazzy` if no `ROS_WORKSPACE` is specified.
 
+By default colcon build will fail if any of the packages in your directory fails to build, if you would instead like it instead continue building the other packages, you can run it with `colcon build  --continue-on-error`
+
 ### 7. Colorful output for colcon commands
 
 If you're accustomed to the colorful output of catkin_tools from ROS 1, you can achieve a similar look and feel with colcon in ROS 2. This makes it easier to read build logs and quickly identify important messages or errors.
