@@ -16,13 +16,11 @@ This page will describe how to run a Docker Compose session of the MRS UAV Syste
 
 ## Get the mrs_docker repo
 
-Clone the [mrs_docker](https://github.com/ctu-mrs/mrs_docker) repository, then under [deployment/ros2/lazydocker](https://github.com/ctu-mrs/mrs_docker/tree/master/deployment/ros2/lazydocker) you'll find `tmux.sh`, `session.yml` and folders representing a specific drone configuration.
-
-In this example, we'll use [uav30](https://github.com/ctu-mrs/mrs_docker/tree/master/deployment/ros2/lazydocker/uav30) with `up.sh` and `down.sh` wrappers for docker commands.
+Clone the [mrs_docker](https://github.com/ctu-mrs/mrs_docker) repository, then under [deployment/ros2/lazydocker](https://github.com/ctu-mrs/mrs_docker/tree/master/deployment/ros2/lazydocker) you'll find `tmux.sh`, `session.yml` and a [uav](https://github.com/ctu-mrs/mrs_docker/tree/master/deployment/ros2/lazydocker/uav) folder representing a specific drone configuration.
 
 ## Configure environment variables
 
-The values in the `stack.env` file will be set in every service from `compose.yaml`, this is set as an argument to docker compose in `up.sh` and `down.sh`.
+The values in the `uav/stack.env` file will be set in every service from `compose.yaml`, this is set as an argument to docker compose in the `up.sh` and `down.sh` wrapper scripts.
 
 For more info about setting the environment variables, check the [native installation](https://ctu-mrs.github.io/docs/deployment/native/bashrc_configuration#bashrc-for-a-real-uav).
 
@@ -51,11 +49,11 @@ Edit the `session.yml` file and change `DOCKER_HOST` and the rest of the argumen
 
 If you wish, you can add more windows and control multiple drones with different `up.sh` scripts. After starting tmux, you'll get an overview of the session with lazydocker and the uav status, courtesy of [mrs_uav_status](https://github.com/ctu-mrs/mrs_uav_status/tree/ros2).
 
-To exit, hit the killing shortcut: `ctrl+a k` (`ctrl+a` and then `k`). A menu will appear in which you confirm the selection.
+To exit, navigate to the `compose` tab, run the `./down.sh` script and then hit the killing shortcut: `ctrl+a k` (`ctrl+a` and then `k`). A menu will appear in which you confirm the selection. It's possible to leave the containers running in the background while tmux is not running.
 
 ### Useful info
 
-When running lazydocker, you can see that an init container has exited, this is expected for the system to run properly.
+When running lazydocker, you may notice that an init container has exited, this is expected for the system to run properly, the custom node container will also exit unless you have built a colcon workspace into it.
 
 We define the init service in `compose.yaml` and run it before all others for the purpose of creating volumes and filling them with shared data with a command like:
 
@@ -63,7 +61,7 @@ We define the init service in `compose.yaml` and run it before all others for th
 docker compose cp . init:/etc/docker
 ```
 
-Using `docker compose up` will skip these steps so refrain from using it unless you make the system to work without `up.sh`.
+Using `docker compose up` will skip these steps so refrain from using it unless you modify the system to work without `up.sh`.
 
 When using `DOCKER_HOST`, the image you run will need to be available on the drone, in case you need to transfer an image from your host, you can setup a [local registry](https://ctu-mrs.github.io/docs/prerequisites/docker/registries#using-a-local-docker-registry) or run a command like:
 
