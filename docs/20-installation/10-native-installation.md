@@ -51,7 +51,7 @@ Source `~/.bashrc` (`~/.zshrc`):
 source ~/.bashrc
 ```
 
-Note that if you recently changed the RMW_IMPLEMENTATION (from the default `rmw_fastrtps_cpp`), topics may not appear in `ros2 topic list` because the previous rmw's daemon still running, this can be fixed with these commands or restarting everything
+Note that if you recently changed the RMW_IMPLEMENTATION (from the default `rmw_fastrtps_cpp`), topics may not appear in `ros2 topic list` because of the previous rmw's daemon still running, this can be fixed with these commands or by restarting
 
 ```bash
 pkill -9 -f ros && ros2 daemon stop
