@@ -47,11 +47,15 @@ rosker() {
     fi
   else
     docker run -it --name "$name" --network=host --privileged -e DISPLAY \
-      -w "/root" \
       -v "$HOME:/root" \
       -v "/dev:/dev" \
       -v "/etc/hosts:/etc/hosts" \
-      "ctumrs/ros_$name:latest" bash
+      "ctumrs/ros_$name:latest" bash -c "
+        useradd ubuntu 2> /dev/null
+        usermod -u $(id -u) -g $(id -g) -d /root ubuntu > /dev/null
+        echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/ubuntu
+        exec su - ubuntu
+      "
   fi
 }
 ```
