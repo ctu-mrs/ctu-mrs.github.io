@@ -46,16 +46,19 @@ rosker() {
       docker start -ai "$name"
     fi
   else
-    docker run -it --name "$name" --network=host --privileged -e DISPLAY \
-      -v "$HOME:/root" \
-      -v "/dev:/dev" \
-      -v "/etc/hosts:/etc/hosts" \
-      "ctumrs/ros_$name:latest" bash -c "
-        useradd ubuntu 2> /dev/null
-        usermod -u $(id -u) -g $(id -g) -d /root ubuntu > /dev/null
+    echo "FROM ctumrs/ros_$name:latest
+      RUN userdel ubuntu || true && \
+        useradd -u $(id -u) -d /root ubuntu && \
         echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/ubuntu
-        exec su - ubuntu
-      "
+    " | docker build -qt "ctumrs/ros_$name:modified" - && \
+
+    docker run -it --name "$name" --network=host --privileged -e DISPLAY \
+      -u ubuntu \
+      -w /root \
+      -v "$HOME:/root" \
+      -v /dev:/dev \
+      -v /etc/hosts:/etc/hosts \
+      "ctumrs/ros_$name:modified" bash
   fi
 }
 ```
