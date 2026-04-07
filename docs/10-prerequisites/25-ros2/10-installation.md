@@ -53,8 +53,7 @@ rosker() {
     " | docker build -qt "ctumrs/ros_$name:modified" - && \
 
     docker run -it --name "$name" --network=host --privileged -e DISPLAY \
-      -u ubuntu \
-      -w /root \
+      -u ubuntu -w /root \
       -v "$HOME:/root" \
       -v /dev:/dev \
       -v /etc/hosts:/etc/hosts \
