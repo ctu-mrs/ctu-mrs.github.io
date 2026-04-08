@@ -40,7 +40,7 @@ jobs:
           node-version: 22.x
           cache: yarn
       - name: Install dependencies
-        run: yarn install --frozen-lockfile --non-interactive --production
+        run: yarn install --frozen-lockfile --non-interactive --production && npx update-browserslist-db@latest
       - name: Build
         run: yarn build
       - name: Setup Pages

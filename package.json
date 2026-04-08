@@ -15,6 +15,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@algolia/client-search": "^5.50.1",
     "@docusaurus/core": "3.9.2",
     "@docusaurus/preset-classic": "3.9.2",
     "@mdx-js/react": "^3.0.0",
@@ -26,8 +27,7 @@
     "react-loadable": "*",
     "rehype-katex": "7",
     "remark-math": "6",
-    "search-insights": "^2.17.3",
-    "@algolia/client-search": "^5.50.1"
+    "search-insights": "^2.17.3"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.2",
