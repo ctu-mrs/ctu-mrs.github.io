@@ -38,7 +38,7 @@ If you don't want to run ROS natively, you can run it in a container with the VS
 rosker() {
   local name="${1:-jazzy}"
   local image="ctumrs/ros_$name:latest"
-  shift
+  shift || true
 
   if docker ps -a --format '{{.Names}}' | grep -xq "$name"; then
     if docker ps --format '{{.Names}}' | grep -xq "$name"; then
