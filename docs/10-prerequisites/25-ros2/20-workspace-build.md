@@ -53,10 +53,10 @@ ln -s "$HOME/git/ros2_examples" "$HOME/ws_examples/src/"
 
 Now we need to set the workspace compilation flags using mixin.
 
-First, install mixin and the extension which allows defining overrides
+First, install mixin and some extensions which allow defining overrides and compiling certain packages
 
 ```bash
-sudo apt install python3-colcon-mixin python3-colcon-override-check
+sudo apt install python3-colcon-mixin python3-colcon-override-check ros-jazzy-ament-cmake-clang-format
 ```
 
 then add the MRS mixin.
