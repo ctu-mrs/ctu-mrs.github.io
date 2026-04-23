@@ -49,13 +49,13 @@ rosker() {
   else
     echo "FROM $image
       RUN userdel ubuntu || true && \
-        useradd -u $(id -u) -d /root ubuntu && \
+        useradd -u $(id -u) ubuntu && \
         echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/ubuntu
     " | docker build -qt "${image}_modified" - && \
 
     docker run -it --name "$name" --network=host --privileged -e DISPLAY \
-      -u ubuntu -w /root \
-      -v "$HOME:/root" \
+      -u ubuntu -w /home/ubuntu \
+      -v "$HOME:/home/ubuntu" \
       -v /dev:/dev \
       -v /etc/hosts:/etc/hosts \
       "${image}_modified" bash
@@ -74,8 +74,8 @@ rosker jazzy ros2 topic list
 Note that by default your home directory (and devices) will be available in the container, to avoid issues with `~/.bashrc` errors, you can conditionally source things like:
 
 ```bash
-[ -f /root/git/mrs_uav_development/shell_additions/shell_additions.sh ] ||
+[ -f /home/ubuntu/git/mrs_uav_development/shell_additions/shell_additions.sh ] ||
 source ~/git/mrs_uav_development/shell_additions/shell_additions.sh
 ```
 
-Which will not source this file if it's located in /root (in the container), if you want to source it, you should change `||` for `&&`
+Which will not source this file if it's located in /home/ubuntu (in the container), if you want to source it, you should change `||` for `&&`
