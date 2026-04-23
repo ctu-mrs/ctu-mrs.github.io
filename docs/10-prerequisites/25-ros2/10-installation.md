@@ -78,4 +78,4 @@ Note that by default your home directory (and devices) will be available in the 
 source ~/git/mrs_uav_development/shell_additions/shell_additions.sh
 ```
 
-Which will not source this file if it's located in /home/ubuntu (in the container), if you want to source it, you should change `||` for `&&`
+Which will not source this file if it's located in `/home/ubuntu` (in the container), if you want to source it only inside the container, you should change `||` for `&&`
