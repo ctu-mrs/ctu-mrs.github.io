@@ -7,13 +7,27 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "08:00"
+      timezone: "Europe/Prague"
     versioning-strategy: increase-if-necessary
-    groups:
+    groups: # Bundles all updates from the group into ONE single PR
       npm-version-updates:
         applies-to: version-updates
         patterns:
           - "*"
       npm-security-updates:
         applies-to: security-updates
+        patterns:
+          - "*"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "08:00"
+      timezone: "Europe/Prague"
+    groups:
+      action-updates:
         patterns:
           - "*"
