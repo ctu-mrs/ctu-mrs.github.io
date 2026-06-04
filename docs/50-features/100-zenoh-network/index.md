@@ -35,7 +35,7 @@ The routers exchange the routing tables automatically if in 'router' mode, e.g. 
 That can be disabled by setting your PC router in a 'client' mode.
 
 Specify the IP addresses of the other host as:
-```
+```yaml
 connect : {
   endpoints: ["tcp/192.168.69.101:7447", 
               "tcp/192.168.69.102:7447"],
@@ -47,10 +47,10 @@ connect : {
 The access control specifies which data is allowed to travel in or out of the Zenoh router using specific paths.
 
 The ROS 2 topics, services or even message types can be filtered using Zenoh key expressions and are declared as "rules".
-An example of a full key expression is '0/robot1/chatter/std_msgs::msg::dds_::String_/RIHS01_df668c740482bbd48fb39d76a70dfd4bd59db1288021743503259e948f6b1a18'.
+An example of a full key expression is ```0/robot1/chatter/std_msgs::msg::dds_::String_/RIHS01_df668c740482bbd48fb39d76a70dfd4bd59db1288021743503259e948f6b1a18```.
 Therefore, we make use of wildcard characters to specify the expressions like topics.
-An example rule below specifies topics from all ROS domains with any namespace such as '0/uav1/uav_manager' to match with '/diagnostics' topic with any message type and any message type:
-```
+An example rule below specifies topics from all ROS domains with any namespace such as ```0/uav1/uav_manager``` to match with ```/diagnostics``` topic with any message type and any message type:
+```yaml
 "rules": [
   {
     "id": "allow_list",
@@ -64,12 +64,12 @@ An example rule below specifies topics from all ROS domains with any namespace s
   }
 ]
 ```
-Make sure to not touch the '@ros2_lv/**' expression and allow it on every interface used. It is nescessary for the ROS graph to properly propagate and function.
+Make sure to not touch the ```@ros2_lv/**``` expression and allow it on every interface used. It is nescessary for the ROS graph to properly propagate and function.
 Services and action topics work exactly the same, but always require two-way flow enabled, in - "ingress" and out - "egress".
 
 The "subjects" specify paths which the data is being filtered on.
 The most straighforward way is to specify the network "interfaces":
-```
+```yaml
 "subjects": [
   {
     "id" : "wifi_interfaces",
@@ -79,7 +79,7 @@ The most straighforward way is to specify the network "interfaces":
 ```
 However, other options are also available, refer to the [design document](https://github.com/ros2/rmw_zenoh/blob/rolling/docs/design.md) for details.
 A noteworthy option not mentioned in the design document is the possibility to specify "zids" in a subject, which will allow you to direct data to specific router ids, e.g.:
-```
+```yaml
 "subjects": [
   {
     "id" : "zids_subject",
@@ -95,7 +95,7 @@ This is reflected by the complete inability of LLM tools to help with configurin
 It could help to make your favourite AI tool read the design document first before asking any technical questions.
 
 Finally, the "policies" then serve to map the rules onto the subjects:
-```
+```yaml
 "policies": [
   {
     "id": "allow_list_wifi",
@@ -106,9 +106,5 @@ Finally, the "policies" then serve to map the rules onto the subjects:
 ```
 
 With this knowledge, you should be good to go.
-Keep in mind that as the Zenoh executable keeps running in the background one way or another unless all ROS 2 nodes have cleanly terminated, it is a good practice to always execute:
-```
-ros2 daemon stop
-```
-to "flush" the current Zenoh after each change to the config files.
+Keep in mind that as the Zenoh executable keeps running in the background one way or another unless all ROS 2 nodes have cleanly terminated, it is a good practice to always execute ```ros2 daemon stop``` to "flush" the current Zenoh after each change to the config files.
 
