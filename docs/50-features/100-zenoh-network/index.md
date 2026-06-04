@@ -30,6 +30,10 @@ export ZENOH_ROUTER_CONFIG_URI=/path/to/my/custom_uav_router.json5
 
 ## Configuring network connections
 
+To make Zenoh routers actually route ROS 2 traffic between each other, we have to either enable multi-cast (and connect to random other UAV routers on the same network, do don't) or manually specify their IP addresses.
+The routers exchange the routing tables automatically if in 'router' mode, e.g. if you connect your PC to two UAVs, they will be aware of each others nodes.
+That can be disabled by setting your PC router in a 'client' mode.
+
 Specify the IP addresses of the other host as:
 ```
 connect : {
@@ -60,7 +64,7 @@ An example rule below specifies topics from all ROS domains with any namespace s
   }
 ]
 ```
-Make sure to not touch the '@ros2_lv/**' expression and allow it on every interface used. It is nescessary for the ROS graph to properly function.
+Make sure to not touch the '@ros2_lv/**' expression and allow it on every interface used. It is nescessary for the ROS graph to properly propagate and function.
 Services and action topics work exactly the same, but always require two-way flow enabled, in - "ingress" and out - "egress".
 
 The "subjects" specify paths which the data is being filtered on.
@@ -83,12 +87,12 @@ A noteworthy option not mentioned in the design document is the possibility to s
   }
 ]
 ```
-The router id has to be manually configured in the "id" variable, as it is random by default.
-Naturally, this could lead to some very interesting (see bad) networking behavior, so it might still be handy to limit the "zids" subject to a specific interface.
+The target router id has to be manually configured in the "id" variable, as it is random by default.
+Naturally, this could lead to some very interesting (see multi-cast) networking behavior, so it is still handy to limit the "zids" subject to a specific interface.
 Thankfully, the available fields which are "zids", "interfaces", "cert_common_names", and "usernames" can be mixed-and-matched, as illustrated in the [original zenoh router config](https://github.com/ros2/rmw_zenoh/blob/jazzy/rmw_zenoh_cpp/config/DEFAULT_RMW_ZENOH_ROUTER_CONFIG.json5).
 However, do not rely on the examples in the original config indiscriminately, e.g. the key expressions in examples are JUST PLAIN WRONG and they do not reflect the key expression format specified in the design document.
-This is reflected by the complete inability of LLM tools to help with configuring zenoh_rmw in general, as most examples are wrong and the creators essentially poisoned the  training data.
-Although it could help to make your favourite AI tool read the design document first before asking any technical questions.
+This is reflected by the complete inability of LLM tools to help with configuring zenoh_rmw in general, as most of the sparse examples and presentations on the topic are wrong and the creators essentially poisoned the training data.
+It could help to make your favourite AI tool read the design document first before asking any technical questions.
 
 Finally, the "policies" then serve to map the rules onto the subjects:
 ```
@@ -101,4 +105,10 @@ Finally, the "policies" then serve to map the rules onto the subjects:
 ]
 ```
 
+With this knowledge, you should be good to go.
+Keep in mind that as the Zenoh executable keeps running in the background one way or another unless all ROS 2 nodes have cleanly terminated, it is a good practice to always execute:
+```
+ros2 daemon stop
+```
+to "flush" the current Zenoh after each change to the config files.
 
