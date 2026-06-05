@@ -30,8 +30,9 @@ export ZENOH_ROUTER_CONFIG_URI=/path/to/my/custom_uav_router.json5
 
 ## Configuring network connections
 
-To make Zenoh routers actually route ROS 2 traffic between each other, we have to either enable multi-cast (and connect to random other UAV routers on the same network, do don't) or manually specify their IP addresses.
+To make Zenoh routers actually route ROS 2 traffic between each other, we have to either enable multi-cast (and connect to random other UAV routers on the same network, so don't unless you know what you're doing) or manually specify their IP addresses.
 The routers exchange the routing tables automatically if in 'router' mode, e.g. if you connect your PC to two UAVs, they will be aware of each others nodes.
+This means also means you only have to specify the endpoint on one side of the connection.
 That can be disabled by setting your PC router in a 'client' mode.
 
 Specify the IP addresses of the other host as:
@@ -47,8 +48,11 @@ connect : {
 The access control specifies which data is allowed to travel in or out of the Zenoh router using specific paths.
 
 The ROS 2 topics, services or even message types can be filtered using Zenoh key expressions and are declared as "rules".
-An example of a full key expression is ```0/robot1/chatter/std_msgs::msg::dds_::String_/RIHS01_df668c740482bbd48fb39d76a70dfd4bd59db1288021743503259e948f6b1a18```.
-Therefore, we make use of wildcard characters to specify the expressions like topics.
+An example of a full key expression is: 
+```
+0/robot1/chatter/std_msgs::msg::dds_::String_/RIHS01_df668c740482bbd48fb39d76a70dfd4bd59db1288021743503259e948f6b1a18
+```
+Therefore, we make use of wildcard characters ```*``` or ```**``` to specify the expressions as we would specify ROS topics.
 An example rule below specifies topics from all ROS domains with any namespace such as ```0/uav1/uav_manager``` to match with ```/diagnostics``` topic with any message type and any message type:
 ```yaml
 "rules": [
@@ -64,7 +68,7 @@ An example rule below specifies topics from all ROS domains with any namespace s
   }
 ]
 ```
-Make sure to not touch the ```@ros2_lv/**``` expression and allow it on every interface used. It is nescessary for the ROS graph to properly propagate and function.
+Make sure allways allow the ```@ros2_lv/**``` key expression when setting up the communication. It is nescessary for the ROS graph to properly propagate and function between multiple hosts.
 Services and action topics work exactly the same, but always require two-way flow enabled, in - "ingress" and out - "egress".
 
 The "subjects" specify paths which the data is being filtered on.
