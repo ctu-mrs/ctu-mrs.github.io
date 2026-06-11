@@ -15,6 +15,7 @@ Below are some of the launch arguements that must be used with all the nodes.
 While standard ROS 2 nodes can run as independent OS processes, modern ROS 2 design heavily relies on Component Composition, where nodes are compiled as shared libraries and loaded into an executing process called a Component Container.
 All the nodes running within a container share resources such as available threads (in case of a multi-threaded container) and have zero-copy operations while communicating with each other.
 The following pattern can be used to load a node into an existing container or run it inside a new one based on the conditional arguement inside the `ComposableNodeContainer`.
+An example of the launch configuration can be seen at [uav_manager.launch.py](https://github.com/ctu-mrs/mrs_uav_managers/blob/219ff904250c8cf5d366a29ffe33f4021635e9c9/launch/uav_manager.launch.py#L43)
 
 ```
 # #{ standalone
@@ -87,7 +88,6 @@ standalone_container = ComposableNodeContainer(
 )
 
 ld.add_action(standalone_container)
-:x
 # #} end of standalone container
 ```
 
@@ -95,6 +95,7 @@ ld.add_action(standalone_container)
 
 Currently, each and every ROS node needs to have a parameter `use_sim_time` in order to use the `/clock` topic for time synchronization.
 If this parameter is missing, the behaviour may be undefined.
+An example of the launch configuration can be seen at [uav_manager.launch.py](https://github.com/ctu-mrs/mrs_uav_managers/blob/219ff904250c8cf5d366a29ffe33f4021635e9c9/launch/uav_manager.launch.py#L146)
 
 ```
 # #{ use_sim_time
@@ -129,6 +130,7 @@ default_node = ComposableNode(
 ## Logging
 
 The level of logging (INFO, DEBUG, FATAL) can also be configured within the launch file as a launch arguement.
+An example of the launch configuration can be seen at [uav_manager.launch.py](https://github.com/ctu-mrs/mrs_uav_managers/blob/219ff904250c8cf5d366a29ffe33f4021635e9c9/launch/uav_manager.launch.py#L170)
 
 ```
 ld.add_action(DeclareLaunchArgument(name="log_level", default_value="info"))
@@ -143,6 +145,7 @@ standalone_container = ComposableNodeContainer(
 
 The lanuch files can use a `custom_config` launch arguement which can be used to supply customised parameters that overwrite the default parameters loaded by the node.
 Add the following lines before declaring a `ComposableNode` object.
+An example of the launch configuration can be seen at [uav_manager.launch.py](https://github.com/ctu-mrs/mrs_uav_managers/blob/219ff904250c8cf5d366a29ffe33f4021635e9c9/launch/uav_manager.launch.py#L71)
 
 ```
 custom_config = LaunchConfiguration("custom_config")
