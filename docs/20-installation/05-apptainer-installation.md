@@ -30,9 +30,9 @@ Please follow this link to the [repository](https://github.com/ctu-mrs/mrs_appta
 
 Feel free to learn and master Apptainer yourself with the help of the official [documentation](https://apptainer.org/documentation/).
 Your first apptainer image of the MRS UAV System can be built by bootstrapping from our docker image.
-You can bootstrap from the latest _rolling_ version:
+You can bootstrap from the latest _stable_ version:
 ```
-ctumrs/mrs_uav_system:latest
+ctumrs/mrs_uav_system:stable
 ```
 or from a particular version, e.g.,
 ```
