@@ -44,7 +44,7 @@ export UAV_MASS=2.0
 export WORLD_NAME=temesvar_field
 export INITIAL_DISTURBANCE_X=0.0
 export INITIAL_DISTURBANCE_Y=0.0
-export OLD_PX4_FW=0
+export OLD_PX4_FW=false
 ```
 
 Let's run through all the important variables:
@@ -102,7 +102,7 @@ If you use a non-global localization (like laser-slam or visual odometry), use t
 The origin of the local frame will be the starting position of the UAV.
 
 ```bash
-export export OLD_PX4_FW=0
+export OLD_PX4_FW=false
 ```
 
 This variable is a temporary workaround for flying with both the _new_ version of Pixhawk6 (with PX4 FW version > 1.13.2) and with the old Pixhawk4 (with older PX4 FW versions).
