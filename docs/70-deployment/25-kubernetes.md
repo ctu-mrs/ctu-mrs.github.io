@@ -60,10 +60,10 @@ docker save ctumrs/mrs_uav_system:stable > mrs.tar
 sudo ctr images import mrs.tar
 ```
 
-You can also do that with no temporary file and remotely with SSH
+You can also do that with no temporary file
 
 ```bash
-ssh uav30 'docker save ctumrs/mrs_uav_system:stable | sudo ctr images import -'
+docker save ctumrs/mrs_uav_system:stable | sudo ctr images import -
 ```
 
 Or you can setup a [local registry](https://ctu-mrs.github.io/docs/prerequisites/docker/registries#using-a-local-docker-registry) in Docker, set it as a [private registry](https://docs.k3s.io/installation/private-registry) and pull the image into containerd:

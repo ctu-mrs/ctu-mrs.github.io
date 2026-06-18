@@ -8,7 +8,7 @@ description: Deploying using Podman
 
 Podman is a rootless alternative to Docker, it can run the default [example session](https://ctu-mrs.github.io/docs/deployment/docker/) with a compose provider or use Quadlets
 
-Podman is daemonless so you won't be able to follow the instructions at [docker-host](https://ctu-mrs.github.io/docs/prerequisites/docker/docker-host), instead remote connections can be made through [ssh](https://ctu-mrs.github.io/docs/prerequisites/ssh/) by setting
+Podman is daemonless so you won't be able to follow the instructions at [docker-host](https://ctu-mrs.github.io/docs/prerequisites/docker/docker-host), instead remote connections can be made through [ssh](https://ctu-mrs.github.io/docs/prerequisites/ssh/) by enabling the podman.socket service and setting
 
 ```bash
 sock=$(ssh uav30 "podman info --format '{{.Host.RemoteSocket.Path}}'")
@@ -53,10 +53,10 @@ docker save ctumrs/mrs_uav_system:stable > mrs.tar
 podman load -i mrs.tar
 ```
 
-You can also do that with no temporary file and remotely with SSH
+You can also do that with no temporary file
 
 ```bash
-ssh uav30 'docker save ctumrs/mrs_uav_system:stable | podman load'
+docker save ctumrs/mrs_uav_system:stable | podman load
 ```
 
 Or you can setup a [local registry](https://ctu-mrs.github.io/docs/prerequisites/docker/registries#using-a-local-docker-registry) in Docker, add it as an insecure registry
