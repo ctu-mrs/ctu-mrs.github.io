@@ -40,6 +40,10 @@ rosker() {
   local image="ctumrs/ros_$name:latest"
   shift || true
 
+  # Creates a valid and unique container name
+  name="${image##*/}"
+  name="${name//:/-}"
+
   if docker ps -a --format '{{.Names}}' | grep -xq "$name"; then
     if docker ps --format '{{.Names}}' | grep -xq "$name"; then
       docker exec -it "$name" /ros_entrypoint.sh bash -ic "${*:-exec bash}"
