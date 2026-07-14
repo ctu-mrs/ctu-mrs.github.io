@@ -57,8 +57,8 @@ rosker() {
         echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/ubuntu
     " | docker build -qt "${image}_modified" - && \
 
-    docker run -it --name "$name" --network=host --privileged -e DISPLAY \
-      -u ubuntu -w /home/ubuntu \
+    docker run -it --name "$name" --network=host --privileged \
+      -e DISPLAY="${DISPLAY:-:0}" -u ubuntu -w /home/ubuntu \
       -v "$HOME:/home/ubuntu" \
       -v /dev:/dev \
       -v /etc/hosts:/etc/hosts \
