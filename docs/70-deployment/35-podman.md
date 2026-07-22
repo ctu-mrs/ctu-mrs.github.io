@@ -12,7 +12,7 @@ Podman is daemonless so you won't be able to follow the instructions at [docker-
 
 ```bash
 sock=$(ssh uav30 "podman info --format '{{.Host.RemoteSocket.Path}}'")
-export CONTAINER_HOST="ssh://mrs@uav30${sock}"
+export CONTAINER_HOST="ssh://uav30${sock}"
 ```
 
 ## Compose file
@@ -30,7 +30,7 @@ systemctl --user enable --now podman.socket
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
 ```
 
-If not, you may want to add `docker.io` to the unqualified-search-registries:
+If not and you're using podman-compose, you may want to add `docker.io` to the unqualified-search-registries:
 
 ```bash
 sudo tee /etc/containers/registries.conf.d/10-unqualified-search-registries.conf <<< 'unqualified-search-registries = ["docker.io"]'
@@ -38,7 +38,7 @@ sudo tee /etc/containers/registries.conf.d/10-unqualified-search-registries.conf
 
 Now you can follow the instructions from the [Docker](https://ctu-mrs.github.io/docs/deployment/docker/) page
 
-To get dogtail log collection working, you should change the [sock](https://github.com/ctu-mrs/mrs_docker/blob/8a977d836bc94fc9d12a118e9602f6760c49b77c/deployment/ros2/lazydocker/uav30/compose.yaml#L115) in the `compose.yaml` to the one used by Podman
+To get dogtail log collection working, you should change the [sock](https://github.com/ctu-mrs/mrs_docker/blob/a0f0966fcc620fb82d0394b76400c26af271f67b/deployment/ros2/lazydocker/uav/compose.yaml#L117) in the `compose.yaml` to the one used by Podman
 
 ## Quadlet
 
