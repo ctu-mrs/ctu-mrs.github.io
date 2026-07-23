@@ -32,7 +32,7 @@ add the following:
  ```bash 
 [Service]
 ExecStart=
-ExecStart= /usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375 --containerd=/run/containerd/containerd.sock
+ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375 --containerd=/run/containerd/containerd.sock
 ```
 and restart the service, reload doesn't seem to have any effect
 ```bash
