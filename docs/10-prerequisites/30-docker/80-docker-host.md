@@ -13,13 +13,11 @@ description: Remote access to docker
 
 Assuming that connections are configured according to the [docs](../04-ssh.md), i.e. that "ssh uav1" connects without a password
 
-You can set the following and Docker will use the socket found at `docker context inspect --format '{{.Endpoints.docker.Host}}'`
+You can set the following and Docker will automatically use the socket found at `docker context inspect --format '{{.Endpoints.docker.Host}}'`. In case of permission issues, check the [FAQ](./100-FAQ.md)
 
 ```bash
 export DOCKER_HOST=ssh://uav1
 ```
-
-In case of permission issues, check the [FAQ](./100-FAQ.md)
 
 ## TCP
   
