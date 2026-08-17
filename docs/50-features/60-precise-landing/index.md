@@ -37,8 +37,8 @@ For simulations:
 ## Example simulation
 
 ```bash
-roscd mrs_precise_landing_gazebo
-./tmux/start.sh
+cd $(ros2 pkg prefix --share mrs_precise_landing_gazebo)/tmux
+./start.sh
 ```
 
 ## How to use it
