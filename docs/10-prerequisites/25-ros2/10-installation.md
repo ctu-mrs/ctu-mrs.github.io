@@ -37,8 +37,8 @@ If you don't want to run ROS natively, you can run it in a [container](../30-doc
 ```bash
 rosker() {
   local name="${1:-jazzy}"
-  local image="ctumrs/ros_$name:latest"
-  shift || true
+  local image="ctumrs/ros_${name}:latest"
+  [ $# = 0 ] || shift
 
   # Creates a valid and unique container name
   name="${image##*/}"
