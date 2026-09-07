@@ -119,7 +119,7 @@ Unless you also configure an ssh server on your machine, you won't be able to ss
 
 ```bash
 scp -rpC uav1:/tmp/file.txt .
-rsync -azP uav1:/tmp/file.txt .
+rsync -avzP uav1:/tmp/file.txt .
 ```
 
 You may disable ssh password authentication for added security, more info about it [here](https://serverpilot.io/docs/guides/ssh/password-auth/).
