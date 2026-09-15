@@ -34,3 +34,8 @@ sudo apt-get update
 ```bash
 sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
+
+## 3. Install the ARM64 emulation
+```bash
+docker run --privileged --rm tonistiigi/binfmt --install arm64
+```
