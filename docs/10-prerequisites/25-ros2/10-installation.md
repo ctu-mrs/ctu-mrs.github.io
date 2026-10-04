@@ -83,3 +83,9 @@ source ~/git/mrs_uav_development/shell_additions/shell_additions.sh
 ```
 
 Which will not source this file if it's located in `/home/ubuntu` (in the container), if you want to source it only inside the container, you should change `||` for `&&`
+
+If you don't already have an MRS ROS image from [Docker Hub](https://hub.docker.com/orgs/ctumrs/repositories), you may want to pull one before running `rosker` because the docker build output is hidden and you won't see any progress while pulling
+
+```bash
+docker pull ctumrs/ros_jazzy:latest
+```
