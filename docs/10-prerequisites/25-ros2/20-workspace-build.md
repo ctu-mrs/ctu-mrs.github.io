@@ -56,7 +56,7 @@ Now we need to set the workspace compilation flags using mixin.
 First, install mixin and some extensions needed to build certain packages
 
 ```bash
-sudo apt install python3-colcon-mixin python3-colcon-override-check python3-colcon-clean ros-jazzy-ament-cmake-clang-format
+sudo apt install python3-colcon-mixin python3-colcon-override-check python3-colcon-clean ros-jazzy-ament-cmake-vendor-package ros-jazzy-ament-cmake-clang-format
 ```
 
 then add the MRS mixin.
