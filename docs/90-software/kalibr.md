@@ -12,7 +12,7 @@ We often utilize the [ethz-asl/kalibr](https://github.com/ethz-asl/kalibr) for c
 
 The [ctu-mrs/kalibr_docker](https://github.com/ctu-mrs/kalibr_docker) repository provides a convenient `compose_session` which utilizes a custom docker image.
 Therefore, there is no need to compile kalibr manually (which would consume approx. 5 GB of HDD space).
-The Kalibr docker image is sourced from the `ctumrs` [dockerhub](https://hub.docker.com/u/ctumrs).
+The Kalibr docker image is sourced from the `ctumrs` [Docker Hub](https://hub.docker.com/u/ctumrs).
 
 <Button label="🔗 ctu-mrs/kalibr_docker repository" link="https://github.com/ctu-mrs/kalibr_docker" block /><br />
 
