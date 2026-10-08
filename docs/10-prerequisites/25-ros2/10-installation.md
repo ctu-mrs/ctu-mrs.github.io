@@ -32,13 +32,13 @@ sudo apt-get -y install ros-jazzy-desktop-full ros-dev-tools
 
 ## Docker
 
-If you don't want to run ROS natively, you can run it in a container with the VS Code [dev containers](https://code.visualstudio.com/docs/devcontainers/containers) extension or you can place the following helper function in your `~/.bashrc` which will manage permanent containers based on the MRS ROS images.
+If you don't want to run ROS natively, you can run it in a [container](../30-docker/index.md) with the VS Code [dev containers](https://code.visualstudio.com/docs/devcontainers/containers) extension or you can place the following helper function in your `~/.bashrc` which will manage permanent containers based on the MRS ROS [images](https://github.com/ctu-mrs/mrs_docker/tree/master/recipes).
 
 ```bash
 rosker() {
   local name="${1:-jazzy}"
-  local image="ctumrs/ros_$name:latest"
-  shift || true
+  local image="ctumrs/ros_${name}:latest"
+  [ $# = 0 ] || shift
 
   # Creates a valid and unique container name
   name="${image##*/}"
@@ -83,3 +83,9 @@ source ~/git/mrs_uav_development/shell_additions/shell_additions.sh
 ```
 
 Which will not source this file if it's located in `/home/ubuntu` (in the container), if you want to source it only inside the container, you should change `||` for `&&`
+
+If you don't already have an MRS ROS image from [Docker Hub](https://hub.docker.com/u/ctumrs), you may want to pull one before running `rosker` because the docker build output is hidden and you won't see any progress while pulling
+
+```bash
+docker pull ctumrs/ros_jazzy:latest
+```

@@ -6,7 +6,7 @@ description: Installing the MRS using Docker
 
 # Docker installation
 
-The MRS System is provided in the form of pre-compiled docker images on [Dockerhub](https://hub.docker.com/u/ctumrs).
+The MRS System is provided in the form of pre-compiled docker images on [Docker Hub](https://hub.docker.com/u/ctumrs).
 
 ## Rolling stable version
 

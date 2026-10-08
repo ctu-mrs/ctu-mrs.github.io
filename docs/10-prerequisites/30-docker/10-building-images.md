@@ -43,7 +43,7 @@ docker build -t my-app:latest .
 ```dockerfile
 FROM ctumrs/ros:noetic
 
-RUN apt-get -y update
+RUN apt-get update
 
 # workaround interactive prompts during apt installations
 RUN echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections
