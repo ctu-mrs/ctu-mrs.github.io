@@ -13,7 +13,7 @@ It is scriptable, which makes it ideal for automating processes, where multiple 
 
 We utilize tmux for deployment of the MRS system when the system is *installed natively*.
 
-* List of basic key bindings for our particular setup can be found here: [https://github.com/ctu-mrs/mrs_uav_shell_additions/blob/master/package/etc/ctu-mrs/tmux.conf](https://github.com/ctu-mrs/mrs_uav_shell_additions/blob/master/package/etc/ctu-mrs/tmux.conf)
+* List of basic key bindings for our particular setup can be found here: https://github.com/ctu-mrs/mrs_uav_shell_additions/blob/ros2/package/etc/ctu-mrs/tmux.conf
 * The key bindings should be familiar to those using Vim.
 
 Check out our [Cheatsheet](https://github.com/ctu-mrs/mrs_cheatsheet) for some useful tips.
