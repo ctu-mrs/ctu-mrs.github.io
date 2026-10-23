@@ -6,10 +6,6 @@ description: Comprehensive guide to MRS CI/CD pipelines, buildfarms, branch prot
 
 # MRS ROS Build Pipeline & CI/CD
 
-:::warning
-This section covers the continuous integration and deployment architecture for both ROS 2 (Jazzy) and ROS 1 (Noetic). If you are looking for the ROS 1 system documentation, see [MRS 1.5.0 Introduction](https://ctu-mrs.github.io/docs/1.5.0/introduction/).
-:::
-
 This guide provides a comprehensive overview of the **MRS Continuous Integration and Continuous Deployment (CI/CD) ecosystem**, explaining how individual package repositories, reusable GitHub workflows, central buildfarms, and Ubuntu Personal Package Archives (PPAs) interact to automatically compile, test, and distribute Debian packages for both **ROS 1 (Noetic)** and **ROS 2 (Jazzy)** across **amd64** and **arm64** architectures.
 
 ---
@@ -64,7 +60,7 @@ Every repository contains its own source code, `package.xml`, and `CMakeLists.tx
 
 ### `ctu-mrs/ci_scripts`
 
-<Button label="🔗 ctu-mrs/ci_scripts repository" link="https://github.com/ctu-mrs/ci_scripts" block /><br />
+<Button label="🔗 ctu-mrs/ci_scripts repository" link="https://github.com/ctu-mrs/ci_scripts/tree/ros2" block /><br />
 The `ci_scripts` repository centralizes all packaging and deployment scripts:
 - Standard ROS Bloom packaging (`bloom-generate rosdebian`)
 - Non-bloom packaging for custom CMake, Autotools, or Make-based libraries
@@ -73,18 +69,15 @@ The `ci_scripts` repository centralizes all packaging and deployment scripts:
 
 ### `ctu-mrs/buildfarm` (ROS 1) & `ctu-mrs/buildfarm2` (ROS 2)
 
-<Button label="🔗 ctu-mrs/buildfarm repository" link="https://github.com/ctu-mrs/buildfarm" block />
 <Button label="🔗 ctu-mrs/buildfarm2 repository" link="https://github.com/ctu-mrs/buildfarm2" block /><br />
 
 The buildfarm repositories orchestrate complete automated builds of the entire MRS ecosystem. The pipeline is structured into three distinct sub-pipelines:
 
-- **NonBloom packages** ([`nonbloom.yaml`](https://github.com/ctu-mrs/buildfarm/blob/master/nonbloom.yaml)): Packages not built with ROS Bloom; they rely on a generic Debian packaging mechanism for external C/C++ libraries and drivers.
-- **Third-party ROS packages** ([`thirdparty.yaml`](https://github.com/ctu-mrs/buildfarm/blob/master/thirdparty.yaml)): External ROS dependencies packaged for MRS. They do not change often and do not depend on custom MRS packages.
-- **MRS packages** ([`mrs.yaml`](https://github.com/ctu-mrs/buildfarm/blob/master/mrs.yaml)): The primary MRS UAV packages that form the core autonomous system. They depend on foundation libraries and third-party packages.
+- **NonBloom packages** ([`nonbloom.yaml`](https://github.com/ctu-mrs/buildfarm2/blob/master/nonbloom.yaml)): Packages not built with ROS Bloom; they rely on a generic Debian packaging mechanism for external C/C++ libraries and drivers.
+- **Third-party ROS packages** ([`thirdparty.yaml`](https://github.com/ctu-mrs/buildfarm2/blob/master/thirdparty.yaml)): External ROS dependencies packaged for MRS. They do not change often and do not depend on custom MRS packages.
+- **MRS packages** ([`mrs.yaml`](https://github.com/ctu-mrs/buildfarm2/blob/master/mrs.yaml)): The primary MRS UAV packages that form the core autonomous system. They depend on foundation libraries and third-party packages.
 
 The ROS-driven pipelines automatically resolve the dependency graph into topological build orders so that upstream foundations (such as `mrs_msgs` and `mrs_lib`) compile and publish before downstream managers and controllers.
-
-
 
 ### Primed Builder Container Images (GHCR)
 To avoid spending hours re-installing hundreds of Debian build dependencies on every workflow run, the buildfarm relies on pre-built builder images on GitHub Container Registry (GHCR):
@@ -99,9 +92,9 @@ MRS packages are distributed through three Launchpad PPAs corresponding to speci
 
 | Pipeline Tier | Target PPA | ROS 2 Standard Branch | ROS 1 Modern Branch | ROS 1 Legacy Branch | Purpose & Audience |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Unstable** | [`ppa:ctu-mrs/ppa-unstable`](https://github.com/ctu-mrs/ppa-unstable) | `ros2` | `ros1` | `master` | Active development; continuous on-push builds of the latest commits |
-| **Testing** | [`ppa:ctu-mrs/ppa-testing`](https://github.com/ctu-mrs/ppa-testing) | `ros2_release_candidate` | `ros1_release_candidate` | `release_candidate` | Pre-release staging; daily validation and automated system testing |
-| **Stable** | [`ppa:ctu-mrs/ppa-stable`](https://github.com/ctu-mrs/ppa-stable) | `ros2_release` | `ros1_release` | `release` | Verified production releases; physical drones and end users |
+| **Unstable** | [`ppa2-unstable`](https://github.com/ctu-mrs/ppa2-unstable) | `ros2` | `ros1` | `master` | Active development; continuous on-push builds of the latest commits |
+| **Testing** | [`ppa2-testing`](https://github.com/ctu-mrs/ppa2-testing) | `ros2_release_candidate` | `ros1_release_candidate` | `release_candidate` | Pre-release staging; daily validation and automated system testing |
+| **Stable** | [`ppa2-stable`](https://github.com/ctu-mrs/ppa2-stable) | `ros2_release` | `ros1_release` | `release` | Verified production releases; physical drones and end users |
 
 ### Clarifying Branch Names (`master` vs `ros1` vs `ros2`)
 
@@ -147,7 +140,7 @@ A central question often asked by developers is why both a candidate branch and 
    - Developers choose when a milestone or feature set is ready by pushing to `*release_candidate`.
    - The package is immediately built into the **testing PPA**.
 2. **The Test Gatekeeper**:
-   - Automated system integration tests (`rostest`) run against the testing PPA via the [release pipeline workflow](https://github.com/ctu-mrs/buildfarm/actions/workflows/rostest_and_release_mrs_amd64.yml).
+   - Automated system integration tests (`rostest`) run against the testing PPA via the [release pipeline workflow](https://github.com/ctu-mrs/buildfarm2/actions/workflows/build_testing_test_release.yml).
    - If (and only if) all tests pass, the automated bot (**`ctumrsbot`**) automatically fast-forwards/merges `*release_candidate` into `*release`.
    - The stable build triggers exclusively from `*release`, publishing verified packages to the **stable PPA**.
 3. **Protecting Production**:
@@ -175,13 +168,6 @@ git branch ros2_release_candidate
 git branch ros2_release
 git push -u origin ros2_release_candidate
 git push -u origin ros2_release
-
-# For a ROS 1 package (using clean ros1 naming):
-git checkout ros1  # or git checkout master
-git branch ros1_release_candidate
-git branch ros1_release
-git push -u origin ros1_release_candidate
-git push -u origin ros1_release
 ```
 
 ---
@@ -272,7 +258,7 @@ name: ros_package_build
 
 on:
   push:
-    branches: [ ros2 ] # or [ ros1 ] for ROS 1
+    branches: [ ros2 ]
     paths-ignore:
       - '**/README.md'
 
@@ -284,7 +270,7 @@ concurrency:
 
 jobs:
   build:
-    uses: ctu-mrs/ci_scripts/.github/workflows/ros_package_build.yml@ros2 # or @master for ROS 1
+    uses: ctu-mrs/ci_scripts/.github/workflows/ros_package_build.yml@ros2
     secrets:
       PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
 ```
@@ -297,12 +283,12 @@ name: ros_build_test
 
 on:
   push:
-    branches: [ ros2_devel ] # or [ devel, ros1_devel ]
+    branches: [ ros2_devel ]
     paths-ignore:
       - '**/README.md'
 
   pull_request:
-    branches: [ ros2 ] # or [ ros1 ] for ROS 1
+    branches: [ ros2 ]
 
   workflow_dispatch:
 
@@ -312,7 +298,7 @@ concurrency:
 
 jobs:
   build:
-    uses: ctu-mrs/ci_scripts/.github/workflows/ros_build_test.yml@ros2 # or @master for ROS 1
+    uses: ctu-mrs/ci_scripts/.github/workflows/ros_build_test.yml@ros2
 ```
 
 ---
@@ -321,7 +307,6 @@ jobs:
 
 Register the package in the buildfarm registry:
 - **ROS 2**: Edit `buildfarm2/mrs.yaml`
-- **ROS 1**: Edit `buildfarm/mrs.yaml`
 
 #### Example Entry (`mrs.yaml`):
 ```yaml
@@ -330,9 +315,9 @@ mrs_robofly_core:
   source: https://github.com/ctu-mrs/mrs_robofly_core
   gitman: false
   git_refs:
-    unstable: ros2                     # or ros1 (migrating from master)
-    testing: ros2_release_candidate    # or ros1_release_candidate (from release_candidate)
-    stable: ros2_release               # or ros1_release (from release)
+    unstable: ros2
+    testing: ros2_release_candidate
+    stable: ros2_release
   generate_apt_package: true
   generate_docker_image: false
   nix: false
@@ -355,7 +340,7 @@ mrs_robofly_core:
 
 ---
 
-## 5. Container Registry (GHCR) Access & Troubleshooting
+## 5. Container Registry (GHCR) Access
 
 The buildfarm executes builds inside primed Docker containers hosted on the GitHub Container Registry.
 
