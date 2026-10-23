@@ -138,7 +138,7 @@ A central question often asked by developers is why both a candidate branch and 
 
 1. **Human Decision vs Automated Verification**:
    - Developers choose when a milestone or feature set is ready by pushing to `*release_candidate`.
-   - The package is immediately built into the **testing PPA**.
+   - The package is built into the **testing PPA**.
 2. **The Test Gatekeeper**:
    - Automated system integration tests (`rostest`) run against the testing PPA via the [release pipeline workflow](https://github.com/ctu-mrs/buildfarm2/actions/workflows/build_testing_test_release.yml).
    - If (and only if) all tests pass, the automated bot (**`ctumrsbot`**) automatically fast-forwards/merges `*release_candidate` into `*release`.
@@ -305,7 +305,6 @@ jobs:
 
 ### Step 5: Register the Package in the Buildfarm
 
-Register the package in the buildfarm registry:
 - **ROS 2**: Edit `buildfarm2/mrs.yaml`
 
 #### Example Entry (`mrs.yaml`):
@@ -374,7 +373,7 @@ GitHub Packages images belong to the organization and are private by default:
 | Stable Deployment | Fast-forward to `*release` | **`ctumrsbot` only** (automated upon passing tests) |
 | Collaborator Teams | Package Repo &rarr; Settings &rarr; Collaborators | Repository Admins |
 | Branch Rulesets | Package Repo &rarr; Settings &rarr; Rules &rarr; Rulesets | Repository Admins |
-| Register Package | `buildfarm2/mrs.yaml` or `buildfarm/mrs.yaml` | Buildfarm Maintainers |
+| Register Package | `buildfarm2/mrs.yaml` | Buildfarm Maintainers |
 | Builder Image Access | GitHub Org &rarr; Packages &rarr; Package Settings | Organization Admins |
 
 :::note Note on Team Roles
