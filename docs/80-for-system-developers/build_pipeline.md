@@ -49,9 +49,9 @@ The MRS software distribution relies on several loosely coupled components:
                                       v publishes packages to
 +-----------------------------------------------------------------------------------------+
 |                                  Ubuntu PPAs                                            |
-|  - ppa:ctu-mrs/ppa-unstable  <-- Automatic on-push from ros2 / ros1 (or master)         |
-|  - ppa:ctu-mrs/ppa-testing   <-- Automatic on-push from *release_candidate              |
-|  - ppa:ctu-mrs/ppa-stable    <-- Promoted by ctumrsbot upon passing automated tests     |
+|  - ppa:ctu-mrs/ppa2-unstable  <-- Automatic on-push from ros2 / ros1                    |
+|  - ppa:ctu-mrs/ppa2-testing   <-- Automatic on-push from *release_candidate             |
+|  - ppa:ctu-mrs/ppa2-stable    <-- Promoted by ctumrsbot upon passing automated tests    |
 +-----------------------------------------------------------------------------------------+
 ```
 
@@ -239,7 +239,7 @@ Restricts candidate promotions so only authorized package maintainers can stage 
 :::tip Recommended Simplified 2-Ruleset Alternative
 You can also protect development branches and candidate branches together in a single **`default`** ruleset:
 - **Ruleset 1 (`release`)**: Target `*release`, bypass for **`ctumrsbot` only**.
-- **Ruleset 2 (`default`)**: Target `ros2`, `master`, `ros1`, and `*release_candidate`, granting bypass to your designated maintainers and contributors (e.g., `MRS Core developers` and `MRS UAV System developers`, or your repository's maintainer list).
+- **Ruleset 2 (`default`)**: Target `ros2`, `ros1`, and `*release_candidate`, granting bypass to your designated maintainers and contributors (e.g., `MRS Core developers` and `MRS UAV System developers`, or your repository's maintainer list).
 
 ![Default combined ruleset](fig/image5.png)
 :::
@@ -368,7 +368,7 @@ GitHub Packages images belong to the organization and are private by default:
 
 | Task | Where to Configure | Who Has Access (Suggested Pattern) |
 | :--- | :--- | :--- |
-| Daily Development | Push to `ros2` / `ros1` | Package Contributors (suggested: `Write` access) |
+| Daily Development | Push to `ros2` | Package Contributors (suggested: `Write` access) |
 | Propose Release | Push/Merge to `*release_candidate` | Package Maintainers (suggested: `Maintain` access) |
 | Stable Deployment | Fast-forward to `*release` | **`ctumrsbot` only** (automated upon passing tests) |
 | Collaborator Teams | Package Repo &rarr; Settings &rarr; Collaborators | Repository Admins |
