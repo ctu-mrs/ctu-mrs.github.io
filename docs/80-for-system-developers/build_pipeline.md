@@ -200,15 +200,6 @@ Modern GitHub uses **Rulesets** (located in **Settings** &rarr; **Rules** &rarr;
 
 ![Legacy Branch Protection vs Rulesets](fig/image4.png)
 
-:::warning Critical: Why Deletions & Force Pushes Must Have a Dedicated Ruleset
-In GitHub Rulesets, **the Bypass list applies to the entire ruleset**. If developers or maintainers are placed on the bypass list of a ruleset containing "Restrict deletions" or "Block force pushes", those actors bypass **all** rules in that ruleset—meaning they can accidentally delete or force-push to critical branches (like `ros2`, `ros1`, `master`, and candidate branches).
-
-To guarantee strict branch security, we separate branch protection into **three focused rulesets**:
-1. **`delete_force_push`**: Global protection with **no bypass list** (zero bypass actors).
-2. **`release`**: Protects `*release` branches against updates, allowing only `ctumrsbot`.
-3. **`release_candidate`**: Protects `*release_candidate` branches against updates, allowing only authorized maintainers (`MRS Core developers`).
-:::
-
 ---
 
 #### Fast Setup: Import Pre-configured Rulesets (Recommended)
@@ -485,7 +476,7 @@ $ docker pull ghcr.io/ctu-mrs/buildfarm2:jazzy_builder_amd_36126839068
 Error response from daemon: denied
 ```
 
-![GitHub Container Registry Package Settings](fig/image6.png)
+![GitHub Container Registry Package Settings](fig/image5.png)
 
 ### Why It Happens & How to Fix It
 GitHub Packages images belong to the organization and are private by default:
