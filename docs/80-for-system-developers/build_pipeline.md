@@ -101,8 +101,8 @@ MRS packages are distributed through three Launchpad PPAs corresponding to speci
 Historically in ROS 1, repositories used `master`, `release_candidate`, and `release`. However, having generic `master` or `main` branches causes substantial confusion—especially in newer repositories where a `master` or `main` branch might exist as a default repository branch with **no ROS 1 / Noetic content whatsoever**.
 
 To eliminate ambiguity, the clean standard across the MRS organization is:
-- **ROS 2 Standard**: `ros2`, `ros2_release_candidate`, and `ros2_release`
-- **ROS 1 Standard (Clean)**: `ros1`, `ros1_release_candidate`, and `ros1_release` (migrating away from generic `master`, `release_candidate`, and `release`)
+- **ROS 2 Standard**: `ros2`, `ros2_release_candidate`, and `ros2_release` (with `ros2_devel` for development/PR feature branches)
+- **ROS 1 Standard (Clean)**: `ros1`, `ros1_release_candidate`, and `ros1_release` (migrating away from legacy `master`, `release_candidate`, `release`, and `devel` &rarr; `ros1_devel`)
 - **Wildcard Ruleset Synergy**: Using wildcard patterns like `*release` and `*release_candidate` in GitHub rulesets cleanly protects both modern prefixed branches (`ros2_release`, `ros1_release`) and legacy branches (`release`) simultaneously without duplicate rules.
 
 ---
@@ -403,6 +403,7 @@ jobs:
 #### 2. `.github/workflows/ros_build_test.yml`
 Tests pull requests and development branches without deploying to PPAs:
 
+##### For ROS 2 (`ros2_devel` &rarr; `ros2`):
 ```yaml
 name: ros_build_test
 
@@ -424,6 +425,30 @@ concurrency:
 jobs:
   build:
     uses: ctu-mrs/ci_scripts/.github/workflows/ros_build_test.yml@ros2
+```
+
+##### For ROS 1 (`ros1_devel` &rarr; `ros1` / `master`):
+```yaml
+name: ros_build_test
+
+on:
+  push:
+    branches: [ ros1_devel, devel ] # accepts both during ros1_devel transition
+    paths-ignore:
+      - '**/README.md'
+
+  pull_request:
+    branches: [ ros1, master ]
+
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    uses: ctu-mrs/ci_scripts/.github/workflows/ros_build_test.yml@master
 ```
 
 ---
