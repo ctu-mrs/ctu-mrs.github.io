@@ -427,30 +427,6 @@ jobs:
     uses: ctu-mrs/ci_scripts/.github/workflows/ros_build_test.yml@ros2
 ```
 
-##### For ROS 1 (`ros1_devel` &rarr; `ros1` / `master`):
-```yaml
-name: ros_build_test
-
-on:
-  push:
-    branches: [ ros1_devel, devel ] # accepts both during ros1_devel transition
-    paths-ignore:
-      - '**/README.md'
-
-  pull_request:
-    branches: [ ros1, master ]
-
-  workflow_dispatch:
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
-jobs:
-  build:
-    uses: ctu-mrs/ci_scripts/.github/workflows/ros_build_test.yml@master
-```
-
 ---
 
 ### Step 5: Register the Package in the Buildfarm
