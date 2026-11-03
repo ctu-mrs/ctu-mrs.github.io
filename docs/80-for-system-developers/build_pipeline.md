@@ -180,16 +180,6 @@ Before configuring GitHub Rulesets, **collaborators or teams must have access to
 Team membership, responsibilities, and repository ownership naturally vary across packages. The team roles below reflect a **suggested convention and convenient starting point** for repositories in the `ctu-mrs` organization, rather than a rigid mandate. Repository owners are encouraged to adapt these suggestions—for instance, by substituting individual maintainers or custom teams depending on who actively maintains the package.
 :::
 
-1. Open your repository on GitHub.
-2. Go to **Settings** &rarr; **Collaborators and teams**.
-3. Under **Manage access**, consider granting access according to your project's needs:
-   - **Suggested Maintainer Access (`Maintain` role)**:
-     - *Example group*: **`MRS Core developers`** (`@ctu-mrs/mrs-core-developers`) or designated individual package maintainers.
-     - *Purpose*: Responsible for repository settings, triage, and staging release candidates (`*release_candidate`).
-   - **Suggested Contributor Access (`Write` role)**:
-     - *Example group*: **`MRS UAV System developers`** (`@ctu-mrs/mrs-uav-system-developers`) or active package contributors.
-     - *Purpose*: Day-to-day development on `ros2` or `ros1`, opening pull requests, and pushing feature branches.
-
 ![Collaborators and Teams Configuration](fig/image1.png)
 
 ---
@@ -341,31 +331,11 @@ Protects all development, staging, and production branches against deletions and
 
 ##### Ruleset 2: `release` (Strict Bot Protection)
 Protects all production release branches so only `ctumrsbot` can update them:
-- **Ruleset Name**: `release`
-- **Enforcement status**: `Active`
-- **Bypass list**:
-  - Add **`ctumrsbot`** (User) &rarr; Set to **Always allow**.
-- **Target branches**:
-  - Add target &rarr; **Include by pattern** &rarr; `*release`
-  - *(Automatically matches `ros2_release`, `ros1_release`, and legacy `release`)*.
-- **Branch rules**:
-  - &check; **Restrict creations**
-  - &check; **Restrict updates**
 
 ![Ruleset configuration for release](fig/image2.png)
 
 ##### Ruleset 3: `release_candidate` (Restricted to Maintainers)
 Restricts candidate promotions so only authorized package maintainers can stage releases:
-- **Ruleset Name**: `release_candidate`
-- **Enforcement status**: `Active`
-- **Bypass list**:
-  - Add your designated maintainers (e.g. the **`MRS Core developers`** team, or individual package leads) &rarr; Set to **Always allow**.
-- **Target branches**:
-  - Add target &rarr; **Include by pattern** &rarr; `*release_candidate`
-  - *(Automatically matches `ros2_release_candidate`, `ros1_release_candidate`, and legacy `release_candidate`)*.
-- **Branch rules**:
-  - &check; **Restrict creations**
-  - &check; **Restrict updates**
 
 ![Ruleset configuration for release candidate](fig/image3.png)
 
@@ -451,18 +421,6 @@ mrs_robofly_core:
     full_test_coverage: false
 ```
 
-#### Field Explanations:
-- **`architecture`**: Architecture targets: `[amd64, arm64]`.
-- **`source`**: The HTTPS git clone URL.
-- **`gitman`**: Set `true` if compilation depends on a `.gitman.yaml` configuration.
-- **`git_refs`**: Branch names for `unstable`, `testing`, and `stable`.
-- **`generate_apt_package`**: Set `true` to build binary and source Debian packages for the PPAs.
-- **`generate_docker_image`**: Set `true` if the package generates a standalone Docker container image.
-- **`nix`**: Whether to generate Nix derivations.
-- **`ros_test`**:
-  - `enabled`: `true` to run automated unit/integration tests during buildfarm runs.
-  - `full_test_coverage`: Enables test coverage metrics.
-
 ---
 
 ## 5. Container Registry (GHCR) Access
@@ -501,7 +459,3 @@ GitHub Packages images belong to the organization and are private by default:
 | Branch Rulesets | Package Repo &rarr; Settings &rarr; Rules &rarr; Rulesets | Repository Admins |
 | Register Package | `buildfarm2/mrs.yaml` | Buildfarm Maintainers |
 | Builder Image Access | GitHub Org &rarr; Packages &rarr; Package Settings | Organization Admins |
-
-:::note Note on Team Roles
-Collaborator teams and access levels listed above are recommended guidelines. Repository owners may assign permissions to individual maintainers or alternative teams to best match who is actively developing and maintaining the codebase.
-:::
