@@ -1,0 +1,29 @@
+{
+  "id": 23938261,
+  "name": "delete_force_push",
+  "target": "branch",
+  "source_type": "Repository",
+  "source": "ctu-mrs/libcamera_ros_driver",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "exclude": [],
+      "include": [
+        "refs/heads/ros2",
+        "refs/heads/ros1",
+        "~DEFAULT_BRANCH",
+        "refs/heads/*release_candidate",
+        "refs/heads/*release"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "type": "deletion"
+    },
+    {
+      "type": "non_fast_forward"
+    }
+  ],
+  "bypass_actors": []
+}

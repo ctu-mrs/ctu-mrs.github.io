@@ -200,9 +200,155 @@ Modern GitHub uses **Rulesets** (located in **Settings** &rarr; **Rules** &rarr;
 
 ![Legacy Branch Protection vs Rulesets](fig/image4.png)
 
-We recommend setting up **two rulesets**:
+:::warning Critical: Why Deletions & Force Pushes Must Have a Dedicated Ruleset
+In GitHub Rulesets, **the Bypass list applies to the entire ruleset**. If developers or maintainers are placed on the bypass list of a ruleset containing "Restrict deletions" or "Block force pushes", those actors bypass **all** rules in that ruleset—meaning they can accidentally delete or force-push to critical branches (like `ros2`, `ros1`, `master`, and candidate branches).
 
-#### Ruleset 1: `release` (Strict Bot Protection)
+To guarantee strict branch security, we separate branch protection into **three focused rulesets**:
+1. **`delete_force_push`**: Global protection with **no bypass list** (zero bypass actors).
+2. **`release`**: Protects `*release` branches against updates, allowing only `ctumrsbot`.
+3. **`release_candidate`**: Protects `*release_candidate` branches against updates, allowing only authorized maintainers (`MRS Core developers`).
+:::
+
+---
+
+#### Fast Setup: Import Pre-configured Rulesets (Recommended)
+
+You can import all three rulesets into any repository in seconds using the pre-configured JSON files:
+
+1. In your repository on GitHub, navigate to **Settings** &rarr; **Rules** &rarr; **Rulesets**.
+2. Click **New ruleset** &rarr; **Import a ruleset**.
+3. Import the three ruleset definitions:
+   - **`delete_force_push.json`** ([download `/rulesets/delete_force_push.json`](/rulesets/delete_force_push.json))
+   - **`release.json`** ([download `/rulesets/release.json`](/rulesets/release.json))
+   - **`release_candidate.json`** ([download `/rulesets/release_candidate.json`](/rulesets/release_candidate.json))
+
+<details>
+<summary>Click to view JSON definitions</summary>
+
+**`delete_force_push.json`**:
+```json
+{
+  "name": "delete_force_push",
+  "target": "branch",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "exclude": [],
+      "include": [
+        "refs/heads/ros2",
+        "refs/heads/ros1",
+        "~DEFAULT_BRANCH",
+        "refs/heads/*release_candidate",
+        "refs/heads/*release"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "type": "deletion"
+    },
+    {
+      "type": "non_fast_forward"
+    }
+  ],
+  "bypass_actors": []
+}
+```
+
+**`release.json`**:
+```json
+{
+  "name": "release",
+  "target": "branch",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "exclude": [],
+      "include": [
+        "refs/heads/*release"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "type": "creation"
+    },
+    {
+      "type": "update",
+      "parameters": {
+        "update_allows_fetch_and_merge": false
+      }
+    }
+  ],
+  "bypass_actors": [
+    {
+      "actor_id": 154206578,
+      "actor_type": "User",
+      "bypass_mode": "always"
+    }
+  ]
+}
+```
+
+**`release_candidate.json`**:
+```json
+{
+  "name": "release_candidate",
+  "target": "branch",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "exclude": [],
+      "include": [
+        "refs/heads/*release_candidate"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "type": "creation"
+    },
+    {
+      "type": "update",
+      "parameters": {
+        "update_allows_fetch_and_merge": false
+      }
+    }
+  ],
+  "bypass_actors": [
+    {
+      "actor_id": 3812406,
+      "actor_type": "Team",
+      "bypass_mode": "always"
+    }
+  ]
+}
+```
+</details>
+
+---
+
+#### Manual Configuration Reference
+
+If configuring the rulesets manually through the GitHub Web UI:
+
+##### Ruleset 1: `delete_force_push` (Universal Protection)
+Protects all development, staging, and production branches against deletions and force pushes:
+- **Ruleset Name**: `delete_force_push`
+- **Enforcement status**: `Active`
+- **Bypass list**: *Leave completely empty (no bypass)*.
+- **Target branches**:
+  - Add target &rarr; **Default branch** (`~DEFAULT_BRANCH`)
+  - Add target &rarr; **Include by pattern**:
+    - `refs/heads/ros2`
+    - `refs/heads/ros1`
+    - `refs/heads/*release_candidate`
+    - `refs/heads/*release`
+- **Branch rules**:
+  - &check; **Restrict deletions**
+  - &check; **Block force pushes**
+
+##### Ruleset 2: `release` (Strict Bot Protection)
 Protects all production release branches so only `ctumrsbot` can update them:
 - **Ruleset Name**: `release`
 - **Enforcement status**: `Active`
@@ -214,12 +360,10 @@ Protects all production release branches so only `ctumrsbot` can update them:
 - **Branch rules**:
   - &check; **Restrict creations**
   - &check; **Restrict updates**
-  - &check; **Restrict deletions**
-  - &check; **Block force pushes** (checked by default)
 
 ![Ruleset configuration for release](fig/image2.png)
 
-#### Ruleset 2: `release_candidate` (Restricted to Maintainers)
+##### Ruleset 3: `release_candidate` (Restricted to Maintainers)
 Restricts candidate promotions so only authorized package maintainers can stage releases:
 - **Ruleset Name**: `release_candidate`
 - **Enforcement status**: `Active`
@@ -231,18 +375,8 @@ Restricts candidate promotions so only authorized package maintainers can stage 
 - **Branch rules**:
   - &check; **Restrict creations**
   - &check; **Restrict updates**
-  - &check; **Restrict deletions**
-  - &check; **Block force pushes**
 
 ![Ruleset configuration for release candidate](fig/image3.png)
-
-:::tip Recommended Simplified 2-Ruleset Alternative
-You can also protect development branches and candidate branches together in a single **`default`** ruleset:
-- **Ruleset 1 (`release`)**: Target `*release`, bypass for **`ctumrsbot` only**.
-- **Ruleset 2 (`default`)**: Target `ros2`, `ros1`, and `*release_candidate`, granting bypass to your designated maintainers and contributors (e.g., `MRS Core developers` and `MRS UAV System developers`, or your repository's maintainer list).
-
-![Default combined ruleset](fig/image5.png)
-:::
 
 ---
 
