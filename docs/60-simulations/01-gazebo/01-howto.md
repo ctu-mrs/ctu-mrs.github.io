@@ -46,7 +46,22 @@ The _spawning_ is handler by a ROS node `mrs_drone_spawner` that can introduce n
 The properties of the drones are defined within the `session.yml` on the line
 
 ```yaml
-waitForGazebo; sleep 5; ros2 service call /mrs_drone_spawner/spawn mrs_msgs/srv/String "{value: '1 --$UAV_TYPE --enable-rangefinder'}"
+waitForGazebo; ros2 service call /mrs_drone_spawner/spawn mrs_msgs/srv/String "{value: '1 --$UAV_TYPE --enable-rangefinder'}"
 ```
 
 See the [drone spawner documentation page](./04-drone_spawner.md) for details on how to modify the drone configurations.
+
+# Takeoff
+
+In the example sessions, the UAV takes off automatically.
+The `takeoff` window runs
+
+```bash
+waitForCore; waitForAutomaticStart; armAndOffboard
+```
+
+* `waitForAutomaticStart` waits until the [Autostart](../../50-features/40-autostart/index.md) reports that the UAV can take off (`automatic_start/can_takeoff`); it continues after 10 s if the Autostart is not running,
+* `armAndOffboard` arms the UAV and switches it to offboard through the HW API (`hw_api/arming`, `hw_api/offboard`), retrying until `hw_api/status` confirms both; the Autostart then takes off after its takeoff countdown.
+
+`armAndOffboard` runs only with `RUN_TYPE=simulation`; on a real UAV, the pilot arms and switches to offboard with the RC.
+These helpers come with [mrs_uav_shell_additions](https://github.com/ctu-mrs/mrs_uav_shell_additions/tree/ros2), as well as `applyI3Layout`, which arranges the windows with the i3 layout manager once they are up (the `layout` window).
