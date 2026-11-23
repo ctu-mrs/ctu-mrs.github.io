@@ -112,3 +112,44 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 * publishes the delay of odometry produced by a SLAM algorithm (if available) on topic `map_delay`
 * additionally can provide custom TFs from `nav_msgs/Odometry` topics by adding them to the `tf_sources` array in custom config
   * the msg can also be republished in another frame by adding the `frame_id` to the `republish_in_frames` array
+
+## DiagnosticsManager
+
+* collects the state of the MRS UAV System into a few summary topics, e.g. for the [Status TUI](../50-status_tui/index.md)
+* started by `core.launch.py` in its own process, so it keeps reporting when the core container crashes
+* configured through the [custom config](../../40-api/10-custom_configs.md) under `mrs_uav_managers/diagnostics_manager/`
+* publishes the following topics in `/$UAV_NAME/diagnostics_manager/`:
+  * `uav_state` (`mrs_msgs/State`): one UAV state derived from the HW API status and the ControlManager diagnostics:
+    * `UNKNOWN`, `NO_LINK`, `DISARMED`, `ARMED`, `OFFBOARD` (on the ground),
+    * `MANUAL` (not offboard and the HW API reports the UAV airborne: a pilot or the autopilot flies, not the MRS UAV System),
+    * `TAKEOFF`, `HOVER`, `GOTO`, `TRAJECTORY`, `LAND`, `RC_MODE`, `MIDAIR` (mid-air activation),
+    * `EHOVER`, `ELAND`, `FAILSAFE` (emergencies),
+    * the rules are described in the [DiagnosticsManager README](https://github.com/ctu-mrs/mrs_uav_managers/blob/ros2/src/diagnostics_manager/README.md)
+  * `general_robot_info`: results of the preflight checks, `ready_for_automatic_takeoff`, `missing_for_automatic_takeoff`, errors and the battery state
+  * `uav_info`: flight state, flight duration, armed, offboard, nominal and estimated mass
+  * `control_info`: active and available controllers, trackers, gains and constraints
+  * `state_estimation_info`: local and global pose, velocity, active and available estimators
+  * `system_health_info`: CPU, RAM and disk of the onboard computer, rates of the HW API, ControlManager and state estimation, and the status of the sensors
+  * `collision_avoidance_info`: state of the collision avoidance and the bumper
+* preflight checks (the same as in the [Autostart](../40-autostart/index.md)):
+  * mandatory: the UAV position is inside the safety area,
+  * optional: maximum speed, maximum height above the ground, maximum gyro rates, data on given topics,
+  * configured in [`preflight_check.yaml`](https://github.com/ctu-mrs/mrs_uav_managers/blob/ros2/config/public/diagnostics_manager/preflight_check.yaml)
+* sensor status from sensor handler plugins ([mrs_uav_diagnostics_sensors](https://github.com/ctu-mrs/mrs_uav_diagnostics_sensors/tree/ros2)): the rate of the sensor topic and sensor-specific checks
+  * the monitored sensors are listed in `sensor_handlers/active_sensor_handlers`, see [`sensor_handlers.yaml`](https://github.com/ctu-mrs/mrs_uav_managers/blob/ros2/config/public/diagnostics_manager/sensor_handlers.yaml)
+  * to monitor your own sensor, define a handler instance and add it to `active_sensor_handlers` in the custom config (the list replaces the default one, so keep the default sensors in it):
+
+```yaml
+mrs_uav_managers:
+  diagnostics_manager:
+    sensor_handlers:
+      active_sensor_handlers: [
+        "PX4",
+        "Rangefinder",
+        "GNSS",
+        "Magnetometer",
+        "RemoteController",
+        # your sensor handler instances
+      ]
+      # define your instances here, see the TEMPLATE in sensor_handlers.yaml
+```

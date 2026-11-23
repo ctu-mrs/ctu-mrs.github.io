@@ -19,13 +19,27 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
 * Especially useful in real world UAV flights, but works as well in simulation
 * Written in C++ with ncurses
 * Runs on the UAV within its TMUX session
-* Works through SSH on a flying UAV, or in a split-mode through nimbro-network (data is being collected on the UAV, transferred over nimbro, and the terminal interface runs on your remote computer)
+* Works through SSH on a flying UAV
+* Shows the data of the [DiagnosticsManager](../01-managers/index.md#diagnosticsmanager), which runs on the UAV as part of the core
 * vim-like key bindings
+
+### Starting the TUI
+
+The example tmux sessions start it in the `status` window:
+
+```bash
+ros2 run mrs_uav_status status.sh
+```
+
+`status.sh` accepts these arguments:
+
+* `custom_config:=<path>`: a custom config (absolute or relative to the current directory), the parameters are under `mrs_uav_status:`, see the [default config](https://github.com/ctu-mrs/mrs_uav_status/blob/ros2/config/public/default.yaml)
+* `lightmode:=true|false`: the colour scheme for a light or a dark terminal
 
 ### Why is my mrs_uav_status blue?
 
 * By default, mrs_uav_status runs in color-blind mode, where green color is replaced with blue. This helps with visibility if you have red-green color blindness.
-* You can disable the color-blind mode in the config file of mrs_uav_status
+* You can disable the color-blind mode with `mrs_uav_status/display/colorblind_mode: false` in the custom config of mrs_uav_status
 
  ![](fig/colorblind.png)
 
@@ -57,20 +71,20 @@ If the MRS UAV Status window is focused, you can use it to command the UAV. This
 ### Display custom messages from your nodes
 
 If you need to monitor some aspect or behaviour of your node, you can display messages from said node in MRS UAV Status.
-Simply publish a [std_msgs/String](https://docs.ros.org/en/jazzy/p/std_msgs/msg/String.html) message to the uav status topic, and the message, along with the publisher node name, will show in MRS UAV Status.
+Simply publish a [std_msgs/String](https://docs.ros.org/en/jazzy/p/std_msgs/msg/String.html) message to the `display_string` topic in the UAV namespace, and the message will show in MRS UAV Status (press 'p' to cycle the top-right pane to the strings).
 
 ```bash
-ros2 topic pub /uav1/uav_status_acquisition/display_string std_msgs/msg/String "data: 'Hello'"
+ros2 topic pub /uav1/display_string std_msgs/msg/String "data: 'Hello'"
 ```
 
  ![](fig/display_string.png)
 
- * By default, only one message can be displayed from one node/nodelet manager.
+ * By default, only one message is displayed: a new message replaces the previous one.
  * By default, the message will be displayed for 10 seconds
  * You can use several parameters with mrs_uav_status. These parameters are placed at the beginning of the string message, like this:
     * ```-id my_id -R -p the rest of my message```
  * -id my_id
-    * If you want to display more messages from one node/nodelet manager, you can use the argument -id my_id
+    * If you want to display more messages at once, give each of them an id with the argument -id my_id
     * At the beginning of your string, put "-id my_id the rest of my message"
     * Message will be displayed for each unique id
 * -p
@@ -81,32 +95,10 @@ ros2 topic pub /uav1/uav_status_acquisition/display_string std_msgs/msg/String "
 
 ### Monitoring ROS topic rates
 
-MRS UAV Status can monitor rates of different ROS topics, and warn the user if the topic is published less or more frequently than required, or not published at all. There are two ways how to add monitored topics:
-
-* Static tf
-  * If a defined static tf is present, MRS UAV Status will monitor a corresponding topic.
-  * This is intended to automatically monitor different sensor configurations.
-  * To add more monitored static tfs, modify ```config/status.yaml``` file and add to the ```tf_static_list```
-  * Each list member consists of 4 entries separated by spaces:
-    * Name of the static tf (```garmin```)
-    * Name of the topic to be monitored (```garmin/range```)
-    * Name that will be displayed (```Garmin Down```) - this name can contain additional spaces
-    * Desired rate of the topic (```50```)
-
-* Any topic
-  * If you need to monitor a topic which is not bound to a static tf
-  * Add your topic to the want_hz list in ```config/status.yaml```
-  * Each list member consists of 3 entries separated by spaces:
-    * Name of the topic to be monitored (```bluefox/camera_info```)
-    * Name that will be displayed (```Bluefox Optflow```) - this name can contain additional spaces
-    * Desired rate of the topic (```50```)
-
-The namespace of the UAV will be added automatically to the tfs and topics (```garmin/range``` -> ```/uav1/garmin/range```)
-
-To monitor a tf/topic outside of the namespace, use "/" as the first character of the tf/topic_name (```/garmin/range```)
-
- ![](fig/hz_display.png)
+MRS UAV Status shows the sensor status reported by the [DiagnosticsManager](../01-managers/index.md#diagnosticsmanager) (press 'p' to cycle the top-right pane to the sensors), including a warning if a sensor topic is published less or more frequently than required, or not published at all.
+The monitored sensors and their expected rates are configured in the DiagnosticsManager's sensor handlers, not in MRS UAV Status.
 
 ### Replay status in terminal from a bag file
 
-When replaying a bag file in the terminal, you can view the status from terminal by launching ```ros2 launch mrs_uav_status terminal.launch.py```
+MRS UAV Status shows the `diagnostics_manager/*` topics, so record them in the bag.
+When replaying the bag, start MRS UAV Status with `ros2 run mrs_uav_status status.sh`.
