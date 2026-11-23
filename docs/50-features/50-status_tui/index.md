@@ -71,10 +71,10 @@ If the MRS UAV Status window is focused, you can use it to command the UAV. This
 ### Display custom messages from your nodes
 
 If you need to monitor some aspect or behaviour of your node, you can display messages from said node in MRS UAV Status.
-Simply publish a [std_msgs/String](https://docs.ros.org/en/jazzy/p/std_msgs/msg/String.html) message to the `display_string` topic in the UAV namespace, and the message will show in MRS UAV Status (press 'p' to cycle the top-right pane to the strings).
+Simply publish a [std_msgs/String](https://docs.ros.org/en/jazzy/p/std_msgs/msg/String.html) message to the `/$UAV_NAME/uav_status/display_string` topic, and the message will show in MRS UAV Status (press 'p' to cycle the top-right pane to the strings).
 
 ```bash
-ros2 topic pub /uav1/display_string std_msgs/msg/String "data: 'Hello'"
+ros2 topic pub /uav1/uav_status/display_string std_msgs/msg/String "data: 'Hello'"
 ```
 
  ![](fig/display_string.png)
