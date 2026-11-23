@@ -15,7 +15,9 @@ At the core, the spawner handles the following operations:
 * generating an SDF model from the [available templates](https://github.com/ctu-mrs/mrs_uav_gazebo_simulator/tree/ros2?tab=readme-ov-file#pre-defined-uavs)
 * adding optional components (sensors, plugins...) based on the user input
 * running the [PX4 Firmware SITL](https://docs.px4.io/main/en/simulation/ros_interface.html) (software-in-the-loop),
-* running [MAVROS](https://docs.ros.org/en/jazzy/p/mavros/), which handles the communication (MAVLink) between the firmware and the simulator.
+* publishing the status of each vehicle (see [Spawner status](#spawner-status)).
+
+[MAVROS](https://docs.ros.org/en/jazzy/p/mavros/), which connects the firmware to the MRS UAV System, is not started by the spawner: `api.launch.py` of [mrs_uav_px4_api](https://github.com/ctu-mrs/mrs_uav_px4_api) starts it.
 
 # Spawning a drone
 
@@ -67,7 +69,7 @@ This example will spawn 5 drones, set the vehicle type to f450, add a Garmin ran
 ros2 service call /mrs_drone_spawner/spawn mrs_msgs/srv/String "value: 1 2 3 4 5 --f450 --enable-rangefinder --enable-uv-leds --enable-dual-uv-cameras"
 ```
 
-Note that this may take a while, as each model has to be added into the Gazebo world, PX4 SITL and MAVROS have to be launched and mavlink ports have to be connected for each vehicle separately.
+Note that this may take a while, as each model has to be added into the Gazebo world, PX4 SITL has to be launched and mavlink ports have to be connected for each vehicle separately.
 
 ## Help
 
@@ -93,14 +95,17 @@ Look for a readable help in the the window where simulation/drone_spawner is run
 
 ## Naming and spawn poses
 
-The spawner will assign the name `uav` + ID to each new model.
-The default naming can be changed in the **config file** (param `gazebo_models/default_robot_name`) or with a param `--name`.
+Vehicle IDs are 0 to 254 (PX4 uses ID + 1 as its MAVLink system ID).
+The spawner names each vehicle `uav` + ID; the prefix is set in the **config file** (param `gazebo_models/default_robot_name`).
 
-Example: Spawn a single t650 drone with an auto-assigned ID (lowest unassigned integer between 0 and 255).
-The vehicle will be named `pes` + ID.
+With `--name`, the vehicles get exactly the given names, one name per ID in the same order.
+A name is letters, digits and `_`, and does not start with a digit; a name that is already in use is refused.
+
+Example: spawn a t650 drone with an auto-assigned ID (the lowest unused one), named `pes`, and two x500 drones with IDs 5 and 6, named `kocka` and `mys`:
 
 ```bash
 ros2 service call /mrs_drone_spawner/spawn mrs_msgs/srv/String "value: --t650 --name pes"
+ros2 service call /mrs_drone_spawner/spawn mrs_msgs/srv/String "value: 5 6 --x500 --name kocka mys"
 ```
 
 New vehicles are placed in randomly assigned positions with a random heading.
@@ -147,6 +152,21 @@ ros2 service call /mrs_drone_spawner/spawn mrs_msgs/srv/String "value: 1 2 --x50
 ```yaml
 1, 10, 2.5, 0.5, -0.3
 2, 22, 14, 0.5, 3.14
+```
+
+## Spawner status
+
+The spawner publishes the latched topic `/mrs_drone_spawner/status` (`mrs_msgs/msg/GazeboSpawnerStatus`) on every change, first once it accepts spawn calls.
+It lists every vehicle with:
+
+* its state: queued, spawning, spawned or failed,
+* the HW API outputs it provides, as an HW API platform config (e.g. `distance_sensor` with `--enable-rangefinder`, `ground_truth` with `--enable-ground-truth`),
+* its MAVLink connection (FCU URL and system ID).
+
+In simulation, `api.launch.py` of `mrs_uav_px4_api` waits for its vehicle in the status and takes the HW API outputs and the MAVLink connection from it (`spawner_status:=false` to disable).
+
+```bash
+ros2 topic echo /mrs_drone_spawner/status
 ```
 
 ## Mavlink GCS connection
