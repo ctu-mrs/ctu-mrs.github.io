@@ -56,7 +56,7 @@ mrs_uav_autostart:
   trigger_takeoff: true
 ```
 
-The default values and all the parameters are in the [public config](https://github.com/ctu-mrs/mrs_uav_autostart/blob/ros2/config/public/automatic_start.yaml).
+The default values are in the [public config](https://github.com/ctu-mrs/mrs_uav_autostart/blob/ros2/config/public/automatic_start.yaml) and the [private config](https://github.com/ctu-mrs/mrs_uav_autostart/blob/ros2/config/private/automatic_start.yaml) (e.g. `arm_to_output_timeout`); the custom config overrides both.
 
 ### Renamed parameters
 
