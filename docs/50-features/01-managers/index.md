@@ -122,7 +122,8 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
   * `uav_state` (`mrs_msgs/State`): one UAV state derived from the HW API status and the ControlManager diagnostics:
     * `UNKNOWN`, `NO_LINK`, `DISARMED`, `ARMED`, `OFFBOARD` (on the ground),
     * `MANUAL` (not offboard and the HW API reports the UAV airborne: a pilot or the autopilot flies, not the MRS UAV System),
-    * `TAKEOFF`, `HOVER`, `GOTO`, `TRAJECTORY`, `LAND`, `RC_MODE`, `MIDAIR` (mid-air activation),
+    * `TAKEOFF`, `HOVER`, `GOTO`, `TRAJECTORY`, `LAND`, `RC_MODE`,
+    * `MIDAIR` (mid-air activation: the tracker reports `STATE_MIDAIR_ACTIVATION`, whatever its name), `FLIP` (the FlipTracker is flipping),
     * `EHOVER`, `ELAND`, `FAILSAFE` (emergencies),
     * the rules are described in the [DiagnosticsManager README](https://github.com/ctu-mrs/mrs_uav_managers/blob/ros2/src/diagnostics_manager/README.md)
   * `general_robot_info`: results of the preflight checks, `ready_for_automatic_takeoff`, `missing_for_automatic_takeoff`, errors and the battery state
