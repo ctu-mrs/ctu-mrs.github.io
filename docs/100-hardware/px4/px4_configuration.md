@@ -32,9 +32,13 @@ This guide is written for Pixhawk 4, because it is used on most of the MRS aeria
 ## SD card setup
 
 Pixawk has an SD card for flight logs and for additional configuration.
-If you want to use the MRS system, you have to use our PX4 sd card configuration. You can find it in the [mrs_uav_deployment](https://github.com/ctu-mrs/mrs_uav_deployment/tree/master/miscellaneous/pixhawk_sdcard_config) repository.
-Create a folder called `etc` in the root of the SD card and copy the `extras.txt` file into this folder.
+If you want to use the MRS system, you have to use our PX4 sd card configuration. You can find it in the [mrs_uav_deployment](https://github.com/ctu-mrs/mrs_uav_deployment/tree/ros2/miscellaneous/pixhawk_sdcard_config) repository, one folder per board (e.g. `pixhawk_6x_6c`, `pixhawk_4`, `cube_orange`, `kakuteH7`).
+Copy the board's `etc` folder (with the `extras.txt` file) to the root of the SD card.
 Install the SD card back into the Pixhawk.
+
+PX4 runs `etc/extras.txt` at boot. It starts the MAVLink instance for the onboard computer in the `custom` mode, so PX4 sends only the streams listed in `extras.txt` (plus STATUSTEXT and command messages), with the rates the MRS HW API needs.
+A MAVROS plugin that needs another message needs its stream added to `extras.txt`.
+The baud rate in `extras.txt` has to match the one MAVROS uses (see ROS setup below).
 
 ## SW setup
 
@@ -108,11 +112,25 @@ Create a new file in `/etc/udev/rules.d/` (you will need sudo privileges) and ca
 SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A50285BI", SYMLINK+="pixhawk",OWNER="mrs",MODE="0666"
 ```
 
-Replace idVendor, idProduct and serial with you values, and change the OWNER name to your user name. Now, if you disconnect and reconnect the Pixhawk, it should show up as `/dev/pixhawk`. Now you should be able to run mavros:
+Replace idVendor, idProduct and serial with you values, and change the OWNER name to your user name. Now, if you disconnect and reconnect the Pixhawk, it should show up as `/dev/pixhawk`.
+
+MAVROS is started together with the HW API by `api.launch.py` of [mrs_uav_px4_api](https://github.com/ctu-mrs/mrs_uav_px4_api/tree/ros2):
 
 ```bash
-roslaunch mrs_uav_general mavros_uav.launch
+ros2 launch mrs_uav_px4_api api.launch.py
 ```
+
+On a real UAV (`RUN_TYPE=realworld`), MAVROS connects to:
+
+* `/dev/pixhawk` at 2000000 baud, or at 921600 baud with `OLD_PX4_FW=true`,
+* `udp://:14550@<PX4_IP>:14550` if the `PX4_IP` environment variable is set.
+
+The launch arguments `mavros_fcu_url`, `mavros_gcs_url` and `mavros_tgt_system` override these.
+By default, MAVROS runs inside the HW API's container (`hw_api_container`), `standalone:=true` starts it as a separate process.
+`mavros_config:=<path>` loads a MAVROS config on top of the [default ones](https://github.com/ctu-mrs/mrs_uav_px4_api/tree/ros2/config); a `plugin_allowlist` in it replaces the whole default list of MAVROS plugins.
+
+QGroundControl can connect through MAVROS, which listens on TCP port 5760 on a real UAV.
+It gets only the streams listed in `extras.txt`: enough for parameters, calibration, logs and the MAVLink console, but flight instruments that need other messages stay empty.
 
 # Garmin rangefinder through Pixhawk
 
