@@ -98,6 +98,8 @@ ros2 topic pub /uav1/display_string std_msgs/msg/String "data: 'Hello'"
 MRS UAV Status shows the sensor status reported by the [DiagnosticsManager](../01-managers/index.md#diagnosticsmanager) (press 'p' to cycle the top-right pane to the sensors), including a warning if a sensor topic is published less or more frequently than required, or not published at all.
 The monitored sensors and their expected rates are configured in the DiagnosticsManager's sensor handlers, not in MRS UAV Status.
 
+ ![](fig/sensors.png)
+
 ### Replay status in terminal from a bag file
 
 MRS UAV Status shows the `diagnostics_manager/*` topics, so record them in the bag.
