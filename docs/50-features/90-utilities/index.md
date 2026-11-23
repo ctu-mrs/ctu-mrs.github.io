@@ -45,7 +45,13 @@ TODO
 
 ## mrs_tf_connector
 
-TODO
+Connects the TF trees of several UAVs through a common frame, see [Connecting multiple TF trees](../../40-api/20-frames_of_reference.md#connecting-multiple-tf-trees) and the [README](https://github.com/ctu-mrs/mrs_utils/blob/ros2/mrs_tf_connector/README.md).
+
+```bash
+ros2 launch mrs_tf_connector tf_connector.launch.py custom_config:=./config/tf_connector.yaml
+```
+
+The custom config overrides the [default config](https://github.com/ctu-mrs/mrs_utils/blob/ros2/mrs_tf_connector/config/tf_connector.yaml); its `connections` list replaces the default one as a whole.
 
 ## mrs_tf_estimator
 

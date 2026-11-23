@@ -62,6 +62,7 @@ export RUN_TYPE="realworld"
 ```
 
 Setting `RUN_TYPE` to `realworld` will tell the system that we are **not** in simulation.
+If `RUN_TYPE` is not set, `realworld` is assumed.
 
 ```bash
 export UAV_TYPE="x500"
