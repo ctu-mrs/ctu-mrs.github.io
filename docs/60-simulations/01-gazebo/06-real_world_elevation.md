@@ -49,7 +49,7 @@ Select the `Geo` option and enter the lattitude/longitude coordinates of your wo
 
 ![](fig/real-world-elevation/georeferencing.png)
 
-Note that if you use GPS in your Gazebo simulation and you move the world's origin, you also need to set the `simulated_rtk` parameter of `mrs_uav_px4_api` via a custom config (see [here](https://github.com/ctu-mrs/mrs_uav_px4_api/blob/ros2/config/px4_api.yaml)).
+Note that if you use GPS in your Gazebo simulation and you move the world's origin, you also need to set the `mrs_uav_hw_api/plugin/gnss/*` parameters of `mrs_uav_px4_api` (the UTM position of the world origin for the simulated RTK) via a custom config (see [here](https://github.com/ctu-mrs/mrs_uav_px4_api/blob/ros2/config/px4_api.yaml)).
 
 ## 4. Adding elevation data
 
