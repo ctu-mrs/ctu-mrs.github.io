@@ -131,7 +131,7 @@ This page is describing the upcoming ROS2 version of the MRS UAV System (however
   * `state_estimation_info`: local and global pose, velocity, active and available estimators
   * `system_health_info`: CPU, RAM and disk of the onboard computer, rates of the HW API, ControlManager and state estimation, and the status of the sensors
   * `collision_avoidance_info`: state of the collision avoidance and the bumper
-* preflight checks (the same as in the [Autostart](../40-autostart/index.md)):
+* preflight checks (the [Autostart](../40-autostart/index.md) waits for them):
   * mandatory: the UAV position is inside the safety area,
   * optional: maximum speed, maximum height above the ground, maximum gyro rates, data on given topics,
   * configured in [`preflight_check.yaml`](https://github.com/ctu-mrs/mrs_uav_managers/blob/ros2/config/public/diagnostics_manager/preflight_check.yaml)
